@@ -106,6 +106,9 @@ def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, se
         pol = make_policy("separate", budgets={nm: eps for nm in names}, confidence=confidence, **kw)
     elif policy == "nested_path":
         pol = make_policy("nested_path", budget=eps, confidence=confidence, **kw)
+    elif policy == "priority_path":
+        kw.setdefault("order", names)
+        pol = make_policy("priority_path", budget=eps, confidence=confidence, **kw)
     else:
         pol = make_policy(policy, **kw)
     return CampaignConfig(

@@ -111,11 +111,23 @@ is nondecreasing in $\lambda$, and the argument of section 2 applies with $\lamb
 
 The confidence is not split. With a single certificate the policy coincides with section 2. A unit test checks that identity.
 
+Nothing in the argument depends on the quantile form of the path. Any family of threshold pairs that is nondecreasing in $\lambda$ and fixed without calibration labels gives nested wrong-skip sets and the same claim. `priority_path` uses a lexicographic path: the certificates enter in a fixed order, certificate $i$ sweeping its own quantiles over $\lambda \in [i, i+1]$:
+
+$$
+\lambda_j(x) = i_j + \hat F_j(S_j(x))
+$$
+
+where $i_j$ is the position of certificate $j$ in the order and $\hat F_j$ its empirical distribution function over $D_L$. The shape of the path changes the cost of the claim and leaves the claim itself unchanged.
+
 ### 4.3 `ltt_conditional`
 
 Fixed-sequence Learn-then-Test on the conditional rate $P(B = 1 \mid S \le \tau)$, on a label-free grid of level-score quantiles (Angelopoulos et al., 2021). It controls the conditional rate of one certificate at family-wise error $\delta$. At $m = 40$ the grid starts at the 0.55 quantile, so the rule certifies nothing or at least 55% of a level.
 
-### 4.4 `legacy_sequential` (no guarantee)
+### 4.4 Further forms
+
+The three policies above state three different guarantees: one bound per certificate (and their union), one bound on the shared event, and a bound on a conditional rate. Others follow from the same ingredients, frozen scores, a uniform draw and a rule fixed before the labels are seen, and slot in by the contract in `docs/architecture.md`. Examples from the literature that fit the same contract include unequal splits of $\varepsilon$ and $\delta$ between certificates, Pareto Testing on a held-out part of the draw to learn the path [Laufer-Goldshtein et al. 2023], and false-discovery control over the skipped set by conformal selection [Jin & Candès 2023]. Each new form gets the Monte Carlo acceptance check of `accountable.validate` before it carries a claim.
+
+### 4.5 `legacy_sequential` (no guarantee)
 
 The rule of the original IR run: one SSBC-corrected budget, the interest threshold chosen first on the calibration sample, the interpolation threshold chosen on what remains of the same budget, on calibration sites the interest certificate did not cover. Both thresholds are selected from the same labels along a data-dependent route through the two-dimensional threshold plane. The argument of section 2 needs a family fixed in advance, so no claim follows. The policy exists to reproduce the original numbers and is reported with `guarantee = none`.
 
@@ -162,3 +174,5 @@ $P(X \le k)$ decreases as $K$ grows, so the worst case is $K = \lfloor \varepsil
 - Bates, Angelopoulos, Lei, Malik, Jordan (2021). Distribution-free, risk-controlling prediction sets. J. ACM 68(6).
 - Wilks (1941). Determination of sample sizes for setting tolerance limits. Ann. Math. Stat. 12, 91–96.
 - Clopper, Pearson (1934). The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26, 404–413.
+- Laufer-Goldshtein, Fisch, Barzilay, Jaakkola (2023). Efficiently controlling multiple risks with Pareto Testing. ICLR. arXiv:2210.07913.
+- Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.

@@ -8,6 +8,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 **What the paper is about.** It is about which assertions can be made, and at what cost in measurements. Every result is reported as a pair: the statement (wrong-skip rate ≤ ε at confidence c) and the number of measurements needed to make it. Protocols are exchangeable parts that show the guarantee survives a change of machinery. Protocols are never ranked by accuracy, and the paper claims no optimality for any interpolator, score or design.
 
+**Guarantees come in forms.** Each guarantee is precise, and different needs call for different statements. A bound per reason for skipping tells how often "not interesting" failed and how often "predictable" failed. A bound on the shared event tells how often any skip failed, and spends the whole budget on that question. A bound on a conditional rate tells how often a skip of a given kind failed. The paper reports three forms side by side (per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path) and presents them as instances of one recipe: frozen scores, a uniform audit draw, and a decision rule fixed before the audit labels are seen. Readers build their own forms from the same recipe; the SI gives the contract a new form must keep and the Monte Carlo acceptance check it must pass. No form is presented as the right one.
+
 **Ground rules for the text**
 
 1. No "optimal", "best", "outperforms" or "state of the art" applied to a protocol. Comparisons read as cost per statement ("at R_E ≤ 0.10 with confidence 0.75, protocol A measured 269 of 949 sites and protocol B 321").
@@ -15,6 +17,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 3. Each guarantee is stated once, in one form, with its scope: design sites of one level, the predictor frozen at that level, probability over the calibration draw.
 4. The statistical machinery is cited. Original content is limited to: the shared wrong-skip event for two certificates, the use of hierarchical levels to keep calibration exchangeable inside an adaptive campaign, and the empirical study.
 5. Code, module and file names stay out of the main text; they go in the SI, referenced by section.
+6. Every form of guarantee is reported on every dataset at the same nominal statement on the shared event. A form that cannot make the statement at m = 40 (the per-claim split on IR) is reported with its cost: every site measured.
 
 **Working titles**
 
@@ -27,7 +30,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 | # | Claim | Evidence | Leans on |
 | --- | --- | --- | --- |
 | C1 | At each level the population rate of wrong skips is at most ε with probability at least c over the calibration draw, whatever the score and interpolator. | Theory (appendix A); Monte Carlo coverage on finite populations; seed replication on the three datasets | Wilks 1941; Bates et al. 2021; Angelopoulos et al. 2025 (LTT) |
-| C2 | "Not interesting" and "predictable" are two claims about a site with one shared wrong-skip event; either per-certificate budgets (union bound) or one budget along a fixed path bound that event. | Theory (appendix B); MC coverage of both schemes; a sequential two-stage rule fails its nominal rate | Angelopoulos et al. 2025 (multiple risks, multi-dimensional λ); Laufer-Goldshtein et al. 2023 (Pareto Testing); Bonferroni |
+| C2 | "Not interesting" and "predictable" are two claims about a site with one shared wrong-skip event. Guarantees on that event come in several precise forms, each built from frozen scores, a uniform draw and a rule fixed before the labels: per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path. Further forms slot in under the same contract. | Theory (appendix B); MC acceptance check of every form; all three forms on all three datasets over 20 seeds; a sequential two-stage rule that breaks the contract fails its nominal rate, and its priority-path counterpart keeps it | Angelopoulos et al. 2025 (multiple risks, multi-dimensional λ); Laufer-Goldshtein et al. 2023 (Pareto Testing); Jin & Candès 2023; Bonferroni |
 | C3 | A hierarchical Poisson-disk design gives each level a fresh, exchangeable calibration population inside an adaptive campaign. | Protocol description; random-score arm reproduces the predicted skip fraction | Bridson 2007 / hierarchical Poisson-disk sampling; exchangeability as in Vovk et al. 2005 |
 | C4 | The guarantee survives a change of protocol: interpolator (natural neighbour on spectra, on scalars, Gaussian process), score (random, neighbour disagreement, logistic, GP standard deviation) and budget scheme. Only the cost changes. | Protocol matrix (§5), coverage counts per protocol, measurements per statement | Sibson 1981; Rasmussen & Williams 2006; Noack et al. 2019 |
 | C5 | Certificates buy the right to skip at a stated risk. At matched measurement budgets, selection policies reconstruct about equally well, and only the certified policy says how many of its skips were wrong. | Matched-budget comparison; off-design audit | Noack et al. 2019, 2020; Ye et al. 2025 |
@@ -54,7 +57,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 2. **Opportunity.** Distribution-free risk control attaches finite-sample statements to the outputs of black-box predictors (Vovk et al. 2005; Angelopoulos & Bates 2023; Bates et al. 2021; Angelopoulos et al. 2025). It applies to a skip decision once the skip is posed as a claim about a site.
 3. **What a skip claims.** Two claims cover the cases met in practice: the site holds nothing of interest, or its spectrum (or a quantity derived from it) is predictable within tolerance from coarser measurements. A skip is wrong when a claim that covers it is false.
 4. **What this paper provides.** A protocol that asserts, level by level, a bound on the wrong-skip rate. The assertion is separated from the choice of interpolator, score and acquisition order, so that any of them can change without changing what is claimed.
-5. **Contributions and scope.** (i) The shared wrong-skip event and two ways to budget it, both drawn from existing risk-control results; (ii) hierarchical designs as the source of exchangeable calibration in an adaptive campaign; (iii) a study on synthetic SAXS, a NaCl microdiffraction scan and an IR map across protocols, reporting what is asserted and what it costs. One explicit sentence: optimality of the underlying algorithms is outside the scope.
+5. **Contributions and scope.** (i) The shared wrong-skip event and guarantees on it in several forms, built from existing risk-control results, with a contract for adding more; (ii) hierarchical designs as the source of exchangeable calibration in an adaptive campaign; (iii) a study on synthetic SAXS, a NaCl microdiffraction scan and an IR map across protocols, reporting what is asserted and what it costs. One explicit sentence: optimality of the underlying algorithms is outside the scope.
 
 ### 2 Related work (≈700 words)
 
@@ -67,7 +70,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 - **3.1 Design and order of operations.** Hierarchical design; seed; per level: fit and freeze scores on the measured set, draw calibration, measure it, decide. One schematic figure (Fig. 1).
 - **3.2 Labels and certificates.** Interest label and failure label defined on the truth; target map (full spectrum or derived scalar) and acceptance score. Scores order sites and nothing else.
 - **3.3 The statement.** Joint rate of wrong skips on a level; the order-statistic threshold; confidence over the draw. One displayed equation for the rate, one for the allowed failure count. Citation: Wilks 1941; Bates et al. 2021. Proof → appendix A.
-- **3.4 Two certificates.** Shared wrong-skip event. Per-certificate budgets with a union bound, or one budget along a path fixed before labels (an instance of LTT with a one-dimensional fixed sequence; Angelopoulos et al. 2025; Laufer-Goldshtein et al. 2023). Proof → appendix B.
+- **3.4 Forms of guarantee.** Shared wrong-skip event. Three forms, each one paragraph: per-claim budgets with a union bound (a statement per reason and one on the shared event); one budget along a quantile path fixed before labels (an instance of LTT with a one-dimensional fixed sequence; Angelopoulos et al. 2025); one budget along a priority path that admits the claims in a set order. Table 3 states what each form asserts and what it gives up. One closing paragraph: the recipe (frozen scores, uniform draw, rule fixed before labels) admits further forms, with pointers to Pareto Testing (Laufer-Goldshtein et al. 2023), conformal selection (Jin & Candès 2023) and the conditional rate (appendix C); the contract and acceptance check are in SI 4. Proof → appendix B.
 - **3.5 What is claimed and what is checked.** Claims: design sites of a level, frozen predictor. Checks: remainder rates, map bound (Clopper & Pearson 1934), off-design audit, final map. Joint rate as the controlled quantity; conditional rate reported as an outcome, with the reason (a conditional claim at m = 40 needs LTT and certifies nothing or more than half a level; appendix C).
 
 ### 4 Experiments (≈1000 words)
@@ -80,7 +83,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 ### 5 Results (≈2800 words; one subsection per claim)
 
 - **5.1 The statement holds (C1).** Fig. 2: exceedance frequency against nominal failure probability for every protocol and dataset (seed replication), with the MC finite-population panel. Random-score arm: realised skip fraction against the expected value.
-- **5.2 Two certificates, one event (C2).** Fig. 3: per-certificate and shared rates; separate against nested path at the same statement; the sequential two-stage rule exceeding its nominal rate on an uninformative population. The text reads as cost per statement, with no winner declared.
+- **5.2 Forms of guarantee (C2).** Fig. 3: for each dataset, the three forms at the same nominal statement on the shared event, with measurements spent and exceedances over 20 seeds; per-claim rates for the union-bound form. The IR per-claim split admits no threshold at m = 40 and measures every site, reported as the price of a statement per reason at that calibration size. The sequential two-stage rule exceeds its nominal rate on an uninformative population; the priority path expresses the same preference and holds its rate. The text reads as cost per statement, with no winner declared.
 - **5.3 Protocols change cost, not claims (C4).** Fig. 4: measurements needed per statement across the protocol matrix for each dataset. Same coverage across rows. Natural neighbour, scalar route and GP all appear.
 - **5.4 What a skip buys (C5).** Fig. 5: matched-budget reconstruction against certified skips per measurement; off-design audit.
 - **5.5 Maps.** Fig. 6: one map per dataset with reasons painted (measured, interpolated and certified, not interesting), and the map bound.
@@ -89,6 +92,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 
 - **Scope of the claim.** Per level, design sites, frozen predictor, probability over the draw. Simultaneous statements over levels by Bonferroni. The final map is audited.
 - **Calibration overhead.** Calibration takes 40 of 65 sites at the coarsest certified level. Options: pooled or growing calibration (Barber et al. 2023 for weighted and non-exchangeable variants) and larger budgets at coarse levels.
+- **Building other guarantees.** The forms in this paper answer three questions about wrong skips. Other needs (a bound on false skips among the skipped set, unequal budgets for the two claims, a path learned on part of the draw) call for other forms. Each is built from the same recipe and accepted by the same check (SI 4).
 - **Conditional rates.** Reported as outcomes. Link to conformal selection (Jin & Candès 2023) as the route to conditional control at larger calibration sizes.
 - **Use at an instrument.** The protocol needs only the measured set, a score and a random draw per level; a prospective run is the next step.
 - **Numerical reproducibility of the interpolant** (one paragraph, details in SI).
@@ -105,6 +109,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Fig. 6 | Maps with reasons and map bound, one per dataset | C1, C5 |
 | Table 1 | Protocol components (interpolator, score, budget scheme, design) and settings | C4 |
 | Table 2 | Per dataset: statement, measurements, skips by reason, coverage over seeds | C1, C4 |
+| Table 3 | Forms of guarantee: what each asserts, what it gives up, when it suits; contract shared by all | C2 |
 
 ## 5. Appendix and supporting information
 
@@ -115,7 +120,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 - **SI 1.** Natural-neighbour coordinates: exact construction by half-plane clipping, hull-edge limit, check against brute-force stolen areas, continuity under perturbation; the defect in the earlier implementation and its effect.
 - **SI 2.** Dataset processing (Mie correction, window noise, presence test).
 - **SI 3.** Full tables per dataset, level and protocol.
-- **SI 4.** Software: functionality, tests, reproduction procedure.
+- **SI 4.** Software: functionality, tests, reproduction procedure. The contract a new form of guarantee keeps (inputs it may use, family fixed before labels, guarantee stated or declared absent) and the Monte Carlo acceptance check, with the priority path as a worked example and a plug-in rule as a counterexample that the check flags.
 - **Data availability.** NaCl scan (Dryad); IR map (to be deposited); synthetic forward model; campaign records. Listed by function.
 
 ## 6. Work needed before drafting
@@ -127,13 +132,16 @@ The paper rests on these five claims. Any figure that supports none of them goes
 5. Matched-budget study with exact weights: certified, variance-ordered, random, and a GP sampler.
 6. Off-design audit for NaCl (raster) and IR (non-design pixels).
 7. Settle the IR data release and the Mie-correction citation.
-8. Decide the headline budget scheme for the two-certificate rows (both are reported; one carries the abstract).
+8. ~~Decide the headline budget scheme.~~ Decided: no headline scheme. All forms are reported on all datasets; the abstract states that guarantees come in several precise forms and names the shared-event statement as the one common to all.
+9. ~~Replicate the three forms on all three datasets over 20 seeds.~~ Done; every stated rate holds (results/study_summary.md).
 
 ## 7. Reviewer questions to answer in the text
 
 - *Is this new statistics?* Partly not, and the paper says so: the bounds are cited. The contribution is posing skips as claims, the shared event, exchangeable calibration from the design, and the evidence across protocols.
 - *Why the joint rate?* It is the quantity a calibration draw of 40 sites can bound. The conditional rate is reported, and its control at this size is shown to be powerless (appendix C).
 - *Does the final map carry the guarantee?* No. It is audited, and the text says which quantity carries which statement.
+- *Which form should a user pick?* The one whose statement answers the user's question; Table 3 maps questions to forms. The paper declines to rank them.
+- *Are these the only valid forms?* No. They are three instances of one recipe, and SI 4 shows how to build and check another.
 - *Is the GP worse?* The comparison reports the cost of a statement under each protocol. No ranking is drawn.
 - *Retrospective only?* Yes; truth is needed to check coverage. The protocol itself needs no truth at the remainder.
 

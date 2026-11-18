@@ -33,10 +33,11 @@ Each run writes `sites.npz` (per-site decision, reason, scores, thresholds, labe
 | --- | --- | --- |
 | `separate` (default) | each certificate's joint rate ≤ its budget at its confidence; the shared wrong-skip rate ≤ the sum, at 1 − Σδ | the NaCl scheme |
 | `nested_path` | the shared wrong-skip rate ≤ one budget at one confidence, along a label-free path | one budget for both certificates |
+| `priority_path` | the shared wrong-skip rate ≤ one budget at one confidence, along a path that admits certificates in a set order | a preference between certificates, e.g. interest first |
 | `ltt_conditional` | conditional rate of one certificate, fixed-sequence Learn-then-Test | conditional claims, large calibration |
 | `legacy_sequential` | none | reproduces the original IR run only |
 
-New schemes register with `@accountable.register("name")` and must state their guarantee in the same terms, or state none.
+These are examples of guarantees, each precise for its own statement. New schemes register with `@accountable.register("name")`, state their guarantee in the same terms (or state none), and pass the Monte Carlo acceptance check in `accountable.validate` before they carry a claim. The contract is in `docs/architecture.md`.
 
 ## Natural-neighbour method
 

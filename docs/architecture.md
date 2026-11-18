@@ -32,7 +32,25 @@ Each level record carries, per certificate: threshold, allowed k with both tails
 
 ## Adding a scheme
 
-A new budget policy implements `decide(LevelData) -> PolicyDecision` and registers a name. It returns either guarantees stated on `R_<certificate>` or `R_E`, or an empty list, which the records show as no guarantee. Before such a policy is used for a claim, it should get a Monte Carlo coverage test in `tests/test_coverage_mc.py` on uninformative scores.
+The shipped policies are examples of guarantees, and a campaign accepts any other that keeps the contract below. Different needs call for different statements: one bound per reason for skipping, one bound on any wrong skip, a conditional rate, a preference order between certificates.
+
+**Contract.** A policy implements `decide(LevelData) -> PolicyDecision` and registers a name with `@register("name")`.
+
+1. It may use the frozen scores of every site of the level, the indices of the calibration sites, and the bad labels of those sites only. Scores are frozen before the draw; the policy must not refit them.
+2. Every family of thresholds it searches is fixed before the labels are seen. A path, a grid or a split of the budget is built from scores, settings or earlier levels, never from the calibration labels of this level.
+3. It states its guarantees as `Guarantee(event, budget, confidence)`, with `event` either `R_<certificate>` or `R_E`, or returns an empty list. The records show an empty list as no guarantee.
+
+**Acceptance.** Before a policy carries a claim, every guarantee it states is checked by Monte Carlo on fixed finite populations with `accountable.validate.check_coverage`, on uninformative and informative scores:
+
+```python
+from accountable.validate import check_coverage, population
+scores, labels = population(271, {"interest": 0.30, "interp": 0.35}, informative=False)
+print(check_coverage(MyPolicy(...), scores, labels, m=40, draws=2000))
+```
+
+The check counts, per stated guarantee, the draws in which the population rate exceeds its budget, and compares that frequency with `1 - confidence`. It flags rules that state more than they deliver; a plug-in rule on the empirical calibration rate fails it (`tests/test_validate.py`). Passing the check is evidence, and the finite-sample argument still belongs in `docs/theory.md`.
+
+**Worked example.** `priority_path` admits certificates in a fixed order, interest first and interpolation second, under one budget. It subclasses `nested_path` and overrides only `entry_times`: certificate *i* in the order sweeps its own score quantiles over λ ∈ [i, i + 1]. The order is a setting, so the path is fixed before the draw and the single-budget argument applies as it stands. The legacy IR rule aimed at the same preference but chose its second threshold from the labels left over by the first, which breaks item 2 of the contract.
 
 ## Reproduction
 

@@ -1,0 +1,131 @@
+{
+ "name": "syn_peak_2cert_separate_watson",
+ "experiment": "synthetic_saxs",
+ "seed": 8,
+ "kwargs": {
+  "target": "peak",
+  "mode": "2cert",
+  "confidence": 0.9,
+  "nn_method": "watson"
+ },
+ "config": {
+  "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "separate",
+   "budgets": {
+    "interest": 0.1,
+    "interp": 0.1
+   },
+   "confidence": 0.9,
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 8
+ },
+ "seconds": 74.5,
+ "n_design": 2118,
+ "n_measured": 366,
+ "n_skipped": 1752,
+ "reasons": {
+  "calibration": 233,
+  "interpolable": 524,
+  "no_certificate": 94,
+  "not_interesting": 174,
+  "not_interesting+interpolable": 1054,
+  "seed": 39,
+  "unassigned": 2111
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "union bound over the per-certificate statements"
+ },
+ "guarantees": [
+  {
+   "event": "R_interest",
+   "budget": 0.1,
+   "confidence": 0.9,
+   "note": ""
+  },
+  {
+   "event": "R_interp",
+   "budget": 0.1,
+   "confidence": 0.9,
+   "note": ""
+  },
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "union bound over the per-certificate statements"
+  }
+ ],
+ "level_E": [
+  0.0,
+  0.0139,
+  0.0588,
+  0.0077,
+  0.0228,
+  0.0837
+ ],
+ "level_cert": {
+  "interest": [
+   0.0,
+   0.0139,
+   0.0368,
+   0.0039,
+   0.019,
+   0.02
+  ],
+  "interp": [
+   0.0,
+   0.0139,
+   0.0221,
+   0.0039,
+   0.0095,
+   0.0646
+  ]
+ },
+ "rem_E": [
+  NaN,
+  0.0,
+  0.0625,
+  0.0,
+  0.0205,
+  0.085
+ ],
+ "n_skip_by_level": [
+  0,
+  24,
+  84,
+  185,
+  447,
+  1012
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": 0.044993662864385296
+}

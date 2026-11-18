@@ -131,6 +131,9 @@ def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
         pol = make_policy("separate", budgets={nm: eps for nm in names}, confidence=confidence, **kw)
     elif policy == "nested_path":
         pol = make_policy("nested_path", budget=eps, confidence=confidence, **kw)
+    elif policy == "priority_path":
+        kw.setdefault("order", names)
+        pol = make_policy("priority_path", budget=eps, confidence=confidence, **kw)
     elif policy == "ltt_conditional":
         pol = make_policy("ltt_conditional", certificate=INTERP, alpha=eps, confidence=confidence, **kw)
     else:

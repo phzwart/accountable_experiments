@@ -1,0 +1,113 @@
+{
+ "name": "ir_separate_split_watson",
+ "experiment": "ir_bioreef",
+ "seed": 15,
+ "kwargs": {
+  "policy": "separate",
+  "nn_method": "watson"
+ },
+ "config": {
+  "criterion": "envelope: rtol=0.1, atol=0.1",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "predicted_max",
+    "cap": 0.1
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "separate",
+   "budgets": {
+    "interest": 0.05,
+    "interp": 0.05
+   },
+   "confidence": 0.875,
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": 6,
+  "cal_size": 40,
+  "rng_seed": 15
+ },
+ "seconds": 7.7,
+ "n_design": 949,
+ "n_measured": 949,
+ "n_skipped": 0,
+ "reasons": {
+  "calibration": 160,
+  "no_certificate": 713,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.1,
+  "confidence": 0.75,
+  "note": "union bound over the per-certificate statements"
+ },
+ "guarantees": [
+  {
+   "event": "R_interest",
+   "budget": 0.05,
+   "confidence": 0.875,
+   "note": ""
+  },
+  {
+   "event": "R_interp",
+   "budget": 0.05,
+   "confidence": 0.875,
+   "note": ""
+  },
+  {
+   "event": "R_E",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "note": "union bound over the per-certificate statements"
+  }
+ ],
+ "level_E": [
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "level_cert": {
+  "interest": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "interp": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "rem_E": [
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "n_skip_by_level": [
+  0,
+  0,
+  0,
+  0
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": null
+}

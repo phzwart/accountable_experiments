@@ -85,6 +85,9 @@ def config(ds: Dataset, *, policy="legacy_sequential", eps=0.10, confidence=0.75
                           confidence=1.0 - delta / 2, **kw)
     elif policy == "nested_path":
         pol = make_policy("nested_path", budget=eps, confidence=confidence, **kw)
+    elif policy == "priority_path":
+        kw.setdefault("order", [INTEREST, INTERP])
+        pol = make_policy("priority_path", budget=eps, confidence=confidence, **kw)
     else:
         pol = make_policy(policy, **kw)
     return CampaignConfig(

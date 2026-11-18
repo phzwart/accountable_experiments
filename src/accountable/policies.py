@@ -249,6 +249,41 @@ class NestedPathPolicy(Policy):
         )
 
 
+@register("priority_path")
+class PriorityPathPolicy(NestedPathPolicy):
+    """
+    One budget on the shared event along a lexicographic label-free path
+    (theory §4.2, last paragraph). Certificates enter in a fixed order:
+    the first sweeps its own score quantiles over λ ∈ [0, 1], the second
+    over [1, 2], and so on. A certificate missing from ``order`` never
+    covers a site.
+
+    This is the valid form of an "interest first" rule. The order is fixed
+    before the draw, so the path is nested and the single-budget argument
+    applies unchanged; only ``entry_times`` differs from ``nested_path``.
+    """
+
+    def __init__(self, budget: float, confidence: float, order, tail: str = "binomial"):
+        super().__init__(budget, confidence, weights=None, tail=tail)
+        self.order = list(order)
+        if len(set(self.order)) != len(self.order):
+            raise ValueError("priority order lists a certificate twice")
+
+    def describe(self):
+        return dict(policy=self.policy_name, budget=self.budget,
+                    confidence=self.confidence, order=self.order, tail=self.tail)
+
+    def entry_times(self, level: LevelData) -> Dict[str, np.ndarray]:
+        base = super().entry_times(level)
+        out = {}
+        for name, lam in base.items():
+            if name in self.order:
+                out[name] = lam + float(self.order.index(name))
+            else:
+                out[name] = np.full(level.n_level, np.inf)
+        return out
+
+
 @register("ltt_conditional")
 class LTTConditionalPolicy(Policy):
     """
@@ -323,7 +358,7 @@ class LTTConditionalPolicy(Policy):
 @register("legacy_sequential")
 class LegacySequentialPolicy(Policy):
     """
-    The original IR rule (theory §4.4). One SSBC-corrected budget; the
+    The original IR rule (theory §4.5). One SSBC-corrected budget; the
     interest threshold is chosen first and the interpolation threshold
     spends what is left, on calibration sites the interest certificate
     did not cover. Thresholds are calibration scores, never ±inf, and the

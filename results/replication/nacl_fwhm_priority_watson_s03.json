@@ -1,0 +1,107 @@
+{
+ "name": "nacl_fwhm_priority_watson",
+ "experiment": "nacl_saxs",
+ "seed": 3,
+ "kwargs": {
+  "target": "fwhm",
+  "mode": "2cert",
+  "policy": "priority_path",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "nn_method": "watson"
+ },
+ "config": {
+  "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "priority_path",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "order": [
+    "interest",
+    "interp"
+   ],
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 3
+ },
+ "seconds": 11.9,
+ "n_design": 1071,
+ "n_measured": 677,
+ "n_skipped": 394,
+ "reasons": {
+  "calibration": 160,
+  "no_certificate": 441,
+  "not_interesting": 394,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.1231,
+  0.1812,
+  0.1624,
+  0.1209
+ ],
+ "level_cert": {
+  "interest": [
+   0.1231,
+   0.1812,
+   0.1624,
+   0.1209
+  ],
+  "interp": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "rem_E": [
+  0.12,
+  0.2041,
+  0.1688,
+  0.1206
+ ],
+ "n_skip_by_level": [
+  5,
+  51,
+  118,
+  220
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": null
+}

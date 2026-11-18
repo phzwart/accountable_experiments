@@ -21,10 +21,12 @@ from accountable import run_campaign
 
 ROWS = {
     # NaCl: separate at 0.10 + 0.10, confidence 0.90 each -> R_E <= 0.20 at 0.80.
+    # nested_path and priority_path state R_E <= 0.20 at 0.80 directly (one budget).
     "nacl_fwhm_separate_legacy": ("nacl_saxs", dict(target="fwhm", mode="2cert", confidence=0.90, nn_method="legacy")),
     "nacl_fwhm_separate_watson": ("nacl_saxs", dict(target="fwhm", mode="2cert", confidence=0.90, nn_method="watson")),
     "nacl_fwhm_nested_legacy": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="legacy")),
     "nacl_fwhm_nested_watson": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson")),
+    "nacl_fwhm_priority_watson": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="priority_path", eps=0.20, confidence=0.80, nn_method="watson")),
     "nacl_qpeak_separate_legacy": ("nacl_saxs", dict(target="qpeak", mode="2cert", confidence=0.90, peak_eps=9.492458504457112, nn_method="legacy")),
     "nacl_qpeak_separate_watson": ("nacl_saxs", dict(target="qpeak", mode="2cert", confidence=0.90, peak_eps=9.492458504457112, nn_method="watson")),
     "nacl_qpeak_nested_watson": ("nacl_saxs", dict(target="qpeak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, peak_eps=9.492458504457112, nn_method="watson")),
@@ -34,12 +36,14 @@ ROWS = {
     "ir_nested_legacy": ("ir_bioreef", dict(policy="nested_path", nn_method="legacy")),
     "ir_nested_watson": ("ir_bioreef", dict(policy="nested_path", nn_method="watson")),
     "ir_separate_split_watson": ("ir_bioreef", dict(policy="separate", nn_method="watson")),
+    "ir_priority_watson": ("ir_bioreef", dict(policy="priority_path", nn_method="watson")),
     # Synthetic: interpolation only, then both certificates.
     "syn_envelope_interp_legacy": ("synthetic_saxs", dict(target="envelope", mode="interp", nn_method="legacy")),
     "syn_envelope_interp_watson": ("synthetic_saxs", dict(target="envelope", mode="interp", nn_method="watson")),
     "syn_peak_interp_watson": ("synthetic_saxs", dict(target="peak", mode="interp", nn_method="watson")),
     "syn_peak_2cert_separate_watson": ("synthetic_saxs", dict(target="peak", mode="2cert", confidence=0.90, nn_method="watson")),
     "syn_peak_2cert_nested_watson": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson")),
+    "syn_peak_2cert_priority_watson": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="priority_path", eps=0.20, confidence=0.80, nn_method="watson")),
 }
 
 

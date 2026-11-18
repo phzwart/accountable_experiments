@@ -1,0 +1,120 @@
+{
+ "name": "syn_peak_2cert_priority_watson",
+ "experiment": "synthetic_saxs",
+ "seed": 16,
+ "kwargs": {
+  "target": "peak",
+  "mode": "2cert",
+  "policy": "priority_path",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "nn_method": "watson"
+ },
+ "config": {
+  "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "priority_path",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "order": [
+    "interest",
+    "interp"
+   ],
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 16
+ },
+ "seconds": 33.4,
+ "n_design": 2118,
+ "n_measured": 660,
+ "n_skipped": 1458,
+ "reasons": {
+  "calibration": 233,
+  "no_certificate": 388,
+  "not_interesting": 1458,
+  "seed": 39,
+  "unassigned": 2111
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.1212,
+  0.0972,
+  0.2206,
+  0.2317,
+  0.1309,
+  0.0894
+ ],
+ "level_cert": {
+  "interest": [
+   0.1212,
+   0.0972,
+   0.2206,
+   0.2317,
+   0.1309,
+   0.0894
+  ],
+  "interp": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "rem_E": [
+  NaN,
+  0.0625,
+  0.2604,
+  0.2511,
+  0.1314,
+  0.0879
+ ],
+ "n_skip_by_level": [
+  0,
+  24,
+  87,
+  198,
+  381,
+  768
+ ],
+ "map_covers": [
+  true,
+  true,
+  false,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": null
+}
