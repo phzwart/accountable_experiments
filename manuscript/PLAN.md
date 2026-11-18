@@ -103,13 +103,14 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | --- | --- | --- |
 | Fig. 1 | Schematic: hierarchical levels; fit → freeze → draw → calibrate → decide; the two certificates and the shared event | — |
 | Fig. 2 | Coverage: exceedance against nominal, all protocols × datasets; MC panel; random-score skip fraction | C1, C3 |
-| Fig. 3 | Two certificates: per-certificate and shared rates; separate against nested path; sequential-rule failure | C2 |
+| Fig. 3 | Forms of guarantee: sites measured and level wrong-skip rates for three forms on three datasets; Monte Carlo panel with the sequential rule against the two paths (drafted: figures/fig3_forms.png) | C2 |
 | Fig. 4 | Cost per statement across the protocol matrix | C4 |
 | Fig. 5 | Matched budget: reconstruction error and certified skips per measurement; audit | C5 |
 | Fig. 6 | Maps with reasons and map bound, one per dataset | C1, C5 |
 | Table 1 | Protocol components (interpolator, score, budget scheme, design) and settings | C4 |
 | Table 2 | Per dataset: statement, measurements, skips by reason, coverage over seeds | C1, C4 |
 | Table 3 | Forms of guarantee: what each asserts, what it gives up, when it suits; contract shared by all | C2 |
+| Table 4 | Sites measured per form and dataset (may move to SI 3; duplicates Fig. 3 upper row) | C2 |
 
 ## 5. Appendix and supporting information
 
@@ -135,7 +136,19 @@ The paper rests on these five claims. Any figure that supports none of them goes
 8. ~~Decide the headline budget scheme.~~ Decided: no headline scheme. All forms are reported on all datasets; the abstract states that guarantees come in several precise forms and names the shared-event statement as the one common to all.
 9. ~~Replicate the three forms on all three datasets over 20 seeds.~~ Done; every stated rate holds (results/study_summary.md).
 
-## 7. Reviewer questions to answer in the text
+## 7. Draft status
+
+| Part | File | State |
+| --- | --- | --- |
+| 1 Introduction | introduction.md | Draft 1, complete |
+| 3 Framework | framework.md | 3.3 and 3.4 with Table 3 drafted; 3.1, 3.2, 3.5 to draft |
+| 5 Results | results.md | 5.2 with Fig. 3 and Table 4 drafted; others wait for section 6 items 2–6 |
+| 6 Discussion | discussion.md | "Building other guarantees" drafted |
+| Appendix B | appendix_B.md | Draft 1, complete |
+| SI 4 | supplement_SI4.md | Contract, acceptance check (Table S4.1), worked example drafted |
+| Fig. 3 | figures/fig3_forms.png, figures/fig_forms.py | Draft |
+
+## 8. Reviewer questions to answer in the text
 
 - *Is this new statistics?* Partly not, and the paper says so: the bounds are cited. The contribution is posing skips as claims, the shared event, exchangeable calibration from the design, and the evidence across protocols.
 - *Why the joint rate?* It is the quantity a calibration draw of 40 sites can bound. The conditional rate is reported, and its control at this size is shown to be powerless (appendix C).
@@ -145,7 +158,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 - *Is the GP worse?* The comparison reports the cost of a statement under each protocol. No ranking is drawn.
 - *Retrospective only?* Yes; truth is needed to check coverage. The protocol itself needs no truth at the remainder.
 
-## 8. Reference map
+## 9. Reference map
 
 Verified while planning:
 
