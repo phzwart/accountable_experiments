@@ -84,7 +84,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 
 - **5.1 The statement holds (C1).** Fig. 2: exceedance frequency against nominal failure probability for every protocol and dataset (seed replication), with the MC finite-population panel. Random-score arm: realised skip fraction against the expected value.
 - **5.2 Forms of guarantee (C2).** Fig. 3: for each dataset, the three forms at the same nominal statement on the shared event, with measurements spent and exceedances over 20 seeds; per-claim rates for the union-bound form. The IR per-claim split admits no threshold at m = 40 and measures every site, reported as the price of a statement per reason at that calibration size. The sequential two-stage rule exceeds its nominal rate on an uninformative population; the priority path expresses the same preference and holds its rate. The text reads as cost per statement, with no winner declared.
-- **5.3 Protocols change cost, not claims (C4).** Fig. 4: measurements needed per statement across the protocol matrix for each dataset. Same coverage across rows. Natural neighbour, scalar route and GP all appear.
+- **5.3 The cost of an assertion across protocols (C4).** Fig. 4: measurements needed per statement across the protocol matrix for each dataset. Same coverage across rows. Natural neighbour, scalar route and GP all appear.
 - **5.4 What a skip buys (C5).** Fig. 5: matched-budget reconstruction against certified skips per measurement; off-design audit.
 - **5.5 Maps.** Fig. 6: one map per dataset with reasons painted (measured, interpolated and certified, not interesting), and the map bound.
 
@@ -110,7 +110,6 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Table 1 | Protocol components (interpolator, score, budget scheme, design) and settings | C4 |
 | Table 2 | Per dataset: statement, measurements, skips by reason, coverage over seeds | C1, C4 |
 | Table 3 | Forms of guarantee: what each asserts, what it gives up, when it suits; contract shared by all | C2 |
-| Table 4 | Sites measured per form and dataset (may move to SI 3; duplicates Fig. 3 upper row) | C2 |
 
 ## 5. Appendix and supporting information
 
@@ -142,9 +141,10 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | --- | --- | --- |
 | 1 Introduction | introduction.md | Draft 1, complete |
 | 3 Framework | framework.md | 3.3 and 3.4 with Table 3 drafted; 3.1, 3.2, 3.5 to draft |
-| 5 Results | results.md | 5.2 with Fig. 3 and Table 4 drafted; others wait for section 6 items 2–6 |
+| 5 Results | results.md | 5.2 with Fig. 3 drafted; others wait for section 6 items 2–6 |
 | 6 Discussion | discussion.md | "Building other guarantees" drafted |
 | Appendix B | appendix_B.md | Draft 1, complete |
+| SI 3 | supplement_SI3.md | Table S3.1 (cost per form) drafted; full per-level tables to come |
 | SI 4 | supplement_SI4.md | Contract, acceptance check (Table S4.1), worked example drafted |
 | Fig. 3 | figures/fig3_forms.png, figures/fig_forms.py | Draft |
 
