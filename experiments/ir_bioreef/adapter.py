@@ -21,7 +21,7 @@ import numpy as np
 
 from accountable import (
     AccuracyCriterion, CampaignConfig, Certificate, Dataset, INTEREST, INTERP,
-    LogisticInterpScore, PredictedMaxScore, SpectrumRoute, StoredOracle, make_policy,
+    DisagreementScore, LogisticInterpScore, PredictedMaxScore, RandomScore, SpectrumRoute, StoredOracle, make_policy,
 )
 
 from .._paths import data_root
@@ -53,8 +53,18 @@ def criterion():
     return AccuracyCriterion(kind="envelope", rtol=RTOL, atol=ATOL, signal_min=FLOOR)
 
 
+def _interp_score(score, seed):
+    if score == "logistic":
+        return LogisticInterpScore(loo_seed=0, max_train=120)
+    if score == "random":
+        return RandomScore(int(seed) + 10000)
+    if score == "sibson_disagreement":
+        return DisagreementScore()
+    raise ValueError(f"unknown score {score!r}")
+
+
 def config(ds: Dataset, *, policy="legacy_sequential", eps=0.10, confidence=0.75,
-           seed=0, cal_size=40, final_level=6, policy_kwargs=None, nn_method="legacy") -> CampaignConfig:
+           seed=0, cal_size=40, final_level=6, score="logistic", policy_kwargs=None, nn_method="watson") -> CampaignConfig:
     """
     ``legacy_sequential`` reproduces the original run (one budget ε = 0.10,
     δ = 0.25, interest first). ``separate`` gives each certificate ε/2 at
@@ -64,7 +74,7 @@ def config(ds: Dataset, *, policy="legacy_sequential", eps=0.10, confidence=0.75
     crit = criterion()
     certs = [
         Certificate(INTEREST, PredictedMaxScore(), cap=INTEREST_LEVEL),
-        Certificate(INTERP, LogisticInterpScore(loo_seed=0, max_train=120)),
+        Certificate(INTERP, _interp_score(score, seed)),
     ]
     kw = dict(policy_kwargs or {})
     delta = 1.0 - confidence

@@ -5,7 +5,8 @@
    "target": "fwhm",
    "mode": "2cert",
    "confidence": 0.9,
-   "seed": 0
+   "seed": 0,
+   "nn_method": "legacy"
   }
  },
  "nacl_fwhm_interp_c90_s0_logistic": {
@@ -14,7 +15,8 @@
    "target": "fwhm",
    "mode": "interp",
    "confidence": 0.9,
-   "seed": 0
+   "seed": 0,
+   "nn_method": "legacy"
   }
  },
  "nacl_qpeak_2cert_c90_s0_logistic_pe": {
@@ -24,7 +26,8 @@
    "mode": "2cert",
    "confidence": 0.9,
    "seed": 0,
-   "peak_eps": 9.492458504457112
+   "peak_eps": 9.492458504457112,
+   "nn_method": "legacy"
   }
  },
  "nacl_fwhm_2cert_c90_s0_random": {
@@ -34,7 +37,8 @@
    "mode": "2cert",
    "confidence": 0.9,
    "seed": 0,
-   "score": "random"
+   "score": "random",
+   "nn_method": "legacy"
   }
  },
  "syn_envelope": {
@@ -43,7 +47,8 @@
    "target": "envelope",
    "mode": "interp",
    "confidence": 0.9,
-   "seed": 0
+   "seed": 0,
+   "nn_method": "legacy"
   }
  },
  "syn_peak": {
@@ -52,13 +57,15 @@
    "target": "peak",
    "mode": "interp",
    "confidence": 0.9,
-   "seed": 0
+   "seed": 0,
+   "nn_method": "legacy"
   }
  },
  "ir_legacy": {
   "experiment": "ir_bioreef",
   "kw": {
-   "policy": "legacy_sequential"
+   "policy": "legacy_sequential",
+   "nn_method": "legacy"
   }
  },
  "_reasons": [

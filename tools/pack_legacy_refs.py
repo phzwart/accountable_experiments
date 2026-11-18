@@ -40,6 +40,8 @@ for name, spec in CASES.items():
     if "reason" in z.files:
         arrays[f"{name}__reason"] = np.array([REASONS.index(str(r)) for r in z["reason"]], np.int8)
     meta[name] = spec
+for spec in meta.values():
+    spec["kw"]["nn_method"] = "legacy"
 meta["_reasons"] = REASONS
 meta["_environment"] = dict(python=platform.python_version(), numpy=np.__version__,
                             scipy=scipy.__version__, sklearn=sklearn.__version__,

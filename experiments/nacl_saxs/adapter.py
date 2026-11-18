@@ -101,7 +101,7 @@ def criterion(target: str, q: np.ndarray, sigma: float, peak_eps: float | None =
 
 def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
            score="logistic", policy="separate", eps=0.10, peak_eps=None,
-           cal_size=40, policy_kwargs=None, nn_method="legacy") -> CampaignConfig:
+           cal_size=40, policy_kwargs=None, nn_method="watson") -> CampaignConfig:
     """
     The NaCl campaign as specified in BRIEFING.md: seed ≤ L2, 40
     calibration sites per level, joint budget 0.10 per certificate.

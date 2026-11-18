@@ -24,7 +24,7 @@ from pathlib import Path
 import numpy as np
 
 from accountable import (
-    AccuracyCriterion, CampaignConfig, Certificate, Dataset, INTEREST, INTERP,
+    AccuracyCriterion, CampaignConfig, Certificate, Dataset, DisagreementScore, INTEREST, INTERP,
     LogisticInterestScore, LogisticInterpScore, RandomScore, SpectrumRoute,
     StoredOracle, make_policy, peak_descriptors,
 )
@@ -84,11 +84,16 @@ def criterion(target: str, q: np.ndarray) -> AccuracyCriterion:
 
 def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, seed=0,
            score="logistic", policy="separate", eps=0.10, cal_size=40, seed_level=2,
-           policy_kwargs=None, nn_method="legacy") -> CampaignConfig:
+           policy_kwargs=None, nn_method="watson") -> CampaignConfig:
     crit = criterion(target, ds.axis)
     interest = interest_predicate()
     s_seed = int(seed) + 10000
-    sb = RandomScore(s_seed) if score == "random" else LogisticInterpScore(loo_seed=s_seed)
+    if score == "random":
+        sb = RandomScore(s_seed)
+    elif score == "sibson_disagreement":
+        sb = DisagreementScore()
+    else:
+        sb = LogisticInterpScore(loo_seed=s_seed)
     certs = []
     if mode == "2cert":
         sa = RandomScore(s_seed + 1) if score == "random" else \

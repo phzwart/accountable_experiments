@@ -57,7 +57,7 @@ def main(argv=None):
     ap.add_argument("--score", default="logistic")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cal-size", type=int, default=40)
-    ap.add_argument("--nn-method", default="legacy", choices=("legacy", "watson"))
+    ap.add_argument("--nn-method", default="watson", choices=("legacy", "watson"))
     ap.add_argument("--out", default="runs")
     ap.add_argument("--tag", default=None)
     args = ap.parse_args(argv)
