@@ -1,0 +1,80 @@
+{
+ "nacl_fwhm_2cert_c90_s0_logistic": {
+  "experiment": "nacl_saxs",
+  "kw": {
+   "target": "fwhm",
+   "mode": "2cert",
+   "confidence": 0.9,
+   "seed": 0
+  }
+ },
+ "nacl_fwhm_interp_c90_s0_logistic": {
+  "experiment": "nacl_saxs",
+  "kw": {
+   "target": "fwhm",
+   "mode": "interp",
+   "confidence": 0.9,
+   "seed": 0
+  }
+ },
+ "nacl_qpeak_2cert_c90_s0_logistic_pe": {
+  "experiment": "nacl_saxs",
+  "kw": {
+   "target": "qpeak",
+   "mode": "2cert",
+   "confidence": 0.9,
+   "seed": 0,
+   "peak_eps": 9.492458504457112
+  }
+ },
+ "nacl_fwhm_2cert_c90_s0_random": {
+  "experiment": "nacl_saxs",
+  "kw": {
+   "target": "fwhm",
+   "mode": "2cert",
+   "confidence": 0.9,
+   "seed": 0,
+   "score": "random"
+  }
+ },
+ "syn_envelope": {
+  "experiment": "synthetic_saxs",
+  "kw": {
+   "target": "envelope",
+   "mode": "interp",
+   "confidence": 0.9,
+   "seed": 0
+  }
+ },
+ "syn_peak": {
+  "experiment": "synthetic_saxs",
+  "kw": {
+   "target": "peak",
+   "mode": "interp",
+   "confidence": 0.9,
+   "seed": 0
+  }
+ },
+ "ir_legacy": {
+  "experiment": "ir_bioreef",
+  "kw": {
+   "policy": "legacy_sequential"
+  }
+ },
+ "_reasons": [
+  "unassigned",
+  "seed",
+  "calibration",
+  "no_certificate",
+  "interpolable",
+  "not_interesting",
+  "not_interesting+interpolable"
+ ],
+ "_environment": {
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "legacy_commit": "f3af0d8"
+ }
+}

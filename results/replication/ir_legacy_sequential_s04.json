@@ -1,0 +1,91 @@
+{
+ "name": "ir_legacy_sequential",
+ "experiment": "ir_bioreef",
+ "seed": 4,
+ "kwargs": {
+  "policy": "legacy_sequential",
+  "nn_method": "legacy"
+ },
+ "config": {
+  "criterion": "envelope: rtol=0.1, atol=0.1",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "predicted_max",
+    "cap": 0.1
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "legacy_sequential",
+   "eps": 0.1,
+   "delta": 0.25,
+   "order": [
+    "interest",
+    "interp"
+   ]
+  },
+  "nn_method": "legacy",
+  "seed_level": 2,
+  "final_level": 6,
+  "cal_size": 40,
+  "rng_seed": 4
+ },
+ "seconds": 14.8,
+ "n_design": 949,
+ "n_measured": 276,
+ "n_skipped": 673,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 266,
+  "no_certificate": 40,
+  "not_interesting": 407,
+  "seed": 76
+ },
+ "guarantee_RE": null,
+ "guarantees": [],
+ "level_E": [
+  0.0769,
+  0.0652,
+  0.0517,
+  0.0401
+ ],
+ "level_cert": {
+  "interest": [
+   0.0615,
+   0.0507,
+   0.0369,
+   0.0301
+  ],
+  "interp": [
+   0.0154,
+   0.0145,
+   0.0148,
+   0.01
+  ]
+ },
+ "rem_E": [
+  0.12,
+  0.0714,
+  0.0519,
+  0.0418
+ ],
+ "n_skip_by_level": [
+  25,
+  96,
+  226,
+  326
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": 0.03759398496240601
+}

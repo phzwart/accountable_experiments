@@ -1,0 +1,118 @@
+{
+ "name": "nacl_fwhm_separate_legacy",
+ "experiment": "nacl_saxs",
+ "seed": 12,
+ "kwargs": {
+  "target": "fwhm",
+  "mode": "2cert",
+  "confidence": 0.9,
+  "nn_method": "legacy"
+ },
+ "config": {
+  "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "separate",
+   "budgets": {
+    "interest": 0.1,
+    "interp": 0.1
+   },
+   "confidence": 0.9,
+   "tail": "binomial"
+  },
+  "nn_method": "legacy",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 12
+ },
+ "seconds": 25.2,
+ "n_design": 1071,
+ "n_measured": 824,
+ "n_skipped": 247,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 58,
+  "no_certificate": 588,
+  "not_interesting": 66,
+  "not_interesting+interpolable": 123,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "union bound over the per-certificate statements"
+ },
+ "guarantees": [
+  {
+   "event": "R_interest",
+   "budget": 0.1,
+   "confidence": 0.9,
+   "note": ""
+  },
+  {
+   "event": "R_interp",
+   "budget": 0.1,
+   "confidence": 0.9,
+   "note": ""
+  },
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "union bound over the per-certificate statements"
+  }
+ ],
+ "level_E": [
+  0.0462,
+  0.0797,
+  0.0295,
+  0.023
+ ],
+ "level_cert": {
+  "interest": [
+   0.0308,
+   0.0217,
+   0.0221,
+   0.0058
+  ],
+  "interp": [
+   0.0308,
+   0.058,
+   0.0074,
+   0.0192
+  ]
+ },
+ "rem_E": [
+  0.04,
+  0.0918,
+  0.026,
+  0.0208
+ ],
+ "n_skip_by_level": [
+  7,
+  42,
+  71,
+  127
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": 0.1270718232044199
+}

@@ -1,0 +1,102 @@
+{
+ "name": "ir_nested_watson",
+ "experiment": "ir_bioreef",
+ "seed": 15,
+ "kwargs": {
+  "policy": "nested_path",
+  "nn_method": "watson"
+ },
+ "config": {
+  "criterion": "envelope: rtol=0.1, atol=0.1",
+  "predictor": "sibson_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "predicted_max",
+    "cap": 0.1
+   },
+   {
+    "name": "interp",
+    "score": "logistic",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": 6,
+  "cal_size": 40,
+  "rng_seed": 15
+ },
+ "seconds": 4.4,
+ "n_design": 949,
+ "n_measured": 245,
+ "n_skipped": 704,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 253,
+  "no_certificate": 9,
+  "not_interesting": 2,
+  "not_interesting+interpolable": 449,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.1,
+  "confidence": 0.75,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.0462,
+  0.0362,
+  0.0664,
+  0.0602
+ ],
+ "level_cert": {
+  "interest": [
+   0.0462,
+   0.0362,
+   0.0554,
+   0.0476
+  ],
+  "interp": [
+   0.0,
+   0.0,
+   0.0148,
+   0.0125
+  ]
+ },
+ "rem_E": [
+  0.04,
+  0.0408,
+  0.0693,
+  0.0641
+ ],
+ "n_skip_by_level": [
+  16,
+  98,
+  231,
+  359
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "final_outside_vouched": 0.01566951566951567
+}
