@@ -1,0 +1,161 @@
+{
+ "name": "ir_nested_gp_nonstationary",
+ "experiment": "ir_bioreef",
+ "seed": 9,
+ "kwargs": {
+  "policy": "nested_path",
+  "nn_method": "watson",
+  "interp_model": "gp_nonstationary"
+ },
+ "config": {
+  "criterion": "envelope: rtol=0.1, atol=0.1",
+  "predictor": "gp_nonstationary_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "predicted_max",
+    "cap": 0.1
+   },
+   {
+    "name": "interp",
+    "score": "gp_nonstationary_std",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": 6,
+  "cal_size": 40,
+  "rng_seed": 9
+ },
+ "seconds": 0.6,
+ "n_design": 949,
+ "n_measured": 403,
+ "n_skipped": 546,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 165,
+  "no_certificate": 167,
+  "not_interesting": 170,
+  "not_interesting+interpolable": 211,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.1,
+  "confidence": 0.75,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.0923,
+  0.0507,
+  0.0221,
+  0.0226
+ ],
+ "level_cert": {
+  "interest": [
+   0.0615,
+   0.0435,
+   0.0111,
+   0.015
+  ],
+  "interp": [
+   0.0308,
+   0.0072,
+   0.0111,
+   0.0075
+  ]
+ },
+ "rem_E": [
+  0.16,
+  0.051,
+  0.0173,
+  0.0195
+ ],
+ "n_skip_by_level": [
+  20,
+  84,
+  157,
+  285
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "score_info": [
+  {
+   "interp": {
+    "mode": "nonstationary",
+    "nugget": 0.001,
+    "k_nn": 3,
+    "l_min": 0.024390243902439025,
+    "l_max": 0.7071067811865476,
+    "lengthscale_median": 0.11772479699373684,
+    "lengthscale_range": [
+     0.08142153390022691,
+     0.19836351996219292
+    ]
+   }
+  },
+  {
+   "interp": {
+    "mode": "nonstationary",
+    "nugget": 0.001,
+    "k_nn": 3,
+    "l_min": 0.024390243902439025,
+    "l_max": 0.7071067811865476,
+    "lengthscale_median": 0.08649610862234432,
+    "lengthscale_range": [
+     0.06045697804690114,
+     0.16284306780045393
+    ]
+   }
+  },
+  {
+   "interp": {
+    "mode": "nonstationary",
+    "nugget": 0.001,
+    "k_nn": 3,
+    "l_min": 0.024390243902439025,
+    "l_max": 0.7071067811865476,
+    "lengthscale_median": 0.07317073170731708,
+    "lengthscale_range": [
+     0.043248054311172145,
+     0.1297441629335164
+    ]
+   }
+  },
+  {
+   "interp": {
+    "mode": "nonstationary",
+    "nugget": 0.001,
+    "k_nn": 3,
+    "l_min": 0.024390243902439025,
+    "l_max": 0.7071067811865476,
+    "lengthscale_median": 0.04324805431117225,
+    "lengthscale_range": [
+     0.024390243902439025,
+     0.12195121951219512
+    ]
+   }
+  }
+ ],
+ "final_outside_vouched": 0.007978723404255319
+}

@@ -101,7 +101,7 @@ def criterion(target: str, q: np.ndarray, sigma: float, peak_eps: float | None =
 
 def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
            score="logistic", policy="separate", eps=0.10, peak_eps=None,
-           cal_size=40, policy_kwargs=None, nn_method="watson") -> CampaignConfig:
+           cal_size=40, policy_kwargs=None, nn_method="watson", interp_model="sibson", gp_kwargs=None) -> CampaignConfig:
     """
     The NaCl campaign as specified in BRIEFING.md: seed ≤ L2, 40
     calibration sites per level, joint budget 0.10 per certificate.
@@ -119,6 +119,10 @@ def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
         sb = LogisticInterpScore(loo_seed=s_seed)
     else:
         raise ValueError(f"unknown score {score!r}")
+    predictor = SpectrumRoute(crit, images=None, nn_method=nn_method)
+    if interp_model.startswith("gp_"):
+        from accountable.gp import gp_protocol
+        predictor, sb = gp_protocol(ds, crit, interp_model[3:], **(gp_kwargs or {}))
     certs = []
     if mode == "2cert":
         sa = RandomScore(s_seed + 1) if score == "random" else \
@@ -139,7 +143,7 @@ def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
     else:
         pol = make_policy(policy, **kw)
     return CampaignConfig(
-        criterion=crit, predictor=SpectrumRoute(crit, images=None, nn_method=nn_method),
+        criterion=crit, predictor=predictor,
         certificates=certs, policy=pol,
         interest=interest, seed_level=2, cal_size=cal_size, rng_seed=seed, nn_method=nn_method,
     )

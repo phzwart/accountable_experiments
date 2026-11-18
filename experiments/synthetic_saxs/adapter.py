@@ -84,7 +84,7 @@ def criterion(target: str, q: np.ndarray) -> AccuracyCriterion:
 
 def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, seed=0,
            score="logistic", policy="separate", eps=0.10, cal_size=40, seed_level=2,
-           policy_kwargs=None, nn_method="watson") -> CampaignConfig:
+           policy_kwargs=None, nn_method="watson", interp_model="sibson", gp_kwargs=None) -> CampaignConfig:
     crit = criterion(target, ds.axis)
     interest = interest_predicate()
     s_seed = int(seed) + 10000
@@ -94,6 +94,10 @@ def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, se
         sb = DisagreementScore()
     else:
         sb = LogisticInterpScore(loo_seed=s_seed)
+    predictor = SpectrumRoute(crit, images=wall_images, nn_method=nn_method)
+    if interp_model.startswith("gp_"):
+        from accountable.gp import gp_protocol
+        predictor, sb = gp_protocol(ds, crit, interp_model[3:], **(gp_kwargs or {}))
     certs = []
     if mode == "2cert":
         sa = RandomScore(s_seed + 1) if score == "random" else \
@@ -112,7 +116,7 @@ def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, se
     else:
         pol = make_policy(policy, **kw)
     return CampaignConfig(
-        criterion=crit, predictor=SpectrumRoute(crit, images=wall_images, nn_method=nn_method),
+        criterion=crit, predictor=predictor,
         certificates=certs, policy=pol, interest=interest,
         seed_level=seed_level, cal_size=cal_size, rng_seed=seed, nn_method=nn_method,
     )

@@ -104,7 +104,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Fig. 1 | Schematic: hierarchical levels; fit → freeze → draw → calibrate → decide; the two certificates and the shared event | — |
 | Fig. 2 | Coverage: exceedance against nominal, all protocols × datasets; MC panel; random-score skip fraction | C1, C3 |
 | Fig. 3 | Forms of guarantee: sites measured and level wrong-skip rates for three forms on three datasets; Monte Carlo panel with the sequential rule against the two paths (drafted: figures/fig3_forms.png) | C2 |
-| Fig. 4 | Cost per statement across the protocol matrix | C4 |
+| Fig. 4 | Cost per statement across the protocol matrix (drafted for natural neighbour and three GP rules: figures/fig4_protocols.png) | C4 |
 | Fig. 5 | Matched budget: reconstruction error and certified skips per measurement; audit | C5 |
 | Fig. 6 | Maps with reasons and map bound, one per dataset | C1, C5 |
 | Table 1 | Protocol components (interpolator, score, budget scheme, design) and settings | C4 |
@@ -126,7 +126,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 ## 6. Work needed before drafting
 
 1. Make exact natural-neighbour weights the default; re-run every row.
-2. Add a Gaussian-process predictor and a GP-standard-deviation score to the core, so that C4 covers a GP protocol on all three datasets.
+2. ~~Add a Gaussian-process predictor and a GP-standard-deviation score.~~ Done: isotropic kernel on the design (BoTorch), three length-scale rules (maximum likelihood, design spacing, local spacing by Gibbs kernel), quantile path, 20 seeds on all three datasets; every assertion held.
 3. Add the scalar route to the protocol matrix (NaCl width, IR window maximum).
 4. Fix the protocol matrix and settings in advance; replicate each row over 20 calibration seeds.
 5. Matched-budget study with exact weights: certified, variance-ordered, random, and a GP sampler.
@@ -141,10 +141,12 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | --- | --- | --- |
 | 1 Introduction | introduction.md | Draft 1, complete |
 | 3 Framework | framework.md | 3.3 and 3.4 with Table 3 drafted; 3.1, 3.2, 3.5 to draft |
-| 5 Results | results.md | 5.2 with Fig. 3 drafted; others wait for section 6 items 2–6 |
+| 4 Experiments | experiments.md | 4.3 Gaussian-process protocols drafted |
+| 5 Results | results.md | 5.2 with Fig. 3 and 5.3 (natural neighbour and GP) with Fig. 4 drafted; others wait for section 6 items 3–6 |
 | 6 Discussion | discussion.md | "Building other guarantees" drafted |
 | Appendix B | appendix_B.md | Draft 1, complete |
-| SI 3 | supplement_SI3.md | Table S3.1 (cost per form) drafted; full per-level tables to come |
+| SI 1 | supplement_SI1.md | GP part with Table S1.1 and Fig. S1 drafted; natural-neighbour part to come |
+| SI 3 | supplement_SI3.md | Tables S3.1 (cost per form) and S3.2 (cost per protocol) drafted; full per-level tables to come |
 | SI 4 | supplement_SI4.md | Contract, acceptance check (Table S4.1), worked example drafted |
 | Fig. 3 | figures/fig3_forms.png, figures/fig_forms.py | Draft |
 

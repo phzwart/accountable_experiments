@@ -9,3 +9,11 @@
 | IR map | 949 | 949 ± 0 | 282 ± 38 | 308 ± 66 |
 | NaCl scan | 1071 | 766 ± 50 | 651 ± 57 | 692 ± 40 |
 | Synthetic map | 2118 | 357 ± 19 | 373 ± 29 | 670 ± 58 |
+
+**Table S3.2.** Sites measured (mean ± s.d. over 20 calibration seeds) for each interpolation protocol under the quantile path, at the same nominal assertions. Same data as Fig. 4, upper row.
+
+| Dataset | Design sites | Natural neighbour | GP, max. likelihood | GP, design spacing | GP, local spacing |
+| --- | --- | --- | --- | --- | --- |
+| IR map | 949 | 282 ± 38 | 277 ± 38 | 279 ± 36 | 298 ± 41 |
+| NaCl scan | 1071 | 651 ± 57 | 790 ± 66 | 791 ± 70 | 780 ± 70 |
+| Synthetic map | 2118 | 373 ± 29 | 1193 ± 259 | 1085 ± 181 | 1488 ± 156 |

@@ -39,6 +39,10 @@ Each run writes `sites.npz` (per-site decision, reason, scores, thresholds, labe
 
 These are examples of guarantees, each precise for its own statement. New schemes register with `@accountable.register("name")`, state their guarantee in the same terms (or state none), and pass the Monte Carlo acceptance check in `accountable.validate` before they carry a claim. The contract is in `docs/architecture.md`.
 
+## Gaussian-process protocol
+
+`--interp-model gp_mle | gp_design | gp_nonstationary` replaces the natural-neighbour predictor and the interpolation score with a Gaussian process on the design (BoTorch, isotropic squared-exponential kernel): the posterior mean predicts spectra, the posterior standard deviation orders sites. The three options set the length scale by maximum marginal likelihood, by the design spacing, or locally from the density of measured sites (Gibbs kernel). The interest score is unchanged. Install with `pip install -e ".[gp]"`. See `docs/theory.md` §6.
+
 ## Natural-neighbour method
 
 `--nn-method legacy` reproduces the original scripts decision for decision. `--nn-method watson` computes exact Sibson coordinates. It is continuous in the site positions and about five times faster. The legacy routine falls back to triangle-linear weights whenever Qhull returns a cell in clockwise order, which makes its predictions depend on vertex ordering. See `docs/reproduction.md`.

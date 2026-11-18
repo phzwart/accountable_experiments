@@ -223,6 +223,8 @@ def run_campaign(ds: Dataset, cfg: CampaignConfig, log: Callable = None) -> Camp
             c.score.bind_level(P[idx])
         level_scores = {c.name: np.asarray(c.score.score(P[idx]), float).ravel()
                         for c in cfg.certificates}
+        score_info = {c.name: c.score.fit_info() for c in cfg.certificates
+                      if hasattr(c.score, "fit_info")}
 
         m = max(1, min(int(cfg.cal_size), n_level))
         local = np.sort(rng.choice(n_level, size=m, replace=False))
@@ -313,6 +315,7 @@ def run_campaign(ds: Dataset, cfg: CampaignConfig, log: Callable = None) -> Camp
             certificates=cert_rows,
             guarantees=[g.as_dict() for g in decision.guarantees],
             policy_notes=decision.notes,
+            score_info=score_info,
             level=dict(E_rate=_rate(E_lvl, n_level)),
             rem=dict(
                 E_count=int((E_lvl & rem_mask).sum()),

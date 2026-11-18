@@ -152,7 +152,25 @@ The target map $\varphi$ and the acceptance score $s$ decide what a failure mean
 - spectrum route: $\hat y = \varphi(W I)$, interpolating spectra and extracting the target from the prediction;
 - scalar route: $\hat y = W \varphi(I)$, interpolating the target directly.
 
-A Gaussian process may replace $W$ as the predictor on either route. Whatever the route, the label is computed from the predictor that would be used at the site, and the guarantee is unchanged. Choosing between the routes affects how many sites are skipped. It does not affect what a skip claims.
+A Gaussian process may replace $W$ as the predictor on either route. With an isotropic squared-exponential kernel $k$ on the design coordinates and a nugget $\nu$ relative to unit output scale, the posterior mean is again linear in the measured data,
+
+$$
+\hat y(x) = \bar y + k(x)^\top (K + \nu I)^{-1} (Y - \bar y)
+$$
+
+and the posterior standard deviation at unit output scale,
+
+$$
+\sigma(x)^2 = k(x, x) - k(x)^\top (K + \nu I)^{-1} k(x)
+$$
+
+depends only on positions, length scale and nugget. As an interpolation score it says why a site is measured: it lies far, in units of the length scale, from the measured set. Three length-scale rules are implemented (`accountable.gp`): maximum marginal likelihood on the leading principal-component scores of the measured spectra, one length scale shared by all components (BoTorch); the median nearest-neighbour spacing of the design through the finest level in the measured set, fixed before any measurement; and a Gibbs kernel with local length scale $\ell(x)$ equal to the distance to the third-nearest measured site, clipped to $[s_{\min}, \sqrt{2}/2]$ with $s_{\min}$ the finest design spacing. An interest-driven campaign leaves uninteresting regions sparsely measured, so $\ell$ is long there and short where measurements cluster. The Gibbs kernel in two dimensions,
+
+$$
+k(x, x') = \frac{2 \ell(x) \ell(x')}{\ell(x)^2 + \ell(x')^2} \exp\left(-\frac{\lVert x - x' \rVert^2}{\ell(x)^2 + \ell(x')^2}\right)
+$$
+
+is positive semidefinite for any positive $\ell$ [Gibbs 1997; Paciorek & Schervish 2004] and reduces to the isotropic kernel for constant $\ell$. Whatever the route, the label is computed from the predictor that would be used at the site, and the guarantee is unchanged. Choosing between the routes affects how many sites are skipped. It does not affect what a skip claims.
 
 ## 7. What the design contributes
 
@@ -176,3 +194,6 @@ $P(X \le k)$ decreases as $K$ grows, so the worst case is $K = \lfloor \varepsil
 - Clopper, Pearson (1934). The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26, 404–413.
 - Laufer-Goldshtein, Fisch, Barzilay, Jaakkola (2023). Efficiently controlling multiple risks with Pareto Testing. ICLR. arXiv:2210.07913.
 - Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.
+- Gibbs (1997). Bayesian Gaussian processes for regression and classification. PhD thesis, University of Cambridge.
+- Paciorek, Schervish (2004). Nonstationary covariance functions for Gaussian process regression. NeurIPS 16.
+- Balandat et al. (2020). BoTorch: a framework for efficient Monte-Carlo Bayesian optimization. NeurIPS 33.

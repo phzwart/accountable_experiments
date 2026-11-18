@@ -1,0 +1,137 @@
+{
+ "name": "ir_nested_gp_design",
+ "experiment": "ir_bioreef",
+ "seed": 4,
+ "kwargs": {
+  "policy": "nested_path",
+  "nn_method": "watson",
+  "interp_model": "gp_design"
+ },
+ "config": {
+  "criterion": "envelope: rtol=0.1, atol=0.1",
+  "predictor": "gp_design_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "predicted_max",
+    "cap": 0.1
+   },
+   {
+    "name": "interp",
+    "score": "gp_design_std",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": 6,
+  "cal_size": 40,
+  "rng_seed": 4
+ },
+ "seconds": 0.6,
+ "n_design": 949,
+ "n_measured": 287,
+ "n_skipped": 662,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 229,
+  "no_certificate": 51,
+  "not_interesting": 91,
+  "not_interesting+interpolable": 342,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.1,
+  "confidence": 0.75,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.1,
+   "confidence": 0.75,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.0462,
+  0.0507,
+  0.0554,
+  0.0627
+ ],
+ "level_cert": {
+  "interest": [
+   0.0462,
+   0.0435,
+   0.0443,
+   0.0451
+  ],
+  "interp": [
+   0.0,
+   0.0072,
+   0.0111,
+   0.0175
+  ]
+ },
+ "rem_E": [
+  0.08,
+  0.051,
+  0.0563,
+  0.0669
+ ],
+ "n_skip_by_level": [
+  18,
+  88,
+  197,
+  359
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "score_info": [
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.10389251255990034,
+    "nugget": 0.001,
+    "source_level": 2
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.07317073170731708,
+    "nugget": 0.001,
+    "source_level": 3
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.043248054311172165,
+    "nugget": 0.001,
+    "source_level": 4
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.0357142857142857,
+    "nugget": 0.001,
+    "source_level": 5
+   }
+  }
+ ],
+ "final_outside_vouched": 0.012259194395796848
+}

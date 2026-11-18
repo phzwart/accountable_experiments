@@ -1,0 +1,170 @@
+{
+ "name": "syn_peak_2cert_nested_gp_design",
+ "experiment": "synthetic_saxs",
+ "seed": 1,
+ "kwargs": {
+  "target": "peak",
+  "mode": "2cert",
+  "policy": "nested_path",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "nn_method": "watson",
+  "interp_model": "gp_design"
+ },
+ "config": {
+  "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+  "predictor": "gp_design_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "gp_design_std",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 1
+ },
+ "seconds": 43.7,
+ "n_design": 2118,
+ "n_measured": 959,
+ "n_skipped": 1159,
+ "reasons": {
+  "calibration": 233,
+  "interpolable": 517,
+  "no_certificate": 687,
+  "not_interesting": 508,
+  "not_interesting+interpolable": 134,
+  "seed": 39,
+  "unassigned": 2111
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.1212,
+  0.0972,
+  0.0809,
+  0.0695,
+  0.148,
+  0.2015
+ ],
+ "level_cert": {
+  "interest": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "interp": [
+   0.1212,
+   0.0972,
+   0.0809,
+   0.0695,
+   0.148,
+   0.2015
+  ]
+ },
+ "rem_E": [
+  NaN,
+  0.0625,
+  0.0625,
+  0.0594,
+  0.1499,
+  0.2045
+ ],
+ "n_skip_by_level": [
+  0,
+  8,
+  20,
+  73,
+  241,
+  817
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true
+ ],
+ "score_info": [
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.10907905752766701,
+    "nugget": 0.001,
+    "source_level": 2
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.07354555168558129,
+    "nugget": 0.001,
+    "source_level": 3
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.05352624700027532,
+    "nugget": 0.001,
+    "source_level": 4
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.03679506981895524,
+    "nugget": 0.001,
+    "source_level": 5
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.026065626585832627,
+    "nugget": 0.001,
+    "source_level": 6
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.01852882859401543,
+    "nugget": 0.001,
+    "source_level": 7
+   }
+  }
+ ],
+ "final_outside_vouched": 0.4869431643625192
+}

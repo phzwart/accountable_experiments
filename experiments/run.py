@@ -26,20 +26,22 @@ def build(name, args):
         cfg = A.config(ds, target=args.target or "fwhm", mode=args.mode or "2cert",
                        confidence=args.confidence or 0.90, seed=args.seed, score=args.score,
                        policy=args.policy or "separate", eps=args.eps or 0.10,
-                       peak_eps=args.peak_eps, cal_size=args.cal_size, nn_method=args.nn_method)
+                       peak_eps=args.peak_eps, cal_size=args.cal_size, nn_method=args.nn_method,
+                       interp_model=args.interp_model)
     elif name == "ir_bioreef":
         from .ir_bioreef import adapter as A
         ds = A.load()
         cfg = A.config(ds, policy=args.policy or "nested_path", eps=args.eps or 0.10,
                        confidence=args.confidence or 0.75, seed=args.seed, cal_size=args.cal_size,
-                       nn_method=args.nn_method)
+                       nn_method=args.nn_method, interp_model=args.interp_model)
     elif name == "synthetic_saxs":
         from .synthetic_saxs import adapter as A
         ds = A.load()
         cfg = A.config(ds, target=args.target or "envelope", mode=args.mode or "interp",
                        confidence=args.confidence or 0.90, seed=args.seed, score=args.score,
                        policy=args.policy or "separate", eps=args.eps or 0.10,
-                       cal_size=args.cal_size, nn_method=args.nn_method)
+                       cal_size=args.cal_size, nn_method=args.nn_method,
+                       interp_model=args.interp_model)
     else:
         raise SystemExit(f"unknown experiment {name!r}; choose from {EXPERIMENTS}")
     return ds, cfg
@@ -58,6 +60,8 @@ def main(argv=None):
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--cal-size", type=int, default=40)
     ap.add_argument("--nn-method", default="watson", choices=("legacy", "watson"))
+    ap.add_argument("--interp-model", default="sibson",
+                    choices=("sibson", "gp_mle", "gp_design", "gp_nonstationary"))
     ap.add_argument("--out", default="runs")
     ap.add_argument("--tag", default=None)
     args = ap.parse_args(argv)

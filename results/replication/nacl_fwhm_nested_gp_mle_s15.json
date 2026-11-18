@@ -1,0 +1,165 @@
+{
+ "name": "nacl_fwhm_nested_gp_mle",
+ "experiment": "nacl_saxs",
+ "seed": 15,
+ "kwargs": {
+  "target": "fwhm",
+  "mode": "2cert",
+  "policy": "nested_path",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "nn_method": "watson",
+  "interp_model": "gp_mle"
+ },
+ "config": {
+  "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+  "predictor": "gp_mle_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "gp_mle_std",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 15
+ },
+ "seconds": 7.2,
+ "n_design": 1071,
+ "n_measured": 752,
+ "n_skipped": 319,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 158,
+  "no_certificate": 516,
+  "not_interesting": 154,
+  "not_interesting+interpolable": 7,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.1077,
+  0.0942,
+  0.214,
+  0.119
+ ],
+ "level_cert": {
+  "interest": [
+   0.0462,
+   0.0072,
+   0.0295,
+   0.0038
+  ],
+  "interp": [
+   0.0615,
+   0.087,
+   0.1845,
+   0.1152
+  ]
+ },
+ "rem_E": [
+  0.08,
+  0.0816,
+  0.2294,
+  0.1185
+ ],
+ "n_skip_by_level": [
+  2,
+  21,
+  121,
+  175
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  false
+ ],
+ "score_info": [
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.05427344943290013,
+    "nugget": 0.006973187172627983,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.006994500586260851,
+     0.006838958384027857,
+     0.006973187172627983
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.03773884575392357,
+    "nugget": 0.00695155508792088,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.006969109031708273,
+     0.006724315983600116,
+     0.00695155508792088
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.1148803443894937,
+    "nugget": 4.508972936868535,
+    "n_pc": 3,
+    "noise_to_signal": [
+     4.508972936868535,
+     3.9330531282176406,
+     4.58842441799838
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.09860317792941486,
+    "nugget": 4.41728224531413,
+    "n_pc": 3,
+    "noise_to_signal": [
+     4.41728224531413,
+     3.886614249476462,
+     5.138312033031236
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  }
+ ],
+ "final_outside_vouched": 0.6606060606060606
+}

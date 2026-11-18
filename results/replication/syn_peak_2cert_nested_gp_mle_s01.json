@@ -1,0 +1,206 @@
+{
+ "name": "syn_peak_2cert_nested_gp_mle",
+ "experiment": "synthetic_saxs",
+ "seed": 1,
+ "kwargs": {
+  "target": "peak",
+  "mode": "2cert",
+  "policy": "nested_path",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "nn_method": "watson",
+  "interp_model": "gp_mle"
+ },
+ "config": {
+  "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+  "predictor": "gp_mle_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "gp_mle_std",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 1
+ },
+ "seconds": 72.5,
+ "n_design": 2118,
+ "n_measured": 1253,
+ "n_skipped": 865,
+ "reasons": {
+  "calibration": 233,
+  "interpolable": 438,
+  "no_certificate": 981,
+  "not_interesting": 420,
+  "not_interesting+interpolable": 7,
+  "seed": 39,
+  "unassigned": 2111
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.1212,
+  0.1389,
+  0.25,
+  0.1313,
+  0.1195,
+  0.1321
+ ],
+ "level_cert": {
+  "interest": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "interp": [
+   0.1212,
+   0.1389,
+   0.25,
+   0.1313,
+   0.1195,
+   0.1321
+  ]
+ },
+ "rem_E": [
+  NaN,
+  0.1562,
+  0.3021,
+  0.1324,
+  0.1191,
+  0.1324
+ ],
+ "n_skip_by_level": [
+  0,
+  10,
+  53,
+  84,
+  218,
+  500
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true
+ ],
+ "score_info": [
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.2957331631173079,
+    "nugget": 0.2730742195077738,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.0009101522277839495,
+     0.2730742195077738,
+     0.4595968168854105
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.19534753162428004,
+    "nugget": 0.11321546602993807,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.00030910488275189517,
+     0.11321546602993807,
+     0.1832834175102289
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.16177690216687807,
+    "nugget": 0.09010772699302554,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.0002492137821878063,
+     0.10364796945854811,
+     0.09010772699302554
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.14214648259385815,
+    "nugget": 0.061845696304369084,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.00016856462129195832,
+     0.1025636918293035,
+     0.061845696304369084
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.09617581811847134,
+    "nugget": 0.042149853112393075,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.0001515374147896977,
+     0.07079092757494937,
+     0.042149853112393075
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  },
+  {
+   "interp": {
+    "mode": "mle",
+    "lengthscale": 0.07812458865856536,
+    "nugget": 0.021257240270608393,
+    "n_pc": 3,
+    "noise_to_signal": [
+     0.00016792481553355327,
+     0.04073897723130363,
+     0.021257240270608393
+    ],
+    "optimiser": "OptimizationStatus.SUCCESS"
+   }
+  }
+ ],
+ "final_outside_vouched": 0.3955056179775281
+}

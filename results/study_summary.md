@@ -28,11 +28,17 @@
 | Row | Seeds | Mean measured | Event | Budget | Nominal failure | Exceedances / trials | 95% interval |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ir_legacy_sequential | 20 | 282 | R_E (intended) | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
+| ir_nested_gp_design | 20 | 279 | R_E | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
+| ir_nested_gp_mle | 20 | 277 | R_E | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
+| ir_nested_gp_nonstationary | 20 | 298 | R_E | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
 | ir_nested_watson | 20 | 282 | R_E | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
 | ir_priority_watson | 20 | 308 | R_E | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
 | ir_separate_split_watson | 20 | 949 | R_interest | 0.05 | 0.12 | 0/80 | 0.000–0.045 |
 | ir_separate_split_watson | 20 | 949 | R_interp | 0.05 | 0.12 | 0/80 | 0.000–0.045 |
 | ir_separate_split_watson | 20 | 949 | R_E | 0.10 | 0.25 | 0/80 | 0.000–0.045 |
+| nacl_fwhm_nested_gp_design | 20 | 791 | R_E | 0.20 | 0.20 | 6/80 | 0.028–0.156 |
+| nacl_fwhm_nested_gp_mle | 20 | 790 | R_E | 0.20 | 0.20 | 7/80 | 0.036–0.172 |
+| nacl_fwhm_nested_gp_nonstationary | 20 | 780 | R_E | 0.20 | 0.20 | 10/80 | 0.062–0.218 |
 | nacl_fwhm_nested_watson | 20 | 651 | R_E | 0.20 | 0.20 | 6/80 | 0.028–0.156 |
 | nacl_fwhm_priority_watson | 20 | 692 | R_E | 0.20 | 0.20 | 5/80 | 0.021–0.140 |
 | nacl_fwhm_separate_legacy | 20 | 743 | R_interest | 0.10 | 0.10 | 2/80 | 0.003–0.087 |
@@ -42,6 +48,9 @@
 | nacl_fwhm_separate_watson | 20 | 766 | R_interp | 0.10 | 0.10 | 0/80 | 0.000–0.045 |
 | nacl_fwhm_separate_watson | 20 | 766 | R_E | 0.20 | 0.20 | 0/80 | 0.000–0.045 |
 | nacl_qpeak_nested_watson | 20 | 581 | R_E | 0.20 | 0.20 | 5/80 | 0.021–0.140 |
+| syn_peak_2cert_nested_gp_design | 20 | 1085 | R_E | 0.20 | 0.20 | 11/120 | 0.047–0.158 |
+| syn_peak_2cert_nested_gp_mle | 20 | 1193 | R_E | 0.20 | 0.20 | 11/120 | 0.047–0.158 |
+| syn_peak_2cert_nested_gp_nonstationary | 20 | 1488 | R_E | 0.20 | 0.20 | 7/120 | 0.024–0.116 |
 | syn_peak_2cert_nested_watson | 20 | 373 | R_E | 0.20 | 0.20 | 5/120 | 0.014–0.095 |
 | syn_peak_2cert_priority_watson | 20 | 670 | R_E | 0.20 | 0.20 | 7/120 | 0.024–0.116 |
 | syn_peak_2cert_separate_watson | 20 | 357 | R_interest | 0.10 | 0.10 | 0/120 | 0.000–0.030 |

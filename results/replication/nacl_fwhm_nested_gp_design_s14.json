@@ -1,0 +1,141 @@
+{
+ "name": "nacl_fwhm_nested_gp_design",
+ "experiment": "nacl_saxs",
+ "seed": 14,
+ "kwargs": {
+  "target": "fwhm",
+  "mode": "2cert",
+  "policy": "nested_path",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "nn_method": "watson",
+  "interp_model": "gp_design"
+ },
+ "config": {
+  "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+  "predictor": "gp_design_spectrum",
+  "certificates": [
+   {
+    "name": "interest",
+    "score": "logistic_interest",
+    "cap": null
+   },
+   {
+    "name": "interp",
+    "score": "gp_design_std",
+    "cap": null
+   }
+  ],
+  "policy": {
+   "policy": "nested_path",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "weights": {},
+   "tail": "binomial"
+  },
+  "nn_method": "watson",
+  "seed_level": 2,
+  "final_level": null,
+  "cal_size": 40,
+  "rng_seed": 14
+ },
+ "seconds": 1.9,
+ "n_design": 1071,
+ "n_measured": 793,
+ "n_skipped": 278,
+ "reasons": {
+  "calibration": 160,
+  "interpolable": 128,
+  "no_certificate": 557,
+  "not_interesting": 130,
+  "not_interesting+interpolable": 20,
+  "seed": 76
+ },
+ "guarantee_RE": {
+  "event": "R_E",
+  "budget": 0.2,
+  "confidence": 0.8,
+  "note": "single budget, nested label-free path"
+ },
+ "guarantees": [
+  {
+   "event": "R_E",
+   "budget": 0.2,
+   "confidence": 0.8,
+   "note": "single budget, nested label-free path"
+  }
+ ],
+ "level_E": [
+  0.1385,
+  0.0725,
+  0.1181,
+  0.1401
+ ],
+ "level_cert": {
+  "interest": [
+   0.0615,
+   0.0,
+   0.0111,
+   0.0019
+  ],
+  "interp": [
+   0.0769,
+   0.0725,
+   0.107,
+   0.1382
+  ]
+ },
+ "rem_E": [
+  0.16,
+  0.051,
+  0.1169,
+  0.1414
+ ],
+ "n_skip_by_level": [
+  5,
+  15,
+  69,
+  189
+ ],
+ "map_covers": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "score_info": [
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.10709437736657848,
+    "nugget": 0.001,
+    "source_level": 2
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.07362781453427832,
+    "nugget": 0.001,
+    "source_level": 3
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.05357142857142849,
+    "nugget": 0.001,
+    "source_level": 4
+   }
+  },
+  {
+   "interp": {
+    "mode": "design",
+    "lengthscale": 0.035721940415803344,
+    "nugget": 0.001,
+    "source_level": 5
+   }
+  }
+ ],
+ "final_outside_vouched": 0.7162162162162162
+}

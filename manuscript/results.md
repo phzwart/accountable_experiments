@@ -1,6 +1,6 @@
 # 5 Results (draft 1: section 5.2)
 
-*Sections 5.1 and 5.3–5.5 wait for the protocol matrix, the Gaussian-process protocol and the matched-budget study (plan, section 6).*
+*Sections 5.1, 5.4 and 5.5 wait for the protocol matrix and the matched-budget study (plan, section 6). Section 5.3 covers the natural-neighbour and Gaussian-process protocols; the scalar route and the random score are still to be added.*
 
 ## 5.1 The assertion holds (C1)
 
@@ -22,7 +22,15 @@ A rule that breaks the recipe loses its guarantee. The sequential rule of the or
 
 ## 5.3 The cost of an assertion across protocols (C4)
 
-*To draft.*
+An assertion is of use only if it holds whichever interpolator proposes the skips. The quantile path was therefore run with four interpolation protocols on each dataset, at the nominal assertions of Section 5.2: natural-neighbour interpolation with the logistic score, and Gaussian-process interpolation with the posterior standard deviation as score and the length scale set by maximum likelihood, by the design spacing or by the local spacing of measured sites (Section 4.3). Each configuration was repeated over 20 calibration seeds.
+
+Every assertion held (Fig. 4, lower row). In the order just listed, the shared rate exceeded its budget in 0 of 80 level checks for each IR protocol, in 6, 7, 6 and 10 of 80 for NaCl, and in 5, 11, 11 and 7 of 120 for the synthetic map, against 25 % allowed for IR and 20 % for the other two.
+
+The cost depends on the protocol and on the data (Fig. 4, upper row; Table S3.2). On IR, the four protocols measured 282 ± 38, 277 ± 38, 279 ± 36 and 298 ± 41 of 949 sites. On NaCl, the Gaussian-process protocols measured 780 to 791 of 1071 sites, against 651 ± 57 with natural-neighbour interpolation. On the synthetic map they measured between 1085 ± 181 and 1488 ± 156 of 2118 sites, against 373 ± 29. The calibration draws show where the difference arises. At the first certified level of the synthetic map, the Gaussian-process prediction with the fitted length scale missed the peak tolerance at 29 of 40 calibration sites for seed 0, natural-neighbour interpolation at 13. More failures among the calibration sites admit fewer skips at the same budget; the assertion itself is unchanged.
+
+The three length-scale rules lead to visibly different reasons for measuring a site (Fig. S1). The design-spacing rule gives the shortest length scale and the most structured standard deviation, high in every gap between measured sites. Maximum likelihood on IR assigned much of the variance to noise and returned a nearly uniform standard deviation. The local-spacing rule lengthens the kernel where measurements are sparse and lowers the standard deviation there. Fitted length scales and nuggets are listed in SI 1.
+
+**Figure 4.** The cost of one assertion across interpolation protocols, quantile path, 20 calibration seeds. Upper row: sites measured, mean ± s.d., with the design size dashed. Lower row: realised wrong-skip rate on each certified level and seed, with the budget and the number of exceedances. GP: Gaussian process with isotropic squared-exponential kernel; length scale by maximum likelihood, by design spacing, or by local spacing of measured sites. File: `figures/fig4_protocols.png`.
 
 ## 5.4 What a skip buys (C5)
 
@@ -36,6 +44,8 @@ A rule that breaks the recipe loses its guarantee. The sequential rule of the or
 
 ## Notes for revision (not part of the text)
 
+- Section 5.3: the 29-versus-13 comparison is from seed 0 only. If it stays, report the mean over seeds instead (one more pass over the replication records).
+- Section 5.3, third paragraph: "Maximum likelihood on IR assigned much of the variance to noise" is a description of the fit (median nugget 0.12, up to 0.61). Any statement on why the GP costs more on the synthetic map (non-convex weights on sharp peaks, no mirror images at the walls) stays out of Results; it may go to the Discussion if you want it.
 - Numbers come from the 20-seed replication in the repository's results (study summary) and from the figure script, which reruns the Monte Carlo panel.
 - The cost table moved to SI 3 (Table S3.1); Fig. 3 carries the numbers in the main text.
 - The NaCl and synthetic per-claim forms state each claim at 0.10 and the shared event at 0.20; the paths state the shared event only. The text says so in the first paragraph; check that the reader does not take the per-claim exceedances as a second test of the same assertion.

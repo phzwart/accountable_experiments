@@ -44,6 +44,16 @@ ROWS = {
     "syn_peak_2cert_separate_watson": ("synthetic_saxs", dict(target="peak", mode="2cert", confidence=0.90, nn_method="watson")),
     "syn_peak_2cert_nested_watson": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson")),
     "syn_peak_2cert_priority_watson": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="priority_path", eps=0.20, confidence=0.80, nn_method="watson")),
+    # Gaussian-process protocols: isotropic kernel on the design, three length-scale rules.
+    "ir_nested_gp_mle": ("ir_bioreef", dict(policy="nested_path", nn_method="watson", interp_model="gp_mle")),
+    "nacl_fwhm_nested_gp_mle": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_mle")),
+    "syn_peak_2cert_nested_gp_mle": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_mle")),
+    "ir_nested_gp_design": ("ir_bioreef", dict(policy="nested_path", nn_method="watson", interp_model="gp_design")),
+    "nacl_fwhm_nested_gp_design": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_design")),
+    "syn_peak_2cert_nested_gp_design": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_design")),
+    "ir_nested_gp_nonstationary": ("ir_bioreef", dict(policy="nested_path", nn_method="watson", interp_model="gp_nonstationary")),
+    "nacl_fwhm_nested_gp_nonstationary": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_nonstationary")),
+    "syn_peak_2cert_nested_gp_nonstationary": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_nonstationary")),
 }
 
 
@@ -78,6 +88,7 @@ def summarise(res) -> dict:
         rem_E=[round(r["rem"]["E_rate"], 4) for r in lv],
         n_skip_by_level=[r["n_skip"] for r in lv],
         map_covers=[m["covers"] for m in res.map_certificates],
+        score_info=[r.get("score_info", {}) for r in lv],
         final_outside_vouched=float(np.mean(np.asarray(final_out)[vouched])) if vouched.any() else None,
     )
 

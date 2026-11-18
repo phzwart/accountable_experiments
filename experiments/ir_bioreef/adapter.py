@@ -64,17 +64,27 @@ def _interp_score(score, seed):
 
 
 def config(ds: Dataset, *, policy="legacy_sequential", eps=0.10, confidence=0.75,
-           seed=0, cal_size=40, final_level=6, score="logistic", policy_kwargs=None, nn_method="watson") -> CampaignConfig:
+           seed=0, cal_size=40, final_level=6, score="logistic", policy_kwargs=None, nn_method="watson",
+           interp_model="sibson", gp_kwargs=None) -> CampaignConfig:
     """
     ``legacy_sequential`` reproduces the original run (one budget ε = 0.10,
     δ = 0.25, interest first). ``separate`` gives each certificate ε/2 at
     confidence 1 − δ/2, so the shared statement is ε at confidence 1 − δ.
     ``nested_path`` puts the single budget ε on the shared event directly.
+    ``interp_model`` ``gp_mle``, ``gp_design`` or ``gp_nonstationary`` replaces
+    the natural-neighbour predictor and the interpolation score by a GP
+    (posterior mean and posterior standard deviation); the interest score
+    is unchanged.
     """
     crit = criterion()
+    predictor = SpectrumRoute(crit, images=None, nn_method=nn_method)
+    sb = None
+    if interp_model.startswith("gp_"):
+        from accountable.gp import gp_protocol
+        predictor, sb = gp_protocol(ds, crit, interp_model[3:], **(gp_kwargs or {}))
     certs = [
         Certificate(INTEREST, PredictedMaxScore(), cap=INTEREST_LEVEL),
-        Certificate(INTERP, _interp_score(score, seed)),
+        Certificate(INTERP, sb if sb is not None else _interp_score(score, seed)),
     ]
     kw = dict(policy_kwargs or {})
     delta = 1.0 - confidence
@@ -91,7 +101,7 @@ def config(ds: Dataset, *, policy="legacy_sequential", eps=0.10, confidence=0.75
     else:
         pol = make_policy(policy, **kw)
     return CampaignConfig(
-        criterion=crit, predictor=SpectrumRoute(crit, images=None, nn_method=nn_method),
+        criterion=crit, predictor=predictor,
         certificates=certs, policy=pol, interest=interest_predicate(),
         seed_level=2, final_level=final_level, cal_size=cal_size, rng_seed=seed, nn_method=nn_method,
         map_confidence=confidence,
