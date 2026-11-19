@@ -103,7 +103,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Item | Content | Claim |
 | --- | --- | --- |
 | Fig. 1 | Schematic: hierarchical levels; fit → freeze → draw → calibrate → decide; the two certificates and the shared event | — |
-| Fig. 2 | Informed against random scores ("stock-picking chicken"): cost and exceedances, quantile path, 250 campaigns per configuration (drafted: figures/fig2_random.png); coverage over all configurations in SI 5 | C1, C3 |
+| Fig. 2 | Informed against random scores (random scorer: independent uniform weights): cost and exceedances, quantile path, 250 campaigns per configuration (drafted: figures/fig2_random.png); coverage over all configurations in SI 5 | C1, C3 |
 | Fig. 3 | Forms of guarantee: sites measured and level wrong-skip rates for three forms on three datasets; Monte Carlo panel with the sequential rule against the two paths (drafted: figures/fig3_forms.png) | C2 |
 | Fig. 4 | Cost per statement across the protocol matrix (drafted for natural neighbour and three GP rules: figures/fig4_protocols.png) | C4 |
 | Fig. 5 | Maps with reasons and map bound, one per dataset | C1, C5 |

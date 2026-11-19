@@ -37,7 +37,7 @@ The workflow is one answer to the need for accountability, built from interchang
 
 **Choices to make**
 
-- *A-Lab.* Its headline success rate drew a published critique of its phase identification (Leeman et al. 2024, PRX Energy; check). Cited only for autonomous operation over 17 days, it is safe, but it can be swapped for MacLeod et al. (2020, Sci. Adv.) if you prefer.
+- *A-Lab.* Decided: keep A-Lab. Its headline success rate drew a published critique of its phase identification (Leeman et al. 2024, PRX Energy; check). Cited only for autonomous operation over 17 days, it is safe, but it can be swapped for MacLeod et al. (2020, Sci. Adv.) if you prefer.
 - *Kusne2020* was dropped from ¶1 to make room; it can return in Related work.
 - *EU AI Act.* Scientific instruments are not high-risk systems under the Act. The citation is used for the principle of automatic records. If a reviewer pushes on this, soften it to "regulation of AI systems asks for".
 - *"Assertion" against "statement".* "Assertion" is used throughout for the bound, to avoid echoing "statement". Check that it suits your voice.

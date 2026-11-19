@@ -1,5 +1,5 @@
 """
-Figure 2: the "stock-picking chicken". Every certificate ordered by a
+Figure 2: the random scorer. Every certificate ordered by a
 uniformly random score, against the informed scores, quantile path, all
 recorded calibration seeds. Upper row: sites measured. Lower row:
 realised wrong-skip rate on each certified level and seed.
