@@ -50,6 +50,11 @@ PAPER_ROWS = [
     "syn_peak_2cert_nested_gp_mle", "syn_peak_2cert_nested_gp_design", "syn_peak_2cert_nested_gp_nonstationary",
 ] + [f"ir_tight{v}_{p}" for v in ("", "_interp") for p in ("sibson", "gp_mle", "gp_design", "gp_nonstationary")]
 
+# Random scores for every certificate: the "stock-picking chicken".
+CHICKEN_ROWS = [f"{d}_{f}_random" for d in ("ir", "nacl_fwhm", "syn_peak_2cert")
+                for f in ("separate", "nested", "priority")] + ["ir_tight_random"]
+PAPER_ROWS = PAPER_ROWS + CHICKEN_ROWS
+
 
 def versions():
     out = dict(python=platform.python_version(), platform=platform.platform())
@@ -72,24 +77,28 @@ def build(row, seed, cache):
         from experiments.ir_bioreef import adapter as A
         interp_only = row.startswith("ir_tight_interp_")
         proto = row.split("_", 3)[-1] if interp_only else row[len("ir_tight_"):]
+        score = "logistic"
+        if proto == "random":
+            proto, score = "sibson", "random"
         if "ir" not in cache:
             cache["ir"] = A.load()
         ds = cache["ir"]
         saved = (A.RTOL, A.ATOL, A.FLOOR)
         A.RTOL, A.ATOL, A.FLOOR = 0.10, 0.01, 0.005
         try:
-            cfg = A.config(ds, policy="nested_path", eps=0.10, confidence=0.75, seed=seed, interp_model=proto)
+            cfg = A.config(ds, policy="nested_path", eps=0.10, confidence=0.75, seed=seed,
+                           interp_model=proto, score=score)
         finally:
             A.RTOL, A.ATOL, A.FLOOR = saved
         if interp_only:
             cfg.certificates = [c for c in cfg.certificates if c.name == "interp"]
             cfg.policy = make_policy("nested_path", budget=0.10, confidence=0.75)
         else:
-            cfg.certificates[0].cap = 0.02
+            cfg.certificates[0].cap = 0.02 if score != "random" else None
             cfg.interest = A.interest_predicate(0.02)
         spec = dict(experiment="ir_bioreef", tolerance="rtol 0.10, atol 0.01, floor 0.005",
-                    interest=None if interp_only else 0.02, interp_model=proto, policy="nested_path",
-                    eps=0.10, confidence=0.75)
+                    interest=None if interp_only else 0.02, interp_model=proto, score=score,
+                    policy="nested_path", eps=0.10, confidence=0.75)
         return ds, cfg, spec
     exp, kw = STUDY_ROWS[row]
     if exp not in cache:

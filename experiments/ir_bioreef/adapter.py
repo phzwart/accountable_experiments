@@ -82,8 +82,13 @@ def config(ds: Dataset, *, policy="legacy_sequential", eps=0.10, confidence=0.75
     if interp_model.startswith("gp_"):
         from accountable.gp import gp_protocol
         predictor, sb = gp_protocol(ds, crit, interp_model[3:], **(gp_kwargs or {}))
+    if score == "random":
+        # Totally random ordering for both certificates: no cap on a uniform score.
+        interest_cert = Certificate(INTEREST, RandomScore(int(seed) + 20000), cap=None)
+    else:
+        interest_cert = Certificate(INTEREST, PredictedMaxScore(), cap=INTEREST_LEVEL)
     certs = [
-        Certificate(INTEREST, PredictedMaxScore(), cap=INTEREST_LEVEL),
+        interest_cert,
         Certificate(INTERP, sb if sb is not None else _interp_score(score, seed)),
     ]
     kw = dict(policy_kwargs or {})

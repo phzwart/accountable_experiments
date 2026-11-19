@@ -54,6 +54,17 @@ ROWS = {
     "ir_nested_gp_nonstationary": ("ir_bioreef", dict(policy="nested_path", nn_method="watson", interp_model="gp_nonstationary")),
     "nacl_fwhm_nested_gp_nonstationary": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_nonstationary")),
     "syn_peak_2cert_nested_gp_nonstationary": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_nonstationary")),
+    # Random scores for every certificate ("stock-picking chicken"): the order
+    # of skips carries no information, and the guarantee must still hold.
+    "ir_separate_random": ("ir_bioreef", dict(policy="separate", score="random", nn_method="watson")),
+    "ir_nested_random": ("ir_bioreef", dict(policy="nested_path", score="random", nn_method="watson")),
+    "ir_priority_random": ("ir_bioreef", dict(policy="priority_path", score="random", nn_method="watson")),
+    "nacl_fwhm_separate_random": ("nacl_saxs", dict(target="fwhm", mode="2cert", confidence=0.90, score="random", nn_method="watson")),
+    "nacl_fwhm_nested_random": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, score="random", nn_method="watson")),
+    "nacl_fwhm_priority_random": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="priority_path", eps=0.20, confidence=0.80, score="random", nn_method="watson")),
+    "syn_peak_2cert_separate_random": ("synthetic_saxs", dict(target="peak", mode="2cert", confidence=0.90, score="random", nn_method="watson")),
+    "syn_peak_2cert_nested_random": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, score="random", nn_method="watson")),
+    "syn_peak_2cert_priority_random": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="priority_path", eps=0.20, confidence=0.80, score="random", nn_method="watson")),
 }
 
 
