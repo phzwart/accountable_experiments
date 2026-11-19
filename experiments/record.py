@@ -100,10 +100,11 @@ def build(row, seed, cache):
 
 def _final_labels_off(row):
     """
-    Final-map labels refit the predictor on the whole final measured set.
-    For maximum-likelihood GP rows that refit dominates the run time (about
-    50 s on the synthetic map) and changes no decision, so it is skipped
-    there and recorded as skipped in the manifest.
+    Final-map labels and end-of-level ("post") remainder labels refit the
+    predictor on the measured set after the level. For maximum-likelihood
+    GP rows those refits dominate the run time (about 50 s on the
+    synthetic map) and change no decision, so they are skipped there and
+    recorded as skipped in each run's spec.
     """
     return "gp_mle" in row
 
@@ -121,7 +122,8 @@ def run(rows, seeds):
             ds, cfg, spec = build(row, s, cache)
             if _final_labels_off(row):
                 cfg.final_labels = False
-                spec = dict(spec, final_labels=False)
+                cfg.post_labels = False
+                spec = dict(spec, final_labels=False, post_labels=False)
             t0 = time.time()
             res = run_campaign(ds, cfg)
             secs = time.time() - t0
