@@ -8,7 +8,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 **Thesis.** A scanning experiment can skip measurements and still state, for every level of a hierarchical design, a finite-sample bound on the rate of wrong skips. The bound comes from a uniform calibration draw. It holds for any interpolator, any scoring rule and any acquisition protocol that respects the order of operations: fit, freeze, draw, calibrate, decide.
 
-**What the paper is about.** It is about which assertions can be made, and at what cost in measurements. Every result is reported as a pair: the statement (wrong-skip rate ≤ ε at confidence c) and the number of measurements needed to make it. Protocols are exchangeable parts that show the guarantee survives a change of machinery. Protocols are never ranked by accuracy, and the paper claims no optimality for any interpolator, score or design.
+**What the paper is about.** It is about which guarantees can be made, and at what cost in measurements. Every result is reported as a pair: the statement (wrong-skip rate ≤ ε at confidence c) and the number of measurements needed to make it. Protocols are exchangeable parts that show the guarantee survives a change of machinery. Protocols are never ranked by accuracy, and the paper claims no optimality for any interpolator, score or design.
 
 **Guarantees come in forms.** Each guarantee is precise, and different needs call for different statements. A bound per reason for skipping tells how often "not interesting" failed and how often "predictable" failed. A bound on the shared event tells how often any skip failed, and spends the whole budget on that question. A bound on a conditional rate tells how often a skip of a given kind failed. The paper reports three forms side by side (per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path) and presents them as instances of one recipe: frozen scores, a uniform audit draw, and a decision rule fixed before the audit labels are seen. Readers build their own forms from the same recipe; the SI gives the contract a new form must keep and the Monte Carlo acceptance check it must pass. No form is presented as the right one.
 
@@ -58,7 +58,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 1. **Need.** Beam time, dose and sample lifetime limit how many sites of a map can be measured. Adaptive and autonomous protocols decide where to measure (Noack et al. 2019; Kusne et al. 2020). A skipped site enters the map as a prediction.
 2. **Opportunity.** Distribution-free risk control attaches finite-sample statements to the outputs of black-box predictors (Vovk et al. 2005; Angelopoulos & Bates 2023; Bates et al. 2021; Angelopoulos et al. 2025). It applies to a skip decision once the skip is posed as a claim about a site.
 3. **What a skip claims.** Two claims cover the cases met in practice: the site holds nothing of interest, or its spectrum (or a quantity derived from it) is predictable within tolerance from coarser measurements. A skip is wrong when a claim that covers it is false.
-4. **What this paper provides.** A protocol that asserts, level by level, a bound on the wrong-skip rate. The assertion is separated from the choice of interpolator, score and acquisition order, so that any of them can change without changing what is claimed.
+4. **What this paper provides.** A protocol that asserts, level by level, a bound on the wrong-skip rate. The guarantee is separated from the choice of interpolator, score and acquisition order, so that any of them can change without changing what is claimed.
 5. **Contributions and scope.** (i) The shared wrong-skip event and guarantees on it in several forms, built from existing risk-control results, with a contract for adding more; (ii) hierarchical designs as the source of exchangeable calibration in an adaptive campaign; (iii) a study on synthetic SAXS, a NaCl microdiffraction scan and an IR map across protocols, reporting what is asserted and what it costs. One explicit sentence: optimality of the underlying algorithms is outside the scope.
 
 ### 2 Related work (≈700 words)
@@ -86,7 +86,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 
 - **5.1 The statement holds (C1).** Fig. 2: exceedance frequency against nominal failure probability for every protocol and dataset (seed replication), with the MC finite-population panel. Random-score arm: realised skip fraction against the expected value.
 - **5.2 Forms of guarantee (C2).** Fig. 3: for each dataset, the three forms at the same nominal statement on the shared event, with measurements spent and exceedances over 20 seeds; per-claim rates for the union-bound form. The IR per-claim split admits no threshold at m = 40 and measures every site, reported as the price of a statement per reason at that calibration size. The sequential two-stage rule exceeds its nominal rate on an uninformative population; the priority path expresses the same preference and holds its rate. The text reads as cost per statement, with no winner declared.
-- **5.3 The cost of an assertion across protocols (C4).** Fig. 4: measurements needed per statement across the protocol matrix for each dataset. Same coverage across rows. Natural neighbour, scalar route and GP all appear.
+- **5.3 The cost of a guarantee across protocols (C4).** Fig. 4: measurements needed per statement across the protocol matrix for each dataset. Same coverage across rows. Natural neighbour, scalar route and GP all appear.
 - **5.4 Maps (C5).** Fig. 5: one map per dataset with the reason for every site (measured, audited, skipped as uninteresting, skipped as interpolable) and the map bound. (Matched-budget study dropped: the paper argues safety margins, not speed or accuracy.)
 
 ### 6 Discussion (≈1000 words)
@@ -126,7 +126,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 ## 6. Work needed before drafting
 
 1. Make exact natural-neighbour weights the default; re-run every row.
-2. ~~Add a Gaussian-process predictor and a GP-standard-deviation score.~~ Done: isotropic kernel on the design (BoTorch), three length-scale rules (maximum likelihood, design spacing, local spacing by Gibbs kernel), quantile path, 20 seeds on all three datasets; every assertion held.
+2. ~~Add a Gaussian-process predictor and a GP-standard-deviation score.~~ Done: isotropic kernel on the design (BoTorch), three length-scale rules (maximum likelihood, design spacing, local spacing by Gibbs kernel), quantile path, 20 seeds on all three datasets; every guarantee held.
 3. Add the scalar route to the protocol matrix (NaCl width, IR window maximum).
 4. ~~Fix the protocol matrix and settings in advance; replicate each row.~~ Done: 36 configurations × 250 campaigns, logged in results/record; exact finite-population tail and boundary placement are the defaults.
 5. ~~Matched-budget study.~~ Dropped (framing: safety margins, no speed or accuracy claims).

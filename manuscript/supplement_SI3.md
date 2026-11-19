@@ -2,7 +2,7 @@
 
 *Per-level tables for every configuration are in the run record (SI 5); the tables below summarise them. All entries: mean ± s.d. over 250 campaigns.*
 
-**Table S3.1.** Sites measured for each form of guarantee at the nominal assertion on the shared wrong-skip rate: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. 3, upper row.
+**Table S3.1.** Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. 3, upper row.
 
 | Dataset | Design sites | Per-claim budgets | Quantile path | Priority path |
 | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | NaCl scan | 1071 | 719 ± 60 | 614 ± 56 | 678 ± 39 |
 | Synthetic map | 2118 | 338 ± 26 | 334 ± 26 | 628 ± 61 |
 
-**Table S3.2.** Sites measured for each interpolation protocol under the quantile path, at the same nominal assertions. Same data as Fig. 4, upper row. The tight IR tolerance is ±(10 % + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.
+**Table S3.2.** Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 4, upper row. The tight IR tolerance is ±(10 % + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.
 
 | Dataset | Design sites | Natural neighbour | GP, max. likelihood | GP, design spacing | GP, local spacing |
 | --- | --- | --- | --- | --- | --- |
