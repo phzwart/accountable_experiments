@@ -46,6 +46,10 @@ def _build(spec):
     else:
         from experiments.synthetic_saxs import adapter as A
         ds = A.load()
+    if kw.get("policy", "separate") != "legacy_sequential":
+        # The original scripts used the binomial tail and stopped at a calibration score.
+        pk = dict(tail="binomial", placement="calibration")
+        kw["policy_kwargs"] = pk
     return ds, A.config(ds, **kw)
 
 

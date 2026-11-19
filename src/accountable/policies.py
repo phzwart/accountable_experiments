@@ -125,6 +125,28 @@ def order_statistic_threshold(cover_scores, bad_entry, k: int, bad_mask=None) ->
     return float(np.max(below))
 
 
+def _check_placement(placement: str) -> str:
+    """
+    ``boundary``: cover every site strictly below the (k+1)-th failing
+    calibration entry; ``calibration``: stop at the largest calibration
+    score below it (the earlier, more conservative rule). Both satisfy the
+    order-statistic argument, which needs only a threshold below the
+    (k+1)-th failure.
+    """
+    if placement not in ("calibration", "boundary"):
+        raise ValueError("placement must be 'calibration' or 'boundary'")
+    return placement
+
+
+def _boundary(scores_cal, bad_cal, k):
+    """(k+1)-th smallest failing calibration score, or None when no boundary applies."""
+    if k < 0:
+        return None
+    s = np.asarray(scores_cal, float)[np.asarray(bad_cal, bool)]
+    s = np.sort(s[np.isfinite(s)])
+    return float(s[k]) if len(s) > k else None
+
+
 def single_threshold(scores, bad, k):
     scores = np.asarray(scores, float)
     bad = np.asarray(bad, bool)
@@ -151,14 +173,16 @@ class SeparatePolicy(Policy):
     each certificate; the joint statement holds at 1 − Σ(1 − confidence).
     """
 
-    def __init__(self, budgets: Dict[str, float], confidence: float, tail: str = "binomial"):
+    def __init__(self, budgets: Dict[str, float], confidence: float,
+                 tail: str = "hypergeometric", placement: str = "boundary"):
         self.budgets = {k: float(v) for k, v in budgets.items()}
         self.confidence = float(confidence)
         self.tail = tail
+        self.placement = _check_placement(placement)
 
     def describe(self):
         return dict(policy=self.policy_name, budgets=self.budgets,
-                    confidence=self.confidence, tail=self.tail)
+                    confidence=self.confidence, tail=self.tail, placement=self.placement)
 
     def decide(self, level: LevelData) -> PolicyDecision:
         delta = 1.0 - self.confidence
@@ -169,6 +193,11 @@ class SeparatePolicy(Policy):
             s_cal = s_all[level.cal]
             tau = single_threshold(s_cal, level.bad[name], td.k)
             cov[name] = covers(s_all, tau, level.caps.get(name))
+            b = _boundary(s_cal, level.bad[name], td.k) if self.placement == "boundary" else None
+            if b is not None:
+                # Every site strictly below the (k+1)-th failing calibration score.
+                cov[name] = covers(s_all, np.inf, level.caps.get(name)) & np.isfinite(s_all) & (s_all < b)
+                tau = float(np.max(s_all[cov[name]])) if cov[name].any() else float("-inf")
             thr[name], ks[name], tails[name] = tau, td.k, td.as_dict()
             gs.append(Guarantee(f"R_{name}", eps, self.confidence))
         if len(self.budgets) > 1:
@@ -189,15 +218,13 @@ class NestedPathPolicy(Policy):
     """
 
     def __init__(self, budget: float, confidence: float,
-                 weights: Optional[Dict[str, float]] = None, tail: str = "binomial",
-                 placement: str = "calibration"):
+                 weights: Optional[Dict[str, float]] = None, tail: str = "hypergeometric",
+                 placement: str = "boundary"):
         self.budget = float(budget)
         self.confidence = float(confidence)
         self.weights = dict(weights or {})
         self.tail = tail
-        if placement not in ("calibration", "boundary"):
-            raise ValueError("placement must be 'calibration' or 'boundary'")
-        self.placement = placement
+        self.placement = _check_placement(placement)
 
     def describe(self):
         return dict(policy=self.policy_name, budget=self.budget,
@@ -276,8 +303,8 @@ class PriorityPathPolicy(NestedPathPolicy):
     applies unchanged; only ``entry_times`` differs from ``nested_path``.
     """
 
-    def __init__(self, budget: float, confidence: float, order, tail: str = "binomial",
-                 placement: str = "calibration"):
+    def __init__(self, budget: float, confidence: float, order, tail: str = "hypergeometric",
+                 placement: str = "boundary"):
         super().__init__(budget, confidence, weights=None, tail=tail, placement=placement)
         self.order = list(order)
         if len(set(self.order)) != len(self.order):

@@ -16,6 +16,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, Optional
 
+from collections import OrderedDict
+
 import numpy as np
 from scipy.spatial import Delaunay, Voronoi, cKDTree
 
@@ -265,15 +267,53 @@ def symmetry_cloud(P_meas: np.ndarray, images: Optional[ImageMap]):
     n_img = len(mirrors) // n
     P_ext = np.vstack([P_meas, mirrors])
     src = np.concatenate([np.arange(n), np.tile(np.arange(n), n_img)])
+    # Drop an image that coincides with an earlier kept point (first wins).
+    # Coincident pairs are rare (sites on a mirror line), so a k-d tree
+    # finds them; the scan below keeps the original first-wins order.
     keep = np.ones(len(P_ext), dtype=bool)
-    for i in range(n, len(P_ext)):
-        prev = P_ext[:i][keep[:i]]
-        if len(prev) and np.min(np.linalg.norm(prev - P_ext[i], axis=1)) < 1e-10:
+    earlier = {}
+    for a, b in cKDTree(P_ext).query_pairs(1e-10):
+        lo, hi = (a, b) if a < b else (b, a)
+        if hi >= n and np.linalg.norm(P_ext[lo] - P_ext[hi]) < 1e-10:
+            earlier.setdefault(hi, []).append(lo)
+    for i in sorted(earlier):
+        if any(keep[j] for j in earlier[i]):
             keep[i] = False
     return P_ext[keep], src[keep]
 
 
 METHODS = ("legacy", "watson")
+
+# A campaign asks for weights on the same measured set several times per
+# level (scores, labels, interest score). Weights depend only on the
+# positions, so the cloud and the per-query weights are cached for the
+# few most recent measured sets. Results are identical to recomputation.
+_CLOUD_CACHE: "OrderedDict[tuple, tuple]" = OrderedDict()
+_CLOUD_CACHE_SIZE = 4
+
+
+def _cloud_key(P_meas, images, method):
+    P = np.ascontiguousarray(P_meas, dtype=float)
+    return (P.shape, hash(P.tobytes()), id(images), method)
+
+
+def _cloud_cache_get(P_meas, images, method):
+    key = _cloud_key(P_meas, images, method)
+    hit = _CLOUD_CACHE.get(key)
+    if hit is not None:
+        _CLOUD_CACHE.move_to_end(key)
+        if np.array_equal(hit[0], P_meas):
+            return hit[1]
+    return None
+
+
+def _cloud_cache_put(P_meas, images, method, entry):
+    key = _cloud_key(P_meas, images, method)
+    _CLOUD_CACHE[key] = (np.array(P_meas, float, copy=True), entry)
+    _CLOUD_CACHE.move_to_end(key)
+    while len(_CLOUD_CACHE) > _CLOUD_CACHE_SIZE:
+        _CLOUD_CACHE.popitem(last=False)
+    return entry
 
 
 def neighbour_weights(
@@ -299,14 +339,21 @@ def neighbour_weights(
     P_query = np.atleast_2d(np.asarray(P_query, float))
     if P_query.size == 0:
         return NeighbourWeights([], [], np.zeros(0, bool), len(P_meas))
-    P_cloud, src = symmetry_cloud(P_meas, images)
-    span = float(np.linalg.norm(P_cloud.max(0) - P_cloud.min(0))) + 1.0
-    radius = max(5.0 * span, 5.0)
-    cloud = _SibsonCloud(P_cloud, radius) if method == "legacy" else _WatsonCloud(P_cloud)
+    entry = _cloud_cache_get(P_meas, images, method)
+    if entry is None:
+        P_cloud, src = symmetry_cloud(P_meas, images)
+        span = float(np.linalg.norm(P_cloud.max(0) - P_cloud.min(0))) + 1.0
+        radius = max(5.0 * span, 5.0)
+        cloud = _SibsonCloud(P_cloud, radius) if method == "legacy" else _WatsonCloud(P_cloud)
+        entry = _cloud_cache_put(P_meas, images, method, (cloud, src, {}))
+    cloud, src, memo = entry
     keys_all, raw_all = [], []
     fallback = np.zeros(len(P_query), bool)
     for i, qpt in enumerate(P_query):
-        idx, w = cloud.weights(qpt)
+        qk = qpt.tobytes()
+        if qk not in memo:
+            memo[qk] = cloud.weights(qpt)
+        idx, w = memo[qk]
         if len(idx) == 0:
             fallback[i] = True
             keys_all.append(None)
