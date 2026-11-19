@@ -56,6 +56,9 @@ class TailDecision:
     delta: float
     N: int | None
     tail: str
+    # The attainable failure probability actually used: the grid point
+    # F(k) <= delta, with F the worst-case tail at this level.
+    delta_picked: float | None = None
     randomized: bool = False
     k_base: int | None = None
     p_next: float | None = None
@@ -90,8 +93,8 @@ def randomize_k(td: "TailDecision", rng) -> "TailDecision":
     use = bool(rng.random() < p)
     return TailDecision(k=k + 1 if use else k, k_binomial=td.k_binomial,
                         k_hypergeometric=td.k_hypergeometric, eps=td.eps, m=td.m,
-                        delta=td.delta, N=td.N, tail=td.tail, randomized=True,
-                        k_base=k, p_next=p)
+                        delta=td.delta, N=td.N, tail=td.tail, delta_picked=td.delta,
+                        randomized=True, k_base=k, p_next=p)
 
 
 def allowed_k(eps: float, m: int, delta: float, N: int | None = None,
@@ -118,7 +121,8 @@ def allowed_k(eps: float, m: int, delta: float, N: int | None = None,
     else:
         raise ValueError(f"unknown tail {tail!r}")
     return TailDecision(k=k, k_binomial=kb, k_hypergeometric=kh, eps=float(eps),
-                        m=int(m), delta=float(delta), N=N, tail=tail)
+                        m=int(m), delta=float(delta), N=N, tail=tail,
+                        delta_picked=worst_case_tail(k, eps, m, N, tail))
 
 
 def clopper_pearson_upper(failures: int, m: int, confidence: float) -> float:
