@@ -1,6 +1,6 @@
-# 5 Results (draft 2: sections 5.1–5.3)
+# 5 Results (draft 2: sections 5.1–5.4)
 
-*Section 5.4 (maps) is still to be drafted. All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5).*
+*All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5).*
 
 ## 5.1 The guarantee holds (C1)
 
@@ -44,7 +44,13 @@ The three length-scale rules lead to visibly different reasons for measuring a s
 
 ## 5.4 Maps (C5)
 
-*To draft: one map per dataset with the reason recorded for every site and the map bound (Fig. 5).*
+A guarantee on rates becomes useful at an instrument once every site of a map carries its reason. Figure 5 shows one campaign per dataset under the quantile path with natural-neighbour interpolation (seed 0 of the record), with every design site marked by the reason recorded for it and every wrong skip found against the fully measured truth.
+
+On the IR map, 405 of 959 sites were measured: 73 in the seed, 160 for calibration and 172 where no claim applied. Of the 554 skipped sites, 54 were skipped as not of interest, 156 as predictable and 344 under both claims. Twenty skips were wrong, 2.3 % of the sites on certified levels against a budget of 0.10 per level. On the NaCl scan, 592 of 1071 sites were measured and 479 skipped, 132 of them wrongly (13.3 % against 0.20). On the synthetic map, 350 of 2118 sites were measured and 1768 skipped, 215 of them wrongly (10.3 % against 0.20). The wrong skips of the synthetic map gather in two compact regions of the composition triangle; the guarantee bounds their rate on each level and says nothing about where they fall.
+
+The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. For the last level of these campaigns it allowed at most 3.4 % on IR (0 of 40 calibration sites failed; actual 0.2 %), 47.9 % on NaCl (16 of 40; actual 49.9 %) and 16.2 % on the synthetic map (4 of 40; actual 10.1 %). The NaCl campaign shown is one in which the bound missed. Over the 250 campaigns of each configuration, the map bound held on 100 % of the certified levels for IR, 88.5 % for NaCl and 90.4 % for the synthetic map, against confidences of 0.75, 0.80 and 0.80. On NaCl, about half of the last-level sites lie outside tolerance of the map built from coarser levels; the skip guarantee is unaffected, since it concerns only the sites a certificate covers.
+
+**Figure 5.** Maps with reasons, one campaign per dataset (quantile path, natural-neighbour interpolation, seed 0). Measured sites: seed (diamonds), calibration (orange squares) and sites without a claim (grey squares). Skipped sites: not of interest (yellow), predictable (aqua) and both (blue). Crosses: wrong skips against the fully measured truth. Panel titles give the guarantee, the counts and the wrong-skip share of the sites on certified levels; the text under each panel gives the map bound of the last level. IR in micrometres, NaCl in stage millimetres, synthetic map in composition fractions. File: `figures/fig5_maps.png`.
 
 ## Notes for revision (not part of the text)
 
