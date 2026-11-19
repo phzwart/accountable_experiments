@@ -404,14 +404,22 @@ class AccuracyCriterion:
     presence_multiple: float = 5.0
     # Display unit for labels. Synthetic SAXS stays in Å⁻¹; ALS passes nm^-1.
     q_unit: str = "A^-1"
+    # kind="basis": error measured in a frozen spectral basis (rows orthonormal, shape (r, C)),
+    # each coefficient divided by its scale; accept when the RMS over components is <= basis_tol.
+    basis: np.ndarray = None
+    basis_scale: np.ndarray = None
+    basis_tol: float = 0.1
+    basis_log_floor: float = None   # if set, spectra enter the basis as log10(max(I, floor))
 
     def __post_init__(self):
-        if self.kind not in ("envelope", "peak", "integral"):
+        if self.kind not in ("envelope", "peak", "integral", "basis"):
             raise ValueError(f"unknown criterion kind={self.kind!r}")
         if self.tol_mode not in ("absolute", "relative"):
             raise ValueError(f"unknown tol_mode={self.tol_mode!r}")
         if self.kind in ("peak", "integral") and self.q is None:
             raise ValueError(f"criterion kind={self.kind!r} requires the q grid")
+        if self.kind == "basis" and (self.basis is None or self.basis_scale is None):
+            raise ValueError("criterion kind='basis' requires basis and basis_scale")
 
     @property
     def is_peak(self) -> bool:
@@ -472,6 +480,12 @@ class AccuracyCriterion:
             return integral_violation_stats(
                 I_true, I_hat, self.q, rtol=self.rtol, atol=self.atol,
             )
+        if self.kind == "basis":
+            if self.basis_log_floor is not None:
+                f = float(self.basis_log_floor)
+                I_true = np.log10(np.maximum(np.asarray(I_true, float), f))
+                I_hat = np.log10(np.maximum(np.asarray(I_hat, float), f))
+            return basis_violation_stats(I_true, I_hat, self.basis, self.basis_scale, self.basis_tol)
         return envelope_violation_stats(
             I_true, I_hat, rtol=self.rtol, atol=self.atol,
             signal_min=self.signal_min,
@@ -502,7 +516,19 @@ class AccuracyCriterion:
                     rf"{unit}$, $\Delta$FWHM$\leq{self.fwhm_eps:g}{unit}$")
         if self.kind == "integral":
             return rf"total intensity: rtol={self.rtol:g}, atol={self.atol:g}"
+        if self.kind == "basis":
+            return rf"basis ({len(self.basis_scale)} components): whitened RMS $\leq{self.basis_tol:g}$"
         return rf"envelope: rtol={self.rtol:g}, atol={self.atol:g}"
+
+
+def basis_violation_stats(I_true, I_hat, basis, scale, tol):
+    """Error in a frozen basis: coefficients of (I_hat - I_true), divided by their scale; RMS over components."""
+    D = np.asarray(I_hat, float) - np.asarray(I_true, float)
+    C = D @ np.asarray(basis, float).T / np.maximum(np.asarray(scale, float), 1e-30)
+    rms = np.sqrt(np.mean(C ** 2, axis=-1)) / float(tol)
+    out = rms > 1.0
+    return dict(score=rms, outside_mean=out, outside_any=out, frac_q_out=out.astype(float),
+                rho_max=np.max(np.abs(C), axis=-1) / float(tol))
 
 
 def as_criterion(criterion, rtol: float = 0.01, atol: float = 0.01):

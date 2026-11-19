@@ -1,10 +1,14 @@
-# 6 Discussion (draft 1: building other guarantees; optimisation and distribution shift)
+# 6 Discussion (draft 1: building other guarantees; metrics; optimisation and distribution shift)
 
 *Other paragraphs follow the plan: scope of the claim, calibration overhead, conditional rates, use at an instrument, numerical reproducibility of the interpolant.*
 
 ## Building other guarantees
 
 The forms reported here address three questions about wrong skips, and an instrument may face others. A bound per claim answers how often each reason for skipping failed; a bound on the shared event, how often any skip failed. Other needs call for other forms: unequal budgets when one claim is riskier than the other, a bound on the proportion of false skips among the skipped sites [Jin2023], or a path learned on part of the calibration draw [LauferGoldshtein2023]. Each follows the recipe of Section 3.4 and is accepted by the same Monte Carlo check (SI 4). The cost of a form on a given dataset is hard to predict in advance; Section 5.2 shows that the ordering of three forms changes between datasets. Running candidate forms on a fully measured pilot scan, as done here retrospectively, gives that cost before beam time is committed.
+
+## What is certified shapes the campaign
+
+A guarantee is stated for one acceptance metric, and the choice of that metric deserves the same care as the budget. The bound holds for any metric fixed before the calibration draw: across six metrics on three datasets, no metric exceeded its allowance beyond chance (SI 6). The campaign around the bound changes with the metric. At tolerances a practitioner might pick, the share of sites a prediction fails ranged from 1 % to 85 %, and the measurements on one map from 233 to 821. At tolerances matched to equal difficulty the costs drew close, and the metrics differed instead in where wrong skips fall: a profile with an absolute term placed most of them on sites with signal, a relative profile spread them evenly, and a line-width claim placed them where the line is weak or absent. Under every metric the wrong skips clustered in space, since interpolation errors do, and a rate guarantee leaves their location free. The metric is therefore best fixed from the scientific question before beam time, stated with the guarantee, and checked on a pilot scan for the cost it implies. A basis that counts each spectral shape once, whatever its abundance, changed little on these data, where the seed designs already sample the map evenly.
 
 ## Optimisation and distribution shift
 
