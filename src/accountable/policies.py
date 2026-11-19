@@ -189,15 +189,20 @@ class NestedPathPolicy(Policy):
     """
 
     def __init__(self, budget: float, confidence: float,
-                 weights: Optional[Dict[str, float]] = None, tail: str = "binomial"):
+                 weights: Optional[Dict[str, float]] = None, tail: str = "binomial",
+                 placement: str = "calibration"):
         self.budget = float(budget)
         self.confidence = float(confidence)
         self.weights = dict(weights or {})
         self.tail = tail
+        if placement not in ("calibration", "boundary"):
+            raise ValueError("placement must be 'calibration' or 'boundary'")
+        self.placement = placement
 
     def describe(self):
         return dict(policy=self.policy_name, budget=self.budget,
-                    confidence=self.confidence, weights=self.weights, tail=self.tail)
+                    confidence=self.confidence, weights=self.weights, tail=self.tail,
+                    placement=self.placement)
 
     def entry_times(self, level: LevelData) -> Dict[str, np.ndarray]:
         out = {}
@@ -228,8 +233,16 @@ class NestedPathPolicy(Policy):
             lam_E_cal = np.minimum(lam_E_cal, np.where(level.bad[n], lam[n][cal], np.inf))
         lam_hat = order_statistic_threshold(lam_cov[cal], lam_E_cal, td.k)
         cov = {}
+        fail = np.sort(lam_E_cal[np.isfinite(lam_E_cal)])
+        boundary = None
+        if self.placement == "boundary" and td.k >= 0 and len(fail) > td.k:
+            # Cover everything strictly below the (k+1)-th failing calibration
+            # entry time; the proof needs only lam_hat < that entry time.
+            boundary = float(fail[td.k])
         for n in names:
-            if np.isposinf(lam_hat):
+            if boundary is not None:
+                cov[n] = lam[n] < boundary
+            elif np.isposinf(lam_hat):
                 cov[n] = np.isfinite(lam[n])
             elif np.isfinite(lam_hat):
                 cov[n] = lam[n] <= lam_hat
@@ -244,7 +257,7 @@ class NestedPathPolicy(Policy):
         return PolicyDecision(
             cov, thr, {n: td.k for n in names},
             [Guarantee("R_E", self.budget, self.confidence, "single budget, nested label-free path")],
-            notes=dict(lambda_hat=str(lam_hat)),
+            notes=dict(lambda_hat=str(lam_hat if boundary is None else f"<{boundary}")),
             tails={"E": td.as_dict()},
         )
 
@@ -263,8 +276,9 @@ class PriorityPathPolicy(NestedPathPolicy):
     applies unchanged; only ``entry_times`` differs from ``nested_path``.
     """
 
-    def __init__(self, budget: float, confidence: float, order, tail: str = "binomial"):
-        super().__init__(budget, confidence, weights=None, tail=tail)
+    def __init__(self, budget: float, confidence: float, order, tail: str = "binomial",
+                 placement: str = "calibration"):
+        super().__init__(budget, confidence, weights=None, tail=tail, placement=placement)
         self.order = list(order)
         if len(set(self.order)) != len(self.order):
             raise ValueError("priority order lists a certificate twice")

@@ -18,6 +18,7 @@ RATES = {"interest": 0.30, "interp": 0.35}
     lambda: NestedPathPolicy(0.10, confidence=0.90),
     lambda: PriorityPathPolicy(0.10, confidence=0.90, order=["interest", "interp"]),
     lambda: PriorityPathPolicy(0.10, confidence=0.90, order=["interp", "interest"]),
+    lambda: NestedPathPolicy(0.10, confidence=0.75, tail="hypergeometric", placement="boundary"),
 ])
 def test_shipped_policies_pass(make, informative):
     s, y = population(271, RATES, informative=informative, seed=4)
@@ -61,3 +62,11 @@ def test_plug_in_rule_is_flagged():
     rep = check_coverage(PlugInPolicy(0.10, 0.90), s, y, draws=1500, seed=0)
     assert not rep.passed
     assert rep.rows[0].observed > 0.3
+
+
+def test_exact_tail_and_boundary_placement_reach_the_nominal_rate():
+    """On a small level the exact tail allows k = 3 and the bound is attained."""
+    s, y = population(65, RATES, informative=False, seed=4)
+    rep = check_coverage(NestedPathPolicy(0.10, 0.75, tail="hypergeometric", placement="boundary"),
+                         s, y, draws=3000, seed=1)
+    assert rep.passed and rep.rows[0].observed > 0.20
