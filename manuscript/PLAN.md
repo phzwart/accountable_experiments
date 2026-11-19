@@ -4,6 +4,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 ## 1. Thesis and framing
 
+**Framing.** Autonomous measurement decisions need accountability: a recorded reason for every skip and a checkable statement of how often skips are wrong. The paper offers one way to provide it, with guarantees that are precise and checked against truth. Other ways exist and are welcome; the record, the forms of guarantee and the acceptance check are built so that they can be compared on the same footing. The paper makes no priority or optimality claims.
+
 **Thesis.** A scanning experiment can skip measurements and still state, for every level of a hierarchical design, a finite-sample bound on the rate of wrong skips. The bound comes from a uniform calibration draw. It holds for any interpolator, any scoring rule and any acquisition protocol that respects the order of operations: fit, freeze, draw, calibrate, decide.
 
 **What the paper is about.** It is about which assertions can be made, and at what cost in measurements. Every result is reported as a pair: the statement (wrong-skip rate ≤ ε at confidence c) and the number of measurements needed to make it. Protocols are exchangeable parts that show the guarantee survives a change of machinery. Protocols are never ranked by accuracy, and the paper claims no optimality for any interpolator, score or design.
