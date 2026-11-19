@@ -1,0 +1,2089 @@
+{
+ "rows": {
+  "ir_nested_gp_design": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "nested_path",
+    "nn_method": "watson",
+    "interp_model": "gp_design"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 162.6,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "gp_design_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.1
+     },
+     {
+      "name": "interp",
+      "score": "gp_design_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_nested_gp_mle": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "nested_path",
+    "nn_method": "watson",
+    "interp_model": "gp_mle"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 374.1,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.1
+     },
+     {
+      "name": "interp",
+      "score": "gp_mle_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_nested_gp_nonstationary": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "nested_path",
+    "nn_method": "watson",
+    "interp_model": "gp_nonstationary"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 157.4,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "gp_nonstationary_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.1
+     },
+     {
+      "name": "interp",
+      "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_nested_random": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "nested_path",
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 281.0,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_nested_watson": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "nested_path",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 606.4,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.1
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_priority_random": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "priority_path",
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 244.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "priority_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "order": [
+      "interest",
+      "interp"
+     ],
+     "tail": "hypergeometric"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_priority_watson": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "priority_path",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 606.4,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.1
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "priority_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "order": [
+      "interest",
+      "interp"
+     ],
+     "tail": "hypergeometric"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_separate_random": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "separate",
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 341.3,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "separate",
+     "budgets": {
+      "interest": 0.05,
+      "interp": 0.05
+     },
+     "confidence": 0.875,
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_separate_split_watson": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "policy": "separate",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 615.5,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.1",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.1
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "separate",
+     "budgets": {
+      "interest": 0.05,
+      "interp": 0.05
+     },
+     "confidence": 0.875,
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_gp_design": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": 0.02,
+    "interp_model": "gp_design",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 198.2,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "gp_design_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.02
+     },
+     {
+      "name": "interp",
+      "score": "gp_design_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_gp_mle": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": 0.02,
+    "interp_model": "gp_mle",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 832.8,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.02
+     },
+     {
+      "name": "interp",
+      "score": "gp_mle_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_gp_nonstationary": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": 0.02,
+    "interp_model": "gp_nonstationary",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 188.9,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "gp_nonstationary_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.02
+     },
+     {
+      "name": "interp",
+      "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_interp_gp_design": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": null,
+    "interp_model": "gp_design",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 41.4,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "gp_design_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_design_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_interp_gp_mle": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": null,
+    "interp_model": "gp_mle",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 682.3,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_mle_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_interp_gp_nonstationary": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": null,
+    "interp_model": "gp_nonstationary",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 29.6,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "gp_nonstationary_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_interp_sibson": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": null,
+    "interp_model": "sibson",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 620.3,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_random": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": 0.02,
+    "interp_model": "sibson",
+    "score": "random",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 222.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "ir_tight_sibson": {
+   "spec": {
+    "experiment": "ir_bioreef",
+    "tolerance": "rtol 0.10, atol 0.01, floor 0.005",
+    "interest": 0.02,
+    "interp_model": "sibson",
+    "score": "logistic",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.75
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 614.1,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.1, atol=0.01",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "predicted_max",
+      "cap": 0.02
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.75,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": 6,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_nested_gp_design": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_design"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 527.4,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "gp_design_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_design_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_nested_gp_mle": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_mle"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 939.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_mle_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_nested_gp_nonstationary": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_nonstationary"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 522.8,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "gp_nonstationary_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_nested_random": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 309.8,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_nested_watson": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 978.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_priority_random": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "priority_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 317.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "priority_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "order": [
+      "interest",
+      "interp"
+     ],
+     "tail": "hypergeometric"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_priority_watson": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "priority_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 975.6,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "priority_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "order": [
+      "interest",
+      "interp"
+     ],
+     "tail": "hypergeometric"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_separate_random": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "confidence": 0.9,
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 280.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "separate",
+     "budgets": {
+      "interest": 0.1,
+      "interp": 0.1
+     },
+     "confidence": 0.9,
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "nacl_fwhm_separate_watson": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "confidence": 0.9,
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 988.3,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "separate",
+     "budgets": {
+      "interest": 0.1,
+      "interp": 0.1
+     },
+     "confidence": 0.9,
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_nested_gp_design": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_design"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 1859.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "gp_design_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_design_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_nested_gp_mle": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_mle"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 4999.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_mle_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_nested_gp_nonstationary": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_nonstationary"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 2121.0,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "gp_nonstationary_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_nested_random": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 870.3,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_nested_watson": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 2999.8,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_priority_random": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "priority_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 816.8,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "priority_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "order": [
+      "interest",
+      "interp"
+     ],
+     "tail": "hypergeometric"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_priority_watson": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "policy": "priority_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 3348.6,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "priority_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "order": [
+      "interest",
+      "interp"
+     ],
+     "tail": "hypergeometric"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_separate_random": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "confidence": 0.9,
+    "score": "random",
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 901.1,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "847c07ef620edd8b2fb411f22af8974e145c6ba9",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "random",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "separate",
+     "budgets": {
+      "interest": 0.1,
+      "interp": 0.1
+     },
+     "confidence": 0.9,
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_peak_2cert_separate_watson": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "peak",
+    "mode": "2cert",
+    "confidence": 0.9,
+    "nn_method": "watson"
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 3111.0,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_dirty": false
+   },
+   "config": {
+    "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "separate",
+     "budgets": {
+      "interest": 0.1,
+      "interp": 0.1
+     },
+     "confidence": 0.9,
+     "tail": "hypergeometric",
+     "placement": "boundary"
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  }
+ },
+ "reasons": [
+  "unassigned",
+  "seed",
+  "calibration",
+  "no_certificate",
+  "not_interesting",
+  "interpolable",
+  "not_interesting+interpolable"
+ ],
+ "packed": "2026-11-18 23:10:06 PST"
+}

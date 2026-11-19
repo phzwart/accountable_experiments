@@ -30,10 +30,14 @@ DATASETS = [
 
 
 def load():
+    """Per-row run lists from the run record (results/record)."""
+    import gzip
     by = collections.defaultdict(list)
-    for f in glob.glob(str(ROOT / "results/replication/*.json")):
-        d = json.loads(Path(f).read_text())
-        by[d["name"]].append(d)
+    for f in glob.glob(str(ROOT / "results/record/*/runs.jsonl.gz")):
+        with gzip.open(f, "rt") as fh:
+            for line in fh:
+                r = json.loads(line)
+                by[r["row"]].append(dict(n_measured=r["summary"]["n_measured"], level_E=r["study"]["level_E"]))
     return by
 
 
@@ -81,6 +85,7 @@ def main():
     for j, (title, pat, rows, n_design, eps, fail) in enumerate(DATASETS):
         a = fig.add_subplot(gs[0, j]); style(a)
         b = fig.add_subplot(gs[1, j]); style(b)
+        exc = []
         for i, f in enumerate(forms):
             rs = by[pat.format(rows[f])]
             meas = np.array([r["n_measured"] for r in rs])
@@ -90,9 +95,9 @@ def main():
                    ha="center", va="bottom", color=INK, fontsize=8)
             E = np.array([v for r in rs for v in r["level_E"] if np.isfinite(v)])
             jit = np.random.default_rng(i + 10 * j).uniform(-0.2, 0.2, len(E))
-            b.scatter(i + jit, E, s=9, color=COL[f], edgecolor=SURF, linewidth=0.4, zorder=2)
+            b.scatter(i + jit, E, s=3, color=COL[f], alpha=0.5, linewidths=0, zorder=2)
             k = int(np.sum(E > eps + 1e-12))
-            b.text(i, eps * 1.42, f"{k}/{len(E)}", ha="center", va="bottom", color=INK2, fontsize=7.5)
+            exc.append(f"{k}/{len(E)}")
         a.axhline(n_design, color=INK2, lw=0.9, ls=(0, (4, 3)), zorder=1)
         a.text(2.45, n_design, f"design {n_design}", ha="right", va="bottom", color=INK2, fontsize=7.5)
         a.set_ylim(0, n_design * 1.18)
@@ -105,10 +110,7 @@ def main():
         b.text(-0.45, eps, " budget", ha="left", va="bottom", color=INK, fontsize=7.5)
         b.set_ylim(-0.01, eps * 1.65)
         b.set_xlim(-0.55, 2.55)
-        b.set_xticks(x, [LAB[f] for f in forms])
-        if j == 0:
-            a.text(0, n_design * 0.5, "all sites\nmeasured", ha="center", va="center",
-                   color=SURF, fontsize=7)
+        b.set_xticks(x, [f"{LAB[f]}\n{e}" for f, e in zip(forms, exc)], fontsize=7)
     c = fig.add_subplot(gs[:, 3]); style(c)
     keys = ["legacy", "nested", "priority"]
     labs = ["Sequential\nrule", "Quantile\npath", "Priority\npath"]

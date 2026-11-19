@@ -102,7 +102,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Item | Content | Claim |
 | --- | --- | --- |
 | Fig. 1 | Schematic: hierarchical levels; fit → freeze → draw → calibrate → decide; the two certificates and the shared event | — |
-| Fig. 2 | Coverage: exceedance against nominal, all protocols × datasets; MC panel; random-score skip fraction | C1, C3 |
+| Fig. 2 | Informed against random scores ("stock-picking chicken"): cost and exceedances, quantile path, 250 campaigns per configuration (drafted: figures/fig2_random.png); coverage over all configurations in SI 5 | C1, C3 |
 | Fig. 3 | Forms of guarantee: sites measured and level wrong-skip rates for three forms on three datasets; Monte Carlo panel with the sequential rule against the two paths (drafted: figures/fig3_forms.png) | C2 |
 | Fig. 4 | Cost per statement across the protocol matrix (drafted for natural neighbour and three GP rules: figures/fig4_protocols.png) | C4 |
 | Fig. 5 | Matched budget: reconstruction error and certified skips per measurement; audit | C5 |
@@ -128,7 +128,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 1. Make exact natural-neighbour weights the default; re-run every row.
 2. ~~Add a Gaussian-process predictor and a GP-standard-deviation score.~~ Done: isotropic kernel on the design (BoTorch), three length-scale rules (maximum likelihood, design spacing, local spacing by Gibbs kernel), quantile path, 20 seeds on all three datasets; every assertion held.
 3. Add the scalar route to the protocol matrix (NaCl width, IR window maximum).
-4. Fix the protocol matrix and settings in advance; replicate each row over 20 calibration seeds.
+4. ~~Fix the protocol matrix and settings in advance; replicate each row.~~ Done: 36 configurations × 250 campaigns, logged in results/record; exact finite-population tail and boundary placement are the defaults.
 5. Matched-budget study with exact weights: certified, variance-ordered, random, and a GP sampler.
 6. Off-design audit for NaCl (raster) and IR (non-design pixels).
 7. Settle the IR data release and the Mie-correction citation.
@@ -142,11 +142,12 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | 1 Introduction | introduction.md | Draft 1, complete |
 | 3 Framework | framework.md | 3.3 and 3.4 with Table 3 drafted; 3.1, 3.2, 3.5 to draft |
 | 4 Experiments | experiments.md | 4.3 Gaussian-process protocols drafted |
-| 5 Results | results.md | 5.2 with Fig. 3 and 5.3 (natural neighbour and GP) with Fig. 4 drafted; others wait for section 6 items 3–6 |
+| 5 Results | results.md | 5.1 (coverage, attainment, random scores) with Fig. 2, 5.2 with Fig. 3 and 5.3 with Fig. 4 drafted from the 250-campaign record; others wait for section 6 items 3–6 |
 | 6 Discussion | discussion.md | "Building other guarantees" drafted |
 | Appendix B | appendix_B.md | Draft 1, complete |
 | SI 1 | supplement_SI1.md | GP part with Table S1.1 and Fig. S1 drafted; natural-neighbour part to come |
 | SI 3 | supplement_SI3.md | Tables S3.1 (cost per form) and S3.2 (cost per protocol) drafted; full per-level tables to come |
+| SI 5 | supplement_SI5.md | Run record: description, Table S5.1 (exceedances of every configuration), Table S5.2 (attainment audit) |
 | SI 4 | supplement_SI4.md | Contract, acceptance check (Table S4.1), worked example drafted |
 | Fig. 3 | figures/fig3_forms.png, figures/fig_forms.py | Draft |
 

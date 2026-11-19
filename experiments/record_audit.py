@@ -103,14 +103,15 @@ def main():
     ap.add_argument("--rows", default=",".join(PAPER_ROWS))
     ap.add_argument("--seeds", type=int, default=20)
     ap.add_argument("--draws", type=int, default=1000)
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
     rows = []
     for row in a.rows.split(","):
         if (OUT / row / "sites.npz").exists():
             rows += audit_row(row, a.seeds, a.draws)
             print(row, "audited", flush=True)
-    (OUT / "AUDIT.json").write_text(json.dumps(rows, indent=1))
-    (OUT / "AUDIT.md").write_text(
+    (OUT / f"AUDIT{a.tag}.json").write_text(json.dumps(rows, indent=1))
+    (OUT / f"AUDIT{a.tag}.md").write_text(
         f"# Confidence audit from the run record\n\nFirst {a.seeds} recorded seeds per row, {a.draws} calibration redraws per level.\n\n"
         + table(rows) + "\n")
 

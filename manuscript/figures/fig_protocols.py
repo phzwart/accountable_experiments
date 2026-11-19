@@ -1,7 +1,7 @@
 """
 Figure 4: the cost of one assertion across interpolation protocols
 (natural-neighbour and three Gaussian-process length-scale rules), quantile
-path, 20 calibration seeds. Figure S1: GP posterior standard deviation on
+path, all recorded calibration seeds. Figure S1: GP posterior standard deviation on
 one IR level under the three length-scale rules, with the local length
 scale of the non-stationary rule.
 
@@ -28,7 +28,8 @@ LAB = {"nn": "Natural\nneighbour", "gp_mle": "GP, max.\nlikelihood", "gp_design"
 SEQ = LinearSegmentedColormap.from_list("seq", ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"])
 
 DATASETS = [
-    ("IR map", "ir_nested_{}", "ir_nested_watson", 949, 0.10, 0.25),
+    ("IR map, original tolerance", "ir_nested_{}", "ir_nested_watson", 949, 0.10, 0.25),
+    ("IR map, tight tolerance", "ir_tight_{}", "ir_tight_sibson", 949, 0.10, 0.25),
     ("NaCl scan", "nacl_fwhm_nested_{}", "nacl_fwhm_nested_watson", 1071, 0.20, 0.20),
     ("Synthetic SAXS", "syn_peak_2cert_nested_{}", "syn_peak_2cert_nested_watson", 2118, 0.20, 0.20),
 ]
@@ -48,20 +49,25 @@ def style(ax, grid=True):
 
 
 def load():
+    """Per-row run lists from the run record (results/record)."""
+    import gzip
     by = collections.defaultdict(list)
-    for f in glob.glob(str(ROOT / "results/replication/*.json")):
-        d = json.loads(Path(f).read_text())
-        by[d["name"]].append(d)
+    for f in glob.glob(str(ROOT / "results/record/*/runs.jsonl.gz")):
+        with gzip.open(f, "rt") as fh:
+            for line in fh:
+                r = json.loads(line)
+                by[r["row"]].append(dict(n_measured=r["summary"]["n_measured"], level_E=r["study"]["level_E"]))
     return by
 
 
 def fig4(by):
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8})
-    fig, axs = plt.subplots(2, 3, figsize=(10.0, 5.4), facecolor=SURF, constrained_layout=True)
+    fig, axs = plt.subplots(2, 4, figsize=(13.0, 5.4), facecolor=SURF, constrained_layout=True)
     x = np.arange(len(PROTO))
     for j, (title, pat, nn, n_design, eps, fail) in enumerate(DATASETS):
         a, b = axs[0, j], axs[1, j]
         style(a), style(b)
+        exc = []
         for i, p in enumerate(PROTO):
             rs = by[nn if p == "nn" else pat.format(p)]
             meas = np.array([r["n_measured"] for r in rs])
@@ -71,9 +77,9 @@ def fig4(by):
                    ha="center", va="bottom", color=INK, fontsize=7.5)
             E = np.array([v for r in rs for v in r["level_E"] if np.isfinite(v)])
             jit = np.random.default_rng(i + 10 * j).uniform(-0.22, 0.22, len(E))
-            b.scatter(i + jit, E, s=8, color=COL[p], edgecolor=SURF, linewidth=0.4, zorder=2)
+            b.scatter(i + jit, E, s=3, color=COL[p], alpha=0.5, linewidths=0, zorder=2)
             k = int(np.sum(E > eps + 1e-12))
-            b.text(i, eps * 1.62, f"{k}/{len(E)}", ha="center", va="bottom", color=INK2, fontsize=7)
+            exc.append(f"{k}/{len(E)}")
         a.axhline(n_design, color=INK2, lw=0.9, ls=(0, (4, 3)), zorder=1)
         a.text(3.45, n_design, f"design {n_design}", ha="right", va="bottom", color=INK2, fontsize=7)
         a.set_ylim(0, n_design * 1.18)
@@ -81,9 +87,9 @@ def fig4(by):
         a.set_title(f"{title}\n$R_E \\leq {eps:.2f}$ at confidence {1 - fail:.2f}", color=INK, fontsize=9)
         b.axhline(eps, color=INK, lw=1.0, zorder=1)
         b.text(-0.5, eps, " budget", ha="left", va="bottom", color=INK, fontsize=7)
-        b.set_ylim(-0.01, eps * 1.82)
+        b.set_ylim(-0.01, eps * 1.8)
         b.set_xlim(-0.6, 3.6)
-        b.set_xticks(x, [LAB[p] for p in PROTO], fontsize=7)
+        b.set_xticks(x, [f"{LAB[p]}\n{e}" for p, e in zip(PROTO, exc)], fontsize=6.5)
         if j == 0:
             a.set_ylabel("Sites measured (mean ± s.d.)", color=INK)
             b.set_ylabel("Wrong-skip rate on a level", color=INK)

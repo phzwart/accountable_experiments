@@ -39,7 +39,7 @@ $$
 P(\mathrm{Bin}(m, \varepsilon) \le k) \le \delta
 $$
 
-and set $\hat\tau$ to the largest calibration score strictly below the $(k+1)$-th smallest score among calibration sites with $B_j = 1$. When the sample holds at most $k$ bad sites, $\hat\tau = +\infty$. When no $k \ge 0$ satisfies the inequality, $\hat\tau = -\infty$ and the level is measured.
+and let $b$ be the $(k+1)$-th smallest score among calibration sites with $B_j = 1$. Every site with $S_j < b$ is covered ("boundary placement", the default). The earlier rule stopped at the largest calibration score below $b$ ("calibration placement"); it is valid too and leaves the sites between that score and $b$ measured. When the sample holds at most $k$ bad sites, every site is covered. When no $k \ge 0$ satisfies the inequality, nothing is covered and the level is measured.
 
 **Claim.** With probability at least $1 - \delta$ over the calibration draw, $R_j(\hat\tau) \le \varepsilon$.
 
@@ -47,7 +47,13 @@ The argument is the one-sided tolerance bound of Wilks (1941) in the form used f
 
 The claim concerns the level population, calibration sites included. The rate on the remainder (the non-calibration sites) is a check, not the guarantee.
 
-**Finite population.** The exact tail is hypergeometric on $N_L$ sites with $\lfloor \varepsilon N_L \rfloor + 1$ bad sites. The binomial $k$ never exceeds the hypergeometric $k$ for any level size and setting used in these experiments, so the binomial is the conservative default. Each run records both and refuses to proceed if the binomial were ever the less conservative of the two.
+**Finite population.** The calibration sample is drawn without replacement from $N_L$ sites, so the exact tail is hypergeometric on $N_L$ sites with $\lfloor \varepsilon N_L \rfloor + 1$ bad sites. The default $k$ is the largest integer with
+
+$$
+P\big(\mathrm{Hyp}(N_L, \lfloor \varepsilon N_L \rfloor + 1, m) \le k\big) \le \delta
+$$
+
+It is never smaller than the binomial $k$, and larger on small levels (at $m = 40$, $\varepsilon = 0.10$, $\delta = 0.25$: $k = 3$ on 65 sites against the binomial 2). Each run records both. With boundary placement the exceedance probability on a fixed population reaches this worst case (confidence audit, `experiments/confidence_audit.py`); the remaining gap to $\delta$ is the integer step in $k$. A randomised choice between $k$ and $k + 1$ would close it at the price of a random element in the decision; it is not implemented.
 
 **Smallest certifiable budget.** With zero calibration failures allowed,
 
@@ -105,7 +111,7 @@ $$
 R_E(\lambda) = N_L^{-1} \, \#\{x \in D_L : \lambda_E(x) \le \lambda\}
 $$
 
-is nondecreasing in $\lambda$, and the argument of section 2 applies with $\lambda_E$ in place of the bad-site scores. $\hat\lambda$ is the largest calibration value of $\lambda_{\mathrm{cov}}$ strictly below the $(k+1)$-th smallest finite calibration $\lambda_E$.
+is nondecreasing in $\lambda$, and the argument of section 2 applies with $\lambda_E$ in place of the bad-site scores. With $b$ the $(k+1)$-th smallest finite calibration $\lambda_E$, every site with $\lambda_{\mathrm{cov}} < b$ is covered (boundary placement); calibration placement stops at the largest calibration value of $\lambda_{\mathrm{cov}}$ below $b$.
 
 **Claim.** With probability at least $1 - \delta$, $R_E(\hat\lambda) \le \varepsilon$.
 

@@ -18,19 +18,19 @@ $$
 R_j(\tau_j) = N_L^{-1} \, \#\{x \in D_L : S_j(x) \le \tau_j,\ B_j(x) = 1\}
 $$
 
-The threshold comes from $m$ sites drawn uniformly from the level after the scores are frozen and then measured. With $k$ the largest integer for which
+The threshold comes from $m$ sites drawn uniformly, without replacement, from the level after the scores are frozen and then measured. Let $H$ count the failing sites in such a draw from a level in which $\lfloor \varepsilon N_L \rfloor + 1$ sites fail. With $k$ the largest integer for which
 
 $$
-P(\mathrm{Bin}(m, \varepsilon) \le k) \le \delta
+P(H \le k) \le \delta
 $$
 
-the threshold $\hat\tau_j$ sits just below the $(k+1)$-th failing calibration site in score order. The assertion
+every site scored below the $(k+1)$-th failing calibration site is covered. The assertion
 
 $$
 P\big(R_j(\hat\tau_j) \le \varepsilon\big) \ge 1 - \delta
 $$
 
-holds over the draw, for any score and any predictor [Wilks1941; Bates2021; Angelopoulos2025]. The argument needs only a rate that grows with the threshold and a uniform draw; Appendix A gives it together with the finite-population tail. Allowing no failure in the draw gives the smallest budget that $m$ sites can certify, $\varepsilon_{\min} = 1 - \delta^{1/m}$.
+holds over the draw, for any score and any predictor [Wilks1941; Bates2021; Angelopoulos2025]. The argument needs only a rate that grows with the threshold and a uniform draw; Appendix A gives it. The hypergeometric tail is exact for a draw without replacement and allows more failures than its binomial approximation on small levels; the binomial version remains valid and is the form usually quoted. Allowing no failure in the draw gives, in the binomial approximation, the smallest budget that $m$ sites can certify, $\varepsilon_{\min} = 1 - \delta^{1/m}$.
 
 ## 3.4 Forms of guarantee
 
