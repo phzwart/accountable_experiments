@@ -70,3 +70,12 @@ def test_exact_tail_and_boundary_placement_reach_the_nominal_rate():
     rep = check_coverage(NestedPathPolicy(0.10, 0.75, tail="hypergeometric", placement="boundary"),
                          s, y, draws=3000, seed=1)
     assert rep.passed and rep.rows[0].observed > 0.20
+
+
+def test_randomized_allowance_reaches_delta():
+    """Between the grid points of attainable delta, the randomised k lands on delta itself."""
+    s, y = population(271, RATES, informative=False, seed=4)
+    fixed = check_coverage(NestedPathPolicy(0.10, 0.75), s, y, draws=3000, seed=1)
+    rnd = check_coverage(NestedPathPolicy(0.10, 0.75, randomize=True, seed=3), s, y, draws=3000, seed=1)
+    assert rnd.passed
+    assert fixed.rows[0].observed < 0.21 and rnd.rows[0].observed > 0.23

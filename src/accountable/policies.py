@@ -18,7 +18,7 @@ from typing import Callable, Dict, List, Optional
 import numpy as np
 from scipy.stats import binom, hypergeom
 
-from .tails import allowed_k
+from .tails import allowed_k, randomize_k
 
 POLICIES: Dict[str, Callable] = {}
 
@@ -174,21 +174,27 @@ class SeparatePolicy(Policy):
     """
 
     def __init__(self, budgets: Dict[str, float], confidence: float,
-                 tail: str = "hypergeometric", placement: str = "boundary"):
+                 tail: str = "hypergeometric", placement: str = "boundary",
+                 randomize: bool = False, seed: int = 0):
         self.budgets = {k: float(v) for k, v in budgets.items()}
         self.confidence = float(confidence)
         self.tail = tail
         self.placement = _check_placement(placement)
+        self.randomize, self.seed = bool(randomize), int(seed)
+        self._rng = np.random.default_rng(self.seed)
 
     def describe(self):
         return dict(policy=self.policy_name, budgets=self.budgets,
-                    confidence=self.confidence, tail=self.tail, placement=self.placement)
+                    confidence=self.confidence, tail=self.tail, placement=self.placement,
+                    randomize=self.randomize, seed=self.seed)
 
     def decide(self, level: LevelData) -> PolicyDecision:
         delta = 1.0 - self.confidence
         cov, thr, ks, gs, tails = {}, {}, {}, [], {}
         for name, eps in self.budgets.items():
             td = allowed_k(eps, level.m, delta, N=level.n_level, tail=self.tail)
+            if self.randomize:
+                td = randomize_k(td, self._rng)
             s_all = level.scores[name]
             s_cal = s_all[level.cal]
             tau = single_threshold(s_cal, level.bad[name], td.k)
@@ -219,17 +225,19 @@ class NestedPathPolicy(Policy):
 
     def __init__(self, budget: float, confidence: float,
                  weights: Optional[Dict[str, float]] = None, tail: str = "hypergeometric",
-                 placement: str = "boundary"):
+                 placement: str = "boundary", randomize: bool = False, seed: int = 0):
         self.budget = float(budget)
         self.confidence = float(confidence)
         self.weights = dict(weights or {})
         self.tail = tail
         self.placement = _check_placement(placement)
+        self.randomize, self.seed = bool(randomize), int(seed)
+        self._rng = np.random.default_rng(self.seed)
 
     def describe(self):
         return dict(policy=self.policy_name, budget=self.budget,
                     confidence=self.confidence, weights=self.weights, tail=self.tail,
-                    placement=self.placement)
+                    placement=self.placement, randomize=self.randomize, seed=self.seed)
 
     def entry_times(self, level: LevelData) -> Dict[str, np.ndarray]:
         out = {}
@@ -251,6 +259,8 @@ class NestedPathPolicy(Policy):
     def decide(self, level: LevelData) -> PolicyDecision:
         delta = 1.0 - self.confidence
         td = allowed_k(self.budget, level.m, delta, N=level.n_level, tail=self.tail)
+        if self.randomize:
+            td = randomize_k(td, self._rng)
         lam = self.entry_times(level)
         names = list(lam)
         lam_cov = np.min(np.stack([lam[n] for n in names]), axis=0)
@@ -304,15 +314,17 @@ class PriorityPathPolicy(NestedPathPolicy):
     """
 
     def __init__(self, budget: float, confidence: float, order, tail: str = "hypergeometric",
-                 placement: str = "boundary"):
-        super().__init__(budget, confidence, weights=None, tail=tail, placement=placement)
+                 placement: str = "boundary", randomize: bool = False, seed: int = 0):
+        super().__init__(budget, confidence, weights=None, tail=tail, placement=placement,
+                         randomize=randomize, seed=seed)
         self.order = list(order)
         if len(set(self.order)) != len(self.order):
             raise ValueError("priority order lists a certificate twice")
 
     def describe(self):
         return dict(policy=self.policy_name, budget=self.budget,
-                    confidence=self.confidence, order=self.order, tail=self.tail)
+                    confidence=self.confidence, order=self.order, tail=self.tail,
+                    placement=self.placement, randomize=self.randomize, seed=self.seed)
 
     def entry_times(self, level: LevelData) -> Dict[str, np.ndarray]:
         base = super().entry_times(level)

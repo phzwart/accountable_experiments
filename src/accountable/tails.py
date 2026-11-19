@@ -56,9 +56,42 @@ class TailDecision:
     delta: float
     N: int | None
     tail: str
+    randomized: bool = False
+    k_base: int | None = None
+    p_next: float | None = None
 
     def as_dict(self):
         return dict(self.__dict__)
+
+
+def worst_case_tail(k: int, eps: float, m: int, N: int | None, tail: str) -> float:
+    """Worst-case exceedance probability at k: P(H <= k) or P(Bin <= k); 0 for k < 0."""
+    if k < 0:
+        return 0.0
+    if tail == "hypergeometric" and N is not None:
+        K = min(int(np.floor(float(eps) * N)) + 1, N)
+        return float(hypergeom.cdf(k, int(N), K, int(m)))
+    return float(binom.cdf(k, int(m), float(eps)))
+
+
+def randomize_k(td: "TailDecision", rng) -> "TailDecision":
+    """
+    Randomised allowance: use k + 1 with probability p, chosen so that
+    (1 - p) F(k) + p F(k + 1) = delta, where F is the worst-case tail.
+    The coin is independent of the data, so the worst-case exceedance
+    probability equals delta instead of F(k).
+    """
+    k = td.k
+    if k + 1 > td.m:
+        return td
+    lo = worst_case_tail(k, td.eps, td.m, td.N, td.tail)
+    hi = worst_case_tail(k + 1, td.eps, td.m, td.N, td.tail)
+    p = 0.0 if hi <= lo else min(max((td.delta - lo) / (hi - lo), 0.0), 1.0)
+    use = bool(rng.random() < p)
+    return TailDecision(k=k + 1 if use else k, k_binomial=td.k_binomial,
+                        k_hypergeometric=td.k_hypergeometric, eps=td.eps, m=td.m,
+                        delta=td.delta, N=td.N, tail=td.tail, randomized=True,
+                        k_base=k, p_next=p)
 
 
 def allowed_k(eps: float, m: int, delta: float, N: int | None = None,
