@@ -77,7 +77,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 
 ### 4 Experiments (≈1000 words)
 
-- **4.1 Datasets.** Synthetic SAXS mixture (forward model, composition triangle with mirror images); NaCl microdiffraction scan (Dryad doi:10.5061/dryad.p2ngf1w4t); IR map of a bioreef sample after resonant Mie correction (Solheim et al. 2019 or the ME-EMSC reference used).
+- **4.1 Datasets.** Synthetic SAXS mixture (forward model, composition triangle with mirror images); NaCl microdiffraction scan (Dryad doi:10.5061/dryad.p2ngf1w4t); IR map of a bioreef sample (29 × 42 pixels of 1 µm) after a per-pixel resonant Mie correction (stage-1 ME-EMSC, each pixel seeded with its own spectrum; SI 2); design drawn in micrometres.
 - **4.2 Targets and tolerances.** Each tolerance justified by physics or noise: NaCl (200) width against 0.02 nm⁻¹ with presence at 5σ; full-profile envelope; IR envelope in 1500–1850 cm⁻¹ with interest at absorbance 0.1. The 9.492 nm⁻¹ peak-q tolerance is dropped, or kept only as a labelled stress case.
 - **4.3 Protocols.** Table of exchangeable parts (Table 1): interpolator × score × budget scheme × design. Calibration size, budgets and confidences fixed before any run.
 - **4.4 Evaluation.** Statement held fixed per dataset. Outputs: measurements, skips by reason, level and remainder wrong-skip rates, coverage over 20 calibration seeds, audit.
@@ -118,7 +118,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 - **Appendix C.** Conditional rate by fixed-sequence LTT; the minimum calibration size and the starting quantile.
 - **Appendix D.** Map bound (Clopper–Pearson) and its confidence when shared with the decision draw.
 - **SI 1.** Natural-neighbour coordinates: exact construction by half-plane clipping, hull-edge limit, check against brute-force stolen areas, continuity under perturbation; the defect in the earlier implementation and its effect.
-- **SI 2.** Dataset processing (Mie correction, window noise, presence test).
+- **SI 2.** Dataset processing: IR correction and design drafted; NaCl and synthetic parts to draft.
 - **SI 3.** Full tables per dataset, level and protocol.
 - **SI 4.** Software: functionality, tests, reproduction procedure. The contract a new form of guarantee keeps (inputs it may use, family fixed before labels, guarantee stated or declared absent) and the Monte Carlo acceptance check, with the priority path as a worked example and a plug-in rule as a counterexample that the check flags.
 - **Data availability.** NaCl scan (Dryad, doi:10.5061/dryad.p2ngf1w4t); IR map, campaign records (250-campaign record and audits), synthetic forward model and a software snapshot deposited on Zenodo, with the DOI reserved before submission. Listed by function.
@@ -131,7 +131,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 4. ~~Fix the protocol matrix and settings in advance; replicate each row.~~ Done: 36 configurations × 250 campaigns, logged in results/record; exact finite-population tail and boundary placement are the defaults.
 5. ~~Matched-budget study.~~ Dropped (framing: safety margins, no speed or accuracy claims).
 6. Off-design audit for NaCl (raster) and IR (non-design pixels): optional, computational only. No new instrument experiments for this paper.
-7. ~~Settle the IR data release~~ Decided: Zenodo (reserve the DOI before submission). Mie-correction citation still to settle.
+7. ~~Settle the IR data release~~ Decided: Zenodo (reserve the DOI before submission). Mie correction decided: the per-pixel stage-1 ME-EMSC engine, seeded with each pixel's own spectrum, described in SI 2 and deposited with the code; IR design redrawn in micrometres; all IR rows rerun (19 Nov 2026).
 8. ~~Decide the headline budget scheme.~~ Decided: no headline scheme. All forms are reported on all datasets; the abstract states that guarantees come in several precise forms and names the shared-event statement as the one common to all.
 9. ~~Replicate the three forms on all three datasets over 20 seeds.~~ Done; every stated rate holds (results/study_summary.md).
 

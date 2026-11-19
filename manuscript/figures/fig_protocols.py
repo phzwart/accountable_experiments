@@ -28,8 +28,8 @@ LAB = {"nn": "Natural\nneighbour", "gp_mle": "GP, max.\nlikelihood", "gp_design"
 SEQ = LinearSegmentedColormap.from_list("seq", ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"])
 
 DATASETS = [
-    ("IR map, original tolerance", "ir_nested_{}", "ir_nested_watson", 949, 0.10, 0.25),
-    ("IR map, tight tolerance", "ir_tight_{}", "ir_tight_sibson", 949, 0.10, 0.25),
+    ("IR map, original tolerance", "ir_nested_{}", "ir_nested_watson", 959, 0.10, 0.25),
+    ("IR map, tight tolerance", "ir_tight_{}", "ir_tight_sibson", 959, 0.10, 0.25),
     ("NaCl scan", "nacl_fwhm_nested_{}", "nacl_fwhm_nested_watson", 1071, 0.20, 0.20),
     ("Synthetic SAXS", "syn_peak_2cert_nested_{}", "syn_peak_2cert_nested_watson", 2118, 0.20, 0.20),
 ]
@@ -117,8 +117,9 @@ def figS1(level=5, seed=0):
         if mode == "nonstationary":
             panels.append(("Local length scale\n$\\ell(x)$, local-spacing rule", e._lfun(P[q]), "$\\ell$ (design units)"))
     from experiments._paths import data_root
-    z = np.load(data_root() / "IR_data" / "interest_gate_1500_1850" / "prepared.npz")
+    z = np.load(data_root() / "IR_data" / "interest_gate_um" / "prepared.npz")
     R, ny, nx = np.asarray(z["points"], float), int(z["ny"]), int(z["nx"])
+    um = float(z["scale_um"])                       # design units are micrometres / um
     engines = {}
     panels = []
     for mode, name in [("mle", "Max. likelihood"), ("design", "Design spacing"), ("nonstationary", "Local spacing")]:
@@ -126,15 +127,15 @@ def figS1(level=5, seed=0):
         engines[mode] = e
         ell = e.info.get("lengthscale", e.info.get("lengthscale_median"))
         lab = "median $\\ell$" if mode == "nonstationary" else "$\\ell$"
-        panels.append((f"{name}, {lab} = {ell * (nx - 1):.1f} µm", e.std(R).reshape(ny, nx), "Posterior s.d."))
+        panels.append((f"{name}, {lab} = {ell * um:.1f} µm", e.std(R).reshape(ny, nx), "Posterior s.d."))
         print(mode, e.info)
-    lx = engines["nonstationary"]._lfun(R).reshape(ny, nx) * (nx - 1)
+    lx = engines["nonstationary"]._lfun(R).reshape(ny, nx) * um
     panels.append(("Local length scale $\\ell(x)$", lx, "$\\ell$ (µm)"))
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8})
     fig, axs = plt.subplots(1, 4, figsize=(11.0, 2.9), facecolor=SURF, constrained_layout=True)
     vmax = max(p[1].max() for p in panels[:3])
     ext = (-0.5, nx - 0.5, ny - 0.5, -0.5)
-    mx, my = P[prior, 0] * (nx - 1), P[prior, 1] * (ny - 1)
+    mx, my = P[prior, 0] * um, P[prior, 1] * um
     for ax, (title, v, cl) in zip(axs, panels):
         style(ax, grid=False)
         norm = dict(vmin=0, vmax=vmax) if cl == "Posterior s.d." else {}

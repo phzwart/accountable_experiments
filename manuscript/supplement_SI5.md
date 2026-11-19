@@ -6,14 +6,14 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 
 | Row | Runs | Measured (mean ± s.d.) | Event | Budget | Allowed failure | Exceedances / level checks | Rate | 95 % interval |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| ir_separate_split_watson | 250 | 275 ± 51 | R_interest | 0.05 | 0.125 | 32/1000 | 0.032 | 0.022–0.045 |
-| ir_separate_split_watson | 250 | 275 ± 51 | R_interp | 0.05 | 0.125 | 0/1000 | 0.000 | 0.000–0.004 |
-| ir_separate_split_watson | 250 | 275 ± 51 | R_E | 0.10 | 0.250 | 0/1000 | 0.000 | 0.000–0.004 |
-| ir_nested_watson | 250 | 297 ± 53 | R_E | 0.10 | 0.250 | 72/1000 | 0.072 | 0.057–0.090 |
-| ir_priority_watson | 250 | 331 ± 79 | R_E | 0.10 | 0.250 | 72/1000 | 0.072 | 0.057–0.090 |
-| ir_nested_gp_mle | 250 | 283 ± 36 | R_E | 0.10 | 0.250 | 72/1000 | 0.072 | 0.057–0.090 |
-| ir_nested_gp_design | 250 | 290 ± 42 | R_E | 0.10 | 0.250 | 0/1000 | 0.000 | 0.000–0.004 |
-| ir_nested_gp_nonstationary | 250 | 305 ± 45 | R_E | 0.10 | 0.250 | 33/1000 | 0.033 | 0.023–0.046 |
+| ir_separate_split_watson | 250 | 262 ± 28 | R_interest | 0.05 | 0.125 | 37/1000 | 0.037 | 0.026–0.051 |
+| ir_separate_split_watson | 250 | 262 ± 28 | R_interp | 0.05 | 0.125 | 0/1000 | 0.000 | 0.000–0.004 |
+| ir_separate_split_watson | 250 | 262 ± 28 | R_E | 0.10 | 0.250 | 0/1000 | 0.000 | 0.000–0.004 |
+| ir_nested_watson | 250 | 295 ± 53 | R_E | 0.10 | 0.250 | 49/1000 | 0.049 | 0.036–0.064 |
+| ir_priority_watson | 250 | 327 ± 80 | R_E | 0.10 | 0.250 | 49/1000 | 0.049 | 0.036–0.064 |
+| ir_nested_gp_mle | 250 | 273 ± 31 | R_E | 0.10 | 0.250 | 49/1000 | 0.049 | 0.036–0.064 |
+| ir_nested_gp_design | 250 | 283 ± 34 | R_E | 0.10 | 0.250 | 50/1000 | 0.050 | 0.037–0.065 |
+| ir_nested_gp_nonstationary | 250 | 295 ± 42 | R_E | 0.10 | 0.250 | 2/1000 | 0.002 | 0.000–0.007 |
 | nacl_fwhm_separate_watson | 250 | 719 ± 60 | R_interest | 0.10 | 0.100 | 64/1000 | 0.064 | 0.050–0.081 |
 | nacl_fwhm_separate_watson | 250 | 719 ± 60 | R_interp | 0.10 | 0.100 | 57/1000 | 0.057 | 0.043–0.073 |
 | nacl_fwhm_separate_watson | 250 | 719 ± 60 | R_E | 0.20 | 0.200 | 9/1000 | 0.009 | 0.004–0.017 |
@@ -30,19 +30,19 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 | syn_peak_2cert_nested_gp_mle | 250 | 1139 ± 215 | R_E | 0.20 | 0.200 | 160/1500 | 0.107 | 0.091–0.123 |
 | syn_peak_2cert_nested_gp_design | 250 | 1042 ± 201 | R_E | 0.20 | 0.200 | 184/1500 | 0.123 | 0.106–0.140 |
 | syn_peak_2cert_nested_gp_nonstationary | 250 | 1447 ± 134 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
-| ir_tight_sibson | 250 | 665 ± 72 | R_E | 0.10 | 0.250 | 211/1000 | 0.211 | 0.186–0.238 |
-| ir_tight_gp_mle | 250 | 770 ± 53 | R_E | 0.10 | 0.250 | 201/1000 | 0.201 | 0.177–0.227 |
-| ir_tight_gp_design | 250 | 788 ± 51 | R_E | 0.10 | 0.250 | 190/1000 | 0.190 | 0.166–0.216 |
-| ir_tight_gp_nonstationary | 250 | 794 ± 35 | R_E | 0.10 | 0.250 | 187/1000 | 0.187 | 0.163–0.213 |
-| ir_tight_interp_sibson | 250 | 615 ± 65 | R_E | 0.10 | 0.250 | 189/1000 | 0.189 | 0.165–0.215 |
-| ir_tight_interp_gp_mle | 250 | 800 ± 56 | R_E | 0.10 | 0.250 | 182/1000 | 0.182 | 0.159–0.207 |
-| ir_tight_interp_gp_design | 250 | 815 ± 52 | R_E | 0.10 | 0.250 | 198/1000 | 0.198 | 0.174–0.224 |
-| ir_tight_interp_gp_nonstationary | 250 | 846 ± 33 | R_E | 0.10 | 0.250 | 189/1000 | 0.189 | 0.165–0.215 |
-| ir_separate_random | 250 | 364 ± 126 | R_interest | 0.05 | 0.125 | 77/1000 | 0.077 | 0.061–0.095 |
-| ir_separate_random | 250 | 364 ± 126 | R_interp | 0.05 | 0.125 | 0/1000 | 0.000 | 0.000–0.004 |
-| ir_separate_random | 250 | 364 ± 126 | R_E | 0.10 | 0.250 | 9/1000 | 0.009 | 0.004–0.017 |
-| ir_nested_random | 250 | 711 ± 74 | R_E | 0.10 | 0.250 | 194/1000 | 0.194 | 0.170–0.220 |
-| ir_priority_random | 250 | 808 ± 51 | R_E | 0.10 | 0.250 | 197/1000 | 0.197 | 0.173–0.223 |
+| ir_tight_sibson | 250 | 621 ± 70 | R_E | 0.10 | 0.250 | 193/1000 | 0.193 | 0.169–0.219 |
+| ir_tight_gp_mle | 250 | 750 ± 55 | R_E | 0.10 | 0.250 | 179/1000 | 0.179 | 0.156–0.204 |
+| ir_tight_gp_design | 250 | 757 ± 53 | R_E | 0.10 | 0.250 | 190/1000 | 0.190 | 0.166–0.216 |
+| ir_tight_gp_nonstationary | 250 | 804 ± 37 | R_E | 0.10 | 0.250 | 191/1000 | 0.191 | 0.167–0.217 |
+| ir_tight_interp_sibson | 250 | 604 ± 65 | R_E | 0.10 | 0.250 | 190/1000 | 0.190 | 0.166–0.216 |
+| ir_tight_interp_gp_mle | 250 | 796 ± 58 | R_E | 0.10 | 0.250 | 172/1000 | 0.172 | 0.149–0.197 |
+| ir_tight_interp_gp_design | 250 | 803 ± 55 | R_E | 0.10 | 0.250 | 194/1000 | 0.194 | 0.170–0.220 |
+| ir_tight_interp_gp_nonstationary | 250 | 857 ± 33 | R_E | 0.10 | 0.250 | 187/1000 | 0.187 | 0.163–0.213 |
+| ir_separate_random | 250 | 335 ± 84 | R_interest | 0.05 | 0.125 | 78/1000 | 0.078 | 0.062–0.096 |
+| ir_separate_random | 250 | 335 ± 84 | R_interp | 0.05 | 0.125 | 0/1000 | 0.000 | 0.000–0.004 |
+| ir_separate_random | 250 | 335 ± 84 | R_E | 0.10 | 0.250 | 8/1000 | 0.008 | 0.003–0.016 |
+| ir_nested_random | 250 | 716 ± 71 | R_E | 0.10 | 0.250 | 168/1000 | 0.168 | 0.145–0.193 |
+| ir_priority_random | 250 | 817 ± 49 | R_E | 0.10 | 0.250 | 170/1000 | 0.170 | 0.147–0.195 |
 | nacl_fwhm_separate_random | 250 | 928 ± 45 | R_interest | 0.10 | 0.100 | 67/1000 | 0.067 | 0.052–0.084 |
 | nacl_fwhm_separate_random | 250 | 928 ± 45 | R_interp | 0.10 | 0.100 | 55/1000 | 0.055 | 0.042–0.071 |
 | nacl_fwhm_separate_random | 250 | 928 ± 45 | R_E | 0.20 | 0.200 | 17/1000 | 0.017 | 0.010–0.027 |
@@ -53,20 +53,20 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 | syn_peak_2cert_separate_random | 250 | 991 ± 286 | R_E | 0.20 | 0.200 | 7/1500 | 0.005 | 0.002–0.010 |
 | syn_peak_2cert_nested_random | 250 | 1076 ± 187 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
 | syn_peak_2cert_priority_random | 250 | 1322 ± 185 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
-| ir_tight_random | 250 | 865 ± 29 | R_E | 0.10 | 0.250 | 164/1000 | 0.164 | 0.142–0.188 |
+| ir_tight_random | 250 | 871 ± 31 | R_E | 0.10 | 0.250 | 194/1000 | 0.194 | 0.170–0.220 |
 
 
 **Table S5.2.** Attainment on fixed level populations: for the first five campaigns of each configuration and every certified level, the calibration draw was repeated 500 times on the recorded population and the exceedance frequency of each stated rate compared with the exact finite-population worst case at the allowed number of failures (Appendix A). The ratio is taken over levels where the budget can be exceeded. Union-bound statements of the per-claim form are omitted, since their worst case is not a single hypergeometric tail.
 
 | Configuration | Event | Levels audited | Mean worst case | Mean attained | Attained / worst case | Levels where the budget cannot be exceeded |
 | --- | --- | --- | --- | --- | --- | --- |
-| ir_separate_split_watson | R_interest | 20 | 0.080 | 0.038 | 0.96 | 8 of 20 |
-| ir_separate_split_watson | R_interp | 20 | 0.080 | 0.000 | – | 20 of 20 |
-| ir_nested_watson | R_E | 20 | 0.201 | 0.062 | 0.99 | 15 of 20 |
-| ir_priority_watson | R_E | 20 | 0.201 | 0.062 | 0.99 | 15 of 20 |
-| ir_nested_gp_mle | R_E | 20 | 0.201 | 0.062 | 0.99 | 15 of 20 |
-| ir_nested_gp_design | R_E | 20 | 0.201 | 0.000 | – | 20 of 20 |
-| ir_nested_gp_nonstationary | R_E | 20 | 0.201 | 0.032 | 0.51 | 15 of 20 |
+| ir_separate_split_watson | R_interest | 20 | 0.075 | 0.029 | 1.00 | 10 of 20 |
+| ir_separate_split_watson | R_interp | 20 | 0.075 | 0.000 | – | 20 of 20 |
+| ir_nested_watson | R_E | 20 | 0.190 | 0.057 | 1.03 | 15 of 20 |
+| ir_priority_watson | R_E | 20 | 0.190 | 0.057 | 1.03 | 15 of 20 |
+| ir_nested_gp_mle | R_E | 20 | 0.190 | 0.057 | 1.03 | 15 of 20 |
+| ir_nested_gp_design | R_E | 20 | 0.190 | 0.057 | 1.03 | 15 of 20 |
+| ir_nested_gp_nonstationary | R_E | 20 | 0.190 | 0.000 | – | 20 of 20 |
 | nacl_fwhm_separate_watson | R_interest | 20 | 0.061 | 0.060 | 0.98 | 0 of 20 |
 | nacl_fwhm_separate_watson | R_interp | 20 | 0.061 | 0.062 | 1.03 | 0 of 20 |
 | nacl_fwhm_nested_watson | R_E | 20 | 0.120 | 0.119 | 0.99 | 0 of 20 |
@@ -81,18 +81,18 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 | syn_peak_2cert_nested_gp_mle | R_E | 30 | 0.113 | 0.112 | 0.99 | 0 of 30 |
 | syn_peak_2cert_nested_gp_design | R_E | 30 | 0.113 | 0.114 | 1.01 | 0 of 30 |
 | syn_peak_2cert_nested_gp_nonstationary | R_E | 30 | 0.113 | 0.118 | 1.04 | 0 of 30 |
-| ir_tight_sibson | R_E | 20 | 0.201 | 0.198 | 0.98 | 0 of 20 |
-| ir_tight_gp_mle | R_E | 20 | 0.201 | 0.202 | 1.00 | 0 of 20 |
-| ir_tight_gp_design | R_E | 20 | 0.201 | 0.199 | 0.99 | 0 of 20 |
-| ir_tight_gp_nonstationary | R_E | 20 | 0.201 | 0.197 | 0.98 | 0 of 20 |
-| ir_tight_interp_sibson | R_E | 20 | 0.201 | 0.197 | 0.98 | 0 of 20 |
-| ir_tight_interp_gp_mle | R_E | 20 | 0.201 | 0.206 | 1.02 | 0 of 20 |
-| ir_tight_interp_gp_design | R_E | 20 | 0.201 | 0.203 | 1.01 | 0 of 20 |
-| ir_tight_interp_gp_nonstationary | R_E | 20 | 0.201 | 0.197 | 0.98 | 0 of 20 |
-| ir_separate_random | R_interest | 20 | 0.080 | 0.079 | 0.99 | 0 of 20 |
-| ir_separate_random | R_interp | 20 | 0.080 | 0.000 | – | 20 of 20 |
-| ir_nested_random | R_E | 20 | 0.201 | 0.205 | 1.02 | 0 of 20 |
-| ir_priority_random | R_E | 20 | 0.201 | 0.202 | 1.01 | 0 of 20 |
+| ir_tight_sibson | R_E | 20 | 0.190 | 0.196 | 1.03 | 0 of 20 |
+| ir_tight_gp_mle | R_E | 20 | 0.190 | 0.188 | 0.99 | 0 of 20 |
+| ir_tight_gp_design | R_E | 20 | 0.190 | 0.189 | 0.99 | 0 of 20 |
+| ir_tight_gp_nonstationary | R_E | 20 | 0.190 | 0.187 | 0.98 | 0 of 20 |
+| ir_tight_interp_sibson | R_E | 20 | 0.190 | 0.196 | 1.03 | 0 of 20 |
+| ir_tight_interp_gp_mle | R_E | 20 | 0.190 | 0.190 | 1.00 | 0 of 20 |
+| ir_tight_interp_gp_design | R_E | 20 | 0.190 | 0.191 | 1.01 | 0 of 20 |
+| ir_tight_interp_gp_nonstationary | R_E | 20 | 0.190 | 0.190 | 1.00 | 0 of 20 |
+| ir_separate_random | R_interest | 20 | 0.075 | 0.069 | 0.92 | 0 of 20 |
+| ir_separate_random | R_interp | 20 | 0.075 | 0.000 | – | 20 of 20 |
+| ir_nested_random | R_E | 20 | 0.190 | 0.182 | 0.96 | 0 of 20 |
+| ir_priority_random | R_E | 20 | 0.190 | 0.186 | 0.98 | 0 of 20 |
 | nacl_fwhm_separate_random | R_interest | 20 | 0.061 | 0.063 | 1.04 | 0 of 20 |
 | nacl_fwhm_separate_random | R_interp | 20 | 0.061 | 0.060 | 0.99 | 0 of 20 |
 | nacl_fwhm_nested_random | R_E | 20 | 0.120 | 0.121 | 1.01 | 0 of 20 |
@@ -101,20 +101,20 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 | syn_peak_2cert_separate_random | R_interp | 30 | 0.054 | 0.032 | 0.94 | 8 of 30 |
 | syn_peak_2cert_nested_random | R_E | 30 | 0.113 | 0.112 | 0.99 | 0 of 30 |
 | syn_peak_2cert_priority_random | R_E | 30 | 0.113 | 0.114 | 1.01 | 0 of 30 |
-| ir_tight_random | R_E | 20 | 0.201 | 0.195 | 0.97 | 0 of 20 |
+| ir_tight_random | R_E | 20 | 0.190 | 0.171 | 0.90 | 0 of 20 |
 
 **Table S5.3.** Observed exceedances against the picked failure probability. On each level the rule picks the largest attainable worst-case failure probability $\delta_L$ at or below the nominal $\delta$; the guarantee made on that level is $P(R > \varepsilon) \le \delta_L$. "Allowed exceedances" is the sum of $\delta_L$ over all level checks of a configuration; the probability of the observed count treats checks as independent Bernoulli trials with success probabilities $\delta_L$ and is indicative. For the union-bound statement of the per-claim form, $\delta_L$ is the sum of the two per-claim picked levels. "Reachable" checks are those on which covering every coverable site would exceed the budget.
 
 | Configuration | Event | Nominal δ | Checks | Mean picked δ_L | Allowed exceedances (Σ δ_L) | Observed | Observed / allowed | P(≥ observed) under δ_L | Reachable checks | Allowed on reachable | Observed on reachable |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| ir_separate_split_watson | R_E | 0.250 | 1000 | 0.160 | 159.6 | 0 | 0.00 | 1.000 | 250 | 9.3 | 0 |
-| ir_separate_split_watson | R_interest | 0.125 | 1000 | 0.080 | 79.8 | 32 | 0.40 | 1.000 | 608 | 40.7 | 32 |
-| ir_separate_split_watson | R_interp | 0.125 | 1000 | 0.080 | 79.8 | 0 | 0.00 | 1.000 | 0 | 0.0 | 0 |
-| ir_nested_watson | R_E | 0.250 | 1000 | 0.201 | 201.2 | 72 | 0.36 | 1.000 | 250 | 62.5 | 72 |
-| ir_priority_watson | R_E | 0.250 | 1000 | 0.201 | 201.2 | 72 | 0.36 | 1.000 | 250 | 62.5 | 72 |
-| ir_nested_gp_mle | R_E | 0.250 | 1000 | 0.201 | 201.2 | 72 | 0.36 | 1.000 | 250 | 62.5 | 72 |
-| ir_nested_gp_design | R_E | 0.250 | 1000 | 0.201 | 201.2 | 0 | 0.00 | 1.000 | 0 | 0.0 | 0 |
-| ir_nested_gp_nonstationary | R_E | 0.250 | 1000 | 0.201 | 201.2 | 33 | 0.16 | 1.000 | 259 | 64.1 | 33 |
+| ir_separate_split_watson | R_E | 0.250 | 1000 | 0.150 | 149.6 | 0 | 0.00 | 1.000 | 250 | 16.2 | 0 |
+| ir_separate_split_watson | R_interest | 0.125 | 1000 | 0.075 | 74.8 | 37 | 0.49 | 1.000 | 548 | 31.8 | 37 |
+| ir_separate_split_watson | R_interp | 0.125 | 1000 | 0.075 | 74.8 | 0 | 0.00 | 1.000 | 0 | 0.0 | 0 |
+| ir_nested_watson | R_E | 0.250 | 1000 | 0.190 | 190.2 | 49 | 0.26 | 1.000 | 250 | 55.6 | 49 |
+| ir_priority_watson | R_E | 0.250 | 1000 | 0.190 | 190.2 | 49 | 0.26 | 1.000 | 250 | 55.6 | 49 |
+| ir_nested_gp_mle | R_E | 0.250 | 1000 | 0.190 | 190.2 | 49 | 0.26 | 1.000 | 250 | 55.6 | 49 |
+| ir_nested_gp_design | R_E | 0.250 | 1000 | 0.190 | 190.2 | 50 | 0.26 | 1.000 | 250 | 55.6 | 50 |
+| ir_nested_gp_nonstationary | R_E | 0.250 | 1000 | 0.190 | 190.2 | 2 | 0.01 | 1.000 | 11 | 1.7 | 2 |
 | nacl_fwhm_separate_watson | R_E | 0.200 | 1000 | 0.121 | 121.3 | 9 | 0.07 | 1.000 | 1000 | 121.3 | 9 |
 | nacl_fwhm_separate_watson | R_interest | 0.100 | 1000 | 0.061 | 60.6 | 64 | 1.06 | 0.346 | 1000 | 60.6 | 64 |
 | nacl_fwhm_separate_watson | R_interp | 0.100 | 1000 | 0.061 | 60.6 | 57 | 0.94 | 0.703 | 1000 | 60.6 | 57 |
@@ -131,19 +131,19 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 | syn_peak_2cert_nested_gp_mle | R_E | 0.200 | 1500 | 0.113 | 169.8 | 160 | 0.94 | 0.803 | 1500 | 169.8 | 160 |
 | syn_peak_2cert_nested_gp_design | R_E | 0.200 | 1500 | 0.113 | 169.8 | 184 | 1.08 | 0.130 | 1500 | 169.8 | 184 |
 | syn_peak_2cert_nested_gp_nonstationary | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
-| ir_tight_sibson | R_E | 0.250 | 1000 | 0.201 | 201.2 | 211 | 1.05 | 0.230 | 1000 | 201.2 | 211 |
-| ir_tight_gp_mle | R_E | 0.250 | 1000 | 0.201 | 201.2 | 201 | 1.00 | 0.519 | 1000 | 201.2 | 201 |
-| ir_tight_gp_design | R_E | 0.250 | 1000 | 0.201 | 201.2 | 190 | 0.94 | 0.823 | 1000 | 201.2 | 190 |
-| ir_tight_gp_nonstationary | R_E | 0.250 | 1000 | 0.201 | 201.2 | 187 | 0.93 | 0.878 | 1000 | 201.2 | 187 |
-| ir_tight_interp_sibson | R_E | 0.250 | 1000 | 0.201 | 201.2 | 189 | 0.94 | 0.843 | 1000 | 201.2 | 189 |
-| ir_tight_interp_gp_mle | R_E | 0.250 | 1000 | 0.201 | 201.2 | 182 | 0.90 | 0.942 | 1000 | 201.2 | 182 |
-| ir_tight_interp_gp_design | R_E | 0.250 | 1000 | 0.201 | 201.2 | 198 | 0.98 | 0.613 | 1000 | 201.2 | 198 |
-| ir_tight_interp_gp_nonstationary | R_E | 0.250 | 1000 | 0.201 | 201.2 | 189 | 0.94 | 0.843 | 1000 | 201.2 | 189 |
-| ir_separate_random | R_E | 0.250 | 1000 | 0.160 | 159.6 | 9 | 0.06 | 1.000 | 1000 | 159.6 | 9 |
-| ir_separate_random | R_interest | 0.125 | 1000 | 0.080 | 79.8 | 77 | 0.97 | 0.646 | 1000 | 79.8 | 77 |
-| ir_separate_random | R_interp | 0.125 | 1000 | 0.080 | 79.8 | 0 | 0.00 | 1.000 | 0 | 0.0 | 0 |
-| ir_nested_random | R_E | 0.250 | 1000 | 0.201 | 201.2 | 194 | 0.96 | 0.727 | 1000 | 201.2 | 194 |
-| ir_priority_random | R_E | 0.250 | 1000 | 0.201 | 201.2 | 197 | 0.98 | 0.643 | 1000 | 201.2 | 197 |
+| ir_tight_sibson | R_E | 0.250 | 1000 | 0.190 | 190.2 | 193 | 1.01 | 0.424 | 1000 | 190.2 | 193 |
+| ir_tight_gp_mle | R_E | 0.250 | 1000 | 0.190 | 190.2 | 179 | 0.94 | 0.828 | 1000 | 190.2 | 179 |
+| ir_tight_gp_design | R_E | 0.250 | 1000 | 0.190 | 190.2 | 190 | 1.00 | 0.520 | 1000 | 190.2 | 190 |
+| ir_tight_gp_nonstationary | R_E | 0.250 | 1000 | 0.190 | 190.2 | 191 | 1.00 | 0.488 | 1000 | 190.2 | 191 |
+| ir_tight_interp_sibson | R_E | 0.250 | 1000 | 0.190 | 190.2 | 190 | 1.00 | 0.520 | 1000 | 190.2 | 190 |
+| ir_tight_interp_gp_mle | R_E | 0.250 | 1000 | 0.190 | 190.2 | 172 | 0.90 | 0.936 | 1000 | 190.2 | 172 |
+| ir_tight_interp_gp_design | R_E | 0.250 | 1000 | 0.190 | 190.2 | 194 | 1.02 | 0.393 | 1000 | 190.2 | 194 |
+| ir_tight_interp_gp_nonstationary | R_E | 0.250 | 1000 | 0.190 | 190.2 | 187 | 0.98 | 0.616 | 1000 | 190.2 | 187 |
+| ir_separate_random | R_E | 0.250 | 1000 | 0.150 | 149.6 | 8 | 0.05 | 1.000 | 1000 | 149.6 | 8 |
+| ir_separate_random | R_interest | 0.125 | 1000 | 0.075 | 74.8 | 78 | 1.04 | 0.366 | 1000 | 74.8 | 78 |
+| ir_separate_random | R_interp | 0.125 | 1000 | 0.075 | 74.8 | 0 | 0.00 | 1.000 | 0 | 0.0 | 0 |
+| ir_nested_random | R_E | 0.250 | 1000 | 0.190 | 190.2 | 168 | 0.88 | 0.968 | 1000 | 190.2 | 168 |
+| ir_priority_random | R_E | 0.250 | 1000 | 0.190 | 190.2 | 170 | 0.89 | 0.955 | 1000 | 190.2 | 170 |
 | nacl_fwhm_separate_random | R_E | 0.200 | 1000 | 0.121 | 121.3 | 17 | 0.14 | 1.000 | 1000 | 121.3 | 17 |
 | nacl_fwhm_separate_random | R_interest | 0.100 | 1000 | 0.061 | 60.6 | 67 | 1.11 | 0.216 | 1000 | 60.6 | 67 |
 | nacl_fwhm_separate_random | R_interp | 0.100 | 1000 | 0.061 | 60.6 | 55 | 0.91 | 0.790 | 1000 | 60.6 | 55 |
@@ -154,4 +154,4 @@ Every configuration of Sections 5.1–5.3 was run as 250 independent campaigns, 
 | syn_peak_2cert_separate_random | R_interp | 0.100 | 1500 | 0.054 | 80.9 | 62 | 0.77 | 0.990 | 1104 | 51.9 | 62 |
 | syn_peak_2cert_nested_random | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
 | syn_peak_2cert_priority_random | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
-| ir_tight_random | R_E | 0.250 | 1000 | 0.201 | 201.2 | 164 | 0.82 | 0.999 | 1000 | 201.2 | 164 |
+| ir_tight_random | R_E | 0.250 | 1000 | 0.190 | 190.2 | 194 | 1.02 | 0.393 | 1000 | 190.2 | 194 |

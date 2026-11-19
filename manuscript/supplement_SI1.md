@@ -4,7 +4,7 @@
 
 ## SI 1.x Gaussian-process interpolation on the design
 
-The Gaussian-process protocols use an isotropic squared-exponential kernel on the coordinates of the hierarchical design, the unit square on which the design was drawn [RasmussenWilliams2006]. With measured positions $X$, measured spectra $Y$ (one row per site), their column mean $\bar y$, kernel matrix $K$ and nugget $\nu$ relative to unit output scale, the prediction at a design site $x$ is
+The Gaussian-process protocols use an isotropic squared-exponential kernel on the coordinates of the hierarchical design: the unit square for the two scattering maps, and micrometres divided by 41 µm for the IR map, an isotropic rescaling of the physical raster [RasmussenWilliams2006]. With measured positions $X$, measured spectra $Y$ (one row per site), their column mean $\bar y$, kernel matrix $K$ and nugget $\nu$ relative to unit output scale, the prediction at a design site $x$ is
 
 $$
 \hat y(x) = \bar y + k(x)^\top (K + \nu I)^{-1} (Y - \bar y)
@@ -32,15 +32,15 @@ with $\ell(x)$ the distance from $x$ to its third-nearest measured site, clipped
 
 In every rule, the length scale of a level is fixed from the measured set before the calibration draw, so the score is frozen in the sense of Section 3.1.
 
-**Table S1.1.** Length scales and nuggets over all certified levels and 20 seeds (quantile path), in design units (the unit square). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.
+**Table S1.1.** Length scales and nuggets over all certified levels and 20 seeds (quantile path), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 µm). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.
 
 | Dataset | Max. likelihood: $\ell$ | Max. likelihood: $\nu$ | Design spacing: $\ell$ | Local spacing: median $\ell$ |
 | --- | --- | --- | --- | --- |
-| IR map | 0.077 (0.057–0.095) | 0.12 (0.007–0.61) | 0.058 (0.036–0.104) | 0.078 (0.043–0.118) |
+| IR map | 0.069 (0.045–0.082) | 0.36 (0.038–0.82) | 0.045 (0.024–0.088) | 0.071 (0.049–0.101) |
 | NaCl scan | 0.072 (0.029–0.120) | 1.47 (0.007–5.04) | 0.064 (0.036–0.107) | 0.077 (0.040–0.113) |
 | Synthetic map | 0.150 (0.070–0.296) | 0.083 (0.018–0.27) | 0.045 (0.019–0.109) | 0.051 (0.021–0.118) |
 
-**Figure S1.** Posterior standard deviation on the IR map before level 5 (seed 0, local-spacing campaign; 185 measured sites, dots) under the three length-scale rules, evaluated on the full 42 × 29 µm raster, and the local length scale of the third rule. Length scales are converted to micrometres along the 42 µm axis; the design coordinates scale the 29 µm axis by a factor 0.69 relative to it. File: `figures/figS1_gp_std.png`.
+**Figure S1.** Posterior standard deviation on the IR map before level 5 (seed 0, local-spacing campaign; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 × 29 µm raster, and the local length scale of the third rule. Length scales are given in micrometres. File: `figures/figS1_gp_std.png`.
 
 **Checks.** Unit tests confirm that the weights reproduce the BoTorch posterior mean and variance for fixed hyperparameters, that the design rule follows the finest measured level, that the Gibbs kernel is positive semidefinite and reduces to the isotropic kernel for constant $\ell$, and that the local length scale is long where measured sites are sparse.
 

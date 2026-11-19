@@ -14,7 +14,7 @@ The length scale is set in three ways, each fixed before the calibration draw of
 
 ## Notes for revision (not part of the text)
 
-- *Isotropy.* Decided: physical coordinates in micrometres for IR (needs the IR design redrawn on the physical rectangle and the IR rows rerun). Previous state: the kernel is isotropic in design coordinates, the unit square on which the hierarchical design was drawn. The IR raster (42 × 29 µm) maps onto that square with different scales along the two axes, so the kernel is mildly anisotropic in physical units for IR. The natural-neighbour weights use the same coordinates. Decide whether to keep design coordinates for both (current choice) or move both to physical coordinates.
+- *Isotropy.* Done: the IR design is drawn on the physical rectangle and both interpolators use micrometres (divided by 41 µm, an isotropic rescaling); the scattering maps keep the unit square of their design. SI 2 describes the IR preparation.
 - *Interest score.* Kept from the natural-neighbour protocol on purpose; only the interpolator and the interpolation score change. If a reviewer asks for a fully GP protocol, a GP-predicted maximum is a small addition.
 - *Mirror images.* The synthetic map uses mirror images at the composition walls for natural-neighbour interpolation. The GP protocols use none.
 - References to add: [RasmussenWilliams2006] Rasmussen, Williams (2006), Gaussian Processes for Machine Learning, MIT Press. [Balandat2020] Balandat et al. (2020), BoTorch, NeurIPS 33. [Gibbs1997] Gibbs (1997), PhD thesis, Cambridge. [PaciorekSchervish2004] Paciorek, Schervish (2004), NeurIPS 16. Consider Noack & Sethian (2022) on non-stationary kernels for autonomous experiments (check details).

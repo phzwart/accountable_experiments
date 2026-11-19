@@ -23,7 +23,7 @@ COL = {"separate": "#2a78d6", "nested": "#eb6834", "priority": "#1baf7a", "legac
 LAB = {"separate": "Per-claim\nbudgets", "nested": "Quantile\npath", "priority": "Priority\npath"}
 
 DATASETS = [
-    ("IR map", "ir_{}", {"separate": "separate_split_watson", "nested": "nested_watson", "priority": "priority_watson"}, 949, 0.10, 0.25),
+    ("IR map", "ir_{}", {"separate": "separate_split_watson", "nested": "nested_watson", "priority": "priority_watson"}, 959, 0.10, 0.25),
     ("NaCl scan", "nacl_fwhm_{}", {"separate": "separate_watson", "nested": "nested_watson", "priority": "priority_watson"}, 1071, 0.20, 0.20),
     ("Synthetic SAXS", "syn_peak_2cert_{}", {"separate": "separate_watson", "nested": "nested_watson", "priority": "priority_watson"}, 2118, 0.20, 0.20),
 ]

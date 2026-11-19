@@ -6,7 +6,7 @@
 
 | Dataset | Design sites | Per-claim budgets | Quantile path | Priority path |
 | --- | --- | --- | --- | --- |
-| IR map | 949 | 275 ± 51 | 297 ± 53 | 331 ± 79 |
+| IR map | 959 | 262 ± 28 | 295 ± 53 | 327 ± 80 |
 | NaCl scan | 1071 | 719 ± 60 | 614 ± 56 | 678 ± 39 |
 | Synthetic map | 2118 | 338 ± 26 | 334 ± 26 | 628 ± 61 |
 
@@ -14,9 +14,9 @@
 
 | Dataset | Design sites | Natural neighbour | GP, max. likelihood | GP, design spacing | GP, local spacing |
 | --- | --- | --- | --- | --- | --- |
-| IR map | 949 | 297 ± 53 | 283 ± 36 | 290 ± 42 | 305 ± 45 |
-| IR map, tight | 949 | 665 ± 72 | 770 ± 53 | 788 ± 51 | 794 ± 35 |
-| IR map, tight, interpolation only | 949 | 615 ± 65 | 800 ± 56 | 815 ± 52 | 846 ± 33 |
+| IR map | 959 | 295 ± 53 | 273 ± 31 | 283 ± 34 | 295 ± 42 |
+| IR map, tight | 959 | 621 ± 70 | 750 ± 55 | 757 ± 53 | 804 ± 37 |
+| IR map, tight, interpolation only | 959 | 604 ± 65 | 796 ± 58 | 803 ± 55 | 857 ± 33 |
 | NaCl scan | 1071 | 614 ± 56 | 745 ± 72 | 760 ± 70 | 778 ± 59 |
 | Synthetic map | 2118 | 334 ± 26 | 1139 ± 215 | 1042 ± 201 | 1447 ± 134 |
 
@@ -24,10 +24,10 @@
 
 | Dataset | Form | Informed scores | Random scores |
 | --- | --- | --- | --- |
-| IR map | Per-claim budgets | 275 ± 51 | 364 ± 126 |
-| IR map | Quantile path | 297 ± 53 | 711 ± 74 |
-| IR map | Priority path | 331 ± 79 | 808 ± 51 |
-| IR map, tight | Quantile path | 665 ± 72 | 865 ± 29 |
+| IR map | Per-claim budgets | 262 ± 28 | 335 ± 84 |
+| IR map | Quantile path | 295 ± 53 | 716 ± 71 |
+| IR map | Priority path | 327 ± 80 | 817 ± 49 |
+| IR map, tight | Quantile path | 621 ± 70 | 871 ± 31 |
 | NaCl scan | Per-claim budgets | 719 ± 60 | 928 ± 45 |
 | NaCl scan | Quantile path | 614 ± 56 | 861 ± 50 |
 | NaCl scan | Priority path | 678 ± 39 | 874 ± 49 |
