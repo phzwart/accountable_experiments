@@ -45,3 +45,20 @@ Level rates were 0.18, 0.14, 0.12, 0.13, 0.08 and 0.08 against the budget of 0.2
 - **Phase boundaries.** Sites with a design neighbour of another phase are 8.7 % of all sites but 44 % of the wrong skips.
 - **Inside the micellar phase.** Most of the remaining wrong skips fall within L1 (81 of 91).
 - **Signal shape again.** The FWHM tolerance is absolute (0.001 Å⁻¹). That is about 9 % of the broad L1 correlation peak (0.011 Å⁻¹), against about 25 % of the Bragg peaks (0.004 Å⁻¹). The same claim is therefore much stricter on broad peaks.
+
+## Tighter interpolation tolerances (interpolation certificate only, seed 0)
+
+Peak position and FWHM tolerances scaled by 1, 1/2 and 1/4 (`interp_tight_seed0.png`). Quantile path at 0.20, confidence 0.80.
+
+| Scale | Δq, ΔFWHM (Å⁻¹) | Measured | Wrong skips | Sites outside tolerance | Wrong skips at phase boundaries |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0.005, 0.001 | 331 | 161 (7.7 %) | 11 % | 43 % |
+| 1/2 | 0.0025, 0.0005 | 334 | 252 (12.1 %) | 17 % | 30 % |
+| 1/4 | 0.00125, 0.00025 | 784 | 202 (9.7 %) | 27 % | 9 % |
+
+Sites at phase boundaries are 8.7 % of the map.
+
+1. **The share of wrong skips stays at 8–12 %.** That share is set by the budget, not by the tolerance. A tighter tolerance makes each claim stricter. The rule still spends the same budget on whichever claims fail, until failures among the calibration sites stop further skips.
+2. **The cost moves once the failures outgrow the budget.** At half the tolerance the cost is unchanged (334 measured) and more of the budget is used. At a quarter, 27 % of the sites fail their prediction, and the rule measures 784.
+3. **Errors move from the phase boundaries into the interiors.** At the original tolerance, wrong skips concentrate on the boundaries, where the peak jumps. At a quarter, they sit at the base rate on the boundaries and spread through the L1 interior, where the broad correlation peak drifts smoothly with composition.
+4. **To have fewer wrong skips, lower ε, not the tolerance.** The tolerance defines what a skip claims. The budget defines how many claims may fail.
