@@ -1,10 +1,24 @@
-# 3 Framework (draft 1: sections 3.3 and 3.4)
+# 3 Framework (draft 1: sections 3.1, 3.3 and 3.4)
 
-*Sections 3.1, 3.2 and 3.5 follow the outline in the plan and are still to be drafted. Notation used below: level $L$ with $N_L$ design sites, frozen score $S_j$ per certificate $j$, calibration draw of $m$ sites.*
+*Sections 3.2 and 3.5 follow the outline in the plan and are still to be drafted. Notation used below: level $L$ with $N_L$ design sites, frozen score $S_j$ per certificate $j$, calibration draw of $m$ sites.*
 
 ## 3.1 Design and order of operations
 
-*To draft.* Hierarchical design and seed. Per level: fit and freeze the scores on the measured set, draw the calibration sites, measure them, then decide. Fig. 1.
+A finite-sample assertion about skipped sites needs a calibration sample that is exchangeable with the sites it speaks for [Vovk2005]. Here the design creates that exchangeability. The population of every level is fixed before the experiment, and a uniform random draw from that population is the only source of randomness the assertion relies on, as in design-based survey inference [Neyman1934; Cochran1977]. The assertion needs no model of the spatial field or of the noise.
+
+A hierarchical Poisson-disk design [Bridson2007] partitions the scan into nested levels of increasing density. The coarsest levels form the seed and are measured in full. Each finer level is then processed once, in order, in five steps (Fig. 1):
+
+1. *Fit.* The predictor and the scores are fitted on the sites measured so far.
+2. *Freeze.* Scores and predictor are fixed for every site of the level, and so is the decision rule: the family of thresholds, the budget and its split, and the number of calibration failures the level may allow.
+3. *Draw.* A calibration sample of $m$ sites is drawn uniformly without replacement from the level, with randomness independent of everything else.
+4. *Calibrate.* The calibration sites are measured, their labels are evaluated against the frozen predictor, and the rule turns the labels into thresholds.
+5. *Decide.* Covered sites of the remainder are skipped and the others measured; every measured site joins the measured set for the next level.
+
+Non-anticipation ties the steps together: nothing that shapes the assertion on a level may depend on that level's draw, except through the rule fixed in step 2. Three practices that look harmless break it, and Section 5.1 shows each failing: refitting the scores on the calibration labels before the threshold is set, taking the calibration sample where the model is least sure, and keeping the most favourable of several draws. The condition concerns the draw and the rule. A score may use anything known before the draw, including physical models, other datasets or prior beliefs; a poor score costs measurements and leaves the assertion intact.
+
+Measuring one site must also leave the outcome of every other site unchanged. Radiation damage that spreads beyond the probed spot, or sample drift triggered by the measurement order, would let the draw alter the population it is meant to sample.
+
+Given everything that precedes the draw of a level, the level's population, scores, labels and rule are fixed, and the assertion holds conditionally on the history of the campaign. Adaptivity across levels, in which sites were measured at coarser levels and how the scores evolved, therefore leaves the assertion on every level intact. Statements about several levels at once follow from the union bound. Appendix A states the conditions formally.
 
 ## 3.2 Labels and certificates
 
@@ -72,5 +86,6 @@ alongside a separate assertion for each claim. The split leaves each certificate
 ## Notes for revision (not part of the text)
 
 - Results from Section 5.2 stay out of this section; the IR infeasibility appears here only as a property of the split ($\varepsilon_j < \varepsilon_{\min}$).
-- References added here: [Wilks1941], [Bates2021], [Jin2023]. Bibliographic details are in the plan's reference map; Wilks and Bates still need a check.
+- References added here: [Wilks1941], [Bates2021], [Jin2023], [Neyman1934] (Neyman 1934, J. R. Stat. Soc. 97, 558–625, on the representative method; check), [Cochran1977] (Cochran, Sampling Techniques, 3rd ed., Wiley; check).
+- Section 3.1 cites Fig. 1, the schematic still to be drawn: five steps per level, the history feeding step 1, the draw as the only random element of the assertion. Bibliographic details are in the plan's reference map; Wilks and Bates still need a check.
 - "Certificate" and "claim" are used side by side: a certificate is the mechanism, a claim is what it asserts about a site. Check that the distinction holds in 3.2 when it is drafted.

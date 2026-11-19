@@ -14,6 +14,8 @@ A policy keeps three conditions.
 
 Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.2 violates it.
 
+The campaign loop enforces the order of operations of Section 3.1 structurally: a score receives only the measured set (`MeasuredSet`) when it is fitted and is frozen with `bind_level` before the draw; the calibration indices come from a generator that nothing else uses; and a policy receives the labels of the calibration sites only. A policy or score written against these interfaces cannot see the labels of the level it is deciding before the draw.
+
 ## SI 4.y Acceptance check
 
 Before a policy carries a claim, each guarantee it states is checked by Monte Carlo on fixed finite populations (`accountable.validate.check_coverage`). The population is fixed, so the calibration draw is the only randomness. For each stated guarantee, the check counts the draws in which the population rate exceeds the budget and compares that frequency with $1 - \text{confidence}$, allowing three Monte Carlo standard errors. Scores are drawn uniform on $[0, 1]$; labels are independent of the scores (uninformative, the hard case) or have a bad probability rising linearly with the score at the same mean (informative).

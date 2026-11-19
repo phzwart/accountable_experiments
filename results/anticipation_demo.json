@@ -1,0 +1,28 @@
+{
+ "valid": {
+  "exceeded": 822,
+  "draws": 4000,
+  "frequency": 0.2055
+ },
+ "oracle": {
+  "exceeded": 819,
+  "draws": 4000,
+  "frequency": 0.20475
+ },
+ "refit": {
+  "exceeded": 4000,
+  "draws": 4000,
+  "frequency": 1.0
+ },
+ "chosen": {
+  "exceeded": 2502,
+  "draws": 4000,
+  "frequency": 0.6255
+ },
+ "redraw": {
+  "exceeded": 2771,
+  "draws": 4000,
+  "frequency": 0.69275
+ },
+ "_picked": 0.20637011904761013
+}

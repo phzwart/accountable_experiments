@@ -31,7 +31,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 | --- | --- | --- | --- |
 | C1 | At each level the population rate of wrong skips is at most ε with probability at least c over the calibration draw, whatever the score and interpolator. | Theory (appendix A); Monte Carlo coverage on finite populations; seed replication on the three datasets | Wilks 1941; Bates et al. 2021; Angelopoulos et al. 2025 (LTT) |
 | C2 | "Not interesting" and "predictable" are two claims about a site with one shared wrong-skip event. Guarantees on that event come in several precise forms, each built from frozen scores, a uniform draw and a rule fixed before the labels: per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path. Further forms slot in under the same contract. | Theory (appendix B); MC acceptance check of every form; all three forms on all three datasets over 20 seeds; a sequential two-stage rule that breaks the contract fails its nominal rate, and its priority-path counterpart keeps it | Angelopoulos et al. 2025 (multiple risks, multi-dimensional λ); Laufer-Goldshtein et al. 2023 (Pareto Testing); Jin & Candès 2023; Bonferroni |
-| C3 | A hierarchical Poisson-disk design gives each level a fresh, exchangeable calibration population inside an adaptive campaign. | Protocol description; random-score arm reproduces the predicted skip fraction | Bridson 2007 / hierarchical Poisson-disk sampling; exchangeability as in Vovk et al. 2005 |
+| C3 | Exchangeability is created by design: a predetermined hierarchical design gives each level a fixed population, and a uniform draw under non-anticipation (fit, freeze, draw, calibrate, decide; no interference) makes the calibration sample exchangeable with it, conditionally on the campaign history. Breaking the order breaks the guarantee. | Protocol description (§3.1, Appendix A); random-score runs keep the guarantee; order-of-operations Monte Carlo: refitting on calibration labels, active-learning calibration and best-of-five draws break it | Bridson 2007 / hierarchical Poisson-disk sampling; exchangeability as in Vovk et al. 2005; design-based inference (Neyman 1934; Cochran 1977) |
 | C4 | The guarantee survives a change of protocol: interpolator (natural neighbour on spectra, on scalars, Gaussian process), score (random, neighbour disagreement, logistic, GP standard deviation) and budget scheme. Only the cost changes. | Protocol matrix (§5), coverage counts per protocol, measurements per statement | Sibson 1981; Rasmussen & Williams 2006; Noack et al. 2019 |
 | C5 | Certificates buy the right to skip at a stated risk. At matched measurement budgets, selection policies reconstruct about equally well, and only the certified policy says how many of its skips were wrong. | Matched-budget comparison; off-design audit | Noack et al. 2019, 2020; Ye et al. 2025 |
 
@@ -140,10 +140,11 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Part | File | State |
 | --- | --- | --- |
 | 1 Introduction | introduction.md | Draft 1, complete |
-| 3 Framework | framework.md | 3.3 and 3.4 with Table 3 drafted; 3.1, 3.2, 3.5 to draft |
+| 3 Framework | framework.md | 3.1 (exchangeability by design, non-anticipation), 3.3 and 3.4 with Table 3 drafted; 3.2, 3.5 to draft |
 | 4 Experiments | experiments.md | 4.3 Gaussian-process protocols drafted |
 | 5 Results | results.md | 5.1 (coverage, attainment, random scores) with Fig. 2, 5.2 with Fig. 3 and 5.3 with Fig. 4 drafted from the 250-campaign record; others wait for section 6 items 3–6 |
 | 6 Discussion | discussion.md | "Building other guarantees" drafted |
+| Appendix A | appendix_A.md | Draft 1: conditions (A1)–(A6), bound, what breaks it |
 | Appendix B | appendix_B.md | Draft 1, complete |
 | SI 1 | supplement_SI1.md | GP part with Table S1.1 and Fig. S1 drafted; natural-neighbour part to come |
 | SI 3 | supplement_SI3.md | Tables S3.1 (cost per form) and S3.2 (cost per protocol) drafted; full per-level tables to come |
