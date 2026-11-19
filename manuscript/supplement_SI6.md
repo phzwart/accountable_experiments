@@ -73,4 +73,26 @@ A skip asserts that a prediction meets an acceptance metric, and the choice of m
 4. **Wrong skips cluster under every metric.** At equal difficulty the clumping index lies between 1.5 and 3.0. Interpolation errors are spatially correlated, and the rate guarantee does not constrain their location.
 5. **De-duplicating the basis changed little on these data.** At equal difficulty the plain and de-duplicated bases differ by at most 5 % in cost and 3 points in the share of wrong skips on signal. The seed designs are spatially uniform, and the merged sets (12–47 spectra) span nearly the same components as the full ones.
 
+
+## SI 6.1 Where each metric sends the measurements
+
+A metric decides which predictions fail, and so which sites the campaign measures. For the synthetic map and the NaCl scan, the peak or line-width metric was compared with the whole-profile metric, at default and at matched tolerances: 50 campaigns each, interpolation certificate only. For each site, the frequency of being measured because no claim covered it was recorded; seed and calibration sites are left out, since they are the same under both metrics (Fig. S6).
+
+**Synthetic map.**
+- **Default tolerances.** The peak metric measured 40 sites per campaign and the profile metric 118.
+- **Matched tolerances.** The peak metric measured 175 and the profile metric 133.
+- **Little overlap.** The two metrics put only 16 % (default) and 31 % (matched) of their measurements on the same sites.
+- **The peak metric** sends measurements to bands where the peak position and width drift with composition: the micellar interior (76 of 175 at matched tolerance) and the lower-left corner of the triangle.
+- **The profile metric** sends them to phase boundaries. 45–46 % of its measurements fall on the 8.8 % of sites that border another phase, against 32 % for the peak metric. The boundary between the micellar phase and the emulsion is measured almost only under the profile metric.
+- **Each metric follows its own sensitivity.** The frequency of measurement under the peak metric correlates with the local change in the peak descriptors (Spearman 0.72 at matched tolerance), and only weakly with the local change in the profile (0.15). Under the profile metric, the order of the two correlations reverses (0.41 and 0.49).
+
+**NaCl scan.**
+- **Default tolerances.** The width metric measured 419 sites per campaign and the profile metric 575, with 50 % overlap. The profile metric measures the whole grain.
+- **Matched tolerances.** 51 and 100 sites, with 11 % overlap.
+  - The width metric concentrates on the rim of the grain, where the (200) line appears and disappears and the claim fails on presence rather than on width.
+  - The profile metric concentrates in the interior of the grain.
+- **Correlations.** Measurement under the profile metric correlates with the local profile change (0.50–0.63). Measurement under the width metric shows little correlation with the local width change (0.34 and −0.03), since its failures are dominated by the presence of the line.
+
+**Figure S6.** Frequency of measurement because no claim applied, over 50 campaigns, for the peak or line-width metric (left) and the profile metric (middle), and their difference (right; red: measured more under the profile metric). Rows: synthetic map at default and matched tolerances; NaCl scan at default and matched tolerances. File: `figures/figS6_sampling.png`.
+
 Scripts and data: SI 4; summary in the run record, under the analysis of the metric study.
