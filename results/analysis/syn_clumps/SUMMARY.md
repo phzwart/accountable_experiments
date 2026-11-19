@@ -28,3 +28,20 @@ Quantile path with natural-neighbour interpolation, budget 0.20 per level at con
 - `decision_time.npz`: predictions at decision time.
 - `score_swap_*.json`: the score variants.
 - Scripts: `experiments/analysis/syn_clumps.py` and `syn_score_swap.py`.
+
+## Interest certificate turned off (one run, seed 0)
+
+The interpolation certificate alone, with the quantile path at 0.20 and confidence 0.80 (`interp_only_seed0.png`), compared with both certificates in the record's seed 0:
+
+| | Both certificates (record) | Interpolation only |
+| --- | --- | --- |
+| Measured | 350 | 331 |
+| Wrong skips | 215 (10.3 %) | 161 (7.7 %) |
+| Interesting sites skipped | 539 of 719, 202 of them as not of interest | 611 of 719, all of them as predictable |
+
+Level rates were 0.18, 0.14, 0.12, 0.13, 0.08 and 0.08 against the budget of 0.20.
+
+- **Where the wrong skips lie.** They are now all interpolation failures of the peak position and FWHM, and they lie along lines.
+- **Phase boundaries.** Sites with a design neighbour of another phase are 8.7 % of all sites but 44 % of the wrong skips.
+- **Inside the micellar phase.** Most of the remaining wrong skips fall within L1 (81 of 91).
+- **Signal shape again.** The FWHM tolerance is absolute (0.001 Å⁻¹). That is about 9 % of the broad L1 correlation peak (0.011 Å⁻¹), against about 25 % of the Bragg peaks (0.004 Å⁻¹). The same claim is therefore much stricter on broad peaks.
