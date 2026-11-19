@@ -1,6 +1,6 @@
 # 5 Results (draft 2: sections 5.1–5.3)
 
-*Sections 5.4 and 5.5 wait for the matched-budget study and the maps (plan, section 6). All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5).*
+*Section 5.4 (maps) is still to be drafted. All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5).*
 
 ## 5.1 The assertion holds (C1)
 
@@ -42,15 +42,9 @@ The three length-scale rules lead to visibly different reasons for measuring a s
 
 **Figure 4.** The cost of one assertion across interpolation protocols, quantile path, 250 campaigns per configuration. Columns: IR map at the original and at the tight tolerance, NaCl scan, synthetic map. Upper row: sites measured, mean ± s.d., with the design size dashed. Lower row: realised wrong-skip rate on every certified level of every campaign, with the budget; tick labels give the number of exceedances. GP: Gaussian process with isotropic squared-exponential kernel; length scale by maximum likelihood, by design spacing, or by local spacing of measured sites. File: `figures/fig4_protocols.png`.
 
-## 5.4 What a skip buys (C5)
+## 5.4 Maps (C5)
 
-*To draft.*
-
-## 5.5 Maps
-
-*To draft.*
-
----
+*To draft: one map per dataset with the reason recorded for every site and the map bound (Fig. 5).*
 
 ## Notes for revision (not part of the text)
 

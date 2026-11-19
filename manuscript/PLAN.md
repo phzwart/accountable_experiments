@@ -4,7 +4,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 ## 1. Thesis and framing
 
-**Framing.** Autonomous measurement decisions need accountability: a recorded reason for every skip and a checkable statement of how often skips are wrong. The paper offers one way to provide it, with guarantees that are precise and checked against truth. Other ways exist and are welcome; the record, the forms of guarantee and the acceptance check are built so that they can be compared on the same footing. The paper makes no priority or optimality claims.
+**Framing.** The paper provides guaranteed, distribution-free safety margins on what a skipped measurement asserts. It argues neither speed nor superiority. Autonomous measurement decisions need accountability: a recorded reason for every skip and a checkable statement of how often skips are wrong. The paper offers one way to provide it, with guarantees that are precise and checked against truth. Other ways exist and are welcome; the record, the forms of guarantee and the acceptance check are built so that they can be compared on the same footing. The paper makes no priority or optimality claims.
 
 **Thesis.** A scanning experiment can skip measurements and still state, for every level of a hierarchical design, a finite-sample bound on the rate of wrong skips. The bound comes from a uniform calibration draw. It holds for any interpolator, any scoring rule and any acquisition protocol that respects the order of operations: fit, freeze, draw, calibrate, decide.
 
@@ -35,7 +35,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 | C2 | "Not interesting" and "predictable" are two claims about a site with one shared wrong-skip event. Guarantees on that event come in several precise forms, each built from frozen scores, a uniform draw and a rule fixed before the labels: per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path. Further forms slot in under the same contract. | Theory (appendix B); MC acceptance check of every form; all three forms on all three datasets over 20 seeds; a sequential two-stage rule that breaks the contract fails its nominal rate, and its priority-path counterpart keeps it | Angelopoulos et al. 2025 (multiple risks, multi-dimensional λ); Laufer-Goldshtein et al. 2023 (Pareto Testing); Jin & Candès 2023; Bonferroni |
 | C3 | Exchangeability is created by design: a predetermined hierarchical design gives each level a fixed population, and a uniform draw under non-anticipation (fit, freeze, draw, calibrate, decide; no interference) makes the calibration sample exchangeable with it, conditionally on the campaign history. Breaking the order breaks the guarantee. | Protocol description (§3.1, Appendix A); random-score runs keep the guarantee; order-of-operations Monte Carlo: refitting on calibration labels, active-learning calibration and best-of-five draws break it | Bridson 2007 / hierarchical Poisson-disk sampling; exchangeability as in Vovk et al. 2005; design-based inference (Neyman 1934; Cochran 1977) |
 | C4 | The guarantee survives a change of protocol: interpolator (natural neighbour on spectra, on scalars, Gaussian process), score (random, neighbour disagreement, logistic, GP standard deviation) and budget scheme. Only the cost changes. | Protocol matrix (§5), coverage counts per protocol, measurements per statement | Sibson 1981; Rasmussen & Williams 2006; Noack et al. 2019 |
-| C5 | Certificates buy the right to skip at a stated risk. At matched measurement budgets, selection policies reconstruct about equally well, and only the certified policy says how many of its skips were wrong. | Matched-budget comparison; off-design audit | Noack et al. 2019, 2020; Ye et al. 2025 |
+| C5 | Every skip carries a stated safety margin, and the record shows each margin met at its picked level; the price of a margin is reported as measurements spent, never as a ranking. | Run record (SI 5); maps with reasons (Fig. 5) | Noack et al. 2019, 2020; Ye et al. 2025 |
 
 The paper rests on these five claims. Any figure that supports none of them goes to the SI.
 
@@ -87,8 +87,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 - **5.1 The statement holds (C1).** Fig. 2: exceedance frequency against nominal failure probability for every protocol and dataset (seed replication), with the MC finite-population panel. Random-score arm: realised skip fraction against the expected value.
 - **5.2 Forms of guarantee (C2).** Fig. 3: for each dataset, the three forms at the same nominal statement on the shared event, with measurements spent and exceedances over 20 seeds; per-claim rates for the union-bound form. The IR per-claim split admits no threshold at m = 40 and measures every site, reported as the price of a statement per reason at that calibration size. The sequential two-stage rule exceeds its nominal rate on an uninformative population; the priority path expresses the same preference and holds its rate. The text reads as cost per statement, with no winner declared.
 - **5.3 The cost of an assertion across protocols (C4).** Fig. 4: measurements needed per statement across the protocol matrix for each dataset. Same coverage across rows. Natural neighbour, scalar route and GP all appear.
-- **5.4 What a skip buys (C5).** Fig. 5: matched-budget reconstruction against certified skips per measurement; off-design audit.
-- **5.5 Maps.** Fig. 6: one map per dataset with reasons painted (measured, interpolated and certified, not interesting), and the map bound.
+- **5.4 Maps (C5).** Fig. 5: one map per dataset with the reason for every site (measured, audited, skipped as uninteresting, skipped as interpolable) and the map bound. (Matched-budget study dropped: the paper argues safety margins, not speed or accuracy.)
 
 ### 6 Discussion (≈1000 words)
 
@@ -107,8 +106,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Fig. 2 | Informed against random scores ("stock-picking chicken"): cost and exceedances, quantile path, 250 campaigns per configuration (drafted: figures/fig2_random.png); coverage over all configurations in SI 5 | C1, C3 |
 | Fig. 3 | Forms of guarantee: sites measured and level wrong-skip rates for three forms on three datasets; Monte Carlo panel with the sequential rule against the two paths (drafted: figures/fig3_forms.png) | C2 |
 | Fig. 4 | Cost per statement across the protocol matrix (drafted for natural neighbour and three GP rules: figures/fig4_protocols.png) | C4 |
-| Fig. 5 | Matched budget: reconstruction error and certified skips per measurement; audit | C5 |
-| Fig. 6 | Maps with reasons and map bound, one per dataset | C1, C5 |
+| Fig. 5 | Maps with reasons and map bound, one per dataset | C1, C5 |
 | Table 1 | Protocol components (interpolator, score, budget scheme, design) and settings | C4 |
 | Table 2 | Per dataset: statement, measurements, skips by reason, coverage over seeds | C1, C4 |
 | Table 3 | Forms of guarantee: what each asserts, what it gives up, when it suits; contract shared by all | C2 |
@@ -131,8 +129,8 @@ The paper rests on these five claims. Any figure that supports none of them goes
 2. ~~Add a Gaussian-process predictor and a GP-standard-deviation score.~~ Done: isotropic kernel on the design (BoTorch), three length-scale rules (maximum likelihood, design spacing, local spacing by Gibbs kernel), quantile path, 20 seeds on all three datasets; every assertion held.
 3. Add the scalar route to the protocol matrix (NaCl width, IR window maximum).
 4. ~~Fix the protocol matrix and settings in advance; replicate each row.~~ Done: 36 configurations × 250 campaigns, logged in results/record; exact finite-population tail and boundary placement are the defaults.
-5. Matched-budget study with exact weights: certified, variance-ordered, random, and a GP sampler.
-6. Off-design audit for NaCl (raster) and IR (non-design pixels).
+5. ~~Matched-budget study.~~ Dropped (framing: safety margins, no speed or accuracy claims).
+6. Off-design audit for NaCl (raster) and IR (non-design pixels): optional, computational only. No new instrument experiments for this paper.
 7. Settle the IR data release and the Mie-correction citation.
 8. ~~Decide the headline budget scheme.~~ Decided: no headline scheme. All forms are reported on all datasets; the abstract states that guarantees come in several precise forms and names the shared-event statement as the one common to all.
 9. ~~Replicate the three forms on all three datasets over 20 seeds.~~ Done; every stated rate holds (results/study_summary.md).
