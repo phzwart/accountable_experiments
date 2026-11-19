@@ -1,0 +1,67 @@
+{
+ "peak_x1": {
+  "campaigns": 100,
+  "measured": 313.14,
+  "checks": 600,
+  "exceeded": 16,
+  "allowed": 67.93300325640476,
+  "mean_picked": 0.11322167209400794,
+  "p_value": 1.000000000000009,
+  "reachable": 0,
+  "exceeded_reachable": 0,
+  "allowed_reachable": 0.0,
+  "mean_rate": 0.1368749352586906
+ },
+ "peak_x0.5": {
+  "campaigns": 100,
+  "measured": 393.35,
+  "checks": 600,
+  "exceeded": 26,
+  "allowed": 67.93300325640476,
+  "mean_picked": 0.11322167209400794,
+  "p_value": 0.9999999997639675,
+  "reachable": 100,
+  "exceeded_reachable": 0,
+  "allowed_reachable": 0.0,
+  "mean_rate": 0.1431604841058597
+ },
+ "peak_x0.25": {
+  "campaigns": 100,
+  "measured": 533.06,
+  "checks": 600,
+  "exceeded": 48,
+  "allowed": 67.93300325640476,
+  "mean_picked": 0.11322167209400794,
+  "p_value": 0.99732077428291,
+  "reachable": 300,
+  "exceeded_reachable": 18,
+  "allowed_reachable": 24.117121636173046,
+  "mean_rate": 0.14856179401891104
+ },
+ "envelope_1pc": {
+  "campaigns": 100,
+  "measured": 390.57,
+  "checks": 600,
+  "exceeded": 48,
+  "allowed": 67.93300325640476,
+  "mean_picked": 0.11322167209400794,
+  "p_value": 0.99732077428291,
+  "reachable": 200,
+  "exceeded_reachable": 14,
+  "allowed_reachable": 14.230274171415246,
+  "mean_rate": 0.15003055752983155
+ },
+ "envelope_5pc": {
+  "campaigns": 100,
+  "measured": 274.43,
+  "checks": 600,
+  "exceeded": 0,
+  "allowed": 67.93300325640476,
+  "mean_picked": 0.11322167209400794,
+  "p_value": 1.0000000000000093,
+  "reachable": 0,
+  "exceeded_reachable": 0,
+  "allowed_reachable": 0.0,
+  "mean_rate": 0.09520289313188085
+ }
+}
