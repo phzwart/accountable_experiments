@@ -1,0 +1,53 @@
+[
+ {
+  "target": "peak",
+  "tol": null,
+  "measured": 331,
+  "wrong": 161,
+  "wrong_share": 0.07744107744107744,
+  "fail_share": 0.113997113997114,
+  "boundary_share": 0.43478260869565216,
+  "level_rates": [
+   0.18,
+   0.14,
+   0.12,
+   0.13,
+   0.08,
+   0.08
+  ]
+ },
+ {
+  "target": "envelope",
+  "tol": 0.01,
+  "measured": 338,
+  "wrong": 322,
+  "wrong_share": 0.15488215488215487,
+  "fail_share": 0.21356421356421357,
+  "boundary_share": 0.3136645962732919,
+  "level_rates": [
+   0.18,
+   0.19,
+   0.13,
+   0.19,
+   0.16,
+   0.17
+  ]
+ },
+ {
+  "target": "envelope",
+  "tol": 0.05,
+  "measured": 274,
+  "wrong": 123,
+  "wrong_share": 0.05916305916305916,
+  "fail_share": 0.07118807118807119,
+  "boundary_share": 0.6178861788617886,
+  "level_rates": [
+   0.18,
+   0.07,
+   0.1,
+   0.07,
+   0.06,
+   0.06
+  ]
+ }
+]

@@ -62,3 +62,18 @@ Sites at phase boundaries are 8.7 % of the map.
 2. **The cost moves once the failures outgrow the budget.** At half the tolerance the cost is unchanged (334 measured) and more of the budget is used. At a quarter, 27 % of the sites fail their prediction, and the rule measures 784.
 3. **Errors move from the phase boundaries into the interiors.** At the original tolerance, wrong skips concentrate on the boundaries, where the peak jumps. At a quarter, they sit at the base rate on the boundaries and spread through the L1 interior, where the broad correlation peak drifts smoothly with composition.
 4. **To have fewer wrong skips, lower ε, not the tolerance.** The tolerance defines what a skip claims. The budget defines how many claims may fail.
+
+## Full-spectrum claim against the peak claim (interpolation only, seed 0)
+
+The peak claim is the dominant-peak position within 0.005 Å⁻¹ and the FWHM within 0.001 Å⁻¹, both absolute. The full-spectrum claim is the rtol/atol envelope on the whole profile (`interp_envelope_seed0.png`).
+
+| Claim | Measured | Wrong skips | Sites outside tolerance | Wrong skips at phase boundaries |
+| --- | --- | --- | --- | --- |
+| Peak (0.005, 0.001 Å⁻¹) | 331 | 161 (7.7 %) | 11 % | 43 % |
+| Envelope 0.01 + 1 % | 338 | 322 (15.5 %) | 21 % | 31 % |
+| Envelope 0.05 + 5 % | 274 | 123 (5.9 %) | 7 % | 62 % |
+
+1. **The loose envelope fails almost only along one boundary.** At 0.05 + 5 % the wrong skips form a single line, the boundary between the micellar phase and the emulsion. There the whole profile changes, and smoothing across the line misses it.
+2. **The tight envelope fills its budget.** At 0.01 + 1 %, 21 % of the sites fail and the level rates are 0.13–0.19 against 0.20. The wrong skips sit on all boundaries, in the L1 interior and along the walls of the triangle (y = 0, top left).
+3. **The wall errors may come from the interpolant.** The natural-neighbour interpolant on this map uses mirror images across the walls, which assumes the profile continues symmetrically. Errors along y = 0 point at that assumption; this is a candidate explanation, not yet tested.
+4. **The pattern from the tolerance scan repeats.** The tolerance decides which feature of the signal the claim is sensitive to, and the budget decides how many claims may fail.
