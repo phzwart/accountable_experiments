@@ -121,7 +121,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 - **SI 2.** Dataset processing (Mie correction, window noise, presence test).
 - **SI 3.** Full tables per dataset, level and protocol.
 - **SI 4.** Software: functionality, tests, reproduction procedure. The contract a new form of guarantee keeps (inputs it may use, family fixed before labels, guarantee stated or declared absent) and the Monte Carlo acceptance check, with the priority path as a worked example and a plug-in rule as a counterexample that the check flags.
-- **Data availability.** NaCl scan (Dryad); IR map (to be deposited); synthetic forward model; campaign records. Listed by function.
+- **Data availability.** NaCl scan (Dryad, doi:10.5061/dryad.p2ngf1w4t); IR map, campaign records (250-campaign record and audits), synthetic forward model and a software snapshot deposited on Zenodo, with the DOI reserved before submission. Listed by function.
 
 ## 6. Work needed before drafting
 
@@ -131,7 +131,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 4. ~~Fix the protocol matrix and settings in advance; replicate each row.~~ Done: 36 configurations × 250 campaigns, logged in results/record; exact finite-population tail and boundary placement are the defaults.
 5. ~~Matched-budget study.~~ Dropped (framing: safety margins, no speed or accuracy claims).
 6. Off-design audit for NaCl (raster) and IR (non-design pixels): optional, computational only. No new instrument experiments for this paper.
-7. Settle the IR data release and the Mie-correction citation.
+7. ~~Settle the IR data release~~ Decided: Zenodo (reserve the DOI before submission). Mie-correction citation still to settle.
 8. ~~Decide the headline budget scheme.~~ Decided: no headline scheme. All forms are reported on all datasets; the abstract states that guarantees come in several precise forms and names the shared-event statement as the one common to all.
 9. ~~Replicate the three forms on all three datasets over 20 seeds.~~ Done; every stated rate holds (results/study_summary.md).
 
