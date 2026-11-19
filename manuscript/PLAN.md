@@ -140,6 +140,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Part | File | State |
 | --- | --- | --- |
 | 1 Introduction | introduction.md | Draft 1, complete |
+| 2 Related work | related_work.md | Draft 1, complete (about 650 words) |
 | 3 Framework | framework.md | 3.1 (exchangeability by design, non-anticipation), 3.3 and 3.4 with Table 3 drafted; 3.2, 3.5 to draft |
 | 4 Experiments | experiments.md | 4.3 Gaussian-process protocols drafted |
 | 5 Results | results.md | 5.1 (coverage, attainment, random scores) with Fig. 2, 5.2 with Fig. 3 and 5.3 with Fig. 4 drafted from the 250-campaign record; others wait for section 6 items 3–6 |
