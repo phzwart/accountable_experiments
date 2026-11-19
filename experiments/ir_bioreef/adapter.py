@@ -1,11 +1,13 @@
 """
-IR map of a bioreef sample (``BP-area.npz``), 29 × 42 pixels.
+IR map of a bioreef sample (``BP-area.npz``), 29 × 42 pixels of 1 µm.
 
-Spectra are Mie-corrected (stage-1 resonant ME-EMSC) and cut to the
-certificate window 1500–1850 cm⁻¹; the corrected window is cached in
-``prepared.npz`` by the original experiment. The HiPoSa design
-(r 0.2 → 0.025, seed 42, corners forced) is snapped to pixels, keeping the
-coarsest level on a collision: 949 unique sites, levels L0–L6.
+Spectra are corrected for resonant Mie scattering pixel by pixel (stage-1
+resonant ME-EMSC, each pixel seeded with its own spectrum; see
+``prepare_um.py``) and cut to the certificate window 1500–1850 cm⁻¹. The
+HiPoSa design is drawn on the physical rectangle (radii 6.8 → 0.85 µm,
+seed 42, corners forced) and snapped to pixels, keeping the coarsest level
+on a collision: 959 unique sites, levels L0–L6. Coordinates are micrometres
+divided by 41 µm (isotropic).
 
 Interest: some channel in the window reaches absorbance 0.1.
 Interpolation target: the rtol = atol = 0.10 envelope, averaged over
@@ -33,7 +35,7 @@ RTOL = ATOL = 0.10
 
 def load(root: Path | None = None) -> Dataset:
     root = Path(root or data_root())
-    z = np.load(root / "IR_data" / "interest_gate_1500_1850" / "prepared.npz")
+    z = np.load(root / "IR_data" / "interest_gate_um" / "prepared.npz")
     pix = np.asarray(z["pix"], int)
     return Dataset(
         name="ir_bioreef", points=np.asarray(z["points"], float)[pix],
