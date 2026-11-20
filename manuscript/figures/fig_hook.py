@@ -7,7 +7,10 @@ design sites measured, against a mean of 614).
 (b) The certified action of every design site, filled over the scan (nearest design site): measured for
     the seed, for calibration or because no claim covered it; skipped as not of interest, as predictable
     or both. Crosses: wrong skips, found afterwards against the full scan.
-(c) Over 250 campaigns: the share of campaigns in which each design site was skipped wrongly.
+(c) This campaign: at each site skipped under the interpolation claim, the error of the predicted (200)
+    width at the time of the decision, relative to the true width (agreed absence of the line counts as
+    zero). Red line on the colour bar: the tolerance of 0.02 nm^-1 as a share of the median width.
+    Errors come from a replay of the campaign (python -m experiments.hook_errors).
 (d) The guarantee on each certified level: at most 20 % of the level skipped wrongly, with confidence
     0.80. Dots: the realised wrong-skip rate in each of 250 campaigns; diamonds: this campaign.
     Numbers: campaigns in which the level exceeded its budget, against the number the guarantee allows.
@@ -81,12 +84,18 @@ def main():
     def outline(ax):
         ax.contour(XX, YY, ring, levels=[0.5], colors=INK, linewidths=0.6)
 
-    S = z["skipped"].astype(bool)
-    Rall = np.array(REASONS)[z["reason"]]
-    A_all = np.isin(Rall, ["not_interesting", "not_interesting+interpolable"])
-    B_all = np.isin(Rall, ["interpolable", "not_interesting+interpolable"])
-    W_all = S & ((A_all & z["interesting"].astype(bool)) | (B_all & z["fail_prior"].astype(bool)))
-    freq = W_all.mean(0)
+    # prediction errors at decision time, from the replay of this campaign
+    e = np.load(ROOT / "results" / "hook" / "errors_s044.npz")
+    assert int(e["measured"].sum()) == int(measured.sum())
+    wt, wh = e["fwhm_true"], e["fwhm_hat"]
+    covB = skipped & b_cov
+    width = covB & e["has_true"] & e["has_hat"] & np.isfinite(wt) & np.isfinite(wh)
+    absent = covB & ~e["has_true"] & ~e["has_hat"]
+    mism = covB & (e["has_true"] != e["has_hat"])
+    rel = np.full(len(site), np.nan)
+    rel[width] = 100 * np.abs(wh[width] - wt[width]) / wt[width]
+    rel[absent] = 0.0
+    tol_med = 100 * float(e["fwhm_eps"]) / np.median(wt[width])
 
     fig = plt.figure(figsize=(7.2, 6.1), facecolor="white")
     gs = fig.add_gridspec(2, 2, left=0.08, right=0.97, top=0.83, bottom=0.15, wspace=0.38, hspace=0.38)
@@ -118,14 +127,24 @@ def main():
     ax.scatter(xy[wrong, 0], xy[wrong, 1], s=10, marker="x", c=RED, linewidths=0.8)
     mapstyle(ax, f"(b) Every action certified: {int(skipped.sum())} sites\n     skipped, each under a named claim", left=False)
 
-    # (c) where wrong skips happen, over 250 campaigns
+    # (c) this campaign: how far off the prediction was at each site skipped as predictable
     ax = fig.add_subplot(gs[1, 0])
-    im = ax.imshow(freq[nn], origin="lower", cmap="Reds", vmin=0, vmax=max(0.5, np.percentile(freq, 99)), extent=ext,
+    bg = np.where(measured, 0, 1)[nn].astype(float)  # measured: white; skipped under the interest claim only: grey
+    ax.imshow(bg, origin="lower", cmap=ListedColormap(["white", "#dcdbd7"]), vmin=0, vmax=1, extent=ext,
+              interpolation="nearest")
+    vmax = 50
+    cm = plt.get_cmap("Purples")
+    cm = ListedColormap(cm(np.linspace(0.18, 1.0, 256)))
+    cm.set_over(cm(1.0))
+    im = ax.imshow(np.ma.masked_invalid(rel[nn]), origin="lower", cmap=cm, vmin=0, vmax=vmax, extent=ext,
                    interpolation="nearest")
     outline(ax)
-    mapstyle(ax, "(c) Where skips went wrong: share of\n     250 campaigns, per site")
-    cb = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.02)
+    ax.scatter(xy[wrong & b_cov, 0], xy[wrong & b_cov, 1], s=10, marker="x", c=RED, linewidths=0.8)
+    mapstyle(ax, f"(c) Error of the skipped predictions:\n     median {np.median(rel[width]):.0f} % of the true width")
+    cb = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.02, extend="max")
     cb.ax.tick_params(labelsize=6.5)
+    cb.set_label("|predicted − true| / true width (%)", fontsize=6.5)
+    cb.ax.axhline(tol_med, color=RED, lw=1.0)
 
     # (d) the guarantee, level by level
     ax = fig.add_subplot(gs[1, 1])
@@ -157,7 +176,9 @@ def main():
     handles += [Line2D([], [], ls="", marker="x", color=RED, markersize=5, label="wrong skip (found afterwards)"),
                 Line2D([], [], ls="", marker="D", color="#2a78d6", markersize=4.5, label="this campaign"),
                 Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="each of 250 campaigns"),
-                Line2D([], [], color=INK, lw=0.8, label="edge of the (200) signal")]
+                Line2D([], [], color=INK, lw=0.8, label="edge of the (200) signal"),
+                plt.Rectangle((0, 0), 1, 1, fc="#dcdbd7", ec=INK2, lw=0.4, label="(c) skipped as not of interest"),
+                plt.Rectangle((0, 0), 1, 1, fc="white", ec=INK2, lw=0.4, label="(c) measured")]
     fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=6.4, frameon=False, bbox_to_anchor=(0.5, 0.0),
                columnspacing=1.2, handletextpad=0.4)
 
