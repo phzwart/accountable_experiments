@@ -11,7 +11,7 @@ $$
 ending at $q_I = 1$. Both the grid and $q_0$ depend on the scores and on settings fixed in advance, and on no label. Threshold $\tau_i$ covers the set $D_i = \{x \in D : S(x) \le \tau_i\}$ of $N_i$ sites, and its conditional rate is
 
 $$
-R_i = N_i^{-1} \, \#\{x \in D_i : B(x) = 1\}
+R_i = N_i^{-1} \, \lvert \{x \in D_i : B(x) = 1\} \rvert
 $$
 
 For each $i$, the null hypothesis $H_i : R_i > \alpha$ is tested on the calibration sites in $D_i$. Their number $n_i = |C \cap D_i|$ is random; given $n_i$, they form a uniform sample without replacement from $D_i$, since $C$ is uniform on $D$ and $D_i$ is fixed before the draw. The number $f_i$ of bad labels among them is then hypergeometric, and

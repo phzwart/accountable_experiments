@@ -1,0 +1,15 @@
+world 1: 118s {'full': 1.0, 'size': 0.89, 'pattern': 0.87, 'random': 0.77, 'oracle': 1.0, 'seed': 0.23}
+world 3: 107s {'full': 1.0, 'size': 0.64, 'pattern': 0.7, 'random': 0.62, 'oracle': 0.92, 'seed': 0.22}
+world 5: 124s {'full': 1.0, 'size': 0.82, 'pattern': 0.82, 'random': 0.65, 'oracle': 1.0, 'seed': 0.23}
+world 7: 115s {'full': 1.0, 'size': 1.0, 'pattern': 1.0, 'random': 0.87, 'oracle': 1.0, 'seed': 0.22}
+world 9: 115s {'full': 1.0, 'size': 0.82, 'pattern': 0.82, 'random': 0.69, 'oracle': 1.0, 'seed': 0.23}
+world 11: 122s {'full': 1.0, 'size': 0.66, 'pattern': 0.71, 'random': 0.63, 'oracle': 0.92, 'seed': 0.25}
+world 13: 108s {'full': 1.0, 'size': 0.68, 'pattern': 0.69, 'random': 0.67, 'oracle': 0.93, 'seed': 0.24}
+world 15: 143s {'full': 1.0, 'size': 0.95, 'pattern': 0.94, 'random': 0.79, 'oracle': 1.0, 'seed': 0.24}
+world 17: 117s {'full': 1.0, 'size': 0.86, 'pattern': 0.89, 'random': 0.74, 'oracle': 1.0, 'seed': 0.21}
+world 19: 117s {'full': 1.0, 'size': 0.97, 'pattern': 0.95, 'random': 0.79, 'oracle': 1.0, 'seed': 0.24}
+world 21: 117s {'full': 1.0, 'size': 0.92, 'pattern': 0.9, 'random': 0.78, 'oracle': 1.0, 'seed': 0.22}
+world 23: 148s {'full': 1.0, 'size': 0.85, 'pattern': 0.8, 'random': 0.66, 'oracle': 1.0, 'seed': 0.26}
+world 25: 122s {'full': 1.0, 'size': 0.95, 'pattern': 0.95, 'random': 0.74, 'oracle': 1.0, 'seed': 0.23}
+world 27: 113s {'full': 1.0, 'size': 0.78, 'pattern': 0.97, 'random': 0.71, 'oracle': 1.0, 'seed': 0.24}
+world 29: 113s {'full': 1.0, 'size': 0.74, 'pattern': 0.99, 'random': 0.78, 'oracle': 1.0, 'seed': 0.22}

@@ -2,7 +2,7 @@
 
 *Working title: What can be guaranteed about a measurement that was never made*
 
-Autonomous experiments decide where to measure, and every site left out enters the final map as a prediction. Accountability for such decisions calls for a statement, checkable against measurements, of how often a skip is wrong. A skip is posed here as one of two claims: the site holds nothing of interest, or its spectrum, or a quantity derived from it, is predictable within tolerance from coarser measurements. A hierarchical design and a uniform calibration draw, taken after predictor and scores are frozen, make the calibration sites exchangeable with each level. Existing risk-control results then give a finite-sample bound on the share of the level skipped under a false claim, in three forms. On a synthetic small-angle scattering map, a NaCl microdiffraction scan and an infrared map, each fully measured, observed exceedances lay between 0.88 and 1.11 times those allowed wherever the budget could be reached. Under a bound of 0.10 at confidence 0.75, the infrared map needed 295 of 959 measurements with informed scores and 716 with random ones: the guarantee comes from the draw, and the score sets its cost. The certified claim decides the rest. Across six acceptance metrics the bound held for each, while the metric decided where measurements were taken and where wrong skips gathered.
+Autonomous experiments decide where to measure, and every site left out enters the final map as a prediction. Accountability for such decisions calls for a statement, checkable against measurements, of how often a skip is wrong. A skip is posed here as one of two claims: the site holds nothing of interest, or its spectrum, or a quantity derived from it, is predictable within tolerance from coarser measurements. A hierarchical design and a uniform calibration draw, taken after predictor and scores are frozen, make the calibration sites exchangeable with each level. Existing risk-control results then give a finite-sample bound on the share of the level skipped under a false claim, in three forms. On a synthetic small-angle scattering map, a NaCl microdiffraction scan and an infrared map, each fully measured, observed exceedances lay between 0.88 and 1.11 times those allowed wherever the budget could be reached. Under a bound of 0.10 at confidence 0.75, the infrared map needed 295 of 959 measurements with informed scores and 716 with random ones: the guarantee comes from the draw, and the score sets its cost. The certified claim decides the rest. Across six acceptance metrics the bound held for each, while the metric decided where measurements were taken and where wrong skips gathered. On a simulated calcination campaign, the runs measured under the guarantee kept 85 % of the information of the full design, against 74 % for random runs, and recovered the kinetics as accurately as all runs.
 
 
 # 1 Introduction
@@ -21,9 +21,9 @@ This paper offers one way to make a mapping campaign accountable: a workflow tha
 
 The emphasis lies on what can be guaranteed, and at what cost in measurements. The bound holds for any interpolator, scoring rule or acquisition order that respects the sequence fit, freeze, draw, calibrate, decide. Model quality sets the number of measurements a guarantee costs. Optimality of the underlying algorithms lies outside the scope of this work, and protocols are compared by the measurements they spend per guarantee. The same guarantees are therefore made with natural-neighbour and Gaussian-process interpolation and with learned and random scores. The form of the guarantee is a choice as well, and follows from the question an experimenter needs answered.
 
-A guarantee delivers exactly the claim it is given, which raises a second question: what does a guarantee buy? The acceptance metric that defines a predictable site, a peak position and width or the whole curve, decides which sites fail prediction, and with them where a campaign measures and where its wrong skips fall. A rate over a level leaves the location of wrong skips free, and it counts them over all sites of the level, of which the sites of interest may be a small part. Which claim to certify is therefore a scientific choice with a price in measurements, and this study reports that price next to every guarantee.
+A guarantee delivers exactly the claim it is given, which raises a second question: what does a guarantee buy? The acceptance metric that defines a predictable site, a peak position and width or the whole curve, decides which sites fail prediction, and with them where a campaign measures and where its wrong skips fall. A rate over a level leaves the location of wrong skips free, and it counts them over all sites of the level, of which the sites of interest may be a small part. Which claim to certify is therefore a scientific choice with a price in measurements, and this study reports that price next to every guarantee. The measured sites also serve as data for a model of the process, and a simulated calcination campaign with known kinetics shows what the skips cost that model.
 
-The workflow is one answer to the need for accountability, built from interchangeable parts so that other answers can share its record and its checks. The contributions are fourfold. Skipping is posed as two claims with one shared wrong-skip event, and guarantees of three forms are built on it from existing risk-control results: separate budgets combined by a union bound, and a single budget along a threshold path fixed before the calibration labels are seen, with the path either matching quantiles of the two scores or admitting the claims in a set order [Angelopoulos2025; LauferGoldshtein2023]. All three follow one recipe, and a contract with a Monte Carlo acceptance check lets further forms be added. Exchangeability of the calibration samples is created by design: a predetermined hierarchical design fixes the population of every level, and an order of operations that forbids anticipation keeps each level's guarantee valid whatever the campaign did before. The workflow is tested on a synthetic small-angle scattering phase map of a three-component surfactant–oil–water formulation, a NaCl microdiffraction scan [ALSNaCl] and an infrared map of a bioreef sample, and every bound is checked against the fully measured truth. Finally, six acceptance metrics compared on the same data show how the certified claim, under a guarantee that holds for each, decides where measurements are taken and where wrong skips gather. Sections 2 to 6 cover related work, the workflow, the experiments, the results, and the scope of the guarantee and its use at an instrument.
+The workflow is one answer to the need for accountability, built from interchangeable parts so that other answers can share its record and its checks. The contributions are fourfold. Skipping is posed as two claims with one shared wrong-skip event, and guarantees of three forms are built on it from existing risk-control results: separate budgets combined by a union bound, and a single budget along a threshold path fixed before the calibration labels are seen, with the path either matching quantiles of the two scores or admitting the claims in a set order [Angelopoulos2025; LauferGoldshtein2023]. All three follow one recipe, and a contract with a Monte Carlo acceptance check lets further forms be added. Exchangeability of the calibration samples is created by design: a predetermined hierarchical design fixes the population of every level, and an order of operations that forbids anticipation keeps each level's guarantee valid whatever the campaign did before. The workflow is tested on a synthetic small-angle scattering phase map of a three-component surfactant–oil–water formulation, a NaCl microdiffraction scan [ALSNaCl] and an infrared map of a bioreef sample, and on a simulated calcination campaign at an autonomous synthesis laboratory; every bound is checked against the fully measured truth. Finally, six acceptance metrics compared on the same data show how the certified claim, under a guarantee that holds for each, decides where measurements are taken and where wrong skips gather, and kinetic fits to the calcination campaign show that the runs measured under the guarantee teach the process as well as the full design. Sections 2 to 6 cover related work, the workflow, the experiments, the results, and the scope of the guarantee and its use at an instrument.
 
 
 
@@ -75,7 +75,7 @@ A certificate is the mechanism, and a claim is what it states about a site. Each
 A skip deserves a statement that a measurement could check. At level $L$, certificate $j$ covers the sites whose frozen score lies at or below a threshold $\tau_j$. A covered site is a wrong skip when the claim of the certificate fails there, marked by $B_j(x) = 1$. The controlled quantity is the rate of wrong skips over the level population:
 
 $$
-R_j(\tau_j) = N_L^{-1} \, \#\{x \in D_L : S_j(x) \le \tau_j,\ B_j(x) = 1\}
+R_j(\tau_j) = N_L^{-1} \, \lvert \{x \in D_L : S_j(x) \le \tau_j,\ B_j(x) = 1\} \rvert
 $$
 
 The threshold comes from $m$ sites drawn uniformly, without replacement, from the level after the scores are frozen and then measured. Let $H$ count the failing sites in such a draw from a level in which $\lfloor \varepsilon N_L \rfloor + 1$ sites fail. With $k$ the largest integer for which
@@ -135,13 +135,15 @@ Two further statements accompany each level. The rate of wrong skips among the s
 
 ## 4.1 Datasets
 
-Every guarantee in this study can be checked, because each dataset is measured at every design site. Three datasets cover a simulation with known phase structure, a diffraction scan and a spectroscopic map.
+Every guarantee in this study can be checked, because each dataset is measured at every design site. Three datasets cover a simulation with known phase structure, a diffraction scan and a spectroscopic map. A fourth, simulated, adds a process model behind the map.
 
 *Synthetic small-angle scattering map.* A forward model of a surfactant–oil–water formulation maps a composition in the triangle $x + y \le 1$ to a scattering curve on 240 logarithmically spaced points between 0.005 and 0.32 Å⁻¹. The model has a micellar phase, an ordered cubic phase, a hexagonal phase and an oil-rich emulsion, with smoothed transitions. A hierarchical Poisson-disk design on the unit square with nine levels, restricted to the triangle, gives 2118 sites. The interpolant uses mirror images across the walls of the triangle.
 
 *NaCl microdiffraction scan.* A raster of 3249 sites on a 0.25 mm stage grid, with curves of 1000 bins between 0.59 and 38.9 nm⁻¹ [ALSNaCl]. A seven-level design, snapped to the raster, gives 1071 sites.
 
 *Infrared map.* A bioreef sample mapped on 29 × 42 pixels of 1 µm, with 1738 channels between 650 and 4000 cm⁻¹. Each spectrum is corrected for resonant Mie scattering pixel by pixel, and the window 1500–1850 cm⁻¹, which holds the amide and ester bands, is used. A seven-level design drawn on the physical rectangle and snapped to pixels gives 959 sites. SI 2 describes the correction and the design.
+
+*Simulated calcination campaign.* An autonomous synthesis laboratory fires powders in box furnaces, eight crucibles to a tray, and reads each crucible by powder diffraction [Szymanski2023]. A forward model of the anatase-to-rutile transformation of nanocrystalline titania, with kinetics from the literature [ZhangBanfield2000; HanaorSorrell2011], simulates such a campaign. A design site is a furnace run at one temperature (500–1000 °C) and dwell (1–4 h), and its measurement is the diffraction patterns of eight crucibles with different additives. Sixty-four runs form a scrambled Sobol sequence [Owen1995] cut into nested blocks of 8, 8, 16 and 32, each a randomised net that fixes the population of its level in advance. Thirty simulated worlds differ in furnace offsets, dosing errors and noise (SI 7).
 
 ## 4.2 Claims and tolerances
 
@@ -152,8 +154,9 @@ Each dataset carries one interest claim and one interpolation claim, fixed befor
 | Synthetic map | a dominant peak rising above its local baseline by at least five times that baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
 | NaCl scan | the (200) line at 22.28 nm⁻¹, at least five noise levels above its local baseline | the (200) width within 0.02 nm⁻¹, about half a detector bin |
 | IR map | absorbance of 0.1 or more in some channel of the window | every channel within 10 % + 0.10 absorbance, on average over channels above 0.02 |
+| Calcination | a crucible with a rutile fraction between 0.1 and 0.9 | size claim: the width of anatase (101) within 0.12°; pattern claim: every channel within 25 % + 4σ, on average over channels with signal |
 
-A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
+A claim on a furnace run holds when it holds for each of its eight crucibles. A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
 
 ## 4.3 Protocols
 
@@ -165,28 +168,30 @@ The interpolation score is one minus the probability of acceptance from a logist
 
 The length scale is set in three ways, each fixed before the calibration draw of a level. In the first, it maximises the marginal likelihood of the leading three principal-component scores of the measured spectra, with one length scale shared by the components [Balandat2020]. In the second, it equals the median nearest-neighbour spacing of the design through the finest level already measured, a quantity known before the experiment starts. In the third, the length scale varies across the sample: a Gibbs kernel [Gibbs1997; PaciorekSchervish2004] takes as local length scale the distance to the third-nearest measured site. Measurements guided by the interest certificate cluster where the sample holds something of interest and thin out elsewhere, so the local length scale is short in the first regions and long in the second. Details, including the nugget and the bounds on the length scale, are in SI 1.
 
-**Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form splits it as in Section 5.2. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
+**Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form splits it as in Section 5.2. On the calcination campaign, levels 0 and 1 form the seed, each certified level is calibrated on 12 runs, the guarantee is $R_E \le 0.20$ at confidence 0.80 along the quantile path, and natural-neighbour coordinates act on temperature and log dwell. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
 
 **Table 1.** Exchangeable parts of a campaign.
 
 | Part | Options used |
 | --- | --- |
-| Design | Hierarchical Poisson-disk design; seed of levels 0–2; 7 (NaCl, IR) or 9 (synthetic) levels |
+| Design | Hierarchical Poisson-disk design; seed of levels 0–2; 7 (NaCl, IR) or 9 (synthetic) levels; nested scrambled Sobol blocks, seed of levels 0–1 (calcination) |
 | Interpolator | Natural-neighbour coordinates; Gaussian process with length scale by maximum likelihood, by design spacing or by local spacing |
 | Interest score | Predicted maximum (IR); logistic on predicted peak height (NaCl, synthetic); random |
 | Interpolation score | Logistic on neighbour disagreement; GP posterior standard deviation; random |
 | Form of guarantee | Per-claim budgets; quantile path; priority path |
-| Calibration | 40 sites per level, uniform without replacement, exact hypergeometric tail |
+| Calibration | 40 sites (12 runs on calcination) per level, uniform without replacement, exact hypergeometric tail |
 
 ## 4.4 Evaluation
 
 A guarantee about a probability needs repetition to be checked. Each of 36 configurations was run as 250 campaigns that differ only in their calibration draws and, for the random scorer, in the score stream. Every certified level of every campaign gives one level check: the realised wrong-skip rate, computed against the truth, is compared with the budget. The number of checks over budget is compared with the number allowed by the failure probability the rule picked on each level (Section 5.1). For the first five campaigns of each configuration, the calibration draw was also repeated 500 times on the recorded level populations, which isolates the randomness of the draw. The record, its format and the code are described in SI 4 and SI 5.
 
+The runs a campaign measures are also data for a model of the process. In each calcination world, ten kinetic parameters were fitted to the patterns of five sets of runs: all 64, those measured under each claim, a random subset of the size campaign's size, and a subset of that size chosen to maximise the Fisher information at the true parameters [Atkinson2007], which bounds the precision any choice of runs can reach. Standard errors are clustered by furnace run [LiangZeger1986]; SI 7 gives the observation model and the fit.
+
 
 
 # 5 Results
 
-*All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5).*
+*All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5). The calcination campaign of Section 5.6 is run once in each of 30 simulated worlds (SI 7).*
 
 ## 5.1 The guarantee holds
 
@@ -262,6 +267,16 @@ The metric also decided where wrong skips fall. On IR, the metrics with an absol
 
 **Figure 6.** Where the certified claim sends the measurements: synthetic map, tolerances matched to equal difficulty, quantile path, 50 campaigns per claim. Colour gives the frequency with which a design site of a certified level was measured because no claim covered it, under the peak claim (a) and the profile claim (b); (c) gives their difference. Grey lines: phase boundaries of the forward model (L1 micellar, I1 cubic, H1 hexagonal, emulsion). File: `figures/fig6_metric.png`.
 
+## 5.6 What the measured runs teach
+
+The runs a campaign measures also serve a model of the process behind the map, and their information decides how well that model is fitted. The calcination campaign tests this in 30 simulated worlds (Fig. 7). The guarantee held there too: over 60 level checks per claim, the size claim showed 6 exceedances against 5.6 allowed and the pattern claim 8, with one-sided probabilities of 0.50 and 0.20. The size campaign measured 48 of 64 runs on average.
+
+The measured runs kept most of the information of the full design. Their D-efficiency had a median of 0.85, against 0.74 for random subsets of the same size, and exceeded that of the paired random subset in 27 of the 30 worlds (Fig. 7a). Removing the skipped runs cost less information than removing a random set of the same size in a median 98 % of draws: a run its neighbours predict adds little to a fit. The activation energies followed. Their root-mean-square errors over the worlds, for surface nucleation, contact growth, anatase coarsening and rutile coarsening, were 14, 26, 29 and 14 kJ/mol from the campaign's runs, 15, 28, 28 and 14 from all runs and 18, 29, 34 and 15 from random subsets (Fig. 7b). A subset chosen for the kinetics with knowledge of the truth matched the full design. In every set the errors exceed the standard errors of the fit, since the fit leaves the synthesis scatter out (SI 7).
+
+The campaign spent its runs where the kinetics need them. Runs at 750 °C and above, where the tray transforms, were measured in 81 % of the worlds and those below in 52 %, against 98 % and 35 % for the kinetics-optimal subset (Fig. 7c, d). Part of the difference is the uniform calibration draw. The size and pattern claims measured nearly the same runs (Jaccard index 0.96), since any claim on a tray fails where the tray transforms. One forward model generates the data and serves in the fit, which favours every set alike; the comparison between sets is the result.
+
+**Figure 7.** What the measured runs teach: calcination campaign, 30 worlds. (a) D-efficiency of the measured runs relative to all 64 runs; grey lines pair the size-claim campaign with a random subset of equal size in each world; bars give medians. (b) Root-mean-square error of four activation energies over the worlds, with 68 % bootstrap intervals. (c, d) Share of worlds in which each run of the certified levels was measured by the size-claim campaign (c) or chosen by the kinetics-optimal subset (d); diamonds: seed runs. Orange lines: half conversion without (solid) and with 10 wt% alumina (dashed). File: `figures/fig7_kinetics.png`.
+
 
 # 6 Discussion
 
@@ -272,6 +287,10 @@ A map built under a guarantee serves its reader to the extent that the reader kn
 ## What is certified shapes the campaign
 
 A guarantee is stated for one acceptance metric, and the metric deserves the same care as the budget. The bound holds for any metric fixed before the calibration draw, and the metric decides the rest: which sites fail prediction, where measurements are taken and where wrong skips gather (Section 5.5). The same holds for any autonomous experiment: the quantity a model predicts, and the error its acquisition anticipates, decide where measurements are taken [Noack2019; Noack2020]. The guarantee delivers the claim as specified, and features outside that claim carry no protection. The metric is therefore best fixed from the scientific question before beam time, stated with the guarantee, and checked on a pilot scan for the cost it implies.
+
+## Measured sites as data
+
+The sites a campaign measures are also the data for a model of the process. A site is skipped under the interpolation claim when its neighbours predict it, and such a site adds little to a model that varies as smoothly as the response; on the calcination campaign the measured runs were nearly as informative as the full design (Section 5.6). A model identified by features outside the claim, such as a background or a weak minor phase, lies beyond this argument. The guarantee holds for any score frozen before the draw, so a score that ranks sites by the information they would add to the process model keeps the bound and steers measurements towards the model [Atkinson2007].
 
 ## Building other guarantees
 
@@ -289,7 +308,7 @@ An accountable instrument needs a reason for every site and a statement that a r
 
 # 7 Conclusion
 
-A skip decision can carry a checkable guarantee once it is posed as a claim about a site and calibrated on a uniform draw from a population fixed in advance. Hierarchical designs supply such populations at every level of an adaptive campaign, and the order fit, freeze, draw, calibrate, decide keeps each draw exchangeable with its level whatever came before. On three fully measured datasets the record matched the guarantees with informed and random scores, natural-neighbour and Gaussian-process interpolation, and three forms of guarantee; model quality and the form of the guarantee set the cost. The certified claim decides what the guarantee buys: where measurements are taken, where wrong skips gather and which sites carry protection. The claim therefore belongs to the scientific question and is best fixed with it, before beam time. Label-conditional bounds that protect the sites of interest, and optimisation through level sets referred to the whole response, are natural next steps. Each skipped site leaves the campaign with a reason, a claim and a bound, and the record allows every decision to be replayed.
+A skip decision can carry a checkable guarantee once it is posed as a claim about a site and calibrated on a uniform draw from a population fixed in advance. Hierarchical designs supply such populations at every level of an adaptive campaign, and the order fit, freeze, draw, calibrate, decide keeps each draw exchangeable with its level whatever came before. On three fully measured datasets the record matched the guarantees with informed and random scores, natural-neighbour and Gaussian-process interpolation, and three forms of guarantee; model quality and the form of the guarantee set the cost. The certified claim decides what the guarantee buys: where measurements are taken, where wrong skips gather and which sites carry protection. On a simulated calcination campaign the measured runs recovered the kinetics as accurately as the full design, since a run its neighbours predict adds little to a fit. The claim therefore belongs to the scientific question and is best fixed with it, before beam time. Label-conditional bounds that protect the sites of interest, optimisation through level sets referred to the whole response, and scores that rank sites by the information they add to a process model are natural next steps. Each skipped site leaves the campaign with a reason, a claim and a bound, and the record allows every decision to be replayed.
 
 
 # Appendix A. Exchangeability by design and the single-certificate bound
@@ -314,7 +333,7 @@ Under (A1)–(A6), the level population with its scores and labels is a fixed fi
 Fix a level and a certificate with score $S$ and bad label $B$, and drop the indices. The joint rate at threshold $\tau$ is
 
 $$
-R(\tau) = N^{-1} \, \#\{x \in D : S(x) \le \tau,\ B(x) = 1\}
+R(\tau) = N^{-1} \, \lvert \{x \in D : S(x) \le \tau,\ B(x) = 1\} \rvert
 $$
 
 which is nondecreasing and right-continuous in $\tau$. Let $H$ be hypergeometric with population $N$, $\lfloor \varepsilon N \rfloor + 1$ marked sites and $m$ draws, and let $k$ be the largest integer with $P(H \le k) \le \delta$. Let $b$ be the $(k+1)$-th smallest score among the calibration sites with $B = 1$. The rule covers every site with $S < b$; every site when $C$ holds at most $k$ bad sites; no site when $k < 0$.
@@ -399,7 +418,7 @@ $$
 with $\lambda_E(x) = \infty$ when no label is bad. A site is a wrong skip at $\lambda$ exactly when $\lambda_E(x) \le \lambda$, so
 
 $$
-R_E(\lambda) = N^{-1} \, \#\{x \in D : \lambda_E(x) \le \lambda\}
+R_E(\lambda) = N^{-1} \, \lvert \{x \in D : \lambda_E(x) \le \lambda\} \rvert
 $$
 
 is nondecreasing and right-continuous in $\lambda$. Let $k = k(\varepsilon, \delta)$. Let $b$ be the $(k+1)$-th smallest finite value of $\lambda_E$ on $C$. The rule covers every site with $\lambda_{\mathrm{cov}} < b$, every site when $C$ holds at most $k$ finite values of $\lambda_E$, and no site when $k < 0$. Write $\hat\lambda$ for any position below $b$ that covers the same sites.
@@ -456,7 +475,7 @@ $$
 ending at $q_I = 1$. Both the grid and $q_0$ depend on the scores and on settings fixed in advance, and on no label. Threshold $\tau_i$ covers the set $D_i = \{x \in D : S(x) \le \tau_i\}$ of $N_i$ sites, and its conditional rate is
 
 $$
-R_i = N_i^{-1} \, \#\{x \in D_i : B(x) = 1\}
+R_i = N_i^{-1} \, \lvert \{x \in D_i : B(x) = 1\} \rvert
 $$
 
 For each $i$, the null hypothesis $H_i : R_i > \alpha$ is tested on the calibration sites in $D_i$. Their number $n_i = |C \cap D_i|$ is random; given $n_i$, they form a uniform sample without replacement from $D_i$, since $C$ is uniform on $D$ and $D_i$ is fixed before the draw. The number $f_i$ of bad labels among them is then hypergeometric, and

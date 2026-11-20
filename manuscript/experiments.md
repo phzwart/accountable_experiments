@@ -2,13 +2,15 @@
 
 ## 4.1 Datasets
 
-Every guarantee in this study can be checked, because each dataset is measured at every design site. Three datasets cover a simulation with known phase structure, a diffraction scan and a spectroscopic map.
+Every guarantee in this study can be checked, because each dataset is measured at every design site. Three datasets cover a simulation with known phase structure, a diffraction scan and a spectroscopic map. A fourth, simulated, adds a process model behind the map.
 
 *Synthetic small-angle scattering map.* A forward model of a surfactant–oil–water formulation maps a composition in the triangle $x + y \le 1$ to a scattering curve on 240 logarithmically spaced points between 0.005 and 0.32 Å⁻¹. The model has a micellar phase, an ordered cubic phase, a hexagonal phase and an oil-rich emulsion, with smoothed transitions. A hierarchical Poisson-disk design on the unit square with nine levels, restricted to the triangle, gives 2118 sites. The interpolant uses mirror images across the walls of the triangle.
 
 *NaCl microdiffraction scan.* A raster of 3249 sites on a 0.25 mm stage grid, with curves of 1000 bins between 0.59 and 38.9 nm⁻¹ [ALSNaCl]. A seven-level design, snapped to the raster, gives 1071 sites.
 
 *Infrared map.* A bioreef sample mapped on 29 × 42 pixels of 1 µm, with 1738 channels between 650 and 4000 cm⁻¹. Each spectrum is corrected for resonant Mie scattering pixel by pixel, and the window 1500–1850 cm⁻¹, which holds the amide and ester bands, is used. A seven-level design drawn on the physical rectangle and snapped to pixels gives 959 sites. SI 2 describes the correction and the design.
+
+*Simulated calcination campaign.* An autonomous synthesis laboratory fires powders in box furnaces, eight crucibles to a tray, and reads each crucible by powder diffraction [Szymanski2023]. A forward model of the anatase-to-rutile transformation of nanocrystalline titania, with kinetics from the literature [ZhangBanfield2000; HanaorSorrell2011], simulates such a campaign. A design site is a furnace run at one temperature (500–1000 °C) and dwell (1–4 h), and its measurement is the diffraction patterns of eight crucibles with different additives. Sixty-four runs form a scrambled Sobol sequence [Owen1995] cut into nested blocks of 8, 8, 16 and 32, each a randomised net that fixes the population of its level in advance. Thirty simulated worlds differ in furnace offsets, dosing errors and noise (SI 7).
 
 ## 4.2 Claims and tolerances
 
@@ -19,8 +21,9 @@ Each dataset carries one interest claim and one interpolation claim, fixed befor
 | Synthetic map | a dominant peak rising above its local baseline by at least five times that baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
 | NaCl scan | the (200) line at 22.28 nm⁻¹, at least five noise levels above its local baseline | the (200) width within 0.02 nm⁻¹, about half a detector bin |
 | IR map | absorbance of 0.1 or more in some channel of the window | every channel within 10 % + 0.10 absorbance, on average over channels above 0.02 |
+| Calcination | a crucible with a rutile fraction between 0.1 and 0.9 | size claim: the width of anatase (101) within 0.12°; pattern claim: every channel within 25 % + 4σ, on average over channels with signal |
 
-A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
+A claim on a furnace run holds when it holds for each of its eight crucibles. A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
 
 ## 4.3 Protocols
 
@@ -32,22 +35,24 @@ The interpolation score is one minus the probability of acceptance from a logist
 
 The length scale is set in three ways, each fixed before the calibration draw of a level. In the first, it maximises the marginal likelihood of the leading three principal-component scores of the measured spectra, with one length scale shared by the components [Balandat2020]. In the second, it equals the median nearest-neighbour spacing of the design through the finest level already measured, a quantity known before the experiment starts. In the third, the length scale varies across the sample: a Gibbs kernel [Gibbs1997; PaciorekSchervish2004] takes as local length scale the distance to the third-nearest measured site. Measurements guided by the interest certificate cluster where the sample holds something of interest and thin out elsewhere, so the local length scale is short in the first regions and long in the second. Details, including the nugget and the bounds on the length scale, are in SI 1.
 
-**Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form splits it as in Section 5.2. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
+**Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form splits it as in Section 5.2. On the calcination campaign, levels 0 and 1 form the seed, each certified level is calibrated on 12 runs, the guarantee is $R_E \le 0.20$ at confidence 0.80 along the quantile path, and natural-neighbour coordinates act on temperature and log dwell. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
 
 **Table 1.** Exchangeable parts of a campaign.
 
 | Part | Options used |
 | --- | --- |
-| Design | Hierarchical Poisson-disk design; seed of levels 0–2; 7 (NaCl, IR) or 9 (synthetic) levels |
+| Design | Hierarchical Poisson-disk design; seed of levels 0–2; 7 (NaCl, IR) or 9 (synthetic) levels; nested scrambled Sobol blocks, seed of levels 0–1 (calcination) |
 | Interpolator | Natural-neighbour coordinates; Gaussian process with length scale by maximum likelihood, by design spacing or by local spacing |
 | Interest score | Predicted maximum (IR); logistic on predicted peak height (NaCl, synthetic); random |
 | Interpolation score | Logistic on neighbour disagreement; GP posterior standard deviation; random |
 | Form of guarantee | Per-claim budgets; quantile path; priority path |
-| Calibration | 40 sites per level, uniform without replacement, exact hypergeometric tail |
+| Calibration | 40 sites (12 runs on calcination) per level, uniform without replacement, exact hypergeometric tail |
 
 ## 4.4 Evaluation
 
 A guarantee about a probability needs repetition to be checked. Each of 36 configurations was run as 250 campaigns that differ only in their calibration draws and, for the random scorer, in the score stream. Every certified level of every campaign gives one level check: the realised wrong-skip rate, computed against the truth, is compared with the budget. The number of checks over budget is compared with the number allowed by the failure probability the rule picked on each level (Section 5.1). For the first five campaigns of each configuration, the calibration draw was also repeated 500 times on the recorded level populations, which isolates the randomness of the draw. The record, its format and the code are described in SI 4 and SI 5.
+
+The runs a campaign measures are also data for a model of the process. In each calcination world, ten kinetic parameters were fitted to the patterns of five sets of runs: all 64, those measured under each claim, a random subset of the size campaign's size, and a subset of that size chosen to maximise the Fisher information at the true parameters [Atkinson2007], which bounds the precision any choice of runs can reach. Standard errors are clustered by furnace run [LiangZeger1986]; SI 7 gives the observation model and the fit.
 
 ---
 

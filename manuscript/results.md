@@ -1,6 +1,6 @@
 # 5 Results (draft 3)
 
-*All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5).*
+*All numbers below come from the run record: 36 configurations, each run as 250 independent campaigns with their own calibration draws (SI 5). The calcination campaign of Section 5.6 is run once in each of 30 simulated worlds (SI 7).*
 
 ## 5.1 The guarantee holds
 
@@ -76,8 +76,19 @@ The metric also decided where wrong skips fall. On IR, the metrics with an absol
 
 **Figure 6.** Where the certified claim sends the measurements: synthetic map, tolerances matched to equal difficulty, quantile path, 50 campaigns per claim. Colour gives the frequency with which a design site of a certified level was measured because no claim covered it, under the peak claim (a) and the profile claim (b); (c) gives their difference. Grey lines: phase boundaries of the forward model (L1 micellar, I1 cubic, H1 hexagonal, emulsion). File: `figures/fig6_metric.png`.
 
+## 5.6 What the measured runs teach
+
+The runs a campaign measures also serve a model of the process behind the map, and their information decides how well that model is fitted. The calcination campaign tests this in 30 simulated worlds (Fig. 7). The guarantee held there too: over 60 level checks per claim, the size claim showed 6 exceedances against 5.6 allowed and the pattern claim 8, with one-sided probabilities of 0.50 and 0.20. The size campaign measured 48 of 64 runs on average.
+
+The measured runs kept most of the information of the full design. Their D-efficiency had a median of 0.85, against 0.74 for random subsets of the same size, and exceeded that of the paired random subset in 27 of the 30 worlds (Fig. 7a). Removing the skipped runs cost less information than removing a random set of the same size in a median 98 % of draws: a run its neighbours predict adds little to a fit. The activation energies followed. Their root-mean-square errors over the worlds, for surface nucleation, contact growth, anatase coarsening and rutile coarsening, were 14, 26, 29 and 14 kJ/mol from the campaign's runs, 15, 28, 28 and 14 from all runs and 18, 29, 34 and 15 from random subsets (Fig. 7b). A subset chosen for the kinetics with knowledge of the truth matched the full design. In every set the errors exceed the standard errors of the fit, since the fit leaves the synthesis scatter out (SI 7).
+
+The campaign spent its runs where the kinetics need them. Runs at 750 °C and above, where the tray transforms, were measured in 81 % of the worlds and those below in 52 %, against 98 % and 35 % for the kinetics-optimal subset (Fig. 7c, d). Part of the difference is the uniform calibration draw. The size and pattern claims measured nearly the same runs (Jaccard index 0.96), since any claim on a tray fails where the tray transforms. One forward model generates the data and serves in the fit, which favours every set alike; the comparison between sets is the result.
+
+**Figure 7.** What the measured runs teach: calcination campaign, 30 worlds. (a) D-efficiency of the measured runs relative to all 64 runs; grey lines pair the size-claim campaign with a random subset of equal size in each world; bars give medians. (b) Root-mean-square error of four activation energies over the worlds, with 68 % bootstrap intervals. (c, d) Share of worlds in which each run of the certified levels was measured by the size-claim campaign (c) or chosen by the kinetics-optimal subset (d); diamonds: seed runs. Orange lines: half conversion without (solid) and with 10 wt% alumina (dashed). File: `figures/fig7_kinetics.png`.
+
 ## Notes for revision (not part of the text)
 
+- Section 5.6 numbers: results/tio2/kinetics_worlds/SUMMARY.md and w*.json (script experiments/tio2_calcination/kinetics_worlds.py); figure manuscript/figures/fig_kinetics.py. Exceedance probabilities from the Poisson-binomial tail of the picked levels.
 - All numbers are from results/record (SUMMARY.md for counts, PICKED.md for the comparison with the picked levels, AUDIT.json for attainment). Level checks pool levels and campaigns; levels within one campaign are not independent draws, so the Clopper–Pearson intervals are indicative.
 - On the IR map at the original tolerance, level 3 has the same population in every campaign (its scores depend only on the seed design), so its 49 exceedances in 250 campaigns are 250 draws on one population; it is the only IR level on which the budget can be exceeded.
 - IR overlaps are recomputed from the record (mean per-campaign Jaccard index of the skipped sets against natural neighbour).

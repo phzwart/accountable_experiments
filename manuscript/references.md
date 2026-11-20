@@ -7,6 +7,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Angelopoulos2023] **V** Angelopoulos, Bates (2023). Conformal prediction: a gentle introduction. Found. Trends Mach. Learn. 16(4), 494–591. doi:10.1561/2200000101.
 - [Angelopoulos2024] **V** Angelopoulos, Bates, Fisch, Lei, Schuster (2024). Conformal risk control. ICLR 2024.
 - [Angelopoulos2025] **V** Angelopoulos, Bates, Candès, Jordan, Lei (2025). Learn then Test: calibrating predictive algorithms to achieve risk control. Ann. Appl. Stat. doi:10.1214/24-AOAS1998.
+- [Atkinson2007] **V** Atkinson, Donev, Tobias (2007). Optimum Experimental Designs, with SAS. Oxford Statistical Science Series 34, Oxford University Press.
 - [Balandat2020] **M** Balandat, Karrer, Jiang, Daulton, Letham, Wilson, Bakshy (2020). BoTorch: a framework for efficient Monte-Carlo Bayesian optimization. NeurIPS 33.
 - [Barber2023] **V** Barber, Candès, Ramdas, Tibshirani (2023). Conformal prediction beyond exchangeability. Ann. Stat. 51(2), 816–845. doi:10.1214/23-AOS2276.
 - [Bates2021] **V** Bates, Angelopoulos, Lei, Malik, Jordan (2021). Distribution-free, risk-controlling prediction sets. J. ACM 68(6), 43. doi:10.1145/3478535.
@@ -23,10 +24,12 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Gibbs2021] **V** Gibbs, Candès (2021). Adaptive conformal inference under distribution shift. NeurIPS 34.
 - [Godaliyadda2018] **V** Godaliyadda et al. (2018). A framework for dynamic image sampling based on supervised learning. IEEE Trans. Comput. Imaging 4(1). doi:10.1109/TCI.2017.2777482.
 - [Gotovos2013] **V** Gotovos, Casati, Hitz, Krause (2013). Active learning for level set estimation. IJCAI 2013, 1344–1350.
+- [HanaorSorrell2011] **V** Hanaor, Sorrell (2011). Review of the anatase to rutile phase transformation. J. Mater. Sci. 46(4), 855–874. doi:10.1007/s10853-010-5113-0.
 - [Jin2023] **V** Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.
 - [Kalinin2021] **V** Kalinin et al. (2021). arXiv:2103.12165.
 - [Kusne2020] **V** Kusne et al. (2020). On-the-fly closed-loop materials discovery via Bayesian active learning. Nat. Commun. 11, 5966. doi:10.1038/s41467-020-19597-w.
 - [LauferGoldshtein2023] **V** Laufer-Goldshtein, Fisch, Barzilay, Jaakkola (2023). Efficiently controlling multiple risks with Pareto Testing. ICLR 2023. arXiv:2210.07913.
+- [LiangZeger1986] **V** Liang, Zeger (1986). Longitudinal data analysis using generalized linear models. Biometrika 73(1), 13–22. doi:10.1093/biomet/73.1.13.
 - [Manoharan2026] **V** Manoharan (2026). Audited selective verification for risk-controlled N-1 thermal contingency screening under deployment shift. arXiv:2607.13221.
 - [Mao2024] **V** JASA 119(546), 904–914. doi:10.1080/01621459.2022.2147531.
 - [Nazeri2026] **V** Nazeri, Mei, Watchorn et al. (2026). RAISE: a self-driving laboratory for interfacial property formulation discovery. Digital Discovery. doi:10.1039/D5DD00531K.
@@ -35,22 +38,28 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Noack2019] **V** Noack, Yager, Fukuto, Doerk, Li, Sethian (2019). A kriging-based approach to autonomous experimentation with applications to X-ray scattering. Sci. Rep. 9, 11809. doi:10.1038/s41598-019-48114-3.
 - [Noack2020] **V** Noack, Doerk, Li, Fukuto, Yager (2020). Advances in kriging-based autonomous X-ray scattering experiments. Sci. Rep. 10, 1325. doi:10.1038/s41598-020-57887-x.
 - [Noack2021] **V** Noack, Zwart, Ushizima, Fukuto, Yager, Elbert, Murray, Stein, Doerk, Tsai, Li, Freychet, Zhernenkov, Holman, Lee, Chen, Rotenberg, Weber, Le Goc, Boehm, Steffens, Mutti, Sethian (2021). Gaussian processes for autonomous data acquisition at large-scale synchrotron and neutron facilities. Nat. Rev. Phys. 3, 685–697. doi:10.1038/s42254-021-00345-y. (Author list from memory; confirm.)
+- [Owen1995] **V** Owen (1995). Randomly permuted (t,m,s)-nets and (t,s)-sequences. In Niederreiter, Shiue (eds), Monte Carlo and Quasi-Monte Carlo Methods in Scientific Computing, Lecture Notes in Statistics 106, Springer, 299–317 (pages given as 299–315 in some citations; confirm).
 - [PaciorekSchervish2004] **M** Paciorek, Schervish (2004). Nonstationary covariance functions for Gaussian process regression. NeurIPS 16.
 - [Radivojevic2020] **V** Radivojević, Costello, Workman, Garcia Martin (2020). A machine learning Automated Recommendation Tool for synthetic biology. Nat. Commun. 11, 4879. doi:10.1038/s41467-020-18008-4.
 - [Raji2020] **V** Raji et al. (2020). Closing the AI accountability gap: defining an end-to-end framework for internal algorithmic auditing. FAT* '20. doi:10.1145/3351095.3372873.
 - [RasmussenWilliams2006] **M** Rasmussen, Williams (2006). Gaussian Processes for Machine Learning. MIT Press.
 - [Sadinle2019] **M** Sadinle, Lei, Wasserman (2019). Least ambiguous set-valued classifiers with bounded error levels. JASA 114(525), 223–234.
 - [Sibson1981] **M** Sibson (1981). A brief description of natural neighbour interpolation. In Barnett (ed.), Interpreting Multivariate Data, Wiley, 21–36.
+- [SpurrMyers1957] **M** Spurr, Myers (1957). Quantitative analysis of anatase–rutile mixtures with an X-ray diffractometer. Anal. Chem. 29(5), 760–762. (Title and authors verified; volume and pages to confirm.) SI only.
 - [Szymanski2023] **V** Szymanski et al. (2023). An autonomous laboratory for the accelerated synthesis of novel materials. Nature 624, 86–91. doi:10.1038/s41586-023-06734-w.
+- [Thompson1987] **M** Thompson, Cox, Hastings (1987). Rietveld refinement of Debye–Scherrer synchrotron X-ray data from Al₂O₃. J. Appl. Cryst. 20, 79–83. SI only.
 - [Tibshirani2019] **V** Tibshirani, Barber, Candès, Ramdas (2019). Conformal prediction under covariate shift. NeurIPS 32.
 - [Tom2024] **V** Tom, Schmid, Baird et al. (2024). Self-driving laboratories for chemistry and materials science. Chem. Rev. 124(16), 9633–9732. doi:10.1021/acs.chemrev.4c00055.
 - [Vovk2005] **M** Vovk, Gammerman, Shafer (2005). Algorithmic Learning in a Random World. Springer.
 - [Watson1992] **?** Watson (1992). Contouring: A Guide to the Analysis and Display of Spatial Data. Pergamon. (SI only.)
 - [WestfallKrishen2001] **?** Westfall, Krishen (2001). Optimally weighted, fixed sequence and gatekeeper multiple testing procedures. J. Stat. Plann. Inference 99(1), 25–40.
 - [Wilks1941] **V** Wilks (1941). Determination of sample sizes for setting tolerance limits. Ann. Math. Stat. 12, 91–96. doi:10.1214/aoms/1177731788.
+- [WilliamsonHall1953] **V** Williamson, Hall (1953). X-ray line broadening from filed aluminium and wolfram. Acta Metall. 1(1), 22–31. doi:10.1016/0001-6160(53)90006-6. SI only.
 - [Yager2023] **V** Yager, Majewski, Noack, Fukuto (2023). Autonomous x-ray scattering. Nanotechnology 34, 322001.
 - [YangZhang2026] **V** Yang, Zhang (2026). Conformalized rate-adaptive sensing. arXiv:2607.26887.
 - [Ye2025] **V** Ye, Han, Liu, Angelopoulos, Griffith, Monakhova, You (2025). Learned, uncertainty-driven adaptive acquisition for photon-efficient scanning microscopy. Opt. Express 33(6). doi:10.1364/OE.542640.
+- [ZhangBanfield1999] **V** Zhang, Banfield (1999). New kinetic model for the nanocrystalline anatase-to-rutile transformation revealing rate dependence on number of particles. Am. Mineral. 84, 528–535. SI only.
+- [ZhangBanfield2000] **V** Zhang, Banfield (2000). Phase transformation of nanocrystalline anatase-to-rutile via combined interface and surface nucleation. J. Mater. Res. 15(2), 437–448. doi:10.1557/jmr.2000.0067.
 - [Ziatdinov2022] **?** Ziatdinov et al. (2022). ACS Nano; arXiv:2205.15458. Volume and pages to confirm.
 
 SI only (infrared correction): [MartensStark1991], [Kohler2005], [Bassan2010], [Solheim2019], [vandeHulst1957]; see the notes of SI 2.
