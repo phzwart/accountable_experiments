@@ -103,3 +103,42 @@ The kinetic predictor itself is exact: model-generated observables return the tr
   enter the fit as known values instead of a random effect.
 - Interface nucleation and the size dependence β were held at literature values. A precursor-size
   axis in the design would be needed to identify β.
+
+## Against uniform points (matched budgets)
+
+Script: `experiments/tio2_calcination/inverse_uniform.py`. Numbers: `results/tio2/inverse/uniform.json`.
+Arms:
+- **campaign:** runs the size-claim campaign measured, 5 calibration seeds.
+- **random-sub:** uniformly random subsets of the 64-run Sobol design (10 draws).
+- **iid-uniform:** fresh designs of iid uniform (temperature, dwell) runs (6 designs). Each design has
+  its own synthesis realisation, so its errors also carry world-to-world variation; compare the
+  standard errors first.
+
+Values are activation energies, kJ/mol, in the order nucleation / contact growth / anatase coarsening /
+rutile coarsening. T50 is the error in the temperature for 50 % rutile over 1–4 h dwell, native powder.
+
+| Arm | Runs | Median s.e. | Spread across replicates (s.d.) | RMSE vs truth | T50 error, median / max (°C) |
+| --- | --- | --- | --- | --- | --- |
+| full design (Sobol) | 64 | 12 / 10 / 20 / 8 | – | 10 / 17 / 16 / 17 | 6.6 |
+| campaign | 44–50 | 12 / 11 / 22 / 8 | 5 / 5 / 7 / 2 | 15 / 16 / 24 / 19 | 6.7 / 7.2 |
+| random subset of Sobol | 47 | 14 / 11 / 20 / 9 | 6 / 8 / 17 / 3 | 10 / 18 / 26 / 17 | 7.1 / 8.9 |
+| iid uniform | 47 | 17 / 10 / 28 / 7 | 18 / 14 / 24 / 7 | 19 / 29 / 31 / 16 | 5.3 / 9.3 |
+| seed levels (Sobol) | 16 | 14 / 21 / 23 / 9 | – | 10 / 24 / 37 / 21 | 7.0 |
+| random subset of Sobol | 16 | 25 / 19 / 42 / 14 | 22 / 22 / 51 / 17 | 22 / 34 / 55 / 23 | 3.9 / 11.7 |
+| iid uniform | 16 | 32 / 14 / 48 / 12 | 36 / 19 / 33 / 10 | 37 / 25 / 40 / 19 | 8.5 / 9.9 |
+
+Reading:
+- **At about 47 runs, run selection barely matters among Sobol-based arms.** The campaign, a random 47
+  of the Sobol runs and the full design give the same standard errors. The spread across campaign seeds
+  is smaller, but campaigns share most of their runs.
+- **iid uniform runs cost precision.** Nucleation and anatase-coarsening energies are about 30–40 %
+  less precise, with 2–3× the spread across designs. Clumps and holes in an iid design leave parts of
+  the transformation front unsampled.
+- **At 16 runs, the design is what matters.** The Sobol seed levels give standard errors of
+  14 / 21 / 23 / 9. A random 16 of the same runs, or 16 iid uniform runs, roughly double the errors on
+  nucleation and anatase coarsening, and individual draws miss the anatase-coarsening energy by up to
+  100 kJ/mol.
+- **T50 sits on the systematic floor (5–9 °C) in every arm.** Precision gains in the energies do not
+  move it, because the floor comes from the observation model and synthesis scatter.
+- **Bands are least honest for iid uniform designs at 47 runs:** 20 % of parameter estimates lie beyond
+  2.5 s.e., against 10–16 % in the Sobol arms.
