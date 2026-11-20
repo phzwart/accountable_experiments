@@ -61,6 +61,10 @@ def disagreement_from_weights(
         ww = np.asarray(ww, float)
         ww = ww / ww.sum()
         I_hat = (ww[:, None] * I_meas[keys]).sum(axis=0)
+        if crit.kind == "blocks":
+            # generic: each neighbour scored against the weighted prediction by the criterion itself
+            s = np.asarray(crit.stats(I_meas[keys], np.repeat(I_hat[None, :], len(keys), axis=0))["score"], float)
+            return I_hat, float((ww * np.minimum(s, PEAK_MISMATCH_PENALTY)).sum())
         if crit.is_peak:
             return I_hat, _peak_score(keys, ww, I_hat)
         if integral:

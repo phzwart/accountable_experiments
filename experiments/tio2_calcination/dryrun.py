@@ -31,6 +31,17 @@ ROWS = {
     "pattern_random": dict(target="pattern", score="random"),
     "size_gp_design": dict(target="size", interp_model="gp_design"),
     "size_delaunay_split": dict(target="size", furnace="split"),
+    # few-days pilot: furnace runs as units (furnace.py)
+    "runs128_size": dict(unit="run", target="size"),
+    "runs128_pattern": dict(unit="run", target="pattern"),
+    "runs128_size_random": dict(unit="run", target="size", score="random"),
+    "runs64_size": dict(unit="run", target="size", blocks=(8, 8, 16, 32)),
+    "runs64_pattern": dict(unit="run", target="pattern", blocks=(8, 8, 16, 32)),
+    # same pilot on forward model v2 (literature-anchored kinetics, realistic XRD)
+    "v2_runs128_size": dict(unit="run", target="size", model="v2"),
+    "v2_runs128_pattern": dict(unit="run", target="pattern", model="v2", rtol=0.25, atol_sigma=4.0),
+    "v2_runs128_size_random": dict(unit="run", target="size", score="random", model="v2"),
+    "v2_runs64_size": dict(unit="run", target="size", blocks=(8, 8, 16, 32), model="v2"),
 }
 
 
@@ -42,9 +53,15 @@ def _seeds(s):
 def one(row: str, seed: int) -> dict:
     kw = dict(ROWS[row])
     furnace = kw.pop("furnace", "per_sample")
-    ds = A.load(truth_seed=0, furnace=furnace)
+    unit = kw.pop("unit", "recipe")
     t0 = time.time()
-    res = run_campaign(ds, A.config(ds, seed=seed, **kw))
+    if unit == "run":
+        from . import furnace as FU
+        ds = FU.load(truth_seed=0, blocks_=tuple(kw.pop("blocks", FU.BLOCKS)), model=kw.pop("model", "v1"))
+        res = run_campaign(ds, FU.config(ds, seed=seed, **kw))
+    else:
+        ds = A.load(truth_seed=0, furnace=furnace)
+        res = run_campaign(ds, A.config(ds, seed=seed, **kw))
     names = [c["name"] for c in res.config["certificates"]]
     tail = res.config["policy"].get("tail", "hypergeometric")
     levels = np.asarray(ds.levels)
@@ -68,7 +85,15 @@ def one(row: str, seed: int) -> dict:
     cov_int = np.isin(reason, ["not_interesting", "not_interesting+interpolable"])
     cov_itp = np.isin(reason, ["interpolable", "not_interesting+interpolable"])
     wrong = sk & ((cov_int & lab[INTEREST]) | (cov_itp & lab[INTERP]))
-    return dict(row=row, seed=seed, seconds=round(time.time() - t0, 1), n_measured=res.n_measured,
+    sched = {}
+    if unit == "run":
+        for nf in (4, 8):
+            for pipe in (False, True):
+                for slow in (True, False):
+                    sched[f"f{nf}_{'pipe' if pipe else 'seq'}_{'slow' if slow else 'fast'}"] = round(
+                        FU.schedule(res, ds, nf, pipe, slow)[0], 1)
+    return dict(row=row, seed=seed, seconds=round(time.time() - t0, 1), n_measured=res.n_measured, schedule=sched,
+                n_sites=int(ds.n),
                 reasons=res.summary()["reasons"], checks=checks,
                 measured_nc=np.flatnonzero(reason == "no_certificate").tolist(),
                 wrong=np.flatnonzero(wrong).tolist(), interesting=int(lab[INTEREST].sum()),
@@ -94,7 +119,7 @@ def report():
              "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for row in ROWS:
         files = sorted((RUNS / row).glob("s*.json"))
-        if not files:
+        if not files or "runs" in row:
             continue
         R = [json.loads(f.read_text()) for f in files]
         meas = np.array([r["n_measured"] for r in R])
@@ -112,6 +137,29 @@ def report():
                             mean_seconds=float(np.mean([r["seconds"] for r in R])))
         lines.append(f"| {row} | {len(R)} | {meas.mean():.0f} ± {summary[row]['measured'][1]:.0f} | {nc.mean():.0f} | {len(ch)} | "
                      f"{allowed:.1f} | {obs} | {obs / max(allowed, 1e-9):.2f} | {pval:.2f} | {wr.mean():.0f} | {100 * lost.mean():.0f} % |")
+    # furnace-run pilot rows
+    lines += ["", "| Row | Model | Campaigns | Runs measured (of design) | Exceedances / allowed | P(≥ obs) | Runs with a mixed-phase crucible lost | Days, 4 furnaces (seq, slow ramp) | Days, 8 furnaces (pipelined, fast ramp) |",
+              "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+    from experiments.record_picked import poisson_binomial_sf
+    for row in ROWS:
+        files = sorted((RUNS / row).glob("s*.json"))
+        if not files or "runs" not in row:
+            continue
+        R = [json.loads(f.read_text()) for f in files]
+        meas = np.array([r["n_measured"] for r in R])
+        ch = [c for r in R for c in r["checks"]]
+        allowed = sum(c["picked"] for c in ch)
+        obs = int(sum(c["exceeded"] for c in ch))
+        pval = float(poisson_binomial_sf(np.array([c["picked"] for c in ch]), obs))
+        lost = np.array([r["wrong_interesting"] / max(r["interesting"], 1) for r in R])
+        d4 = np.array([r["schedule"]["f4_seq_slow"] for r in R]) / 24
+        d8 = np.array([r["schedule"]["f8_pipe_fast"] for r in R]) / 24
+        summary[row] = dict(n=len(R), n_sites=R[0]["n_sites"], measured=[float(meas.mean()), float(meas.std(ddof=1))],
+                            checks=len(ch), allowed=allowed, observed=obs, p_value=pval, lost_interesting=float(lost.mean()),
+                            days={k: float(np.mean([r["schedule"][k] for r in R]) / 24) for k in R[0]["schedule"]})
+        model = "v2" if row.startswith("v2_") else "v1"
+        lines.append(f"| {row} | {model} | {len(R)} | {meas.mean():.0f} ± {meas.std(ddof=1):.0f} of {R[0]['n_sites']} | {obs} / {allowed:.1f} | {pval:.2f} | "
+                     f"{100 * lost.mean():.0f} % | {d4.mean():.1f} ± {d4.std(ddof=1):.1f} | {d8.mean():.1f} ± {d8.std(ddof=1):.1f} |")
     (OUT / "summary.json").write_text(json.dumps(summary, indent=1))
     (OUT / "TABLE.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))

@@ -35,13 +35,15 @@ from accountable import (
     LogisticInterpScore, RandomScore, StoredOracle, estimate_window_noise, make_policy,
     peak_descriptors,
 )
+from accountable.criteria import peak_descriptors_window
 from accountable.features import fit_logistic_probability
 from accountable.scores import Score
 from accountable.sibson import interpolate
 
 from . import forward as F
 
-A_HALF = R_HALF = 1.0
+A_HALF = 1.5
+R_HALF = 1.0
 SMOOTH = 11               # Savitzky-Golay window (bins of 0.02 deg) before peak descriptors
 PRESENCE_C = 5.0
 FWHM_TOL = 0.08            # deg 2theta; above the noise floor of the width (q90 0.03 deg)
@@ -89,7 +91,7 @@ def noise_sigma(ds) -> float:
 def _present(I, q, center, half, sigma):
     from scipy.signal import savgol_filter
     I = savgol_filter(np.atleast_2d(np.asarray(I, float)), SMOOTH, 2, axis=1)
-    d = peak_descriptors(I, q, q_center=center, q_halfwidth=half)
+    d = peak_descriptors_window(I, q, center, half)
     hab = np.asarray(d["height_above_base"], float)
     return np.asarray(d["has_peak"], bool) & np.isfinite(hab) & (hab > PRESENCE_C * sigma), np.where(np.isfinite(hab), hab, 0.0)
 
@@ -105,7 +107,7 @@ def rutile_fraction(I, q, sigma):
     Is = savgol_filter(np.atleast_2d(np.asarray(I, float)), SMOOTH, 2, axis=1)
     out = []
     for c, h in ((F.A101, A_HALF), (F.R110, R_HALF)):
-        d = peak_descriptors(Is, q, q_center=c, q_halfwidth=h)
+        d = peak_descriptors_window(Is, q, c, h)
         hab = np.asarray(d["height_above_base"], float)
         fw = np.asarray(d["fwhm"], float)
         ok = np.asarray(d["has_peak"], bool) & np.isfinite(hab) & (hab > PRESENCE_C * sigma) & np.isfinite(fw)
@@ -176,7 +178,7 @@ def criterion(target: str, q, sigma: float, fwhm_tol: float = FWHM_TOL, rtol: fl
             kind="peak", q=q, q_center=F.A101, q_halfwidth=A_HALF,
             include_position=False, include_width=True, fwhm_eps=fwhm_tol,
             tol_mode="absolute", presence_sigma=sigma, presence_multiple=PRESENCE_C, q_unit="deg",
-            smooth_window=SMOOTH,
+            smooth_window=SMOOTH, descriptor_mode="window",
         )
     if target == "pattern":
         return AccuracyCriterion(kind="envelope", rtol=rtol, atol=atol_sigma * sigma, q_unit="deg",

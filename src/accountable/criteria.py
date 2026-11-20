@@ -177,6 +177,61 @@ def peak_descriptors(
                 prominence=prominence, has_peak=has_peak)
 
 
+def peak_descriptors_window(I, q, q_center, q_halfwidth, edge_bins: int = 5):
+    """
+    Peak descriptors for broad, noisy reflections. The baseline is the straight line
+    between the means of the first and last ``edge_bins`` bins of the window
+    [q_center +- q_halfwidth]; the peak is the window maximum above that line; the
+    FWHM is found from the first half-height crossings outward from the maximum,
+    interpolated linearly in q. Returns the same keys as ``peak_descriptors``.
+    """
+    I2 = np.atleast_2d(np.asarray(I, float))
+    q = np.asarray(q, float)
+    n = len(I2)
+    out = {k: np.full(n, np.nan) for k in ("q_peak", "fwhm", "height", "height_above_base", "prominence")}
+    has = np.zeros(n, bool)
+    w = np.flatnonzero((q >= q_center - q_halfwidth) & (q <= q_center + q_halfwidth))
+    if len(w) < 2 * edge_bins + 3:
+        out["has_peak"] = has
+        return out
+    qw = q[w]
+    for r in range(n):
+        y = I2[r, w]
+        if not np.all(np.isfinite(y)):
+            continue
+        b0, b1 = y[:edge_bins].mean(), y[-edge_bins:].mean()
+        x0, x1 = qw[:edge_bins].mean(), qw[-edge_bins:].mean()
+        base = b0 + (b1 - b0) * (qw - x0) / (x1 - x0)
+        z = y - base
+        i = int(np.argmax(z[edge_bins:-edge_bins])) + edge_bins
+        h = float(z[i])
+        if h <= 0:
+            continue
+        half = 0.5 * h
+        jl = i
+        while jl > 0 and z[jl] > half:
+            jl -= 1
+        jr = i
+        while jr < len(z) - 1 and z[jr] > half:
+            jr += 1
+        has[r] = True
+        out["height"][r] = float(y[i])
+        out["height_above_base"][r] = h
+        out["prominence"][r] = h / max(abs(float(base[i])), 1e-30)
+        if 0 < i < len(z) - 1:
+            den = z[i - 1] - 2 * z[i] + z[i + 1]
+            sh = 0.5 * (z[i - 1] - z[i + 1]) / den if den != 0 else 0.0
+            out["q_peak"][r] = float(qw[i] + np.clip(sh, -1, 1) * (qw[1] - qw[0]))
+        else:
+            out["q_peak"][r] = float(qw[i])
+        if z[jl] <= half and z[jr] <= half and jl < i < jr:
+            ql = np.interp(half, [z[jl], z[jl + 1]], [qw[jl], qw[jl + 1]])
+            qr = np.interp(half, [z[jr], z[jr - 1]], [qw[jr], qw[jr - 1]])
+            out["fwhm"][r] = float(qr - ql)
+    out["has_peak"] = has
+    return out
+
+
 def estimate_window_noise(
     I: np.ndarray,
     q: np.ndarray,
@@ -413,9 +468,16 @@ class AccuracyCriterion:
     # kind="peak": optional Savitzky-Golay smoothing (window in bins, polynomial order 2)
     # applied to every spectrum before its descriptors are taken; None keeps the raw data.
     smooth_window: int = None
+    # kind="peak": "flank" (local-minima baseline, the default) or "window" (straight baseline
+    # between the window edges; robust for broad, noisy reflections).
+    descriptor_mode: str = "flank"
+    # kind="blocks": each spectrum is n_blocks equal blocks (e.g. the crucibles of one furnace run);
+    # ``sub`` is the criterion applied to every block, and a site fails when any block fails.
+    sub: object = None
+    n_blocks: int = 1
 
     def __post_init__(self):
-        if self.kind not in ("envelope", "peak", "integral", "basis"):
+        if self.kind not in ("envelope", "peak", "integral", "basis", "blocks"):
             raise ValueError(f"unknown criterion kind={self.kind!r}")
         if self.tol_mode not in ("absolute", "relative"):
             raise ValueError(f"unknown tol_mode={self.tol_mode!r}")
@@ -423,6 +485,8 @@ class AccuracyCriterion:
             raise ValueError(f"criterion kind={self.kind!r} requires the q grid")
         if self.kind == "basis" and (self.basis is None or self.basis_scale is None):
             raise ValueError("criterion kind='basis' requires basis and basis_scale")
+        if self.kind == "blocks" and (self.sub is None or int(self.n_blocks) < 1):
+            raise ValueError("criterion kind='blocks' requires sub and n_blocks")
 
     @property
     def is_peak(self) -> bool:
@@ -440,10 +504,13 @@ class AccuracyCriterion:
         if self.smooth_window:
             from scipy.signal import savgol_filter
             I = savgol_filter(np.atleast_2d(np.asarray(I, float)), int(self.smooth_window), 2, axis=1)
-        d = peak_descriptors(
-            I, self.q, min_prominence=self.min_prominence,
-            q_center=self.q_center, q_halfwidth=self.q_halfwidth,
-        )
+        if self.descriptor_mode == "window":
+            d = peak_descriptors_window(I, self.q, self.q_center, self.q_halfwidth)
+        else:
+            d = peak_descriptors(
+                I, self.q, min_prominence=self.min_prominence,
+                q_center=self.q_center, q_halfwidth=self.q_halfwidth,
+            )
         return self.apply_presence(d)
 
     def apply_presence(self, desc):
@@ -468,6 +535,8 @@ class AccuracyCriterion:
         return out
 
     def stats(self, I_true, I_hat, desc_true=None, desc_hat=None):
+        if self.kind == "blocks":
+            return blocks_violation_stats(I_true, I_hat, self.sub, int(self.n_blocks))
         if self.is_peak:
             if desc_true is None:
                 desc_true = self.descriptors(I_true)
@@ -524,7 +593,25 @@ class AccuracyCriterion:
             return rf"total intensity: rtol={self.rtol:g}, atol={self.atol:g}"
         if self.kind == "basis":
             return rf"basis ({len(self.basis_scale)} components): whitened RMS $\leq{self.basis_tol:g}$"
+        if self.kind == "blocks":
+            return f"every one of {int(self.n_blocks)} blocks: " + self.sub.label()
         return rf"envelope: rtol={self.rtol:g}, atol={self.atol:g}"
+
+
+def blocks_violation_stats(I_true, I_hat, sub, n_blocks):
+    """Apply ``sub`` to each of ``n_blocks`` equal blocks; the site score is the largest block score."""
+    A = np.atleast_2d(np.asarray(I_true, float))
+    B = np.atleast_2d(np.asarray(I_hat, float))
+    n, C = A.shape
+    w = C // n_blocks
+    S = np.zeros((n, n_blocks))
+    for b in range(n_blocks):
+        sl = slice(b * w, (b + 1) * w)
+        S[:, b] = np.asarray(sub.stats(A[:, sl], B[:, sl])["score"], float)
+    s = S.max(axis=1)
+    out = s > 1.0
+    return dict(score=s, outside_mean=out, outside_any=out, frac_q_out=(S > 1.0).mean(axis=1),
+                block_scores=S)
 
 
 def basis_violation_stats(I_true, I_hat, basis, scale, tol):
