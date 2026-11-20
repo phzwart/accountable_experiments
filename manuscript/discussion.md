@@ -22,7 +22,7 @@ Optimisation is the natural next case, and it differs from mapping in its popula
 
 ## Accountable experiments
 
-An accountable experiment needs an account of every site: a claim and a bound for each skip, and for each measurement the reason it was needed when the decision was made. The workflow leaves both in its record. Each site carries its level and scores with its account; each level carries its calibration draw, picked failure probability and bound. The guarantee rests on the order of operations, so the record suffices: predictor and scores are frozen and recorded before each draw, the draw comes from a recorded seed, and every decision can be replayed and every bound recomputed (SI 5). Claims, metrics and budgets remain the experimenter's choice and enter the record as such. The guarantee then states, for each claim, how often a skip made under it was wrong.
+An accountable experiment certifies every action: each skip by its claim and bound, each measurement by the reason it was needed when the decision was made. The workflow leaves both in its record. Each site carries its level, scores and certified action; each level carries its calibration draw, picked failure probability and bound. The guarantee rests on the order of operations, so the record suffices: predictor and scores are frozen and recorded before each draw, the draw comes from a recorded seed, and every decision can be replayed and every bound recomputed (SI 5). Claims, metrics and budgets remain the experimenter's choice and enter the record as such. The guarantee then states, for each claim, how often a skip made under it was wrong.
 
 ---
 

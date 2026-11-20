@@ -53,7 +53,7 @@ The three length-scale rules give visibly different reasons for measuring a site
 
 **Figure 4.** The cost of one guarantee across interpolation protocols, quantile path, 250 campaigns per configuration. Columns: IR map at the original and at the tight tolerance, NaCl scan, synthetic map. Upper row: sites measured, mean ± s.d., with the design size dashed. Lower row: realised wrong-skip rate on every certified level of every campaign, with the budget; tick labels give the number of exceedances. GP: Gaussian process with isotropic squared-exponential kernel; length scale by maximum likelihood, by design spacing, or by local spacing of measured sites. File: `figures/fig4_protocols.png`.
 
-## 5.4 A reason for every site
+## 5.4 Every action certified
 
 A guarantee on rates becomes useful at an instrument once every site of a map carries its reason. Figure 5 shows one campaign per dataset under the quantile path with natural-neighbour interpolation, with every design site marked by the reason recorded for it and every wrong skip found against the fully measured truth.
 
