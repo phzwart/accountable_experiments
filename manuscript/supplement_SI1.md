@@ -54,6 +54,8 @@ In every rule, the length scale of a level is fixed from the measured set before
 | NaCl scan | 0.072 (0.029–0.120) | 1.47 (0.007–5.04) | 0.064 (0.036–0.107) | 0.077 (0.040–0.113) |
 | Synthetic map | 0.150 (0.070–0.296) | 0.083 (0.018–0.27) | 0.045 (0.019–0.109) | 0.051 (0.021–0.118) |
 
+The three rules give visibly different reasons for measuring a site (Fig. S1). The design-spacing rule gives the shortest length scale and the most structured standard deviation, high in every gap between measured sites. Maximum likelihood on the IR map assigned much of the variance to noise and returned a nearly uniform standard deviation. The local-spacing rule lengthens the kernel where measurements are sparse and lowers the standard deviation there.
+
 **Figure S1.** Posterior standard deviation on the IR map before level 5 (seed 0, local-spacing campaign; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 × 29 µm raster, and the local length scale of the third rule. Length scales are given in micrometres. File: `figures/figS1_gp_std.png`.
 
 **Checks.** Unit tests confirm that the weights reproduce the BoTorch posterior mean and variance for fixed hyperparameters, that the design rule follows the finest measured level, that the Gibbs kernel is positive semidefinite and reduces to the isotropic kernel for constant $\ell$, and that the local length scale is long where measured sites are sparse.

@@ -10,6 +10,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 **What the paper is about.** It is about which guarantees can be made, and at what cost in measurements. Every result is reported as a pair: the statement (wrong-skip rate ≤ ε at confidence c) and the number of measurements needed to make it. Protocols are exchangeable parts that show the guarantee survives a change of machinery. Protocols are never ranked by accuracy, and the paper claims no optimality for any interpolator, score or design.
 
+**What a guarantee buys.** A guarantee delivers exactly the claim it is given. The certified claim (acceptance metric and tolerance) decides which sites fail prediction, and with them where a campaign measures and where wrong skips fall; a rate over a level leaves their location free and counts them over all sites, of which the sites of interest may be a small part. The paper answers two questions in Results: can a skip carry a checkable guarantee (Sections 5.1–5.4), and what does the guarantee buy (Section 5.5). It closes on accountability at the instrument.
+
 **Guarantees come in forms.** Each guarantee is precise, and different needs call for different statements. A bound per reason for skipping tells how often "not interesting" failed and how often "predictable" failed. A bound on the shared event tells how often any skip failed, and spends the whole budget on that question. A bound on a conditional rate tells how often a skip of a given kind failed. The paper reports three forms side by side (per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path) and presents them as instances of one recipe: frozen scores, a uniform audit draw, and a decision rule fixed before the audit labels are seen. Readers build their own forms from the same recipe; the SI gives the contract a new form must keep and the Monte Carlo acceptance check it must pass. No form is presented as the right one.
 
 **Ground rules for the text**
@@ -23,6 +25,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 **Working titles**
 
+- What can be guaranteed about a measurement that was never made (current)
+
 - Accountable skipping: finite-sample guarantees for measurements left out of scanning experiments
 - Certified skips: distribution-free guarantees for adaptive scanning measurements
 - What can be asserted about a measurement that was never made
@@ -35,6 +39,7 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 | C2 | "Not interesting" and "predictable" are two claims about a site with one shared wrong-skip event. Guarantees on that event come in several precise forms, each built from frozen scores, a uniform draw and a rule fixed before the labels: per-claim budgets with a union bound, one budget along a quantile path, one budget along a priority path. Further forms slot in under the same contract. | Theory (appendix B); MC acceptance check of every form; all three forms on all three datasets over 20 seeds; a sequential two-stage rule that breaks the contract fails its nominal rate, and its priority-path counterpart keeps it | Angelopoulos et al. 2025 (multiple risks, multi-dimensional λ); Laufer-Goldshtein et al. 2023 (Pareto Testing); Jin & Candès 2023; Bonferroni |
 | C3 | Exchangeability is created by design: a predetermined hierarchical design gives each level a fixed population, and a uniform draw under non-anticipation (fit, freeze, draw, calibrate, decide; no interference) makes the calibration sample exchangeable with it, conditionally on the campaign history. Breaking the order breaks the guarantee. | Protocol description (§3.1, Appendix A); random-score runs keep the guarantee; order-of-operations Monte Carlo: refitting on calibration labels, active-learning calibration and best-of-five draws break it | Bridson 2007 / hierarchical Poisson-disk sampling; exchangeability as in Vovk et al. 2005; design-based inference (Neyman 1934; Cochran 1977) |
 | C4 | The guarantee survives a change of protocol: interpolator (natural neighbour on spectra, on scalars, Gaussian process), score (random, neighbour disagreement, logistic, GP standard deviation) and budget scheme. Only the cost changes. | Protocol matrix (§5), coverage counts per protocol, measurements per statement | Sibson 1981; Rasmussen & Williams 2006; Noack et al. 2019 |
+| C6 | The certified claim decides what the guarantee buys: the bound holds for every acceptance metric, while the metric sets which sites fail, where measurements are taken and where wrong skips gather; a rate over a level leaves location and the share of interesting sites lost free. | Metric study, six metrics on three datasets, default and matched tolerances (Section 5.5, SI 6); Fig. 6; SI 6.2 | Noack et al. 2019, 2020; Vovk et al. 2005 and Sadinle et al. 2019 for the label-conditional remedy |
 | C5 | Every skip carries a stated safety margin, and the record shows each margin met at its picked level; the price of a margin is reported as measurements spent, never as a ranking. | Run record (SI 5); maps with reasons (Fig. 5) | Noack et al. 2019, 2020; Ye et al. 2025 |
 
 The paper rests on these five claims. Any figure that supports none of them goes to the SI.
@@ -107,6 +112,7 @@ The paper rests on these five claims. Any figure that supports none of them goes
 | Fig. 3 | Forms of guarantee: sites measured and level wrong-skip rates for three forms on three datasets; Monte Carlo panel with the sequential rule against the two paths (drafted: figures/fig3_forms.png) | C2 |
 | Fig. 4 | Cost per statement across the protocol matrix (drafted for natural neighbour and three GP rules: figures/fig4_protocols.png) | C4 |
 | Fig. 5 | Maps with reasons and map bound, one per dataset (drafted: figures/fig5_maps.png) | C1, C5 |
+| Fig. 6 | Where the certified claim sends the measurements: synthetic map, peak against profile claim at matched tolerance (drafted: figures/fig6_metric.png) | C6 |
 | Table 1 | Protocol components (interpolator, score, budget scheme, design) and settings | C4 |
 | Table 2 | Per dataset: statement, measurements, skips by reason, coverage over seeds | C1, C4 |
 | Table 3 | Forms of guarantee: what each asserts, what it gives up, when it suits; contract shared by all | C2 |

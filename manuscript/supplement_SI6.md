@@ -1,6 +1,6 @@
 # SI 6. What the certified metric does to a campaign (draft 1)
 
-A skip asserts that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
+A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
 
 **Set-up.**
 - **Campaigns.** The interpolation certificate alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0–49).
@@ -9,7 +9,7 @@ A skip asserts that a prediction meets an acceptance metric, and the choice of m
 
 **Metrics.**
 
-| Metric | A skip asserts that |
+| Metric | A skip claims that |
 | --- | --- |
 | Peak or line width, absolute | the width (and position) of the peak are within a fixed tolerance |
 | Peak or line width, relative | the same, within a fraction of their true values |
@@ -105,7 +105,7 @@ The wrong skips of the synthetic map cluster in composition. The analysis below 
 - **The budget sets the count, the score the location.** Three interest scores gave about the same number of wrong skips per campaign (Table S6.3). The quantile path raises its threshold until the calibration draw reaches its allowed failures, so the budget is spent whatever the score; only the sites it is spent on change.
 - **The recorded score depends on signal shape.** The interest label asks for a dominant peak rising above its local baseline by at least five times that baseline, a relative criterion; call the height above baseline divided by the baseline the peak-to-baseline ratio. The recorded score uses the absolute height above baseline. The broad correlation peak of the micellar phase has a high ratio to its baseline and a small absolute height (median 0.43, against 5.5 for the Bragg peaks of the ordered phases). The score therefore ranks interesting micellar sites low, and 75 % of the wrong interest skips fall in that phase. The interpolated spectrum predicted a peak of at least five times baseline at 91 % of these sites: the prediction was right and the score misread it.
 - **A score matched to the label moves the errors to the margin.** With scores based on the predicted peak-to-baseline ratio, the wrong skips are the least interesting of the interesting sites (median true ratio 8.4). The probability of a wrong skip falls from 0.72 at ratios of 5–8 to 0.05 above 40. Such sites form contiguous bands of composition where the ratio changes slowly near the threshold, so the errors still cluster.
-- **The denominator matters.** The rate is taken over all sites of a level, and a third of the sites are of interest. With the recorded score, 35 % of the interesting sites on certified levels were skipped in error while every level met its budget. A bound on the share of interesting sites lost requires a label-conditional statement (Section 6).
+- **The denominator matters.** The rate is taken over all sites of a level, and a third of the sites are of interest. With the recorded score, 35 % of the interesting sites on certified levels were skipped in error while every level met its budget. A bound on the share of interesting sites lost requires a label-conditional statement (Section 6, Scope of the guarantee).
 
 **Table S6.3.** Interest scores on the synthetic map (60 campaigns, 360 level checks).
 
