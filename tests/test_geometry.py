@@ -81,3 +81,18 @@ def test_legacy_falls_back_to_triangle_weights():
     Ww = neighbour_weights(P, Q, method="watson")
     off = sum(np.abs(_dense(Wl, i, 200) - _dense(Ww, i, 200)).max() > 1e-6 for i in range(len(Q)))
     assert off > 0.2 * len(Q)
+
+
+def test_delaunay_weights_linear_precision_4d():
+    """Barycentric Delaunay weights reproduce linear functions in 4-D and sum to one."""
+    from scipy.stats import qmc
+    from accountable.sibson import neighbour_weights
+    P = qmc.Sobol(4, scramble=True, seed=1).random(256)
+    rng = np.random.default_rng(0)
+    Q = 0.2 + 0.6 * rng.random((50, 4))
+    a = np.array([0.3, -1.2, 2.0, 0.7])
+    W = neighbour_weights(P, Q, method="delaunay")
+    assert not W.fallback.any()
+    y_hat = W.apply(P @ a + 0.5)
+    assert np.allclose(y_hat, Q @ a + 0.5, atol=1e-9)
+    assert all(abs(float(np.sum(r)) - 1.0) < 1e-12 for r in W.raw)

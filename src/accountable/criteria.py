@@ -410,6 +410,9 @@ class AccuracyCriterion:
     basis_scale: np.ndarray = None
     basis_tol: float = 0.1
     basis_log_floor: float = None   # if set, spectra enter the basis as log10(max(I, floor))
+    # kind="peak": optional Savitzky-Golay smoothing (window in bins, polynomial order 2)
+    # applied to every spectrum before its descriptors are taken; None keeps the raw data.
+    smooth_window: int = None
 
     def __post_init__(self):
         if self.kind not in ("envelope", "peak", "integral", "basis"):
@@ -434,6 +437,9 @@ class AccuracyCriterion:
         """Peak descriptors for a spectrum block (peak criterion only)."""
         if not self.is_peak:
             return None
+        if self.smooth_window:
+            from scipy.signal import savgol_filter
+            I = savgol_filter(np.atleast_2d(np.asarray(I, float)), int(self.smooth_window), 2, axis=1)
         d = peak_descriptors(
             I, self.q, min_prominence=self.min_prominence,
             q_center=self.q_center, q_halfwidth=self.q_halfwidth,

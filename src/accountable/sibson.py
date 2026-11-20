@@ -282,7 +282,7 @@ def symmetry_cloud(P_meas: np.ndarray, images: Optional[ImageMap]):
     return P_ext[keep], src[keep]
 
 
-METHODS = ("legacy", "watson")
+METHODS = ("legacy", "watson", "delaunay")
 
 # A campaign asks for weights on the same measured set several times per
 # level (scores, labels, interest score). Weights depend only on the
@@ -330,7 +330,10 @@ def neighbour_weights(
     ``method="legacy"`` reproduces the original implementation, including
     its behaviour on near-cocircular sites. ``method="watson"`` computes
     natural-neighbour coordinates by half-plane clipping and is continuous
-    in the site positions. Queries outside the (extended) hull fall back
+    in the site positions. ``method="delaunay"`` gives barycentric weights
+    on the enclosing simplex of a Delaunay triangulation, in any dimension
+    (piecewise-linear interpolation; used for designs with more than two
+    coordinates). Queries outside the (extended) hull fall back
     to inverse-distance kNN in both.
     """
     if method not in METHODS:
@@ -344,7 +347,12 @@ def neighbour_weights(
         P_cloud, src = symmetry_cloud(P_meas, images)
         span = float(np.linalg.norm(P_cloud.max(0) - P_cloud.min(0))) + 1.0
         radius = max(5.0 * span, 5.0)
-        cloud = _SibsonCloud(P_cloud, radius) if method == "legacy" else _WatsonCloud(P_cloud)
+        if method == "legacy":
+            cloud = _SibsonCloud(P_cloud, radius)
+        elif method == "watson":
+            cloud = _WatsonCloud(P_cloud)
+        else:
+            cloud = _DelaunayCloud(P_cloud)
         entry = _cloud_cache_put(P_meas, images, method, (cloud, src, {}))
     cloud, src, memo = entry
     keys_all, raw_all = [], []
@@ -562,3 +570,48 @@ class _WatsonCloud:
             return np.array([], dtype=int), np.array([])
         keep = areas > 0
         return nbrs[keep].astype(int), areas[keep] / tot
+
+
+class _DelaunayCloud:
+    """
+    Barycentric weights on the enclosing Delaunay simplex, in any dimension.
+
+    The interpolant is piecewise linear and continuous; like natural
+    neighbours it depends on positions only. Outside the convex hull the
+    weights are empty and the caller falls back to inverse-distance kNN.
+    """
+
+    def __init__(self, P: np.ndarray):
+        self.P = np.asarray(P, float)
+        self.n, self.d = self.P.shape if self.P.ndim == 2 else (0, 0)
+        self._tri = None
+
+    @property
+    def tri(self):
+        if self._tri is None:
+            self._tri = Delaunay(self.P, qhull_options="QJ" if self.d > 2 else "Qbb Qc Qz Q12")
+        return self._tri
+
+    def weights(self, q: np.ndarray):
+        q = np.asarray(q, float).ravel()
+        if self.n == 0:
+            return np.array([], dtype=int), np.array([])
+        d = np.linalg.norm(self.P - q, axis=1)
+        j = int(np.argmin(d))
+        if d[j] < 1e-14:
+            return np.array([j]), np.array([1.0])
+        if self.n <= self.d:
+            return np.array([], dtype=int), np.array([])
+        tri = self.tri
+        s = int(tri.find_simplex(q))
+        if s < 0:
+            return np.array([], dtype=int), np.array([])
+        T = tri.transform[s]
+        b = T[:self.d] @ (q - T[self.d])
+        w = np.append(b, 1.0 - b.sum())
+        w = np.clip(w, 0.0, None)
+        if w.sum() <= 0:
+            return np.array([], dtype=int), np.array([])
+        idx = tri.simplices[s]
+        keep = w > 0
+        return np.asarray(idx[keep], int), w[keep] / w.sum()

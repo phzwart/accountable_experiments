@@ -91,12 +91,12 @@ def query_features(P_meas, I_meas, P_query, crit, *, images=None, k_fallback=5,
     """Features (disagreement, log1p disagreement, x, y) at query sites."""
     P_query = np.atleast_2d(np.asarray(P_query, float))
     if P_query.size == 0:
-        return np.zeros((0, 4))
+        return np.zeros((0, 2 + np.asarray(P_meas).shape[1]))
     W = weights if weights is not None else neighbour_weights(
         P_meas, P_query, images=images, k_fallback=k_fallback, method=method,
     )
     dis, _ = disagreement_from_weights(W, I_meas, crit, desc_meas)
-    return np.column_stack([dis, np.log1p(np.maximum(dis, 0.0)), P_query[:, 0], P_query[:, 1]])
+    return np.column_stack([dis, np.log1p(np.maximum(dis, 0.0)), P_query])
 
 
 def loo_training_table(P_train, I_train, crit, *, images=None, k_fallback=5,
@@ -108,7 +108,7 @@ def loo_training_table(P_train, I_train, crit, *, images=None, k_fallback=5,
     I_train = np.asarray(I_train, float)
     n = len(P_train)
     if n < 3:
-        return np.zeros((0, 4)), np.zeros(0, dtype=bool)
+        return np.zeros((0, 2 + P_train.shape[1])), np.zeros(0, dtype=bool)
     order = np.arange(n)
     if n > max_train:
         order = np.sort(rng.choice(n, size=max_train, replace=False))
@@ -125,7 +125,7 @@ def loo_training_table(P_train, I_train, crit, *, images=None, k_fallback=5,
         env = crit.stats(I_train[i:i + 1], I_hat, desc_true=slice_desc(desc_train, slice(i, i + 1)))
         dis, _ = disagreement_from_weights(W_interp, I_loo, crit, slice_desc(desc_train, mask))
         d = float(dis[0])
-        feats.append([d, np.log1p(d), float(P_train[i, 0]), float(P_train[i, 1])])
+        feats.append([d, np.log1p(d), *map(float, P_train[i])])
         labels.append(bool(env["score"][0] <= 1.0))
     return np.asarray(feats, float), np.asarray(labels, bool)
 
