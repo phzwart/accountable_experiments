@@ -16,6 +16,8 @@ Every guarantee in this study can be checked, because each dataset is measured a
 
 Each dataset carries one interest claim and one interpolation claim, fixed before any run.
 
+**Table 2.** Claims, fixed before any run.
+
 | Dataset | Interest: a site holds | Interpolation: the prediction from coarser levels meets |
 | --- | --- | --- |
 | Synthetic map | a dominant peak rising above its local baseline by at least five times that baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
@@ -37,7 +39,7 @@ The length scale is set in three ways, each fixed before the calibration draw of
 
 **Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form splits it as in Section 5.2. On the calcination campaign, levels 0 and 1 form the seed, each certified level is calibrated on 12 runs, the guarantee is $R_E \le 0.20$ at confidence 0.80 along the quantile path, and natural-neighbour coordinates act on temperature and log dwell. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
 
-**Table 1.** Exchangeable parts of a campaign.
+**Table 3.** Exchangeable parts of a campaign.
 
 | Part | Options used |
 | --- | --- |

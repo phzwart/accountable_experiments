@@ -2,7 +2,7 @@
 
 *The rest of SI 4 (functionality, tests, reproduction procedure) is still to be drafted. Code and module names belong here and stay out of the main text.*
 
-## SI 4.x Contract for a form of guarantee
+## SI 4.1 Contract for a form of guarantee
 
 A form of guarantee is a budget policy in the `accountable` package. It implements `decide(LevelData) -> PolicyDecision` and registers a name with `@register("name")`. The forms in the main text are the policies `separate` (per-claim budgets), `nested_path` (quantile path) and `priority_path` (priority path); `ltt_conditional` gives the conditional rate of Appendix C.
 
@@ -16,7 +16,7 @@ Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.2 
 
 The campaign loop enforces the order of operations of Section 3.1 structurally: a score receives only the measured set (`MeasuredSet`) when it is fitted and is frozen with `bind_level` before the draw; the calibration indices come from a generator that nothing else uses; and a policy receives the labels of the calibration sites only. A policy or score written against these interfaces cannot see the labels of the level it is deciding before the draw.
 
-## SI 4.y Acceptance check
+## SI 4.2 Acceptance check
 
 Before a policy carries a claim, each guarantee it states is checked by Monte Carlo on fixed finite populations (`accountable.validate.check_coverage`). The population is fixed, so the calibration draw is the only randomness. For each stated guarantee, the check counts the draws in which the population rate exceeds the budget and compares that frequency with $1 - \text{confidence}$, allowing three Monte Carlo standard errors. Scores are drawn uniform on $[0, 1]$; labels are independent of the scores (uninformative, the hard case) or have a bad probability rising linearly with the score at the same mean (informative).
 
@@ -34,6 +34,6 @@ Before a policy carries a claim, each guarantee it states is checked by Monte Ca
 
 The plug-in rule takes the largest threshold whose empirical calibration rate stays within the budget, with no order-statistic correction, and states a guarantee at confidence 0.90. The check rejects it. Passing the check is evidence for a policy; the finite-sample argument still has to be written down, as in Appendix B.
 
-## SI 4.z Worked example: the priority path
+## SI 4.3 Worked example: the priority path
 
 The priority path subclasses the quantile path and replaces only the entry times: certificate $i$ in the order sweeps its own score quantiles over $\lambda \in (i, i + 1]$ (Appendix B.2). The order is a setting, so the family is fixed before the draw and Proposition B.2 applies without change. The implementation is about thirty lines. Unit tests check that the priority path with one certificate gives the same covers as the single-certificate rule, and that both orders pass the acceptance check.

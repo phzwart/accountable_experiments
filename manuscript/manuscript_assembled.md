@@ -106,9 +106,9 @@ alongside a separate guarantee for each claim. The split leaves each certificate
 
 **One budget along a path.** A single budget spends all of $\varepsilon$ and $\delta$ on $R_E$. Two thresholds cannot be read off one draw by an order statistic, and Learn-then-Test supplies the remedy: search a family of thresholds fixed before any label is seen [Angelopoulos2025]. Here the family is a path $\lambda \mapsto (\tau_a(\lambda), \tau_b(\lambda))$, built from the frozen scores alone, along which both thresholds rise. The wrong-skip sets along such a path are nested, $R_E(\lambda)$ grows with $\lambda$, and the rule of Section 3.3 applies with $\lambda$ in place of the threshold (Appendix B). Two paths are used. The quantile path moves both thresholds through matching quantiles of their scores on the level. The priority path admits the claims in a set order: the first claim sweeps its quantiles before the second moves. A preference between the claims thereby enters the decision with the guarantee intact.
 
-**Further forms.** The forms above share one recipe: scores frozen before the draw, a uniform calibration draw from the level, and a decision rule whose family of thresholds is fixed before the calibration labels are known. Any rule built this way inherits a finite-sample guarantee (Section 6), including a bound on a conditional rate (Appendix C). Table 3 summarises the forms; SI 4 lists the conditions a new form must meet and a Monte Carlo acceptance check that every form here passes.
+**Further forms.** The forms above share one recipe: scores frozen before the draw, a uniform calibration draw from the level, and a decision rule whose family of thresholds is fixed before the calibration labels are known. Any rule built this way inherits a finite-sample guarantee (Section 6), including a bound on a conditional rate (Appendix C). Table 1 summarises the forms; SI 4 lists the conditions a new form must meet and a Monte Carlo acceptance check that every form here passes.
 
-**Table 3.** Forms of guarantee on the wrong-skip event of one level. Every form uses the same frozen scores and the same calibration draw.
+**Table 1.** Forms of guarantee on the wrong-skip event of one level. Every form uses the same frozen scores and the same calibration draw.
 
 | Form | Guarantee, with probability at least the stated confidence | Budget | Given up | Suited to |
 | --- | --- | --- | --- | --- |
@@ -145,6 +145,8 @@ Every guarantee in this study can be checked, because each dataset is measured a
 
 Each dataset carries one interest claim and one interpolation claim, fixed before any run.
 
+**Table 2.** Claims, fixed before any run.
+
 | Dataset | Interest: a site holds | Interpolation: the prediction from coarser levels meets |
 | --- | --- | --- |
 | Synthetic map | a dominant peak rising above its local baseline by at least five times that baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
@@ -166,7 +168,7 @@ The length scale is set in three ways, each fixed before the calibration draw of
 
 **Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form splits it as in Section 5.2. On the calcination campaign, levels 0 and 1 form the seed, each certified level is calibrated on 12 runs, the guarantee is $R_E \le 0.20$ at confidence 0.80 along the quantile path, and natural-neighbour coordinates act on temperature and log dwell. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
 
-**Table 1.** Exchangeable parts of a campaign.
+**Table 3.** Exchangeable parts of a campaign.
 
 | Part | Options used |
 | --- | --- |
@@ -197,9 +199,9 @@ The failure probability a level actually carries is set by the calibration sampl
 
 The record agrees with the guarantee at the picked levels. For the 32 stated rates (configuration and statement) whose budget can be exceeded on every level, union-bound statements excluded, the observed number of exceedances lay between 0.88 and 1.11 times the number the picked levels allow, and none exceeded it beyond chance: the smallest one-sided probability of the observed count under the picked levels was 0.13 (SI 5, Table S5.3). On the IR map at its original tolerance, three of the four levels hold too few failing sites for the budget to be reached, and the record shows no exceedance there. The union-bound statement of the per-claim form is exceeded far less often than its picked level allows, since two claims seldom approach their budgets on the same level. Repeating the calibration draw on the recorded level populations gives the same picture level by level: the attained exceedance probability lay between 0.90 and 1.06 times $\delta_L$ wherever the budget could be exceeded (SI 5, Table S5.2).
 
-Table 2 gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee.
+Table 4 gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee.
 
-**Table 2.** One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels. Allowed exceedances are the sums of the picked failure probabilities over the level checks.
+**Table 4.** One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels. Allowed exceedances are the sums of the picked failure probabilities over the level checks.
 
 | Dataset | Guarantee | Sites | Measured: seed / calibration / no claim | Skipped: not of interest / predictable / both | Wrong skips | Exceedances: observed / allowed |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -216,7 +218,7 @@ Breaking the order of operations breaks the guarantee (Section 3.1). On a level 
 
 ## 5.2 Every form keeps its guarantee
 
-A choice between forms of guarantee needs their costs on real data. Each form of Table 3 was run on the three maps at one nominal guarantee on the shared event: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. The per-claim form reached that guarantee through a split, 0.10 at confidence 0.90 per claim for NaCl and the synthetic map, 0.05 at confidence 0.875 for IR. All runs used exact natural-neighbour interpolation and the logistic scores of Section 4.
+A choice between forms of guarantee needs their costs on real data. Each form of Table 1 was run on the three maps at one nominal guarantee on the shared event: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. The per-claim form reached that guarantee through a split, 0.10 at confidence 0.90 per claim for NaCl and the synthetic map, 0.05 at confidence 0.875 for IR. All runs used exact natural-neighbour interpolation and the logistic scores of Section 4.
 
 Every stated rate held (Fig. 3, lower row). The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the three IR forms, in 9, 112 and 123 of 1000 for NaCl, and in 5, 161 and 156 of 1500 for the synthetic map. The per-claim guarantees of the split form exceeded their budgets in 37 and 0 of 1000 checks on IR (12.5 % allowed), 64 and 57 of 1000 on NaCl and 73 and 67 of 1500 on the synthetic map (10 % allowed). The shared guarantee of the split form, obtained through the union bound, was almost never exceeded: two claims seldom approach their budgets on the same level.
 

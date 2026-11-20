@@ -10,9 +10,9 @@ The failure probability a level actually carries is set by the calibration sampl
 
 The record agrees with the guarantee at the picked levels. For the 32 stated rates (configuration and statement) whose budget can be exceeded on every level, union-bound statements excluded, the observed number of exceedances lay between 0.88 and 1.11 times the number the picked levels allow, and none exceeded it beyond chance: the smallest one-sided probability of the observed count under the picked levels was 0.13 (SI 5, Table S5.3). On the IR map at its original tolerance, three of the four levels hold too few failing sites for the budget to be reached, and the record shows no exceedance there. The union-bound statement of the per-claim form is exceeded far less often than its picked level allows, since two claims seldom approach their budgets on the same level. Repeating the calibration draw on the recorded level populations gives the same picture level by level: the attained exceedance probability lay between 0.90 and 1.06 times $\delta_L$ wherever the budget could be exceeded (SI 5, Table S5.2).
 
-Table 2 gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee.
+Table 4 gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee.
 
-**Table 2.** One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels. Allowed exceedances are the sums of the picked failure probabilities over the level checks.
+**Table 4.** One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels. Allowed exceedances are the sums of the picked failure probabilities over the level checks.
 
 | Dataset | Guarantee | Sites | Measured: seed / calibration / no claim | Skipped: not of interest / predictable / both | Wrong skips | Exceedances: observed / allowed |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ Breaking the order of operations breaks the guarantee (Section 3.1). On a level 
 
 ## 5.2 Every form keeps its guarantee
 
-A choice between forms of guarantee needs their costs on real data. Each form of Table 3 was run on the three maps at one nominal guarantee on the shared event: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. The per-claim form reached that guarantee through a split, 0.10 at confidence 0.90 per claim for NaCl and the synthetic map, 0.05 at confidence 0.875 for IR. All runs used exact natural-neighbour interpolation and the logistic scores of Section 4.
+A choice between forms of guarantee needs their costs on real data. Each form of Table 1 was run on the three maps at one nominal guarantee on the shared event: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. The per-claim form reached that guarantee through a split, 0.10 at confidence 0.90 per claim for NaCl and the synthetic map, 0.05 at confidence 0.875 for IR. All runs used exact natural-neighbour interpolation and the logistic scores of Section 4.
 
 Every stated rate held (Fig. 3, lower row). The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the three IR forms, in 9, 112 and 123 of 1000 for NaCl, and in 5, 161 and 156 of 1500 for the synthetic map. The per-claim guarantees of the split form exceeded their budgets in 37 and 0 of 1000 checks on IR (12.5 % allowed), 64 and 57 of 1000 on NaCl and 73 and 67 of 1500 on the synthetic map (10 % allowed). The shared guarantee of the split form, obtained through the union bound, was almost never exceeded: two claims seldom approach their budgets on the same level.
 

@@ -40,4 +40,4 @@ The first threshold therefore covers at least the share $n_{\min}/m$ of the leve
 
 - References to add: [Angelopoulos2021] Angelopoulos, Bates, Candès, Jordan, Lei (2021), Learn then Test: calibrating predictive algorithms to achieve risk control, arXiv:2110.01052 (Ann. Appl. Stat. 2025, check); [WestfallKrishen2001] Bauer (1991), Multiple testing in clinical trials, Stat. Med. 10(6), 871–890 (fixed-sequence procedure; check).
 - The record uses the binomial p-value (the hypergeometric option exists in the software, SI 4); the binomial is not dominated by the hypergeometric in every case, so if the conditional rate is ever reported in Results, rerun with the exact p-value.
-- Table 3 example uses α = δ = 0.10; check it matches the setting used anywhere the conditional rate is quoted.
+- Table 1 example uses α = δ = 0.10; check it matches the setting used anywhere the conditional rate is quoted.
