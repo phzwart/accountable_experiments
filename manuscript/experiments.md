@@ -16,7 +16,7 @@ Each dataset carries one interest claim and one interpolation claim, fixed befor
 
 | Dataset | Interest: a site holds | Interpolation: the prediction from coarser levels meets |
 | --- | --- | --- |
-| Synthetic map | a dominant peak at least five times its local baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
+| Synthetic map | a dominant peak rising above its local baseline by at least five times that baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
 | NaCl scan | the (200) line at 22.28 nm⁻¹, at least five noise levels above its local baseline | the (200) width within 0.02 nm⁻¹, about half a detector bin |
 | IR map | absorbance of 0.1 or more in some channel of the window | every channel within 10 % + 0.10 absorbance, on average over channels above 0.02 |
 

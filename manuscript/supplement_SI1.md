@@ -1,8 +1,22 @@
-# SI 1. Interpolators (draft 1: Gaussian-process part)
+# SI 1. Interpolators (draft 1)
 
-*The natural-neighbour part (exact construction, hull-edge limit, check against brute-force stolen areas, the defect in the earlier implementation) is still to be drafted.*
+## SI 1.1 Natural-neighbour interpolation
 
-## SI 1.x Gaussian-process interpolation on the design
+A prediction at an unmeasured site must depend on positions only, so that one set of weights serves every channel and every derived quantity. Natural-neighbour (Sibson) coordinates meet that need [Sibson1981]. Inserting the query site $x$ into the Voronoi diagram of the measured sites gives it a cell $V(x)$, and the weight of measured site $i$ is the share of that cell taken from the cell $V_i$ of site $i$,
+
+$$
+w_i(x) = |V(x) \cap V_i| \, / \, |V(x)|
+$$
+
+The weights are nonnegative, sum to one, reproduce linear functions and vary continuously with $x$ [Sibson1981]. The prediction of a spectrum is $\hat y(x) = \sum_i w_i(x) \, y_i$, and a derived quantity is taken from that predicted spectrum.
+
+**Construction.** The natural neighbours of $x$ are the measured sites whose Delaunay triangles have circumcircles containing $x$ [Watson1992]. The cell $V(x)$ is the intersection of the half-planes bounded by the perpendicular bisectors between $x$ and its natural neighbours, and each stolen area $|V(x) \cap V_i|$ is the area of a convex polygon obtained by clipping $V(x)$ with the bisectors of site $i$. Every step is a convex clip, so the result does not depend on the orientation in which the triangulation library returns its cells. On a hull edge the cell is unbounded; there the weights take their limiting values, linear between the two boundary sites that bracket the query. Outside the hull of the measured set, inverse-distance weights over the five nearest measured sites are used. On the synthetic map, mirror images of the measured sites across the three walls of the composition triangle, and across the origin, join the point set with the spectra of their preimages, so that sites near a wall have neighbours on all sides.
+
+**Checks.** On random point sets the weights agree with stolen areas computed by brute-force Monte Carlo integration to Monte Carlo precision; linear functions are reproduced to rounding; predictions on a raster change continuously under small perturbations of the positions; and along a hull edge they are linear. A perturbation of $10^{-9}$ of the NaCl raster positions changes predictions by at most $3 \times 10^{-7}$ and flips no failure label (SI 4).
+
+**An earlier implementation.** The routine used in the original analyses of the IR map and the NaCl scan clipped polygons on the assumption of counter-clockwise orientation. Cells returned clockwise clipped to nothing, and the routine fell back silently to barycentric weights on the enclosing Delaunay triangle. On 200 random sites, 134 of 300 queries took that fallback, and a perturbation of $10^{-9}$ of the NaCl positions flipped 22 of 271 failure labels at level 5 and 33 of 521 at level 6. The switch depended on the build of the triangulation library, which explains why archived numbers drifted from reruns after the first certified levels. A guarantee concerns the predictor actually used, so the archived bounds remain valid for that predictor; every number in this paper uses the exact construction.
+
+## SI 1.2 Gaussian-process interpolation on the design
 
 The Gaussian-process protocols use an isotropic squared-exponential kernel on the coordinates of the hierarchical design: the unit square for the two scattering maps, and micrometres divided by 41 µm for the IR map, an isotropic rescaling of the physical raster [RasmussenWilliams2006]. With measured positions $X$, measured spectra $Y$ (one row per site), their column mean $\bar y$, kernel matrix $K$ and nugget $\nu$ relative to unit output scale, the prediction at a design site $x$ is
 
@@ -47,3 +61,8 @@ In every rule, the length scale of a level is fixed from the measured set before
 ---
 
 *Reference to add: [Gardner2018] Gardner, Pleiss, Bindel, Weinberger, Wilson (2018). GPyTorch. NeurIPS 31.*
+
+
+## Notes for revision (not part of the text)
+
+- References to add: [Sibson1981] (see Section 4 notes); [Watson1992] Watson (1992), Contouring: A Guide to the Analysis and Display of Spatial Data, Pergamon (natural-neighbour construction; check).

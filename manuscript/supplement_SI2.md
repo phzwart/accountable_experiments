@@ -1,4 +1,4 @@
-# SI 2. Dataset processing (draft 1: infrared map)
+# SI 2. Dataset processing (draft 1)
 
 ## SI 2.1 Infrared map
 
@@ -26,11 +26,21 @@ The corrected spectrum used throughout is the apparent absorbance minus the fitt
 
 ## SI 2.2 NaCl microdiffraction scan
 
-*To draft: integration, presence test at 5σ, (200) width and its tolerance of 0.02 nm⁻¹.*
+The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used as deposited: azimuthally integrated profiles on a raster of 3249 sites with a stage step of 0.25 mm, each with 1000 bins between 0.589 and 38.94 nm⁻¹ [ALSNaCl]. Stage coordinates are rescaled to the unit square for the design and kept in millimetres for display. A hierarchical Poisson-disk design on the unit square, with radii from 0.2 to 0.025 over seven levels, is snapped to the nearest raster site; a raster site claimed by several design points keeps the coarsest level. The design holds 1071 sites, with 21, 19, 36, 65, 138, 271 and 521 sites on levels 0 to 6.
+
+**The (200) line.** The (200) reflection of rock salt lies at $q = 4\pi / a$ with $a = 5.6402$ Å, or 22.28 nm⁻¹. Its descriptors are taken in the window 22.28 ± 0.40 nm⁻¹: the position of the tallest local maximum, refined by a parabola through the logarithms of intensity and $q$, its height above a local baseline (the higher of the two flanking minima), and its full width at the level midway between baseline and peak.
+
+**Noise and presence.** The noise in the window is estimated once from all design sites. Each profile is reduced to residuals from a straight baseline across the window. The 30 % of profiles with the smallest largest residual are taken as off the ring, and the noise is 1.4826 times the median absolute deviation of their residuals: $\sigma = 0.117$ in the units of the deposit. A line is present when its height above baseline exceeds $5\sigma$; on that criterion 64 % of the design sites hold the line, and these are the sites of interest.
+
+**Width tolerance.** A prediction fails when it disagrees with the truth on the presence of the line, or when both show the line and their widths differ by more than 0.02 nm⁻¹, about half the bin width of 0.038 nm⁻¹ at the (200) position. Sites without the line in truth and prediction pass. The same presence test is applied to the predicted profile, so a predicted line too weak to clear $5\sigma$ counts as absent.
 
 ## SI 2.3 Synthetic small-angle scattering map
 
-*To draft: forward model, composition triangle, mirror images for the natural-neighbour interpolant.*
+**Forward model.** A composition $(x, y)$, with $x$ the oil and $y$ the surfactant weight fraction and $x + y \le 1$, maps to a noiseless scattering curve on 240 logarithmically spaced points between 0.005 and 0.32 Å⁻¹. Four phases are separated by straight boundaries in composition: a micellar phase (L1), modelled as polydisperse spheres whose radius swells with solubilised oil, with a Percus–Yevick hard-sphere structure factor; an ordered cubic phase (I1) with face-centred cubic Bragg peaks; a hexagonal phase (H1) with Bragg peaks of a two-dimensional hexagonal lattice and a cylinder form factor; and an oil-rich emulsion, in which excess oil adds Porod scattering. Sigmoids of fixed width smooth every transition, so the curves vary continuously with composition while the peak positions and widths change quickly near the boundaries. The model is carried over from an earlier study and is deposited with the data.
+
+**Design.** A hierarchical Poisson-disk design on the unit square with nine levels, with the corners forced into the coarsest level, is restricted to the triangle $x + y \le 1$, which leaves 2118 sites. The natural-neighbour interpolant adds mirror images of the measured sites across $x = 0$, $y = 0$ and $x + y = 1$, and across the origin, each carrying the spectrum of its preimage (SI 1.1).
+
+**Descriptors and claims.** The dominant peak is the tallest interior local maximum, its position refined below the grid spacing by a parabola in logarithmic coordinates; its width and height above baseline are measured as for the NaCl line. A site is of interest when its dominant peak rises above its local baseline by at least five times that baseline, which holds for most ordered compositions and for part of the micellar phase. A prediction fails when it disagrees on the presence of a dominant peak, or misses its position by more than 0.005 Å⁻¹ or its width by more than 0.001 Å⁻¹. Sites without a peak in truth and prediction pass.
 
 ---
 
