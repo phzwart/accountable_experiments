@@ -90,8 +90,8 @@ def report():
     from scipy.stats import binom
     OUT.mkdir(parents=True, exist_ok=True)
     summary = {}
-    lines = ["| Row | Campaigns | Measured (mean ± s.d.) of 1024 | No claim | Level checks | Allowed (Σ δ_L) | Observed | Obs / allowed | Wrong skips | Interesting sites lost |",
-             "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
+    lines = ["| Row | Campaigns | Measured (mean ± s.d.) of 1024 | No claim | Level checks | Allowed (Σ δ_L) | Observed | Obs / allowed | P(≥ obs) | Wrong skips | Interesting sites lost |",
+             "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for row in ROWS:
         files = sorted((RUNS / row).glob("s*.json"))
         if not files:
@@ -104,12 +104,14 @@ def report():
         obs = sum(c["exceeded"] for c in ch)
         wr = np.array([len(r["wrong"]) for r in R])
         lost = np.array([r["wrong_interesting"] / max(r["interesting"], 1) for r in R])
+        from experiments.record_picked import poisson_binomial_sf
+        pval = float(poisson_binomial_sf(np.array([c["picked"] for c in ch]), int(obs)))
         summary[row] = dict(n=len(R), measured=[float(meas.mean()), float(meas.std(ddof=1)) if len(R) > 1 else 0.0],
                             no_claim=float(nc.mean()), checks=len(ch), allowed=allowed, observed=int(obs),
-                            wrong=float(wr.mean()), lost_interesting=float(lost.mean()),
+                            wrong=float(wr.mean()), lost_interesting=float(lost.mean()), p_value=pval,
                             mean_seconds=float(np.mean([r["seconds"] for r in R])))
         lines.append(f"| {row} | {len(R)} | {meas.mean():.0f} ± {summary[row]['measured'][1]:.0f} | {nc.mean():.0f} | {len(ch)} | "
-                     f"{allowed:.1f} | {obs} | {obs / max(allowed, 1e-9):.2f} | {wr.mean():.0f} | {100 * lost.mean():.0f} % |")
+                     f"{allowed:.1f} | {obs} | {obs / max(allowed, 1e-9):.2f} | {pval:.2f} | {wr.mean():.0f} | {100 * lost.mean():.0f} % |")
     (OUT / "summary.json").write_text(json.dumps(summary, indent=1))
     (OUT / "TABLE.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))

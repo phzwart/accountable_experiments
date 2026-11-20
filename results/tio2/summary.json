@@ -1,0 +1,92 @@
+{
+ "size_delaunay": {
+  "n": 100,
+  "measured": [
+   321.47,
+   41.454235445411804
+  ],
+  "no_claim": 97.47,
+  "checks": 400,
+  "allowed": 52.823700412414816,
+  "observed": 39,
+  "wrong": 116.59,
+  "lost_interesting": 0.1940336134453781,
+  "p_value": 0.9857877522715017,
+  "mean_seconds": 10.111
+ },
+ "pattern_delaunay": {
+  "n": 100,
+  "measured": [
+   396.77,
+   35.356440414553596
+  ],
+  "no_claim": 172.77,
+  "checks": 400,
+  "allowed": 52.823700412414816,
+  "observed": 51,
+  "wrong": 122.51,
+  "lost_interesting": 0.27050420168067224,
+  "p_value": 0.6283749837596384,
+  "mean_seconds": 10.018999999999998
+ },
+ "size_random": {
+  "n": 100,
+  "measured": [
+   684.05,
+   74.48657597178165
+  ],
+  "no_claim": 460.05,
+  "checks": 400,
+  "allowed": 52.823700412414816,
+  "observed": 48,
+  "wrong": 116.19,
+  "lost_interesting": 0.219859943977591,
+  "p_value": 0.7824526343943918,
+  "mean_seconds": 0.583
+ },
+ "pattern_random": {
+  "n": 100,
+  "measured": [
+   658.71,
+   84.67385975171159
+  ],
+  "no_claim": 434.71,
+  "checks": 400,
+  "allowed": 52.823700412414816,
+  "observed": 63,
+  "wrong": 118.16,
+  "lost_interesting": 0.27747899159663864,
+  "p_value": 0.07865486290793974,
+  "mean_seconds": 0.445
+ },
+ "size_gp_design": {
+  "n": 100,
+  "measured": [
+   337.96,
+   34.96633879154133
+  ],
+  "no_claim": 113.96,
+  "checks": 400,
+  "allowed": 52.823700412414816,
+  "observed": 50,
+  "wrong": 117.88,
+  "lost_interesting": 0.13056022408963583,
+  "p_value": 0.6835573460030976,
+  "mean_seconds": 5.5360000000000005
+ },
+ "size_delaunay_split": {
+  "n": 100,
+  "measured": [
+   335.17,
+   45.35896222959091
+  ],
+  "no_claim": 111.17,
+  "checks": 400,
+  "allowed": 52.823700412414816,
+  "observed": 55,
+  "wrong": 119.24,
+  "lost_interesting": 0.21017142857142854,
+  "p_value": 0.39559559894331453,
+  "mean_seconds": 9.786000000000001
+ }
+}

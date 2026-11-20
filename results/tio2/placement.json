@@ -1,0 +1,43 @@
+{
+ "size_delaunay": {
+  "campaigns": 100,
+  "measured_no_claim": 97.47,
+  "share_front": 0.634759413152765,
+  "front_share_of_sites": 0.3572916666666667,
+  "share_coarsening": 0.4093567251461989,
+  "coarsening_share_of_sites": 0.25,
+  "spearman_front": 0.657643365110583,
+  "spearman_size": 0.47868063178125386
+ },
+ "pattern_delaunay": {
+  "campaigns": 100,
+  "measured_no_claim": 172.77,
+  "share_front": 0.8037274989870927,
+  "front_share_of_sites": 0.3572916666666667,
+  "share_coarsening": 0.2997048098628234,
+  "coarsening_share_of_sites": 0.25,
+  "spearman_front": 0.7543862831187155,
+  "spearman_size": 0.4474815912780971
+ },
+ "size_delaunay_split": {
+  "campaigns": 100,
+  "measured_no_claim": 111.16999999999999,
+  "share_front": 0.6672663488351175,
+  "front_share_of_sites": 0.3572916666666667,
+  "share_coarsening": 0.3482954034361789,
+  "coarsening_share_of_sites": 0.25,
+  "spearman_front": 0.666613852699349,
+  "spearman_size": 0.4405445903871683
+ },
+ "size_gp_design": {
+  "campaigns": 100,
+  "measured_no_claim": 113.96,
+  "share_front": 0.6266233766233766,
+  "front_share_of_sites": 0.3572916666666667,
+  "share_coarsening": 0.3194103194103194,
+  "coarsening_share_of_sites": 0.25,
+  "spearman_front": 0.526346588367332,
+  "spearman_size": 0.3363522104581076
+ },
+ "overlap_size_pattern": 0.4274244665117261
+}

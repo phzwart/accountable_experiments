@@ -7,7 +7,9 @@ consecutive power-of-two blocks that serve as levels L0-L6 with 16, 16, 32,
 
 Truth: one synthesis realisation per recipe (rate jitter, furnace offset,
 Poisson counts), reproducible from ``truth_seed``. With ``furnace="split"``
-recipes share a furnace run when their rounded temperature and dwell agree.
+temperature and dwell are snapped to a furnace grid (25 degC, powers of two
+in hours) and recipes on the same setting share one furnace run and its
+temperature offset.
 
 Claims:
 - interest: the site holds both anatase (101) and rutile (110) above
@@ -65,6 +67,12 @@ def furnace_keys(u, mode: str):
 @lru_cache(maxsize=4)
 def load(truth_seed: int = 0, furnace: str = "per_sample", design_seed: int = 42) -> Dataset:
     pts, levels = design(design_seed)
+    if furnace == "split":
+        # furnace settings on a grid: temperature in 25 degC steps (21 values), dwell in powers of two (5 values);
+        # recipes sharing a setting run in one furnace and share its temperature offset
+        pts = pts.copy()
+        pts[:, 0] = np.round(pts[:, 0] * 20) / 20
+        pts[:, 1] = np.round(pts[:, 1] * 4) / 4
     I, st = F.realise(pts, seed=truth_seed, furnace_key=furnace_keys(pts, furnace))
     ds = Dataset(name="tio2_calcination", points=pts, levels=levels, oracle=StoredOracle(I),
                  axis=F.axis(), axis_unit="deg 2theta",
