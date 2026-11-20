@@ -12,17 +12,17 @@
     0,
     249
    ],
-   "seconds_total": 190.4,
+   "seconds_total": 164.2,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -69,18 +69,18 @@
     0,
     249
    ],
-   "seconds_total": 355.4,
+   "seconds_total": 882.1,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
-    "git_dirty": false
+    "git_commit": "1dca64f2972c751e68d7dbeed6f272b3a25c8af3",
+    "git_dirty": true
    },
    "config": {
     "criterion": "envelope: rtol=0.1, atol=0.1",
@@ -126,17 +126,17 @@
     0,
     249
    ],
-   "seconds_total": 166.2,
+   "seconds_total": 172.3,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -536,17 +536,17 @@
     0,
     249
    ],
-   "seconds_total": 210.8,
+   "seconds_total": 216.1,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -597,17 +597,17 @@
     0,
     249
    ],
-   "seconds_total": 820.6,
+   "seconds_total": 797.7,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -658,17 +658,17 @@
     0,
     249
    ],
-   "seconds_total": 206.1,
+   "seconds_total": 199.6,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -719,17 +719,17 @@
     0,
     249
    ],
-   "seconds_total": 26.4,
+   "seconds_total": 25.3,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -775,17 +775,17 @@
     0,
     249
    ],
-   "seconds_total": 697.7,
+   "seconds_total": 633.4,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -831,17 +831,17 @@
     0,
     249
    ],
-   "seconds_total": 28.8,
+   "seconds_total": 27.0,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "05df90516122647c5ff6347c39551269f25838f8",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -1065,17 +1065,17 @@
     0,
     249
    ],
-   "seconds_total": 527.4,
+   "seconds_total": 531.0,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -1099,7 +1099,9 @@
      "confidence": 0.8,
      "weights": {},
      "tail": "hypergeometric",
-     "placement": "boundary"
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
     },
     "nn_method": "watson",
     "seed_level": 2,
@@ -1124,17 +1126,17 @@
     0,
     249
    ],
-   "seconds_total": 939.7,
+   "seconds_total": 951.5,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -1158,7 +1160,9 @@
      "confidence": 0.8,
      "weights": {},
      "tail": "hypergeometric",
-     "placement": "boundary"
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
     },
     "nn_method": "watson",
     "seed_level": 2,
@@ -1183,17 +1187,17 @@
     0,
     249
    ],
-   "seconds_total": 522.8,
+   "seconds_total": 779.5,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -1217,7 +1221,9 @@
      "confidence": 0.8,
      "weights": {},
      "tail": "hypergeometric",
-     "placement": "boundary"
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
     },
     "nn_method": "watson",
     "seed_level": 2,
@@ -1597,18 +1603,18 @@
     0,
     249
    ],
-   "seconds_total": 1859.7,
+   "seconds_total": 2222.9,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
-    "git_dirty": false
+    "git_commit": "1dca64f2972c751e68d7dbeed6f272b3a25c8af3",
+    "git_dirty": true
    },
    "config": {
     "criterion": "peak (abs): $\\Delta q_{\\rm pk}\\leq0.005\\ \\mathrm{\\AA^{-1}}$, $\\Delta$FWHM$\\leq0.001\\ \\mathrm{\\AA^{-1}}$",
@@ -1631,7 +1637,9 @@
      "confidence": 0.8,
      "weights": {},
      "tail": "hypergeometric",
-     "placement": "boundary"
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
     },
     "nn_method": "watson",
     "seed_level": 2,
@@ -1656,17 +1664,17 @@
     0,
     249
    ],
-   "seconds_total": 4999.7,
+   "seconds_total": 5086.9,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "724b4c893b129e29513371ecbdfccdf20f939d9e",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -1690,7 +1698,9 @@
      "confidence": 0.8,
      "weights": {},
      "tail": "hypergeometric",
-     "placement": "boundary"
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
     },
     "nn_method": "watson",
     "seed_level": 2,
@@ -1715,17 +1725,17 @@
     0,
     249
    ],
-   "seconds_total": 2121.0,
+   "seconds_total": 2180.0,
    "env": {
     "python": "3.13.18",
-    "platform": "Linux-6.18.44-fc-v653-x86_64-with-glibc2.39",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
     "numpy": "2.5.3",
     "scipy": "1.18.1",
     "sklearn": "1.9.1",
     "torch": "2.15.0+cu132",
     "gpytorch": "1.15.2",
     "botorch": "0.18.1",
-    "git_commit": "4374cddf8be5acb5f6982e744067d745aeaf1cec",
+    "git_commit": "e9f5912d446f64075155ecac14eaef64aa94292f",
     "git_dirty": false
    },
    "config": {
@@ -1749,7 +1759,9 @@
      "confidence": 0.8,
      "weights": {},
      "tail": "hypergeometric",
-     "placement": "boundary"
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
     },
     "nn_method": "watson",
     "seed_level": 2,
@@ -2123,5 +2135,5 @@
   "interpolable",
   "not_interesting+interpolable"
  ],
- "packed": "2026-11-19 12:16:00 PST"
+ "packed": "2026-11-20 12:44:20 PST"
 }

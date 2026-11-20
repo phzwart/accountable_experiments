@@ -14,11 +14,11 @@
 
 | Dataset | Design sites | Natural neighbour | GP, max. likelihood | GP, design spacing | GP, local spacing |
 | --- | --- | --- | --- | --- | --- |
-| IR map | 959 | 295 ± 53 | 273 ± 31 | 283 ± 34 | 295 ± 42 |
-| IR map, tight | 959 | 621 ± 70 | 750 ± 55 | 757 ± 53 | 804 ± 37 |
-| IR map, tight, interpolation only | 959 | 604 ± 65 | 796 ± 58 | 803 ± 55 | 857 ± 33 |
-| NaCl scan | 1071 | 614 ± 56 | 745 ± 72 | 760 ± 70 | 778 ± 59 |
-| Synthetic map | 2118 | 334 ± 26 | 1139 ± 215 | 1042 ± 201 | 1447 ± 134 |
+| IR map | 959 | 295 ± 53 | 273 ± 31 | 281 ± 34 | 291 ± 41 |
+| IR map, tight | 959 | 621 ± 70 | 747 ± 56 | 753 ± 52 | 799 ± 40 |
+| IR map, tight, interpolation only | 959 | 604 ± 65 | 792 ± 58 | 797 ± 56 | 854 ± 35 |
+| NaCl scan | 1071 | 614 ± 56 | 745 ± 72 | 760 ± 70 | 777 ± 60 |
+| Synthetic map | 2118 | 334 ± 26 | 1142 ± 219 | 1040 ± 202 | 1443 ± 133 |
 
 **Table S3.3.** Sites measured with random scores for every certificate, against informed scores (Fig. 4).
 
