@@ -4,6 +4,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 ## 1. Thesis and framing
 
+**One idea.** An accountable experiment gives every unmeasured site a reason and a checkable error rate: each skip is a stated claim, a uniform calibration draw from a level fixed in advance bounds how often such skips are wrong whatever the model, the model sets the cost, the certified claim decides what is protected, and the measured sites remain good data. Every section should be readable as support for one part of this sentence.
+
 **Framing.** The paper provides guaranteed, distribution-free safety margins on what a skipped measurement asserts. It argues neither speed nor superiority. Autonomous measurement decisions need accountability: a recorded reason for every skip and a checkable statement of how often skips are wrong. The paper offers one way to provide it, with guarantees that are precise and checked against truth. Other ways exist and are welcome; the record, the forms of guarantee and the acceptance check are built so that they can be compared on the same footing. The paper makes no priority or optimality claims.
 
 **Thesis.** A scanning experiment can skip measurements and still state, for every level of a hierarchical design, a finite-sample bound on the rate of wrong skips. The bound comes from a uniform calibration draw. It holds for any interpolator, any scoring rule and any acquisition protocol that respects the order of operations: fit, freeze, draw, calibrate, decide.
@@ -25,7 +27,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 **Working titles**
 
-- What can be guaranteed about a measurement that was never made (current)
+- Accountable experiments: a checkable error rate for every measurement left out (current, 20 Nov 2026)
+- What can be guaranteed about a measurement that was never made
 
 - Accountable skipping: finite-sample guarantees for measurements left out of scanning experiments
 - Certified skips: distribution-free guarantees for adaptive scanning measurements
