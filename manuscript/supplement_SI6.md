@@ -96,3 +96,23 @@ A metric decides which predictions fail, and so which sites the campaign measure
 **Figure S6.** Frequency of measurement because no claim applied, over 50 campaigns, for the peak or line-width metric (left) and the profile metric (middle), and their difference (right; red: measured more under the profile metric). Rows: synthetic map at default and matched tolerances; NaCl scan at default and matched tolerances. File: `figures/figS6_sampling.png`.
 
 Scripts and data: SI 4; summary in the run record, under the analysis of the metric study.
+
+## SI 6.2 Where wrong interest skips fall on the synthetic map
+
+The wrong skips of the synthetic map cluster in composition. The analysis below uses the quantile path with natural-neighbour interpolation at a budget of 0.20 and confidence 0.80; the score variants were run on the first 60 campaigns.
+
+- **The guarantee held.** The record shows 161 exceedances in 1,500 level checks, against 170 allowed by the picked failure probabilities. The calibration draw is uniform within each level, so spatial correlation of the labels leaves it exchangeable with its level.
+- **The budget sets the count, the score the location.** Three interest scores gave about the same number of wrong skips per campaign (Table S6.3). The quantile path raises its threshold until the calibration draw reaches its allowed failures, so the budget is spent whatever the score; only the sites it is spent on change.
+- **The recorded score depends on signal shape.** The interest label asks for a dominant peak at least five times its local baseline, a relative criterion. The recorded score uses the absolute height above baseline. The broad correlation peak of the micellar phase has a high ratio to its baseline and a small absolute height (median 0.43, against 5.5 for the Bragg peaks of the ordered phases). The score therefore ranks interesting micellar sites low, and 75 % of the wrong interest skips fall in that phase. The interpolated spectrum predicted a peak of at least five times baseline at 91 % of these sites: the prediction was right and the score misread it.
+- **A score matched to the label moves the errors to the margin.** With scores based on the predicted peak-to-baseline ratio, the wrong skips are the least interesting of the interesting sites (median true ratio 8.4). The probability of a wrong skip falls from 0.72 at ratios of 5–8 to 0.05 above 40. Such sites form contiguous bands of composition where the ratio changes slowly near the threshold, so the errors still cluster.
+- **The denominator matters.** The rate is taken over all sites of a level, and a third of the sites are of interest. With the recorded score, 35 % of the interesting sites on certified levels were skipped in error while every level met its budget. A bound on the share of interesting sites lost requires a label-conditional statement (Section 6).
+
+**Table S6.3.** Interest scores on the synthetic map (60 campaigns, 360 level checks).
+
+| Interest score | Wrong skips per campaign | Sites measured | Exceedances |
+| --- | --- | --- | --- |
+| Logistic on absolute peak height above baseline (recorded) | 270 | 333 | 37 / 360 |
+| Logistic on peak-to-baseline ratio | 278 | 358 | 45 / 360 |
+| Predicted peak-to-baseline ratio | 273 | 358 | 41 / 360 |
+
+The record keeps the original score. It meets its guarantee, and the misranking it shows is the point of this section: a score decides where the budget is spent.
