@@ -1,6 +1,6 @@
-# 3 Framework (draft 1: sections 3.1, 3.3 and 3.4)
+# 3 Framework (draft 1)
 
-*Sections 3.2 and 3.5 follow the outline in the plan and are still to be drafted. Notation used below: level $L$ with $N_L$ design sites, frozen score $S_j$ per certificate $j$, calibration draw of $m$ sites.*
+*Notation: level $L$ with $N_L$ design sites, frozen score $S_j$ per certificate $j$, calibration draw of $m$ sites.*
 
 ## 3.1 Design and order of operations
 
@@ -22,7 +22,9 @@ Given everything that precedes the draw of a level, the level's population, scor
 
 ## 3.2 Labels and certificates
 
-*To draft.* Interest label $Z$ and failure label $F$ defined on the truth. Target map (full spectrum or derived scalar) and acceptance score. Scores order sites and carry no other role.
+A skip is useful only if it says something that a measurement could contradict. Two claims serve that purpose. The interest certificate claims that a site holds nothing of interest; its label $Z(x) = 1$ marks a site whose measured spectrum meets the interest criterion of the dataset, such as a diffraction line standing clear of the noise. The interpolation certificate claims that a site is predictable; its label $F(x) = 1$ marks a site where the prediction from the coarser levels misses the acceptance metric. The metric fixes what predictable means: agreement of the full spectrum within an envelope, or agreement of a quantity derived from it, such as a peak position or width, within a tolerance. Both labels are functions of the true spectrum and of the frozen predictor. In a campaign they are known only at measured sites, and for this study they are known everywhere.
+
+A certificate is the mechanism, and a claim is what it states about a site. Each certificate carries a score that orders the sites of a level from most to least safe to skip. The score has no other role: any function of the data available before the draw may serve, and its quality decides the number of measurements spent. The choice of metric decides more, since it sets where predictions fail and therefore where the campaign measures (Section 6).
 
 ## 3.3 The guarantee
 
@@ -79,7 +81,9 @@ alongside a separate guarantee for each claim. The split leaves each certificate
 
 ## 3.5 What is claimed and what is checked
 
-*To draft.* Claims: design sites of a level, frozen predictor, probability over the draw. Checks: remainder rates, map bound, off-design audit, final map.
+A guarantee is only as useful as its scope is clear. Each guarantee of Sections 3.3 and 3.4 concerns the design sites of one level and the predictor frozen for that level. Its probability is taken over the calibration draw of that level. It bounds how many skips fail, and the location of the failures is left open. It says nothing about points between design sites, nor about the final map, which draws on measurements made after the level was decided.
+
+Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw. The map bound states, from the calibration labels of a level, an upper confidence limit on the share of that level's sites that the map built from the coarser levels predicts outside tolerance [ClopperPearson1934]; Appendix D gives its confidence when the draw also serves the decision. In this study every dataset is fully measured, so every guarantee is checked against the truth: level rates, remainder rates, map bounds and the final map.
 
 ---
 
@@ -88,4 +92,5 @@ alongside a separate guarantee for each claim. The split leaves each certificate
 - Results from Section 5.2 stay out of this section; the IR infeasibility appears here only as a property of the split ($\varepsilon_j < \varepsilon_{\min}$).
 - References added here: [Wilks1941], [Bates2021], [Jin2023], [Neyman1934] (Neyman 1934, J. R. Stat. Soc. 97, 558–625, on the representative method; check), [Cochran1977] (Cochran, Sampling Techniques, 3rd ed., Wiley; check).
 - Section 3.1 cites Fig. 1, the schematic still to be drawn: five steps per level, the history feeding step 1, the draw as the only random element of the guarantee. Bibliographic details are in the plan's reference map; Wilks and Bates still need a check.
-- "Certificate" and "claim" are used side by side: a certificate is the mechanism, a claim is what it asserts about a site. Check that the distinction holds in 3.2 when it is drafted.
+- "Certificate" and "claim": distinction stated in 3.2.
+- Reference to add: [ClopperPearson1934] Clopper, Pearson (1934), Biometrika 26, 404–413.
