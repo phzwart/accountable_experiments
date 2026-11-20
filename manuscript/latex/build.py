@@ -19,9 +19,9 @@ M = HERE.parent
 TITLE = "Accountable experiments: a checkable error rate for every measurement left out"
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C", "appendix_D"]
-SI = [f"supplement_SI{i}" for i in range(1, 8)]
-FIGS = {1: "fig1_schematic", 2: "fig2_random", 3: "fig3_forms", 4: "fig4_protocols", 5: "fig5_maps",
-        6: "fig6_metric", 7: "fig7_kinetics", "S1": "figS1_gp_std", "S6": "figS6_sampling"}
+SI = [f"supplement_SI{i}" for i in range(1, 7)]
+FIGS = {1: "fig1_schematic", 2: "fig_datasets", 3: "fig_claims", 4: "fig2_random", 5: "fig3_forms",
+        6: "fig4_protocols", 7: "fig5_maps", 8: "fig6_metric", "S1": "figS1_gp_std", "S6": "figS6_sampling"}
 NBSP = "\u00a0"
 
 UNI = {"ε": r"\ensuremath{\varepsilon}", "δ": r"\ensuremath{\delta}", "σ": r"\ensuremath{\sigma}",
@@ -259,7 +259,7 @@ def main():
 
 \data{""" + data + r"""}
 
-\suppdata{Supporting information: SI 1 interpolators; SI 2 dataset processing; SI 3 full tables; SI 4 adding a form of guarantee; SI 5 the run record; SI 6 the certified metric; SI 7 the simulated calcination campaign and kinetic recovery.}
+\suppdata{Supporting information: SI 1 interpolators; SI 2 dataset processing; SI 3 full tables; SI 4 adding a form of guarantee; SI 5 the run record; SI 6 the certified metric.}
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}
 \bibliography{refs}

@@ -44,9 +44,8 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 | C4 | The guarantee survives a change of protocol: interpolator (natural neighbour on spectra, on scalars, Gaussian process), score (random, neighbour disagreement, logistic, GP standard deviation) and budget scheme. Only the cost changes. | Protocol matrix (§5), coverage counts per protocol, measurements per statement | Sibson 1981; Rasmussen & Williams 2006; Noack et al. 2019 |
 | C6 | The certified claim decides what the guarantee buys: the bound holds for every acceptance metric, while the metric sets which sites fail, where measurements are taken and where wrong skips gather; a rate over a level leaves location and the share of interesting sites lost free. | Metric study, six metrics on three datasets, default and matched tolerances (Section 5.5, SI 6); Fig. 6; SI 6.2 | Noack et al. 2019, 2020; Vovk et al. 2005 and Sadinle et al. 2019 for the label-conditional remedy |
 | C5 | Every skip carries a stated safety margin, and the record shows each margin met at its picked level; the price of a margin is reported as measurements spent, never as a ranking. | Run record (SI 5); maps with reasons (Fig. 5) | Noack et al. 2019, 2020; Ye et al. 2025 |
-| C7 | The runs measured under the guarantee remain data for a model of the process: on a simulated calcination campaign they keep most of the information of the full design, more than random runs of the same number, and recover the kinetics as accurately as all runs. | Section 5.6, Fig. 7, SI 7: 30 worlds, five sets of runs, D-efficiency, errors of four activation energies | Zhang & Banfield 2000; Atkinson et al. 2007 (D-optimality); Liang & Zeger 1986 (clustered errors) |
 
-The paper rests on these six claims. Any figure that supports none of them goes to the SI.
+The paper rests on these five claims. Any figure that supports none of them goes to the SI.
 
 ## 3. Outline and word budget
 

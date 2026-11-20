@@ -194,7 +194,7 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
-\caption{Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. 3, upper row.}\label{tab:S3.1}\\
+\caption{Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. 5, upper row.}\label{tab:S3.1}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -226,7 +226,7 @@ Synthetic map & 2118 & 338 \ensuremath{\pm} 26 & 334 \ensuremath{\pm} 26 & 628 \
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
-\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 4, upper row. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
+\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6, upper row. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -256,7 +256,7 @@ Synthetic map & 2118 & 334 \ensuremath{\pm} 26 & 1139 \ensuremath{\pm} 215 & 104
 
 {\renewcommand{\thetable}{S3.3}\small
 \begin{longtable}[]{@{}llll@{}}
-\caption{Sites measured with random scores for every certificate, against informed scores (Fig. 2).}\label{tab:S3.3}\\
+\caption{Sites measured with random scores for every certificate, against informed scores (Fig. 4).}\label{tab:S3.3}\\
 
 \toprule\noalign{}
 Dataset & Form & Informed scores & Random scores \\
@@ -832,225 +832,6 @@ Predicted peak-to-baseline ratio & 273 & 358 & 41 / 360 \\
 }
 
 The record keeps the original score. It meets its guarantee, and the misranking it shows is the point of this section: a score decides where the budget is spent.
-
-\hypertarget{si-7.-simulated-calcination-campaign-and-kinetic-recovery}{%
-\section*{SI 7. Simulated calcination campaign and kinetic recovery}\label{si-7.-simulated-calcination-campaign-and-kinetic-recovery}}
-\addcontentsline{toc}{section}{SI 7. Simulated calcination campaign and kinetic recovery}
-
-An autonomous synthesis laboratory fires powders in box furnaces and reads each crucible by powder diffraction \cite{Szymanski2023}. The anatase-to-rutile transformation of nanocrystalline titania offers a test in which both the map and the physics behind it are known: its kinetics have been measured and modelled in detail \cite{ZhangBanfield1999,ZhangBanfield2000,HanaorSorrell2011}. This section describes the forward model, the campaign, the observations taken from the patterns, the kinetic fit and the comparison of the four arms of Section 5.6.
-
-\hypertarget{si-7.1-forward-model}{%
-\subsection*{SI 7.1 Forward model}\label{si-7.1-forward-model}}
-\addcontentsline{toc}{subsection}{SI 7.1 Forward model}
-
-\textbf{Kinetics.} Each crucible holds nanocrystalline anatase as seven lognormal size classes (median 20 nm, logarithmic standard deviation 0.35), optionally blended with a commercial anatase--rutile powder (P25) and with dispersed alumina. Rutile forms by three routes: nucleation at contacts between anatase particles (interface nucleation), nucleation at free surfaces (surface nucleation) and growth of existing rutile into anatase at anatase--rutile contacts (contact growth). The first two follow the combined interface and surface nucleation model \cite{ZhangBanfield2000}. For a size class \(k\) with anatase fraction \(a_k\), size \(D_k\) and total anatase fraction \(a\), rutile fraction \(r\) and rutile size \(D_R\):
-
-\[
-\frac{da_k}{dt} = - k_{SN}(T, D_k)\, a_k - k_{IN}(T, D_k) \left(\frac{8\,\mathrm{nm}}{D_k}\right)^3 a_k\, a - \phi\, k_{AR}(T)\, a_k\, r \left(\frac{30\,\mathrm{nm}}{D_R}\right) \left(\frac{25\,\mathrm{nm}}{D_k}\right)
-\]
-
-The activation energies of nucleation depend on size \cite{ZhangBanfield2000}:
-
-\[
-k_X(T, D) = A_X \exp\left(-\frac{E_X + \beta \ln(D / 8\,\mathrm{nm})}{R T}\right)
-\]
-
-Anatase and rutile coarsen by cubic laws, \(d(D^3)/dt = K \exp(-E/RT)\), anchored at 690 \ensuremath{^\circ}C for anatase and 900 \ensuremath{^\circ}C for rutile. Alumina lowers the rates of nucleation and contact growth by the factor \(\exp(-c/0.022)\) at mass fraction \(c\), and those of coarsening by \(\exp(-c/0.05)\). The furnace programme follows the A-Lab methods: 2 \ensuremath{^\circ}C/min to 300 \ensuremath{^\circ}C, 15 \ensuremath{^\circ}C/min to the set temperature, hold, and Newtonian cooling \cite{Szymanski2023}.
-
-\textbf{Calibration to the literature.} The activation energies of nucleation for 8-nm anatase come from Arrhenius fits to tabulated rate constants at 620--690 \ensuremath{^\circ}C \cite{ZhangBanfield2000}. The prefactors, the size coefficient \(\beta\) and the constants of contact growth were fitted to four sets of published transformation data: coarse commercial anatase at 900--1000 \ensuremath{^\circ}C, P25 at 700 and 750 \ensuremath{^\circ}C, 20-nm anatase at 700 \ensuremath{^\circ}C and 8-nm anatase at 620--690 \ensuremath{^\circ}C. Table S7.1 lists the values used as truth.
-
-{\renewcommand{\thetable}{S7.1}\small
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
-\caption{Kinetic parameters of the forward model (truth for Section 5.6).}\label{tab:S7.1}\\
-
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Process
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Rate at reference temperature
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Activation energy (kJ/mol)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Origin
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Interface nucleation & ln A = 18.85 (h\ensuremath{^{-1}}) & 211.4 & literature table; held fixed in the fit \\
-Surface nucleation & ln k = 2.17 h\ensuremath{^{-1}} at 750 \ensuremath{^\circ}C & 478.2 & literature table, prefactor fitted \\
-Size coefficient \ensuremath{\beta} & -- & 57.4 per e-fold of size & fitted; held fixed in the fit \\
-Contact growth & ln k = \ensuremath{-}0.55 h\ensuremath{^{-1}} at 700 \ensuremath{^\circ}C & 231.4 & fitted to P25 data \\
-Alumina inhibition & c\ensuremath{_{0}} = 0.022 & -- & literature magnitude \\
-Anatase coarsening & 67.9 nm\ensuremath{^{3}} h\ensuremath{^{-1}} at 690 \ensuremath{^\circ}C & 250 & literature at 690 \ensuremath{^\circ}C; energy assumed \\
-Rutile coarsening & 7.3 \ensuremath{\times} 10\ensuremath{^{5}} nm\ensuremath{^{3}} h\ensuremath{^{-1}} at 900 \ensuremath{^\circ}C & 300 & literature anchor; energy assumed \\
-\end{longtable}
-}
-
-\textbf{Diffraction.} Patterns cover 20--60\ensuremath{^\circ} 2\ensuremath{\theta} in steps of 0.02\ensuremath{^\circ} with Cu K\ensuremath{\alpha}\ensuremath{_{1}} and K\ensuremath{\alpha}\ensuremath{_{2}} in the ratio 2:1. Reflection positions and intensities per unit mass come from the crystal structures of anatase, rutile and \ensuremath{\gamma}-alumina. Peak profiles are Thompson--Cox--Hastings pseudo-Voigt functions \cite{Thompson1987} that combine the instrument function, Scherrer broadening and microstrain (anatase 2 \ensuremath{\times} 10\ensuremath{^{-}}\ensuremath{^{3}} annealing out with temperature, rutile 5 \ensuremath{\times} 10\ensuremath{^{-}}\ensuremath{^{4}}). Sample displacement, intensity scale, a background with titanium fluorescence and Poisson counting complete the pattern.
-
-\textbf{Synthesis scatter.} Every furnace run carries a temperature offset (standard deviation 5 \ensuremath{^\circ}C) shared by its eight crucibles and a gradient of 0.8 \ensuremath{^\circ}C per tray slot. Every crucible carries dosing errors of 3 \% on alumina and P25, scatter of 10 \% on its rate constants, and a failure probability of 0.5 \%. A world is one draw of all scatter and noise; the truth seed selects it.
-
-\hypertarget{si-7.2-campaign}{%
-\subsection*{SI 7.2 Campaign}\label{si-7.2-campaign}}
-\addcontentsline{toc}{subsection}{SI 7.2 Campaign}
-
-The unit of decision is a furnace run. Each run fires a tray of eight crucibles at one temperature and dwell: alumina at 0, 2, 5 and 10 wt\%, each without and with 30 \% P25. The design places 64 runs in (temperature, log dwell) over 500--1000 \ensuremath{^\circ}C and 1--4 h as a scrambled Sobol sequence \cite{Owen1995} cut into nested blocks of 8, 8, 16 and 32 runs. The first 8, 16, 32 and 64 points of a scrambled Sobol sequence each form a randomised net, so the design through any level contains the coarser levels and spreads its runs evenly over the square, as the hierarchical Poisson-disk designs of the other datasets do; this serves image formation. The guarantee uses only that the blocks are fixed before the campaign. The two blocks of 8 form the seed.
-
-The measurement of a run is its eight patterns. A claim on a run holds when it holds for each crucible. The interest claim asks whether some crucible holds both phases, with a rutile fraction between 0.1 and 0.9 estimated from the areas of anatase (101) and rutile (110). The size claim asks the width of anatase (101), wherever the reflection is present, to lie within 0.12\ensuremath{^\circ} of the width predicted by natural-neighbour interpolation from coarser levels. The pattern claim asks every channel within 25 \% + 4\ensuremath{\sigma}, on average over channels with predicted signal above 600 counts. Scores and interpolator follow the natural-neighbour protocol of Section 4.3, applied to the run coordinates. Each certified level is calibrated on 12 runs, and the guarantee is \(R_E \le 0.20\) at confidence 0.80 along the quantile path. The calibration seed of each campaign equals the truth seed of its world.
-
-\hypertarget{si-7.3-observations-from-the-patterns}{%
-\subsection*{SI 7.3 Observations from the patterns}\label{si-7.3-observations-from-the-patterns}}
-\addcontentsline{toc}{subsection}{SI 7.3 Observations from the patterns}
-
-The kinetic fit uses three observations per crucible, taken as an analyst would take them from a pattern.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{Rutile mass fraction.} A two-phase fit of anatase (101) and rutile (110) over 23.5--29.5\ensuremath{^\circ}, each a pseudo-Voigt K\ensuremath{\alpha}\ensuremath{_{1}}/K\ensuremath{\alpha}\ensuremath{_{2}} doublet on a quadratic background, gives integrated areas. Their ratio, with the intensity ratio per unit mass from the crystal structures, gives the rutile fraction \cite{SpurrMyers1957}. On noiseless mixtures the error is below 0.002 at every combination of sizes; on the simulated campaign the root-mean-square error is 0.003--0.007.
-\item
-  \textbf{Anatase size.} The width of anatase (101) is converted to a size through a lookup calibrated on simulated strain-free single-phase patterns with the instrument function, the analogue of a measured instrument standard. Sizes above 70 nm, where the width approaches the instrument limit, are not used.
-\item
-  \textbf{Rutile widths.} The widths of rutile (110) and (101) are kept as widths. They are predicted from the rutile size and a global microstrain, which is fitted with the kinetic parameters; two reflections at different angles separate size from strain \cite{WilliamsonHall1953}.
-\end{enumerate}
-
-A fraction below 0.03 is below the detection limit and enters the fit as "less than 0.03" (one-sided residual), and likewise above 0.97.
-
-Each of these choices removed a bias larger than the statistical error (Table S7.2). The bias was traced by fitting idealised data and removing one cause at a time: observations computed from the model itself return the truth exactly, so the remaining error lies in the observations or in the synthesis scatter.
-
-{\renewcommand{\thetable}{S7.2}\small
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
-\caption{Effect of the choices in the observation model on the full 64-run design of one world.}\label{tab:S7.2}\\
-
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Choice
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Effect when omitted
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Censoring below the detection limit & rutile at 0.5--3 \% reads as zero; surface-nucleation energy biased by about +70 kJ/mol \\
-Integrated areas from a profile fit & areas as height \ensuremath{\times} width bias the rutile fraction by up to +0.07 at mid conversion, since small anatase and large rutile differ in profile shape \\
-Two rutile reflections with fitted microstrain & one reflection reads strain as size, 3--16 \% low above 70 nm; rutile-coarsening energy biased by about \ensuremath{-}50 kJ/mol; with one reflection the fitted strain goes to zero \\
-Errors clustered by furnace run & crucibles of one run share its temperature offset; per-crucible errors are too small by 1.0--1.9\ensuremath{\times} on the transformation energies and 2.5--4.6\ensuremath{\times} on rutile coarsening \\
-\end{longtable}
-}
-
-\hypertarget{si-7.4-kinetic-fit}{%
-\subsection*{SI 7.4 Kinetic fit}\label{si-7.4-kinetic-fit}}
-\addcontentsline{toc}{subsection}{SI 7.4 Kinetic fit}
-
-The model is the forward model of SI 7.1 integrated at the nominal recipe of each crucible: furnace offsets, tray gradient, dosing errors and rate scatter are unknown to the fit. Ten parameters are fitted: rate and activation energy of surface nucleation, of contact growth and of the coarsening of each phase, the alumina inhibition constant and the rutile microstrain. Rates are stated at reference temperatures inside the data (750 \ensuremath{^\circ}C for nucleation, 700 \ensuremath{^\circ}C for contact growth, 690 \ensuremath{^\circ}C and 900 \ensuremath{^\circ}C for coarsening), which removes most of the correlation between rate and activation energy. Interface nucleation, the size coefficient \ensuremath{\beta}, the precursor size distribution and the contact efficiency of P25 are held at their values in Table S7.1.
-
-Residuals are the logit of the rutile fraction (scale 0.35), the logarithm of the anatase size (scale 0.12) and the logarithms of the two rutile widths (scale 0.015, the width noise found on the data). The parameters minimise the sum of squared scaled residuals, from a starting point displaced from the truth by 50--60 kJ/mol in every activation energy. Crucibles of one furnace run share its temperature offset, so the covariance of the estimate is the cluster-robust sandwich over runs \cite{LiangZeger1986}. With \(J\) the Jacobian of the residuals at the estimate, \(J_g\) and \(r_g\) its rows and the residuals of run \(g\), and \(G\) the number of runs:
-
-\[
-H = J^{\top} J
-\]
-
-\[
-\widehat{V} = \frac{G}{G-1}\, H^{-1} \left( \sum_{g} J_g^{\top} r_g\, r_g^{\top} J_g \right) H^{-1}
-\]
-
-\hypertarget{si-7.5-arms-and-statistics}{%
-\subsection*{SI 7.5 Arms and statistics}\label{si-7.5-arms-and-statistics}}
-\addcontentsline{toc}{subsection}{SI 7.5 Arms and statistics}
-
-In each of 30 worlds, the same fit is applied to the runs of five arms: the full design, the runs measured by the size-claim campaign, those measured by the pattern-claim campaign, a uniformly random subset of the design of the size campaign\textquotesingle s size, and a subset of the same size chosen for the kinetics. The last arm starts from the seed levels and adds, one at a time, the run that most increases the determinant of the Fisher information at the true parameters, the D-optimality criterion \cite{Atkinson2007}. Knowing the truth, it bounds the precision any choice of runs could reach.
-
-The information a subset \(S\) carries is summarised by its D-efficiency relative to the full design, with \(\mathcal{I}_S\) the Fisher information of the runs in \(S\) at the true parameters and \(p = 10\):
-
-\[
-D_{\mathrm{eff}}(S) = \left( \det \mathcal{I}_S \,/\, \det \mathcal{I}_{\mathrm{full}} \right)^{1/p}
-\]
-
-A D-efficiency of 0.84 means that the full design would reach the same determinant with 84 \% of its runs if information were spread evenly. Each arm is also scored by the standard errors and errors of the four activation energies, by the share of all ten parameters lying within two standard errors of the truth, and by the largest error, over dwells of 1--4 h, of the temperature at which half the anatase of the native powder has transformed. The same forward model generates the data and serves in the fit, so absolute accuracy is favourable to every arm alike; the comparison between arms is the result.
-
-\hypertarget{si-7.6-further-results}{%
-\subsection*{SI 7.6 Further results}\label{si-7.6-further-results}}
-\addcontentsline{toc}{subsection}{SI 7.6 Further results}
-
-{\renewcommand{\thetable}{S7.3}\small
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
-\caption{Kinetic recovery over 30 worlds (median runs; activation energies in kJ/mol, ordered surface nucleation / contact growth / anatase coarsening / rutile coarsening).}\label{tab:S7.3}\\
-
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Set of runs
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Runs
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-D-efficiency, median
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Median standard error
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-RMS error over worlds
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Parameters within 2 s.e.
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Half-conversion temperature error, median (\ensuremath{^\circ}C)
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Full design & 64 & 1.00 & 13 / 11 / 22 / 6 & 15 / 28 / 28 / 14 & 67 \% & 6.5 \\
-Size-claim campaign & 47.9 & 0.85 & 15 / 12 / 23 / 7 & 14 / 26 / 29 / 14 & 74 \% & 6.1 \\
-Pattern-claim campaign & 49.6 & 0.88 & 15 / 12 / 22 / 7 & 16 / 27 / 29 / 14 & 74 \% & 5.9 \\
-Random subset & 47.9 & 0.74 & 15 / 12 / 24 / 7 & 18 / 29 / 34 / 15 & 70 \% & 6.3 \\
-Kinetics-optimal subset & 47.9 & 1.00 & 14 / 11 / 22 / 6 & 15 / 28 / 27 / 14 & 67 \% & 6.4 \\
-Seed levels & 16 & 0.23 & 22 / 14 / 29 / 10 & 27 / 25 / 44 / 17 & 79 \% & 4.2 \\
-\end{longtable}
-}
-
-In 27 of the 30 worlds the size campaign\textquotesingle s runs had a higher D-efficiency than the paired random subset, by a median of 0.11. Removing the 16 runs a campaign skipped lost less information than removing a random set of the same size in a median 98 \% of 200 draws per world. Every set of runs places fewer parameters within two standard errors of the truth than the nominal 95 \%: the fit integrates the nominal recipe, and the furnace offsets, tray gradient and rate scatter it leaves out bias the estimate, most for contact growth. The standard errors of a single fit are themselves uncertain with about 48 clusters, and a random subset can show a smaller standard error than the full design; the errors over worlds and the D-efficiency are the measures relied on in Section 5.6. The guarantee was checked on 60 certified levels per claim: 6 exceedances against 5.6 allowed by the picked levels under the size claim (one-sided probability 0.50) and 8 under the pattern claim (0.20).
-
-\textbf{Uniform designs.} Designs of independent uniform runs were compared at matched budgets in one world (Table S7.4). At 47 runs, a random subset of the Sobol design matched the campaign, and independent uniform runs lost 30--40 \% in precision on the surface-nucleation and anatase-coarsening energies. At 16 runs, the seed levels kept standard errors of 14, 21, 23 and 9 kJ/mol on the four energies, while random or independent uniform runs roughly doubled the errors on surface nucleation and anatase coarsening, with single draws off by up to 100 kJ/mol. The nested Sobol design keeps its small levels evenly spread, which the kinetics need when runs are few. Levels of independent uniform points would carry the same guarantee on the skips; the difference lies in image formation and in the precision it allows.
-
-{\renewcommand{\thetable}{S7.4}\small
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
-\caption{Median standard errors of the activation energies (kJ/mol; surface nucleation / contact growth / anatase coarsening / rutile coarsening), one world, matched budgets.}\label{tab:S7.4}\\
-
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Runs
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Sobol levels or campaign
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Random subset of the Sobol design
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Independent uniform runs
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-about 47 & campaign: 12 / 11 / 22 / 8 & 14 / 11 / 20 / 9 & 17 / 10 / 28 / 7 \\
-16 & seed levels: 14 / 21 / 23 / 9 & 25 / 19 / 42 / 14 & 32 / 14 / 48 / 12 \\
-\end{longtable}
-}
 
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}

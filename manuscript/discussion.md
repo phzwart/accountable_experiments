@@ -10,7 +10,7 @@ A guarantee is stated for one acceptance metric, and the metric deserves the sam
 
 ## Measured sites as data
 
-The sites a campaign measures are also the data for a model of the process. A site is skipped under the interpolation claim when its neighbours predict it, and such a site adds little to a model that varies as smoothly as the response; on the calcination campaign the measured runs were nearly as informative as the full design (Section 5.6). A model identified by features outside the claim, such as a background or a weak minor phase, lies beyond this argument. The guarantee holds for any score frozen before the draw, so a score that ranks sites by the information they would add to the process model keeps the bound and steers measurements towards the model [Atkinson2007].
+The sites a campaign measures are also the data for a model of the process. A site is skipped under the interpolation claim when its neighbours predict it, and such a site adds little to a model that varies as smoothly as the response. The guarantee holds for any score frozen before the draw, so a score that ranks sites by the information they would add to a process model keeps the bound and steers measurements towards the model [Atkinson2007]; a synthesis campaign with a kinetic model is the natural test.
 
 ## Building other guarantees
 

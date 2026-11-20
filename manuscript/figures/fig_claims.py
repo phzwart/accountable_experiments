@@ -7,8 +7,8 @@ right column: a site it rejects.
        on average over channels above 0.02 (band around the truth).
 (c, d) NaCl scan, width claim: the FWHM of the (200) line must agree within 0.02 nm^-1
        (bars at half maximum; the shaded bar is the accepted range of the predicted width).
-(e, f) Calcination, size claim on a furnace run: the anatase (101) width must agree within 0.12 deg in
-       every crucible; shown is the crucible with the largest discrepancy.
+(e, f) Synthetic scattering map, peak claim: the dominant-peak position must agree within 0.005 A^-1
+       and its width within 0.001 A^-1 (bars at half maximum; shaded: the accepted ranges).
 
     python manuscript/figures/fig_claims.py
 """
@@ -29,9 +29,7 @@ from accountable.criteria import peak_descriptors_window  # noqa: E402
 from accountable import peak_descriptors  # noqa: E402
 from experiments.ir_bioreef import adapter as IR  # noqa: E402
 from experiments.nacl_saxs import adapter as NA  # noqa: E402
-from experiments.tio2_calcination import adapter as TA  # noqa: E402
-from experiments.tio2_calcination import forward_v2 as V  # noqa: E402
-from experiments.tio2_calcination import furnace as FU  # noqa: E402
+from experiments.synthetic_saxs import adapter as SA  # noqa: E402
 
 FIG = Path(__file__).resolve().parent
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#b9b8b3"
@@ -40,12 +38,13 @@ plt.rcParams.update({"font.size": 8, "font.family": "DejaVu Sans", "axes.edgecol
                      "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK})
 
 
-def predict(ds, L):
+def predict(ds, L, images=None, candidate=None):
     """Truth, prediction from levels < L, and neighbour weights for every site of level L."""
     lv = np.asarray(ds.levels)
-    meas, q = np.flatnonzero(lv < L), np.flatnonzero(lv == L)
+    cand = np.ones(len(lv), bool) if candidate is None else np.asarray(candidate, bool)
+    meas, q = np.flatnonzero((lv < L) & cand), np.flatnonzero((lv == L) & cand)
     P = np.asarray(ds.points, float)
-    W = neighbour_weights(P[meas], P[q], method="watson")
+    W = neighbour_weights(P[meas], P[q], images=images, method="watson")
     Y = ds.oracle.truth(meas)
     return q, meas, ds.oracle.truth(q), W.apply(Y), W, Y
 
@@ -133,70 +132,40 @@ def nacl_panels(axs):
         style(ax, f"NaCl, (200) width claim: {lab}\nΔFWHM = {abs(dh['fwhm'][i] - dt['fwhm'][i]):.3f} nm$^{{-1}}$ (tolerance 0.02)")
 
 
-def calc_panels(axs):
-    ds = FU.load(blocks_=(8, 8, 16, 32), model="v2")
-    sigma = FU.noise_sigma(ds)
-    crit = FU.criterion("size", sigma)
-    C = ds.meta["n_channels"]
-    q, meas, It, Ih, W, Y = predict(ds, 3)
+def saxs_panels(axs):
+    ds = SA.load()
+    crit = SA.criterion("peak", ds.axis)
+    q, meas, It, Ih, W, Y = predict(ds, 6, images=SA.wall_images, candidate=ds.candidate)
     st = crit.stats(It, Ih)
-    S = np.asarray(st["block_scores"], float)
-    sc = S.max(1)
-    x = V.axis()
-    win = (x > V.A101 - 1.5) & (x < V.A101 + 2.6)
-
-    def present(i):
-        b = int(np.nanargmax(S[i]))
-        sl = slice(b * C, (b + 1) * C)
-        out = []
-        for I_ in (It[i, sl], Ih[i, sl]):
-            d = peak_descriptors_window(savgol_filter(I_[None], TA.SMOOTH, 2, axis=1), x, V.A101, TA.A_HALF)
-            out.append(bool(np.isfinite(d["fwhm"][0]) and d["height_above_base"][0] > 8 * sigma))
-        return out
-    pres = {i: present(i) for i in range(len(sc))}
-
-    def anatase_height(i, which):
-        bk = int(np.nanargmax(S[i]))
-        sl = slice(bk * C, (bk + 1) * C)
-        I_ = (It if which == 0 else Ih)[i, sl]
-        d = peak_descriptors_window(savgol_filter(I_[None], TA.SMOOTH, 2, axis=1), x, V.A101, TA.A_HALF)
-        return float(np.nan_to_num(d["height_above_base"][0]))
-    ok = [i for i in np.flatnonzero(sc <= 1) if all(pres[i])]
-    bad = [i for i in np.flatnonzero(sc > 1) if pres[i][0] or pres[i][1]]
-    picks = [ok[int(np.argmax([anatase_height(i, 0) for i in ok]))],
-             bad[int(np.argmax([max(anatase_height(i, 0), anatase_height(i, 1)) for i in bad]))]]
-    for ax, i, lab in zip(axs, picks, ("accepted", "rejected")):
-        b = int(np.nanargmax(S[i]))
-        sl = slice(b * C, (b + 1) * C)
-        Yb = np.asarray(Y)[:, sl]
-        neighbours(ax, x, W, i, Yb, xsl=win)
-        It_b, Ih_b = It[i, sl], Ih[i, sl]
-        ax.plot(x[win], It_b[win], color=INK, lw=1.1)
-        ax.plot(x[win], Ih_b[win], color=ORANGE, lw=1.1, ls="--")
-        dt = peak_descriptors_window(savgol_filter(It_b[None], TA.SMOOTH, 2, axis=1), x, V.A101, TA.A_HALF)
-        dh = peak_descriptors_window(savgol_filter(Ih_b[None], TA.SMOOTH, 2, axis=1), x, V.A101, TA.A_HALF)
-        ft, fh, ct, ch = dt["fwhm"][0], dh["fwhm"][0], dt["q_peak"][0], dh["q_peak"][0]
-        pt, ph = pres[i]
-        aw = (x > V.A101 - 1.0) & (x < V.A101 + 1.0)
-        for I_, f, c, col, on in ((It_b, ft, ct, INK, pt), (Ih_b, fh, ch, ORANGE, ph)):
-            if not on:
-                continue
-            base = np.median(I_[aw][:8])
-            yhalf = base + 0.5 * (I_[aw].max() - base)
+    sc = np.asarray(st["score"], float)
+    x = ds.axis
+    dt, dh = peak_descriptors(It, x), peak_descriptors(Ih, x)
+    pr = np.asarray(dt["prominence"], float)
+    valid = np.isfinite(sc) & (pr >= 2 * SA.PROMINENCE) & np.isfinite(dh["fwhm"])
+    ok = np.flatnonzero(valid & (sc <= 1))
+    bad = np.flatnonzero(valid & (sc > 1.5) & (sc < 6))
+    pick = [ok[np.argmin(np.abs(sc[ok] - 0.5))], bad[np.argmin(np.abs(sc[bad] - 3))]]
+    for ax, i, lab in zip(axs, pick, ("accepted", "rejected")):
+        c = dt["q_peak"][i]
+        win = (x > c - 0.03) & (x < c + 0.03)
+        neighbours(ax, x, W, i, Y, xsl=win)
+        ax.plot(x[win], It[i][win], color=INK, lw=1.1)
+        ax.plot(x[win], Ih[i][win], color=ORANGE, lw=1.1, ls="--")
+        for I_, d, col in ((It[i], dt, INK), (Ih[i], dh, ORANGE)):
+            yw = I_[win]
+            base = np.min(yw)
+            yhalf = base + 0.5 * (yw.max() - base)
+            cc, f = d["q_peak"][i], d["fwhm"][i]
             if col == INK:
-                ax.add_patch(plt.Rectangle((c - (f + FU.SIZE_TOL) / 2, yhalf - 0.03 * It_b[win].max()), f + FU.SIZE_TOL,
-                                           0.06 * It_b[win].max(), color=BLUE, alpha=0.2, lw=0))
-            ax.plot([c - f / 2, c + f / 2], [yhalf, yhalf], color=col, lw=2.2, solid_capstyle="butt")
-        if pt and ph:
-            note = f"worst crucible: ΔFWHM = {abs(fh - ft):.2f}° (tolerance 0.12°)"
-        elif ph and not pt:
-            note = "worst crucible: anatase predicted, not measured"
-        else:
-            note = "worst crucible: anatase measured, not predicted"
-        rec = V.recipe(ds.meta["recipes"][q[i] * FU.N_SLOTS + b][None])
-        ax.set_xlabel("2θ (deg)")
-        ax.set_ylabel("counts")
-        style(ax, f"Calcination run ({rec['T'][0]:.0f} °C, {rec['t'][0]:.1f} h), size claim: {lab}\n{note}")
+                ax.axvspan(cc - SA.PEAK_EPS, cc + SA.PEAK_EPS, color=BLUE, alpha=0.10, lw=0)
+                ax.add_patch(plt.Rectangle((cc - (f + SA.FWHM_EPS) / 2, yhalf - 0.03 * yw.max()), f + SA.FWHM_EPS,
+                                           0.06 * yw.max(), color=BLUE, alpha=0.25, lw=0))
+            ax.plot([cc - f / 2, cc + f / 2], [yhalf, yhalf], color=col, lw=2.2, solid_capstyle="butt")
+        dq = abs(dh["q_peak"][i] - dt["q_peak"][i])
+        dw = abs(dh["fwhm"][i] - dt["fwhm"][i])
+        ax.set_xlabel("q (Å$^{-1}$)")
+        ax.set_ylabel("intensity")
+        style(ax, f"Synthetic map, peak claim: {lab}\nΔq* = {dq:.4f}, ΔFWHM = {dw:.4f} Å$^{{-1}}$")
 
 
 def main():
@@ -204,7 +173,7 @@ def main():
                             gridspec_kw=dict(hspace=0.62, wspace=0.28, left=0.09, right=0.98, top=0.95, bottom=0.07))
     ir_panels(axs[0])
     nacl_panels(axs[1])
-    calc_panels(axs[2])
+    saxs_panels(axs[2])
     for k, ax in enumerate(axs.ravel()):
         ax.text(-0.02, 1.13, "abcdef"[k], transform=ax.transAxes, fontweight="bold", fontsize=9, ha="right")
     fig.savefig(FIG / "fig_claims.png", dpi=200)

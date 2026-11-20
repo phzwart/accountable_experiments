@@ -2,9 +2,8 @@
 Figure: the three datasets as maps of the quantity each claim speaks to.
 (a) IR map: amide-I absorbance (maximum over 1620-1690 cm^-1, after Mie correction), 1 um pixels.
 (b) NaCl scan: width (FWHM) of the (200) line, where the line is present; grey where absent.
-(c) Calcination: rutile mass fraction after the furnace programme, native powder without alumina,
-    over temperature and dwell (forward model, no scatter); dots: the 64 runs of the design.
-Design sites of the two measured maps are overlaid as small dots.
+(d) Synthetic small-angle scattering map: position of the dominant peak where a peak stands out
+    (prominence of at least 5); grey elsewhere; lines: phase boundaries of the forward model.
 
     python manuscript/figures/fig_datasets.py
 """
@@ -23,8 +22,7 @@ from accountable import peak_descriptors  # noqa: E402
 from experiments._paths import data_root  # noqa: E402
 from experiments.ir_bioreef import adapter as IR  # noqa: E402
 from experiments.nacl_saxs import adapter as NA  # noqa: E402
-from experiments.tio2_calcination import forward_v2 as V  # noqa: E402
-from experiments.tio2_calcination import furnace as FU  # noqa: E402
+from experiments.synthetic_saxs import adapter as SA, forward as SF  # noqa: E402
 
 FIG = Path(__file__).resolve().parent
 INK, INK2 = "#0b0b0b", "#52514e"
@@ -63,17 +61,26 @@ def nacl_fwhm():
     return img, pres, (xs, ys), ds, h
 
 
-def calcination_map():
-    Tg = np.linspace(500, 1000, 201)
-    lt = np.linspace(0, 2, 61)
-    TT, LL = np.meshgrid(Tg, lt)
-    st = V.integrate(TT.ravel(), 2.0 ** LL.ravel(), np.zeros(TT.size), 0.0, None, V.P)
-    return Tg, 2.0 ** lt, st["f_R"].reshape(TT.shape)
+def saxs_map(n=161):
+    g = np.linspace(0, 1, n)
+    X, Y = np.meshgrid(g, g)
+    feas = X + Y <= 1
+    q = SF.default_q(240)
+    I = SF.saxs(X[feas], Y[feas], q)
+    d = peak_descriptors(I, q)
+    pr = np.asarray(d["prominence"], float)
+    ok = np.asarray(d["has_peak"], bool) & np.isfinite(pr) & (pr >= SA.PROMINENCE)
+    img = np.full(X.shape, np.nan)
+    img[feas] = np.where(ok, np.asarray(d["q_peak"], float), np.nan)
+    flat = np.full(X.shape, np.nan)
+    flat[feas & ~np.isnan(img) == False] = 0.0
+    flat[~feas] = np.nan
+    return g, img, flat, X, Y
 
 
 def main():
     fig, axs = plt.subplots(2, 2, figsize=(7.2, 5.6), facecolor="white",
-                            gridspec_kw=dict(wspace=0.42, hspace=0.42, left=0.08, right=0.95, top=0.94, bottom=0.08))
+                            gridspec_kw=dict(wspace=0.42, hspace=0.42, left=0.08, right=0.92, top=0.94, bottom=0.08))
     axs = axs.ravel()
 
     def bar(im, ax, label):
@@ -107,21 +114,21 @@ def main():
         ax.set_title(title, loc="left", fontsize=8.5)
         bar(im, ax, lab)
 
-    Tg, dw, fR = calcination_map()
+    g, img, flat, X, Y = saxs_map()
     ax = axs[3]
-    im = ax.pcolormesh(Tg, dw, fR, cmap="cividis", vmin=0, vmax=1, shading="auto")
-    v, lv = FU.run_design(7, (8, 8, 16, 32))
-    seed = lv <= 1
-    T, d = 500 + 500 * v[:, 0], 2.0 ** (FU.DWELL_MAX_LOG2 * v[:, 1])
-    ax.scatter(T[seed], d[seed], s=12, marker="D", facecolors="white", edgecolors=INK, linewidths=0.5)
-    ax.scatter(T[~seed], d[~seed], s=10, facecolors="none", edgecolors="white", linewidths=0.7)
-    ax.set_yscale("log", base=2)
-    ax.set_yticks([1, 2, 4])
-    ax.set_yticklabels(["1", "2", "4"])
-    ax.set_xlabel("temperature (°C)")
-    ax.set_ylabel("dwell (h)")
-    ax.set_title("(d) Calcination: rutile fraction", loc="left", fontsize=8.5)
-    bar(im, ax, "rutile fraction")
+    ax.imshow(np.where(np.isnan(img) & (X + Y <= 1), 0.0, np.nan), origin="lower", cmap="Greys", vmin=-1, vmax=3,
+              extent=(0, 1, 0, 1))
+    im = ax.imshow(img, origin="lower", cmap="plasma", extent=(0, 1, 0, 1))
+    lab = SF.classify(X, Y).astype(float)
+    lab[lab < 0] = np.nan
+    ax.contour(X, Y, lab, levels=[0.5, 1.5, 2.5], colors="white", linewidths=0.6)
+    ax.plot([0, 1], [1, 0], color=INK2, lw=0.8)
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_xlabel("oil fraction x")
+    ax.set_ylabel("surfactant fraction y")
+    ax.set_title("(d) Synthetic map: dominant peak", loc="left", fontsize=8.5)
+    bar(im, ax, "q* (Å$^{-1}$)")
     fig.savefig(FIG / "fig_datasets.png", dpi=200)
     fig.savefig(FIG / "fig_datasets.pdf")
     print("wrote", FIG / "fig_datasets.png")
