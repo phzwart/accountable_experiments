@@ -54,6 +54,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Thompson1987] **M** Thompson, Cox, Hastings (1987). Rietveld refinement of Debye–Scherrer synchrotron X-ray data from Al₂O₃. J. Appl. Cryst. 20, 79–83. SI only.
 - [Tibshirani2019] **V** Tibshirani, Barber, Candès, Ramdas (2019). Conformal prediction under covariate shift. NeurIPS 32.
 - [Tom2024] **V** Tom, Schmid, Baird et al. (2024). Self-driving laboratories for chemistry and materials science. Chem. Rev. 124(16), 9633–9732. doi:10.1021/acs.chemrev.4c00055.
+- [Upreti2026] **V** Upreti, Adhikari, Baral, Wang, Ma, Zhu, Noack, Gu (2026). Autonomous phase diagram mapping of polymer blends through SAXS-guided active learning. ChemRxiv. doi:10.26434/chemrxiv.15012310/v1.
 - [vandeHulst1957] **M** van de Hulst (1957). Light Scattering by Small Particles. Wiley. SI only.
 - [Vovk2005] **M** Vovk, Gammerman, Shafer (2005). Algorithmic Learning in a Random World. Springer.
 - [Watson1992] **?** Watson (1992). Contouring: A Guide to the Analysis and Display of Spatial Data. Pergamon. (SI only.)
