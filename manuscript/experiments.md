@@ -10,9 +10,9 @@ Every guarantee in this study can be checked, because each dataset is measured a
 
 *Infrared map.* A bioreef sample mapped on 29 × 42 pixels of 1 µm, with 1738 channels between 650 and 4000 cm⁻¹. Each spectrum is corrected for resonant Mie scattering pixel by pixel, and the window 1500–1850 cm⁻¹, which holds the amide and ester bands, is used. A seven-level design drawn on the physical rectangle and snapped to pixels gives 959 sites. SI 2 describes the correction and the design.
 
-Figure 2 shows each dataset as a map of the quantity its claims test.
+Figure 3 shows each dataset as a map of the quantity its claims test.
 
-**Figure 2.** The three datasets as maps of the quantities their claims test. (a) IR map: amide-I absorbance, maximum over 1620–1690 cm⁻¹ after scattering correction, 1 µm pixels. (b, c) NaCl scan: height and width of the (200) line where it stands five noise levels above its baseline; grey where absent. The width varies from pixel to pixel by more than the tolerance of the width claim. (d) Synthetic map: position of the dominant peak where its prominence reaches 5; grey elsewhere; lines: phase boundaries of the forward model. File: `figures/fig_datasets.png`.
+**Figure 3.** The three datasets as maps of the quantities their claims test. (a) IR map: amide-I absorbance, maximum over 1620–1690 cm⁻¹ after scattering correction, 1 µm pixels. (b, c) NaCl scan: height and width of the (200) line where it stands five noise levels above its baseline; grey where absent. The width varies from pixel to pixel by more than the tolerance of the width claim. (d) Synthetic map: position of the dominant peak where its prominence reaches 5; grey elsewhere; lines: phase boundaries of the forward model. File: `figures/fig_datasets.png`.
 
 ## 4.2 Claims and tolerances
 
@@ -26,9 +26,9 @@ Each dataset carries one interest claim and one interpolation claim, fixed befor
 | NaCl scan | the (200) line at 22.28 nm⁻¹, at least five noise levels above its local baseline | the (200) width within 0.02 nm⁻¹, about half a detector bin |
 | IR map | absorbance of 0.1 or more in some channel of the window | every channel within 10 % + 0.10 absorbance, on average over channels above 0.02 |
 
-Figure 3 shows how each claim judges a prediction. A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
+Figure 4 shows how each claim judges a prediction. A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
 
-**Figure 3.** How a prediction is judged. In each panel one site of a certified level is predicted from the measured sites of the coarser levels by natural-neighbour weights (grey: neighbours, line width by weight; orange: prediction; black: measurement). Left: a site its claim accepts; right: a site it rejects. (a, b) IR envelope claim: the prediction must lie within 10 % + 0.10 absorbance of the measurement (shaded), on average over channels above 0.02. (c, d) NaCl width claim: the widths at half maximum (bars) must agree within 0.02 nm⁻¹ (shaded). (e, f) Synthetic peak claim: the dominant-peak position must agree within 0.005 Å⁻¹ (shaded column) and its width within 0.001 Å⁻¹ (shaded bar). File: `figures/fig_claims.png`.
+**Figure 4.** How a prediction is judged. In each panel one site of a certified level is predicted from the measured sites of the coarser levels by natural-neighbour weights (grey: neighbours, line width by weight; orange: prediction; black: measurement). Left: a site its claim accepts; right: a site it rejects. (a, b) IR envelope claim: the prediction must lie within 10 % + 0.10 absorbance of the measurement (shaded), on average over channels above 0.02. (c, d) NaCl width claim: the widths at half maximum (bars) must agree within 0.02 nm⁻¹ (shaded). (e, f) Synthetic peak claim: the dominant-peak position must agree within 0.005 Å⁻¹ (shaded column) and its width within 0.001 Å⁻¹ (shaded bar). File: `figures/fig_claims.png`.
 
 ## 4.3 Protocols
 

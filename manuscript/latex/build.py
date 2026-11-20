@@ -20,8 +20,9 @@ TITLE = "Accountable experiments: a checkable error rate for every measurement l
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C", "appendix_D"]
 SI = [f"supplement_SI{i}" for i in range(1, 7)]
-FIGS = {1: "fig1_schematic", 2: "fig_datasets", 3: "fig_claims", 4: "fig2_random", 5: "fig3_forms",
-        6: "fig4_protocols", 7: "fig5_maps", 8: "fig6_metric", "S1": "figS1_gp_std", "S6": "figS6_sampling"}
+FIGS = {1: "fig_hook", 2: "fig1_schematic", 3: "fig_datasets", 4: "fig_claims", 5: "fig2_random",
+        6: "fig3_forms", 7: "fig4_protocols", 8: "fig5_maps", 9: "fig6_metric",
+        "S1": "figS1_gp_std", "S6": "figS6_sampling"}
 NBSP = "\u00a0"
 
 UNI = {"ε": r"\ensuremath{\varepsilon}", "δ": r"\ensuremath{\delta}", "σ": r"\ensuremath{\sigma}",
