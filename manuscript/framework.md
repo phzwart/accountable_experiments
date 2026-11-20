@@ -14,6 +14,8 @@ A hierarchical Poisson-disk design [Bridson2007] partitions the scan into nested
 4. *Calibrate.* The calibration sites are measured, their labels are evaluated against the frozen predictor, and the rule turns the labels into thresholds.
 5. *Decide.* Covered sites of the remainder are skipped and the others measured; every measured site joins the measured set for the next level.
 
+**Figure 1.** The workflow. (a) Hierarchical design of the IR map: levels 0–2 form the seed, and each finer level fills the gaps of the coarser ones. (b) The five steps on one level; the calibration draw is the only random element of the guarantee, and its labels are unseen until the rule is frozen. (c) The two claims: a skipped site is covered as not of interest ($A$), as predictable ($B$) or both, and the skip is wrong when a covering claim is false. The guarantee bounds the share of level-$L$ sites at which the shared event $E$ occurs. File: `figures/fig1_schematic.png`.
+
 Non-anticipation ties the steps together: nothing that shapes the guarantee on a level may depend on that level's draw, except through the rule fixed in step 2. Three practices that look harmless break it, and Section 5.1 shows each failing: refitting the scores on the calibration labels before the threshold is set, taking the calibration sample where the model is least sure, and keeping the most favourable of several draws. The condition concerns the draw and the rule. A score may use anything known before the draw, including physical models, other datasets or prior beliefs; a poor score costs measurements and leaves the guarantee intact.
 
 Measuring one site must also leave the outcome of every other site unchanged. Radiation damage that spreads beyond the probed spot, or sample drift triggered by the measurement order, would let the draw alter the population it is meant to sample.
@@ -91,6 +93,6 @@ Two further statements accompany each level. The rate of wrong skips among the s
 
 - Results from Section 5.2 stay out of this section; the IR infeasibility appears here only as a property of the split ($\varepsilon_j < \varepsilon_{\min}$).
 - References added here: [Wilks1941], [Bates2021], [Jin2023], [Neyman1934] (Neyman 1934, J. R. Stat. Soc. 97, 558–625, on the representative method; check), [Cochran1977] (Cochran, Sampling Techniques, 3rd ed., Wiley; check).
-- Section 3.1 cites Fig. 1, the schematic still to be drawn: five steps per level, the history feeding step 1, the draw as the only random element of the guarantee. Bibliographic details are in the plan's reference map; Wilks and Bates still need a check.
+- Fig. 1 drawn (figures/fig1_schematic.png). Bibliographic details are in the plan's reference map; Wilks and Bates still need a check.
 - "Certificate" and "claim": distinction stated in 3.2.
 - Reference to add: [ClopperPearson1934] Clopper, Pearson (1934), Biometrika 26, 404–413.
