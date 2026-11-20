@@ -251,10 +251,13 @@ class GPSpectrumRoute(Predictor):
     engine: GPEngine
     name: str = "gp_spectrum"
     nn_method: str = "watson"   # unused; kept so the campaign can set it
+    floor: float | None = 0.0   # physical lower bound; the posterior mean is clipped to it
 
     def predict(self, P_src, I_src, P_query):
         self.engine.fit(P_src, I_src)
-        return self.engine.predict(I_src, P_query)
+        out = self.engine.predict(I_src, P_query)
+        # Spectra are non-negative; clipping can only bring a prediction closer to a non-negative truth.
+        return out if self.floor is None else np.maximum(out, self.floor)
 
     def label(self, P_src, I_src, P_query, I_true, desc_true=None):
         if np.asarray(P_query).size == 0:

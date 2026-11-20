@@ -1,0 +1,86 @@
+{
+ "IR | mle": {
+  "sites": 886,
+  "any_negative": 252,
+  "fails_raw": 7,
+  "fails_clipped": 7,
+  "flips": 0
+ },
+ "IR | design": {
+  "sites": 886,
+  "any_negative": 439,
+  "fails_raw": 8,
+  "fails_clipped": 7,
+  "flips": 1
+ },
+ "IR | nonstationary": {
+  "sites": 886,
+  "any_negative": 501,
+  "fails_raw": 16,
+  "fails_clipped": 12,
+  "flips": 4
+ },
+ "IR tight | mle": {
+  "sites": 886,
+  "any_negative": 252,
+  "fails_raw": 334,
+  "fails_clipped": 331,
+  "flips": 3
+ },
+ "IR tight | design": {
+  "sites": 886,
+  "any_negative": 439,
+  "fails_raw": 392,
+  "fails_clipped": 374,
+  "flips": 18
+ },
+ "IR tight | nonstationary": {
+  "sites": 886,
+  "any_negative": 501,
+  "fails_raw": 563,
+  "fails_clipped": 539,
+  "flips": 24
+ },
+ "NaCl width | mle": {
+  "sites": 995,
+  "any_negative": 68,
+  "fails_raw": 730,
+  "fails_clipped": 730,
+  "flips": 0
+ },
+ "NaCl width | design": {
+  "sites": 995,
+  "any_negative": 747,
+  "fails_raw": 709,
+  "fails_clipped": 707,
+  "flips": 2
+ },
+ "NaCl width | nonstationary": {
+  "sites": 995,
+  "any_negative": 851,
+  "fails_raw": 749,
+  "fails_clipped": 747,
+  "flips": 6
+ },
+ "Synthetic peak | mle": {
+  "sites": 2079,
+  "any_negative": 814,
+  "fails_raw": 824,
+  "fails_clipped": 818,
+  "flips": 8
+ },
+ "Synthetic peak | design": {
+  "sites": 2079,
+  "any_negative": 623,
+  "fails_raw": 849,
+  "fails_clipped": 849,
+  "flips": 2
+ },
+ "Synthetic peak | nonstationary": {
+  "sites": 2079,
+  "any_negative": 361,
+  "fails_raw": 1477,
+  "fails_clipped": 1476,
+  "flips": 1
+ }
+}
