@@ -890,7 +890,7 @@ Certification applies to the Gaussian process as it does to natural-neighbour pr
 
 A certified skip carries its claim and its bound; a certified measurement can carry a record of equal standing. Every site of a certified level is decided from a frozen prediction, a score per claim and the certified cut of its level, so the reason for a measurement is fixed before the measurement is taken. The measurement then adds the outcome, and the record shows whether the site was needed.
 
-\textbf{The record.} Table S8.1 lists the entries kept for each design site. The decision entries are written before the site is measured or skipped; the outcome entries follow from the measurement, for skipped sites from the full scan available in a retrospective study. The residual is the departure of the frozen prediction from the measurement in units of the tolerance, so that a skip under the interpolation claim fails above one; where the presence of the feature decides, agreed absence counts as zero and disagreement as infinite. The quantile of a residual is its randomised conformal p-value among the calibration residuals of the same level \cite{Vovk2005}: the share of calibration residuals above it, with ties broken by a uniform draw. Calibration sites are a uniform draw from their level, so the p-values of all sites would be uniform if the score carried no information; sites measured by choice then gather at small p-values to the degree that the score finds sites the prediction misses.
+\textbf{The record.} Table S8.1 lists the entries kept for each design site. The decision entries are written before the site is measured or skipped; the outcome entries follow from the measurement, for skipped sites from the full scan available in a retrospective study. The residual is the departure of the frozen prediction from the measurement in units of the tolerance, so that a skip under the interpolation claim fails above one; where the presence of the feature decides, agreed absence counts as zero and disagreement as infinite. The quantile of a residual is its randomised conformal p-value among the calibration residuals of the same level \cite{Vovk2005}: the share of calibration residuals above it, with ties broken by a uniform draw. A p-value below 0.2 places a residual among the largest fifth of the calibration residuals of its level. Calibration sites are a uniform draw from their level, so each fifth would hold 20 \% of the sites measured by choice if the score carried no information; the largest fifth holds more to the degree that the score finds the sites the prediction misses.
 
 {\renewcommand{\thetable}{S8.1}\small
 \begin{longtable}[]{@{}
@@ -935,7 +935,7 @@ p-value & after & randomised conformal p-value of the residual among the calibra
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}@{}}
-\caption{Measured sites at the certified levels. Sites: design sites of the certified levels; drawn, chosen: calibration draws and sites measured by choice per campaign; fails, of interest, needed: shares among sites drawn / chosen. Counts and shares pool 250 campaigns per dataset. The last column, the share of sites measured by choice with a residual p-value below 0.2, comes from the replayed campaign and equals 0.20 for a score without information.}\label{tab:S8.2}\\
+\caption{Measured sites at the certified levels. Sites: design sites of the certified levels; drawn, chosen: calibration draws and sites measured by choice per campaign; fails, of interest, needed: shares among sites drawn / chosen. Counts and shares pool 250 campaigns per dataset. The last column, the share of sites measured by choice whose residual lies among the largest fifth of the calibration residuals of its level, comes from the replayed campaign and equals 0.20 for a score without information.}\label{tab:S8.2}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -953,7 +953,7 @@ of interest
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 needed
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-p \textless{} 0.2
+largest fifth
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
@@ -965,7 +965,7 @@ synthetic peak & 2079 & 233 & 62 & 0.20/0.45 & 0.34/1.00 & 0.097/0.45 & 0.53 \\
 \end{longtable}
 }
 
-\textbf{What the record shows.} On the synthetic map the score finds the sites the prediction misses: 45 \% of the sites measured by choice were needed, against 10 \% of sites drawn at random, and half of their residuals fall in the lowest fifth of the calibration residuals (Fig. S8c, f). On the NaCl scan the sites measured by choice were needed in 47 \% of cases against 35 \% at random, and their p-values are close to uniform (Fig. S8a, d). The width scatters from site to site by about the tolerance (SI 7), so half of all predictions fail whatever the score, and the cost of the guarantee falls on sites that the score cannot tell apart. On the IR map almost no prediction fails, 1.4 \% at random; the sites measured by choice are mostly of interest (79 \%) and predictable within tolerance (Fig. S8b, e). The certified cut of each level, set from a calibration draw of 40 sites, stopped short of them; their measurement is the price of a finite calibration draw, and a larger draw or a looser budget moves the cut outward.
+\textbf{What the record shows.} On the synthetic map the score finds the sites the prediction misses: 45 \% of the sites measured by choice were needed, against 10 \% of sites drawn at random, and half of their residuals lie among the largest fifth of the calibration residuals (Fig. S8c, f). On the NaCl scan the sites measured by choice were needed in 47 \% of cases against 35 \% at random, and their residuals spread evenly over the fifths of the calibration residuals (Fig. S8a, d). The width scatters from site to site by about the tolerance (SI 7), so half of all predictions fail whatever the score, and the cost of the guarantee falls on sites that the score cannot tell apart. On the IR map almost no prediction fails, 1.4 \% at random; the sites measured by choice are mostly of interest (79 \%) and predictable within tolerance (Fig. S8b, e). The certified cut of each level, set from a calibration draw of 40 sites, stopped short of them; their measurement is the price of a finite calibration draw, and a larger draw or a looser budget moves the cut outward.
 
 {\renewcommand{\thetable}{S8.3}\small
 \begin{longtable}[]{@{}
@@ -1019,7 +1019,7 @@ outcome
 \begin{figure}[tbp]\renewcommand{\thefigure}{S8}
 \centering
 \includegraphics[width=\textwidth]{figures/figS8_measured}
-\caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Residual of the frozen prediction, in tolerances, at every site of the certified levels, grouped by action: skipped as predictable, drawn at random for calibration, measured by choice. Red: the tolerance; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Percentages give the share above the tolerance over 250 campaigns. (d--f) Randomised conformal p-values of the residuals of sites measured by choice (blue) and of the calibration draws (outline) among the calibration residuals of their level; titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
+\caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Residual of the frozen prediction, in tolerances, at every site of the certified levels, grouped by action: skipped as predictable, drawn at random for calibration, measured by choice. Red: the tolerance; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Percentages give the share above the tolerance over 250 campaigns. (d--f) Residuals of the sites measured by choice, ranked among the calibration residuals of their level (randomised conformal p-value, SI 8 text): share falling in each fifth of the calibration residuals, from the largest to the smallest. Dashed: 20 \%, expected if measuring by choice were no better than drawing at random. Titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
 \end{figure}
 
 

@@ -32,7 +32,7 @@ def main():
                          "xtick.color": INK2, "ytick.color": INK2})
     S = json.loads((ROOT / "results/measurement_record/SUMMARY.json").read_text())
     fig, axs = plt.subplots(2, 3, figsize=(7.2, 5.0), facecolor="white",
-                            gridspec_kw=dict(left=0.08, right=0.98, top=0.89, bottom=0.12, wspace=0.28, hspace=0.75,
+                            gridspec_kw=dict(left=0.08, right=0.98, top=0.89, bottom=0.09, wspace=0.28, hspace=0.75,
                                              height_ratios=[1.25, 1]))
     rng = np.random.default_rng(0)
     for k, (row, name) in enumerate(ROWS.items()):
@@ -73,25 +73,26 @@ def main():
         # bottom: p-values of chosen sites among calibration residuals of their level
         ax = axs[1, k]
         p = d["p_resid"][grp["chosen"]]
-        pc = d["p_resid"][grp["calibration"]]
-        bins = np.linspace(0, 1, 11)
-        ax.hist(pc, bins=bins, density=True, histtype="step", color=COL["calibration"], lw=1.0)
-        ax.hist(p, bins=bins, density=True, color=COL["chosen"], alpha=0.75)
-        ax.axhline(1.0, color=INK2, lw=0.6, ls=":")
+        # p < 0.2: residual among the largest fifth of the random draws' residuals of its level
+        share = np.histogram(p, bins=np.linspace(0, 1, 6))[0] / len(p)
+        ax.bar(range(5), 100 * share, 0.7, color=COL["chosen"])
+        ax.axhline(20, color=INK2, lw=0.8, ls="--")
+        ax.text(4.45, 60, "dashed: as if drawn at random", fontsize=6.0, color=INK2, ha="right", va="top")
+        for j, v in enumerate(share):
+            ax.text(j, 100 * v + 1, f"{100 * v:.0f}", ha="center", va="bottom", fontsize=6.2, color=INK)
+        ax.set_xticks(range(5))
+        ax.set_xticklabels(["largest", "2nd", "3rd", "4th", "smallest"], fontsize=6.4)
+        ax.set_xlabel("fifth of the random draws' residuals", fontsize=7)
+        if k == 0:
+            ax.set_ylabel("measured by choice (%)", fontsize=7)
+        ax.set_ylim(0, 62)
+        P = S[row]["pooled"]
         ax.set_title(f"({'def'[k]}) needed: {100 * P['chosen']['needed']:.0f} % chosen,\n"
                      f"     {100 * P['calibration']['needed']:.0f} % drawn at random", loc="left", fontsize=7.4)
-        ax.set_xlabel("p-value of the residual", fontsize=7)
-        if k == 0:
-            ax.set_ylabel("density", fontsize=7)
         ax.tick_params(labelsize=6.3)
         for s_ in ("top", "right"):
             ax.spines[s_].set_visible(False)
 
-    handles = [Line2D([], [], color=RED, lw=1, label="tolerance"),
-               plt.Rectangle((0, 0), 1, 1, color=COL["chosen"], alpha=0.75, label="p-values, measured by choice"),
-               Line2D([], [], color=COL["calibration"], lw=1, label="p-values, drawn at random (calibration)")]
-    fig.legend(handles=handles, loc="lower center", ncol=3, fontsize=6.3, frameon=False, bbox_to_anchor=(0.5, 0.0),
-               columnspacing=1.0, handletextpad=0.4)
     fig.text(0.08, 0.965, "The record of measured sites: why each was measured, and whether it was needed",
              fontsize=9.5, fontweight="bold", color=INK)
     fig.savefig(FIG / "figS8_measured.png", dpi=200)
