@@ -114,9 +114,9 @@ def main():
         return ax
 
     amap(X0[1], u_act, u_wrong, f"(b) GP-guided: {rowu['measured']} measured,\n"
-                                f"     {100 * rowu['wrong_rate']:.0f} % skipped wrongly, no rate stated")
+                                f"     {100 * rowu['wrong_rate']:.0f} % of sites wrong, no rate stated")
     amap(X0[2], c_act, c_wrong, f"(c) Certified: {int((~S).sum())} measured,\n"
-                                f"     {100 * c_wrong[cert].mean():.0f} % wrong; stated bound 20 %")
+                                f"     {100 * c_wrong[cert].mean():.0f} % of sites wrong; bound 20 %")
 
     # (d) cost against realised error
     ax = fig.add_axes([X0[0], by, mw, bh])
@@ -139,7 +139,7 @@ def main():
                 color=INK2, ha="right")
     ax.set_xlim(560, 960); ax.set_ylim(-0.01, 0.27)
     ax.set_xlabel("sites measured (of 1071)", fontsize=6.8)
-    ax.set_ylabel("share skipped wrongly", fontsize=6.8)
+    ax.set_ylabel("share of sites skipped wrongly", fontsize=6.8)
     style(ax, "(d) Cost against realised error")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)

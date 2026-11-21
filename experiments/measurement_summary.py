@@ -23,6 +23,8 @@ def pooled(row):
     F, I = z["fail_prior"].astype(bool), z["interesting"].astype(bool)
     groups = dict(calibration=(R == "calibration") & c, chosen=(R == "no_certificate") & c,
                   skipped_pred=np.isin(R, ["interpolable", "not_interesting+interpolable"]) & c,
+                  skipped_pred_only=(R == "interpolable") & c,
+                  skipped_both=(R == "not_interesting+interpolable") & c,
                   skipped_noint=np.isin(R, ["not_interesting", "not_interesting+interpolable"]) & c)
     n = len(z["seeds"])
     out = dict(campaigns=n, per_campaign={k: float(m.sum() / n) for k, m in groups.items()},

@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT))
 from experiments.measurement_record import ROWS  # noqa: E402
 
 INK, INK2, GRID, RED = "#1f1e1d", "#5c5b58", "#c9c8c4", "#c0392b"
-COL = {"calibration": "#3d3c39", "chosen": "#2a78d6", "pred": "#1baf7a", "noint": "#eda100"}
+COL = {"calibration": "#3d3c39", "chosen": "#2a78d6", "pred": "#1baf7a", "both": "#7fd1b0", "noint": "#eda100"}
 LO, HI = 1e-2, 1e2
 
 
@@ -39,7 +39,8 @@ def main():
         d = np.load(ROOT / "results/measurement_record" / f"{row}.npz")
         c = d["level"] >= 3
         R = d["reason"]
-        grp = {"pred": c & ~d["is_cal"] & np.isin(R, ["interpolable", "not_interesting+interpolable"]),
+        grp = {"pred": c & (R == "interpolable"),
+               "both": c & (R == "not_interesting+interpolable"),
                "noint": c & (R == "not_interesting"),
                "calibration": c & d["is_cal"],
                "chosen": c & (R == "no_certificate")}
@@ -47,9 +48,10 @@ def main():
         r = np.where(np.isinf(r), HI * 0.75, np.clip(r, LO * 1.3, HI * 0.75))
         r = r * np.exp(rng.normal(0, 0.04, len(r)))
         P = S[row]["pooled"]
-        order = [("pred", "skipped as\npredictable", P["skipped_pred"]["fail"]),
-                 ("calibration", "drawn at\nrandom", P["calibration"]["fail"]),
-                 ("chosen", "measured\nby choice", P["chosen"]["fail"])]
+        order = [("pred", "predictable", P["skipped_pred_only"]["fail"]),
+                 ("both", "both", P["skipped_both"]["fail"]),
+                 ("calibration", "random", P["calibration"]["fail"]),
+                 ("chosen", "by choice", P["chosen"]["fail"])]
         ax = axs[0, k]
         for j, (g, lab, share) in enumerate(order):
             m = grp[g]
@@ -60,9 +62,11 @@ def main():
         ax.set_yticks([LO * 1.3, 0.1, 1, 10, HI * 0.75])
         ax.set_yticklabels(["≈0", "0.1", "1", "10", "∞"])
         ax.minorticks_off()
-        ax.set_xticks(range(3)); ax.set_xticklabels([f"{o[1]}\n{100 * o[2]:.0f} % above" if o[2] >= 0.01 else f"{o[1]}\n<1 % above"
-                            for o in order], fontsize=6.5)
-        ax.set_xlim(-0.6, 2.6)
+        ax.set_xticks(range(4)); ax.set_xticklabels([f"{o[1]}\n{100 * o[2]:.0f} %" if o[2] >= 0.01 else f"{o[1]}\n<1 %"
+                            for o in order], fontsize=6.2)
+        ax.set_xlabel("skipped            measured\n% above the tolerance", fontsize=6.6)
+        ax.axvline(1.5, color=GRID, lw=0.6)
+        ax.set_xlim(-0.6, 3.6)
         if k == 0:
             ax.set_ylabel("prediction error ÷ tolerance", fontsize=7)
         ax.tick_params(labelsize=6.3)

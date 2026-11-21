@@ -10,16 +10,16 @@ The failure probability a level actually carries is set by the calibration sampl
 
 The record agrees with the guarantee at the picked levels. For the 32 stated rates (configuration and statement) whose budget can be exceeded on every level, union-bound statements excluded, the observed number of exceedances lay between 0.88 and 1.11 times the number the picked levels allow, and none exceeded it beyond chance: the smallest one-sided probability of the observed count under the picked levels was 0.10 (SI 5, Table S5.3). On the IR map at its original tolerance, three of the four levels hold too few failing sites for the budget to be reached, and the record shows no exceedance there. The union-bound statement of the per-claim form is exceeded far less often than its picked level allows, since two claims seldom approach their budgets on the same level. Repeating the calibration draw on the recorded level populations gives the same picture: pooled over the levels of each configuration, the attained exceedance probability lay between 0.94 and 1.02 times $\delta_L$ wherever the budget could be exceeded (SI 5, Table S5.2).
 
-Table 4 gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee.
+Table 4 gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee. The guarantee bounds wrong skips as a share of all sites of a level, measured ones included. Among the skipped sites alone the share is larger, since only part of each level is skipped: 5.1 % on the IR map, 15.1 % on the synthetic map and 26.7 % on the NaCl scan, where the width scatters from site to site by about the tolerance.
 
-**Table 4.** One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels. Allowed exceedances are the sums of the picked failure probabilities over the level checks.
+**Table 4.** One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels, the quantity the guarantee bounds, and as a share of the skipped sites. Allowed exceedances are the sums of the picked failure probabilities over the level checks.
 
-| Dataset | Guarantee | Sites | Measured: seed / calibration / no claim | Skipped: not of interest / predictable / both | Wrong skips | Exceedances: observed / allowed |
+| Dataset | Guarantee | Sites | Measured: seed / calibration / no claim | Skipped: not of interest / predictable / both | Wrong skips: count (share of sites / of skips) | Exceedances: observed / allowed |
 | --- | --- | --- | --- | --- | --- | --- |
-| IR map | $R_E \le 0.10$ at 0.75 | 959 | 73 / 160 / 62 | 37 / 228 / 399 | 34 (3.8 %) | 49 / 190 (56 on reachable levels) |
-| IR map, tight tolerance | $R_E \le 0.10$ at 0.75 | 959 | 73 / 160 / 388 | 8 / 257 / 73 | 54 (6.1 %) | 193 / 190 |
-| NaCl scan | $R_E \le 0.20$ at 0.80 | 1071 | 76 / 160 / 378 | 157 / 156 / 144 | 122 (12.3 %) | 112 / 120 |
-| Synthetic map | $R_E \le 0.20$ at 0.80 | 2118 | 39 / 233 / 62 | 321 / 319 / 1144 | 270 (13.0 %) | 161 / 170 |
+| IR map | $R_E \le 0.10$ at 0.75 | 959 | 73 / 160 / 62 | 37 / 228 / 399 | 34 (3.8 % / 5.1 %) | 49 / 190 (56 on reachable levels) |
+| IR map, tight tolerance | $R_E \le 0.10$ at 0.75 | 959 | 73 / 160 / 388 | 8 / 257 / 73 | 54 (6.1 % / 15.9 %) | 193 / 190 |
+| NaCl scan | $R_E \le 0.20$ at 0.80 | 1071 | 76 / 160 / 378 | 157 / 156 / 144 | 122 (12.3 % / 26.7 %) | 112 / 120 |
+| Synthetic map | $R_E \le 0.20$ at 0.80 | 2118 | 39 / 233 / 62 | 321 / 319 / 1144 | 270 (13.0 % / 15.1 %) | 161 / 170 |
 
 A score that carries no information leaves the guarantee intact. In a further set of configurations, a random scorer ordered the sites for every certificate: each site received an independent uniform weight, unrelated to any measurement. The shared rate exceeded its budget in 168 of 1000 level checks on IR, 194 of 1000 on IR at the tight tolerance, 127 of 1000 on NaCl and 161 of 1500 on the synthetic map, against 25 %, 25 %, 20 % and 20 % allowed (Fig. 5, lower row). The random order cost measurements: 716 ± 71 of 959 sites on IR against 295 ± 53 with informed scores, 871 ± 31 against 621 ± 70 at the tight tolerance, 861 ± 50 of 1071 against 614 ± 56 on NaCl, and 1076 ± 187 of 2118 against 334 ± 26 on the synthetic map (Fig. 5, upper row). The guarantee comes from the calibration draw; the score decides what it costs.
 

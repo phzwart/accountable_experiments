@@ -36,7 +36,7 @@ Each decision to measure is also a decision to leave something unmeasured. Beam 
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_hook_compare}
-\caption{Two campaigns on one fully measured NaCl microdiffraction scan, with a claim on the width of the (200) line (tolerance 0.02 nm\ensuremath{^{-1}}); both skip about 40 \% of 1071 design sites. (a) The true (200) width. (b) A campaign guided by a Gaussian process refitted after each level: a site is skipped when the model is sure the line is absent, or when its 68 \% interval on the width lies within the tolerance (SI 7). (c) The certified campaign of average cost; at most 20 \% of each level skipped wrongly, with confidence 0.80. In (b) and (c), crosses mark wrong skips, found afterwards against the full scan. (d) Sites measured against the share of levels 3 to 6 skipped wrongly: 250 certified campaigns with natural-neighbour prediction (grey; diamond: the campaign in (c)), 3 \ensuremath{\times} 250 certified campaigns with the Gaussian-process mean as predictor (purple; over budget on 111 to 123 of 1000 level runs, against 120 allowed), and the uncertified Gaussian-process rule at intervals of 68 \% to 99 \% (open symbols). (e) For the Gaussian-process rule, the share of predictable skips that the interval implies to be wrong and the share that was; numbers give the skips. (f) For the certified campaigns, the realised share of each level skipped wrongly against the budget of 20 \%. The guarantee is statistical: each level exceeds the budget with probability at most 0.20, and the discrete calibration often gives a tighter bound; numbers give the level runs over budget against the number the guarantee allows (112 against 120 of 1000 in total).}\label{fig:1}
+\caption{Two campaigns on one fully measured NaCl microdiffraction scan, with a claim on the width of the (200) line (tolerance 0.02 nm\ensuremath{^{-1}}); both skip about 40 \% of 1071 design sites. (a) The true (200) width. (b) A campaign guided by a Gaussian process refitted after each level: a site is skipped when the model is sure the line is absent, or when its 68 \% interval on the width lies within the tolerance (SI 7). (c) The certified campaign of average cost; at most 20 \% of each level skipped wrongly, with confidence 0.80. In (b) and (c), crosses mark wrong skips, found afterwards against the full scan; they make up 10 \% and 12 \% of the sites of levels 3 to 6, the share the guarantee bounds, and 25 \% of the skipped sites in both campaigns. (d) Sites measured against the share of levels 3 to 6 skipped wrongly: 250 certified campaigns with natural-neighbour prediction (grey; diamond: the campaign in (c)), 3 \ensuremath{\times} 250 certified campaigns with the Gaussian-process mean as predictor (purple; over budget on 111 to 123 of 1000 level runs, against 120 allowed), and the uncertified Gaussian-process rule at intervals of 68 \% to 99 \% (open symbols). (e) For the Gaussian-process rule, the share of predictable skips that the interval implies to be wrong and the share that was; numbers give the skips. (f) For the certified campaigns, the realised share of each level skipped wrongly against the budget of 20 \%. The guarantee is statistical: each level exceeds the budget with probability at most 0.20, and the discrete calibration often gives a tighter bound; numbers give the level runs over budget against the number the guarantee allows (112 against 120 of 1000 in total).}\label{fig:1}
 \end{figure}
 
 Two reasons justify a skip. Either the site holds nothing of interest, or its signal, or a quantity derived from it, can be predicted within tolerance from the sites already measured. Each reason is a claim about the site that a measurement would settle, and a wrong skip is a site covered by a false claim. Posed this way, skips come within reach of distribution-free risk control, which bounds the population rate of a chosen loss from a held-out sample for any predictor, with exchangeability of the calibration data as the only assumption \cite{Vovk2005,Bates2021,Angelopoulos2023,Angelopoulos2025}. Related constructions already steer re-scanning in microscopy \cite{Ye2025}, set the acquisition rate in imaging \cite{YangZhang2026} and certify the contingency checks skipped in power grids \cite{Manoharan2026}.
@@ -306,7 +306,7 @@ The failure probability a level actually carries is set by the calibration sampl
 
 The record agrees with the guarantee at the picked levels. For the 32 stated rates (configuration and statement) whose budget can be exceeded on every level, union-bound statements excluded, the observed number of exceedances lay between 0.88 and 1.11 times the number the picked levels allow, and none exceeded it beyond chance: the smallest one-sided probability of the observed count under the picked levels was 0.10 (SI 5, Table S5.3). On the IR map at its original tolerance, three of the four levels hold too few failing sites for the budget to be reached, and the record shows no exceedance there. The union-bound statement of the per-claim form is exceeded far less often than its picked level allows, since two claims seldom approach their budgets on the same level. Repeating the calibration draw on the recorded level populations gives the same picture: pooled over the levels of each configuration, the attained exceedance probability lay between 0.94 and 1.02 times \(\delta_L\) wherever the budget could be exceeded (SI 5, Table S5.2).
 
-Table~\ref{tab:4} gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee.
+Table~\ref{tab:4} gives one configuration per map: what was measured, why each site was skipped, and how the record compares with the guarantee. The guarantee bounds wrong skips as a share of all sites of a level, measured ones included. Among the skipped sites alone the share is larger, since only part of each level is skipped: 5.1 \% on the IR map, 15.1 \% on the synthetic map and 26.7 \% on the NaCl scan, where the width scatters from site to site by about the tolerance.
 
 {\small
 \begin{longtable}[]{@{}
@@ -317,7 +317,7 @@ Table~\ref{tab:4} gives one configuration per map: what was measured, why each s
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
-\caption{One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels. Allowed exceedances are the sums of the picked failure probabilities over the level checks.}\label{tab:4}\\
+\caption{One guarantee per dataset: quantile path, natural-neighbour interpolation, 250 campaigns; counts are means per campaign. Wrong skips are given as a share of the sites on certified levels, the quantity the guarantee bounds, and as a share of the skipped sites. Allowed exceedances are the sums of the picked failure probabilities over the level checks.}\label{tab:4}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -331,7 +331,7 @@ Measured: seed / calibration / no claim
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Skipped: not of interest / predictable / both
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Wrong skips
+Wrong skips: count (share of sites / of skips)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Exceedances: observed / allowed
 \end{minipage} \\
@@ -339,10 +339,10 @@ Exceedances: observed / allowed
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-IR map & \(R_E \le 0.10\) at 0.75 & 959 & 73 / 160 / 62 & 37 / 228 / 399 & 34 (3.8 \%) & 49 / 190 (56 on reachable levels) \\
-IR map, tight tolerance & \(R_E \le 0.10\) at 0.75 & 959 & 73 / 160 / 388 & 8 / 257 / 73 & 54 (6.1 \%) & 193 / 190 \\
-NaCl scan & \(R_E \le 0.20\) at 0.80 & 1071 & 76 / 160 / 378 & 157 / 156 / 144 & 122 (12.3 \%) & 112 / 120 \\
-Synthetic map & \(R_E \le 0.20\) at 0.80 & 2118 & 39 / 233 / 62 & 321 / 319 / 1144 & 270 (13.0 \%) & 161 / 170 \\
+IR map & \(R_E \le 0.10\) at 0.75 & 959 & 73 / 160 / 62 & 37 / 228 / 399 & 34 (3.8 \% / 5.1 \%) & 49 / 190 (56 on reachable levels) \\
+IR map, tight tolerance & \(R_E \le 0.10\) at 0.75 & 959 & 73 / 160 / 388 & 8 / 257 / 73 & 54 (6.1 \% / 15.9 \%) & 193 / 190 \\
+NaCl scan & \(R_E \le 0.20\) at 0.80 & 1071 & 76 / 160 / 378 & 157 / 156 / 144 & 122 (12.3 \% / 26.7 \%) & 112 / 120 \\
+Synthetic map & \(R_E \le 0.20\) at 0.80 & 2118 & 39 / 233 / 62 & 321 / 319 / 1144 & 270 (13.0 \% / 15.1 \%) & 161 / 170 \\
 \end{longtable}
 }
 
@@ -445,7 +445,7 @@ The sites a campaign measures are also the data for a model of the process. A si
 \hypertarget{building-other-guarantees}{%
 \subsection{Building other guarantees}\label{building-other-guarantees}}
 
-The forms reported here answer three questions about wrong skips, and an instrument may face others: unequal budgets when one claim is riskier, a bound on the proportion of false skips among the skipped sites \cite{Jin2023}, or a path learned on part of the calibration draw \cite{LauferGoldshtein2023}. Each follows the recipe of Section~\ref{sec:3-4} and is accepted by the same Monte Carlo check (SI 4). Since the cheapest form changes between datasets (Section~\ref{sec:5-2}), a fully measured pilot scan is the place to price candidate forms before beam time is committed.
+The mechanism leaves wide freedom in the rules it certifies. Selection may follow any score, path or combination of claims fixed before the draw, and certification may target any rate that the calibration draw estimates: the share of a level skipped wrongly, the share of skips that are wrong \cite{Jin2023}, the share of interesting sites lost, or each of these within groups of sites. Conformal and Mondrian conformal calibration enforce such a statement whenever the calibration sites are an exchangeable draw from the population the statement concerns; for a Mondrian category fixed by features known before the draw, such as a region of the sample or a class of predicted response, the category takes the place of the level \cite{Vovk2005}. Exchangeable sampling is the one requirement, and a uniform draw from levels fixed in advance supplies it. The share of skips that are wrong deserves a bound of its own where skipped sites are reused one by one: on the NaCl scan it reached 26.7 \% while the share of the level stayed at 12.3 \% (Table~\ref{tab:4}), and a bound on it would allow fewer skips. Unequal budgets when one claim is riskier, or a path learned on part of the calibration draw \cite{LauferGoldshtein2023}, follow the recipe of Section~\ref{sec:3-4} and are accepted by the same Monte Carlo check (SI 4). Since the cheapest form changes between datasets (Section~\ref{sec:5-2}), a fully measured pilot scan is the place to price candidate forms before beam time is committed.
 
 \hypertarget{optimisation}{%
 \subsection{Optimisation}\label{optimisation}}
