@@ -27,7 +27,9 @@ Target: MLST research paper, at most 8500 words in the main text. Theory stays l
 
 **Working titles**
 
-- Accountable experiments: a checkable error rate for every measurement left out (current, 20 Nov 2026)
+- Accountable experiments: autonomy under contract (current, 20 Nov 2026)
+- Accountable experiments: a checkable error rate for every measurement left out (previous)
+- Tagline candidates: "Measure what you must, skip what you can" (abstract or introduction opening); "...with receipts" (press release)
 - What can be guaranteed about a measurement that was never made
 
 - Accountable skipping: finite-sample guarantees for measurements left out of scanning experiments

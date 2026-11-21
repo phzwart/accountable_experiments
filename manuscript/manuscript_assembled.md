@@ -1,6 +1,6 @@
 # Abstract
 
-*Working title: Accountable experiments: a checkable error rate for every measurement left out*
+*Working title: Accountable experiments: autonomy under contract*
 
 Autonomous experiments decide where to measure, and every site they leave out enters the result as a prediction. An accountable experiment certifies every action: a site is skipped because a stated claim covers it, with a checkable bound on how often such skips are wrong, or measured because it was needed when the decision was made. A skip is made here under one of two claims: the site holds nothing of interest, or its signal, or a quantity derived from it, can be predicted within tolerance from coarser measurements. The levels of a design are fixed before the campaign, and a uniform calibration draw from each level, taken after the model is frozen, bounds the share of the level skipped under a false claim, whatever the model. On three fully measured datasets, an infrared map, a NaCl microdiffraction scan and a synthetic scattering phase map, observed exceedances matched those the bound allows. The model set the cost: the infrared map needed 295 of 959 measurements with informed scores and 716 with random ones. The certified claim decided where measurements went and where wrong skips fell.
 

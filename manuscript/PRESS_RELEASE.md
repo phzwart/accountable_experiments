@@ -39,7 +39,7 @@ Accountable campaigns are not more efficient than today's AI-guided ones, and in
 
 The team has developed the theory and demonstrated that the guarantees hold. The next step is to put the approach to work on autonomous instruments across the DOE complex, from X-ray beamlines at light sources to self-driving synthesis laboratories, starting with a pilot synthesis campaign.
 
-The study, “Accountable experiments,” appears in *\[journal, date\]*; co-authors *\[names\]*; supported by *\[funding\]*; software and data at *\[repository\]*. **Media contact:** *\[name, email\]*.
+The study, “Accountable experiments: autonomy under contract,” appears in *\[journal, date\]*; co-authors *\[names\]*; supported by *\[funding\]*; software and data at *\[repository\]*. **Media contact:** *\[name, email\]*.
 
 ---
 
