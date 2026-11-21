@@ -7,8 +7,9 @@ design sites measured, against a mean of 614).
 (b) The certified map at the resolution of the deepest level (median spacing 0.35 mm), filled by nearest
     design site: measured widths, and decision-time natural-neighbour predictions where skipped as
     predictable; grey where no line was measured or the site was certified as not of interest.
-(c) A display map drawn afterwards: GP regression on the measured sites (width where the line is present,
-    a second GP on presence), maximum-likelihood hyperparameters. No certificate attaches to it.
+(c) A display map drawn afterwards: noise-free GP regression on the measured sites (width where the line is
+    present, a second GP on presence), length scale bounded below by the design spacing (the likelihood
+    settles on the bound). No certificate attaches to it.
 (d) The certified action of every design site: measured for the seed, for calibration or because no
     claim covered it; skipped as not of interest, as predictable or both. Crosses: wrong skips.
 (e) At each site skipped under the interpolation claim, the error of the predicted (200) width at the
@@ -56,7 +57,7 @@ ACT = {  # (colour, marker, size, label); measured actions in neutrals, skips in
 }
 
 
-def final_map(xy_m, w_m, p_m, XX, YY, noise=True):
+def final_map(xy_m, w_m, p_m, XX, YY, noise=True, ls_min=0.05):
     """GP regression of the width on the measured sites where the line is present, and of the presence
     indicator on all measured sites (thresholded at one half); hyperparameters by maximum likelihood."""
     from sklearn.gaussian_process import GaussianProcessRegressor
@@ -64,10 +65,10 @@ def final_map(xy_m, w_m, p_m, XX, YY, noise=True):
 
     Q = np.c_[XX.ravel(), YY.ravel()]
     ok = p_m & np.isfinite(w_m)
-    k = C(1.0) * RBF(1.0, (0.05, 20.0))
+    k = C(1.0) * RBF(max(1.0, 1.5 * ls_min), (ls_min, 20.0))
     if noise:
         k = k + WhiteKernel(0.1, (1e-4, 10.0))
-    jit = 1e-10 if noise else 1e-6  # without a noise term the GP interpolates the measurements
+    jit = 1e-10 if noise else 1e-4  # without a noise term the GP interpolates the measurements
     mu, sd = w_m[ok].mean(), w_m[ok].std()
     gw = GaussianProcessRegressor(k, alpha=jit, normalize_y=False, n_restarts_optimizer=2, random_state=0)
     gw.fit(xy_m[ok], (w_m[ok] - mu) / sd)
@@ -128,13 +129,15 @@ def main():
     ixs = np.searchsorted(xs, xy[:, 0].round(4).clip(xs[0], xs[-1]))
     iys = np.searchsorted(ys, xy[:, 1].round(4).clip(ys[0], ys[-1]))
     w_site, p_site = img[iys, ixs], pres[iys, ixs]
-    gp_w, gp_p, gp_txt = final_map(xy[measured], w_site[measured], p_site[measured], XX, YY)
+    d_, _ = cKDTree(xy).query(xy, k=2)
+    spacing = float(np.median(d_[:, 1]))
+    gp_w, gp_p, gp_txt = final_map(xy[measured], w_site[measured], p_site[measured], XX, YY, noise=False,
+                                   ls_min=spacing)
     # the certified map at the design resolution: measured widths, and the decision-time predictions at
     # sites skipped as predictable; no line where measured without one or certified as not of interest
     nat = np.where(measured & p_site, w_site, np.nan)
     pr = skipped & (reason == "interpolable") & e["has_hat"]
     nat[pr] = e["fwhm_hat"][pr]
-    spacing = 0.35
 
     FW, FH = 7.2, 7.0
     fig = plt.figure(figsize=(FW, FH), facecolor="white")
@@ -188,7 +191,7 @@ def main():
     ax.imshow(np.where(gp_p, gp_w, np.nan), origin="lower", cmap="Blues", vmin=wlo, vmax=whi, extent=ext,
               interpolation="nearest")
     outline(ax)
-    mapstyle(ax, "(c) Display map: GP fitted\n     afterwards to measured sites", left=False, bottom=False)
+    mapstyle(ax, "(c) Display map: GP fitted afterwards,\n     length scale set by the spacing", left=False, bottom=False)
 
     # (d) this campaign: certified action, filled
     keys = ["seed", "calibration", "no_certificate", "not_interesting", "interpolable", "not_interesting+interpolable"]

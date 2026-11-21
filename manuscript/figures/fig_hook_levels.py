@@ -24,7 +24,7 @@ from fig_datasets import nacl_fwhm  # noqa: E402
 from experiments.record import OUT as REC, REASONS, build  # noqa: E402
 
 
-def main(noise=True):
+def main(noise=True, design_ls=False):
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8, "axes.edgecolor": INK2,
                          "xtick.color": INK2, "ytick.color": INK2})
     z = np.load(REC / ROW / "sites.npz")
@@ -68,9 +68,10 @@ def main(noise=True):
     for k, L in enumerate(Ls, start=1):
         upto = lv <= L
         m = measured & upto
-        gw, gp, kern = final_map(xy[m], w_site[m], p_site[m], XX, YY, noise=noise)
         d, _ = cKDTree(xy[upto]).query(xy[upto], k=2)
         sp = np.median(d[:, 1])
+        gw, gp, kern = final_map(xy[m], w_site[m], p_site[m], XX, YY, noise=noise,
+                                 ls_min=sp if design_ls else 0.05)
         show(axs[0, k], gw, gp, f"GP through level {L}\n{int(m.sum())} measured")
         _, nn = cKDTree(xy[upto]).query(Q)
         nat = nat_all[upto][nn].reshape(XX.shape)
@@ -83,15 +84,17 @@ def main(noise=True):
     cb.ax.tick_params(labelsize=6.2)
     cb.set_label("(200) width (nm$^{-1}$)\ngrey: no line", fontsize=6.5)
     fig.text(0.04, 0.95, "The campaign of Fig. 1, level by level (NaCl (200) width, seed 44)"
-             + ("" if noise else "; GP without a noise term"), fontsize=10,
+             + ("" if noise else "; GP without a noise term")
+             + ("; length scale at least the level's site spacing" if design_ls else ""), fontsize=10,
              fontweight="bold", color=INK)
     fig.text(0.04, 0.91, "Top: GP fitted to the sites measured through each level.  Bottom: certified map at that "
              "level's spacing (measured or certified prediction).  Outline: edge of the true (200) signal.",
              fontsize=7.3, color=INK2)
-    fig.savefig(FIG / ("fig_hook_levels.png" if noise else "fig_hook_levels_nonoise.png"), dpi=200)
+    tag = ("" if noise else "_nonoise") + ("_designls" if design_ls else "")
+    fig.savefig(FIG / f"fig_hook_levels{tag}.png", dpi=200)
     for r in rows:
         print(r)
 
 
 if __name__ == "__main__":
-    main(noise="--no-noise" not in sys.argv)
+    main(noise="--no-noise" not in sys.argv, design_ls="--design-ls" in sys.argv)
