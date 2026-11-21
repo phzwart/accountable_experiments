@@ -194,7 +194,7 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
-\caption{Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. 6, upper row.}\label{tab:S3.1}\\
+\caption{Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. S3, upper row.}\label{tab:S3.1}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -226,7 +226,7 @@ Synthetic map & 2118 & 338 \ensuremath{\pm} 26 & 334 \ensuremath{\pm} 26 & 628 \
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
-\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 7, upper row. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
+\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6, upper row. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -277,6 +277,12 @@ Synthetic map & Priority path & 628 \ensuremath{\pm} 61 & 1322 \ensuremath{\pm} 
 \end{longtable}
 }
 
+\begin{figure}[tbp]\renewcommand{\thefigure}{S3}
+\centering
+\includegraphics[width=\textwidth]{figures/fig3_forms}
+\caption{Forms of guarantee, 250 campaigns per configuration. Upper row: sites measured per form, mean \ensuremath{\pm} s.d., with the design size dashed. Lower row: realised wrong-skip rate on every certified level of every campaign, with the budget as a solid line; tick labels give the number of exceedances. Right: fraction of 4000 calibration draws in which \(R_E\) exceeded 0.10 on a population with uninformative scores, for the sequential rule and the two single-budget paths; the band marks \ensuremath{\pm}2 Monte Carlo standard errors around the allowed 0.25.}\label{fig:S3}
+\end{figure}
+
 \hypertarget{si-4.-software-adding-a-form-of-guarantee}{%
 \section*{SI 4. Software: adding a form of guarantee}\label{si-4.-software-adding-a-form-of-guarantee}}
 \addcontentsline{toc}{section}{SI 4. Software: adding a form of guarantee}
@@ -302,7 +308,7 @@ A policy keeps three conditions.
   \textbf{Stated guarantee.} It returns its guarantees as \texttt{Guarantee(event,\ budget,\ confidence)}, with \texttt{event} equal to \texttt{R\_E} or \texttt{R\_\textless{}certificate\textgreater{}}, or an empty list. Campaign records show an empty list as "no guarantee".
 \end{enumerate}
 
-Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.2 violates it.
+Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.1 violates it.
 
 The campaign loop enforces the order of operations of Section 3.1 structurally: a score receives only the measured set (\texttt{MeasuredSet}) when it is fitted and is frozen with \texttt{bind\_level} before the draw; the calibration indices come from a generator that nothing else uses; and a policy receives the labels of the calibration sites only. A policy or score written against these interfaces cannot see the labels of the level it is deciding before the draw.
 
@@ -833,9 +839,9 @@ Predicted peak-to-baseline ratio & 273 & 358 & 41 / 360 \\
 
 The record keeps the original score. It meets its guarantee, and the misranking it shows is the point of this section: a score decides where the budget is spent.
 
-\hypertarget{si-7.-a-campaign-guided-by-gaussian-process-uncertainty}{%
-\section*{SI 7. A campaign guided by Gaussian-process uncertainty}\label{si-7.-a-campaign-guided-by-gaussian-process-uncertainty}}
-\addcontentsline{toc}{section}{SI 7. A campaign guided by Gaussian-process uncertainty}
+\hypertarget{si-7.-campaigns-guided-by-gaussian-process-uncertainty}{%
+\section*{SI 7. Campaigns guided by Gaussian-process uncertainty}\label{si-7.-campaigns-guided-by-gaussian-process-uncertainty}}
+\addcontentsline{toc}{section}{SI 7. Campaigns guided by Gaussian-process uncertainty}
 
 Fig. 1 sets the certified campaign beside a campaign that skips on the strength of a model\textquotesingle s own uncertainty, the rule most often used in autonomous mapping. Both run on the fully measured NaCl scan with the claim on the width of the (200) line, so every skip of either can be checked afterwards.
 
@@ -882,7 +888,117 @@ predictive & 1.00--2.58 & 0.32--0.01 & 922 & 0 & --- & 0.003 \\
 \end{longtable}
 }
 
-Certification applies to the Gaussian process as it does to natural-neighbour prediction. With the posterior mean as the frozen predictor and the length scale set by maximum likelihood, by the design or by the nonstationary rule (SI 3), 250 certified campaigns each skipped 12.3 \% to 12.5 \% of levels 3 to 6 wrongly on average and exceeded the budget on 111 to 123 of 1000 level runs, against 120 allowed; they measured 745 to 777 sites, against 614 with natural-neighbour prediction, because the posterior mean shrinks toward the average where the width scatters from site to site. The difference between the two kinds of campaign lies in what each knows. At equal cost the realised error is about equal; the certified campaign states its rate before any skip is checked, and the uncertified one learns its rate only from the full scan that a campaign exists to avoid.
+Certification applies to the Gaussian process as it does to natural-neighbour prediction. With the posterior mean as the frozen predictor and the length scale set by maximum likelihood, by the design or by the nonstationary rule (SI 1), 250 certified campaigns each skipped 12.3 \% to 12.5 \% of levels 3 to 6 wrongly on average and exceeded the budget on 111 to 123 of 1000 level runs, against 120 allowed; they measured 745 to 777 sites, against 614 with natural-neighbour prediction, because the posterior mean shrinks toward the average where the width scatters from site to site. The difference between the two kinds of campaign lies in what each knows. At equal cost the realised error is about equal; the certified campaign states its rate before any skip is checked, and the uncertified one learns its rate only from the full scan that a campaign exists to avoid.
+
+\hypertarget{s7.2-the-spectrum-gaussian-process-on-all-three-maps}{%
+\subsection*{S7.2 The spectrum Gaussian process on all three maps}\label{s7.2-the-spectrum-gaussian-process-on-all-three-maps}}
+\addcontentsline{toc}{subsection}{S7.2 The spectrum Gaussian process on all three maps}
+
+The rule of Section 5.3 uses the Gaussian process of the certified campaigns (Section 4.3), which predicts the full spectrum or profile at a site from the measured set. After each level is measured, the process is refitted with the length scale set by maximum marginal likelihood, and every unmeasured site of the next level is assessed against both claims. Posterior draws of the spectrum at a site are taken along the leading principal components of the measured spectra, which carry 99 \% of the variance up to at most 20 components, with the component variances scaled by the posterior standard deviation at the site; 64 draws per site, clipped at zero. The stated probability that a claim fails at a site is the share of draws for which it fails: for the interest claim, the share of draws that are of interest; for the interpolation claim, the share of draws that fail the acceptance metric against the posterior mean. A site is skipped under a claim when its stated probability is at most \ensuremath{\alpha}, and a site skipped under both claims is stated to fail with probability \(1 - (1 - p_a)(1 - p_b)\). The stated share of wrong skips of a campaign is the sum of these probabilities over its skipped certified-level sites, divided by the number of certified-level sites.
+
+Three standard deviations are used: the latent one, the predictive one, which adds the fitted noise variance, and the predictive one multiplied by a factor fixed on each level from the measured set, the 68 \% quantile of the absolute leave-one-out residuals in units of their predictive standard deviation. A factor below one means the measured sites are predicted better than the process states, and the rescaled campaign then skips more.
+
+{\renewcommand{\thetable}{S7.2}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\caption{Uncertified spectrum Gaussian-process campaigns, ranges over \ensuremath{\alpha} from 0.01 to 0.32. Shares are of the certified-level sites.}\label{tab:S7.2}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+map
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+standard deviation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+stated share wrong
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+realised share wrong
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+measured
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+IR (959 sites) & latent & 0--7.4 \% & 1.0--3.3 \% & 73--191 \\
+& predictive & 0--9.1 \% & 0.7--2.3 \% & 73--398 \\
+& rescaled (factor 0.40) & 0--3.7 \% & 1.6--4.5 \% & 73--75 \\
+NaCl (1071 sites) & latent & 0--0.7 \% & 0.1--1.6 \% & 1042--1070 \\
+& predictive & 0--0.1 \% & 0.1--0.4 \% & 1064--1070 \\
+& rescaled (factor 0.19--0.89) & 0--2.1 \% & 0.1--5.8 \% & 959--1070 \\
+synthetic (2118 sites) & latent & 0--4.0 \% & 13.8--38.7 \% & 289--550 \\
+& predictive & 0--3.5 \% & 10.9--30.5 \% & 368--580 \\
+& rescaled (factor 0.23--0.87) & 0--3.8 \% & 16.1--41.0 \% & 340--503 \\
+\end{longtable}
+}
+
+On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On NaCl the noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip.
+
+\hypertarget{s7.3-certified-campaigns-at-several-budgets}{%
+\subsection*{S7.3 Certified campaigns at several budgets}\label{s7.3-certified-campaigns-at-several-budgets}}
+\addcontentsline{toc}{subsection}{S7.3 Certified campaigns at several budgets}
+
+For the cost analysis the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
+
+{\renewcommand{\thetable}{S7.3}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\caption{Certified campaigns by budget: sites measured (mean \ensuremath{\pm} standard deviation) and, in brackets, the mean realised share of the certified-level sites skipped wrongly. NN, natural-neighbour prediction; GP, Gaussian-process prediction.}\label{tab:S7.3}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+map
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+predictor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ensuremath{\varepsilon} = 0.05
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ensuremath{\varepsilon} = 0.10
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ensuremath{\varepsilon} = 0.20
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ensuremath{\varepsilon} = 0.30
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+IR & NN & 473 \ensuremath{\pm} 70 (1.5~\%) & 312 \ensuremath{\pm} 58 (3.4~\%) & 233 \ensuremath{\pm} 1 (4.1~\%) & 233 \ensuremath{\pm} 0 (4.1~\%) \\
+& GP & 410 \ensuremath{\pm} 66 (1.5~\%) & 271 \ensuremath{\pm} 31 (3.7~\%) & 233 \ensuremath{\pm} 1 (4.3~\%) & 233 \ensuremath{\pm} 0 (4.3~\%) \\
+NaCl & NN & 898 \ensuremath{\pm} 52 (1.9~\%) & 806 \ensuremath{\pm} 69 (4.5~\%) & 631 \ensuremath{\pm} 69 (11.5~\%) & 484 \ensuremath{\pm} 47 (19.9~\%) \\
+& GP & 1022 \ensuremath{\pm} 23 (2.2~\%) & 963 \ensuremath{\pm} 54 (4.2~\%) & 767 \ensuremath{\pm} 69 (11.5~\%) & 624 \ensuremath{\pm} 65 (18.3~\%) \\
+synthetic & NN & 461 \ensuremath{\pm} 16 (2.2~\%) & 415 \ensuremath{\pm} 22 (4.9~\%) & 334 \ensuremath{\pm} 25 (12.8~\%) & 285 \ensuremath{\pm} 12 (21.5~\%) \\
+& GP & 1900 \ensuremath{\pm} 148 (2.7~\%) & 1678 \ensuremath{\pm} 178 (5.5~\%) & 1140 \ensuremath{\pm} 302 (13.2~\%) & 752 \ensuremath{\pm} 188 (21.0~\%) \\
+\end{longtable}
+}
+
+On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a budget of 0.10 every predicted skip is admitted, and the realised share stays at the rate the predictor makes.
+
+\hypertarget{s7.4-the-cost-of-a-stated-rate}{%
+\subsection*{S7.4 The cost of a stated rate}\label{s7.4-the-cost-of-a-stated-rate}}
+\addcontentsline{toc}{subsection}{S7.4 The cost of a stated rate}
+
+Let \(N\) be the number of certified-level sites, \(M\) the sites a campaign measured, \(W\) the wrong skips it made and \(\hat W\) the wrong skips it stated. A measurement costs one unit and a wrong skip costs \(r\) units. An agent offered a set of operating points, its budgets or its values of \ensuremath{\alpha} together with measuring every site, chooses the one that minimises the believed cost
+
+\[
+C_{\mathrm{believed}} = M + r \hat W
+\]
+
+and is charged
+
+\[
+C_{\mathrm{paid}} = M + r W .
+\]
+
+For a certified campaign the statement is the bound, \(\hat W = \varepsilon N\); for an uncertified one it is the sum of its stated probabilities. Measuring every site has \(M\) equal to the number of sites and \(W = \hat W = 0\). Certified operating points are averaged over their campaigns, so the comparison is between expected costs. Fig. 7 shows \(C_{\mathrm{paid}}\) divided by the smallest paid cost among all operating points of all agents on the map, measuring every site included, for \(r\) from 0.1 to 1000. The ratio \(C_{\mathrm{paid}} / C_{\mathrm{believed}}\) measures surprise: it stayed at or below one for the certified campaigns and reached 16 to 188 on IR and 391 to 667 on the synthetic map for the uncertified ones.
 
 \hypertarget{si-8.-the-record-of-measured-sites}{%
 \section*{SI 8. The record of measured sites}\label{si-8.-the-record-of-measured-sites}}

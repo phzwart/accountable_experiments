@@ -12,7 +12,7 @@ A policy keeps three conditions.
 2. **Fixed family.** Every family of thresholds it searches (a path, a grid, a split of the budget) is built from scores, settings or earlier levels, and from no calibration label of the current level.
 3. **Stated guarantee.** It returns its guarantees as `Guarantee(event, budget, confidence)`, with `event` equal to `R_E` or `R_<certificate>`, or an empty list. Campaign records show an empty list as "no guarantee".
 
-Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.2 violates it.
+Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.1 violates it.
 
 The campaign loop enforces the order of operations of Section 3.1 structurally: a score receives only the measured set (`MeasuredSet`) when it is fitted and is frozen with `bind_level` before the draw; the calibration indices come from a generator that nothing else uses; and a policy receives the labels of the calibration sites only. A policy or score written against these interfaces cannot see the labels of the level it is deciding before the draw.
 

@@ -1,0 +1,567 @@
+[
+ {
+  "dataset": "nacl",
+  "kind": "latent",
+  "alpha": 0.01,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1070,
+  "skipped": 1,
+  "wrong": 1,
+  "stated": 0.0,
+  "wrong_rate": 0.0010050251256281408,
+  "stated_rate": 0.0,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 1,
+    "stated": 0.0
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "latent",
+  "alpha": 0.05,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1069,
+  "skipped": 2,
+  "wrong": 2,
+  "stated": 0.015625,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 1.57035175879397e-05,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.015625
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "latent",
+  "alpha": 0.1,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1069,
+  "skipped": 2,
+  "wrong": 2,
+  "stated": 0.015625,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 1.57035175879397e-05,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.015625
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "latent",
+  "alpha": 0.2,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1067,
+  "skipped": 4,
+  "wrong": 2,
+  "stated": 0.390625,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 0.0003925879396984925,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.1875
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.03125
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.171875
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "latent",
+  "alpha": 0.32,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1042,
+  "skipped": 29,
+  "wrong": 16,
+  "stated": 7.140625,
+  "wrong_rate": 0.016080402010050253,
+  "stated_rate": 0.007176507537688442,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.390625
+   },
+   "4": {
+    "n": 138,
+    "wrong": 4,
+    "stated": 0.84375
+   },
+   "5": {
+    "n": 271,
+    "wrong": 7,
+    "stated": 3.046875
+   },
+   "6": {
+    "n": 521,
+    "wrong": 5,
+    "stated": 2.859375
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "predictive",
+  "alpha": 0.01,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1070,
+  "skipped": 1,
+  "wrong": 1,
+  "stated": 0.0,
+  "wrong_rate": 0.0010050251256281408,
+  "stated_rate": 0.0,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 1,
+    "stated": 0.0
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "predictive",
+  "alpha": 0.05,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1069,
+  "skipped": 2,
+  "wrong": 2,
+  "stated": 0.015625,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 1.57035175879397e-05,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.015625
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "predictive",
+  "alpha": 0.1,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1069,
+  "skipped": 2,
+  "wrong": 2,
+  "stated": 0.015625,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 1.57035175879397e-05,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.015625
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "predictive",
+  "alpha": 0.2,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1068,
+  "skipped": 3,
+  "wrong": 2,
+  "stated": 0.21875,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 0.0002198492462311558,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.1875
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.03125
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "predictive",
+  "alpha": 0.32,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1064,
+  "skipped": 7,
+  "wrong": 4,
+  "stated": 1.265625,
+  "wrong_rate": 0.004020100502512563,
+  "stated_rate": 0.0012719849246231156,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.40625
+   },
+   "4": {
+    "n": 138,
+    "wrong": 4,
+    "stated": 0.859375
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "nacl",
+  "kind": "loo",
+  "alpha": 0.01,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1070,
+  "skipped": 1,
+  "wrong": 1,
+  "stated": 0.0,
+  "wrong_rate": 0.0010050251256281408,
+  "stated_rate": 0.0,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 1,
+    "stated": 0.0
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {
+   "3": 0.8901825743072647,
+   "4": 0.7931905401176814,
+   "5": 0.2396709357513136,
+   "6": 0.19081169500338385
+  }
+ },
+ {
+  "dataset": "nacl",
+  "kind": "loo",
+  "alpha": 0.05,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1069,
+  "skipped": 2,
+  "wrong": 2,
+  "stated": 0.015625,
+  "wrong_rate": 0.0020100502512562816,
+  "stated_rate": 1.57035175879397e-05,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.015625
+   },
+   "5": {
+    "n": 271,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {
+   "3": 0.8901825743072647,
+   "4": 0.7931905401176814,
+   "5": 0.24546038237496676,
+   "6": 0.19162052782271316
+  }
+ },
+ {
+  "dataset": "nacl",
+  "kind": "loo",
+  "alpha": 0.1,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1067,
+  "skipped": 4,
+  "wrong": 3,
+  "stated": 0.203125,
+  "wrong_rate": 0.003015075376884422,
+  "stated_rate": 0.00020414572864321608,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 138,
+    "wrong": 2,
+    "stated": 0.015625
+   },
+   "5": {
+    "n": 271,
+    "wrong": 1,
+    "stated": 0.1875
+   },
+   "6": {
+    "n": 521,
+    "wrong": 0,
+    "stated": 0.0
+   }
+  },
+  "kappa": {
+   "3": 0.8901825743072647,
+   "4": 0.7931905401176814,
+   "5": 0.24546038237496676,
+   "6": 0.19403977682501802
+  }
+ },
+ {
+  "dataset": "nacl",
+  "kind": "loo",
+  "alpha": 0.2,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 1038,
+  "skipped": 33,
+  "wrong": 14,
+  "stated": 4.71875,
+  "wrong_rate": 0.01407035175879397,
+  "stated_rate": 0.004742462311557789,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.34375
+   },
+   "4": {
+    "n": 138,
+    "wrong": 3,
+    "stated": 0.3125
+   },
+   "5": {
+    "n": 271,
+    "wrong": 6,
+    "stated": 1.46875
+   },
+   "6": {
+    "n": 521,
+    "wrong": 5,
+    "stated": 2.59375
+   }
+  },
+  "kappa": {
+   "3": 0.8901825743072647,
+   "4": 0.7979231093865912,
+   "5": 0.25469917031666817,
+   "6": 0.19621712696801438
+  }
+ },
+ {
+  "dataset": "nacl",
+  "kind": "loo",
+  "alpha": 0.32,
+  "n_cert": 995,
+  "n_total": 1071,
+  "measured": 959,
+  "skipped": 112,
+  "wrong": 58,
+  "stated": 21.34375,
+  "wrong_rate": 0.05829145728643216,
+  "stated_rate": 0.02145100502512563,
+  "per_level": {
+   "3": {
+    "n": 65,
+    "wrong": 0,
+    "stated": 0.34375
+   },
+   "4": {
+    "n": 138,
+    "wrong": 6,
+    "stated": 2.03125
+   },
+   "5": {
+    "n": 271,
+    "wrong": 13,
+    "stated": 3.734375
+   },
+   "6": {
+    "n": 521,
+    "wrong": 39,
+    "stated": 15.234375
+   }
+  },
+  "kappa": {
+   "3": 0.8901825743072647,
+   "4": 0.7979231093865912,
+   "5": 0.24667947435681514,
+   "6": 0.20959040669518586
+  }
+ }
+]

@@ -2,7 +2,7 @@
 
 *Per-level tables for every configuration are in the run record (SI 5); the tables below summarise them. All entries: mean ± s.d. over 250 campaigns.*
 
-**Table S3.1.** Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. 6, upper row.
+**Table S3.1.** Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. S3, upper row.
 
 | Dataset | Design sites | Per-claim budgets | Quantile path | Priority path |
 | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@
 | NaCl scan | 1071 | 719 ± 60 | 614 ± 56 | 678 ± 39 |
 | Synthetic map | 2118 | 338 ± 26 | 334 ± 26 | 628 ± 61 |
 
-**Table S3.2.** Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 7, upper row. The tight IR tolerance is ±(10 % + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.
+**Table S3.2.** Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6, upper row. The tight IR tolerance is ±(10 % + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.
 
 | Dataset | Design sites | Natural neighbour | GP, max. likelihood | GP, design spacing | GP, local spacing |
 | --- | --- | --- | --- | --- | --- |
@@ -34,3 +34,5 @@
 | Synthetic map | Per-claim budgets | 338 ± 26 | 991 ± 286 |
 | Synthetic map | Quantile path | 334 ± 26 | 1076 ± 187 |
 | Synthetic map | Priority path | 628 ± 61 | 1322 ± 185 |
+
+**Figure S3.** Forms of guarantee, 250 campaigns per configuration. Upper row: sites measured per form, mean ± s.d., with the design size dashed. Lower row: realised wrong-skip rate on every certified level of every campaign, with the budget as a solid line; tick labels give the number of exceedances. Right: fraction of 4000 calibration draws in which $R_E$ exceeded 0.10 on a population with uninformative scores, for the sequential rule and the two single-budget paths; the band marks ±2 Monte Carlo standard errors around the allowed 0.25. File: `figures/fig3_forms.png`.

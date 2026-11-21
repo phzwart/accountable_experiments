@@ -1,0 +1,567 @@
+[
+ {
+  "dataset": "ir",
+  "kind": "latent",
+  "alpha": 0.01,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 191,
+  "skipped": 768,
+  "wrong": 9,
+  "stated": 0.0,
+  "wrong_rate": 0.010158013544018058,
+  "stated_rate": 0.0,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 142,
+    "wrong": 1,
+    "stated": 0.0
+   },
+   "5": {
+    "n": 245,
+    "wrong": 2,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 428,
+    "wrong": 4,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "latent",
+  "alpha": 0.05,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 11,
+  "stated": 3.14013671875,
+  "wrong_rate": 0.012415349887133182,
+  "stated_rate": 0.003544172368792325,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 0.171875
+   },
+   "4": {
+    "n": 142,
+    "wrong": 2,
+    "stated": 0.53125
+   },
+   "5": {
+    "n": 245,
+    "wrong": 4,
+    "stated": 0.96826171875
+   },
+   "6": {
+    "n": 428,
+    "wrong": 3,
+    "stated": 1.46875
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "latent",
+  "alpha": 0.1,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 11,
+  "stated": 9.60693359375,
+  "wrong_rate": 0.012415349887133182,
+  "stated_rate": 0.010843040173532732,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 0.421875
+   },
+   "4": {
+    "n": 142,
+    "wrong": 2,
+    "stated": 1.591796875
+   },
+   "5": {
+    "n": 245,
+    "wrong": 4,
+    "stated": 2.60888671875
+   },
+   "6": {
+    "n": 428,
+    "wrong": 3,
+    "stated": 4.984375
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "latent",
+  "alpha": 0.2,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 25,
+  "stated": 32.48974609375,
+  "wrong_rate": 0.028216704288939052,
+  "stated_rate": 0.03667014231800226,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 4,
+    "stated": 2.419189453125
+   },
+   "4": {
+    "n": 142,
+    "wrong": 5,
+    "stated": 4.308349609375
+   },
+   "5": {
+    "n": 245,
+    "wrong": 7,
+    "stated": 9.31201171875
+   },
+   "6": {
+    "n": 428,
+    "wrong": 9,
+    "stated": 16.4501953125
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "latent",
+  "alpha": 0.32,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 29,
+  "stated": 65.625244140625,
+  "wrong_rate": 0.0327313769751693,
+  "stated_rate": 0.07406912431221783,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 5,
+    "stated": 5.7431640625
+   },
+   "4": {
+    "n": 142,
+    "wrong": 5,
+    "stated": 8.948974609375
+   },
+   "5": {
+    "n": 245,
+    "wrong": 8,
+    "stated": 18.4912109375
+   },
+   "6": {
+    "n": 428,
+    "wrong": 11,
+    "stated": 32.44189453125
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "predictive",
+  "alpha": 0.01,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 398,
+  "skipped": 561,
+  "wrong": 6,
+  "stated": 0.0,
+  "wrong_rate": 0.006772009029345372,
+  "stated_rate": 0.0,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 142,
+    "wrong": 0,
+    "stated": 0.0
+   },
+   "5": {
+    "n": 245,
+    "wrong": 3,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 428,
+    "wrong": 1,
+    "stated": 0.0
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "predictive",
+  "alpha": 0.05,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 120,
+  "skipped": 839,
+  "wrong": 10,
+  "stated": 7.78125,
+  "wrong_rate": 0.011286681715575621,
+  "stated_rate": 0.00878244920993228,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 1.234375
+   },
+   "4": {
+    "n": 142,
+    "wrong": 1,
+    "stated": 2.609375
+   },
+   "5": {
+    "n": 245,
+    "wrong": 5,
+    "stated": 1.4375
+   },
+   "6": {
+    "n": 428,
+    "wrong": 2,
+    "stated": 2.5
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "predictive",
+  "alpha": 0.1,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 76,
+  "skipped": 883,
+  "wrong": 11,
+  "stated": 20.203125,
+  "wrong_rate": 0.012415349887133182,
+  "stated_rate": 0.02280262415349887,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 1.453125
+   },
+   "4": {
+    "n": 142,
+    "wrong": 2,
+    "stated": 2.125
+   },
+   "5": {
+    "n": 245,
+    "wrong": 4,
+    "stated": 5.296875
+   },
+   "6": {
+    "n": 428,
+    "wrong": 3,
+    "stated": 11.328125
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "predictive",
+  "alpha": 0.2,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 11,
+  "stated": 23.53857421875,
+  "wrong_rate": 0.012415349887133182,
+  "stated_rate": 0.026567239524548533,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 2.0703125
+   },
+   "4": {
+    "n": 142,
+    "wrong": 2,
+    "stated": 3.97412109375
+   },
+   "5": {
+    "n": 245,
+    "wrong": 4,
+    "stated": 6.001220703125
+   },
+   "6": {
+    "n": 428,
+    "wrong": 3,
+    "stated": 11.492919921875
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "predictive",
+  "alpha": 0.32,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 20,
+  "stated": 80.365966796875,
+  "wrong_rate": 0.022573363431151242,
+  "stated_rate": 0.09070650880008466,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 4,
+    "stated": 5.221435546875
+   },
+   "4": {
+    "n": 142,
+    "wrong": 5,
+    "stated": 12.394287109375
+   },
+   "5": {
+    "n": 245,
+    "wrong": 5,
+    "stated": 23.272705078125
+   },
+   "6": {
+    "n": 428,
+    "wrong": 6,
+    "stated": 39.4775390625
+   }
+  },
+  "kappa": {}
+ },
+ {
+  "dataset": "ir",
+  "kind": "loo",
+  "alpha": 0.01,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 75,
+  "skipped": 884,
+  "wrong": 14,
+  "stated": 0.0,
+  "wrong_rate": 0.01580135440180587,
+  "stated_rate": 0.0,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 0.0
+   },
+   "4": {
+    "n": 142,
+    "wrong": 4,
+    "stated": 0.0
+   },
+   "5": {
+    "n": 245,
+    "wrong": 5,
+    "stated": 0.0
+   },
+   "6": {
+    "n": 428,
+    "wrong": 3,
+    "stated": 0.0
+   }
+  },
+  "kappa": {
+   "3": 0.3969991782993469,
+   "4": 0.3969991782993469,
+   "5": 0.3969991782993469,
+   "6": 0.3969991782993469
+  }
+ },
+ {
+  "dataset": "ir",
+  "kind": "loo",
+  "alpha": 0.05,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 21,
+  "stated": 5.140625,
+  "wrong_rate": 0.023702031602708805,
+  "stated_rate": 0.005802059819413093,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 2,
+    "stated": 0.328125
+   },
+   "4": {
+    "n": 142,
+    "wrong": 4,
+    "stated": 0.828125
+   },
+   "5": {
+    "n": 245,
+    "wrong": 7,
+    "stated": 1.515625
+   },
+   "6": {
+    "n": 428,
+    "wrong": 8,
+    "stated": 2.46875
+   }
+  },
+  "kappa": {
+   "3": 0.3969991782993469,
+   "4": 0.3969991782993469,
+   "5": 0.3969991782993469,
+   "6": 0.3969991782993469
+  }
+ },
+ {
+  "dataset": "ir",
+  "kind": "loo",
+  "alpha": 0.1,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 29,
+  "stated": 10.265625,
+  "wrong_rate": 0.0327313769751693,
+  "stated_rate": 0.011586484198645598,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 5,
+    "stated": 1.203125
+   },
+   "4": {
+    "n": 142,
+    "wrong": 5,
+    "stated": 1.390625
+   },
+   "5": {
+    "n": 245,
+    "wrong": 8,
+    "stated": 2.5
+   },
+   "6": {
+    "n": 428,
+    "wrong": 11,
+    "stated": 5.171875
+   }
+  },
+  "kappa": {
+   "3": 0.3969991782993469,
+   "4": 0.3969991782993469,
+   "5": 0.3969991782993469,
+   "6": 0.3969991782993469
+  }
+ },
+ {
+  "dataset": "ir",
+  "kind": "loo",
+  "alpha": 0.2,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 32,
+  "stated": 20.46875,
+  "wrong_rate": 0.03611738148984198,
+  "stated_rate": 0.02310242663656885,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 7,
+    "stated": 2.40625
+   },
+   "4": {
+    "n": 142,
+    "wrong": 5,
+    "stated": 3.015625
+   },
+   "5": {
+    "n": 245,
+    "wrong": 8,
+    "stated": 5.671875
+   },
+   "6": {
+    "n": 428,
+    "wrong": 12,
+    "stated": 9.375
+   }
+  },
+  "kappa": {
+   "3": 0.3969991782993469,
+   "4": 0.3969991782993469,
+   "5": 0.3969991782993469,
+   "6": 0.3969991782993469
+  }
+ },
+ {
+  "dataset": "ir",
+  "kind": "loo",
+  "alpha": 0.32,
+  "n_cert": 886,
+  "n_total": 959,
+  "measured": 73,
+  "skipped": 886,
+  "wrong": 40,
+  "stated": 32.796875,
+  "wrong_rate": 0.045146726862302484,
+  "stated_rate": 0.03701678893905192,
+  "per_level": {
+   "3": {
+    "n": 71,
+    "wrong": 7,
+    "stated": 2.921875
+   },
+   "4": {
+    "n": 142,
+    "wrong": 6,
+    "stated": 3.796875
+   },
+   "5": {
+    "n": 245,
+    "wrong": 10,
+    "stated": 9.875
+   },
+   "6": {
+    "n": 428,
+    "wrong": 17,
+    "stated": 16.203125
+   }
+  },
+  "kappa": {
+   "3": 0.3969991782993469,
+   "4": 0.3969991782993469,
+   "5": 0.3969991782993469,
+   "6": 0.3969991782993469
+  }
+ }
+]

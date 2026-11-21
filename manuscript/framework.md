@@ -52,7 +52,7 @@ holds over the draw, for any score and any predictor [Wilks1941; Bates2021; Ange
 
 ## 3.4 Forms of guarantee
 
-Two claims justify a skip, and an experimenter may need to know how often each fails, how often any skip fails, or how often skips fail when one claim is preferred over the other. Each need calls for its own form of guarantee. All forms rest on the shared wrong-skip event. With covers $A$ and $B$ for the interest and interpolation certificates,
+Two claims justify a skip, and the rate a campaign must control depends on the question: wrong skips per claim, wrong skips overall, or wrong skips with one claim preferred. Each calls for its own form of guarantee. All forms rest on the shared wrong-skip event. With covers $A$ and $B$ for the interest and interpolation certificates,
 
 $$
 E(x) = \big(A(x) \wedge Z(x)\big) \vee \big(B(x) \wedge F(x)\big)

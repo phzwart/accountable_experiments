@@ -7,6 +7,8 @@
     "calibration": 160.0,
     "chosen": 377.824,
     "skipped_pred": 300.248,
+    "skipped_pred_only": 156.364,
+    "skipped_both": 143.884,
     "skipped_noint": 300.812
    },
    "seed_sites": 76.0,
@@ -25,6 +27,16 @@
     "fail": 0.23330047161013562,
     "interesting": 0.5317737337134636,
     "needed": 0.22710559271002637
+   },
+   "skipped_pred_only": {
+    "fail": 0.4005781381903763,
+    "interesting": 0.9583791665600778,
+    "needed": 0.39057583587014916
+   },
+   "skipped_both": {
+    "fail": 0.051513719385060185,
+    "interesting": 0.06816602262934031,
+    "needed": 0.04945650663034111
    },
    "skipped_noint": {
     "fail": 0.41933167559804796,
@@ -52,6 +64,8 @@
     "calibration": 160.0,
     "chosen": 62.244,
     "skipped_pred": 627.08,
+    "skipped_pred_only": 227.584,
+    "skipped_both": 399.496,
     "skipped_noint": 436.172
    },
    "seed_sites": 73.0,
@@ -70,6 +84,16 @@
     "fail": 0.007112330165210181,
     "interesting": 0.3499904318428271,
     "needed": 0.006072590419085284
+   },
+   "skipped_pred_only": {
+    "fail": 0.01764623172103487,
+    "interesting": 0.84357424071991,
+    "needed": 0.014781355455568053
+   },
+   "skipped_both": {
+    "fail": 0.0011114003644592187,
+    "interesting": 0.06880669643751126,
+    "needed": 0.0011114003644592187
    },
    "skipped_noint": {
     "fail": 0.001614042166851609,
@@ -97,6 +121,8 @@
     "calibration": 233.0,
     "chosen": 62.384,
     "skipped_pred": 1462.472,
+    "skipped_pred_only": 318.848,
+    "skipped_both": 1143.624,
     "skipped_noint": 1464.768
    },
    "seed_sites": 39.0,
@@ -115,6 +141,16 @@
     "fail": 0.05107790097861702,
     "interesting": 0.36705249741533513,
     "needed": 0.04090608230448173
+   },
+   "skipped_pred_only": {
+    "fail": 0.03222852268165395,
+    "interesting": 0.9989336611802488,
+    "needed": 0.03222852268165395
+   },
+   "skipped_both": {
+    "fail": 0.056333200422516494,
+    "interesting": 0.1908809189034158,
+    "needed": 0.04332542863738432
    },
    "skipped_noint": {
     "fail": 0.1329766898239175,

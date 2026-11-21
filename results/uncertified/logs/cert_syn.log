@@ -1,0 +1,10 @@
+syn sibson eps 0.05: measured 461, wrong 44.9 (2.2 %)
+syn sibson eps 0.10: measured 415, wrong 101.2 (4.9 %)
+syn sibson eps 0.20: measured 334, wrong 267.1 (12.8 %)
+syn sibson eps 0.30: measured 285, wrong 446.6 (21.5 %)
+/usr/local/lib/python3.13/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+syn gp eps 0.05: measured 1900, wrong 56.2 (2.7 %)
+syn gp eps 0.10: measured 1678, wrong 115.0 (5.5 %)
+syn gp eps 0.20: measured 1140, wrong 274.4 (13.2 %)
+syn gp eps 0.30: measured 752, wrong 436.6 (21.0 %)

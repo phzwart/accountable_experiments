@@ -1,0 +1,17 @@
+/usr/local/lib/python3.13/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+ir latent     alpha 0.01: measured   191/959, wrong    9 (1.0 %), stated 0.0 (0.0 %)
+ir latent     alpha 0.05: measured    73/959, wrong   11 (1.2 %), stated 3.1 (0.4 %)
+ir latent     alpha 0.10: measured    73/959, wrong   11 (1.2 %), stated 9.6 (1.1 %)
+ir latent     alpha 0.20: measured    73/959, wrong   25 (2.8 %), stated 32.5 (3.7 %)
+ir latent     alpha 0.32: measured    73/959, wrong   29 (3.3 %), stated 65.6 (7.4 %)
+ir predictive alpha 0.01: measured   398/959, wrong    6 (0.7 %), stated 0.0 (0.0 %)
+ir predictive alpha 0.05: measured   120/959, wrong   10 (1.1 %), stated 7.8 (0.9 %)
+ir predictive alpha 0.10: measured    76/959, wrong   11 (1.2 %), stated 20.2 (2.3 %)
+ir predictive alpha 0.20: measured    73/959, wrong   11 (1.2 %), stated 23.5 (2.7 %)
+ir predictive alpha 0.32: measured    73/959, wrong   20 (2.3 %), stated 80.4 (9.1 %)
+ir loo        alpha 0.01: measured    75/959, wrong   14 (1.6 %), stated 0.0 (0.0 %)
+ir loo        alpha 0.05: measured    73/959, wrong   21 (2.4 %), stated 5.1 (0.6 %)
+ir loo        alpha 0.10: measured    73/959, wrong   29 (3.3 %), stated 10.3 (1.2 %)
+ir loo        alpha 0.20: measured    73/959, wrong   32 (3.6 %), stated 20.5 (2.3 %)
+ir loo        alpha 0.32: measured    73/959, wrong   40 (4.5 %), stated 32.8 (3.7 %)

@@ -56,7 +56,7 @@ Each of the following lets the draw of a level shape the rule it is meant to tes
 - *Keeping the most favourable of several draws* (breaks A5). The retained sample is selected by its outcome.
 - *Measurement-induced change* (breaks A6). Damage or drift caused by measuring the calibration sites alters the truth at their neighbours.
 
-The sequential rule of Section 5.2 breaks (A4) in a subtler way: its second threshold is searched over a family that depends on the labels the first threshold left uncovered.
+The sequential rule of Section 5.1 breaks (A4) in a subtler way: its second threshold is searched over a family that depends on the labels the first threshold left uncovered.
 
 ---
 

@@ -1,0 +1,882 @@
+[
+ {
+  "dataset": "syn",
+  "predictor": "sibson",
+  "eps": 0.05,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 449,
+    "wrong": 40,
+    "skipped": 1669,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 473,
+    "wrong": 11,
+    "skipped": 1645,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 499,
+    "wrong": 17,
+    "skipped": 1619,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 457,
+    "wrong": 80,
+    "skipped": 1661,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 443,
+    "wrong": 82,
+    "skipped": 1675,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 460,
+    "wrong": 15,
+    "skipped": 1658,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 443,
+    "wrong": 73,
+    "skipped": 1675,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 484,
+    "wrong": 24,
+    "skipped": 1634,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 486,
+    "wrong": 34,
+    "skipped": 1632,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 444,
+    "wrong": 55,
+    "skipped": 1674,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 467,
+    "wrong": 44,
+    "skipped": 1651,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 461,
+    "wrong": 72,
+    "skipped": 1657,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 477,
+    "wrong": 12,
+    "skipped": 1641,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 458,
+    "wrong": 44,
+    "skipped": 1660,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 453,
+    "wrong": 63,
+    "skipped": 1665,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 438,
+    "wrong": 51,
+    "skipped": 1680,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 443,
+    "wrong": 47,
+    "skipped": 1675,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 477,
+    "wrong": 35,
+    "skipped": 1641,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 456,
+    "wrong": 49,
+    "skipped": 1662,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 457,
+    "wrong": 49,
+    "skipped": 1661,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 461.25,
+  "wrong": 44.85,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "sibson",
+  "eps": 0.1,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 424,
+    "wrong": 86,
+    "skipped": 1694,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 444,
+    "wrong": 35,
+    "skipped": 1674,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 448,
+    "wrong": 28,
+    "skipped": 1670,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 379,
+    "wrong": 186,
+    "skipped": 1739,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 389,
+    "wrong": 150,
+    "skipped": 1729,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 408,
+    "wrong": 116,
+    "skipped": 1710,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 385,
+    "wrong": 168,
+    "skipped": 1733,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 367,
+    "wrong": 227,
+    "skipped": 1751,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 444,
+    "wrong": 36,
+    "skipped": 1674,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 422,
+    "wrong": 64,
+    "skipped": 1696,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 424,
+    "wrong": 91,
+    "skipped": 1694,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 403,
+    "wrong": 145,
+    "skipped": 1715,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 402,
+    "wrong": 107,
+    "skipped": 1716,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 421,
+    "wrong": 71,
+    "skipped": 1697,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 423,
+    "wrong": 105,
+    "skipped": 1695,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 425,
+    "wrong": 76,
+    "skipped": 1693,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 430,
+    "wrong": 102,
+    "skipped": 1688,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 430,
+    "wrong": 68,
+    "skipped": 1688,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 408,
+    "wrong": 84,
+    "skipped": 1710,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 432,
+    "wrong": 79,
+    "skipped": 1686,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 415.4,
+  "wrong": 101.2,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "sibson",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 350,
+    "wrong": 215,
+    "skipped": 1768,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 374,
+    "wrong": 195,
+    "skipped": 1744,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 345,
+    "wrong": 227,
+    "skipped": 1773,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 311,
+    "wrong": 292,
+    "skipped": 1807,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 301,
+    "wrong": 329,
+    "skipped": 1817,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 315,
+    "wrong": 282,
+    "skipped": 1803,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 320,
+    "wrong": 287,
+    "skipped": 1798,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 296,
+    "wrong": 397,
+    "skipped": 1822,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 371,
+    "wrong": 192,
+    "skipped": 1747,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 334,
+    "wrong": 235,
+    "skipped": 1784,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 316,
+    "wrong": 319,
+    "skipped": 1802,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 287,
+    "wrong": 437,
+    "skipped": 1831,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 350,
+    "wrong": 229,
+    "skipped": 1768,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 364,
+    "wrong": 217,
+    "skipped": 1754,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 316,
+    "wrong": 350,
+    "skipped": 1802,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 323,
+    "wrong": 257,
+    "skipped": 1795,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 338,
+    "wrong": 267,
+    "skipped": 1780,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 352,
+    "wrong": 196,
+    "skipped": 1766,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 349,
+    "wrong": 211,
+    "skipped": 1769,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 362,
+    "wrong": 209,
+    "skipped": 1756,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 333.7,
+  "wrong": 267.15,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "sibson",
+  "eps": 0.3,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 295,
+    "wrong": 395,
+    "skipped": 1823,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 297,
+    "wrong": 340,
+    "skipped": 1821,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 282,
+    "wrong": 563,
+    "skipped": 1836,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 285,
+    "wrong": 395,
+    "skipped": 1833,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 282,
+    "wrong": 435,
+    "skipped": 1836,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 281,
+    "wrong": 445,
+    "skipped": 1837,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 274,
+    "wrong": 530,
+    "skipped": 1844,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 275,
+    "wrong": 539,
+    "skipped": 1843,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 329,
+    "wrong": 290,
+    "skipped": 1789,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 283,
+    "wrong": 346,
+    "skipped": 1835,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 286,
+    "wrong": 448,
+    "skipped": 1832,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 272,
+    "wrong": 611,
+    "skipped": 1846,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 283,
+    "wrong": 426,
+    "skipped": 1835,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 285,
+    "wrong": 441,
+    "skipped": 1833,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 273,
+    "wrong": 545,
+    "skipped": 1845,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 277,
+    "wrong": 450,
+    "skipped": 1841,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 280,
+    "wrong": 436,
+    "skipped": 1838,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 284,
+    "wrong": 453,
+    "skipped": 1834,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 295,
+    "wrong": 327,
+    "skipped": 1823,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 275,
+    "wrong": 518,
+    "skipped": 1843,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 284.65,
+  "wrong": 446.65,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "gp",
+  "eps": 0.05,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 2036,
+    "wrong": 25,
+    "skipped": 82,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 2013,
+    "wrong": 33,
+    "skipped": 105,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1860,
+    "wrong": 74,
+    "skipped": 258,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1830,
+    "wrong": 75,
+    "skipped": 288,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1762,
+    "wrong": 95,
+    "skipped": 356,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 2097,
+    "wrong": 6,
+    "skipped": 21,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1628,
+    "wrong": 106,
+    "skipped": 490,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1977,
+    "wrong": 36,
+    "skipped": 141,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 1900.375,
+  "wrong": 56.25,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "gp",
+  "eps": 0.1,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 1886,
+    "wrong": 65,
+    "skipped": 232,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1550,
+    "wrong": 140,
+    "skipped": 568,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1725,
+    "wrong": 120,
+    "skipped": 393,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1775,
+    "wrong": 100,
+    "skipped": 343,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1496,
+    "wrong": 161,
+    "skipped": 622,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1967,
+    "wrong": 42,
+    "skipped": 151,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1438,
+    "wrong": 160,
+    "skipped": 680,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1591,
+    "wrong": 132,
+    "skipped": 527,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 1678.5,
+  "wrong": 115.0,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "gp",
+  "eps": 0.2,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 1442,
+    "wrong": 181,
+    "skipped": 676,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 830,
+    "wrong": 387,
+    "skipped": 1288,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 731,
+    "wrong": 431,
+    "skipped": 1387,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1169,
+    "wrong": 263,
+    "skipped": 949,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1159,
+    "wrong": 256,
+    "skipped": 959,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1721,
+    "wrong": 107,
+    "skipped": 397,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1117,
+    "wrong": 258,
+    "skipped": 1001,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 951,
+    "wrong": 312,
+    "skipped": 1167,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 1140.0,
+  "wrong": 274.375,
+  "n_cert": 2079,
+  "n_total": 2118
+ },
+ {
+  "dataset": "syn",
+  "predictor": "gp",
+  "eps": 0.3,
+  "confidence": 0.8,
+  "runs": [
+   {
+    "measured": 787,
+    "wrong": 411,
+    "skipped": 1331,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 446,
+    "wrong": 625,
+    "skipped": 1672,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 639,
+    "wrong": 469,
+    "skipped": 1479,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 1132,
+    "wrong": 299,
+    "skipped": 986,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 758,
+    "wrong": 363,
+    "skipped": 1360,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 895,
+    "wrong": 339,
+    "skipped": 1223,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 674,
+    "wrong": 497,
+    "skipped": 1444,
+    "n_cert": 2079,
+    "n_total": 2118
+   },
+   {
+    "measured": 684,
+    "wrong": 490,
+    "skipped": 1434,
+    "n_cert": 2079,
+    "n_total": 2118
+   }
+  ],
+  "measured": 751.875,
+  "wrong": 436.625,
+  "n_cert": 2079,
+  "n_total": 2118
+ }
+]
