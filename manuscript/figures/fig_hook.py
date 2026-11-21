@@ -56,7 +56,7 @@ ACT = {  # (colour, marker, size, label); measured actions in neutrals, skips in
 }
 
 
-def final_map(xy_m, w_m, p_m, XX, YY):
+def final_map(xy_m, w_m, p_m, XX, YY, noise=True):
     """GP regression of the width on the measured sites where the line is present, and of the presence
     indicator on all measured sites (thresholded at one half); hyperparameters by maximum likelihood."""
     from sklearn.gaussian_process import GaussianProcessRegressor
@@ -64,12 +64,15 @@ def final_map(xy_m, w_m, p_m, XX, YY):
 
     Q = np.c_[XX.ravel(), YY.ravel()]
     ok = p_m & np.isfinite(w_m)
-    k = C(1.0) * RBF(1.0, (0.1, 20.0)) + WhiteKernel(0.1, (1e-4, 10.0))
+    k = C(1.0) * RBF(1.0, (0.05, 20.0))
+    if noise:
+        k = k + WhiteKernel(0.1, (1e-4, 10.0))
+    jit = 1e-10 if noise else 1e-6  # without a noise term the GP interpolates the measurements
     mu, sd = w_m[ok].mean(), w_m[ok].std()
-    gw = GaussianProcessRegressor(k, normalize_y=False, n_restarts_optimizer=2, random_state=0)
+    gw = GaussianProcessRegressor(k, alpha=jit, normalize_y=False, n_restarts_optimizer=2, random_state=0)
     gw.fit(xy_m[ok], (w_m[ok] - mu) / sd)
     gp_w = (gw.predict(Q) * sd + mu).reshape(XX.shape)
-    gpp = GaussianProcessRegressor(k, n_restarts_optimizer=2, random_state=0)
+    gpp = GaussianProcessRegressor(k, alpha=jit, n_restarts_optimizer=2, random_state=0)
     gpp.fit(xy_m, p_m.astype(float) - 0.5)
     gp_p = (gpp.predict(Q) > 0).reshape(XX.shape)
     return gp_w, gp_p, (str(gw.kernel_), str(gpp.kernel_))
