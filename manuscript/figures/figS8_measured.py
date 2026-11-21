@@ -64,7 +64,7 @@ def main():
                             for o in order], fontsize=6.5)
         ax.set_xlim(-0.6, 2.6)
         if k == 0:
-            ax.set_ylabel("residual (tolerances)", fontsize=7)
+            ax.set_ylabel("prediction error ÷ tolerance", fontsize=7)
         ax.tick_params(labelsize=6.3)
         ax.set_title(f"({'abc'[k]}) {name}", loc="left", fontsize=7.8)
         for s_ in ("top", "right"):
