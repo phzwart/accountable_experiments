@@ -162,29 +162,29 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 
 **Order of operations.** On a simulated level of 399 sites with informative scores, a budget of 0.10 and a picked failure probability of 0.206, the calibration draw was repeated 4000 times. Scores frozen before a uniform draw: 822 exceedances (0.205). Scores that knew the true labels, frozen before the draw: 819 (0.205). Scores of the failing calibration sites raised after the draw and thresholded on the same labels: 4000 (1.00). Calibration sample taken from the half of the level ranked least safe: 2502 (0.63). Most favourable of five draws kept: 2771 (0.69). On a simulated level of the same size with uninformative scores (Fig. S3), the sequential rule, which sets the interpolation threshold on the calibration sites the interest threshold left uncovered: 28.8 %; the priority path, which fixes the same preference in advance: 20.5 %, at the same picked failure probability of 0.206.
 
-## SI 5.3 Plans certified as a whole, and two baselines
+## SI 5.3 Plans certified for all levels together, and two baselines
 
-**Plans certified as a whole.** The failure probability $1 - c$ of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence $1 - (1 - c)/n$ and, by the union bound, every level holds together with probability at least $c$. Seeds, scores, predictor and budget are those of the per-level plans of Table 4.
+**Plans certified for all levels together.** The failure probability $1 - c$ of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence $1 - (1 - c)/n$ and, by the union bound, every level holds together with probability at least $c$. Seeds, scores, predictor and budget are those of the per-level plans of Table 4.
 
 **Conformal risk control.** Along the same path and on the same calibration draw, the threshold admits the largest number $k$ of failing calibration sites with $(k + 1)/(m + 1) \le \varepsilon$ [Angelopoulos2024]. This bounds the expected share of the level skipped wrongly, averaged over draws, and makes no statement about a single level. At $m = 40$ it allows $k = 3$ at $\varepsilon = 0.10$ and $k = 7$ at $\varepsilon = 0.20$.
 
-**Uniform subsampling.** The seed levels and a uniform random sample of the remaining sites, to the mean number measured by the per-level plan; every other site is predicted from all measured sites with the same natural-neighbour predictor and counted when the prediction fails the claim's metric. The final maps of 20 per-level plans are scored in the same way: skipped sites predicted from all sites measured by the end of the campaign.
+**A uniform sample of the same size.** The seed levels and a uniform random sample of the remaining sites, to the mean number measured by the per-level plan; every other site is predicted from all measured sites with the same natural-neighbour predictor and counted when the prediction fails the claim's metric. The final maps of 20 per-level plans are scored in the same way: skipped sites predicted from all sites measured by the end of the campaign.
 
-**Table S5.4.** Plans certified level by level and as a whole, conformal risk control and uniform subsampling. Exceedances on the shared rate: share of level checks over budget and share of campaigns with at least one level over budget. Last column: share of certified-level sites whose prediction from all measured sites fails the metric (final map).
+**Table S5.4.** Plans certified level by level and for all levels together, conformal risk control and a uniform sample of the same size. Exceedances on the shared rate: share of level checks over budget and share of campaigns with at least one level over budget. Last column: share of certified-level sites whose prediction from all measured sites fails the metric (final map).
 
 | Dataset | Rule | Campaigns | Sites measured | Levels over budget | Campaigns over budget | Final-map share outside |
 | --- | --- | --- | --- | --- | --- | --- |
 | IR map (ε = 0.10) | per level at 0.75 | 250 | 295 ± 53 | 4.9 % | 19.6 % | 0.4 % |
 | | plan at 0.75 (δ = 0.062 per level) | 105 | 408 ± 80 | 0.0 % | 0.0 % | |
 | | conformal risk control | 100 | 260 | 5.0 % | 20.0 % | |
-| | uniform subsampling | 20 | 295 | — | — | 0.5 % |
+| | uniform sample | 20 | 295 | — | — | 0.5 % |
 | NaCl scan (ε = 0.20) | per level at 0.80 | 250 | 614 ± 56 | 11.2 % | 38.4 % | 16.6 % |
 | | plan at 0.80 (δ = 0.050 per level) | 128 | 694 ± 61 | 2.7 % | 8.6 % | |
 | | conformal risk control | 100 | 541 | 33.8 % | 80.0 % | |
-| | uniform subsampling | 20 | 614 | — | — | 21.9 % |
+| | uniform sample | 20 | 614 | — | — | 21.9 % |
 | Synthetic map (ε = 0.20) | per level at 0.80 | 250 | 334 ± 26 | 10.7 % | 49.6 % | 8.5 % |
 | | plan at 0.80 (δ = 0.033 per level) | 60 | 376 ± 29 | 2.8 % | 16.7 % | |
 | | conformal risk control | 42 | 301 | 32.5 % | 92.9 % | |
-| | uniform subsampling | 20 | 334 | — | — | 10.3 % |
+| | uniform sample | 20 | 334 | — | — | 10.3 % |
 
-On the synthetic map the plan certified as a whole exceeded the budget on 10 of 360 level checks, against 5.5 expected under the picked failure probabilities (one-sided probability about 0.05). Repeating the calibration draw 3000 times on each of 20 recorded level populations of four campaigns under the same rule gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels.
+On the synthetic map the plan certified for all levels together exceeded the budget on 10 of 360 level checks, against 5.5 expected under the picked failure probabilities (one-sided probability about 0.05). Repeating the calibration draw 3000 times on each of 20 recorded level populations of four campaigns under the same rule gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels.

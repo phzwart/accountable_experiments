@@ -17,9 +17,9 @@ The rule now records its own probability that each skip is wrong, so its stateme
 With the predictive standard deviation the statement was right; with the latent one it was three times too low, and on the synthetic map even the predictive one was about ten times too low (Fig. 4). The message is now that a model's own rate can be right or wrong and nothing in a run shows which (Section 5.2, abstract). The former headline on 21–31 predictable skips is gone. The Gaussian process with an acquisition function refitted point by point (R2) is left to the follow-up work; the Discussion now states that certification can sit over any campaign whose proposals for a level are frozen before the draw.
 
 **2. Campaign-level confidence (R1 M1, R2 M6, R3 M2).**
-The contract now certifies the plan as a whole: its goal on every level holds with confidence c, the failure probability being divided among the levels when the plan is declared (Section 3.1, 3.3; Appendix A). New runs (Section 5.1; SI 5.3, Table S5.4):
+The plan is now certified for all levels together: it keeps the budget on every level with confidence c, the failure probability being divided among the levels when the plan is declared (Section 3.1, 3.3; Appendix A). New runs (Section 5.1; SI 5.3, Table S5.4):
 
-| | per level: measured / campaigns over budget | plan as a whole: measured / campaigns over budget |
+| | per level: measured / campaigns over budget | all levels together: measured / campaigns over budget |
 |---|---|---|
 | IR, c = 0.75 | 295 / 19.6 % | 408 / 0 of 105 |
 | NaCl, c = 0.80 | 614 / 38.4 % | 694 / 11 of 128 |
@@ -28,7 +28,7 @@ The contract now certifies the plan as a whole: its goal on every level holds wi
 The cost of a campaign-level contract is 12 % to 38 % more measurements. On the synthetic map 10 of 360 level checks exceeded the budget against 5.5 expected (p ≈ 0.05); an attainment audit with 3000 draws on 20 recorded levels gave 1.01 times the picked failure probability. The union bound counts only levels on which the budget can be reached (R1's joint IR figure of 0.24 is therefore about 0.81).
 
 **3. "Certifies every action" overclaimed (R1 M2, R3 M1).**
-An action is now defined as the decision on one level of the plan, taken once after the draw for all of its sites; its certificate is the level bound, as a lot is accepted on a sample. The plan is certified to reach the goal of the contract, and the record shows that it was followed (Section 3.1). Each site carries a reason, not a bound (Section 3.5, Conclusion). "Needed" is used only in its hindsight sense (Section 5.3).
+An action is now defined as the decision on one level of the plan, taken once after the draw for all of its sites; its certificate is the level bound, as a lot is accepted on a sample. The plan is certified to keep the budget of the contract, and the record shows that it was followed (Section 3.1). Each site carries a reason, not a bound (Section 3.5, Conclusion). "Needed" is used only in its hindsight sense (Section 5.3).
 
 ## Referee 1
 
@@ -43,7 +43,7 @@ An action is now defined as the decision on one level of the plan, taken once af
 
 ## Referee 2
 
-- **Uniform subsampling and practicality.** At equal cost, the final maps of the certified plans left 0.4 %, 16.6 % and 8.5 % of the certified-level sites outside tolerance, against 0.5 %, 21.9 % and 10.3 % for uniform subsampling (Section 5.4; SI 5.3). The order of measurement within an action is free, so the remaining sites can follow the shortest path (Discussion). A beam-time model with move, settle and reduction times needs instrument numbers and is left to the deployment study.
+- **A uniform sample of the same size, and practicality.** At equal cost, the final maps of the certified plans left 0.4 %, 16.6 % and 8.5 % of the certified-level sites outside tolerance, against 0.5 %, 21.9 % and 10.3 % for a uniform sample of the same size (Section 5.4; SI 5.3). The order of measurement within an action is free, so the remaining sites can follow the shortest path (Discussion). A beam-time model with move, settle and reduction times needs instrument numbers and is left to the deployment study.
 - **NaCl tolerance against noise (M3).** Section 3.5 and the Discussion state that labels compare with one noisy measurement and that on NaCl the width scatter is about the tolerance; a tolerance is best set against repeated measurements.
 - **Inconsistencies.** Informative/uninformative scores and the comparator of the sequential rule fixed; SI section references updated; Fig. 5 shows the average-cost campaigns of SI 8 with consistent colours and an upright IR axis.
 
