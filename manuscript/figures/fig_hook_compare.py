@@ -3,8 +3,10 @@ Hook figure (Fig. 1): two campaigns on the same fully measured NaCl scan, (200) 
 cost. GP-guided (uncertified): a GP refitted after each level skips a site when sure there is no line, or when
 its 68 % interval on the width lies within the tolerance. Certified: the campaign of average cost (seed 44).
 (a) True (200) width. (b), (c) Actions of each campaign, wrong skips found afterwards against the full scan.
-(d) Sites measured against the realised share of levels 3-6 skipped wrongly: 250 certified campaigns and the
-    GP rule at four interval widths, with latent or predictive standard deviation.
+(d) Sites measured against the realised share of levels 3-6 skipped wrongly: 250 certified campaigns with
+    natural-neighbour prediction, 3 x 250 certified campaigns with the GP posterior mean as predictor
+    (length scale by maximum likelihood, by design, nonstationary), and the uncertified GP rule at four
+    interval widths, with latent or predictive standard deviation.
 (e) GP rule: share of predictable skips wrong, promised by the interval and realised.
 (f) Certified: realised share of each level skipped wrongly in 250 campaigns, against the budget of 20 %.
     The guarantee is statistical: a level exceeds the budget with probability at most delta_L <= 0.20
@@ -32,6 +34,18 @@ from fig_datasets import nacl_fwhm  # noqa: E402
 from experiments.record import OUT as REC, REASONS, build  # noqa: E402
 
 COL = {"measured": "#a8a7a3", "no_line": "#eda100", "predictable": "#1baf7a"}
+PURPLE = "#8e6cc8"
+GP_ROWS = ["nacl_fwhm_nested_gp_mle", "nacl_fwhm_nested_gp_design", "nacl_fwhm_nested_gp_nonstationary"]
+
+
+def certified_cloud(row, cert):
+    z = np.load(REC / row / "sites.npz")
+    S = z["skipped"].astype(bool)
+    R = np.array(REASONS)[z["reason"]]
+    A = np.isin(R, ["not_interesting", "not_interesting+interpolable"])
+    B = np.isin(R, ["interpolable", "not_interesting+interpolable"])
+    W = S & ((A & z["interesting"].astype(bool)) | (B & z["fail_prior"].astype(bool)))
+    return z["measured"].sum(1), W[:, cert].mean(1)
 BLUE = "#2a78d6"
 
 
@@ -108,6 +122,12 @@ def main():
     ax = fig.add_axes([X0[0], by, mw, bh])
     cm, cr = np.array(res["certified"]["measured"]), np.array(res["certified"]["wrong_rate"])
     ax.scatter(cm, cr, s=3, c=GRID, linewidths=0)
+    gm, gr = zip(*[certified_cloud(r, cert) for r in GP_ROWS])
+    gm, gr = np.concatenate(gm), np.concatenate(gr)
+    ax.scatter(gm, gr, s=3, c=PURPLE, alpha=0.55, linewidths=0)
+    ax.annotate("certified GP", (np.median(gm), np.percentile(gr, 97)), xytext=(0, 6), textcoords="offset points",
+                fontsize=6.1, color=PURPLE, ha="center")
+    ax.annotate("certified\nSibson", (575, 0.05), fontsize=6.1, color=INK2, ha="left")
     ax.scatter([int((~S).sum())], [c_wrong[cert].mean()], s=28, marker="D", c=BLUE, edgecolors="white",
                linewidths=0.6, zorder=3)
     for r in res["uncertified"]:
@@ -117,10 +137,10 @@ def main():
                 fontsize=6.1, color=INK2)
     ax.annotate("GP, 90–99 %", (900, 0.012), xytext=(-4, 12), textcoords="offset points", fontsize=6.1,
                 color=INK2, ha="right")
-    ax.set_xlim(560, 960); ax.set_ylim(-0.01, 0.2)
+    ax.set_xlim(560, 960); ax.set_ylim(-0.01, 0.27)
     ax.set_xlabel("sites measured (of 1071)", fontsize=6.8)
     ax.set_ylabel("share skipped wrongly", fontsize=6.8)
-    style(ax, "(d) Same cost, same error")
+    style(ax, "(d) Cost against realised error")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 
@@ -175,9 +195,10 @@ def main():
                Line2D([], [], ls="", marker="x", color=RED, markersize=5, label="wrong skip, found afterwards"),
                Line2D([], [], color=INK, lw=0.8, label="true edge of the line"),
                Line2D([], [], ls="", marker="o", mfc="none", color=INK, markersize=4.5, label="GP-guided"),
-               Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified, 250 campaigns"),
+               Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified Sibson, 250 campaigns"),
+               Line2D([], [], ls="", marker="o", color=PURPLE, markersize=3.5, label="certified GP, 3 × 250 campaigns"),
                Line2D([], [], ls="", marker="D", color=BLUE, markersize=4.5, label="certified, shown in (c)")]
-    fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=6.2, frameon=False, bbox_to_anchor=(0.5, 0.0),
+    fig.legend(handles=handles, loc="lower center", ncol=5, fontsize=6.2, frameon=False, bbox_to_anchor=(0.5, 0.0),
                columnspacing=1.0, handletextpad=0.4)
     fig.text(0.07, 0.968, "Two campaigns, one scan: only one can say how often it skipped wrongly",
              fontsize=10, fontweight="bold", color=INK)
