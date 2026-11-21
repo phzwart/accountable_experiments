@@ -7,8 +7,8 @@ design sites measured, against a mean of 614).
 (b) The certified map at the resolution of the deepest level (median spacing 0.35 mm), filled by nearest
     design site: measured widths, and decision-time natural-neighbour predictions where skipped as
     predictable; grey where no line was measured or the site was certified as not of interest.
-(c) A display map drawn afterwards: noise-free GP regression on the measured sites (width where the line is
-    present, a second GP on presence), length scale bounded below by the design spacing (the likelihood
+(c) A display map drawn afterwards: noise-free GP regression on the measured sites (log width where the line
+    is present, a second GP on the presence indicator, thresholded at one half), length scale bounded below by the design spacing (the likelihood
     settles on the bound). No certificate attaches to it.
 (d) The certified action of every design site: measured for the seed, for calibration or because no
     claim covered it; skipped as not of interest, as predictable or both. Crosses: wrong skips.
@@ -57,7 +57,7 @@ ACT = {  # (colour, marker, size, label); measured actions in neutrals, skips in
 }
 
 
-def final_map(xy_m, w_m, p_m, XX, YY, noise=True, ls_min=0.05):
+def final_map(xy_m, w_m, p_m, XX, YY, noise=True, ls_min=0.05, log=False):
     """GP regression of the width on the measured sites where the line is present, and of the presence
     indicator on all measured sites (thresholded at one half); hyperparameters by maximum likelihood."""
     from sklearn.gaussian_process import GaussianProcessRegressor
@@ -69,10 +69,13 @@ def final_map(xy_m, w_m, p_m, XX, YY, noise=True, ls_min=0.05):
     if noise:
         k = k + WhiteKernel(0.1, (1e-4, 10.0))
     jit = 1e-10 if noise else 1e-4  # without a noise term the GP interpolates the measurements
-    mu, sd = w_m[ok].mean(), w_m[ok].std()
+    y = np.log(w_m[ok]) if log else w_m[ok]
+    mu, sd = y.mean(), y.std()
     gw = GaussianProcessRegressor(k, alpha=jit, normalize_y=False, n_restarts_optimizer=2, random_state=0)
-    gw.fit(xy_m[ok], (w_m[ok] - mu) / sd)
+    gw.fit(xy_m[ok], (y - mu) / sd)
     gp_w = (gw.predict(Q) * sd + mu).reshape(XX.shape)
+    if log:
+        gp_w = np.exp(gp_w)
     gpp = GaussianProcessRegressor(k, alpha=jit, n_restarts_optimizer=2, random_state=0)
     gpp.fit(xy_m, p_m.astype(float) - 0.5)
     gp_p = (gpp.predict(Q) > 0).reshape(XX.shape)
@@ -132,7 +135,7 @@ def main():
     d_, _ = cKDTree(xy).query(xy, k=2)
     spacing = float(np.median(d_[:, 1]))
     gp_w, gp_p, gp_txt = final_map(xy[measured], w_site[measured], p_site[measured], XX, YY, noise=False,
-                                   ls_min=spacing)
+                                   ls_min=spacing, log=True)
     # the certified map at the design resolution: measured widths, and the decision-time predictions at
     # sites skipped as predictable; no line where measured without one or certified as not of interest
     nat = np.where(measured & p_site, w_site, np.nan)
