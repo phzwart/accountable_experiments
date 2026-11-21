@@ -18,6 +18,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+from scipy.stats import norm
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C, WhiteKernel
 
@@ -59,6 +60,7 @@ def campaign(xy, w, p, lv, z, latent, p_lo=0.1, p_hi=0.9):
     measured = lv <= 2
     action = np.array(["seed" if m else "" for m in measured], dtype=object)
     wrong = np.zeros(len(lv), bool)
+    implied = np.zeros(len(lv))  # the model's own probability that the skip is wrong
     for L in range(3, int(lv.max()) + 1):
         idx = np.flatnonzero(lv == L)
         M = measured
@@ -72,16 +74,21 @@ def campaign(xy, w, p, lv, z, latent, p_lo=0.1, p_hi=0.9):
         no_line = ph < p_lo
         pred = (ph > p_hi) & (half <= TOL)
         for j, gi in enumerate(idx):
+            pc = float(np.clip(ph[j], 0.0, 1.0))
             if no_line[j]:
                 action[gi] = "no_line"
                 wrong[gi] = p[gi]
+                implied[gi] = pc
             elif pred[j]:
                 action[gi] = "predictable"
                 wrong[gi] = (not p[gi]) or (abs(wh[j] - w[gi]) > TOL)
+                lo, hi = np.log(max(wh[j] - TOL, 1e-12)), np.log(wh[j] + TOL)
+                p_in = norm.cdf((hi - lm[j]) / ls[j]) - norm.cdf((lo - lm[j]) / ls[j]) if ls[j] > 0 else 1.0
+                implied[gi] = 1.0 - pc * p_in
             else:
                 action[gi] = "measured"
                 measured[gi] = True
-    return measured.copy(), action, wrong
+    return measured.copy(), action, wrong, implied
 
 
 def main():
@@ -91,16 +98,17 @@ def main():
     rows = []
     for latent in (True, False):
         for zz in (1.0, 1.64, 1.96, 2.58):
-            m, a, wr = campaign(xy, w, p, lv, zz, latent)
+            m, a, wr, imp = campaign(xy, w, p, lv, zz, latent)
             per = {int(L): float(wr[lv == L].mean()) for L in range(3, int(lv.max()) + 1)}
             rows.append(dict(sd="latent" if latent else "predictive", z=zz, nominal=float(2 * (1 - __import__("scipy").stats.norm.cdf(zz))),
-                             measured=int(m.sum()), wrong_rate=float(wr[cert].mean()),
+                             measured=int(m.sum()), wrong_rate=float(wr[cert].mean()), stated_rate=float(imp[cert].sum() / cert.sum()),
+                             stated_per_level={int(L): float(imp[lv == L].sum() / (lv == L).sum()) for L in range(3, int(lv.max()) + 1)},
                              n_skip_pred=int((a == "predictable").sum()), n_skip_noline=int((a == "no_line").sum()),
                              wrong_pred=float(wr[a == "predictable"].mean()) if (a == "predictable").any() else None,
                              per_level=per))
             print(rows[-1])
             np.savez_compressed(OUT.parent / f"uncertified_{rows[-1]['sd']}_z{zz:.2f}.npz", measured=m,
-                                action=a.astype(str), wrong=wr)
+                                action=a.astype(str), wrong=wr, implied=imp)
     # the certified campaigns, same metric
     S = z["skipped"].astype(bool)
     R = np.array(REASONS)[z["reason"]]

@@ -20,7 +20,7 @@ TITLE = "Accountable experiments: autonomy under contract"
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C"]
 SI = [f"supplement_SI{i}" for i in range(1, 10)]
-FIGS = {1: "fig_hook_compare", 2: "fig1_schematic", 3: "fig_datasets_claims", 4: "fig_stated", 5: "fig5_maps", 6: "fig_cost",
+FIGS = {1: "fig_hook_three", 2: "fig1_schematic", 3: "fig_datasets_claims", 4: "fig_stated", 5: "fig5_maps", 6: "fig_cost",
         "S1": "figS1_gp_std", "S3": "fig3_forms", "S6": "figS6_sampling", "S7": "figS7_cost", "S8": "figS8_measured"}
 NBSP = "\u00a0"
 
@@ -103,7 +103,7 @@ def figures_and_tables(t: str, refs: bool) -> str:
         label = f"fig:{n}"
         num = "" if n.isdigit() else f"\\renewcommand{{\\thefigure}}{{{n}}}"
         return ("\n```{=latex}\n\\begin{figure}[tbp]" + num + "\n\\centering\n"
-                f"\\includegraphics[width=\\textwidth]{{figures/{FIGS[key]}}}\n"
+                f"\\includegraphics[width=\\textwidth,height=0.44\\textheight,keepaspectratio]{{figures/{FIGS[key]}}}\n"
                 f"\\caption{{{cap}}}\\label{{{label}}}\n\\end{{figure}}\n```\n")
     t = re.sub(r"^\*\*Figure (S?\d+)\.\*\* (.+)$", fig, t, flags=re.M)
 
@@ -208,6 +208,13 @@ def bib() -> tuple[str, set]:
 
 PREAMBLE = r"""\documentclass{iopjournal}
 \usepackage{amsmath,amssymb}
+% figures share their page with text: no float page unless it is mostly full, at most one float on top
+\renewcommand{\topfraction}{0.7}
+\renewcommand{\bottomfraction}{0.5}
+\renewcommand{\textfraction}{0.3}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{2}
+\setcounter{totalnumber}{3}
 \usepackage{longtable,booktabs,array,calc}
 \usepackage{textcomp}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}

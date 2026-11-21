@@ -119,7 +119,7 @@ def main():
                                 f"     {100 * c_wrong[cert].mean():.0f} % of sites wrong; bound 20 %")
 
     # cost against realised error: Figure S7 (SI 7)
-    figd, ax = plt.subplots(figsize=(3.6, 2.9), facecolor="white", gridspec_kw=dict(left=0.16, right=0.97, top=0.9, bottom=0.16))
+    figd, (ax, axL) = plt.subplots(1, 2, figsize=(7.2, 2.9), facecolor="white", gridspec_kw=dict(left=0.08, right=0.985, top=0.88, bottom=0.16, wspace=0.28))
     cm, cr = np.array(res["certified"]["measured"]), np.array(res["certified"]["wrong_rate"])
     ax.scatter(cm, cr, s=3, c=GRID, linewidths=0)
     gm, gr = zip(*[certified_cloud(r, cert) for r in GP_ROWS])
@@ -140,7 +140,7 @@ def main():
     ax.set_xlim(560, 960); ax.set_ylim(-0.01, 0.27)
     ax.set_xlabel("sites measured (of 1071)", fontsize=6.8)
     ax.set_ylabel("share of sites skipped wrongly", fontsize=6.8)
-    style(ax, "Cost against realised error, NaCl scan, levels 3 to 6")
+    style(ax, "(a) Cost against realised error, levels 3 to 6")
     ax.legend(handles=[Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified, natural neighbour"),
                        Line2D([], [], ls="", marker="o", color=PURPLE, markersize=3.5, label="certified, Gaussian process"),
                        Line2D([], [], ls="", marker="o", mfc="none", color=INK, markersize=4.5, label="uncertified Gaussian process")],
@@ -167,7 +167,7 @@ def main():
         ax.spines[s_].set_visible(False)
 
     # (f) certified: guaranteed against realised, per level
-    ax = fig.add_axes([0.585, by, 0.385, bh])
+    ax = axL
     runs = [json.loads(l) for l in gzip.open(REC / ROW / "runs.jsonl.gz", "rt")]
     picked = [p for p in json.loads((REC / "PICKED.json").read_text()) if p["row"] == ROW and p["event"] == "R_E"]
     levels = sorted({pl["L"] for r in runs for pl in r["per_level"] if not pl.get("empty")})
@@ -189,7 +189,7 @@ def main():
     ax.set_xlabel("level", fontsize=6.8)
     ax.set_ylabel("share of level skipped wrongly", fontsize=6.8, labelpad=1)
     ax.set_ylim(0, 0.43); ax.set_xlim(-0.6, len(levels) - 0.4)
-    style(ax, "(e) Certified: each level over budget with probability\n     at most its picked failure probability")
+    style(ax, "(b) Certified plan: share of each level skipped wrongly")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 

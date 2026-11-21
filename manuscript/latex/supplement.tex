@@ -1,5 +1,12 @@
 \documentclass{iopjournal}
 \usepackage{amsmath,amssymb}
+% figures share their page with text: no float page unless it is mostly full, at most one float on top
+\renewcommand{\topfraction}{0.7}
+\renewcommand{\bottomfraction}{0.5}
+\renewcommand{\textfraction}{0.3}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{2}
+\setcounter{totalnumber}{3}
 \usepackage{longtable,booktabs,array,calc}
 \usepackage{textcomp}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -53,7 +60,7 @@ and the interpolation score is the posterior standard deviation at unit output s
 \sigma(x)^2 = k(x, x) - k(x)^\top (K + \nu I)^{-1} k(x)
 \]
 
-One set of weights serves every channel of the spectrum, so the fit costs one Cholesky factorisation per level. The score depends on positions, length scale and nugget only. The interest certificate keeps its natural-neighbour score.
+One set of weights serves every channel of the spectrum, so the fit costs one Cholesky factorisation per level. The score depends on positions, length scale and nugget only. The interest claim keeps its natural-neighbour score.
 
 \textbf{Length-scale rules.}
 
@@ -111,7 +118,7 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 
 \begin{figure}[tbp]\renewcommand{\thefigure}{S1}
 \centering
-\includegraphics[width=\textwidth]{figures/figS1_gp_std}
+\includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/figS1_gp_std}
 \caption{Posterior standard deviation on the IR map before level 5 (seed 0, local-spacing campaign; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 \ensuremath{\times} 29 \ensuremath{\mu}m raster, and the local length scale of the third rule. Length scales are given in micrometres.}\label{fig:S1}
 \end{figure}
 
@@ -129,7 +136,7 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 \subsection*{SI 2.1 Infrared map}\label{si-2.1-infrared-map}}
 \addcontentsline{toc}{subsection}{SI 2.1 Infrared map}
 
-\textbf{Data.} The map covers 29 \ensuremath{\times} 42 pixels at a pitch of 1 \ensuremath{\mu}m, with 1738 channels between 650 and 4000 cm\ensuremath{^{-1}} in apparent absorbance. The certificate window is 1500--1850 cm\ensuremath{^{-1}}. It holds the amide and ester bands, where scattering distortions are strongest next to the absorption bands.
+\textbf{Data.} The map covers 29 \ensuremath{\times} 42 pixels at a pitch of 1 \ensuremath{\mu}m, with 1738 channels between 650 and 4000 cm\ensuremath{^{-1}} in apparent absorbance. The claim window is 1500--1850 cm\ensuremath{^{-1}}. It holds the amide and ester bands, where scattering distortions are strongest next to the absorption bands.
 
 \textbf{Scattering correction.} Particles of a few micrometres scatter infrared light resonantly. The result is broad oscillations and dispersive swings at band edges, superimposed on the absorbance. Each spectrum is corrected by extended multiplicative signal correction with a resonant Mie basis \cite{MartensStark1991,Kohler2005,Bassan2010,Solheim2019}. The measured apparent absorbance is modelled as a scaled chemical spectrum plus a scattering background:
 
@@ -153,7 +160,7 @@ The background is a combination of seven signed principal components of a family
 
 The chemical estimate is refined self-consistently. Each pixel starts from its own apparent absorbance, and after each of six iterations its estimate is replaced by its own corrected spectrum. No information passes between pixels, so the correction is a fixed transformation of each spectrum and can be applied to a site as soon as it is measured.
 
-The corrected spectrum used throughout is the apparent absorbance minus the fitted background, clipped at zero; the scale b is not divided out. A site is of interest when any channel in the certificate window reaches absorbance 0.1. That holds for 37 \% of the pixels.
+The corrected spectrum used throughout is the apparent absorbance minus the fitted background, clipped at zero; the scale b is not divided out. A site is of interest when any channel in the claim window reaches absorbance 0.1. That holds for 37 \% of the pixels.
 
 \textbf{Sensitivity to the starting estimate.} The iteration converges to the same corrected spectrum for most pixels, whatever the starting estimate. Starting from the median spectrum of the map instead of each pixel\textquotesingle s own spectrum changes the corrected window by a median of 0.001. For about 5 \% of the pixels it changes it by more than 0.05, and 20 of 1218 pixels change their interest label. The guarantees of the main text concern the target as defined by the per-pixel correction. Any fixed per-spectrum transformation defines a valid target.
 
@@ -176,6 +183,39 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
 \addcontentsline{toc}{subsection}{SI 2.3 Synthetic small-angle scattering map}
 
 \textbf{Forward model.} A composition \((x, y)\), with \(x\) the oil and \(y\) the surfactant weight fraction and \(x + y \le 1\), maps to a noiseless scattering curve on 240 logarithmically spaced points between 0.005 and 0.32 \AA{}\ensuremath{^{-1}}. Four phases are separated by straight boundaries in composition: a micellar phase (L1), modelled as polydisperse spheres whose radius swells with solubilised oil, with a Percus--Yevick hard-sphere structure factor; an ordered cubic phase (I1) with face-centred cubic Bragg peaks; a hexagonal phase (H1) with Bragg peaks of a two-dimensional hexagonal lattice and a cylinder form factor; and an oil-rich emulsion, in which excess oil adds Porod scattering. Sigmoids of fixed width smooth every transition, so the curves vary continuously with composition while the peak positions and widths change quickly near the boundaries. The model is carried over from an earlier study and is deposited with the data.
+
+\textbf{Parameters.} Table S2.1 lists every parameter of the forward model; the curves carry no noise.
+
+{\renewcommand{\thetable}{S2.1}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\caption{Parameters of the synthetic forward model (compositions in weight fractions, lengths in \AA{}, \(q\) in \AA{}\ensuremath{^{-1}}).}\label{tab:S2.1}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Group
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Parameter
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Phase boundaries & emulsion: \(x = 0.15 + 0.55\,y\); order--disorder: \(y = 0.42 + 0.50\,x\); cubic--hexagonal: \(y = 0.72 + 0.30\,x\) & sigmoid widths 0.012 \\
+Micelles (L1) & dry radius \(R_0\), cap on swollen radius, swelling strength & 60, 95, 1.2 \\
+& polydispersity (Gaussian, relative), quadrature points & 0.08, 15 \\
+& hard-sphere radius / micelle radius; volume fraction per surfactant fraction, range & 1.25; 0.9, 0.05--0.45 \\
+Ordered phases & FCC (111) position at \((0, 0.5)\); resolution-limited width; extra width near the transition & 0.045, 0.0016, 0.004 \\
+& FCC peak ratios and amplitudes & \(\sqrt{3,4,8,11,12}/\sqrt{3}\); 30, 9, 5, 2.5, 1.5 \\
+& hexagonal peak ratios and amplitudes; \(q^\ast\) relative to FCC & \(\sqrt{1,3,4,7}\); 40, 8, 5, 2; 1.25 \\
+Emulsion and background & Porod amplitude per 0.1 excess oil; flat background & \(4 \times 10^{-8}\); \(5 \times 10^{-5}\) \\
+Intensity & amplitude per surfactant fraction; floor & 2.0; 0.02 \\
+\end{longtable}
+}
 
 \textbf{Design.} A hierarchical Poisson-disk design on the unit square with nine levels, with the corners forced into the coarsest level, is restricted to the triangle \(x + y \le 1\), which leaves 2118 sites. The natural-neighbour interpolant adds mirror images of the measured sites across \(x = 0\), \(y = 0\) and \(x + y = 1\), and across the origin, each carrying the spectrum of its preimage (SI 1.1).
 
@@ -226,7 +266,7 @@ Synthetic map & 2118 & 338 \ensuremath{\pm} 26 & 334 \ensuremath{\pm} 26 & 628 \
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
-\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
+\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation claim alone.}\label{tab:S3.2}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -256,7 +296,7 @@ Synthetic map & 2118 & 334 \ensuremath{\pm} 26 & 1142 \ensuremath{\pm} 219 & 104
 
 {\renewcommand{\thetable}{S3.3}\small
 \begin{longtable}[]{@{}llll@{}}
-\caption{Sites measured with random scores for every certificate, against informed scores (Fig. 6).}\label{tab:S3.3}\\
+\caption{Sites measured with random scores for every claim, against informed scores (Fig. 6).}\label{tab:S3.3}\\
 
 \toprule\noalign{}
 Dataset & Form & Informed scores & Random scores \\
@@ -279,7 +319,7 @@ Synthetic map & Priority path & 628 \ensuremath{\pm} 61 & 1322 \ensuremath{\pm} 
 
 \begin{figure}[tbp]\renewcommand{\thefigure}{S3}
 \centering
-\includegraphics[width=\textwidth]{figures/fig3_forms}
+\includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/fig3_forms}
 \caption{Forms of guarantee, 250 campaigns per configuration. Upper row: sites measured per form, mean \ensuremath{\pm} s.d., with the design size dashed. Lower row: realised wrong-skip rate on every certified level of every campaign, with the budget as a solid line; tick labels give the number of exceedances. Right: fraction of 4000 calibration draws in which \(R_E\) exceeded 0.10 on a population with uninformative scores, for the sequential rule and the two single-budget paths; the band marks \ensuremath{\pm}2 Monte Carlo standard errors around the allowed 0.25.}\label{fig:S3}
 \end{figure}
 
@@ -294,8 +334,6 @@ With random scores, an independent uniform weight per site and claim, the shared
 \hypertarget{si-4.-software-adding-a-form-of-guarantee}{%
 \section*{SI 4. Software: adding a form of guarantee}\label{si-4.-software-adding-a-form-of-guarantee}}
 \addcontentsline{toc}{section}{SI 4. Software: adding a form of guarantee}
-
-\emph{The rest of SI 4 (functionality, tests, reproduction procedure) is still to be drafted. Code and module names belong here and stay out of the main text.}
 
 \hypertarget{si-4.1-contract-for-a-form-of-guarantee}{%
 \subsection*{SI 4.1 Contract for a form of guarantee}\label{si-4.1-contract-for-a-form-of-guarantee}}
@@ -313,7 +351,7 @@ A policy keeps three conditions.
 \item
   \textbf{Fixed family.} Every family of thresholds it searches (a path, a grid, a split of the budget) is built from scores, settings or earlier levels, and from no calibration label of the current level.
 \item
-  \textbf{Stated guarantee.} It returns its guarantees as \texttt{Guarantee(event,\ budget,\ confidence)}, with \texttt{event} equal to \texttt{R\_E} or \texttt{R\_\textless{}certificate\textgreater{}}, or an empty list. Campaign records show an empty list as "no guarantee".
+  \textbf{Stated guarantee.} It returns its guarantees as \texttt{Guarantee(event,\ budget,\ confidence)}, with \texttt{event} equal to \texttt{R\_E} or \texttt{R\_\textless{}claim\textgreater{}}, or an empty list. Campaign records show an empty list as "no guarantee".
 \end{enumerate}
 
 Condition 2 carries the proof of Appendix B. The sequential rule of Section 5.1 violates it.
@@ -367,13 +405,48 @@ The plug-in rule takes the largest threshold whose empirical calibration rate st
 \subsection*{SI 4.3 Worked example: the priority path}\label{si-4.3-worked-example-the-priority-path}}
 \addcontentsline{toc}{subsection}{SI 4.3 Worked example: the priority path}
 
-The priority path subclasses the quantile path and replaces only the entry times: certificate \(i\) in the order sweeps its own score quantiles over \(\lambda \in (i, i + 1]\) (Appendix B.2). The order is a setting, so the family is fixed before the draw and Proposition B.2 applies without change. The implementation is about thirty lines. Unit tests check that the priority path with one certificate gives the same covers as the single-certificate rule, and that both orders pass the acceptance check.
+The priority path subclasses the quantile path and replaces only the entry times: claim \(i\) in the order sweeps its own score quantiles over \(\lambda \in (i, i + 1]\) (Appendix B.2). The order is a setting, so the family is fixed before the draw and Proposition B.2 applies without change. The implementation is about thirty lines. Unit tests check that the priority path with one claim gives the same covers as the single-claim rule, and that both orders pass the acceptance check.
+
+\hypertarget{si-4.4-software-tests-and-reproduction}{%
+\subsection*{SI 4.4 Software, tests and reproduction}\label{si-4.4-software-tests-and-reproduction}}
+\addcontentsline{toc}{subsection}{SI 4.4 Software, tests and reproduction}
+
+\textbf{Functionality.} The workflow is a Python package with four parts: (i) the campaign loop, which runs the five steps of Section 3.1 on any dataset that supplies design sites, levels and an oracle for the measurement at a site; (ii) the forms of guarantee of Section 3.4 as budget policies, with exact hypergeometric and binomial tails; (iii) predictors and scores, natural-neighbour interpolation with mirror images at boundaries and Gaussian-process interpolation under three length-scale rules; (iv) the record, which writes every site\textquotesingle s level, scores, action and reason and every level\textquotesingle s calibration draw, thresholds and picked failure probability, together with the random seed, so that each campaign can be replayed and every bound recomputed.
+
+\textbf{Tests.} The test suite checks the geometry of the natural-neighbour weights, the Gaussian-process engine, the acceptance check of Table S4.1 for every policy, the coverage of every stated guarantee by Monte Carlo on fixed populations (including that the sequential rule exceeds its nominal rate), and that recorded campaigns replay to identical decisions. The implementation refuses a binomial allowance \(k\) larger than the hypergeometric one; no such case arose in this study.
+
+\textbf{Reproduction.} Each figure and table of the main text and of this supplement is produced by a script that reads only the run record; the record is produced by re-running the configurations of Table S4.2 with seeds 0 to 249. A campaign takes 3 to 12 s on one core.
+
+{\renewcommand{\thetable}{S4.2}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\caption{Configuration names in the record and the protocols of the main text.}\label{tab:S4.2}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Name element
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{ir}, \texttt{ir\_\allowbreak{}tight}, \texttt{nacl\_\allowbreak{}fwhm}, \texttt{syn\_\allowbreak{}peak\_\allowbreak{}2cert} & IR map at the original and the tight tolerance; NaCl scan, width claim; synthetic map, peak claim, both claims \\
+\texttt{separate}, \texttt{nested}, \texttt{priority} & per-claim budgets, quantile path, priority path (Section 3.4) \\
+\texttt{watson}, \texttt{sibson} & natural-neighbour (Sibson) interpolation with the logistic score; \texttt{watson} names the construction of the weights \\
+\texttt{gp\_\allowbreak{}mle}, \texttt{gp\_\allowbreak{}design}, \texttt{gp\_\allowbreak{}nonstationary} & Gaussian-process interpolation, length scale by maximum likelihood, by design spacing, by local spacing \\
+\texttt{random} & random scores for every claim \\
+\texttt{legacy\_\allowbreak{}sequential} & the sequential rule of the original IR analysis (Appendix B.3) \\
+\end{longtable}
+}
 
 \hypertarget{si-5.-the-run-record}{%
 \section*{SI 5. The run record}\label{si-5.-the-run-record}}
 \addcontentsline{toc}{section}{SI 5. The run record}
 
-Every configuration of Section 5 was run as 250 independent campaigns, seeds 0 to 249; a seed fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each certificate. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
+Every configuration of Section 5 was run as 250 independent campaigns, seeds 0 to 249; a seed fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
 
 {\renewcommand{\thetable}{S5.1}\small
 \begin{longtable}[]{@{}
@@ -642,7 +715,7 @@ ir\_\allowbreak{}tight\_\allowbreak{}random & R\_\allowbreak{}E & 0.250 & 1000 &
 
 For the 32 stated rates (configuration and statement) whose budget can be exceeded on every level, union-bound statements excluded, the observed number of exceedances lay between 0.88 and 1.11 times the number expected under the picked failure probabilities; the smallest one-sided probability of the observed count was 0.10 (Table S5.3). On the IR map at its original tolerance, three of the four levels hold too few failing sites for the budget to be reached, and the record shows no exceedance there. The union-bound statement of the per-claim form is exceeded far less often than its picked failure probability permits, since two claims seldom approach their budgets on the same level. Repeating the calibration draw on the recorded level populations, the attained exceedance probability, pooled over the levels of each configuration, lay between 0.94 and 1.02 times \(\delta_L\) wherever the budget could be exceeded (Table S5.2).
 
-\textbf{Order of operations.} On a level of 399 IR sites with informative scores, a budget of 0.10 and a picked failure probability of 0.206, the calibration draw was repeated 4000 times. Scores frozen before a uniform draw: 822 exceedances (0.205). Scores that knew the true labels, frozen before the draw: 819 (0.205). Scores of the failing calibration sites raised after the draw and thresholded on the same labels: 4000 (1.00). Calibration sample taken from the half of the level ranked least safe: 2502 (0.63). Most favourable of five draws kept: 2771 (0.69). The sequential rule, which sets the interpolation threshold on the calibration sites the interest threshold left uncovered: 28.8 \%; the priority path, which fixes the same preference in advance: 20.5 \%.
+\textbf{Order of operations.} On a simulated level of 399 sites with informative scores, a budget of 0.10 and a picked failure probability of 0.206, the calibration draw was repeated 4000 times. Scores frozen before a uniform draw: 822 exceedances (0.205). Scores that knew the true labels, frozen before the draw: 819 (0.205). Scores of the failing calibration sites raised after the draw and thresholded on the same labels: 4000 (1.00). Calibration sample taken from the half of the level ranked least safe: 2502 (0.63). Most favourable of five draws kept: 2771 (0.69). On a simulated level of the same size with uninformative scores (Fig. S3), the sequential rule, which sets the interpolation threshold on the calibration sites the interest threshold left uncovered: 28.8 \%; the priority path, which fixes the same preference in advance: 20.5 \%, at the same picked failure probability of 0.206.
 
 \hypertarget{si-6.-what-the-certified-metric-does-to-a-campaign}{%
 \section*{SI 6. What the certified metric does to a campaign}\label{si-6.-what-the-certified-metric-does-to-a-campaign}}
@@ -650,7 +723,7 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 
 A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
 
-\textbf{Set-up.} - \textbf{Campaigns.} The interpolation certificate alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0--49). - \textbf{What changes.} Only the acceptance metric. - \textbf{Signal sites.} Sites marked by the dataset\textquotesingle s interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
+\textbf{Set-up.} - \textbf{Campaigns.} The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0--49). - \textbf{What changes.} Only the acceptance metric. - \textbf{Signal sites.} Sites marked by the dataset\textquotesingle s interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
 
 \textbf{Metrics.}
 
@@ -791,7 +864,7 @@ Synthetic map & log-intensity basis, de-duplicated SVD & 21 \% & 423 \ensuremath
 \subsection*{SI 6.1 Where each metric sends the measurements}\label{si-6.1-where-each-metric-sends-the-measurements}}
 \addcontentsline{toc}{subsection}{SI 6.1 Where each metric sends the measurements}
 
-A metric decides which predictions fail, and so which sites the campaign measures. For the synthetic map and the NaCl scan, the peak or line-width metric was compared with the whole-profile metric, at default and at matched tolerances: 50 campaigns each, interpolation certificate only. For each site, the frequency of being measured because no claim covered it was recorded; seed and calibration sites are left out, since they are the same under both metrics (Fig. S6).
+A metric decides which predictions fail, and so which sites the campaign measures. For the synthetic map and the NaCl scan, the peak or line-width metric was compared with the whole-profile metric, at default and at matched tolerances: 50 campaigns each, interpolation claim only. For each site, the frequency of being measured because no claim covered it was recorded; seed and calibration sites are left out, since they are the same under both metrics (Fig. S6).
 
 \textbf{Synthetic map.} - \textbf{Default tolerances.} The peak metric measured 40 sites per campaign and the profile metric 118. - \textbf{Matched tolerances.} The peak metric measured 175 and the profile metric 133. - \textbf{Little overlap.} The two metrics put only 16 \% (default) and 31 \% (matched) of their measurements on the same sites. - \textbf{The peak metric} sends measurements to bands where the peak position and width drift with composition: the micellar interior (76 of 175 at matched tolerance) and the lower-left corner of the triangle. - \textbf{The profile metric} sends them to phase boundaries. 45--46 \% of its measurements fall on the 8.8 \% of sites that border another phase, against 32 \% for the peak metric. The boundary between the micellar phase and the emulsion is measured almost only under the profile metric. - \textbf{Each metric follows its own sensitivity.} The frequency of measurement under the peak metric correlates with the local change in the peak descriptors (Spearman 0.72 at matched tolerance), and only weakly with the local change in the profile (0.15). Under the profile metric, the order of the two correlations reverses (0.41 and 0.49).
 
@@ -799,7 +872,7 @@ A metric decides which predictions fail, and so which sites the campaign measure
 
 \begin{figure}[tbp]\renewcommand{\thefigure}{S6}
 \centering
-\includegraphics[width=\textwidth]{figures/figS6_sampling}
+\includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/figS6_sampling}
 \caption{Frequency of measurement because no claim applied, over 50 campaigns, for the peak or line-width metric (left) and the profile metric (middle), and their difference (right; red: measured more under the profile metric). Rows: synthetic map at default and matched tolerances; NaCl scan at default and matched tolerances.}\label{fig:S6}
 \end{figure}
 
@@ -1012,8 +1085,8 @@ On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a 
 
 \begin{figure}[tbp]\renewcommand{\thefigure}{S7}
 \centering
-\includegraphics[width=\textwidth]{figures/figS7_cost}
-\caption{Cost against realised error on the NaCl scan: sites measured against the share of the sites of levels 3 to 6 skipped wrongly, for 250 certified campaigns with natural-neighbour prediction (grey; diamond: the campaign of Fig. 1c), 3 \ensuremath{\times} 250 certified campaigns with the Gaussian-process mean as predictor (purple; length scale by maximum likelihood, by design spacing or by local spacing), and the uncertified Gaussian-process rule at intervals of 68 \% to 99 \% (open symbols).}\label{fig:S7}
+\includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/figS7_cost}
+\caption{The NaCl scan, levels 3 to 6. (a) Sites measured against the share of sites skipped wrongly: 250 certified campaigns with natural-neighbour prediction (grey; diamond: the campaign of Fig. 1a), 3 \ensuremath{\times} 250 certified campaigns with the Gaussian-process mean as predictor (purple; length scale by maximum likelihood, by design spacing or by local spacing), and the uncertified Gaussian-process rule at intervals of 68 \% to 99 \% (open symbols). (b) Realised share of each level skipped wrongly in the 250 certified campaigns of natural-neighbour prediction, against the budget of 20 \%; numbers give level runs over budget against the number expected under the picked failure probabilities.}\label{fig:S7}
 \end{figure}
 
 \hypertarget{si-8.-the-record-of-measured-sites}{%
@@ -1150,7 +1223,7 @@ outcome
 
 \begin{figure}[tbp]\renewcommand{\thefigure}{S8}
 \centering
-\includegraphics[width=\textwidth]{figures/figS8_measured}
+\includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/figS8_measured}
 \caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Error of the frozen prediction divided by the tolerance (NaCl: width error ÷ 0.02 nm\ensuremath{^{-1}}; synthetic map: the larger of peak-position error ÷ 0.005 and peak-width error ÷ 0.001; IR map: mean over channels of the absorbance error ÷ (0.10 \ensuremath{\times} absorbance + 0.10)) at every site of the certified levels, grouped by action: skipped as predictable only, skipped under both claims (wrong only where the line is also of interest), measured as a random calibration draw, measured by choice. Red: one, a miss by exactly the tolerance; above it the prediction fails; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Percentages give the share above the tolerance over 250 campaigns. (d--f) Residuals of the sites measured by choice, ranked among the calibration residuals of their level (randomised conformal p-value, SI 8 text): share falling in each fifth of the calibration residuals, from the largest to the smallest. Dashed: 20 \%, expected if measuring by choice were no better than drawing at random. Titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
 \end{figure}
 

@@ -30,7 +30,7 @@ $$
 \sigma(x)^2 = k(x, x) - k(x)^\top (K + \nu I)^{-1} k(x)
 $$
 
-One set of weights serves every channel of the spectrum, so the fit costs one Cholesky factorisation per level. The score depends on positions, length scale and nugget only. The interest certificate keeps its natural-neighbour score.
+One set of weights serves every channel of the spectrum, so the fit costs one Cholesky factorisation per level. The score depends on positions, length scale and nugget only. The interest claim keeps its natural-neighbour score.
 
 **Length-scale rules.**
 

@@ -3,7 +3,7 @@
 A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
 
 **Set-up.**
-- **Campaigns.** The interpolation certificate alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0–49).
+- **Campaigns.** The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0–49).
 - **What changes.** Only the acceptance metric.
 - **Signal sites.** Sites marked by the dataset's interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
 
@@ -76,7 +76,7 @@ A skip claims that a prediction meets an acceptance metric, and the choice of me
 
 ## SI 6.1 Where each metric sends the measurements
 
-A metric decides which predictions fail, and so which sites the campaign measures. For the synthetic map and the NaCl scan, the peak or line-width metric was compared with the whole-profile metric, at default and at matched tolerances: 50 campaigns each, interpolation certificate only. For each site, the frequency of being measured because no claim covered it was recorded; seed and calibration sites are left out, since they are the same under both metrics (Fig. S6).
+A metric decides which predictions fail, and so which sites the campaign measures. For the synthetic map and the NaCl scan, the peak or line-width metric was compared with the whole-profile metric, at default and at matched tolerances: 50 campaigns each, interpolation claim only. For each site, the frequency of being measured because no claim covered it was recorded; seed and calibration sites are left out, since they are the same under both metrics (Fig. S6).
 
 **Synthetic map.**
 - **Default tolerances.** The peak metric measured 40 sites per campaign and the profile metric 118.

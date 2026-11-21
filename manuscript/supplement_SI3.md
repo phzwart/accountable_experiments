@@ -10,7 +10,7 @@
 | NaCl scan | 1071 | 719 ± 60 | 614 ± 56 | 678 ± 39 |
 | Synthetic map | 2118 | 338 ± 26 | 334 ± 26 | 628 ± 61 |
 
-**Table S3.2.** Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6. The tight IR tolerance is ±(10 % + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.
+**Table S3.2.** Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6. The tight IR tolerance is ±(10 % + 0.01) absorbance with interest at 0.02; the last row uses the interpolation claim alone.
 
 | Dataset | Design sites | Natural neighbour | GP, max. likelihood | GP, design spacing | GP, local spacing |
 | --- | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@
 | NaCl scan | 1071 | 614 ± 56 | 745 ± 72 | 760 ± 70 | 777 ± 60 |
 | Synthetic map | 2118 | 334 ± 26 | 1142 ± 219 | 1040 ± 202 | 1443 ± 133 |
 
-**Table S3.3.** Sites measured with random scores for every certificate, against informed scores (Fig. 6).
+**Table S3.3.** Sites measured with random scores for every claim, against informed scores (Fig. 6).
 
 | Dataset | Form | Informed scores | Random scores |
 | --- | --- | --- | --- |

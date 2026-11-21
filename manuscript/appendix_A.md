@@ -1,4 +1,4 @@
-# Appendix A. Exchangeability by design and the single-certificate bound (draft 1)
+# Appendix A. Exchangeability by design and the single-claim bound (draft 1)
 
 ## A.1 Conditions
 
@@ -41,11 +41,11 @@ $$
 
 $\square$
 
-The argument is the one-sided tolerance bound of Wilks (1941) in the form used for risk control [Bates2021; Angelopoulos2025], with the exact finite-population tail in place of its binomial approximation. The binomial $k$, the largest with $P(\mathrm{Bin}(m, \varepsilon) \le k) \le \delta$, is never larger and gives a valid, more conservative rule.
+The argument is the one-sided tolerance bound of Wilks (1941) in the form used for risk control [Bates2021; Angelopoulos2025], with the exact finite-population tail in place of its binomial approximation. The binomial $k$, the largest with $P(\mathrm{Bin}(m, \varepsilon) \le k) \le \delta$, was never larger in this study and then gives a valid, more conservative rule; the implementation checks the ordering on every level and refuses a binomial $k$ above the hypergeometric one, and a numerical check over level sizes from 41 to 1300, budgets from 0.05 to 0.30 and failure probabilities from 0.05 to 0.25 at $m = 40$ found no exception.
 
 **The picked level.** $\delta_L = P(H \le k)$ takes values on a grid indexed by $k$ and set by $m$, $N_L$ and $\varepsilon$. The rule picks the largest grid point at or below $\delta$, and $\delta_L$ is the failure probability the level asserts. Equality in Proposition A.1 holds when exactly $\lfloor \varepsilon N \rfloor + 1$ bad sites lie at or below $\tau^\ast$; Appendix B.5 describes the randomised rule that reaches $\delta$ itself.
 
-**Several levels.** Taking expectations over $\mathcal{F}_{L-1}$ gives the unconditional bound on each level. For a statement about all certified levels at once, $P(\exists L : R_L > \varepsilon) \le \sum_L \delta_L$.
+**Several levels.** Taking expectations over $\mathcal{F}_{L-1}$ gives the unconditional bound on each level. For a statement about all certified levels at once, $P(\exists L : R_L > \varepsilon) \le \sum_L \delta_L$, where a level that holds too few failing sites for the budget to be reached contributes nothing. A plan certified at campaign confidence $c$ divides $1 - c$ among its levels before the first draw. When a level is drawn up from earlier measurements, its size and hence $\delta_L$ depend on the history; the bound then holds for the levels the plan actually produces, each $\delta_L$ being fixed before its own draw.
 
 ## A.3 What breaks the conditions
 

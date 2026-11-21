@@ -14,6 +14,8 @@ A hierarchical Poisson-disk design [Bridson2007] partitions the scan into nested
 4. *Calibrate.* The calibration sites are measured, their labels are evaluated against the frozen predictor, and the rule turns the labels into thresholds.
 5. *Decide.* Covered sites of the remainder are skipped and the others measured; every measured site joins the measured set for the next level.
 
+Step 5 is the action of the level: one decision, taken after the draw, on which of its sites are measured and which are skipped, and under which claim. The decision covers every site of the level at once, so the order in which the sites are then measured is free. The contract states a goal, here that on every level of the plan at most a fraction ε of the sites are skipped under a false claim, and the plan, its levels and the rule that decides each of them, is certified to reach that goal with probability at least c over its calibration draws. The failure probability 1 − c is divided among the levels when the plan is declared. Each action carries its own bound, and the record gives every site its reason.
+
 **Figure 2.** The workflow. (a) Hierarchical design of the IR map: levels 0–2 form the seed, and each finer level fills the gaps of the coarser ones. (b) The five steps on one level; the calibration draw is the only random element of the guarantee, and its labels are unseen until the rule is frozen. (c) The two claims: a skipped site is covered as not of interest ($A$), as predictable ($B$) or both, and the skip is wrong when a covering claim is false. The guarantee bounds the share of level-$L$ sites at which the shared event $E$ occurs. File: `figures/fig1_schematic.png`.
 
 Non-anticipation ties the steps together: nothing that shapes the guarantee on a level may depend on that level's draw, except through the rule fixed in step 2. Three practices that look harmless break it, and Section 5.1 shows each failing: refitting the scores on the calibration labels before the threshold is set, taking the calibration sample where the model is least sure, and keeping the most favourable of several draws. The condition concerns the draw and the rule. A score may use anything known before the draw, including physical models, other datasets or prior beliefs; a poor score costs measurements and leaves the guarantee intact.
@@ -48,7 +50,7 @@ $$
 P\big(R_j(\hat\tau_j) \le \varepsilon\big) \ge 1 - \delta
 $$
 
-holds over the draw, for any score and any predictor [Wilks1941; Bates2021; Angelopoulos2025]. The argument needs only a rate that grows with the threshold and a uniform draw; Appendix A gives it. The attained value $\delta_L = P(H \le k)$, at most $\delta$, is the failure probability the level carries, and $c = 1 - \delta$ is the confidence of the contract. The statement concerns one level; all certified levels of a campaign hold together with probability at least $1 - \sum_L \delta_L$ (Appendix A). Allowing no failure in the draw gives, in the binomial approximation, the smallest budget that $m$ sites can certify, $\varepsilon_{\min} = 1 - \delta^{1/m}$.
+holds over the draw, for any score and any predictor [Wilks1941; Bates2021; Angelopoulos2025]. The argument needs only a rate that grows with the threshold and a uniform draw; Appendix A gives it. The attained value $\delta_L = P(H \le k)$, at most $\delta$, is the failure probability the level carries. On a level of 399 sites with $m = 40$ and $\varepsilon = 0.10$, a level just over budget holds 40 failing sites; at $\delta = 0.25$ the rule allows $k = 2$ failing calibration sites, stops at the third, and carries $\delta_L = 0.206$. The statement concerns one level; all certified levels of a campaign hold together with probability at least $1 - \sum_L \delta_L$, the sum running over the levels on which the budget can be exceeded (Appendix A). A plan certified at campaign confidence $c$ therefore sets $\delta = (1 - c)/n$ on each of its $n$ certified levels. Allowing no failure in the draw gives, in the binomial approximation, the smallest budget that $m$ sites can certify, $\varepsilon_{\min} = 1 - \delta^{1/m}$.
 
 ## 3.4 Forms of guarantee
 
@@ -83,11 +85,17 @@ alongside a separate guarantee for each claim. The split leaves each claim a sma
 
 ## 3.5 What is claimed and what is checked
 
-A reader of the record needs to know what each guarantee covers. Each guarantee of Sections 3.3 and 3.4 concerns the design sites of one level and the predictor frozen for that level. Its probability is taken over the calibration draw of that level. It bounds how many skips fail, and the location of the failures is left open. It says nothing about points between design sites, nor about the final map, which draws on measurements made after the level was decided.
+A reader of the record needs to know what each guarantee covers:
+
+- **Per level, and per plan.** Each bound concerns the design sites of one level and holds with probability $1 - \delta_L$ over that level's draw; the plan reaches its goal on every level with the confidence of the contract.
+- **Share of the level.** The denominator is every site of the level, measured or skipped; the share of skipped sites that are wrong is larger and is reported beside it (Table 4).
+- **Count, not place.** The bound limits how many skips fail and leaves their location open; wrong skips can gather, and when sites of interest are rare a level can meet its budget while losing many of them (Section 5.5).
+- **Design sites only.** Nothing is claimed between design sites or for a display map drawn afterwards from all measurements.
+- **One measurement as truth.** A label compares the prediction with what a single measurement returns, noise included, so a tolerance close to the measurement scatter makes many predictions fail whatever the model.
 
 Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw (Appendix C), and the calibration labels also bound the share of the level that the map from coarser levels predicts outside tolerance (SI 9).
 
-A measurement is certified in another way. Each site was measured because the design placed it in the seed, the draw placed it in the calibration sample, or no claim covered it under the thresholds frozen for its level. This certification is exact, made at the time of decision and replayable; a measured site that hindsight finds predictable counts as a cost of the guarantee.
+Each site of an action carries its reason. A site was measured because the plan placed it in the seed, the draw placed it in the calibration sample, or no claim covered it under the thresholds frozen for its level, and it was skipped under the claim that covered it. The reasons are exact, fixed at the time of decision and replayable; a measured site that hindsight finds predictable counts as a cost of the guarantee.
 
 ---
 

@@ -18,21 +18,23 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [ClopperPearson1934] **M** Clopper, Pearson (1934). The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26(4), 404–413.
 - [Cochran1977] **M** Cochran (1977). Sampling Techniques, 3rd ed. Wiley.
 - [DavidNagaraja2003] **V** David, Nagaraja (2003). Order Statistics, 3rd ed. Wiley.
+- [DodgeRomig1959] **M** Dodge, Romig (1959). Sampling Inspection Tables: Single and Double Sampling, 2nd ed. Wiley.
 - [EU2024] **V** Regulation (EU) 2024/1689 (Artificial Intelligence Act), OJ L 2024/1689, 12.7.2024, Article 12.
 - [Fannjiang2022] **V** Fannjiang, Bates, Angelopoulos, Listgarten, Jordan (2022). Conformal prediction under feedback covariate shift for biomolecular design. PNAS 119(43), e2204569119. doi:10.1073/pnas.2204569119.
 - [Gardner2018] **M** Gardner, Pleiss, Bindel, Weinberger, Wilson (2018). GPyTorch: blackbox matrix-matrix Gaussian process inference with GPU acceleration. NeurIPS 31.
+- [Geifman2017] **V** Geifman, El-Yaniv (2017). Selective classification for deep neural networks. NeurIPS 30.
 - [Gibbs1997] **M** Gibbs (1997). Bayesian Gaussian processes for regression and classification. PhD thesis, University of Cambridge.
 - [Gibbs2021] **V** Gibbs, Candès (2021). Adaptive conformal inference under distribution shift. NeurIPS 34.
 - [Godaliyadda2018] **V** Godaliyadda et al. (2018). A framework for dynamic image sampling based on supervised learning. IEEE Trans. Comput. Imaging 4(1). doi:10.1109/TCI.2017.2777482.
 - [Gotovos2013] **V** Gotovos, Casati, Hitz, Krause (2013). Active learning for level set estimation. IJCAI 2013, 1344–1350.
 - [HanaorSorrell2011] **V** Hanaor, Sorrell (2011). Review of the anatase to rutile phase transformation. J. Mater. Sci. 46(4), 855–874. doi:10.1007/s10853-010-5113-0.
-- [WaudbySmith2020] **V** Waudby-Smith, Ramdas (2020). Confidence sequences for sampling without replacement. NeurIPS 33.
 - [Jin2023] **V** Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.
 - [Kalinin2021] **V** Kalinin et al. (2021). arXiv:2103.12165.
 - [Kohler2005] **M** Kohler, Kirschner, Oust, Martens (2005). Extended multiplicative signal correction as a tool for separation and characterization of physical and chemical information in Fourier transform infrared microscopy images of cryo-sections of beef loin. Appl. Spectrosc. 59(6), 707–716. SI only.
 - [Kusne2020] **V** Kusne et al. (2020). On-the-fly closed-loop materials discovery via Bayesian active learning. Nat. Commun. 11, 5966. doi:10.1038/s41467-020-19597-w.
 - [LauferGoldshtein2023] **V** Laufer-Goldshtein, Fisch, Barzilay, Jaakkola (2023). Efficiently controlling multiple risks with Pareto Testing. ICLR 2023. arXiv:2210.07913.
 - [LiangZeger1986] **V** Liang, Zeger (1986). Longitudinal data analysis using generalized linear models. Biometrika 73(1), 13–22. doi:10.1093/biomet/73.1.13.
+- [LindemanStark2012] **M** Lindeman, Stark (2012). A gentle introduction to risk-limiting audits. IEEE Secur. Priv. 10(5), 42–49.
 - [Manoharan2026] **V** Manoharan (2026). Audited selective verification for risk-controlled N-1 thermal contingency screening under deployment shift. arXiv:2607.13221.
 - [Mao2024] **V** JASA 119(546), 904–914. doi:10.1080/01621459.2022.2147531.
 - [MartensStark1991] **M** Martens, Stark (1991). Extended multiplicative signal correction and spectral interference subtraction: new preprocessing methods for near infrared spectroscopy. J. Pharm. Biomed. Anal. 9(8), 625–635. SI only.
@@ -48,6 +50,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Raji2020] **V** Raji et al. (2020). Closing the AI accountability gap: defining an end-to-end framework for internal algorithmic auditing. FAT* '20. doi:10.1145/3351095.3372873.
 - [RasmussenWilliams2006] **M** Rasmussen, Williams (2006). Gaussian Processes for Machine Learning. MIT Press.
 - [Sadinle2019] **M** Sadinle, Lei, Wasserman (2019). Least ambiguous set-valued classifiers with bounded error levels. JASA 114(525), 223–234.
+- [Sarndal1992] **M** Särndal, Swensson, Wretman (1992). Model Assisted Survey Sampling. Springer.
 - [Sibson1981] **M** Sibson (1981). A brief description of natural neighbour interpolation. In Barnett (ed.), Interpreting Multivariate Data, Wiley, 21–36.
 - [Solheim2019] **M** Solheim, Gunko, Petersen, Großerueschkamp, Gerwert, Kohler (2019). An open-source code for Mie extinction extended multiplicative signal correction. J. Biophotonics 12(8), e201800415. SI only.
 - [SpurrMyers1957] **M** Spurr, Myers (1957). Quantitative analysis of anatase–rutile mixtures with an X-ray diffractometer. Anal. Chem. 29(5), 760–762. (Title and authors verified; volume and pages to confirm.) SI only.
@@ -58,8 +61,11 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Upreti2026] **V** Upreti, Adhikari, Baral, Wang, Ma, Zhu, Noack, Gu (2026). Autonomous phase diagram mapping of polymer blends through SAXS-guided active learning. ChemRxiv. doi:10.26434/chemrxiv.15012310/v1.
 - [vandeHulst1957] **M** van de Hulst (1957). Light Scattering by Small Particles. Wiley. SI only.
 - [Vovk2005] **M** Vovk, Gammerman, Shafer (2005). Algorithmic Learning in a Random World. Springer.
+- [Vovk2013] **M** Vovk (2013). Transductive conformal predictors. In: Artificial Intelligence Applications and Innovations (AIAI 2013), IFIP AICT 412, 348–360. Springer.
 - [Watson1992] **?** Watson (1992). Contouring: A Guide to the Analysis and Display of Spatial Data. Pergamon. (SI only.)
+- [WaudbySmith2020] **V** Waudby-Smith, Ramdas (2020). Confidence sequences for sampling without replacement. NeurIPS 33.
 - [WestfallKrishen2001] **?** Westfall, Krishen (2001). Optimally weighted, fixed sequence and gatekeeper multiple testing procedures. J. Stat. Plann. Inference 99(1), 25–40.
+- [Wieczorek2023] **V** Wieczorek (2023). Design-based conformal prediction. Survey Methodology 49(2), 443–473.
 - [Wilks1941] **V** Wilks (1941). Determination of sample sizes for setting tolerance limits. Ann. Math. Stat. 12, 91–96. doi:10.1214/aoms/1177731788.
 - [WilliamsonHall1953] **V** Williamson, Hall (1953). X-ray line broadening from filed aluminium and wolfram. Acta Metall. 1(1), 22–31. doi:10.1016/0001-6160(53)90006-6. SI only.
 - [Yager2023] **V** Yager, Majewski, Noack, Fukuto (2023). Autonomous x-ray scattering. Nanotechnology 34, 322001.
@@ -68,4 +74,5 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [ZhangBanfield1999] **V** Zhang, Banfield (1999). New kinetic model for the nanocrystalline anatase-to-rutile transformation revealing rate dependence on number of particles. Am. Mineral. 84, 528–535. SI only.
 - [ZhangBanfield2000] **V** Zhang, Banfield (2000). Phase transformation of nanocrystalline anatase-to-rutile via combined interface and surface nucleation. J. Mater. Res. 15(2), 437–448. doi:10.1557/jmr.2000.0067.
 - [Ziatdinov2022] **?** Ziatdinov et al. (2022). ACS Nano; arXiv:2205.15458. Volume and pages to confirm.
+- [ZrnicCandes2024] **V** Zrnic, Candès (2024). Active statistical inference. ICML 2024, PMLR 235, 62993–63010.
 

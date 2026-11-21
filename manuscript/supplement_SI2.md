@@ -2,7 +2,7 @@
 
 ## SI 2.1 Infrared map
 
-**Data.** The map covers 29 × 42 pixels at a pitch of 1 µm, with 1738 channels between 650 and 4000 cm⁻¹ in apparent absorbance. The certificate window is 1500–1850 cm⁻¹. It holds the amide and ester bands, where scattering distortions are strongest next to the absorption bands.
+**Data.** The map covers 29 × 42 pixels at a pitch of 1 µm, with 1738 channels between 650 and 4000 cm⁻¹ in apparent absorbance. The claim window is 1500–1850 cm⁻¹. It holds the amide and ester bands, where scattering distortions are strongest next to the absorption bands.
 
 **Scattering correction.** Particles of a few micrometres scatter infrared light resonantly. The result is broad oscillations and dispersive swings at band edges, superimposed on the absorbance. Each spectrum is corrected by extended multiplicative signal correction with a resonant Mie basis [MartensStark1991; Kohler2005; Bassan2010; Solheim2019]. The measured apparent absorbance is modelled as a scaled chemical spectrum plus a scattering background:
 
@@ -18,7 +18,7 @@ The background is a combination of seven signed principal components of a family
 
 The chemical estimate is refined self-consistently. Each pixel starts from its own apparent absorbance, and after each of six iterations its estimate is replaced by its own corrected spectrum. No information passes between pixels, so the correction is a fixed transformation of each spectrum and can be applied to a site as soon as it is measured.
 
-The corrected spectrum used throughout is the apparent absorbance minus the fitted background, clipped at zero; the scale b is not divided out. A site is of interest when any channel in the certificate window reaches absorbance 0.1. That holds for 37 % of the pixels.
+The corrected spectrum used throughout is the apparent absorbance minus the fitted background, clipped at zero; the scale b is not divided out. A site is of interest when any channel in the claim window reaches absorbance 0.1. That holds for 37 % of the pixels.
 
 **Sensitivity to the starting estimate.** The iteration converges to the same corrected spectrum for most pixels, whatever the starting estimate. Starting from the median spectrum of the map instead of each pixel's own spectrum changes the corrected window by a median of 0.001. For about 5 % of the pixels it changes it by more than 0.05, and 20 of 1218 pixels change their interest label. The guarantees of the main text concern the target as defined by the per-pixel correction. Any fixed per-spectrum transformation defines a valid target.
 
@@ -37,6 +37,22 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
 ## SI 2.3 Synthetic small-angle scattering map
 
 **Forward model.** A composition $(x, y)$, with $x$ the oil and $y$ the surfactant weight fraction and $x + y \le 1$, maps to a noiseless scattering curve on 240 logarithmically spaced points between 0.005 and 0.32 Å⁻¹. Four phases are separated by straight boundaries in composition: a micellar phase (L1), modelled as polydisperse spheres whose radius swells with solubilised oil, with a Percus–Yevick hard-sphere structure factor; an ordered cubic phase (I1) with face-centred cubic Bragg peaks; a hexagonal phase (H1) with Bragg peaks of a two-dimensional hexagonal lattice and a cylinder form factor; and an oil-rich emulsion, in which excess oil adds Porod scattering. Sigmoids of fixed width smooth every transition, so the curves vary continuously with composition while the peak positions and widths change quickly near the boundaries. The model is carried over from an earlier study and is deposited with the data.
+
+**Parameters.** Table S2.1 lists every parameter of the forward model; the curves carry no noise.
+
+**Table S2.1.** Parameters of the synthetic forward model (compositions in weight fractions, lengths in Å, $q$ in Å⁻¹).
+
+| Group | Parameter | Value |
+| --- | --- | --- |
+| Phase boundaries | emulsion: $x = 0.15 + 0.55\,y$; order–disorder: $y = 0.42 + 0.50\,x$; cubic–hexagonal: $y = 0.72 + 0.30\,x$ | sigmoid widths 0.012 |
+| Micelles (L1) | dry radius $R_0$, cap on swollen radius, swelling strength | 60, 95, 1.2 |
+| | polydispersity (Gaussian, relative), quadrature points | 0.08, 15 |
+| | hard-sphere radius / micelle radius; volume fraction per surfactant fraction, range | 1.25; 0.9, 0.05–0.45 |
+| Ordered phases | FCC (111) position at $(0, 0.5)$; resolution-limited width; extra width near the transition | 0.045, 0.0016, 0.004 |
+| | FCC peak ratios and amplitudes | $\sqrt{3,4,8,11,12}/\sqrt{3}$; 30, 9, 5, 2.5, 1.5 |
+| | hexagonal peak ratios and amplitudes; $q^\ast$ relative to FCC | $\sqrt{1,3,4,7}$; 40, 8, 5, 2; 1.25 |
+| Emulsion and background | Porod amplitude per 0.1 excess oil; flat background | $4 \times 10^{-8}$; $5 \times 10^{-5}$ |
+| Intensity | amplitude per surfactant fraction; floor | 2.0; 0.02 |
 
 **Design.** A hierarchical Poisson-disk design on the unit square with nine levels, with the corners forced into the coarsest level, is restricted to the triangle $x + y \le 1$, which leaves 2118 sites. The natural-neighbour interpolant adds mirror images of the measured sites across $x = 0$, $y = 0$ and $x + y = 1$, and across the origin, each carrying the spectrum of its preimage (SI 1.1).
 
