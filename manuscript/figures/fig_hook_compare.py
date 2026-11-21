@@ -6,8 +6,9 @@ its 68 % interval on the width lies within the tolerance. Certified: the campaig
 (d) Sites measured against the realised share of levels 3-6 skipped wrongly: 250 certified campaigns and the
     GP rule at four interval widths, with latent or predictive standard deviation.
 (e) GP rule: share of predictable skips wrong, promised by the interval and realised.
-(f) Certified: realised share of each level skipped wrongly in 250 campaigns, against the budget of 20 %
-    guaranteed with confidence 0.80; numbers give levels over budget against the number allowed.
+(f) Certified: realised share of each level skipped wrongly in 250 campaigns, against the budget of 20 %.
+    The guarantee is statistical: a level exceeds the budget with probability at most delta_L <= 0.20
+    (confidence 0.80); numbers give level-runs over budget against the sum of the picked delta_L.
 
     python -m experiments.uncertified_gp && python manuscript/figures/fig_hook_compare.py
 """
@@ -101,7 +102,7 @@ def main():
     amap(X0[1], u_act, u_wrong, f"(b) GP-guided: {rowu['measured']} measured,\n"
                                 f"     {100 * rowu['wrong_rate']:.0f} % skipped wrongly, no rate stated")
     amap(X0[2], c_act, c_wrong, f"(c) Certified: {int((~S).sum())} measured,\n"
-                                f"     {100 * c_wrong[cert].mean():.0f} % wrong, at most 20 % guaranteed")
+                                f"     {100 * c_wrong[cert].mean():.0f} % wrong; stated bound 20 %")
 
     # (d) cost against realised error
     ax = fig.add_axes([X0[0], by, mw, bh])
@@ -158,13 +159,13 @@ def main():
         ax.text(j, 0.385, f"{ex}/{allow:.0f}", ha="center", va="center", fontsize=5.9, color=INK2)
     ax.text(-0.55, 0.415, "levels over budget / allowed", fontsize=5.7, color=INK2, va="center")
     ax.axhline(BUDGET, color=RED, lw=1.0)
-    ax.text(len(levels) - 0.45, BUDGET + 0.006, "guaranteed", color=RED, fontsize=6.1, ha="right", va="bottom")
+    ax.text(len(levels) - 0.45, BUDGET + 0.006, "budget", color=RED, fontsize=6.1, ha="right", va="bottom")
     ax.set_xticks(range(len(levels)))
     ax.set_xticklabels([f"L{L}" for L in levels], fontsize=6.3)
     ax.set_xlabel("level", fontsize=6.8)
     ax.set_ylabel("share of level skipped wrongly", fontsize=6.8, labelpad=1)
     ax.set_ylim(0, 0.43); ax.set_xlim(-0.6, len(levels) - 0.4)
-    style(ax, "(f) Certified: what was\n     guaranteed, what happened")
+    style(ax, "(f) Certified: over budget in at\n     most 20 % of levels, as stated")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 
@@ -181,8 +182,8 @@ def main():
     fig.text(0.07, 0.968, "Two campaigns, one scan: only one can say how often it skipped wrongly",
              fontsize=10, fontweight="bold", color=INK)
     fig.text(0.07, 0.938, "NaCl microdiffraction, width of the (200) line, tolerance 0.02 nm$^{-1}$. Both campaigns "
-             "skip about 40 % of 1071 sites;\nonly the certified one states its error rate in advance, and the "
-             "statement holds level by level.",
+             "skip about 40 % of 1071 sites;\nonly the certified one states its error rate in advance: at most 20 % "
+             "of each level skipped wrongly, with confidence 0.80.",
              fontsize=6.9, color=INK2, va="top", linespacing=1.4)
     fig.savefig(FIG / "fig_hook_compare.png", dpi=200)
     fig.savefig(FIG / "fig_hook_compare.pdf")
