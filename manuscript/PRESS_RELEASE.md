@@ -6,11 +6,11 @@ Living copy: https://claude.ai/artifact/CRGLcUbT9nj4sLBxDoehsd (edit there; this
 
 ## Every action accounted for: Berkeley Lab scientists make AI-run experiments answerable for what they measure and what they skip
 
-*Researchers state what may go wrong and how often; the AI agent then gives a reason for every site it measures and every site it leaves out.*
+*Researchers state what may go wrong and how much of it they can accept; the AI agent then gives a reason for every site it measures and every site it leaves out.*
 
 **BERKELEY, Calif. — \[Month day, 2027\]**
 
-Cloud labs now run chemistry around the clock, and synchrotron beamlines at Department of Energy (DOE) light sources increasingly hand the overnight shift to an AI agent that decides where to measure next. Scientists at DOE's Lawrence Berkeley National Laboratory (Berkeley Lab) have made those agents accountable. With their approach, every action an autonomous experiment takes is certified: a site is measured because it was needed when the decision was made, and a site is skipped because a stated claim covers it, with a guaranteed limit on how often such skips turn out wrong.
+Cloud labs now run chemistry around the clock, and synchrotron beamlines at Department of Energy (DOE) light sources increasingly hand the overnight shift to an AI agent that decides where to measure next. Scientists at DOE's Lawrence Berkeley National Laboratory (Berkeley Lab) have made those agents accountable. With their approach, every action an autonomous experiment takes is certified: a site is measured because it was needed when the decision was made, and a site is skipped because a stated claim covers it, with a limit, guaranteed at a stated confidence, on how much of the scan is skipped wrongly.
 
 ### The problem: decisions without responsibility
 
@@ -18,12 +18,12 @@ AI-assisted experiments save beam time, samples and reagents, and they are here 
 
 ### The solution: a contract, and a reason for every choice
 
-Before the experiment starts, the researcher writes a short contract: what counts as safe to leave out, how close a prediction must come to the truth, and how much may go wrong. The statistical framework turns that contract into the agent's decisions, and keeps a small random check on its work along the way. The agent remains free to use any AI model it likes; the contract governs what it may do with it.
+Before the experiment starts, the researcher writes a short contract: what counts as safe to leave out, how close a prediction must come to the truth, how much may go wrong, and with what confidence. The statistical framework turns that contract into the agent's decisions, and keeps a small random check on its work along the way. The agent remains free to use any AI model it likes; the contract governs what it may do with it.
 
 The outcome is a campaign that can account for itself, site by site:
 
 - **Measured, because it was needed:** no claim could vouch for the site when the decision was made.
-- **Skipped, because a claim covers it:** the site holds nothing of interest, or its result can be predicted within tolerance, and the share of such skips that go wrong stays within the agreed limit.
+- **Skipped, because a claim covers it:** the site holds nothing of interest, or its result can be predicted within tolerance, and the share of the scan skipped wrongly stays within the agreed limit, at the agreed confidence.
 
 Every choice, to measure or not to measure, is written into a record that can be checked afterwards.
 
