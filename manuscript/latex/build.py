@@ -66,7 +66,13 @@ def cites(t: str) -> str:
         if loc:
             return r"\cite[" + loc.strip().replace(" ", NBSP) + "]{" + ",".join(keys) + "}"
         return r"\cite{" + ",".join(keys) + "}"
-    return re.sub(r"\[(" + key + r"(?:; ?" + key + r")*(?:, [^\]]+)?)\]", rep, t)
+    t = re.sub(r"\[(" + key + r"(?:; ?" + key + r")*(?:, [^\]]+)?)\]", rep, t)
+    # keys without a year (datasets): only those in the bibliography, never a markdown link
+    return re.sub(r"\[([A-Za-z][A-Za-z0-9]+)\](?!\()",
+                  lambda m: r"\cite{" + m.group(1) + "}" if m.group(1) in KNOWN_KEYS else m.group(0), t)
+
+
+KNOWN_KEYS: set = set()
 
 
 def xrefs(t: str) -> str:
@@ -156,6 +162,8 @@ def convert(name: str, kind: str) -> str:
         t = xrefs(t)
     tex = pandoc(t)
     tex = uni(tex)
+    tex = re.sub(r"\\begin\{longtable\}.*?\\end\{longtable\}",
+                 lambda m: m.group(0).replace(r"\_", r"\_\allowbreak{}"), tex, flags=re.S)
     # pandoc writes \section{...}\label{...}; demote supplement and appendix levels as needed
     return tex
 
@@ -217,6 +225,7 @@ def main():
             if src.exists():
                 shutil.copy(src, out / "figures" / src.name)
     btxt, keys = bib()
+    KNOWN_KEYS.update(keys)
     (out / "refs.bib").write_text(btxt)
 
     abstract = (M / "abstract.md").read_text().split("## Notes for revision")[0]
@@ -260,7 +269,7 @@ def main():
 
 \data{""" + data + r"""}
 
-\suppdata{Supporting information: SI 1 interpolators; SI 2 dataset processing; SI 3 full tables; SI 4 adding a form of guarantee; SI 5 the run record; SI 6 the certified metric.}
+\suppdata{Supporting information: SI 1 interpolators; SI 2 dataset processing; SI 3 full tables; SI 4 adding a form of guarantee; SI 5 the run record; SI 6 the certified metric; SI 7 a campaign guided by Gaussian-process uncertainty; SI 8 the record of measured sites.}
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}
 \bibliography{refs}
