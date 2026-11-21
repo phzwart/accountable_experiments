@@ -884,6 +884,144 @@ predictive & 1.00--2.58 & 0.32--0.01 & 922 & 0 & --- & 0.003 \\
 
 Certification applies to the Gaussian process as it does to natural-neighbour prediction. With the posterior mean as the frozen predictor and the length scale set by maximum likelihood, by the design or by the nonstationary rule (SI 3), 250 certified campaigns each skipped 12.3 \% to 12.5 \% of levels 3 to 6 wrongly on average and exceeded the budget on 111 to 123 of 1000 level runs, against 120 allowed; they measured 745 to 777 sites, against 614 with natural-neighbour prediction, because the posterior mean shrinks toward the average where the width scatters from site to site. The difference between the two kinds of campaign lies in what each knows. At equal cost the realised error is about equal; the certified campaign states its rate before any skip is checked, and the uncertified one learns its rate only from the full scan that a campaign exists to avoid.
 
+\hypertarget{si-8.-the-record-of-measured-sites}{%
+\section*{SI 8. The record of measured sites}\label{si-8.-the-record-of-measured-sites}}
+\addcontentsline{toc}{section}{SI 8. The record of measured sites}
+
+A certified skip carries its claim and its bound; a certified measurement can carry a record of equal standing. Every site of a certified level is decided from a frozen prediction, a score per claim and the certified cut of its level, so the reason for a measurement is fixed before the measurement is taken. The measurement then adds the outcome, and the record shows whether the site was needed.
+
+\textbf{The record.} Table S8.1 lists the entries kept for each design site. The decision entries are written before the site is measured or skipped; the outcome entries follow from the measurement, for skipped sites from the full scan available in a retrospective study. The residual is the departure of the frozen prediction from the measurement in units of the tolerance, so that a skip under the interpolation claim fails above one; where the presence of the feature decides, agreed absence counts as zero and disagreement as infinite. The quantile of a residual is its randomised conformal p-value among the calibration residuals of the same level \cite{Vovk2005}: the share of calibration residuals above it, with ties broken by a uniform draw. Calibration sites are a uniform draw from their level, so the p-values of all sites would be uniform if the score carried no information; sites measured by choice then gather at small p-values to the degree that the score finds sites the prediction misses.
+
+{\renewcommand{\thetable}{S8.1}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\caption{Entries of the record of each design site.}\label{tab:S8.1}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+entry
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+written
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+content
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+level & before & level of the hierarchical design \\
+action & before & measured as seed, as calibration draw or by choice (no claim covers the site); skipped as not of interest, as predictable or both \\
+score, cut & before & score of each claim and the certified cut of the level; a claim covers the site when its score is at or below the cut \\
+margin, rank & before & score minus cut; rank of the score within the level \\
+prediction & before & frozen prediction of the feature (presence, width, peak position or band envelope) \\
+measurement & after & measured feature \\
+residual & after & departure of the prediction from the measurement, in tolerances \\
+labels & after & the prediction fails (residual above one); the site is of interest \\
+p-value & after & randomised conformal p-value of the residual among the calibration residuals of the level \\
+\end{longtable}
+}
+
+\textbf{Campaigns.} The record was written for one campaign of average cost per dataset, replayed with its recorded seed: for the NaCl scan the campaign of Fig. 1, for the IR map and the synthetic map the campaign whose number of measurements lies closest to the mean of 250, with ties broken by the number of wrong skips. Each replay reproduced the recorded actions site by site. The failure and interest labels are part of the record of all 250 campaigns per dataset, so the shares in Table S8.2 pool those campaigns; the p-values come from the replayed campaigns. A site measured by choice is needed when every claim would have skipped it wrongly, that is when it is of interest and its prediction fails.
+
+{\renewcommand{\thetable}{S8.2}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\caption{Measured sites at the certified levels. Sites: design sites of the certified levels; drawn, chosen: calibration draws and sites measured by choice per campaign; fails, of interest, needed: shares among sites drawn / chosen. Counts and shares pool 250 campaigns per dataset. The last column, the share of sites measured by choice with a residual p-value below 0.2, comes from the replayed campaign and equals 0.20 for a score without information.}\label{tab:S8.2}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+dataset
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+sites
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+drawn
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+chosen
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+fails
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+of interest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+needed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+p \textless{} 0.2
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+NaCl width & 995 & 160 & 378 & 0.52/0.60 & 0.66/0.86 & 0.35/0.47 & 0.18 \\
+IR amide I & 886 & 160 & 62 & 0.014/0.021 & 0.38/0.79 & 0.013/0.019 & 0.21 \\
+synthetic peak & 2079 & 233 & 62 & 0.20/0.45 & 0.34/1.00 & 0.097/0.45 & 0.53 \\
+\end{longtable}
+}
+
+\textbf{What the record shows.} On the synthetic map the score finds the sites the prediction misses: 45 \% of the sites measured by choice were needed, against 10 \% of sites drawn at random, and half of their residuals fall in the lowest fifth of the calibration residuals (Fig. S8c, f). On the NaCl scan the sites measured by choice were needed in 47 \% of cases against 35 \% at random, and their p-values are close to uniform (Fig. S8a, d). The width scatters from site to site by about the tolerance (SI 7), so half of all predictions fail whatever the score, and the cost of the guarantee falls on sites that the score cannot tell apart. On the IR map almost no prediction fails, 1.4 \% at random; the sites measured by choice are mostly of interest (79 \%) and predictable within tolerance (Fig. S8b, e). The certified cut of each level, set from a calibration draw of 40 sites, stopped short of them; their measurement is the price of a finite calibration draw, and a larger draw or a looser budget moves the cut outward.
+
+{\renewcommand{\thetable}{S8.3}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1111}}@{}}
+\caption{Excerpt of the record of the campaign of Fig. 1 (NaCl scan, level 5). Action: measured as calibration draw or by choice, skipped as predictable, as not of interest or both. Interest, interp.: scores of the two claims, against cuts of 0.22 and 0.28; rank of the interpolation score within the level in brackets. Predicted and measured (200) widths in nm\ensuremath{^{-1}}; "none" marks a predicted or measured absence of the line.}\label{tab:S8.3}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+site
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+interest
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+interp. (rank)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+predicted
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+measured
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+residual
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+p
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+outcome
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+510 & calibration & 0.58 & 0.25 (0.26) & 0.122 & 0.143 & 1.04 & 0.52 & fails \\
+338 & by choice & 1.00 & 0.53 (0.66) & 0.155 & 0.085 & 3.50 & 0.23 & needed \\
+363 & by choice & 1.00 & 0.38 (0.52) & 0.123 & 0.117 & 0.27 & 0.77 & not needed \\
+440 & predictable & 0.40 & 0.24 (0.24) & 0.115 & 0.105 & 0.48 & 0.66 & right \\
+390 & predictable & 0.98 & 0.27 (0.32) & 0.094 & 0.041 & 2.62 & 0.28 & wrong \\
+502 & not of interest & 0.13 & 0.42 (0.59) & none & none & 0 & 0.98 & right \\
+497 & both & 0.13 & 0.17 (0.02) & none & none & 0 & 0.81 & right \\
+\end{longtable}
+}
+
+\textbf{Use and limits.} The p-values of sites measured by choice judge the score; they carry no information on the guarantee, which rests on the calibration draw alone. Sites measured by choice are selected by their scores, so their residuals are not exchangeable with the calibration residuals of their level and cannot be added to that calibration after the fact. They enter the fit of the next level, whose calibration is a fresh uniform draw. Across campaigns, the record of measured sites points to where a better score would save measurements: on the synthetic map little is left to gain, on the NaCl scan the scatter of the width limits any score, and on the IR map the calibration draw sets the cost.
+
+\begin{figure}[tbp]\renewcommand{\thefigure}{S8}
+\centering
+\includegraphics[width=\textwidth]{figures/figS8_measured}
+\caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Every site of the certified levels: residual of the frozen prediction in tolerances against the margin of its interpolation score above the certified cut of its level; red: the tolerance; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Sites skipped as not of interest only can lie right of the cut. (d--f) Randomised conformal p-values of the residuals of sites measured by choice (blue) and of calibration draws (outline) among the calibration residuals of their level; titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
+\end{figure}
+
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}
 \bibliography{refs}

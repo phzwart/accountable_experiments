@@ -1,0 +1,137 @@
+{
+ "nacl_fwhm_nested_watson": {
+  "name": "NaCl (200) width",
+  "pooled": {
+   "campaigns": 250,
+   "per_campaign": {
+    "calibration": 160.0,
+    "chosen": 377.824,
+    "skipped_pred": 300.248,
+    "skipped_noint": 300.812
+   },
+   "seed_sites": 76.0,
+   "certified_sites": 995,
+   "calibration": {
+    "fail": 0.516575,
+    "interesting": 0.657425,
+    "needed": 0.353325
+   },
+   "chosen": {
+    "fail": 0.6043554670957906,
+    "interesting": 0.8628038451765901,
+    "needed": 0.47124587109341914
+   },
+   "skipped_pred": {
+    "fail": 0.23330047161013562,
+    "interesting": 0.5317737337134636,
+    "needed": 0.22710559271002637
+   },
+   "skipped_noint": {
+    "fail": 0.41933167559804796,
+    "interesting": 0.19602941372019733,
+    "needed": 0.1287315665598447
+   },
+   "lift_needed": 1.3337461857876436
+  },
+  "replay": {
+   "seed": 44,
+   "chosen": 376,
+   "calibration": 160,
+   "median_resid_cal": 1.050527444704663,
+   "median_resid_chosen": 1.2134663386484057,
+   "p_below_02_chosen": 0.18351063829787234,
+   "p_below_05_chosen": 0.5452127659574468,
+   "chosen_needed": 0.449468085106383
+  }
+ },
+ "ir_nested_watson": {
+  "name": "IR amide I",
+  "pooled": {
+   "campaigns": 250,
+   "per_campaign": {
+    "calibration": 160.0,
+    "chosen": 62.244,
+    "skipped_pred": 627.08,
+    "skipped_noint": 436.172
+   },
+   "seed_sites": 73.0,
+   "certified_sites": 886,
+   "calibration": {
+    "fail": 0.01425,
+    "interesting": 0.37665,
+    "needed": 0.013225
+   },
+   "chosen": {
+    "fail": 0.02114260008996851,
+    "interesting": 0.7903091060985797,
+    "needed": 0.01863633442580811
+   },
+   "skipped_pred": {
+    "fail": 0.007112330165210181,
+    "interesting": 0.3499904318428271,
+    "needed": 0.006072590419085284
+   },
+   "skipped_noint": {
+    "fail": 0.001614042166851609,
+    "interesting": 0.0677714296195079,
+    "needed": 0.001614042166851609
+   },
+   "lift_needed": 1.4091746257699893
+  },
+  "replay": {
+   "seed": 245,
+   "chosen": 63,
+   "calibration": 160,
+   "median_resid_cal": 0.1256370634636158,
+   "median_resid_chosen": 0.23959961681674102,
+   "p_below_02_chosen": 0.20634920634920634,
+   "p_below_05_chosen": 0.7301587301587301,
+   "chosen_needed": 0.0
+  }
+ },
+ "syn_peak_2cert_nested_watson": {
+  "name": "synthetic SAXS peak",
+  "pooled": {
+   "campaigns": 250,
+   "per_campaign": {
+    "calibration": 233.0,
+    "chosen": 62.384,
+    "skipped_pred": 1462.472,
+    "skipped_noint": 1464.768
+   },
+   "seed_sites": 39.0,
+   "certified_sites": 2079,
+   "calibration": {
+    "fail": 0.20159656652360516,
+    "interesting": 0.3413905579399142,
+    "needed": 0.09701287553648069
+   },
+   "chosen": {
+    "fail": 0.45351372146704283,
+    "interesting": 0.9960887407027443,
+    "needed": 0.45338548345729673
+   },
+   "skipped_pred": {
+    "fail": 0.05107790097861702,
+    "interesting": 0.36705249741533513,
+    "needed": 0.04090608230448173
+   },
+   "skipped_noint": {
+    "fail": 0.1329766898239175,
+    "interesting": 0.16713090400664132,
+    "needed": 0.0474750950321143
+   },
+   "lift_needed": 4.673456806120604
+  },
+  "replay": {
+   "seed": 131,
+   "chosen": 62,
+   "calibration": 233,
+   "median_resid_cal": 0.16682579110906953,
+   "median_resid_chosen": 0.7011003529617219,
+   "p_below_02_chosen": 0.532258064516129,
+   "p_below_05_chosen": 0.9032258064516129,
+   "chosen_needed": 0.45161290322580644
+  }
+ }
+}

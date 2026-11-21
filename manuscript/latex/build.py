@@ -19,10 +19,10 @@ M = HERE.parent
 TITLE = "Accountable experiments: a checkable error rate for every measurement left out"
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C", "appendix_D"]
-SI = [f"supplement_SI{i}" for i in range(1, 8)]
+SI = [f"supplement_SI{i}" for i in range(1, 9)]
 FIGS = {1: "fig_hook_compare", 2: "fig1_schematic", 3: "fig_datasets", 4: "fig_claims", 5: "fig2_random",
         6: "fig3_forms", 7: "fig4_protocols", 8: "fig5_maps", 9: "fig6_metric",
-        "S1": "figS1_gp_std", "S6": "figS6_sampling"}
+        "S1": "figS1_gp_std", "S6": "figS6_sampling", "S8": "figS8_measured"}
 NBSP = "\u00a0"
 
 UNI = {"ε": r"\ensuremath{\varepsilon}", "δ": r"\ensuremath{\delta}", "σ": r"\ensuremath{\sigma}",
