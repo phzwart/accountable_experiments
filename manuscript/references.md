@@ -26,6 +26,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Godaliyadda2018] **V** Godaliyadda et al. (2018). A framework for dynamic image sampling based on supervised learning. IEEE Trans. Comput. Imaging 4(1). doi:10.1109/TCI.2017.2777482.
 - [Gotovos2013] **V** Gotovos, Casati, Hitz, Krause (2013). Active learning for level set estimation. IJCAI 2013, 1344–1350.
 - [HanaorSorrell2011] **V** Hanaor, Sorrell (2011). Review of the anatase to rutile phase transformation. J. Mater. Sci. 46(4), 855–874. doi:10.1007/s10853-010-5113-0.
+- [WaudbySmith2020] **V** Waudby-Smith, Ramdas (2020). Confidence sequences for sampling without replacement. NeurIPS 33.
 - [Jin2023] **V** Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.
 - [Kalinin2021] **V** Kalinin et al. (2021). arXiv:2103.12165.
 - [Kohler2005] **M** Kohler, Kirschner, Oust, Martens (2005). Extended multiplicative signal correction as a tool for separation and characterization of physical and chemical information in Fourier transform infrared microscopy images of cryo-sections of beef loin. Appl. Spectrosc. 59(6), 707–716. SI only.

@@ -935,13 +935,13 @@ synthetic (2118 sites) & latent & 0--4.0 \% & 13.8--38.7 \% & 289--550 \\
 \end{longtable}
 }
 
-On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On NaCl the noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip.
+On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map, sites skipped under the interest claim alone were wrong 0 to 2 times out of 293 to 509; the wrong skips failed the tolerance, 166 to 261 of the 548 to 632 sites skipped under the interpolation claim alone and 59 to 591 of the 572 to 832 skipped under both. On NaCl the noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip.
 
 \hypertarget{s7.3-certified-campaigns-at-several-budgets}{%
 \subsection*{S7.3 Certified campaigns at several budgets}\label{s7.3-certified-campaigns-at-several-budgets}}
 \addcontentsline{toc}{subsection}{S7.3 Certified campaigns at several budgets}
 
-For the cost analysis the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
+For Fig. 7 the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
 
 {\renewcommand{\thetable}{S7.3}\small
 \begin{longtable}[]{@{}
@@ -981,24 +981,6 @@ synthetic & NN & 461 \ensuremath{\pm} 16 (2.2~\%) & 415 \ensuremath{\pm} 22 (4.9
 }
 
 On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a budget of 0.10 every predicted skip is admitted, and the realised share stays at the rate the predictor makes.
-
-\hypertarget{s7.4-the-cost-of-a-stated-rate}{%
-\subsection*{S7.4 The cost of a stated rate}\label{s7.4-the-cost-of-a-stated-rate}}
-\addcontentsline{toc}{subsection}{S7.4 The cost of a stated rate}
-
-Let \(N\) be the number of certified-level sites, \(M\) the sites a campaign measured, \(W\) the wrong skips it made and \(\hat W\) the wrong skips it stated. A measurement costs one unit and a wrong skip costs \(r\) units. An agent offered a set of operating points, its budgets or its values of \ensuremath{\alpha} together with measuring every site, chooses the one that minimises the believed cost
-
-\[
-C_{\mathrm{believed}} = M + r \hat W
-\]
-
-and is charged
-
-\[
-C_{\mathrm{paid}} = M + r W .
-\]
-
-For a certified campaign the statement is the bound, \(\hat W = \varepsilon N\); for an uncertified one it is the sum of its stated probabilities. Measuring every site has \(M\) equal to the number of sites and \(W = \hat W = 0\). Certified operating points are averaged over their campaigns, so the comparison is between expected costs. Fig. 7 shows \(C_{\mathrm{paid}}\) divided by the smallest paid cost among all operating points of all agents on the map, measuring every site included, for \(r\) from 0.1 to 1000. The ratio \(C_{\mathrm{paid}} / C_{\mathrm{believed}}\) measures surprise: it stayed at or below one for the certified campaigns and reached 16 to 188 on IR and 391 to 667 on the synthetic map for the uncertified ones.
 
 \hypertarget{si-8.-the-record-of-measured-sites}{%
 \section*{SI 8. The record of measured sites}\label{si-8.-the-record-of-measured-sites}}
