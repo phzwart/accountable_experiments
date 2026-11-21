@@ -114,7 +114,7 @@ def main():
         return ax
 
     amap(X0[1], u_act, u_wrong, f"(b) GP-guided: {rowu['measured']} measured,\n"
-                                f"     {100 * rowu['wrong_rate']:.0f} % of sites wrong, no rate stated")
+                                f"     {100 * rowu['wrong_rate']:.0f} % of sites wrong; no bound")
     amap(X0[2], c_act, c_wrong, f"(c) Certified: {int((~S).sum())} measured,\n"
                                 f"     {100 * c_wrong[cert].mean():.0f} % of sites wrong; bound 20 %")
 
@@ -127,7 +127,7 @@ def main():
     ax.scatter(gm, gr, s=3, c=PURPLE, alpha=0.55, linewidths=0)
     ax.annotate("certified GP", (np.median(gm), np.percentile(gr, 97)), xytext=(0, 6), textcoords="offset points",
                 fontsize=6.1, color=PURPLE, ha="center")
-    ax.annotate("certified\nSibson", (575, 0.05), fontsize=6.1, color=INK2, ha="left")
+    ax.annotate("certified natural\nneighbour", (575, 0.05), fontsize=6.1, color=INK2, ha="left")
     ax.scatter([int((~S).sum())], [c_wrong[cert].mean()], s=28, marker="D", c=BLUE, edgecolors="white",
                linewidths=0.6, zorder=3)
     for r in res["uncertified"]:
@@ -177,7 +177,7 @@ def main():
         ex = sum(p["exceeded"] for p in picked if p["L"] == L)
         allow = sum(p["picked"] for p in picked if p["L"] == L)
         ax.text(j, 0.385, f"{ex}/{allow:.0f}", ha="center", va="center", fontsize=5.9, color=INK2)
-    ax.text(-0.55, 0.415, "levels over budget / allowed", fontsize=5.7, color=INK2, va="center")
+    ax.text(-0.55, 0.415, "levels over budget / expected", fontsize=5.7, color=INK2, va="center")
     ax.axhline(BUDGET, color=RED, lw=1.0)
     ax.text(len(levels) - 0.45, BUDGET + 0.006, "budget", color=RED, fontsize=6.1, ha="right", va="bottom")
     ax.set_xticks(range(len(levels)))
@@ -185,7 +185,7 @@ def main():
     ax.set_xlabel("level", fontsize=6.8)
     ax.set_ylabel("share of level skipped wrongly", fontsize=6.8, labelpad=1)
     ax.set_ylim(0, 0.43); ax.set_xlim(-0.6, len(levels) - 0.4)
-    style(ax, "(f) Certified: over budget in at\n     most 20 % of levels, as stated")
+    style(ax, "(f) Certified: each level over budget\n     with probability at most $\\delta_L$")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 
@@ -195,16 +195,16 @@ def main():
                Line2D([], [], ls="", marker="x", color=RED, markersize=5, label="wrong skip, found afterwards"),
                Line2D([], [], color=INK, lw=0.8, label="true edge of the line"),
                Line2D([], [], ls="", marker="o", mfc="none", color=INK, markersize=4.5, label="GP-guided"),
-               Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified Sibson, 250 campaigns"),
+               Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified natural neighbour, 250 campaigns"),
                Line2D([], [], ls="", marker="o", color=PURPLE, markersize=3.5, label="certified GP, 3 × 250 campaigns"),
                Line2D([], [], ls="", marker="D", color=BLUE, markersize=4.5, label="certified, shown in (c)")]
     fig.legend(handles=handles, loc="lower center", ncol=5, fontsize=6.2, frameon=False, bbox_to_anchor=(0.5, 0.0),
                columnspacing=1.0, handletextpad=0.4)
-    fig.text(0.07, 0.968, "Two campaigns, one scan: only one can say how often it skipped wrongly",
+    fig.text(0.07, 0.968, "Two campaigns, one scan: only one fixes its error rate in advance",
              fontsize=10, fontweight="bold", color=INK)
     fig.text(0.07, 0.938, "NaCl microdiffraction, width of the (200) line, tolerance 0.02 nm$^{-1}$. Both campaigns "
-             "skip about 40 % of 1071 sites;\nonly the certified one states its error rate in advance: at most 20 % "
-             "of each level skipped wrongly, with confidence 0.80.",
+             "skip about 40 % of 1071 sites;\nthe certified one bounds, on each level, the share of its sites skipped wrongly at 20 %, "
+             "with confidence 0.80 for that level.",
              fontsize=6.9, color=INK2, va="top", linespacing=1.4)
     fig.savefig(FIG / "fig_hook_compare.png", dpi=200)
     fig.savefig(FIG / "fig_hook_compare.pdf")
