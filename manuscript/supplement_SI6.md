@@ -116,3 +116,13 @@ The wrong skips of the synthetic map cluster in composition. The analysis below 
 | Predicted peak-to-baseline ratio | 273 | 358 | 41 / 360 |
 
 The record keeps the original score. It meets its guarantee, and the misranking it shows is the point of this section: a score decides where the budget is spent.
+
+## SI 6.3 Summary of the metric study
+
+Six acceptance metrics were compared on the three maps with the interpolation claim alone and 50 campaigns per metric: peak or line descriptors with absolute or relative tolerance, two forms of profile envelope, and the error in a basis of the seed spectra, plain or with near-duplicate spectra merged (SI 6). Every metric kept its guarantee. Over 32 combinations of metric, dataset and tolerance, the largest ratio of observed to expected exceedances was 1.37, with a one-sided probability of 0.04 under the picked failure probabilities, the smallest of 32 such probabilities and consistent with chance; all other ratios were at most 1.08.
+
+The metric set the cost. At tolerances a practitioner might pick, the share of certified-level sites that a prediction fails ranged from 1 % to 85 %, and the IR map needed between 233 and 810 measurements. Scaling every tolerance so that 15 % of the sites fail, a control that uses the truth, brought the costs close: 338–453 sites on IR, 287–367 on NaCl and 398–461 on the synthetic map.
+
+At equal difficulty the metric still decided where measurements go (Fig. S6). On the synthetic map the peak claim measured where the peak position and width drift with composition, in the micellar phase and in a band of the emulsion. The profile claim measured along the phase boundaries: 45–46 % of its measurements fell on the 8.8 % of sites next to another phase, against 32 % for the peak claim. The two claims placed 31 % of their measurements on the same sites, and 16 % at the default tolerances.
+
+The metric also decided where wrong skips fall. Metrics with an absolute term put 72–83 % of the IR wrong skips on sites with signal, 30 % of the skipped sites, and the NaCl line-width claim put 6 % of its wrong skips on sites holding the line, 66 % of the skipped sites. Under every metric the wrong skips clustered, with another wrong skip among the six nearest neighbours 1.5 to 3.0 times as often as for wrong skips placed at random among the skipped sites. The rate also counts wrong skips over all sites of a level. On the synthetic map, where a third of the sites are of interest, 35 % of the interesting sites on certified levels were skipped in error while every level met its budget (SI 6.2).

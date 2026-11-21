@@ -1,4 +1,4 @@
-# Appendix D. The map bound (draft 1)
+# SI 9. The map bound
 
 The calibration draw of a level serves a second purpose. Its interpolation labels are the errors, at the sites of the new level, of the map built from all coarser measurements. They therefore measure how well that map predicts at the density of the new level.
 
@@ -21,3 +21,5 @@ No independence between the two statements is needed.
 **Sites of interest.** Given the number $m_Z$ of calibration sites of interest, those sites are a uniform sample without replacement from the sites of interest of the level. The same limit, applied to their failures, bounds the failing share among the sites of interest. This is the label-conditional statement of Section 6, at the cost of a smaller sample.
 
 **Scope.** The bound concerns the map frozen before the draw, at the sites of the new level. The final map also uses the calibration sites and every site measured because no claim covered it. Those depend on the draw, so the final map carries no finite-sample statement and is checked against the truth (Section 5.4).
+
+**Record.** The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Over the 250 campaigns of each configuration it held on 100 % of the certified levels for IR, 88.5 % for NaCl and 90.4 % for the synthetic map, against confidences of 0.75, 0.80 and 0.80. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.

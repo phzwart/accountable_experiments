@@ -43,7 +43,7 @@ On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every 
 
 ## S7.3 Certified campaigns at several budgets
 
-For Fig. 7 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
+For Fig. 4 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
 
 **Table S7.3.** Certified campaigns by budget: sites measured (mean ± standard deviation) and, in brackets, the mean realised share of the certified-level sites skipped wrongly. NN, natural-neighbour prediction; GP, Gaussian-process prediction.
 
@@ -57,3 +57,5 @@ For Fig. 7 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.2
 | | GP | 1900 ± 148 (2.7 %) | 1678 ± 178 (5.5 %) | 1140 ± 302 (13.2 %) | 752 ± 188 (21.0 %) |
 
 On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a budget of 0.10 every predicted skip is admitted, and the realised share stays at the rate the predictor makes.
+
+**Figure S7.** Cost against realised error on the NaCl scan: sites measured against the share of the sites of levels 3 to 6 skipped wrongly, for 250 certified campaigns with natural-neighbour prediction (grey; diamond: the campaign of Fig. 1c), 3 × 250 certified campaigns with the Gaussian-process mean as predictor (purple; length scale by maximum likelihood, by design spacing or by local spacing), and the uncertified Gaussian-process rule at intervals of 68 % to 99 % (open symbols). File: `figures/figS7_cost.png`.

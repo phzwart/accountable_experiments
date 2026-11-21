@@ -85,7 +85,7 @@ alongside a separate guarantee for each claim. The split leaves each claim a sma
 
 A reader of the record needs to know what each guarantee covers. Each guarantee of Sections 3.3 and 3.4 concerns the design sites of one level and the predictor frozen for that level. Its probability is taken over the calibration draw of that level. It bounds how many skips fail, and the location of the failures is left open. It says nothing about points between design sites, nor about the final map, which draws on measurements made after the level was decided.
 
-Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw. The map bound states, from the calibration labels of a level, an upper confidence limit on the share of that level's sites that the map built from the coarser levels predicts outside tolerance [ClopperPearson1934]; Appendix D gives its confidence when the draw also serves the decision.
+Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw (Appendix C), and the calibration labels also bound the share of the level that the map from coarser levels predicts outside tolerance (SI 9).
 
 A measurement is certified in another way. Each site was measured because the design placed it in the seed, the draw placed it in the calibration sample, or no claim covered it under the thresholds frozen for its level. This certification is exact, made at the time of decision and replayable; a measured site that hindsight finds predictable counts as a cost of the guarantee.
 

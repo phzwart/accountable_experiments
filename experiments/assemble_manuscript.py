@@ -3,7 +3,7 @@ import re, sys
 from pathlib import Path
 M = Path(__file__).resolve().parents[1] / "manuscript"
 MAIN = ["abstract", "introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
-APP = ["appendix_A", "appendix_B", "appendix_C", "appendix_D"]
+APP = ["appendix_A", "appendix_B", "appendix_C"]
 def body(name):
     t = (M / f"{name}.md").read_text()
     t = t.split("## Notes for revision")[0]

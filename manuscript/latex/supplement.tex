@@ -226,7 +226,7 @@ Synthetic map & 2118 & 338 \ensuremath{\pm} 26 & 334 \ensuremath{\pm} 26 & 628 \
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
-\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6, upper row. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
+\caption{Sites measured for each interpolation protocol under the quantile path, at the same nominal guarantees. Same data as Fig. 6. The tight IR tolerance is \ensuremath{\pm}(10 \% + 0.01) absorbance with interest at 0.02; the last row uses the interpolation certificate alone.}\label{tab:S3.2}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -256,7 +256,7 @@ Synthetic map & 2118 & 334 \ensuremath{\pm} 26 & 1142 \ensuremath{\pm} 219 & 104
 
 {\renewcommand{\thetable}{S3.3}\small
 \begin{longtable}[]{@{}llll@{}}
-\caption{Sites measured with random scores for every certificate, against informed scores (Fig. 5).}\label{tab:S3.3}\\
+\caption{Sites measured with random scores for every certificate, against informed scores (Fig. 6).}\label{tab:S3.3}\\
 
 \toprule\noalign{}
 Dataset & Form & Informed scores & Random scores \\
@@ -282,6 +282,14 @@ Synthetic map & Priority path & 628 \ensuremath{\pm} 61 & 1322 \ensuremath{\pm} 
 \includegraphics[width=\textwidth]{figures/fig3_forms}
 \caption{Forms of guarantee, 250 campaigns per configuration. Upper row: sites measured per form, mean \ensuremath{\pm} s.d., with the design size dashed. Lower row: realised wrong-skip rate on every certified level of every campaign, with the budget as a solid line; tick labels give the number of exceedances. Right: fraction of 4000 calibration draws in which \(R_E\) exceeded 0.10 on a population with uninformative scores, for the sequential rule and the two single-budget paths; the band marks \ensuremath{\pm}2 Monte Carlo standard errors around the allowed 0.25.}\label{fig:S3}
 \end{figure}
+
+\hypertarget{forms-of-guarantee-and-random-scores-compared}{%
+\subsection*{Forms of guarantee and random scores compared}\label{forms-of-guarantee-and-random-scores-compared}}
+\addcontentsline{toc}{subsection}{Forms of guarantee and random scores compared}
+
+Every form of Table 1 kept its guarantee on the three maps at one nominal statement on the shared event, \(R_E \le 0.10\) at confidence 0.75 for IR and \(R_E \le 0.20\) at 0.80 for NaCl and the synthetic map (Fig. S3; Table S3.1). The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the per-claim form, the quantile path and the priority path on IR, in 9, 112 and 123 of 1000 on NaCl, and in 5, 161 and 156 of 1500 on the synthetic map. No form was the least expensive on all three maps: the per-claim form measured 262 \ensuremath{\pm} 28 of 959 sites on IR against 295 \ensuremath{\pm} 53 for the quantile path, the quantile path 614 \ensuremath{\pm} 56 of 1071 on NaCl against 678 to 719, and on the synthetic map the priority path cost almost twice as much as the other two. The sequential rule of an earlier analysis of the IR map, which sets the interpolation threshold on the calibration sites left uncovered by the interest threshold, exceeded \(R_E = 0.10\) in 28.8 \% of 4000 draws; the priority path, which fixes the same preference in advance, did so in 20.5 \%, at a picked failure probability of 20.6 \%.
+
+With random scores, an independent uniform weight per site and claim, the shared rate exceeded its budget in 168 of 1000 level checks on IR, 194 of 1000 on IR at the tight tolerance, 127 of 1000 on NaCl and 161 of 1500 on the synthetic map, at nominal failure probabilities of 0.25, 0.25, 0.20 and 0.20 (Table S3.3).
 
 \hypertarget{si-4.-software-adding-a-form-of-guarantee}{%
 \section*{SI 4. Software: adding a form of guarantee}\label{si-4.-software-adding-a-form-of-guarantee}}
@@ -365,7 +373,7 @@ The priority path subclasses the quantile path and replaces only the entry times
 \section*{SI 5. The run record}\label{si-5.-the-run-record}}
 \addcontentsline{toc}{section}{SI 5. The run record}
 
-Every configuration of Sections 5.1--5.3 was run as 250 independent campaigns, seeds 0 to 249; a seed fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each certificate. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
+Every configuration of Section 5 was run as 250 independent campaigns, seeds 0 to 249; a seed fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each certificate. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
 
 {\renewcommand{\thetable}{S5.1}\small
 \begin{longtable}[]{@{}
@@ -628,6 +636,14 @@ ir\_\allowbreak{}tight\_\allowbreak{}random & R\_\allowbreak{}E & 0.250 & 1000 &
 \end{longtable}
 }
 
+\hypertarget{further-detail-on-the-record}{%
+\subsection*{Further detail on the record}\label{further-detail-on-the-record}}
+\addcontentsline{toc}{subsection}{Further detail on the record}
+
+For the 32 stated rates (configuration and statement) whose budget can be exceeded on every level, union-bound statements excluded, the observed number of exceedances lay between 0.88 and 1.11 times the number expected under the picked failure probabilities; the smallest one-sided probability of the observed count was 0.10 (Table S5.3). On the IR map at its original tolerance, three of the four levels hold too few failing sites for the budget to be reached, and the record shows no exceedance there. The union-bound statement of the per-claim form is exceeded far less often than its picked failure probability permits, since two claims seldom approach their budgets on the same level. Repeating the calibration draw on the recorded level populations, the attained exceedance probability, pooled over the levels of each configuration, lay between 0.94 and 1.02 times \(\delta_L\) wherever the budget could be exceeded (Table S5.2).
+
+\textbf{Order of operations.} On a level of 399 IR sites with informative scores, a budget of 0.10 and a picked failure probability of 0.206, the calibration draw was repeated 4000 times. Scores frozen before a uniform draw: 822 exceedances (0.205). Scores that knew the true labels, frozen before the draw: 819 (0.205). Scores of the failing calibration sites raised after the draw and thresholded on the same labels: 4000 (1.00). Calibration sample taken from the half of the level ranked least safe: 2502 (0.63). Most favourable of five draws kept: 2771 (0.69). The sequential rule, which sets the interpolation threshold on the calibration sites the interest threshold left uncovered: 28.8 \%; the priority path, which fixes the same preference in advance: 20.5 \%.
+
 \hypertarget{si-6.-what-the-certified-metric-does-to-a-campaign}{%
 \section*{SI 6. What the certified metric does to a campaign}\label{si-6.-what-the-certified-metric-does-to-a-campaign}}
 \addcontentsline{toc}{section}{SI 6. What the certified metric does to a campaign}
@@ -839,6 +855,18 @@ Predicted peak-to-baseline ratio & 273 & 358 & 41 / 360 \\
 
 The record keeps the original score. It meets its guarantee, and the misranking it shows is the point of this section: a score decides where the budget is spent.
 
+\hypertarget{si-6.3-summary-of-the-metric-study}{%
+\subsection*{SI 6.3 Summary of the metric study}\label{si-6.3-summary-of-the-metric-study}}
+\addcontentsline{toc}{subsection}{SI 6.3 Summary of the metric study}
+
+Six acceptance metrics were compared on the three maps with the interpolation claim alone and 50 campaigns per metric: peak or line descriptors with absolute or relative tolerance, two forms of profile envelope, and the error in a basis of the seed spectra, plain or with near-duplicate spectra merged (SI 6). Every metric kept its guarantee. Over 32 combinations of metric, dataset and tolerance, the largest ratio of observed to expected exceedances was 1.37, with a one-sided probability of 0.04 under the picked failure probabilities, the smallest of 32 such probabilities and consistent with chance; all other ratios were at most 1.08.
+
+The metric set the cost. At tolerances a practitioner might pick, the share of certified-level sites that a prediction fails ranged from 1 \% to 85 \%, and the IR map needed between 233 and 810 measurements. Scaling every tolerance so that 15 \% of the sites fail, a control that uses the truth, brought the costs close: 338--453 sites on IR, 287--367 on NaCl and 398--461 on the synthetic map.
+
+At equal difficulty the metric still decided where measurements go (Fig. S6). On the synthetic map the peak claim measured where the peak position and width drift with composition, in the micellar phase and in a band of the emulsion. The profile claim measured along the phase boundaries: 45--46 \% of its measurements fell on the 8.8 \% of sites next to another phase, against 32 \% for the peak claim. The two claims placed 31 \% of their measurements on the same sites, and 16 \% at the default tolerances.
+
+The metric also decided where wrong skips fall. Metrics with an absolute term put 72--83 \% of the IR wrong skips on sites with signal, 30 \% of the skipped sites, and the NaCl line-width claim put 6 \% of its wrong skips on sites holding the line, 66 \% of the skipped sites. Under every metric the wrong skips clustered, with another wrong skip among the six nearest neighbours 1.5 to 3.0 times as often as for wrong skips placed at random among the skipped sites. The rate also counts wrong skips over all sites of a level. On the synthetic map, where a third of the sites are of interest, 35 \% of the interesting sites on certified levels were skipped in error while every level met its budget (SI 6.2).
+
 \hypertarget{si-7.-campaigns-guided-by-gaussian-process-uncertainty}{%
 \section*{SI 7. Campaigns guided by Gaussian-process uncertainty}\label{si-7.-campaigns-guided-by-gaussian-process-uncertainty}}
 \addcontentsline{toc}{section}{SI 7. Campaigns guided by Gaussian-process uncertainty}
@@ -941,7 +969,7 @@ On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every 
 \subsection*{S7.3 Certified campaigns at several budgets}\label{s7.3-certified-campaigns-at-several-budgets}}
 \addcontentsline{toc}{subsection}{S7.3 Certified campaigns at several budgets}
 
-For Fig. 7 the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
+For Fig. 4 the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
 
 {\renewcommand{\thetable}{S7.3}\small
 \begin{longtable}[]{@{}
@@ -981,6 +1009,12 @@ synthetic & NN & 461 \ensuremath{\pm} 16 (2.2~\%) & 415 \ensuremath{\pm} 22 (4.9
 }
 
 On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a budget of 0.10 every predicted skip is admitted, and the realised share stays at the rate the predictor makes.
+
+\begin{figure}[tbp]\renewcommand{\thefigure}{S7}
+\centering
+\includegraphics[width=\textwidth]{figures/figS7_cost}
+\caption{Cost against realised error on the NaCl scan: sites measured against the share of the sites of levels 3 to 6 skipped wrongly, for 250 certified campaigns with natural-neighbour prediction (grey; diamond: the campaign of Fig. 1c), 3 \ensuremath{\times} 250 certified campaigns with the Gaussian-process mean as predictor (purple; length scale by maximum likelihood, by design spacing or by local spacing), and the uncertified Gaussian-process rule at intervals of 68 \% to 99 \% (open symbols).}\label{fig:S7}
+\end{figure}
 
 \hypertarget{si-8.-the-record-of-measured-sites}{%
 \section*{SI 8. The record of measured sites}\label{si-8.-the-record-of-measured-sites}}
@@ -1119,6 +1153,34 @@ outcome
 \includegraphics[width=\textwidth]{figures/figS8_measured}
 \caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Error of the frozen prediction divided by the tolerance (NaCl: width error ÷ 0.02 nm\ensuremath{^{-1}}; synthetic map: the larger of peak-position error ÷ 0.005 and peak-width error ÷ 0.001; IR map: mean over channels of the absorbance error ÷ (0.10 \ensuremath{\times} absorbance + 0.10)) at every site of the certified levels, grouped by action: skipped as predictable only, skipped under both claims (wrong only where the line is also of interest), measured as a random calibration draw, measured by choice. Red: one, a miss by exactly the tolerance; above it the prediction fails; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Percentages give the share above the tolerance over 250 campaigns. (d--f) Residuals of the sites measured by choice, ranked among the calibration residuals of their level (randomised conformal p-value, SI 8 text): share falling in each fifth of the calibration residuals, from the largest to the smallest. Dashed: 20 \%, expected if measuring by choice were no better than drawing at random. Titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
 \end{figure}
+
+\hypertarget{si-9.-the-map-bound}{%
+\section*{SI 9. The map bound}\label{si-9.-the-map-bound}}
+\addcontentsline{toc}{section}{SI 9. The map bound}
+
+The calibration draw of a level serves a second purpose. Its interpolation labels are the errors, at the sites of the new level, of the map built from all coarser measurements. They therefore measure how well that map predicts at the density of the new level.
+
+Let level \(L + 1\) have \(N\) sites, of which \(K\) lie outside tolerance of the map frozen before its draw. The \(m\) calibration sites are a uniform sample without replacement, so the number \(f\) of failures among them is hypergeometric. The map bound is the Clopper--Pearson upper limit \cite{ClopperPearson1934} at confidence \(1 - \delta_{\mathrm{map}}\),
+
+\[
+u(f) = \mathrm{Beta}^{-1}(1 - \delta_{\mathrm{map}};\ f + 1,\ m - f)
+\]
+
+with \(u(m) = 1\). The limit is exact for a binomial count. For a draw without replacement it was checked numerically: at \(m = 40\), for every level size \(N\) from 41 to 1200 and every failing share \(K/N \le 0.6\), the probability that \(u(f) \ge K/N\) was at least 0.754, 0.804 and 0.904 at confidences 0.75, 0.80 and 0.90. At failing shares close to one, the binomial limit can fall short by a few per cent; the hypergeometric limit, found by inverting the hypergeometric tail in \(K\), removes that gap.
+
+\textbf{Sharing the draw with the decision.} The same draw sets the thresholds of level \(L + 1\). The decision fails with probability at most \(\delta_{L+1}\) and the map bound with probability at most \(\delta_{\mathrm{map}}\), so by the union bound both hold together with probability at least
+
+\[
+1 - \delta_{L+1} - \delta_{\mathrm{map}}
+\]
+
+No independence between the two statements is needed.
+
+\textbf{Sites of interest.} Given the number \(m_Z\) of calibration sites of interest, those sites are a uniform sample without replacement from the sites of interest of the level. The same limit, applied to their failures, bounds the failing share among the sites of interest. This is the label-conditional statement of Section 6, at the cost of a smaller sample.
+
+\textbf{Scope.} The bound concerns the map frozen before the draw, at the sites of the new level. The final map also uses the calibration sites and every site measured because no claim covered it. Those depend on the draw, so the final map carries no finite-sample statement and is checked against the truth (Section 5.4).
+
+\textbf{Record.} The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Over the 250 campaigns of each configuration it held on 100 \% of the certified levels for IR, 88.5 \% for NaCl and 90.4 \% for the synthetic map, against confidences of 0.75, 0.80 and 0.80. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.
 
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}

@@ -118,8 +118,8 @@ def main():
     amap(X0[2], c_act, c_wrong, f"(c) Certified: {int((~S).sum())} measured,\n"
                                 f"     {100 * c_wrong[cert].mean():.0f} % of sites wrong; bound 20 %")
 
-    # (d) cost against realised error
-    ax = fig.add_axes([X0[0], by, mw, bh])
+    # cost against realised error: Figure S7 (SI 7)
+    figd, ax = plt.subplots(figsize=(3.6, 2.9), facecolor="white", gridspec_kw=dict(left=0.16, right=0.97, top=0.9, bottom=0.16))
     cm, cr = np.array(res["certified"]["measured"]), np.array(res["certified"]["wrong_rate"])
     ax.scatter(cm, cr, s=3, c=GRID, linewidths=0)
     gm, gr = zip(*[certified_cloud(r, cert) for r in GP_ROWS])
@@ -140,12 +140,16 @@ def main():
     ax.set_xlim(560, 960); ax.set_ylim(-0.01, 0.27)
     ax.set_xlabel("sites measured (of 1071)", fontsize=6.8)
     ax.set_ylabel("share of sites skipped wrongly", fontsize=6.8)
-    style(ax, "(d) Cost against realised error")
+    style(ax, "Cost against realised error, NaCl scan, levels 3 to 6")
+    ax.legend(handles=[Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified, natural neighbour"),
+                       Line2D([], [], ls="", marker="o", color=PURPLE, markersize=3.5, label="certified, Gaussian process"),
+                       Line2D([], [], ls="", marker="o", mfc="none", color=INK, markersize=4.5, label="uncertified Gaussian process")],
+              fontsize=5.8, frameon=False, loc="upper right")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 
-    # (e) GP: promised against realised
-    ax = fig.add_axes([X0[1], by, mw, bh])
+    # (d) GP: promised against realised
+    ax = fig.add_axes([X0[0], by, 0.40, bh])
     lat = [r for r in res["uncertified"] if r["sd"] == "latent" and r["wrong_pred"] is not None]
     k = np.arange(len(lat))
     ax.bar(k - 0.19, [r["nominal"] for r in lat], 0.36, color=GRID)
@@ -158,12 +162,12 @@ def main():
     ax.set_ylim(0, 0.45)
     ax.text(0.98, 0.98, "promised", transform=ax.transAxes, ha="right", va="top", fontsize=6.3, color=INK2)
     ax.text(0.98, 0.90, "realised", transform=ax.transAxes, ha="right", va="top", fontsize=6.3, color=RED)
-    style(ax, "(e) GP: what the interval\n     promised, what happened")
+    style(ax, "(d) Uncertified GP: what the interval promised, what happened")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 
     # (f) certified: guaranteed against realised, per level
-    ax = fig.add_axes([X0[2] + 0.04, by, mw - 0.04, bh])
+    ax = fig.add_axes([0.585, by, 0.385, bh])
     runs = [json.loads(l) for l in gzip.open(REC / ROW / "runs.jsonl.gz", "rt")]
     picked = [p for p in json.loads((REC / "PICKED.json").read_text()) if p["row"] == ROW and p["event"] == "R_E"]
     levels = sorted({pl["L"] for r in runs for pl in r["per_level"] if not pl.get("empty")})
@@ -185,7 +189,7 @@ def main():
     ax.set_xlabel("level", fontsize=6.8)
     ax.set_ylabel("share of level skipped wrongly", fontsize=6.8, labelpad=1)
     ax.set_ylim(0, 0.43); ax.set_xlim(-0.6, len(levels) - 0.4)
-    style(ax, "(f) Certified: each level over budget\n     with probability at most $\\delta_L$")
+    style(ax, "(e) Certified: each level over budget with probability\n     at most its picked failure probability")
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
 
@@ -194,11 +198,9 @@ def main():
                plt.Rectangle((0, 0), 1, 1, color=COL["predictable"], label="skipped: predictable"),
                Line2D([], [], ls="", marker="x", color=RED, markersize=5, label="wrong skip, found afterwards"),
                Line2D([], [], color=INK, lw=0.8, label="true edge of the line"),
-               Line2D([], [], ls="", marker="o", mfc="none", color=INK, markersize=4.5, label="GP-guided"),
                Line2D([], [], ls="", marker="o", color=GRID, markersize=3.5, label="certified natural neighbour, 250 campaigns"),
-               Line2D([], [], ls="", marker="o", color=PURPLE, markersize=3.5, label="certified GP, 3 × 250 campaigns"),
                Line2D([], [], ls="", marker="D", color=BLUE, markersize=4.5, label="certified, shown in (c)")]
-    fig.legend(handles=handles, loc="lower center", ncol=5, fontsize=6.2, frameon=False, bbox_to_anchor=(0.5, 0.0),
+    fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=6.2, frameon=False, bbox_to_anchor=(0.5, 0.0),
                columnspacing=1.0, handletextpad=0.4)
     fig.text(0.07, 0.968, "Two campaigns, one scan: only one fixes its error rate in advance",
              fontsize=10, fontweight="bold", color=INK)
@@ -206,6 +208,8 @@ def main():
              "skip about 40 % of 1071 sites;\nthe certified one bounds, on each level, the share of its sites skipped wrongly at 20 %, "
              "with confidence 0.80 for that level.",
              fontsize=6.9, color=INK2, va="top", linespacing=1.4)
+    figd.savefig(FIG / "figS7_cost.png", dpi=200)
+    figd.savefig(FIG / "figS7_cost.pdf")
     fig.savefig(FIG / "fig_hook_compare.png", dpi=200)
     fig.savefig(FIG / "fig_hook_compare.pdf")
     print("wrote", FIG / "fig_hook_compare.png")
