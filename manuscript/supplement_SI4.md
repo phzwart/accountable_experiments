@@ -40,11 +40,11 @@ The priority path subclasses the quantile path and replaces only the entry times
 
 ## SI 4.4 Software, tests and reproduction
 
-**Functionality.** The workflow is a Python package with four parts: (i) the campaign loop, which runs the five steps of Section 3.1 on any dataset that supplies design sites, levels and an oracle for the measurement at a site; (ii) the forms of guarantee of Section 3.4 as budget policies, with exact hypergeometric and binomial tails; (iii) predictors and scores, natural-neighbour interpolation with mirror images at boundaries and Gaussian-process interpolation under three length-scale rules; (iv) the record, which writes every site's level, scores, action and reason and every level's calibration draw, thresholds and picked failure probability, together with the random seed, so that each campaign can be replayed and every bound recomputed.
+**Functionality.** The workflow is a Python package with four parts: (i) the campaign loop, which runs the five steps of Section 3.1 on any dataset that supplies design sites, levels and an oracle for the measurement at a site; (ii) the forms of guarantee of Section 3.4 as budget policies, with exact hypergeometric and binomial tails; (iii) predictors and scores, natural-neighbour interpolation with mirror images at boundaries and Gaussian-process interpolation under three length-scale rules; (iv) the record, which writes every site's level, scores, action and reason and every level's calibration draw, thresholds and picked failure probability, together with the random state, so that each campaign can be replayed and every bound recomputed.
 
 **Tests.** The test suite checks the geometry of the natural-neighbour weights, the Gaussian-process engine, the acceptance check of Table S4.1 for every policy, the coverage of every stated guarantee by Monte Carlo on fixed populations (including that the sequential rule exceeds its nominal rate), and that recorded campaigns replay to identical decisions. The implementation refuses a binomial allowance $k$ larger than the hypergeometric one; no such case arose in this study.
 
-**Reproduction.** Each figure and table of the main text and of this supplement is produced by a script that reads only the run record; the record is produced by re-running the configurations of Table S4.2 with seeds 0 to 249. A campaign takes 3 to 12 s on one core.
+**Reproduction.** Each figure and table of the main text and of this supplement is produced by a script that reads only the run record; the record is produced by re-running the configurations of Table S4.2 with random states 0 to 249. A campaign takes 3 to 12 s on one core.
 
 **Table S4.2.** Configuration names in the record and the protocols of the main text.
 

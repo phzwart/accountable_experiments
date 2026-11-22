@@ -3,7 +3,7 @@
 A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
 
 **Set-up.**
-- **Campaigns.** The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0–49).
+- **Campaigns.** The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (random states 0–49).
 - **What changes.** Only the acceptance metric.
 - **Signal sites.** Sites marked by the dataset's interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
 

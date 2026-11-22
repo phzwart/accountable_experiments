@@ -18,7 +18,7 @@ import numpy as np
 from experiments.record import OUT as REC, build
 
 ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_peak_2cert_nested_watson"}
-N_SEEDS = 20
+N_SEEDS = 250
 OUT = Path("results/uniform_baseline.json")
 
 
@@ -44,18 +44,16 @@ def main():
             runs.append(dict(seed=s, measured=int(measured.sum()), wrong=int((wrong & cert).sum()),
                              n_cert=int(cert.sum()), share=float((wrong & cert).sum() / cert.sum())))
         sh = np.array([r["share"] for r in runs])
-        res[key] = dict(row=row, measured=float(np.mean([r["measured"] for r in runs])), share_mean=float(sh.mean()),
+        res[key] = dict(row=row, measured=float(np.mean([r["measured"] for r in runs])), share_mean=float(sh.mean()), share_sd=float(sh.std(ddof=1)),
                         share_range=[float(sh.min()), float(sh.max())], runs=runs)
         print(key, res[key]["measured"], round(100 * sh.mean(), 1), [round(100 * x, 1) for x in res[key]["share_range"]],
               flush=True)
     OUT.write_text(json.dumps(res, indent=1))
 
 
-if __name__ == "__main__":
-    main()
 
 
-def certified_final(n=20):
+def certified_final(n=250):
     """Final-map error of the certified plan, same metric: skipped certified-level sites whose prediction from
     all measured sites fails the claim's metric, as a share of the certified-level sites."""
     from accountable.campaign import run_campaign
@@ -70,6 +68,14 @@ def certified_final(n=20):
             for f in r.final:
                 bad[f["index"]] = f["outside"]
             sh.append(float((bad & cert).sum() / cert.sum())); ms.append(int(r.measured[ds.candidate].sum()))
-        out[key] = dict(measured=float(np.mean(ms)), share_mean=float(np.mean(sh)), share_range=[min(sh), max(sh)])
+        out[key] = dict(n=n, measured=float(np.mean(ms)), share_mean=float(np.mean(sh)), share_sd=float(np.std(sh, ddof=1)), share_range=[min(sh), max(sh)])
         print("certified final", key, out[key], flush=True)
     d = json.loads(OUT.read_text()); d["certified_final"] = out; OUT.write_text(json.dumps(d, indent=1))
+
+
+if __name__ == "__main__":
+    import sys
+    if "final" in sys.argv:
+        certified_final()
+    else:
+        main()

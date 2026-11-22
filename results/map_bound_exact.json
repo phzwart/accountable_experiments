@@ -1,0 +1,23 @@
+{
+ "ir": {
+  "n": 1000,
+  "coverage_cp": 1.0,
+  "coverage_hyp": 0.958,
+  "mean_upper_cp": 0.051951467189799844,
+  "mean_upper_hyp": 0.04200650176089917
+ },
+ "nacl": {
+  "n": 1000,
+  "coverage_cp": 0.885,
+  "coverage_hyp": 0.844,
+  "mean_upper_cp": 0.593337093080433,
+  "mean_upper_hyp": 0.5794932378325061
+ },
+ "syn": {
+  "n": 1500,
+  "coverage_cp": 0.904,
+  "coverage_hyp": 0.8946666666666667,
+  "mean_upper_cp": 0.27895739837313815,
+  "mean_upper_hyp": 0.25491910641888277
+ }
+}

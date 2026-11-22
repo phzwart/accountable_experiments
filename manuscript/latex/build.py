@@ -256,7 +256,7 @@ def main():
 
 \affil{$^*$Author to whom any correspondence should be addressed.}
 
-\email{TODO@lbl.gov}
+\email{phzwart@lbl.gov}
 
 \keywords{accountable experiments, autonomous experimentation, distribution-free risk control, conformal prediction, adaptive sampling, hierarchical design, self-driving laboratories}
 

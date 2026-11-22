@@ -46,7 +46,7 @@ with $\ell(x)$ the distance from $x$ to its third-nearest measured site, clipped
 
 In every rule, the length scale of a level is fixed from the measured set before the calibration draw, so the score is frozen in the sense of Section 3.1.
 
-**Table S1.1.** Length scales and nuggets over all certified levels and 20 seeds (quantile path), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 µm). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.
+**Table S1.1.** Length scales and nuggets over all certified levels and 20 campaigns (quantile path), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 µm). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.
 
 | Dataset | Max. likelihood: $\ell$ | Max. likelihood: $\nu$ | Design spacing: $\ell$ | Local spacing: median $\ell$ |
 | --- | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ In every rule, the length scale of a level is fixed from the measured set before
 
 The three rules give visibly different reasons for measuring a site (Fig. S1). The design-spacing rule gives the shortest length scale and the most structured standard deviation, high in every gap between measured sites. Maximum likelihood on the IR map assigned much of the variance to noise and returned a nearly uniform standard deviation. The local-spacing rule lengthens the kernel where measurements are sparse and lowers the standard deviation there.
 
-**Figure S1.** Posterior standard deviation on the IR map before level 5 (seed 0, local-spacing campaign; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 × 29 µm raster, and the local length scale of the third rule. Length scales are given in micrometres. File: `figures/figS1_gp_std.png`.
+**Figure S1.** Posterior standard deviation on the IR map before level 5 (first campaign of the record, local-spacing protocol; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 × 29 µm raster, and the local length scale of the third rule. Length scales are given in micrometres. File: `figures/figS1_gp_std.png`.
 
 **Checks.** Unit tests confirm that the weights reproduce the BoTorch posterior mean and variance for fixed hyperparameters, that the design rule follows the finest measured level, that the Gibbs kernel is positive semidefinite and reduces to the isotropic kernel for constant $\ell$, and that the local length scale is long where measured sites are sparse.
 
@@ -64,6 +64,9 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 
 *Reference to add: [Gardner2018] Gardner, Pleiss, Bindel, Weinberger, Wilson (2018). GPyTorch. NeurIPS 31.*
 
+## SI 1.3 Scores of the natural-neighbour protocol
+
+The interpolation score is one minus the probability of acceptance from a logistic regression, fitted by leave-one-out on the measured set (at most 120 sites) on the disagreement between natural neighbours in units of the acceptance metric and on the position. The interest score depends on the dataset. On the IR map it is the predicted maximum in the window, capped below the interest level, so that a site predicted to be of interest is never covered. On the two scattering datasets it is the probability of interest from a logistic regression on the predicted peak height above its baseline, the spread of that height over the five nearest measured sites and the distance to the nearest of them.
 
 ## Notes for revision (not part of the text)
 

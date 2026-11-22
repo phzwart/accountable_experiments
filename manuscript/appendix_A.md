@@ -11,13 +11,13 @@ The order of operations of Section 3.1 amounts to six conditions.
 - **(A3) Labels.** Each bad label $B_j(x)$, $x \in D_L$, is a fixed function of the truth and of $\hat y_L$, so the labels of the whole level are determined given $\mathcal{F}_{L-1}$, whether or not a site is drawn.
 - **(A4) Fixed rule.** The family of covers searched (thresholds on one score, a path, a split of the budget), the budget $\varepsilon$, the failure probability $\delta$, the sample size $m$ and the allowed number of failures $k$ are determined by $\mathcal{F}_{L-1}$.
 - **(A5) Uniform draw.** Given $\mathcal{F}_{L-1}$, the calibration sample $C_L$ is uniform over the $m$-subsets of $D_L$.
-- **(A6) No interference.** Measuring a site of $C_L$ leaves the truth at every other site unchanged.
+- **(A6) Fixed truth.** The measurement a site of $D_L$ would return depends neither on which sites are drawn nor on the order or time at which they are measured: measuring a site of $C_L$ leaves the truth at every other site unchanged, and the sample does not drift during the level.
 
 Under (A1)–(A6), the level population with its scores and labels is a fixed finite population given $\mathcal{F}_{L-1}$, and $C_L$ is a simple random sample from it. Exchangeability of the calibration sites with the population is then a property of the draw [Vovk2005], and the bound below is a design-based statement [Neyman1934; Cochran1977]: its only probability is that of the draw. The scores may depend on anything in $\mathcal{F}_{L-1}$, including the truth itself through an oracle; such a score changes the cost and leaves the bound intact.
 
 ## A.2 The bound
 
-Fix a level and a certificate with score $S$ and bad label $B$, and drop the indices. The joint rate at threshold $\tau$ is
+Fix a level and a claim with score $S$ and bad label $B$, and drop the indices. The joint rate at threshold $\tau$ is
 
 $$
 R(\tau) = N^{-1} \, \lvert \{x \in D : S(x) \le \tau,\ B(x) = 1\} \rvert
@@ -45,16 +45,16 @@ The argument is the one-sided tolerance bound of Wilks (1941) in the form used f
 
 **The picked level.** $\delta_L = P(H \le k)$ takes values on a grid indexed by $k$ and set by $m$, $N_L$ and $\varepsilon$. The rule picks the largest grid point at or below $\delta$, and $\delta_L$ is the failure probability the level asserts. Equality in Proposition A.1 holds when exactly $\lfloor \varepsilon N \rfloor + 1$ bad sites lie at or below $\tau^\ast$; Appendix B.5 describes the randomised rule that reaches $\delta$ itself.
 
-**Several levels.** Taking expectations over $\mathcal{F}_{L-1}$ gives the unconditional bound on each level. For a statement about all certified levels at once, $P(\exists L : R_L > \varepsilon) \le \sum_L \delta_L$, where a level that holds too few failing sites for the budget to be reached contributes nothing. A plan certified at campaign confidence $c$ divides $1 - c$ among its levels before the first draw. When a level is drawn up from earlier measurements, its size and hence $\delta_L$ depend on the history; the bound then holds for the levels the plan actually produces, each $\delta_L$ being fixed before its own draw.
+**Several levels.** Taking expectations over $\mathcal{F}_{L-1}$ gives the unconditional bound on each level. For a statement about all certified levels at once, $P(\exists L : R_L > \varepsilon) \le \sum_L \delta_L$, the sum running over every certified level. A level that holds too few failing sites for the budget to be reached cannot exceed it, but which levels these are is known only from the full truth, so the confidence a campaign can claim is the one its plan declares. A plan certified at campaign confidence $c$ divides $1 - c$ among its levels before the first draw. A plan drawn up level by level fixes in advance how the failure probability is spent, for example $\delta_\ell$ for the $\ell$-th level it produces with $\sum_\ell \delta_\ell \le 1 - c$; the number and sizes of the levels may then depend on the history, and each $\delta_\ell$ is fixed before its own draw.
 
 ## A.3 What breaks the conditions
 
 Each of the following lets the draw of a level shape the rule it is meant to test.
 
-- *Refitting on calibration labels* (breaks A2, A4). Scores updated with the calibration labels after the draw and then thresholded on the same labels. In the Monte Carlo of Section 5.1 the bound was exceeded in every draw.
+- *Refitting on calibration labels* (breaks A2, A4). Scores changed with the calibration labels after the draw and then thresholded on the same labels. The Monte Carlo of Section 5.1 takes the extreme case, raising the scores of the failing calibration sites, and the bound was exceeded in every draw.
 - *Choosing the calibration sites* (breaks A5). Calibrating where the scores are least sure, as an active learner would, makes the sample unrepresentative of the sites it speaks for.
 - *Keeping the most favourable of several draws* (breaks A5). The retained sample is selected by its outcome.
-- *Measurement-induced change* (breaks A6). Damage or drift caused by measuring the calibration sites alters the truth at their neighbours.
+- *Measurement-induced change and drift* (break A6). Damage caused by measuring the calibration sites alters the truth at their neighbours, and drift during a level changes the truth between the draw and the measurement of the remainder.
 
 The sequential rule of Section 5.1 breaks (A4) in a subtler way: its second threshold is searched over a family that depends on the labels the first threshold left uncovered.
 
