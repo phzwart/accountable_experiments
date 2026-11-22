@@ -1232,6 +1232,68 @@
     "rng_seed": 0
    }
   },
+  "nacl_fwhm_nested_gpfail_mle": {
+   "spec": {
+    "experiment": "nacl_saxs",
+    "target": "fwhm",
+    "mode": "2cert",
+    "policy": "nested_path",
+    "eps": 0.2,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_mle",
+    "score": "gp_fail"
+   },
+   "n_runs": 50,
+   "seeds": [
+    0,
+    49
+   ],
+   "seconds_total": 1181.6,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "8b47c8dfe743c5e752a3f63f79dbf058ebf2b81b",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "FWHM of the peak near $22.280\\,\\mathrm{nm^{-1}}$: $|\\Delta\\mathrm{FWHM}|\\leq0.02\\,\\mathrm{nm^{-1}}$",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interest",
+      "score": "logistic_interest",
+      "cap": null
+     },
+     {
+      "name": "interp",
+      "score": "gp_fail_prob",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.2,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
   "nacl_fwhm_nested_random": {
    "spec": {
     "experiment": "nacl_saxs",
@@ -1738,6 +1800,64 @@
      {
       "name": "interp",
       "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_env_nested_gpfail_mle": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "envelope",
+    "mode": "interp",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_mle",
+    "score": "gp_fail",
+    "tol": 0.005
+   },
+   "n_runs": 20,
+   "seeds": [
+    0,
+    19
+   ],
+   "seconds_total": 4509.0,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "8b47c8dfe743c5e752a3f63f79dbf058ebf2b81b",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.005, atol=0.005",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_fail_prob",
       "cap": null
      }
     ],
@@ -2419,5 +2539,5 @@
   "interpolable",
   "not_interesting+interpolable"
  ],
- "packed": "2026-11-22 05:55:16 PST"
+ "packed": "2026-11-22 10:44:15 PST"
 }

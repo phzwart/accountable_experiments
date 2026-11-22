@@ -72,6 +72,9 @@ ROWS = {
     "syn_env_nested_gp_mle": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_mle", tol=0.005)),
     "syn_env_nested_gp_design": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_design", tol=0.005)),
     "syn_env_nested_gp_nonstationary": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_nonstationary", tol=0.005)),
+    # the process's own failure probability as the frozen interpolation score (like-for-like with SI 7.2)
+    "syn_env_nested_gpfail_mle": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_mle", score="gp_fail", tol=0.005)),
+    "nacl_fwhm_nested_gpfail_mle": ("nacl_saxs", dict(target="fwhm", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, nn_method="watson", interp_model="gp_mle", score="gp_fail")),
 }
 
 

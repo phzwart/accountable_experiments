@@ -117,12 +117,17 @@ def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
         sb = DisagreementScore()
     elif score == "logistic":
         sb = LogisticInterpScore(loo_seed=s_seed)
+    elif score == "gp_fail" and interp_model.startswith("gp_"):
+        sb = None   # set with the GP below
     else:
         raise ValueError(f"unknown score {score!r}")
     predictor = SpectrumRoute(crit, images=None, nn_method=nn_method)
     if interp_model.startswith("gp_"):
         from accountable.gp import gp_protocol
         predictor, sb = gp_protocol(ds, crit, interp_model[3:], **(gp_kwargs or {}))
+        if score == "gp_fail":
+            from accountable.gp import GPFailProbScore
+            sb = GPFailProbScore(predictor.engine, crit, seed=int(seed) + 20000)
     certs = []
     if mode == "2cert":
         sa = RandomScore(s_seed + 1) if score == "random" else \

@@ -100,6 +100,9 @@ def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, se
     if interp_model.startswith("gp_"):
         from accountable.gp import gp_protocol
         predictor, sb = gp_protocol(ds, crit, interp_model[3:], **(gp_kwargs or {}))
+        if score == "gp_fail":
+            from accountable.gp import GPFailProbScore
+            sb = GPFailProbScore(predictor.engine, crit, seed=int(seed) + 20000)
     certs = []
     if mode == "2cert":
         sa = RandomScore(s_seed + 1) if score == "random" else \

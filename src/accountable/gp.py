@@ -297,3 +297,55 @@ def gp_protocol(ds, criterion: AccuracyCriterion, mode: str, **engine_kwargs):
     sc = GPStdScore(eng)
     sc.name = f"gp_{mode}_std"
     return pred, sc
+
+
+class GPFailProbScore(Score):
+    """Interpolation score: the process's own posterior probability that the claim fails at a site, the
+    quantity the uncertified rule of SI 7.2 compares with alpha. Posterior profiles are drawn along the
+    principal directions of the measured profiles (99 % of their variance, at most 20), each with its score
+    standard deviation times the site's predictive standard deviation (latent plus fitted noise); K draws,
+    clipped at zero, each judged against the posterior mean with the claim's metric. Ties among the K-level
+    probabilities are broken by the mean deviation of the draws. Fitted and computed before the draw, from
+    the measured set only, with a fixed random stream, so it is a frozen score."""
+
+    name = "gp_fail_prob"
+
+    def __init__(self, engine: GPEngine, criterion: AccuracyCriterion, K: int = 64, seed: int = 1234,
+                 frac: float = 0.99, q_max: int = 20):
+        self.engine, self.criterion, self.K, self.seed = engine, criterion, int(K), int(seed)
+        self.frac, self.q_max = frac, q_max
+
+    def fit(self, ms):
+        self._ms = ms
+        self.engine.fit(ms.P, ms.I)
+        Y = np.asarray(ms.I, float)
+        Yc = Y - Y.mean(0)
+        _, S, Vt = np.linalg.svd(Yc, full_matrices=False)
+        var = S ** 2
+        q = int(min(self.q_max, np.searchsorted(np.cumsum(var) / var.sum(), self.frac) + 1))
+        self._V, self._s = Vt[:q], S[:q] / np.sqrt(len(Y))
+        self._Y = Y
+
+    def score(self, points):
+        points = np.asarray(points, float)
+        if len(points) == 0:
+            return np.zeros(0, float)
+        mean = np.maximum(self.engine.predict(self._Y, points), 0.0)
+        su = self.engine.std(points)
+        scale = np.sqrt(su ** 2 + self.engine._nu)
+        rng = np.random.default_rng(self.seed)
+        n = len(points)
+        p_fail = np.zeros(n)
+        dev = np.zeros(n)
+        for _ in range(self.K):
+            Z = rng.standard_normal((n, len(self._s))) * self._s[None, :] * scale[:, None]
+            Yd = np.maximum(mean + Z @ self._V, 0.0)
+            st = self.criterion.stats(Yd, mean)
+            p_fail += np.asarray(st["outside_mean"], bool)
+            dev += np.nan_to_num(np.asarray(st["score"], float), nan=0.0, posinf=1e6)
+        p_fail /= self.K
+        dev /= self.K
+        return p_fail + (1.0 / (2 * self.K)) * dev / (1.0 + dev)
+
+    def fit_info(self) -> dict:
+        return dict(self.engine.info)
