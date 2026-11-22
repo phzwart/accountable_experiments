@@ -1,0 +1,47 @@
+[
+ {
+  "measured": 614,
+  "true_share": 0.09045226130653267,
+  "stated_predictive": 0.11168348976686414,
+  "stated_latent": 0.038600833844599024,
+  "audit_n": 100,
+  "audit_conf": 0.8,
+  "audit_bound_mean": 0.1059753768844221,
+  "audit_bound_q": [
+   0.08442211055276382,
+   0.1035175879396985,
+   0.12763819095477386
+  ],
+  "audit_coverage": 0.805
+ },
+ {
+  "measured": 694,
+  "true_share": 0.061306532663316586,
+  "stated_predictive": 0.07150012373675696,
+  "stated_latent": 0.03265555177311678,
+  "audit_n": 100,
+  "audit_conf": 0.8,
+  "audit_bound_mean": 0.07314974874371859,
+  "audit_bound_q": [
+   0.05628140703517588,
+   0.07336683417085427,
+   0.08844221105527639
+  ],
+  "audit_coverage": 0.802
+ },
+ {
+  "measured": 800,
+  "true_share": 0.016080402010050253,
+  "stated_predictive": 0.02231370765722203,
+  "stated_latent": 0.021263510943565368,
+  "audit_n": 100,
+  "audit_conf": 0.8,
+  "audit_bound_mean": 0.02187437185929648,
+  "audit_bound_q": [
+   0.016080402010050253,
+   0.022110552763819097,
+   0.02814070351758794
+  ],
+  "audit_coverage": 0.9105
+ }
+]
