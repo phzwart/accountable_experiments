@@ -25,7 +25,7 @@ def table_s52():
         if "separate" in r["row"] and r["event"] == "R_E":
             continue
         g[(r["row"], r["event"])].append(r)
-    old = list(dict.fromkeys((r["row"], r["event"]) for r in A if (r["row"], r["event"]) in g))
+    old = list(dict.fromkeys((r["row"], r["event"]) for r in A if (r["row"], r["event"]) in g and r["row"] in PAPER_ROWS))
     order = sorted(old, key=lambda k: (PAPER_ROWS.index(k[0]), old.index(k)))
     lines = ["| Configuration | Event | Levels audited | Mean worst case | Mean attained | Attained / worst case | Levels where the budget cannot be exceeded |",
              "| --- | --- | --- | --- | --- | --- | --- |"]

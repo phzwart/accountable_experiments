@@ -12,17 +12,17 @@ Every guarantee in this study can be checked, because each dataset is measured a
 
 Figure 3 shows each dataset as a map, with a site its claim accepts and one it rejects.
 
-**Figure 3.** The three datasets and how their claims judge a prediction; rows: IR map, NaCl scan, synthetic map. Left column, the quantity the claims test: (a) amide-I absorbance, maximum over 1620–1690 cm⁻¹ after scattering correction, 1 µm pixels; (d) height of the (200) line where it stands five times the noise above its baseline, grey where absent, the width varying from pixel to pixel by more than the tolerance of the width claim; (g) position of the dominant peak where its prominence reaches 5, grey elsewhere, white lines: phase boundaries of the forward model. Middle and right columns: one site of a certified level that the claim accepts and one it rejects, predicted from the measured sites of the coarser levels by natural-neighbour weights (grey: neighbours, line width by weight; orange: prediction; black: measurement; shaded: tolerance). IR envelope claim: within 10 % + 0.10 absorbance on average over channels above 0.02. NaCl width claim: widths at half maximum (bars) within 0.02 nm⁻¹. Synthetic peak claim: position within 0.005 Å⁻¹ (shaded column) and width within 0.001 Å⁻¹ (shaded bar). File: `figures/fig_datasets_claims.png`.
+**Figure 3.** The three datasets and how their claims judge a prediction; rows: IR map, NaCl scan, synthetic map. Left column, the quantity the claims test: (a) amide-I absorbance, maximum over 1620–1690 cm⁻¹ after scattering correction, 1 µm pixels; (d) height of the (200) line where it stands five times the noise above its baseline, grey where absent, the width varying from pixel to pixel by more than the tolerance of the width claim; (g) position of the dominant peak where its prominence reaches 5, grey elsewhere, white lines: phase boundaries of the forward model. Middle and right columns: one site of a certified level that the claim accepts and one it rejects, predicted from the measured sites of the coarser levels by natural-neighbour weights (grey: neighbours, line width by weight; orange: prediction; black: measurement; shaded: tolerance). IR envelope claim: within 10 % + 0.10 absorbance on average over channels above 0.02. NaCl width claim: widths at half maximum (bars) within 0.02 nm⁻¹. Synthetic profile claim, drawn as the deviation of each channel in units of the envelope 0.005 × intensity + 0.005 (shaded: ±1; inset: the measured profile on log–log axes); the claim holds when the mean over channels is at most one, so a few channels near a peak may lie outside. File: `figures/fig_datasets_claims.png`.
 
 ## 4.2 Claims and tolerances
 
-Each dataset carries one interest claim and one interpolation claim, fixed before any run.
+The IR map and the NaCl scan each carry one interest claim and one interpolation claim, fixed before any run. On the synthetic map every site is of interest, and the interpolation claim alone is made, on the full profile.
 
 **Table 2.** Claims, fixed before any run.
 
 | Dataset | Interest: a site holds | Interpolation: the prediction from coarser levels meets |
 | --- | --- | --- |
-| Synthetic map | a dominant peak rising above its local baseline by at least five times that baseline | the dominant-peak position within 0.005 Å⁻¹ and its width within 0.001 Å⁻¹ |
+| Synthetic map | every site (no interest claim) | every point of the profile within 0.5 % + 0.005, on average over the 240 points |
 | NaCl scan | the (200) line at 22.28 nm⁻¹, at least five times the noise above its local baseline | the (200) width within 0.02 nm⁻¹, about half a detector bin |
 | IR map | absorbance of 0.1 or more in some channel of the window | every channel within 10 % + 0.10 absorbance, on average over channels above 0.02 |
 
@@ -41,7 +41,7 @@ Both scores are probabilities from logistic regressions fitted on the measured s
 
 The length scale is set in three ways, each fixed before the calibration draw of a level: by maximum marginal likelihood on the leading principal-component scores of the measured spectra [Balandat2020], by the median nearest-neighbour spacing of the design through the finest level measured, or locally, through a Gibbs kernel whose length scale is the distance to the third-nearest measured site [Gibbs1997; PaciorekSchervish2004]. SI 1 gives the details.
 
-**Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map and $R_E \le 0.20$ at confidence 0.80 on the NaCl and synthetic maps. The per-claim form gives each claim half the budget at half the failure probability, so the union bound returns the same statement. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
+**Common settings.** Levels up to the second form the seed and are measured in full. Every finer level is calibrated on $m = 40$ sites, or on the whole level when it is smaller. The guarantee on the shared wrong-skip rate is $R_E \le 0.10$ at confidence 0.75 on the IR map, $R_E \le 0.20$ at confidence 0.80 on the NaCl scan and $R_E \le 0.10$ at confidence 0.80 on the synthetic map. The per-claim form gives each claim half the budget at half the failure probability, so the union bound returns the same statement; with the one claim of the synthetic map the three forms coincide. Every rule uses the exact finite-population tail, and the threshold is placed at the score of the first calibration failure beyond those allowed.
 
 **Table 3.** Exchangeable parts of a campaign.
 
@@ -49,14 +49,14 @@ The length scale is set in three ways, each fixed before the calibration draw of
 | --- | --- |
 | Design | Hierarchical Poisson-disk design; seed of levels 0–2; 7 (NaCl, IR) or 9 (synthetic) levels |
 | Interpolator | Natural-neighbour coordinates; Gaussian process with length scale by maximum likelihood, by design spacing or by local spacing |
-| Interest score | Predicted maximum (IR); logistic on predicted peak height (NaCl, synthetic); random |
+| Interest score | Predicted maximum (IR); logistic on predicted peak height (NaCl); random; none on the synthetic map |
 | Interpolation score | Logistic on neighbour disagreement; GP posterior standard deviation; random |
 | Form of guarantee | Per-claim budgets; quantile path; priority path |
 | Calibration | 40 sites per level, uniform without replacement, exact hypergeometric tail |
 
 ## 4.4 Evaluation
 
-A guarantee about a probability needs repetition to be checked. Each of 36 configurations was run as 250 campaigns that differ only in their calibration draws and, for the random scorer, in the score stream. Every certified level of every campaign gives one level check against the budget, and the checks over budget are compared with the number expected under the picked failure probabilities (Section 3.3). For the first 20 campaigns of each configuration, the calibration draw was also repeated 1000 times on the recorded level populations, which isolates the randomness of the draw (SI 4, SI 5). Four studies extend the record (SI 10): a label-conditional bound, drift, an audit of finished maps and the cost of a plan against its calibration size and confidence.
+A guarantee about a probability needs repetition to be checked. Each of 32 configurations was run as 250 campaigns, 20 for the three Gaussian-process configurations of the synthetic map, that differ only in their calibration draws and, for the random scorer, in the score stream. Every certified level of every campaign gives one level check against the budget, and the checks over budget are compared with the number expected under the picked failure probabilities (Section 3.3). For the first 20 campaigns of each configuration, the calibration draw was also repeated 1000 times on the recorded level populations, which isolates the randomness of the draw (SI 4, SI 5). Four studies extend the record (SI 10): a label-conditional bound, drift, an audit of finished maps and the cost of a plan against its calibration size and confidence.
 
 ---
 

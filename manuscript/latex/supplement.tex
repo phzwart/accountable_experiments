@@ -110,7 +110,7 @@ Local spacing: median \(\ell\)
 \endlastfoot
 IR map & 0.069 (0.045--0.082) & 0.36 (0.038--0.82) & 0.045 (0.024--0.088) & 0.071 (0.049--0.101) \\
 NaCl scan & 0.072 (0.029--0.120) & 1.47 (0.007--5.04) & 0.064 (0.036--0.107) & 0.077 (0.040--0.113) \\
-Synthetic map & 0.150 (0.070--0.296) & 0.083 (0.018--0.27) & 0.045 (0.019--0.109) & 0.051 (0.021--0.118) \\
+Synthetic map & 0.147 (0.055--0.296) & 0.085 (0.009--0.27) & 0.045 (0.019--0.109) & 0.050 (0.020--0.118) \\
 \end{longtable}
 }
 
@@ -231,7 +231,7 @@ Intensity & amplitude per surfactant fraction; floor & 2.0; 0.02 \\
 \section*{SI 3. Full tables per dataset, level and protocol}\label{si-3.-full-tables-per-dataset-level-and-protocol}}
 \addcontentsline{toc}{section}{SI 3. Full tables per dataset, level and protocol}
 
-\emph{Per-level tables for every configuration are in the run record (SI 5); the tables below summarise them. All entries: mean \ensuremath{\pm} s.d. over 250 campaigns.}
+\emph{Per-level tables for every configuration are in the run record (SI 5); the tables below summarise them. All entries: mean \ensuremath{\pm} s.d. over 250 campaigns, 20 for the Gaussian-process protocols of the synthetic map.}
 
 {\renewcommand{\thetable}{S3.1}\small
 \begin{longtable}[]{@{}
@@ -240,7 +240,7 @@ Intensity & amplitude per surfactant fraction; floor & 2.0; 0.02 \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
-\caption{Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. Same data as Fig. S3, upper row.}\label{tab:S3.1}\\
+\caption{Sites measured for each form of guarantee for the same stated bound on the shared wrong-skip rate: \(R_E \le 0.10\) at confidence 0.75 for the IR map and \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan. The synthetic map carries one claim, so its three forms coincide; it is given once. Same data as Fig. S3, upper row.}\label{tab:S3.1}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -260,7 +260,7 @@ Priority path
 \endlastfoot
 IR map & 959 & 262 \ensuremath{\pm} 28 & 295 \ensuremath{\pm} 53 & 327 \ensuremath{\pm} 80 \\
 NaCl scan & 1071 & 719 \ensuremath{\pm} 60 & 614 \ensuremath{\pm} 56 & 678 \ensuremath{\pm} 39 \\
-Synthetic map & 2118 & 338 \ensuremath{\pm} 26 & 334 \ensuremath{\pm} 26 & 628 \ensuremath{\pm} 61 \\
+Synthetic map (\(R_E \le 0.10\) at 0.80, one claim) & 2118 & 932 \ensuremath{\pm} 223 & 932 \ensuremath{\pm} 223 & 932 \ensuremath{\pm} 223 \\
 \end{longtable}
 }
 
@@ -296,7 +296,7 @@ IR map & 959 & 295 \ensuremath{\pm} 53 & 273 \ensuremath{\pm} 31 & 281 \ensurema
 IR map, tight & 959 & 621 \ensuremath{\pm} 70 & 747 \ensuremath{\pm} 56 & 753 \ensuremath{\pm} 52 & 799 \ensuremath{\pm} 40 \\
 IR map, tight, interpolation only & 959 & 604 \ensuremath{\pm} 65 & 792 \ensuremath{\pm} 58 & 797 \ensuremath{\pm} 56 & 854 \ensuremath{\pm} 35 \\
 NaCl scan & 1071 & 614 \ensuremath{\pm} 56 & 745 \ensuremath{\pm} 72 & 760 \ensuremath{\pm} 70 & 777 \ensuremath{\pm} 60 \\
-Synthetic map & 2118 & 334 \ensuremath{\pm} 26 & 1142 \ensuremath{\pm} 219 & 1040 \ensuremath{\pm} 202 & 1443 \ensuremath{\pm} 133 \\
+Synthetic map (GP: 20 campaigns) & 2118 & 932 \ensuremath{\pm} 223 & 1974 \ensuremath{\pm} 55 & 1946 \ensuremath{\pm} 50 & 2027 \ensuremath{\pm} 39 \\
 \end{longtable}
 }
 
@@ -317,9 +317,7 @@ IR map, tight & Quantile path & 621 \ensuremath{\pm} 70 & 871 \ensuremath{\pm} 3
 NaCl scan & Per-claim budgets & 719 \ensuremath{\pm} 60 & 928 \ensuremath{\pm} 45 \\
 NaCl scan & Quantile path & 614 \ensuremath{\pm} 56 & 861 \ensuremath{\pm} 50 \\
 NaCl scan & Priority path & 678 \ensuremath{\pm} 39 & 874 \ensuremath{\pm} 49 \\
-Synthetic map & Per-claim budgets & 338 \ensuremath{\pm} 26 & 991 \ensuremath{\pm} 286 \\
-Synthetic map & Quantile path & 334 \ensuremath{\pm} 26 & 1076 \ensuremath{\pm} 187 \\
-Synthetic map & Priority path & 628 \ensuremath{\pm} 61 & 1322 \ensuremath{\pm} 185 \\
+Synthetic map & One claim (all forms) & 932 \ensuremath{\pm} 223 & 1578 \ensuremath{\pm} 248 \\
 \end{longtable}
 }
 
@@ -333,9 +331,9 @@ Synthetic map & Priority path & 628 \ensuremath{\pm} 61 & 1322 \ensuremath{\pm} 
 \subsection*{Forms of guarantee and random scores compared}\label{forms-of-guarantee-and-random-scores-compared}}
 \addcontentsline{toc}{subsection}{Forms of guarantee and random scores compared}
 
-Every form of Table 1 kept its guarantee on the three maps at one nominal statement on the shared event, \(R_E \le 0.10\) at confidence 0.75 for IR and \(R_E \le 0.20\) at 0.80 for NaCl and the synthetic map (Fig. S3; Table S3.1). The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the per-claim form, the quantile path and the priority path on IR, in 9, 112 and 123 of 1000 on NaCl, and in 5, 161 and 156 of 1500 on the synthetic map. No form was the least expensive on all three maps: the per-claim form measured 262 \ensuremath{\pm} 28 of 959 sites on IR against 295 \ensuremath{\pm} 53 for the quantile path, the quantile path 614 \ensuremath{\pm} 56 of 1071 on NaCl against 678 to 719, and on the synthetic map the priority path cost almost twice as much as the other two. The sequential rule of an earlier analysis of the IR map, which sets the interpolation threshold on the calibration sites left uncovered by the interest threshold, exceeded \(R_E = 0.10\) in 28.8 \% of 4000 draws; the priority path, which fixes the same preference in advance, did so in 20.5 \%, at a picked failure probability of 20.6 \%.
+Every form of Table 1 kept its guarantee on the two maps with two claims at one nominal statement on the shared event, \(R_E \le 0.10\) at confidence 0.75 for IR and \(R_E \le 0.20\) at 0.80 for NaCl (Fig. S3; Table S3.1); with the one claim of the synthetic map the forms coincide. The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the per-claim form, the quantile path and the priority path on IR, and in 9, 112 and 123 of 1000 on NaCl. No form was the least expensive on all three maps: the per-claim form measured 262 \ensuremath{\pm} 28 of 959 sites on IR against 295 \ensuremath{\pm} 53 for the quantile path, and the quantile path 614 \ensuremath{\pm} 56 of 1071 on NaCl against 678 to 719. The sequential rule of an earlier analysis of the IR map, which sets the interpolation threshold on the calibration sites left uncovered by the interest threshold, exceeded \(R_E = 0.10\) in 28.8 \% of 4000 draws; the priority path, which fixes the same preference in advance, did so in 20.5 \%, at a picked failure probability of 20.6 \%.
 
-With random scores, an independent uniform weight per site and claim, the shared rate exceeded its budget in 168 of 1000 level checks on IR, 194 of 1000 on IR at the tight tolerance, 127 of 1000 on NaCl and 161 of 1500 on the synthetic map, at nominal failure probabilities of 0.25, 0.25, 0.20 and 0.20 (Table S3.3).
+With random scores, an independent uniform weight per site and claim, the shared rate exceeded its budget in 168 of 1000 level checks on IR, 194 of 1000 on IR at the tight tolerance, 127 of 1000 on NaCl and 149 of 1500 on the synthetic map, at nominal failure probabilities of 0.25, 0.25, 0.20 and 0.20 (Table S3.3).
 
 \hypertarget{si-4.-software-adding-a-form-of-guarantee}{%
 \section*{SI 4. Software: adding a form of guarantee}\label{si-4.-software-adding-a-form-of-guarantee}}
@@ -439,7 +437,7 @@ Meaning
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\texttt{ir}, \texttt{ir\_\allowbreak{}tight}, \texttt{nacl\_\allowbreak{}fwhm}, \texttt{syn\_\allowbreak{}peak\_\allowbreak{}2cert} & IR map at the original and the tight tolerance; NaCl scan, width claim; synthetic map, peak claim, both claims \\
+\texttt{ir}, \texttt{ir\_\allowbreak{}tight}, \texttt{nacl\_\allowbreak{}fwhm}, \texttt{syn\_\allowbreak{}env}, \texttt{syn\_\allowbreak{}peak\_\allowbreak{}2cert} & IR map at the original and the tight tolerance; NaCl scan, width claim; synthetic map, full-profile claim alone (main text); synthetic map, peak and interest claims (variant of SI 6.2) \\
 \texttt{separate}, \texttt{nested}, \texttt{priority} & per-claim budgets, quantile path, priority path (Section 3.4) \\
 \texttt{watson}, \texttt{sibson} & natural-neighbour (Sibson) interpolation with the logistic score; \texttt{watson} names the construction of the weights \\
 \texttt{gp\_\allowbreak{}mle}, \texttt{gp\_\allowbreak{}design}, \texttt{gp\_\allowbreak{}nonstationary} & Gaussian-process interpolation, length scale by maximum likelihood, by design spacing, by local spacing \\
@@ -452,7 +450,7 @@ Meaning
 \section*{SI 5. The run record}\label{si-5.-the-run-record}}
 \addcontentsline{toc}{section}{SI 5. The run record}
 
-Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns; the comparisons of SI 5.3 add 250 campaigns each of three rules on three maps. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
+From round 3 the synthetic map carries the interpolation claim alone on the full profile (rtol = atol = 0.005) at a budget of 0.10 and confidence 0.80; with one claim the three forms of guarantee coincide, so one configuration stands for them. The two-claim configurations used before are kept in the record and in the archive of earlier results. Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249, except the three Gaussian-process configurations of the synthetic map, run as 20 (random states 0 to 19) for their cost of about a minute each; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 32 configurations give 7310 campaigns; the comparisons of SI 5.3 add 250 campaigns each of three rules on three maps. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
 
 {\renewcommand{\thetable}{S5.1}\small
 \begin{longtable}[]{@{}
@@ -507,14 +505,10 @@ nacl\_\allowbreak{}fwhm\_\allowbreak{}priority\_\allowbreak{}watson & 250 & 678 
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & 250 & 745 \ensuremath{\pm} 72 & R\_\allowbreak{}E & 0.20 & 0.200 & 119/1000 & 0.119 & 0.100--0.141 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & 250 & 760 \ensuremath{\pm} 70 & R\_\allowbreak{}E & 0.20 & 0.200 & 111/1000 & 0.111 & 0.092--0.132 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & 250 & 777 \ensuremath{\pm} 60 & R\_\allowbreak{}E & 0.20 & 0.200 & 123/1000 & 0.123 & 0.103--0.145 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & 250 & 338 \ensuremath{\pm} 26 & R\_\allowbreak{}interest & 0.10 & 0.100 & 73/1500 & 0.049 & 0.038--0.061 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & 250 & 338 \ensuremath{\pm} 26 & R\_\allowbreak{}interp & 0.10 & 0.100 & 67/1500 & 0.045 & 0.035--0.056 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & 250 & 338 \ensuremath{\pm} 26 & R\_\allowbreak{}E & 0.20 & 0.200 & 5/1500 & 0.003 & 0.001--0.008 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}watson & 250 & 334 \ensuremath{\pm} 26 & R\_\allowbreak{}E & 0.20 & 0.200 & 161/1500 & 0.107 & 0.092--0.124 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}priority\_\allowbreak{}watson & 250 & 628 \ensuremath{\pm} 61 & R\_\allowbreak{}E & 0.20 & 0.200 & 156/1500 & 0.104 & 0.089--0.121 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & 250 & 1142 \ensuremath{\pm} 219 & R\_\allowbreak{}E & 0.20 & 0.200 & 156/1500 & 0.104 & 0.089--0.121 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & 250 & 1040 \ensuremath{\pm} 202 & R\_\allowbreak{}E & 0.20 & 0.200 & 186/1500 & 0.124 & 0.108--0.142 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & 250 & 1443 \ensuremath{\pm} 133 & R\_\allowbreak{}E & 0.20 & 0.200 & 161/1500 & 0.107 & 0.092--0.124 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}watson & 250 & 932 \ensuremath{\pm} 223 & R\_\allowbreak{}E & 0.10 & 0.200 & 147/1500 & 0.098 & 0.083--0.114 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & 20 & 1974 \ensuremath{\pm} 55 & R\_\allowbreak{}E & 0.10 & 0.200 & 13/120 & 0.108 & 0.059--0.178 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & 20 & 1946 \ensuremath{\pm} 50 & R\_\allowbreak{}E & 0.10 & 0.200 & 13/120 & 0.108 & 0.059--0.178 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & 20 & 2027 \ensuremath{\pm} 39 & R\_\allowbreak{}E & 0.10 & 0.200 & 8/120 & 0.067 & 0.029--0.127 \\
 ir\_\allowbreak{}tight\_\allowbreak{}sibson & 250 & 621 \ensuremath{\pm} 70 & R\_\allowbreak{}E & 0.10 & 0.250 & 193/1000 & 0.193 & 0.169--0.219 \\
 ir\_\allowbreak{}tight\_\allowbreak{}gp\_\allowbreak{}mle & 250 & 747 \ensuremath{\pm} 56 & R\_\allowbreak{}E & 0.10 & 0.250 & 179/1000 & 0.179 & 0.156--0.204 \\
 ir\_\allowbreak{}tight\_\allowbreak{}gp\_\allowbreak{}design & 250 & 753 \ensuremath{\pm} 52 & R\_\allowbreak{}E & 0.10 & 0.250 & 191/1000 & 0.191 & 0.167--0.217 \\
@@ -533,11 +527,7 @@ nacl\_\allowbreak{}fwhm\_\allowbreak{}separate\_\allowbreak{}random & 250 & 928 
 nacl\_\allowbreak{}fwhm\_\allowbreak{}separate\_\allowbreak{}random & 250 & 928 \ensuremath{\pm} 45 & R\_\allowbreak{}E & 0.20 & 0.200 & 17/1000 & 0.017 & 0.010--0.027 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}random & 250 & 861 \ensuremath{\pm} 50 & R\_\allowbreak{}E & 0.20 & 0.200 & 127/1000 & 0.127 & 0.107--0.149 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}priority\_\allowbreak{}random & 250 & 874 \ensuremath{\pm} 49 & R\_\allowbreak{}E & 0.20 & 0.200 & 132/1000 & 0.132 & 0.112--0.155 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & 250 & 991 \ensuremath{\pm} 286 & R\_\allowbreak{}interest & 0.10 & 0.100 & 76/1500 & 0.051 & 0.040--0.063 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & 250 & 991 \ensuremath{\pm} 286 & R\_\allowbreak{}interp & 0.10 & 0.100 & 62/1500 & 0.041 & 0.032--0.053 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & 250 & 991 \ensuremath{\pm} 286 & R\_\allowbreak{}E & 0.20 & 0.200 & 7/1500 & 0.005 & 0.002--0.010 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}random & 250 & 1076 \ensuremath{\pm} 187 & R\_\allowbreak{}E & 0.20 & 0.200 & 161/1500 & 0.107 & 0.092--0.124 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}priority\_\allowbreak{}random & 250 & 1322 \ensuremath{\pm} 185 & R\_\allowbreak{}E & 0.20 & 0.200 & 161/1500 & 0.107 & 0.092--0.124 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}random & 250 & 1578 \ensuremath{\pm} 248 & R\_\allowbreak{}E & 0.10 & 0.200 & 149/1500 & 0.099 & 0.085--0.116 \\
 ir\_\allowbreak{}tight\_\allowbreak{}random & 250 & 871 \ensuremath{\pm} 31 & R\_\allowbreak{}E & 0.10 & 0.250 & 194/1000 & 0.194 & 0.170--0.220 \\
 \end{longtable}
 }
@@ -587,13 +577,7 @@ nacl\_\allowbreak{}fwhm\_\allowbreak{}priority\_\allowbreak{}watson & R\_\allowb
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 80 & 0.120 & 0.117 & 0.97 & 0 of 80 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 80 & 0.120 & 0.117 & 0.98 & 0 of 80 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & R\_\allowbreak{}E & 80 & 0.120 & 0.119 & 0.99 & 0 of 80 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & R\_\allowbreak{}interest & 120 & 0.054 & 0.054 & 1.00 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & R\_\allowbreak{}interp & 120 & 0.054 & 0.045 & 1.02 & 15 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}watson & R\_\allowbreak{}E & 120 & 0.113 & 0.112 & 0.99 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}priority\_\allowbreak{}watson & R\_\allowbreak{}E & 120 & 0.113 & 0.112 & 0.99 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 120 & 0.113 & 0.113 & 1.00 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 120 & 0.113 & 0.114 & 1.01 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & R\_\allowbreak{}E & 120 & 0.113 & 0.113 & 1.00 & 0 of 120 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}watson & R\_\allowbreak{}E & 120 & 0.095 & 0.095 & 0.99 & 0 of 120 \\
 ir\_\allowbreak{}tight\_\allowbreak{}sibson & R\_\allowbreak{}E & 80 & 0.190 & 0.193 & 1.02 & 0 of 80 \\
 ir\_\allowbreak{}tight\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 80 & 0.190 & 0.191 & 1.00 & 0 of 80 \\
 ir\_\allowbreak{}tight\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 80 & 0.190 & 0.192 & 1.01 & 0 of 80 \\
@@ -610,10 +594,7 @@ nacl\_\allowbreak{}fwhm\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowb
 nacl\_\allowbreak{}fwhm\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}interp & 80 & 0.061 & 0.060 & 0.99 & 0 of 80 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}random & R\_\allowbreak{}E & 80 & 0.120 & 0.116 & 0.97 & 0 of 80 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}priority\_\allowbreak{}random & R\_\allowbreak{}E & 80 & 0.120 & 0.121 & 1.01 & 0 of 80 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}interest & 120 & 0.054 & 0.054 & 1.01 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}interp & 120 & 0.054 & 0.035 & 1.00 & 31 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}random & R\_\allowbreak{}E & 120 & 0.113 & 0.111 & 0.98 & 0 of 120 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}priority\_\allowbreak{}random & R\_\allowbreak{}E & 120 & 0.113 & 0.114 & 1.01 & 0 of 120 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}random & R\_\allowbreak{}E & 120 & 0.095 & 0.097 & 1.01 & 0 of 120 \\
 ir\_\allowbreak{}tight\_\allowbreak{}random & R\_\allowbreak{}E & 80 & 0.190 & 0.179 & 0.94 & 0 of 80 \\
 \end{longtable}
 }
@@ -680,14 +661,10 @@ nacl\_\allowbreak{}fwhm\_\allowbreak{}priority\_\allowbreak{}watson & R\_\allowb
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 0.200 & 1000 & 0.120 & 120.1 & 119 & 0.99 & 0.558 & 1000 & 120.1 & 119 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 0.200 & 1000 & 0.120 & 120.1 & 111 & 0.92 & 0.825 & 1000 & 120.1 & 111 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & R\_\allowbreak{}E & 0.200 & 1000 & 0.120 & 120.1 & 123 & 1.02 & 0.404 & 1000 & 120.1 & 123 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & R\_\allowbreak{}E & 0.200 & 1500 & 0.108 & 161.9 & 5 & 0.03 & 1.000 & 1500 & 161.9 & 5 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & R\_\allowbreak{}interest & 0.100 & 1500 & 0.054 & 80.9 & 73 & 0.90 & 0.834 & 1500 & 80.9 & 73 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}watson & R\_\allowbreak{}interp & 0.100 & 1500 & 0.054 & 80.9 & 67 & 0.83 & 0.955 & 1325 & 67.9 & 67 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}watson & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 161 & 0.95 & 0.779 & 1500 & 169.8 & 161 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}priority\_\allowbreak{}watson & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 156 & 0.92 & 0.883 & 1500 & 169.8 & 156 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 156 & 0.92 & 0.883 & 1500 & 169.8 & 156 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 186 & 1.10 & 0.099 & 1500 & 169.8 & 186 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 161 & 0.95 & 0.779 & 1500 & 169.8 & 161 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}watson & R\_\allowbreak{}E & 0.200 & 1500 & 0.095 & 143.0 & 147 & 1.03 & 0.372 & 1500 & 143.0 & 147 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 0.200 & 120 & 0.095 & 11.4 & 13 & 1.14 & 0.355 & 120 & 11.4 & 13 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 0.200 & 120 & 0.095 & 11.4 & 13 & 1.14 & 0.355 & 120 & 11.4 & 13 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}gp\_\allowbreak{}nonstationary & R\_\allowbreak{}E & 0.200 & 120 & 0.095 & 11.4 & 8 & 0.70 & 0.900 & 120 & 11.4 & 8 \\
 ir\_\allowbreak{}tight\_\allowbreak{}sibson & R\_\allowbreak{}E & 0.250 & 1000 & 0.190 & 190.2 & 193 & 1.01 & 0.424 & 1000 & 190.2 & 193 \\
 ir\_\allowbreak{}tight\_\allowbreak{}gp\_\allowbreak{}mle & R\_\allowbreak{}E & 0.250 & 1000 & 0.190 & 190.2 & 179 & 0.94 & 0.828 & 1000 & 190.2 & 179 \\
 ir\_\allowbreak{}tight\_\allowbreak{}gp\_\allowbreak{}design & R\_\allowbreak{}E & 0.250 & 1000 & 0.190 & 190.2 & 191 & 1.00 & 0.488 & 1000 & 190.2 & 191 \\
@@ -706,11 +683,7 @@ nacl\_\allowbreak{}fwhm\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowb
 nacl\_\allowbreak{}fwhm\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}interp & 0.100 & 1000 & 0.061 & 60.6 & 55 & 0.91 & 0.790 & 1000 & 60.6 & 55 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}nested\_\allowbreak{}random & R\_\allowbreak{}E & 0.200 & 1000 & 0.120 & 120.1 & 127 & 1.06 & 0.265 & 1000 & 120.1 & 127 \\
 nacl\_\allowbreak{}fwhm\_\allowbreak{}priority\_\allowbreak{}random & R\_\allowbreak{}E & 0.200 & 1000 & 0.120 & 120.1 & 132 & 1.10 & 0.134 & 1000 & 120.1 & 132 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}E & 0.200 & 1500 & 0.108 & 161.9 & 7 & 0.04 & 1.000 & 1500 & 161.9 & 7 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}interest & 0.100 & 1500 & 0.054 & 80.9 & 76 & 0.94 & 0.730 & 1500 & 80.9 & 76 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}separate\_\allowbreak{}random & R\_\allowbreak{}interp & 0.100 & 1500 & 0.054 & 80.9 & 62 & 0.77 & 0.990 & 1104 & 51.9 & 62 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}nested\_\allowbreak{}random & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 161 & 0.95 & 0.779 & 1500 & 169.8 & 161 \\
-syn\_\allowbreak{}peak\_\allowbreak{}2cert\_\allowbreak{}priority\_\allowbreak{}random & R\_\allowbreak{}E & 0.200 & 1500 & 0.113 & 169.8 & 161 & 0.95 & 0.779 & 1500 & 169.8 & 161 \\
+syn\_\allowbreak{}env\_\allowbreak{}nested\_\allowbreak{}random & R\_\allowbreak{}E & 0.200 & 1500 & 0.095 & 143.0 & 149 & 1.04 & 0.306 & 1500 & 143.0 & 149 \\
 ir\_\allowbreak{}tight\_\allowbreak{}random & R\_\allowbreak{}E & 0.250 & 1000 & 0.190 & 190.2 & 194 & 1.02 & 0.393 & 1000 & 190.2 & 194 \\
 \end{longtable}
 }
@@ -772,14 +745,14 @@ NaCl scan (\ensuremath{\varepsilon} = 0.20) & per level at 0.80 & 250 & 614 \ens
 & plan at 0.80 (\ensuremath{\delta} = 0.050 per level) & 250 & 694 \ensuremath{\pm} 58 & 2.7 \% & 9.6 \% & \\
 & conformal risk control & 250 & 542 & 34.7 \% & 80.8 \% & \\
 & uniform sample & 250 & 614 & --- & --- & 22.0 \% \\
-Synthetic map (\ensuremath{\varepsilon} = 0.20) & per level at 0.80 & 250 & 334 \ensuremath{\pm} 26 & 10.7 \% & 49.6 \% & 8.4 \% \\
-& plan at 0.80 (\ensuremath{\delta} = 0.033 per level) & 250 & 377 \ensuremath{\pm} 27 & 1.3 \% & 8.0 \% & \\
-& conformal risk control & 250 & 305 & 31.6 \% & 91.6 \% & \\
-& uniform sample & 250 & 334 & --- & --- & 10.6 \% \\
+Synthetic map (\ensuremath{\varepsilon} = 0.10) & per level at 0.80 & 250 & 932 \ensuremath{\pm} 223 & 9.8 \% & 46.0 \% & 3.6 \% \\
+& plan at 0.80 (\ensuremath{\delta} = 0.033 per level) & 250 & 1189 \ensuremath{\pm} 286 & 1.1 \% & 6.4 \% & \\
+& conformal risk control & 250 & 673 & 32.3 \% & 89.6 \% & \\
+& uniform sample & 250 & 932 & --- & --- & 10.4 \% \\
 \end{longtable}
 }
 
-Plans certified for all levels together exceeded the budget on 1, 27 and 20 level checks of 1000, 1000 and 1500, against 30.2, 27.5 and 22.8 expected under the picked failure probabilities. On the synthetic map the first 60 campaigns had shown 10 of 360 against 5.5 expected; repeating the calibration draw 3000 times on each of 20 recorded level populations of four of those campaigns gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels, so the excess was chance. Conformal risk control kept its mean share of a level skipped wrongly at 5.7 \%, 18.8 \% and 18.3 \% against budgets of 10 \%, 20 \% and 20 \%. Uniform samples left 0.5 \ensuremath{\pm} 0.2 \%, 22.0 \ensuremath{\pm} 1.0 \% and 10.6 \ensuremath{\pm} 1.0 \% of certified-level sites outside tolerance; the final maps of the plans certified level by level left 0.4 \ensuremath{\pm} 0.3 \%, 18.0 \ensuremath{\pm} 3.8 \% and 8.4 \ensuremath{\pm} 1.4 \%.
+Plans certified for all levels together exceeded the budget on 1, 27 and 16 level checks of 1000, 1000 and 1500, against 30.2, 27.5 and 13.2 expected under the picked failure probabilities. Conformal risk control kept its mean share of a level skipped wrongly at 5.7 \%, 18.8 \% and 8.8 \% against budgets of 10 \%, 20 \% and 10 \%. Uniform samples left 0.5 \ensuremath{\pm} 0.2 \%, 22.0 \ensuremath{\pm} 1.0 \% and 10.4 \ensuremath{\pm} 0.7 \% of certified-level sites outside tolerance; the final maps of the plans certified level by level left 0.4 \ensuremath{\pm} 0.3 \%, 18.0 \ensuremath{\pm} 3.8 \% and 3.6 \ensuremath{\pm} 1.8 \%.
 
 \hypertarget{si-6.-what-the-certified-metric-does-to-a-campaign}{%
 \section*{SI 6. What the certified metric does to a campaign}\label{si-6.-what-the-certified-metric-does-to-a-campaign}}
@@ -946,6 +919,8 @@ Scripts and data: SI 4; summary in the run record, under the analysis of the met
 \subsection*{SI 6.2 Where wrong interest skips fall on the synthetic map}\label{si-6.2-where-wrong-interest-skips-fall-on-the-synthetic-map}}
 \addcontentsline{toc}{subsection}{SI 6.2 Where wrong interest skips fall on the synthetic map}
 
+This section uses a variant of the synthetic map with two claims: interest, a dominant peak at least five times its local baseline, and interpolation of the dominant-peak position and width (0.005 and 0.001 \AA{}\ensuremath{^{-1}}), at a budget of 0.20 and confidence 0.80. The main text uses the interpolation claim alone on the full profile; the records of this variant are kept in the run record and the archive of SI 5.
+
 The wrong skips of the synthetic map cluster in composition. The analysis below uses the quantile path with natural-neighbour interpolation at a budget of 0.20 and confidence 0.80; the score variants were run on the first 60 campaigns.
 
 \begin{itemize}
@@ -1002,7 +977,7 @@ The metric set the cost. At tolerances a practitioner might pick, the share of c
 
 At equal difficulty the metric still decided where measurements go (Fig. S6). On the synthetic map the peak claim measured where the peak position and width drift with composition, in the micellar phase and in a band of the emulsion. The profile claim measured along the phase boundaries: 45--46 \% of its measurements fell on the 8.8 \% of sites next to another phase, against 32 \% for the peak claim. The two claims placed 31 \% of their measurements on the same sites, and 16 \% at the default tolerances.
 
-The metric also decided where wrong skips fall. Metrics with an absolute term put 72--83 \% of the IR wrong skips on sites with signal, 30 \% of the skipped sites, and the NaCl line-width claim put 6 \% of its wrong skips on sites holding the line, 66 \% of the skipped sites. Under every metric the wrong skips clustered, with another wrong skip among the six nearest neighbours 1.5 to 3.0 times as often as for wrong skips placed at random among the skipped sites. The rate also counts wrong skips over all sites of a level. On the synthetic map, where a third of the sites are of interest, 35 \% of the interesting sites on certified levels were skipped in error while every level met its budget (SI 6.2).
+The metric also decided where wrong skips fall. Metrics with an absolute term put 72--83 \% of the IR wrong skips on sites with signal, 30 \% of the skipped sites, and the NaCl line-width claim put 6 \% of its wrong skips on sites holding the line, 66 \% of the skipped sites. Under every metric the wrong skips clustered, with another wrong skip among the six nearest neighbours 1.5 to 3.0 times as often as for wrong skips placed at random among the skipped sites. The rate also counts wrong skips over all sites of a level. On the two-claim variant of the synthetic map, where a third of the sites are of interest, 35 \% of the interesting sites on certified levels were skipped in error while every level met its budget (SI 6.2).
 
 \hypertarget{si-7.-campaigns-guided-by-gaussian-process-uncertainty}{%
 \section*{SI 7. Campaigns guided by Gaussian-process uncertainty}\label{si-7.-campaigns-guided-by-gaussian-process-uncertainty}}
@@ -1099,19 +1074,19 @@ IR (959 sites) & latent & 0--7.4 \% & 1.0--3.3 \% & 73--191 \\
 NaCl (1071 sites) & latent & 0--0.7 \% & 0.1--1.6 \% & 1042--1070 \\
 & predictive & 0--0.1 \% & 0.1--0.4 \% & 1064--1070 \\
 & rescaled (factor 0.19--0.89) & 0--2.1 \% & 0.1--5.8 \% & 959--1070 \\
-synthetic (2118 sites) & latent & 0--4.0 \% & 13.8--38.7 \% & 289--550 \\
-& predictive & 0--3.5 \% & 10.9--30.5 \% & 368--580 \\
-& rescaled (factor 0.23--0.87) & 0--3.8 \% & 16.1--41.0 \% & 340--503 \\
+synthetic (2118 sites) & latent & 0--0.1~\% & 0~\% & 2109--2118 \\
+& predictive & 0~\% & 0~\% & 2118 \\
+& rescaled (factor 0.06--0.23) & 0--1.8~\% & 0.3--2.1~\% & 1506--1792 \\
 \end{longtable}
 }
 
-On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map, sites skipped under the interest claim alone were wrong 0 to 2 times out of 293 to 509; the wrong skips failed the tolerance, 166 to 261 of the 548 to 632 sites skipped under the interpolation claim alone and 59 to 591 of the 572 to 832 skipped under both. On NaCl the fitted white-noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip; it describes site-to-site scatter that the smooth part of the process does not follow, far above the counting noise of a measurement (SI 2).
+On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map the claim is on the full profile at 0.5~\% + 0.005; the process judged every site too uncertain to skip at every \ensuremath{\alpha}, and only the rescaled process skipped. The two-claim variant of SI 6.2, with its peak claim, gave stated shares of at most 4~\% against realised shares of 11~\% to 41~\%; those runs are kept in the archive of SI 5. On NaCl the fitted white-noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip; it describes site-to-site scatter that the smooth part of the process does not follow, far above the counting noise of a measurement (SI 2).
 
 \hypertarget{s7.3-certified-campaigns-at-several-budgets}{%
 \subsection*{S7.3 Certified campaigns at several budgets}\label{s7.3-certified-campaigns-at-several-budgets}}
 \addcontentsline{toc}{subsection}{S7.3 Certified campaigns at several budgets}
 
-For Fig. 4 the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
+For Fig. 4 the quantile path was run at budgets \(\varepsilon\) of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget, 4 on the synthetic map).
 
 {\renewcommand{\thetable}{S7.3}\small
 \begin{longtable}[]{@{}
@@ -1145,8 +1120,8 @@ IR & NN & 473 \ensuremath{\pm} 70 (1.5~\%) & 312 \ensuremath{\pm} 58 (3.4~\%) & 
 & GP & 410 \ensuremath{\pm} 66 (1.5~\%) & 271 \ensuremath{\pm} 31 (3.7~\%) & 233 \ensuremath{\pm} 1 (4.3~\%) & 233 \ensuremath{\pm} 0 (4.3~\%) \\
 NaCl & NN & 898 \ensuremath{\pm} 52 (1.9~\%) & 806 \ensuremath{\pm} 69 (4.5~\%) & 631 \ensuremath{\pm} 69 (11.5~\%) & 484 \ensuremath{\pm} 47 (19.9~\%) \\
 & GP & 1022 \ensuremath{\pm} 23 (2.2~\%) & 963 \ensuremath{\pm} 54 (4.2~\%) & 767 \ensuremath{\pm} 69 (11.5~\%) & 624 \ensuremath{\pm} 65 (18.3~\%) \\
-synthetic & NN & 461 \ensuremath{\pm} 16 (2.2~\%) & 415 \ensuremath{\pm} 22 (4.9~\%) & 334 \ensuremath{\pm} 25 (12.8~\%) & 285 \ensuremath{\pm} 12 (21.5~\%) \\
-& GP & 1900 \ensuremath{\pm} 148 (2.7~\%) & 1678 \ensuremath{\pm} 178 (5.5~\%) & 1140 \ensuremath{\pm} 302 (13.2~\%) & 752 \ensuremath{\pm} 188 (21.0~\%) \\
+synthetic & NN & 1128 \ensuremath{\pm} 229 (2.2~\%) & 918 \ensuremath{\pm} 219 (4.5~\%) & 542 \ensuremath{\pm} 83 (12.5~\%) & 392 \ensuremath{\pm} 57 (20.3~\%) \\
+& GP & 2061 \ensuremath{\pm} 24 (1.8~\%) & 1940 \ensuremath{\pm} 95 (5.8~\%) & 1673 \ensuremath{\pm} 138 (14.3~\%) & 1460 \ensuremath{\pm} 122 (22.4~\%) \\
 \end{longtable}
 }
 
@@ -1235,11 +1210,11 @@ largest fifth
 \endlastfoot
 NaCl width & 995 & 160 & 378 & 0.52/0.60 & 0.66/0.86 & 0.35/0.47 & 0.18 \\
 IR amide I & 886 & 160 & 62 & 0.014/0.021 & 0.38/0.79 & 0.013/0.019 & 0.21 \\
-synthetic peak & 2079 & 233 & 62 & 0.20/0.45 & 0.34/1.00 & 0.097/0.45 & 0.53 \\
+synthetic profile & 2079 & 233 & 660 & 0.40/0.43 & all & 0.40/0.43 & 0.35 \\
 \end{longtable}
 }
 
-\textbf{What the record shows.} On the synthetic map the score finds the sites the prediction misses: 45 \% of the sites measured by choice were needed, against 10 \% of sites drawn at random, and half of their residuals lie among the largest fifth of the calibration residuals (Fig. S8c, f). On the NaCl scan the sites measured by choice were needed in 47 \% of cases against 35 \% at random, and their residuals spread evenly over the fifths of the calibration residuals (Fig. S8a, d). The width scatters from site to site by about the tolerance (SI 7), so half of all predictions fail whatever the score, and the cost of the guarantee falls on sites that the score cannot tell apart. On the IR map almost no prediction fails, 1.4 \% at random; the sites measured by choice are mostly of interest (79 \%) and predictable within tolerance (Fig. S8b, e). The certified cut of each level, set from a calibration draw of 40 sites, stopped short of them; their measurement is the price of a finite calibration draw, and a larger draw or a looser budget moves the cut outward.
+\textbf{What the record shows.} On the synthetic map every site is of interest and the tight profile claim fails at 40 \% of sites drawn at random; 43 \% of the sites measured by choice failed, and a third of their residuals lie among the largest fifth of the calibration residuals, against a fifth for a score without information (Fig. S8c, f). On the NaCl scan the sites measured by choice were needed in 47 \% of cases against 35 \% at random, and their residuals spread evenly over the fifths of the calibration residuals (Fig. S8a, d). The width scatters from site to site by about the tolerance (SI 7), so half of all predictions fail whatever the score, and the cost of the guarantee falls on sites that the score cannot tell apart. On the IR map almost no prediction fails, 1.4 \% at random; the sites measured by choice are mostly of interest (79 \%) and predictable within tolerance (Fig. S8b, e). The certified cut of each level, set from a calibration draw of 40 sites, stopped short of them; their measurement is the price of a finite calibration draw, and a larger draw or a looser budget moves the cut outward.
 
 {\renewcommand{\thetable}{S8.3}\small
 \begin{longtable}[]{@{}
@@ -1293,7 +1268,7 @@ outcome
 \begin{figure}[tbp]\renewcommand{\thefigure}{S8}
 \centering
 \includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/figS8_measured}
-\caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Error of the frozen prediction divided by the tolerance (NaCl: width error ÷ 0.02 nm\ensuremath{^{-1}}; synthetic map: the larger of peak-position error ÷ 0.005 and peak-width error ÷ 0.001; IR map: mean over channels of the absorbance error ÷ (0.10 \ensuremath{\times} absorbance + 0.10)) at every site of the certified levels, grouped by action: skipped as predictable only, skipped under both claims (wrong only where the line is also of interest), measured as a random calibration draw, measured by choice. Red: one, a miss by exactly the tolerance; above it the prediction fails; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Percentages give the share above the tolerance over 250 campaigns. (d--f) Residuals of the sites measured by choice, ranked among the calibration residuals of their level (randomised conformal p-value, SI 8 text): share falling in each fifth of the calibration residuals, from the largest to the smallest. Dashed: 20 \%, expected if measuring by choice were no better than drawing at random. Titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
+\caption{The record of measured sites for one campaign of average cost per dataset. (a--c) Error of the frozen prediction divided by the tolerance (NaCl: width error ÷ 0.02 nm\ensuremath{^{-1}}; synthetic map: mean over the profile of the intensity error ÷ (0.005 \ensuremath{\times} intensity + 0.005); IR map: mean over channels of the absorbance error ÷ (0.10 \ensuremath{\times} absorbance + 0.10)) at every site of the certified levels, grouped by action: skipped as predictable only, skipped under both claims (wrong only where the line is also of interest), measured as a random calibration draw, measured by choice. Red: one, a miss by exactly the tolerance; above it the prediction fails; \ensuremath{\approx}0: agreed absence or a residual below 0.013; \ensuremath{\infty}: presence predicted wrongly. Percentages give the share above the tolerance over 250 campaigns. (d--f) Residuals of the sites measured by choice, ranked among the calibration residuals of their level (randomised conformal p-value, SI 8 text): share falling in each fifth of the calibration residuals, from the largest to the smallest. Dashed: 20 \%, expected if measuring by choice were no better than drawing at random. Titles give the share of sites needed among those measured by choice and among those drawn at random, over 250 campaigns.}\label{fig:S8}
 \end{figure}
 
 \hypertarget{si-9.-the-map-bound}{%
@@ -1322,7 +1297,7 @@ No independence between the two statements is needed.
 
 \textbf{Scope.} The bound concerns the map frozen before the draw, at the sites of the new level. The final map also uses the calibration sites and every site measured because no claim covered it. Those depend on the draw, so the final map carries no finite-sample statement and is checked against the truth (Section 5.4).
 
-\textbf{Record.} The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Recomputed with the exact limit from the 250 campaigns of each main configuration, it held on 95.8 \% of the certified levels for IR, 84.4 \% for NaCl and 89.5 \% for the synthetic map, against confidences of 0.75, 0.80 and 0.80; the Clopper--Pearson limit held on 100 \%, 88.5 \% and 90.4 \%, at mean upper limits 0.052, 0.593 and 0.279 against 0.042, 0.579 and 0.255 for the exact one. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.
+\textbf{Record.} The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Recomputed with the exact limit from the 250 campaigns of each main configuration, it held on 95.8 \% of the certified levels for IR, 84.4 \% for NaCl and 87.2 \% for the synthetic map, against confidences of 0.75, 0.80 and 0.80; the Clopper--Pearson limit held on 100 \%, 88.5 \% and 90.9 \%, at mean upper limits 0.052, 0.593 and 0.483 against 0.042, 0.579 and 0.463 for the exact one. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.
 
 \hypertarget{si-10.-checks-beyond-the-level}{%
 \section*{SI 10. Checks beyond the level}\label{si-10.-checks-beyond-the-level}}
@@ -1334,7 +1309,7 @@ The studies below extend the run record of SI 5 in four directions: a bound on t
 \subsection*{SI 10.1 A label-conditional bound for the sites of interest}\label{si-10.1-a-label-conditional-bound-for-the-sites-of-interest}}
 \addcontentsline{toc}{subsection}{SI 10.1 A label-conditional bound for the sites of interest}
 
-\textbf{Rule.} On each level of the synthetic map the shared budget is kept at 0.20 with confidence 0.80, as in the record. In addition, the share of the level\textquotesingle s sites of interest skipped under the no-interest claim is bounded by 0.20 with confidence 0.80. Given their number \(m_Z\), the calibration sites of interest are a uniform sample without replacement from the \(N_Z\) sites of interest of the level. \(N_Z\) is unknown, but it lies between \(m_Z\) and \(N_L - (m - m_Z)\). The allowed number \(k_Z\) of calibration sites of interest that the no-interest claim may cover is the largest \(k\) for which
+\textbf{Rule.} The study uses the two-claim variant of the synthetic map (SI 6.2), where a third of the sites are of interest. On each level the shared budget is kept at 0.20 with confidence 0.80. In addition, the share of the level\textquotesingle s sites of interest skipped under the no-interest claim is bounded by 0.20 with confidence 0.80. Given their number \(m_Z\), the calibration sites of interest are a uniform sample without replacement from the \(N_Z\) sites of interest of the level. \(N_Z\) is unknown, but it lies between \(m_Z\) and \(N_L - (m - m_Z)\). The allowed number \(k_Z\) of calibration sites of interest that the no-interest claim may cover is the largest \(k\) for which
 
 \[
 \max_{N_Z} P\big(H_{N_Z,\ \lfloor 0.20 N_Z \rfloor + 1,\ m_Z} \le k\big) \le 0.20
@@ -1386,9 +1361,9 @@ With the label-conditional bound & 0.0 \% & 5.0 \% & 6.8 \% & 7.6 \% & 9.3 \% & 
 \subsection*{SI 10.2 Drift during a campaign}\label{si-10.2-drift-during-a-campaign}}
 \addcontentsline{toc}{subsection}{SI 10.2 Drift during a campaign}
 
-\textbf{Model.} The synthetic sample swells slowly while it is measured: a measurement at clock \(t\), the number of sites measured before it, returns the profile of the sample as it was when the plan was declared, with \(q\) scaled by \(1 + s\,t/334\), so that every peak moves to lower \(q\). Here 334 is the mean cost of the plan in the record, and \(s\) takes the values 0, 0.05, 0.10 and 0.20. Calibration labels compare the prediction with the drifted measurement, as a live campaign would; every rate is counted against the sample at the start. After each level, five seed sites fixed in advance are measured again and compared, under the claim\textquotesingle s metric, with their first measurement; a failure flags the level. Re-measurement is not charged to the clock. At \(s = 0\) the campaigns reproduce the record site for site. Fifty campaigns were run per value.
+\textbf{Model.} The synthetic sample swells slowly while it is measured: a measurement at clock \(t\), the number of sites measured before it, returns the profile of the sample as it was when the plan was declared, with \(q\) scaled by \(1 + s\,t/932\), so that every feature moves to lower \(q\). Here 932 is the mean cost of the plan in the record, and \(s\) takes the values 0, 0.05, 0.10 and 0.20. Claim and budget are those of the main text: the full profile within 0.5 \% + 0.005 on average, \(R_E \le 0.10\) at confidence 0.80 per level. Calibration labels compare the prediction with the drifted measurement, as a live campaign would; every rate is counted against the sample at the start. After each level, five seed sites fixed in advance are measured again and compared, under the claim\textquotesingle s metric, with their first measurement; a failure flags the level. Re-measurement is not charged to the clock. At \(s = 0\) the campaigns reproduce the record site for site. Fifty campaigns were run per value.
 
-\textbf{Result.} The bound on the skips held at every value of \(s\) (Table S10.2). Drift raises the calibration failures, because a drifted measurement disagrees with a prediction from earlier measurements, so the rule skipped less: the plan measured 468 \ensuremath{\pm} 79 sites at \(s = 0.10\) and 926 \ensuremath{\pm} 117 at \(s = 0.20\), against 330 \ensuremath{\pm} 26 without drift, and the wrong-skip rate fell. The damage moved into the measured sites. At \(s = 0.10\), 21 \% of the sites measured on certified levels returned a profile outside tolerance of the sample at the start, and at \(s = 0.20\), 79 \%. Those sites carry no claim, so no bound covers them. The repeated seed sites flagged no level without drift, flagged 98 \% of the campaigns at \(s = 0.10\), mostly from level 7 on, and flagged every campaign at \(s = 0.20\) from level 4 or 5 on. The synthetic profiles carry no noise, so any failure of a repeated site signals drift; with noise, the threshold for a flag comes from repeated measurements, as for the NaCl scan in SI 2.
+\textbf{Result.} Under the profile claim the bound broke (Table S10.2). At \(s = 0.05\) and \(0.10\) the levels exceeded their budget in 24 \% of checks, against 9.5 \% expected under the picked failure probabilities, although drifted calibration sites disagree with earlier predictions and the rule skipped less: the plan measured 1687 \ensuremath{\pm} 76 and 1806 \ensuremath{\pm} 51 sites against 966 \ensuremath{\pm} 247 without drift. At \(s = 0.20\) it measured almost every site, and the few skips met the budget. Most of the damage lay in the measured sites: 88 \% to 96 \% of the sites measured on certified levels returned a profile outside tolerance of the sample at the start, and those sites carry no claim. The repeated seed sites flagged no level without drift and flagged every drifted campaign, from the fourth level on at \(s = 0.05\) and from the third at the larger values. The synthetic profiles carry no noise, so any failure of a repeated site signals drift; with noise, the threshold for a flag comes from repeated measurements, as for the NaCl scan in SI 2. The two-claim variant of the synthetic map (SI 6.2), with its peak-position tolerance of 0.005 \AA{}\ensuremath{^{-1}}, absorbed a stretch of 5 \% and kept its bound at every stretch, while 21 \% to 79 \% of its measurements went outside tolerance at stretches of 10 \% and 20 \%; the archive of SI 5 keeps those runs.
 
 {\renewcommand{\thetable}{S10.2}\small
 \begin{longtable}[]{@{}
@@ -1397,7 +1372,7 @@ With the label-conditional bound & 0.0 \% & 5.0 \% & 6.8 \% & 7.6 \% & 9.3 \% & 
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
-\caption{Drift on the synthetic map, 50 campaigns per value of \(s\). Level checks over budget, against 11.3 \% expected under the picked failure probabilities; measured sites outside tolerance of the sample at the start, as a share of the measured sites of certified levels; campaigns with at least one flagged level.}\label{tab:S10.2}\\
+\caption{Drift on the synthetic map, 50 campaigns per value of \(s\). Level checks over budget, against 9.5 \% expected under the picked failure probabilities; measured sites outside tolerance of the sample at the start, as a share of the measured sites of certified levels; campaigns with at least one flagged level.}\label{tab:S10.2}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -1415,10 +1390,10 @@ Campaigns flagged
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & 330 \ensuremath{\pm} 26 & 11.3 \% & 0 \% & 0 \% \\
-0.05 & 348 \ensuremath{\pm} 31 & 11.0 \% & 0 \% & 16 \% \\
-0.10 & 468 \ensuremath{\pm} 79 & 6.3 \% & 21 \% & 98 \% \\
-0.20 & 926 \ensuremath{\pm} 117 & 0.7 \% & 79 \% & 100 \% \\
+0.00 & 966 \ensuremath{\pm} 247 & 9.7 \% & 0 \% & 0 \% \\
+0.05 & 1687 \ensuremath{\pm} 76 & 23.7 \% & 88 \% & 100 \% \\
+0.10 & 1806 \ensuremath{\pm} 51 & 23.7 \% & 93 \% & 100 \% \\
+0.20 & 1908 \ensuremath{\pm} 45 & 4.0 \% & 96 \% & 100 \% \\
 \end{longtable}
 }
 

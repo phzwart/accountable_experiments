@@ -113,61 +113,61 @@
    "chosen_needed": 0.0
   }
  },
- "syn_peak_2cert_nested_watson": {
-  "name": "synthetic SAXS peak",
+ "syn_env_nested_watson": {
+  "name": "synthetic SAXS profile",
   "pooled": {
    "campaigns": 250,
    "per_campaign": {
     "calibration": 233.0,
-    "chosen": 62.384,
-    "skipped_pred": 1462.472,
-    "skipped_pred_only": 318.848,
-    "skipped_both": 1143.624,
-    "skipped_noint": 1464.768
+    "chosen": 659.912,
+    "skipped_pred": 1186.088,
+    "skipped_pred_only": 1186.088,
+    "skipped_both": 0.0,
+    "skipped_noint": 0.0
    },
    "seed_sites": 39.0,
    "certified_sites": 2079,
    "calibration": {
-    "fail": 0.20159656652360516,
+    "fail": 0.39934763948497853,
     "interesting": 0.3413905579399142,
-    "needed": 0.09701287553648069
+    "needed": 0.2272274678111588
    },
    "chosen": {
-    "fail": 0.45351372146704283,
-    "interesting": 0.9960887407027443,
-    "needed": 0.45338548345729673
+    "fail": 0.42920268156966385,
+    "interesting": 0.514153402271818,
+    "needed": 0.30862296791087296
    },
    "skipped_pred": {
-    "fail": 0.05107790097861702,
-    "interesting": 0.36705249741533513,
-    "needed": 0.04090608230448173
+    "fail": 0.08258746399929853,
+    "interesting": 0.24126371736329852,
+    "needed": 0.03651331098535691
    },
    "skipped_pred_only": {
-    "fail": 0.03222852268165395,
-    "interesting": 0.9989336611802488,
-    "needed": 0.03222852268165395
+    "fail": 0.08258746399929853,
+    "interesting": 0.24126371736329852,
+    "needed": 0.03651331098535691
    },
    "skipped_both": {
-    "fail": 0.056333200422516494,
-    "interesting": 0.1908809189034158,
-    "needed": 0.04332542863738432
+    "fail": NaN,
+    "interesting": NaN,
+    "needed": NaN
    },
    "skipped_noint": {
-    "fail": 0.1329766898239175,
-    "interesting": 0.16713090400664132,
-    "needed": 0.0474750950321143
+    "fail": NaN,
+    "interesting": NaN,
+    "needed": NaN
    },
-   "lift_needed": 4.673456806120604
+   "lift_needed": 1.3582115352680832
   },
   "replay": {
-   "seed": 131,
-   "chosen": 62,
+   "seed": 188,
+   "chosen": 661,
    "calibration": 233,
-   "median_resid_cal": 0.16682579110906953,
-   "median_resid_chosen": 0.7011003529617219,
-   "p_below_02_chosen": 0.532258064516129,
-   "p_below_05_chosen": 0.9032258064516129,
-   "chosen_needed": 0.45161290322580644
+   "median_resid_cal": 0.36884014555889993,
+   "median_resid_chosen": 0.5382262805144585,
+   "p_below_02_chosen": 0.3494704992435703,
+   "p_below_05_chosen": 0.6944024205748865,
+   "chosen_needed": 0.3146747352496218
   }
  }
 }

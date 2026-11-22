@@ -46,12 +46,12 @@ def main():
     c_wrong = S & ((A & z["interesting"][i].astype(bool)) | (B & z["fail_prior"][i].astype(bool)))
 
     U = ROOT / "results/uncertified"
-    def unc(key, a):
-        u = np.load(U / f"{key}_predictive_a{a:.2f}.npz")
+    def unc(key, a, kind="predictive"):
+        u = np.load(U / f"{key}_{kind}_a{a:.2f}.npz")
         act = u["action"].astype(object)
         act = np.where(np.isin(act, ["seed", "measured"]), "measured",
                        np.where(np.isin(act, NOT_INT), "no_line", "predictable")).astype(object)
-        row = [r for r in json.loads((U / f"{key}.json").read_text()) if r["kind"] == "predictive" and abs(r["alpha"] - a) < 1e-9][0]
+        row = [r for r in json.loads((U / f"{key}.json").read_text()) if r["kind"] == kind and abs(r["alpha"] - a) < 1e-9][0]
         return act, u["wrong"].astype(bool), row
     g_act, g_wrong, grow = unc("syn", 0.10)
 
@@ -87,6 +87,8 @@ def main():
     for a in (0.05, 0.10, 0.20):
         _, _, r = unc("syn", a)
         rows.append((f"GP, α = {a:.2f}", 100 * r["stated_rate"], 100 * r["wrong_rate"], None, r["measured"], ORANGE))
+    _, _, r = unc("syn", 0.10, "loo")
+    rows.append(("GP rescaled, α = 0.10", 100 * r["stated_rate"], 100 * r["wrong_rate"], None, r["measured"], "#9b2d1f"))
     nacl = json.loads((ROOT / "results/hook/uncertified.json").read_text())
     nr = [r for r in nacl["uncertified"] if r["sd"] == "predictive" and r["z"] == 1.0][0]
     rows.append(("GP, NaCl scan", 100 * nr["stated_rate"], 100 * nr["wrong_rate"], None, nr["measured"], INK2))
@@ -98,24 +100,23 @@ def main():
         ax.scatter([re], [yk], marker="o", s=20, c=col, edgecolors="white", linewidths=0.5, zorder=4)
         if rng is not None:
             ax.plot(rng, [yk, yk], color=col, lw=0.8, zorder=2)
-        ax.text(38.5, yk, f"{mm}", va="center", ha="right", fontsize=6.4, color=INK2)
+        ax.text(14.6, yk, f"{mm}", va="center", ha="right", fontsize=6.4, color=INK2)
     ax.set_yticks(list(range(n - 1, -1, -1)), [r[0] for r in rows], fontsize=6.4)
-    ax.set_xlim(-0.5, 39.5); ax.set_ylim(-0.6, n - 0.4)
+    ax.set_xlim(-0.3, 15.0); ax.set_ylim(-0.6, n - 0.4)
     ax.set_xlabel("share of sites skipped wrongly (%)", fontsize=6.8)
-    ax.text(38.5, n - 0.38, "measured", ha="right", va="bottom", fontsize=6.0, color=INK2)
+    ax.text(14.6, n - 0.38, "measured", ha="right", va="bottom", fontsize=6.0, color=INK2)
     ax.set_title("(c) Stated (|) and realised (●)", loc="left", fontsize=7.2, pad=10)
     for s_ in ("top", "right"):
         ax.spines[s_].set_visible(False)
     ax.tick_params(labelsize=6.4)
 
     handles = [Line2D([], [], ls="", marker="o", color=COL["measured"], markersize=3.5, label="measured"),
-               Line2D([], [], ls="", marker="o", color=COL["no_line"], markersize=3.5, label="skipped: not of interest"),
                Line2D([], [], ls="", marker="o", color=COL["predictable"], markersize=3.5, label="skipped: predictable"),
                Line2D([], [], ls="", marker="x", color=RED, markersize=4.5, label="wrong skip, found afterwards"),
                Line2D([], [], color=INK, lw=0.6, label="phase boundary")]
-    fig.legend(handles=handles, loc="lower left", ncol=5, fontsize=6.2, frameon=False, bbox_to_anchor=(0.0, 0.0),
+    fig.legend(handles=handles, loc="lower left", ncol=4, fontsize=6.2, frameon=False, bbox_to_anchor=(0.0, 0.0),
                columnspacing=1.0, handletextpad=0.3)
-    fig.text(0.005, 0.945, "Two campaigns on one phase map: only the certified plan bounds its rate before any skip",
+    fig.text(0.005, 0.945, "One phase map: the certified plan skips half the sites under a bound; the GP, trusting itself, skips none",
              fontsize=8.6, fontweight="bold", color=INK)
     fig.savefig(FIG / "fig_hook_three.png", dpi=220)
     fig.savefig(FIG / "fig_hook_three.pdf")

@@ -43,15 +43,15 @@ Three standard deviations are used: the latent one, the predictive one, which ad
 | NaCl (1071 sites) | latent | 0–0.7 % | 0.1–1.6 % | 1042–1070 |
 | | predictive | 0–0.1 % | 0.1–0.4 % | 1064–1070 |
 | | rescaled (factor 0.19–0.89) | 0–2.1 % | 0.1–5.8 % | 959–1070 |
-| synthetic (2118 sites) | latent | 0–4.0 % | 13.8–38.7 % | 289–550 |
-| | predictive | 0–3.5 % | 10.9–30.5 % | 368–580 |
-| | rescaled (factor 0.23–0.87) | 0–3.8 % | 16.1–41.0 % | 340–503 |
+| synthetic (2118 sites) | latent | 0–0.1 % | 0 % | 2109–2118 |
+| | predictive | 0 % | 0 % | 2118 |
+| | rescaled (factor 0.06–0.23) | 0–1.8 % | 0.3–2.1 % | 1506–1792 |
 
-On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map, sites skipped under the interest claim alone were wrong 0 to 2 times out of 293 to 509; the wrong skips failed the tolerance, 166 to 261 of the 548 to 632 sites skipped under the interpolation claim alone and 59 to 591 of the 572 to 832 skipped under both. On NaCl the fitted white-noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip; it describes site-to-site scatter that the smooth part of the process does not follow, far above the counting noise of a measurement (SI 2).
+On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map the claim is on the full profile at 0.5 % + 0.005; the process judged every site too uncertain to skip at every α, and only the rescaled process skipped. The two-claim variant of SI 6.2, with its peak claim, gave stated shares of at most 4 % against realised shares of 11 % to 41 %; those runs are kept in the archive of SI 5. On NaCl the fitted white-noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip; it describes site-to-site scatter that the smooth part of the process does not follow, far above the counting noise of a measurement (SI 2).
 
 ## S7.3 Certified campaigns at several budgets
 
-For Fig. 4 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget).
+For Fig. 4 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.20 and 0.30 on the shared wrong-skip rate, at the confidences of Section 4.3, with natural-neighbour prediction (20 campaigns per budget) and Gaussian-process prediction with the length scale by maximum likelihood (8 campaigns per budget, 4 on the synthetic map).
 
 **Table S7.3.** Certified campaigns by budget: sites measured (mean ± standard deviation) and, in brackets, the mean realised share of the certified-level sites skipped wrongly. NN, natural-neighbour prediction; GP, Gaussian-process prediction.
 
@@ -61,8 +61,8 @@ For Fig. 4 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.2
 | | GP | 410 ± 66 (1.5 %) | 271 ± 31 (3.7 %) | 233 ± 1 (4.3 %) | 233 ± 0 (4.3 %) |
 | NaCl | NN | 898 ± 52 (1.9 %) | 806 ± 69 (4.5 %) | 631 ± 69 (11.5 %) | 484 ± 47 (19.9 %) |
 | | GP | 1022 ± 23 (2.2 %) | 963 ± 54 (4.2 %) | 767 ± 69 (11.5 %) | 624 ± 65 (18.3 %) |
-| synthetic | NN | 461 ± 16 (2.2 %) | 415 ± 22 (4.9 %) | 334 ± 25 (12.8 %) | 285 ± 12 (21.5 %) |
-| | GP | 1900 ± 148 (2.7 %) | 1678 ± 178 (5.5 %) | 1140 ± 302 (13.2 %) | 752 ± 188 (21.0 %) |
+| synthetic | NN | 1128 ± 229 (2.2 %) | 918 ± 219 (4.5 %) | 542 ± 83 (12.5 %) | 392 ± 57 (20.3 %) |
+| | GP | 2061 ± 24 (1.8 %) | 1940 ± 95 (5.8 %) | 1673 ± 138 (14.3 %) | 1460 ± 122 (22.4 %) |
 
 On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a budget of 0.10 every predicted skip is admitted, and the realised share stays at the rate the predictor makes.
 

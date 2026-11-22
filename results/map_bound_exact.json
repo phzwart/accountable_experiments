@@ -15,9 +15,9 @@
  },
  "syn": {
   "n": 1500,
-  "coverage_cp": 0.904,
-  "coverage_hyp": 0.8946666666666667,
-  "mean_upper_cp": 0.27895739837313815,
-  "mean_upper_hyp": 0.25491910641888277
+  "coverage_cp": 0.9093333333333333,
+  "coverage_hyp": 0.872,
+  "mean_upper_cp": 0.48277984973583865,
+  "mean_upper_hyp": 0.4625822513436563
  }
 }

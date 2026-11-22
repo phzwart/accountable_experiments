@@ -52,7 +52,7 @@ In every rule, the length scale of a level is fixed from the measured set before
 | --- | --- | --- | --- | --- |
 | IR map | 0.069 (0.045–0.082) | 0.36 (0.038–0.82) | 0.045 (0.024–0.088) | 0.071 (0.049–0.101) |
 | NaCl scan | 0.072 (0.029–0.120) | 1.47 (0.007–5.04) | 0.064 (0.036–0.107) | 0.077 (0.040–0.113) |
-| Synthetic map | 0.150 (0.070–0.296) | 0.083 (0.018–0.27) | 0.045 (0.019–0.109) | 0.051 (0.021–0.118) |
+| Synthetic map | 0.147 (0.055–0.296) | 0.085 (0.009–0.27) | 0.045 (0.019–0.109) | 0.050 (0.020–0.118) |
 
 The three rules give visibly different reasons for measuring a site (Fig. S1). The design-spacing rule gives the shortest length scale and the most structured standard deviation, high in every gap between measured sites. Maximum likelihood on the IR map assigned much of the variance to noise and returned a nearly uniform standard deviation. The local-spacing rule lengthens the kernel where measurements are sparse and lowers the standard deviation there.
 

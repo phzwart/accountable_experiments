@@ -50,7 +50,7 @@ The priority path subclasses the quantile path and replaces only the entry times
 
 | Name element | Meaning |
 | --- | --- |
-| `ir`, `ir_tight`, `nacl_fwhm`, `syn_peak_2cert` | IR map at the original and the tight tolerance; NaCl scan, width claim; synthetic map, peak claim, both claims |
+| `ir`, `ir_tight`, `nacl_fwhm`, `syn_env`, `syn_peak_2cert` | IR map at the original and the tight tolerance; NaCl scan, width claim; synthetic map, full-profile claim alone (main text); synthetic map, peak and interest claims (variant of SI 6.2) |
 | `separate`, `nested`, `priority` | per-claim budgets, quantile path, priority path (Section 3.4) |
 | `watson`, `sibson` | natural-neighbour (Sibson) interpolation with the logistic score; `watson` names the construction of the weights |
 | `gp_mle`, `gp_design`, `gp_nonstationary` | Gaussian-process interpolation, length scale by maximum likelihood, by design spacing, by local spacing |

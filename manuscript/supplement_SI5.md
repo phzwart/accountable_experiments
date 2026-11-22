@@ -1,6 +1,6 @@
 # SI 5. The run record (draft 1)
 
-Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns; the comparisons of SI 5.3 add 250 campaigns each of three rules on three maps. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
+From round 3 the synthetic map carries the interpolation claim alone on the full profile (rtol = atol = 0.005) at a budget of 0.10 and confidence 0.80; with one claim the three forms of guarantee coincide, so one configuration stands for them. The two-claim configurations used before are kept in the record and in the archive of earlier results. Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249, except the three Gaussian-process configurations of the synthetic map, run as 20 (random states 0 to 19) for their cost of about a minute each; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 32 configurations give 7310 campaigns; the comparisons of SI 5.3 add 250 campaigns each of three rules on three maps. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
 
 **Table S5.1.** Exceedances of every stated rate over all certified levels of all campaigns. "Allowed failure" is one minus the stated confidence; the interval is a 95 % Clopper–Pearson interval on the exceedance frequency (indicative, since levels of one campaign are not independent draws).
 
@@ -22,14 +22,10 @@ Every configuration of Section 5 was run as 250 independent campaigns, random st
 | nacl_fwhm_nested_gp_mle | 250 | 745 ± 72 | R_E | 0.20 | 0.200 | 119/1000 | 0.119 | 0.100–0.141 |
 | nacl_fwhm_nested_gp_design | 250 | 760 ± 70 | R_E | 0.20 | 0.200 | 111/1000 | 0.111 | 0.092–0.132 |
 | nacl_fwhm_nested_gp_nonstationary | 250 | 777 ± 60 | R_E | 0.20 | 0.200 | 123/1000 | 0.123 | 0.103–0.145 |
-| syn_peak_2cert_separate_watson | 250 | 338 ± 26 | R_interest | 0.10 | 0.100 | 73/1500 | 0.049 | 0.038–0.061 |
-| syn_peak_2cert_separate_watson | 250 | 338 ± 26 | R_interp | 0.10 | 0.100 | 67/1500 | 0.045 | 0.035–0.056 |
-| syn_peak_2cert_separate_watson | 250 | 338 ± 26 | R_E | 0.20 | 0.200 | 5/1500 | 0.003 | 0.001–0.008 |
-| syn_peak_2cert_nested_watson | 250 | 334 ± 26 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
-| syn_peak_2cert_priority_watson | 250 | 628 ± 61 | R_E | 0.20 | 0.200 | 156/1500 | 0.104 | 0.089–0.121 |
-| syn_peak_2cert_nested_gp_mle | 250 | 1142 ± 219 | R_E | 0.20 | 0.200 | 156/1500 | 0.104 | 0.089–0.121 |
-| syn_peak_2cert_nested_gp_design | 250 | 1040 ± 202 | R_E | 0.20 | 0.200 | 186/1500 | 0.124 | 0.108–0.142 |
-| syn_peak_2cert_nested_gp_nonstationary | 250 | 1443 ± 133 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
+| syn_env_nested_watson | 250 | 932 ± 223 | R_E | 0.10 | 0.200 | 147/1500 | 0.098 | 0.083–0.114 |
+| syn_env_nested_gp_mle | 20 | 1974 ± 55 | R_E | 0.10 | 0.200 | 13/120 | 0.108 | 0.059–0.178 |
+| syn_env_nested_gp_design | 20 | 1946 ± 50 | R_E | 0.10 | 0.200 | 13/120 | 0.108 | 0.059–0.178 |
+| syn_env_nested_gp_nonstationary | 20 | 2027 ± 39 | R_E | 0.10 | 0.200 | 8/120 | 0.067 | 0.029–0.127 |
 | ir_tight_sibson | 250 | 621 ± 70 | R_E | 0.10 | 0.250 | 193/1000 | 0.193 | 0.169–0.219 |
 | ir_tight_gp_mle | 250 | 747 ± 56 | R_E | 0.10 | 0.250 | 179/1000 | 0.179 | 0.156–0.204 |
 | ir_tight_gp_design | 250 | 753 ± 52 | R_E | 0.10 | 0.250 | 191/1000 | 0.191 | 0.167–0.217 |
@@ -48,11 +44,7 @@ Every configuration of Section 5 was run as 250 independent campaigns, random st
 | nacl_fwhm_separate_random | 250 | 928 ± 45 | R_E | 0.20 | 0.200 | 17/1000 | 0.017 | 0.010–0.027 |
 | nacl_fwhm_nested_random | 250 | 861 ± 50 | R_E | 0.20 | 0.200 | 127/1000 | 0.127 | 0.107–0.149 |
 | nacl_fwhm_priority_random | 250 | 874 ± 49 | R_E | 0.20 | 0.200 | 132/1000 | 0.132 | 0.112–0.155 |
-| syn_peak_2cert_separate_random | 250 | 991 ± 286 | R_interest | 0.10 | 0.100 | 76/1500 | 0.051 | 0.040–0.063 |
-| syn_peak_2cert_separate_random | 250 | 991 ± 286 | R_interp | 0.10 | 0.100 | 62/1500 | 0.041 | 0.032–0.053 |
-| syn_peak_2cert_separate_random | 250 | 991 ± 286 | R_E | 0.20 | 0.200 | 7/1500 | 0.005 | 0.002–0.010 |
-| syn_peak_2cert_nested_random | 250 | 1076 ± 187 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
-| syn_peak_2cert_priority_random | 250 | 1322 ± 185 | R_E | 0.20 | 0.200 | 161/1500 | 0.107 | 0.092–0.124 |
+| syn_env_nested_random | 250 | 1578 ± 248 | R_E | 0.10 | 0.200 | 149/1500 | 0.099 | 0.085–0.116 |
 | ir_tight_random | 250 | 871 ± 31 | R_E | 0.10 | 0.250 | 194/1000 | 0.194 | 0.170–0.220 |
 
 
@@ -74,13 +66,7 @@ Every configuration of Section 5 was run as 250 independent campaigns, random st
 | nacl_fwhm_nested_gp_mle | R_E | 80 | 0.120 | 0.117 | 0.97 | 0 of 80 |
 | nacl_fwhm_nested_gp_design | R_E | 80 | 0.120 | 0.117 | 0.98 | 0 of 80 |
 | nacl_fwhm_nested_gp_nonstationary | R_E | 80 | 0.120 | 0.119 | 0.99 | 0 of 80 |
-| syn_peak_2cert_separate_watson | R_interest | 120 | 0.054 | 0.054 | 1.00 | 0 of 120 |
-| syn_peak_2cert_separate_watson | R_interp | 120 | 0.054 | 0.045 | 1.02 | 15 of 120 |
-| syn_peak_2cert_nested_watson | R_E | 120 | 0.113 | 0.112 | 0.99 | 0 of 120 |
-| syn_peak_2cert_priority_watson | R_E | 120 | 0.113 | 0.112 | 0.99 | 0 of 120 |
-| syn_peak_2cert_nested_gp_mle | R_E | 120 | 0.113 | 0.113 | 1.00 | 0 of 120 |
-| syn_peak_2cert_nested_gp_design | R_E | 120 | 0.113 | 0.114 | 1.01 | 0 of 120 |
-| syn_peak_2cert_nested_gp_nonstationary | R_E | 120 | 0.113 | 0.113 | 1.00 | 0 of 120 |
+| syn_env_nested_watson | R_E | 120 | 0.095 | 0.095 | 0.99 | 0 of 120 |
 | ir_tight_sibson | R_E | 80 | 0.190 | 0.193 | 1.02 | 0 of 80 |
 | ir_tight_gp_mle | R_E | 80 | 0.190 | 0.191 | 1.00 | 0 of 80 |
 | ir_tight_gp_design | R_E | 80 | 0.190 | 0.192 | 1.01 | 0 of 80 |
@@ -97,10 +83,7 @@ Every configuration of Section 5 was run as 250 independent campaigns, random st
 | nacl_fwhm_separate_random | R_interp | 80 | 0.061 | 0.060 | 0.99 | 0 of 80 |
 | nacl_fwhm_nested_random | R_E | 80 | 0.120 | 0.116 | 0.97 | 0 of 80 |
 | nacl_fwhm_priority_random | R_E | 80 | 0.120 | 0.121 | 1.01 | 0 of 80 |
-| syn_peak_2cert_separate_random | R_interest | 120 | 0.054 | 0.054 | 1.01 | 0 of 120 |
-| syn_peak_2cert_separate_random | R_interp | 120 | 0.054 | 0.035 | 1.00 | 31 of 120 |
-| syn_peak_2cert_nested_random | R_E | 120 | 0.113 | 0.111 | 0.98 | 0 of 120 |
-| syn_peak_2cert_priority_random | R_E | 120 | 0.113 | 0.114 | 1.01 | 0 of 120 |
+| syn_env_nested_random | R_E | 120 | 0.095 | 0.097 | 1.01 | 0 of 120 |
 | ir_tight_random | R_E | 80 | 0.190 | 0.179 | 0.94 | 0 of 80 |
 
 **Table S5.3.** Observed exceedances against the picked failure probability. On each level the rule picks the largest attainable worst-case failure probability $\delta_L$ at or below the nominal $\delta$; the guarantee made on that level is $P(R > \varepsilon) \le \delta_L$. "Allowed exceedances" is the sum of $\delta_L$ over all level checks of a configuration; the probability of the observed count treats checks as independent Bernoulli trials with success probabilities $\delta_L$ and is indicative. For the union-bound statement of the per-claim form, $\delta_L$ is the sum of the two per-claim picked levels. "Reachable" checks are those on which covering every coverable site would exceed the budget.
@@ -123,14 +106,10 @@ Every configuration of Section 5 was run as 250 independent campaigns, random st
 | nacl_fwhm_nested_gp_mle | R_E | 0.200 | 1000 | 0.120 | 120.1 | 119 | 0.99 | 0.558 | 1000 | 120.1 | 119 |
 | nacl_fwhm_nested_gp_design | R_E | 0.200 | 1000 | 0.120 | 120.1 | 111 | 0.92 | 0.825 | 1000 | 120.1 | 111 |
 | nacl_fwhm_nested_gp_nonstationary | R_E | 0.200 | 1000 | 0.120 | 120.1 | 123 | 1.02 | 0.404 | 1000 | 120.1 | 123 |
-| syn_peak_2cert_separate_watson | R_E | 0.200 | 1500 | 0.108 | 161.9 | 5 | 0.03 | 1.000 | 1500 | 161.9 | 5 |
-| syn_peak_2cert_separate_watson | R_interest | 0.100 | 1500 | 0.054 | 80.9 | 73 | 0.90 | 0.834 | 1500 | 80.9 | 73 |
-| syn_peak_2cert_separate_watson | R_interp | 0.100 | 1500 | 0.054 | 80.9 | 67 | 0.83 | 0.955 | 1325 | 67.9 | 67 |
-| syn_peak_2cert_nested_watson | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
-| syn_peak_2cert_priority_watson | R_E | 0.200 | 1500 | 0.113 | 169.8 | 156 | 0.92 | 0.883 | 1500 | 169.8 | 156 |
-| syn_peak_2cert_nested_gp_mle | R_E | 0.200 | 1500 | 0.113 | 169.8 | 156 | 0.92 | 0.883 | 1500 | 169.8 | 156 |
-| syn_peak_2cert_nested_gp_design | R_E | 0.200 | 1500 | 0.113 | 169.8 | 186 | 1.10 | 0.099 | 1500 | 169.8 | 186 |
-| syn_peak_2cert_nested_gp_nonstationary | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
+| syn_env_nested_watson | R_E | 0.200 | 1500 | 0.095 | 143.0 | 147 | 1.03 | 0.372 | 1500 | 143.0 | 147 |
+| syn_env_nested_gp_mle | R_E | 0.200 | 120 | 0.095 | 11.4 | 13 | 1.14 | 0.355 | 120 | 11.4 | 13 |
+| syn_env_nested_gp_design | R_E | 0.200 | 120 | 0.095 | 11.4 | 13 | 1.14 | 0.355 | 120 | 11.4 | 13 |
+| syn_env_nested_gp_nonstationary | R_E | 0.200 | 120 | 0.095 | 11.4 | 8 | 0.70 | 0.900 | 120 | 11.4 | 8 |
 | ir_tight_sibson | R_E | 0.250 | 1000 | 0.190 | 190.2 | 193 | 1.01 | 0.424 | 1000 | 190.2 | 193 |
 | ir_tight_gp_mle | R_E | 0.250 | 1000 | 0.190 | 190.2 | 179 | 0.94 | 0.828 | 1000 | 190.2 | 179 |
 | ir_tight_gp_design | R_E | 0.250 | 1000 | 0.190 | 190.2 | 191 | 1.00 | 0.488 | 1000 | 190.2 | 191 |
@@ -149,11 +128,7 @@ Every configuration of Section 5 was run as 250 independent campaigns, random st
 | nacl_fwhm_separate_random | R_interp | 0.100 | 1000 | 0.061 | 60.6 | 55 | 0.91 | 0.790 | 1000 | 60.6 | 55 |
 | nacl_fwhm_nested_random | R_E | 0.200 | 1000 | 0.120 | 120.1 | 127 | 1.06 | 0.265 | 1000 | 120.1 | 127 |
 | nacl_fwhm_priority_random | R_E | 0.200 | 1000 | 0.120 | 120.1 | 132 | 1.10 | 0.134 | 1000 | 120.1 | 132 |
-| syn_peak_2cert_separate_random | R_E | 0.200 | 1500 | 0.108 | 161.9 | 7 | 0.04 | 1.000 | 1500 | 161.9 | 7 |
-| syn_peak_2cert_separate_random | R_interest | 0.100 | 1500 | 0.054 | 80.9 | 76 | 0.94 | 0.730 | 1500 | 80.9 | 76 |
-| syn_peak_2cert_separate_random | R_interp | 0.100 | 1500 | 0.054 | 80.9 | 62 | 0.77 | 0.990 | 1104 | 51.9 | 62 |
-| syn_peak_2cert_nested_random | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
-| syn_peak_2cert_priority_random | R_E | 0.200 | 1500 | 0.113 | 169.8 | 161 | 0.95 | 0.779 | 1500 | 169.8 | 161 |
+| syn_env_nested_random | R_E | 0.200 | 1500 | 0.095 | 143.0 | 149 | 1.04 | 0.306 | 1500 | 143.0 | 149 |
 | ir_tight_random | R_E | 0.250 | 1000 | 0.190 | 190.2 | 194 | 1.02 | 0.393 | 1000 | 190.2 | 194 |
 
 ## SI 5.2 Further detail on the record
@@ -182,9 +157,9 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 | | plan at 0.80 (δ = 0.050 per level) | 250 | 694 ± 58 | 2.7 % | 9.6 % | |
 | | conformal risk control | 250 | 542 | 34.7 % | 80.8 % | |
 | | uniform sample | 250 | 614 | — | — | 22.0 % |
-| Synthetic map (ε = 0.20) | per level at 0.80 | 250 | 334 ± 26 | 10.7 % | 49.6 % | 8.4 % |
-| | plan at 0.80 (δ = 0.033 per level) | 250 | 377 ± 27 | 1.3 % | 8.0 % | |
-| | conformal risk control | 250 | 305 | 31.6 % | 91.6 % | |
-| | uniform sample | 250 | 334 | — | — | 10.6 % |
+| Synthetic map (ε = 0.10) | per level at 0.80 | 250 | 932 ± 223 | 9.8 % | 46.0 % | 3.6 % |
+| | plan at 0.80 (δ = 0.033 per level) | 250 | 1189 ± 286 | 1.1 % | 6.4 % | |
+| | conformal risk control | 250 | 673 | 32.3 % | 89.6 % | |
+| | uniform sample | 250 | 932 | — | — | 10.4 % |
 
-Plans certified for all levels together exceeded the budget on 1, 27 and 20 level checks of 1000, 1000 and 1500, against 30.2, 27.5 and 22.8 expected under the picked failure probabilities. On the synthetic map the first 60 campaigns had shown 10 of 360 against 5.5 expected; repeating the calibration draw 3000 times on each of 20 recorded level populations of four of those campaigns gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels, so the excess was chance. Conformal risk control kept its mean share of a level skipped wrongly at 5.7 %, 18.8 % and 18.3 % against budgets of 10 %, 20 % and 20 %. Uniform samples left 0.5 ± 0.2 %, 22.0 ± 1.0 % and 10.6 ± 1.0 % of certified-level sites outside tolerance; the final maps of the plans certified level by level left 0.4 ± 0.3 %, 18.0 ± 3.8 % and 8.4 ± 1.4 %.
+Plans certified for all levels together exceeded the budget on 1, 27 and 16 level checks of 1000, 1000 and 1500, against 30.2, 27.5 and 13.2 expected under the picked failure probabilities. Conformal risk control kept its mean share of a level skipped wrongly at 5.7 %, 18.8 % and 8.8 % against budgets of 10 %, 20 % and 10 %. Uniform samples left 0.5 ± 0.2 %, 22.0 ± 1.0 % and 10.4 ± 0.7 % of certified-level sites outside tolerance; the final maps of the plans certified level by level left 0.4 ± 0.3 %, 18.0 ± 3.8 % and 3.6 ± 1.8 %.
