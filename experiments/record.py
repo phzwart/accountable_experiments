@@ -50,6 +50,8 @@ PAPER_ROWS = [
     # forms of guarantee coincide, so one row stands for them (old two-claim rows: results/record/syn_peak_2cert_*)
     "syn_env_nested_watson",
     "syn_env_nested_gp_mle", "syn_env_nested_gp_design", "syn_env_nested_gp_nonstationary",
+    # the process's own failure probability as the frozen score (round 3, Fig. 1)
+    "nacl_fwhm_nested_gpfail_mle", "syn_env_nested_gpfail_mle",
 ] + [f"ir_tight{v}_{p}" for v in ("", "_interp") for p in ("sibson", "gp_mle", "gp_design", "gp_nonstationary")]
 
 # Random scores for every certificate: the "stock-picking chicken".
