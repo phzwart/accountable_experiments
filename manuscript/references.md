@@ -55,6 +55,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Noack2021] **V** Noack, Zwart, Ushizima, Fukuto, Yager, Elbert, Murray, Stein, Doerk, Tsai, Li, Freychet, Zhernenkov, Holman, Lee, Chen, Rotenberg, Weber, Le Goc, Boehm, Steffens, Mutti, Sethian (2021). Gaussian processes for autonomous data acquisition at large-scale synchrotron and neutron facilities. Nat. Rev. Phys. 3, 685–697. doi:10.1038/s42254-021-00345-y. (Author list from memory; confirm.)
 - [Olofsson2014] **V** Olofsson, Foody, Herold, Stehman, Woodcock, Wulder (2014). Good practices for estimating area and assessing accuracy of land change. Remote Sens. Environ. 148, 42–57. doi:10.1016/j.rse.2014.02.015.
 - [Owen1995] **V** Owen (1995). Randomly permuted (t,m,s)-nets and (t,s)-sequences. In Niederreiter, Shiue (eds), Monte Carlo and Quasi-Monte Carlo Methods in Scientific Computing, Lecture Notes in Statistics 106, Springer, 299–317 (pages given as 299–315 in some citations; confirm).
+- [Park2020] **V** Park, Bastani, Matni, Lee (2020). PAC confidence sets for deep neural networks via calibrated prediction. ICLR 2020. arXiv:2001.00106.
 - [PaciorekSchervish2004] **M** Paciorek, Schervish (2004). Nonstationary covariance functions for Gaussian process regression. NeurIPS 16.
 - [Radivojevic2020] **V** Radivojević, Costello, Workman, Garcia Martin (2020). A machine learning Automated Recommendation Tool for synthetic biology. Nat. Commun. 11, 4879. doi:10.1038/s41467-020-18008-4.
 - [Raji2020] **V** Raji et al. (2020). Closing the AI accountability gap: defining an end-to-end framework for internal algorithmic auditing. FAT* '20. doi:10.1145/3351095.3372873.
@@ -71,8 +72,10 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Tong2018] **V** Tong, Feng, Li (2018). Neyman-Pearson classification algorithms and NP receiver operating characteristics. Sci. Adv. 4(2), eaao1659. doi:10.1126/sciadv.aao1659.
 - [Upreti2026] **V** Upreti, Adhikari, Baral, Wang, Ma, Zhu, Noack, Gu (2026). Autonomous phase diagram mapping of polymer blends through SAXS-guided active learning. ChemRxiv. doi:10.26434/chemrxiv.15012310/v1.
 - [vandeHulst1957] **M** van de Hulst (1957). Light Scattering by Small Particles. Wiley. SI only.
+- [Valiant1984] **V** Valiant (1984). A theory of the learnable. Commun. ACM 27(11), 1134–1142. doi:10.1145/1968.1972.
 - [Vovk2005] **M** Vovk, Gammerman, Shafer (2005). Algorithmic Learning in a Random World. Springer.
 - [Vovk2013] **M** Vovk (2013). Transductive conformal predictors. In: Artificial Intelligence Applications and Innovations (AIAI 2013), IFIP AICT 412, 348–360. Springer.
+- [VovkCond2013] **V** Vovk (2013). Conditional validity of inductive conformal predictors. Mach. Learn. 92(2–3), 349–376. doi:10.1007/s10994-013-5355-6.
 - [Watson1992] **?** Watson (1992). Contouring: A Guide to the Analysis and Display of Spatial Data. Pergamon. (SI only.)
 - [WaudbySmith2020] **V** Waudby-Smith, Ramdas (2020). Confidence sequences for sampling without replacement. NeurIPS 33.
 - [WestfallKrishen2001] **?** Westfall, Krishen (2001). Optimally weighted, fixed sequence and gatekeeper multiple testing procedures. J. Stat. Plann. Inference 99(1), 25–40.
