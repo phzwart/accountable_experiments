@@ -65,21 +65,21 @@ def _recall_rates(ds, r, lv_min):
 
 
 # ------------------------------------------------------------------ recall
-def recall(n=250, eps_r=0.20, conf_r=0.80):
+def recall(n=250, eps_r=0.20, conf_r=0.80, key="syn"):
     OUT.mkdir(parents=True, exist_ok=True)
-    f = OUT / "recall_syn.jsonl"
+    f = OUT / f"recall_{key}.jsonl"
     done = _resume(f)
-    row = ROWS["syn"]
+    row, eps = ROWS[key], EPS[key]
     with f.open("a") as fh:
         for s in range(n):
             if s in done:
                 continue
             ds, cfg, _ = build(row, s, {})
-            cfg.policy = RecallNestedPathPolicy(budget=0.20, confidence=0.80, recall_budget=eps_r,
-                                                recall_confidence=conf_r)
+            cfg.policy = RecallNestedPathPolicy(budget=eps, confidence=cfg.policy.confidence,
+                                                recall_budget=eps_r, recall_confidence=conf_r)
             t0 = time.time()
             r = run_campaign(ds, cfg)
-            rec = dict(seed=s, measured=int(r.measured[ds.candidate].sum()), levels=_levels(r, 0.20),
+            rec = dict(seed=s, measured=int(r.measured[ds.candidate].sum()), levels=_levels(r, eps),
                        recall=_recall_rates(ds, r, cfg.seed_level + 1), eps_r=eps_r, conf_r=conf_r,
                        seconds=time.time() - t0)
             fh.write(json.dumps(rec) + "\n"); fh.flush()
@@ -346,8 +346,79 @@ def gpacq(batch=25, checkpoints=(614, 694, 800), n_a=100, conf=0.80, reps=2000):
     (OUT / "gpacq_nacl.json").write_text(json.dumps(rows, indent=1))
 
 
+# ------------------------------------------------------------------ GP campaign that stops on its own stated rate
+def gpstop(n=30, eps=0.20, batch=25, frac=0.8, n_a=100, conf=0.80, start=0):
+    """The GP acquisition campaign of gpacq, told to meet a budget: after every batch it states its own
+    share of certified-level sites predicted wrongly (sum of per-site wrong-skip probabilities, latent or
+    predictive standard deviation) and stops once that statement is at most eps. Acquisition uses the
+    predictive probability; each batch is chosen among a random share `frac` of the unmeasured sites, so
+    runs differ. The trajectory is followed until the predictive statement meets eps; the stopping point of
+    the latent rule is read off the same trajectory."""
+    from scipy.stats import norm
+    from experiments.uncertified_gp import TOL, fit, predict, site_truth
+    z, xy, w, p = site_truth()
+    lv = np.asarray(z["levels"])
+    n_cert = int((lv >= 3).sum())
+    f = OUT / "gpstop_nacl.jsonl"
+    done = _resume(f)
+    for s in range(start, start + n):
+        if s in done:
+            continue
+        rng = np.random.default_rng(9000 + s)
+        measured = lv <= 2
+        traj = []
+        while True:
+            U = np.flatnonzero(~measured)
+            gp_, mp, sp = fit(xy[measured], p[measured].astype(float))
+            ph, _ = predict(gp_, mp, sp, xy[U], latent=False)
+            ph = np.clip(ph, 0.0, 1.0)
+            ok = measured & p & np.isfinite(w)
+            gw, mw, sw = fit(xy[ok], np.log(w[ok]))
+            row = dict(measured=int(measured.sum()))
+            qs = {}
+            for latent in (False, True):
+                lm, ls = predict(gw, mw, sw, xy[U], latent=latent)
+                wh = np.exp(lm)
+                lo, hi = np.log(np.maximum(wh - TOL, 1e-12)), np.log(wh + TOL)
+                sd = np.maximum(ls, 1e-12)
+                p_in = np.where(ls > 0, norm.cdf((hi - lm) / sd) - norm.cdf((lo - lm) / sd), 1.0)
+                line = ph >= 0.5
+                q = np.where(line, 1.0 - ph * p_in, ph)
+                qs["latent" if latent else "predictive"] = q
+                if not latent:
+                    wrong = np.where(line, (~p[U]) | (np.abs(wh - np.nan_to_num(w[U], nan=1e9)) > TOL), p[U]).astype(bool)
+            K, N = int(wrong.sum()), len(U)
+            row.update(true_share=K / n_cert, stated_predictive=float(qs["predictive"].sum() / n_cert),
+                       stated_latent=float(qs["latent"].sum() / n_cert))
+            # an audit of n_a unmeasured sites at this point: share of draws whose bound meets eps, and coverage
+            ok_n, cov_n = 0, 0
+            for _ in range(200):
+                pick = rng.choice(N, size=n_a, replace=False)
+                u = upper_count(N, n_a, int(wrong[pick].sum()), 1 - conf)
+                ok_n += (u / n_cert) <= eps; cov_n += K <= u
+            row.update(audit_meets=ok_n / 200, audit_coverage=cov_n / 200)
+            traj.append(row)
+            if row["stated_predictive"] <= eps or N <= batch:
+                break
+            cand = rng.choice(len(U), size=max(batch, int(frac * len(U))), replace=False)
+            take = cand[np.argsort(-qs["predictive"][cand])[:batch]]
+            measured[U[take]] = True
+        stops = {}
+        for rule in ("latent", "predictive"):
+            hit = next((r for r in traj if r[f"stated_{rule}"] <= eps), traj[-1])
+            stops[rule] = dict(measured=hit["measured"], true_share=hit["true_share"], stated=hit[f"stated_{rule}"],
+                               over=bool(hit["true_share"] > eps), audit_meets=hit["audit_meets"])
+        with f.open("a") as fh:
+            fh.write(json.dumps(dict(seed=s, eps=eps, stops=stops, trajectory=traj)) + "\n")
+        print("gpstop", s, {k: (v["measured"], round(v["true_share"], 3)) for k, v in stops.items()}, flush=True)
+
+
 if __name__ == "__main__":
-    if sys.argv[1] == "audit" and len(sys.argv) > 2:
+    if sys.argv[1] == "gpstop":
+        gpstop(n=int(sys.argv[2]) if len(sys.argv) > 2 else 30, start=int(sys.argv[3]) if len(sys.argv) > 3 else 0)
+    elif sys.argv[1] == "recall" and len(sys.argv) > 2:
+        recall(key=sys.argv[2])
+    elif sys.argv[1] == "audit" and len(sys.argv) > 2:
         audit(reps=int(sys.argv[3]) if len(sys.argv) > 3 else 200, keys=sys.argv[2].split(","))
     else:
         {"recall": recall, "drift": drift, "costgrid": costgrid, "finalmap": finalmap, "audit": audit,
