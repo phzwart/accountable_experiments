@@ -18,6 +18,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Brunger1992] **V** Brünger (1992). Free R value: a novel statistical quantity for assessing the accuracy of crystal structures. Nature 355(6359), 472–475. doi:10.1038/355472a0.
 - [Burger2020] **V** Burger et al. (2020). A mobile robotic chemist. Nature 583, 237–241. doi:10.1038/s41586-020-2442-2.
 - [CerouGuyader2007] **V** Cérou, Guyader (2007). Adaptive multilevel splitting for rare event analysis. Stoch. Anal. Appl. 25(2), 417–443.
+- [Chambers2013] **V** Chambers (2013). Registered Reports: a new publishing initiative at Cortex. Cortex 49(3), 609–610. doi:10.1016/j.cortex.2012.12.016.
 - [ClopperPearson1934] **M** Clopper, Pearson (1934). The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26(4), 404–413.
 - [Cochran1977] **M** Cochran (1977). Sampling Techniques, 3rd ed. Wiley.
 - [Dawid1982] **V** Dawid (1982). The well-calibrated Bayesian. J. Am. Stat. Assoc. 77(379), 605–610.
@@ -34,9 +35,11 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [HanaorSorrell2011] **V** Hanaor, Sorrell (2011). Review of the anatase to rutile phase transformation. J. Mater. Sci. 46(4), 855–874. doi:10.1007/s10853-010-5113-0.
 - [Jin2023] **V** Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.
 - [Kalinin2021] **V** Kalinin et al. (2021). arXiv:2103.12165.
+- [Kriegeskorte2009] **V** Kriegeskorte, Simmons, Bellgowan, Baker (2009). Circular analysis in systems neuroscience: the dangers of double dipping. Nat. Neurosci. 12(5), 535–540. doi:10.1038/nn.2303.
 - [Kohler2005] **M** Kohler, Kirschner, Oust, Martens (2005). Extended multiplicative signal correction as a tool for separation and characterization of physical and chemical information in Fourier transform infrared microscopy images of cryo-sections of beef loin. Appl. Spectrosc. 59(6), 707–716. SI only.
 - [Kossen2021] **V** Kossen, Farquhar, Gal, Rainforth (2021). Active testing: sample-efficient model evaluation. Proc. 38th Int. Conf. Mach. Learn., PMLR 139, 5753–5763.
 - [Kusne2020] **V** Kusne et al. (2020). On-the-fly closed-loop materials discovery via Bayesian active learning. Nat. Commun. 11, 5966. doi:10.1038/s41467-020-19597-w.
+- [LanDeMets1983] **V** Lan, DeMets (1983). Discrete sequential boundaries for clinical trials. Biometrika 70(3), 659–663. doi:10.2307/2336502.
 - [LauferGoldshtein2023] **V** Laufer-Goldshtein, Fisch, Barzilay, Jaakkola (2023). Efficiently controlling multiple risks with Pareto Testing. ICLR 2023. arXiv:2210.07913.
 - [Leeman2024] **V** Leeman, Liu, Stiles, Lee, Bhatt, Schoop, Palgrave (2024). Challenges in high-throughput inorganic materials prediction and autonomous synthesis. PRX Energy 3, 011002. doi:10.1103/PRXEnergy.3.011002.
 - [LiangZeger1986] **V** Liang, Zeger (1986). Longitudinal data analysis using generalized linear models. Biometrika 73(1), 13–22. doi:10.1093/biomet/73.1.13.

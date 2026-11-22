@@ -1037,6 +1037,14 @@ predictive & 1.00--2.58 & 922 & 0 & 0.4 \% & 0.3 \% \\
 
 Certification applies to the Gaussian process as it does to natural-neighbour prediction. With the posterior mean as the frozen predictor and the length scale set by maximum likelihood, by the design or by the nonstationary rule (SI 1), 250 certified campaigns each skipped 12.3 \% to 12.5 \% of levels 3 to 6 wrongly on average and exceeded the budget on 111 to 123 of 1000 level runs, against 120 expected; they measured 745 to 777 sites, against 614 with natural-neighbour prediction, because the posterior mean shrinks toward the average where the width scatters from site to site. The certified Gaussian process measured fewer sites than the uncertified one with the predictive standard deviation, 745 to 777 against 922, and its rate was fixed before any skip was checked; the uncertified campaigns learn their realised rate only from the full scan that a campaign exists to avoid.
 
+The comparison can hold model and ranking fixed (Fig. S7b). With the process refitted after each level, predicting the full profile, and its own posterior probability of a wrong skip as the frozen score, a certified plan measured 761 \ensuremath{\pm} 68 of 1071 sites over 50 campaigns and exceeded the budget on 16 of 200 level checks, against 24 expected; skipping where that same probability was at most \ensuremath{\alpha}, for \ensuremath{\alpha} from 0.01 to 0.32, the process measured 1064 to 1070.
+
+\begin{figure}[tbp]\renewcommand{\thefigure}{S7b}
+\centering
+\includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/fig_hook_three}
+\caption{One Gaussian process on the NaCl scan, claim on the width of the (200) line, 1071 design sites. (a) A certified plan of average cost with the process as predictor and its own posterior probability of a wrong skip as the frozen score: at most 20 \% of each level skipped wrongly, with confidence 0.80 for that level. (b) The same process skipping a site when that probability is at most \ensuremath{\alpha} = 0.20. Crosses mark wrong skips, found afterwards against the full scan. (c) Share of the certified-level sites skipped wrongly: stated in advance (bar) and realised (dot), with sites measured. For the uncertified process the statement is its own probability summed over its skips; for the certified plans it is the bound, with the mean and 5--95 \% range of 50 campaigns with the process and 250 with natural-neighbour prediction.}\label{fig:S7b}
+\end{figure}
+
 \hypertarget{s7.2-the-spectrum-gaussian-process-on-all-three-maps}{%
 \subsection*{S7.2 The spectrum Gaussian process on all three maps}\label{s7.2-the-spectrum-gaussian-process-on-all-three-maps}}
 \addcontentsline{toc}{subsection}{S7.2 The spectrum Gaussian process on all three maps}

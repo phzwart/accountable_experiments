@@ -20,8 +20,8 @@ TITLE = "Accountable experiments: autonomy under contract"
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C"]
 SI = [f"supplement_SI{i}" for i in range(1, 11)]
-FIGS = {1: "fig_hook_three", 2: "fig1_schematic", 3: "fig_datasets_claims", 4: "fig_stated", 5: "fig5_maps", 6: "fig_cost",
-        "S1": "figS1_gp_std", "S3": "fig3_forms", "S6": "figS6_sampling", "S7": "figS7_cost", "S8": "figS8_measured"}
+FIGS = {1: "fig_hook_timing", 2: "fig1_schematic", 3: "fig_datasets_claims", 4: "fig_stated", 5: "fig5_maps", 6: "fig_cost",
+        "S1": "figS1_gp_std", "S3": "fig3_forms", "S6": "figS6_sampling", "S7": "figS7_cost", "S7b": "fig_hook_three", "S8": "figS8_measured"}
 NBSP = "\u00a0"
 
 UNI = {"ε": r"\ensuremath{\varepsilon}", "δ": r"\ensuremath{\delta}", "σ": r"\ensuremath{\sigma}",
@@ -105,7 +105,7 @@ def figures_and_tables(t: str, refs: bool) -> str:
         return ("\n```{=latex}\n\\begin{figure}[tbp]" + num + "\n\\centering\n"
                 f"\\includegraphics[width=\\textwidth,height=0.44\\textheight,keepaspectratio]{{figures/{FIGS[key]}}}\n"
                 f"\\caption{{{cap}}}\\label{{{label}}}\n\\end{{figure}}\n```\n")
-    t = re.sub(r"^\*\*Figure (S?\d+)\.\*\* (.+)$", fig, t, flags=re.M)
+    t = re.sub(r"^\*\*Figure (S?\d+[a-z]?)\.\*\* (.+)$", fig, t, flags=re.M)
 
     # tables: "**Table N.** caption" followed by a pipe table
     def tab(m):
