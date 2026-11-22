@@ -83,7 +83,7 @@ def main():
         ax.set_xticks([]); ax.set_yticks([])
         return ax
 
-    amap(X0[0], c_act, c_wrong, f"(a) Certified plan\n{int((~S).sum())} measured; bound 20 %")
+    amap(X0[0], c_act, c_wrong, f"(a) Certified, 20 % per level\n{int((~S).sum())} measured")
     amap(X0[1], la, lw, f"(b) GP, latent s.d.\n{lrow['measured']} measured; no bound")
     amap(X0[2], pa, pw, f"(c) GP, predictive s.d.\n{prow['measured']} measured; no bound")
 
@@ -118,7 +118,7 @@ def main():
                Line2D([], [], color=INK, lw=0.6, label="edge of the line")]
     fig.legend(handles=handles, loc="lower left", ncol=5, fontsize=6.2, frameon=False, bbox_to_anchor=(0.0, 0.0),
                columnspacing=1.0, handletextpad=0.4)
-    fig.text(0.005, 0.94, "Three campaigns on one NaCl scan: only the certified plan states a rate it is bound to keep",
+    fig.text(0.005, 0.94, "Three campaigns on one NaCl scan: only the certified plan bounds its rate before any skip",
              fontsize=8.6, fontweight="bold", color=INK)
     fig.savefig(FIG / "fig_hook_three.png", dpi=220)
     fig.savefig(FIG / "fig_hook_three.pdf")

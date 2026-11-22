@@ -25,10 +25,10 @@ The plan is now certified for all levels together: it keeps the budget on every 
 | NaCl, c = 0.80 | 614 / 38.4 % | 694 / 11 of 128 |
 | synthetic, c = 0.80 | 334 / 49.6 % | 376 / 10 of 60 |
 
-The cost of a campaign-level contract is 12 % to 38 % more measurements. On the synthetic map 10 of 360 level checks exceeded the budget against 5.5 expected (p ≈ 0.05); an attainment audit with 3000 draws on 20 recorded levels gave 1.01 times the picked failure probability. The union bound counts only levels on which the budget can be reached (R1's joint IR figure of 0.24 is therefore about 0.81).
+The cost of a campaign-level contract is 12 % to 38 % more measurements. On the synthetic map 10 of 360 level checks exceeded the budget against 5.5 expected (p ≈ 0.05); an attainment audit with 3000 draws on 20 recorded levels gave 1.01 times the picked failure probability. [Withdrawn in round 2: the claim that the union bound may count only levels on which the budget can be reached needs the full truth; see round 2.]
 
 **3. "Certifies every action" overclaimed (R1 M2, R3 M1).**
-An action is now defined as the decision on one level of the plan, taken once after the draw for all of its sites; its certificate is the level bound, as a lot is accepted on a sample. The plan is certified to keep the budget of the contract, and the record shows that it was followed (Section 3.1). Each site carries a reason, not a bound (Section 3.5, Conclusion). "Needed" is used only in its hindsight sense (Section 5.3).
+An action is now defined as the decision on one level of the plan, taken once after the draw for all of its sites; its certificate is the level bound, as a lot is accepted on a sample. The plan is certified to keep the budget of the contract, and the record shows that it was followed (Section 3.1). Each site carries a reason, not a bound (Section 3.5, Conclusion). "Needed" is used only in its hindsight sense (Section 5.3). [Round 2: this was not yet true of the abstract, Discussion and Conclusion; corrected.]
 
 ## Referee 1
 
@@ -43,7 +43,7 @@ An action is now defined as the decision on one level of the plan, taken once af
 
 ## Referee 2
 
-- **A uniform sample of the same size, and practicality.** At equal cost, the final maps of the certified plans left 0.4 %, 16.6 % and 8.5 % of the certified-level sites outside tolerance, against 0.5 %, 21.9 % and 10.3 % for a uniform sample of the same size (Section 5.4; SI 5.3). The order of measurement within an action is free, so the remaining sites can follow the shortest path (Discussion). A beam-time model with move, settle and reduction times needs instrument numbers and is left to the deployment study.
+- **A uniform sample of the same size, and practicality.** At equal cost, the final maps of the certified plans left 0.4 %, 16.6 % and 8.5 % of the certified-level sites outside tolerance, against 0.5 %, 21.9 % and 10.3 % for a uniform sample of the same size (Section 5.4; SI 5.3). The order of measurement within an action is free, so the remaining sites can follow the shortest path (Discussion). A beam-time model with move, settle and reduction times needs instrument numbers and is left to the deployment study. [Round 2: superseded by the 250-campaign values below.]
 - **NaCl tolerance against noise (M3).** Section 3.5 and the Discussion state that labels compare with one noisy measurement and that on NaCl the width scatter is about the tolerance; a tolerance is best set against repeated measurements.
 - **Inconsistencies.** Informative/uninformative scores and the comparator of the sequential rule fixed; SI section references updated; Fig. 5 shows the average-cost campaigns of SI 8 with consistent colours and an upright IR axis.
 
@@ -59,3 +59,45 @@ An action is now defined as the decision on one level of the plan, taken once af
 - Corresponding-author e-mail and the Zenodo DOI are placeholders.
 - No live or time-replayed campaign, drift perturbation, or acquisition-driven GP baseline; these belong to the deployment and follow-up studies.
 - Fig. 4 still pairs the certified bound with a mean; the caption says so.
+
+
+---
+
+# Response to the referees, round 2
+
+All three referees recommended minor revision. The required changes were consistency of the central vocabulary and claims, one statement that needed the full truth, SI 7, and the completeness of the new runs. Two statements of our round-1 response were wrong and are corrected above: "needed when the decision was made" had survived in the abstract, Discussion and Conclusion, and the joint IR confidence of 0.81 relied on knowing which levels can reach their budget.
+
+## Shared points
+
+- **"Needed" and "action" (R1 N4, R2 new 1, R3 M1/M5).** The abstract, Discussion and Conclusion now use "action" only for the decision on a level; a measured site carries its reason, and "needed" appears only in the hindsight sense of Section 5.3.
+- **The message on model uncertainty (R1 N3, R2 M1, R3).** Section 5.2 is retitled "A model's own error rate is checked only against the full scan"; the Conclusion says the rate was "sometimes right and sometimes several times too low". Section 5.2 states that the predictive process was right while making no predictable skips (922 of 1071 measured), and that the certified Gaussian process measured about 150 fewer sites than it (745–777). The Fig. 1 title now reads "only the certified plan bounds its rate before any skip", and the caption gives the share of per-level campaigns over budget on some level (38 %).
+- **Joint confidence (R1 N1, R2 new 2, R3 N1).** Section 3.3 and Appendix A sum over every certified level; Appendix A states that which levels can reach their budget is known only from the full truth, so a campaign claims the confidence its plan declares. A plan drawn up level by level fixes in advance how the failure probability is spent (Appendix A).
+- **Completed runs (R1 N2, R2 6, R3 N2).** The partial runs of round 1 are kept unchanged in the repository as a record (stopped by hand for compute time, in seed order, independent of outcomes). All new configurations now have 250 campaigns: plans certified for all levels together measured 415 ± 82, 694 ± 58 and 377 ± 27 sites (41 %, 13 % and 13 % more than per level) and exceeded the budget on some level in 1, 24 and 20 of 250 campaigns, against the 25 %, 20 % and 20 % allowed. Their 1, 27 and 20 level checks over budget match the 30, 28 and 23 expected under the picked failure probabilities; the synthetic excess of the partial run (10 of 360 against 5.5) was chance, as the attainment audit (1.01) indicated. The abstract now reads "at least 90 %" and "13 % to 41 %".
+- **SI 7 (R1 M6, R2 M1).** Rewritten to match Section 5.2: the stated probability of a wrong skip is defined (presence probability clipped to [0, 1]; log-normal width with latent or predictive standard deviation), Table S7.1 gives stated and realised shares, the uncertified rule is described as a skip rule on the fixed design, and the principal-component posterior of S7.2 is named as one construction among several.
+
+## Referee 1
+
+- **CRC (M6d).** Run to 250 campaigns on all three maps (260, 542 and 305 sites measured). Its mean share of a level skipped wrongly, 5.7 %, 18.8 % and 18.3 %, stays below ε as its guarantee promises, while single levels exceeded the budget in 4.9 %, 34.7 % and 31.6 % of checks and campaigns on some level in 19.6 %, 80.8 % and 91.6 % (Section 5.1, Table S5.4).
+- **No drift, adaptive plans (M3a, M3b).** (A6) is now "Fixed truth": the measurement a site would return depends neither on which sites are drawn nor on order or time; drift and damage break it (Appendix A.1, A.3). Plans drawn up level by level need a spending schedule fixed in advance (Appendix A.2).
+- **Refitting bullet (M3d).** Appendix A.3 now names the manipulation exactly.
+- **Binomial p-values (M4).** Appendix C states that only the hypergeometric p-value carries the guarantee and that no result of Section 5 rests on the conditional rate.
+- **Map bound (M4).** SI 9 now uses the exact hypergeometric upper limit; recomputed over the 250 campaigns of each main configuration it held on 95.8 %, 84.4 % and 89.5 % of certified levels against confidences 0.75, 0.80 and 0.80, with tighter limits than Clopper–Pearson.
+- **Leftover "certificate", "picked failure probability" (minor).** Replaced in Appendix A.2; defined in Section 3.3.
+
+## Referee 2
+
+- **Noise against tolerance (M3).** Adding the estimated window noise twice, independently, to every NaCl profile, the second copy fails the width claim against the first at 1.1 % ± 0.3 % of sites (SI 2.2). The scatter that makes about half of all predictions fail therefore lies above the counting noise, in the sample or in variation the counting noise leaves out, such as grain statistics; the Discussion says so and that repeated measurements would set the tolerance.
+- **Practicality (M4, M5).** The Discussion states that costs are counted in sites, that each level adds a second pass at an instrument (calibration measured and reduced before the rest is decided), that a fast raster may compete, and that the record can tell chance from drift once seed sites are re-measured within each level.
+- **GP score (M1).** Section 5.4 states that the GP score depends on positions and length scale only, which is why the GP protocols measured as many sites as random scores on the synthetic map. The abstract now reads "The model and its scores set only the cost".
+- **Uniform sample.** Run to 250 campaigns: a uniform sample of the same size left 0.5 ± 0.2 %, 22.0 ± 1.0 % and 10.6 ± 1.0 % of certified-level sites outside tolerance; the final maps of the certified plans left 0.4 ± 0.3 %, 18.0 ± 3.8 % and 8.4 ± 1.4 % (Section 5.4, Table S5.4).
+
+## Referee 3
+
+- **Kernel and calibration.** A new Discussion paragraph answers the expected objection that a better kernel would make the process honest: whether it did can be checked only on sites the model did not choose, drawn uniformly before the decision, and that sample is the calibration step of the plan.
+- **"Plan".** The plan is the design sites; the plan together with its rule is what is certified (Section 3.1).
+- **"Seed".** "Seed" now means the coarse levels only; the random-number state is "random state" in the main text and SI.
+- **Cost against m and δ (M3, recommended).** Not added; the cost against the budget is in Table S7.3 and against the confidence in Table S5.4.
+
+## Still open
+
+- Zenodo DOI at submission; deposited sources will be stripped of revision notes then.

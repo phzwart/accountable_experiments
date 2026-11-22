@@ -90,7 +90,7 @@ In every rule, the length scale of a level is fixed from the measured set before
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
-\caption{Length scales and nuggets over all certified levels and 20 seeds (quantile path), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 \ensuremath{\mu}m). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.}\label{tab:S1.1}\\
+\caption{Length scales and nuggets over all certified levels and 20 campaigns (quantile path), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 \ensuremath{\mu}m). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.}\label{tab:S1.1}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -119,7 +119,7 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 \begin{figure}[tbp]\renewcommand{\thefigure}{S1}
 \centering
 \includegraphics[width=\textwidth,height=0.44\textheight,keepaspectratio]{figures/figS1_gp_std}
-\caption{Posterior standard deviation on the IR map before level 5 (seed 0, local-spacing campaign; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 \ensuremath{\times} 29 \ensuremath{\mu}m raster, and the local length scale of the third rule. Length scales are given in micrometres.}\label{fig:S1}
+\caption{Posterior standard deviation on the IR map before level 5 (first campaign of the record, local-spacing protocol; 167 measured sites, dots) under the three length-scale rules, evaluated on the full 42 \ensuremath{\times} 29 \ensuremath{\mu}m raster, and the local length scale of the third rule. Length scales are given in micrometres.}\label{fig:S1}
 \end{figure}
 
 \textbf{Checks.} Unit tests confirm that the weights reproduce the BoTorch posterior mean and variance for fixed hyperparameters, that the design rule follows the finest measured level, that the Gibbs kernel is positive semidefinite and reduces to the isotropic kernel for constant \(\ell\), and that the local length scale is long where measured sites are sparse.
@@ -127,6 +127,12 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \emph{Reference to add: \cite{Gardner2018} Gardner, Pleiss, Bindel, Weinberger, Wilson (2018). GPyTorch. NeurIPS 31.}
+
+\hypertarget{si-1.3-scores-of-the-natural-neighbour-protocol}{%
+\subsection*{SI 1.3 Scores of the natural-neighbour protocol}\label{si-1.3-scores-of-the-natural-neighbour-protocol}}
+\addcontentsline{toc}{subsection}{SI 1.3 Scores of the natural-neighbour protocol}
+
+The interpolation score is one minus the probability of acceptance from a logistic regression, fitted by leave-one-out on the measured set (at most 120 sites) on the disagreement between natural neighbours in units of the acceptance metric and on the position. The interest score depends on the dataset. On the IR map it is the predicted maximum in the window, capped below the interest level, so that a site predicted to be of interest is never covered. On the two scattering datasets it is the probability of interest from a logistic regression on the predicted peak height above its baseline, the spread of that height over the five nearest measured sites and the distance to the nearest of them.
 
 \hypertarget{si-2.-dataset-processing}{%
 \section*{SI 2. Dataset processing}\label{si-2.-dataset-processing}}
@@ -174,7 +180,7 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
 
 \textbf{The (200) line.} The (200) reflection of rock salt lies at \(q = 4\pi / a\) with \(a = 5.6402\) \AA{}, or 22.28 nm\ensuremath{^{-1}}. Its descriptors are taken in the window 22.28 \ensuremath{\pm} 0.40 nm\ensuremath{^{-1}}: the position of the tallest local maximum, refined by a parabola through the logarithms of intensity and \(q\), its height above a local baseline (the higher of the two flanking minima), and its full width at the level midway between baseline and peak.
 
-\textbf{Noise and presence.} The noise in the window is estimated once from all design sites. Each profile is reduced to residuals from a straight baseline across the window. The 30 \% of profiles with the smallest largest residual are taken as off the ring, and the noise is 1.4826 times the median absolute deviation of their residuals: \(\sigma = 0.117\) in the units of the deposit. A line is present when its height above baseline exceeds \(5\sigma\); on that criterion 64 \% of the design sites hold the line, and these are the sites of interest.
+\textbf{Noise and presence.} The noise in the window is estimated once from all design sites. Each profile is reduced to residuals from a straight baseline across the window. The 30 \% of profiles with the smallest largest residual are taken as off the ring, and the noise is 1.4826 times the median absolute deviation of their residuals: \(\sigma = 0.117\) in the units of the deposit. A line is present when its height above baseline exceeds \(5\sigma\); on that criterion 64 \% of the design sites hold the line, and these are the sites of interest. With this noise added twice, independently, to every measured profile, the second copy fails the width claim against the first at 1.1 \% \ensuremath{\pm} 0.3 \% of the 1071 design sites (20 repetitions); the site-to-site scatter of the width that makes about half of all predictions fail lies above the counting noise.
 
 \textbf{Width tolerance.} A prediction fails when it disagrees with the truth on the presence of the line, or when both show the line and their widths differ by more than 0.02 nm\ensuremath{^{-1}}, about half the bin width of 0.038 nm\ensuremath{^{-1}} at the (200) position. Sites without the line in truth and prediction pass. The same presence test is applied to the predicted profile, so a predicted line too weak to clear \(5\sigma\) counts as absent.
 
@@ -411,11 +417,11 @@ The priority path subclasses the quantile path and replaces only the entry times
 \subsection*{SI 4.4 Software, tests and reproduction}\label{si-4.4-software-tests-and-reproduction}}
 \addcontentsline{toc}{subsection}{SI 4.4 Software, tests and reproduction}
 
-\textbf{Functionality.} The workflow is a Python package with four parts: (i) the campaign loop, which runs the five steps of Section 3.1 on any dataset that supplies design sites, levels and an oracle for the measurement at a site; (ii) the forms of guarantee of Section 3.4 as budget policies, with exact hypergeometric and binomial tails; (iii) predictors and scores, natural-neighbour interpolation with mirror images at boundaries and Gaussian-process interpolation under three length-scale rules; (iv) the record, which writes every site\textquotesingle s level, scores, action and reason and every level\textquotesingle s calibration draw, thresholds and picked failure probability, together with the random seed, so that each campaign can be replayed and every bound recomputed.
+\textbf{Functionality.} The workflow is a Python package with four parts: (i) the campaign loop, which runs the five steps of Section 3.1 on any dataset that supplies design sites, levels and an oracle for the measurement at a site; (ii) the forms of guarantee of Section 3.4 as budget policies, with exact hypergeometric and binomial tails; (iii) predictors and scores, natural-neighbour interpolation with mirror images at boundaries and Gaussian-process interpolation under three length-scale rules; (iv) the record, which writes every site\textquotesingle s level, scores, action and reason and every level\textquotesingle s calibration draw, thresholds and picked failure probability, together with the random state, so that each campaign can be replayed and every bound recomputed.
 
 \textbf{Tests.} The test suite checks the geometry of the natural-neighbour weights, the Gaussian-process engine, the acceptance check of Table S4.1 for every policy, the coverage of every stated guarantee by Monte Carlo on fixed populations (including that the sequential rule exceeds its nominal rate), and that recorded campaigns replay to identical decisions. The implementation refuses a binomial allowance \(k\) larger than the hypergeometric one; no such case arose in this study.
 
-\textbf{Reproduction.} Each figure and table of the main text and of this supplement is produced by a script that reads only the run record; the record is produced by re-running the configurations of Table S4.2 with seeds 0 to 249. A campaign takes 3 to 12 s on one core.
+\textbf{Reproduction.} Each figure and table of the main text and of this supplement is produced by a script that reads only the run record; the record is produced by re-running the configurations of Table S4.2 with random states 0 to 249. A campaign takes 3 to 12 s on one core.
 
 {\renewcommand{\thetable}{S4.2}\small
 \begin{longtable}[]{@{}
@@ -446,7 +452,7 @@ Meaning
 \section*{SI 5. The run record}\label{si-5.-the-run-record}}
 \addcontentsline{toc}{section}{SI 5. The run record}
 
-Every configuration of Section 5 was run as 250 independent campaigns, seeds 0 to 249; a seed fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
+Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns; the comparisons of SI 5.3 add 250 campaigns each of three rules on three maps. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
 
 {\renewcommand{\thetable}{S5.1}\small
 \begin{longtable}[]{@{}
@@ -721,11 +727,11 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 \subsection*{SI 5.3 Plans certified for all levels together, and two baselines}\label{si-5.3-plans-certified-for-all-levels-together-and-two-baselines}}
 \addcontentsline{toc}{subsection}{SI 5.3 Plans certified for all levels together, and two baselines}
 
-\textbf{Plans certified for all levels together.} The failure probability \(1 - c\) of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence \(1 - (1 - c)/n\) and, by the union bound, every level holds together with probability at least \(c\). Seeds, scores, predictor and budget are those of the per-level plans of Table 4.
+\textbf{Plans certified for all levels together.} The failure probability \(1 - c\) of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence \(1 - (1 - c)/n\) and, by the union bound, every level holds together with probability at least \(c\). Random states, scores, predictor and budget are those of the plans certified level by level of Table 4.
 
 \textbf{Conformal risk control.} Along the same path and on the same calibration draw, the threshold admits the largest number \(k\) of failing calibration sites with \((k + 1)/(m + 1) \le \varepsilon\) \cite{Angelopoulos2024}. This bounds the expected share of the level skipped wrongly, averaged over draws, and makes no statement about a single level. At \(m = 40\) it allows \(k = 3\) at \(\varepsilon = 0.10\) and \(k = 7\) at \(\varepsilon = 0.20\).
 
-\textbf{A uniform sample of the same size.} The seed levels and a uniform random sample of the remaining sites, to the mean number measured by the per-level plan; every other site is predicted from all measured sites with the same natural-neighbour predictor and counted when the prediction fails the claim\textquotesingle s metric. The final maps of 20 per-level plans are scored in the same way: skipped sites predicted from all sites measured by the end of the campaign.
+\textbf{A uniform sample of the same size.} The seed levels and a uniform random sample of the remaining sites, to the mean number measured by the plan certified level by level; every other site is predicted from all measured sites with the same natural-neighbour predictor and counted when the prediction fails the claim\textquotesingle s metric. The final maps of the plans certified level by level are scored in the same way: skipped sites predicted from all sites measured by the end of the campaign.
 
 {\renewcommand{\thetable}{S5.4}\small
 \begin{longtable}[]{@{}
@@ -759,21 +765,21 @@ Final-map share outside
 \bottomrule\noalign{}
 \endlastfoot
 IR map (\ensuremath{\varepsilon} = 0.10) & per level at 0.75 & 250 & 295 \ensuremath{\pm} 53 & 4.9 \% & 19.6 \% & 0.4 \% \\
-& plan at 0.75 (\ensuremath{\delta} = 0.062 per level) & 105 & 408 \ensuremath{\pm} 80 & 0.0 \% & 0.0 \% & \\
-& conformal risk control & 100 & 260 & 5.0 \% & 20.0 \% & \\
-& uniform sample & 20 & 295 & --- & --- & 0.5 \% \\
-NaCl scan (\ensuremath{\varepsilon} = 0.20) & per level at 0.80 & 250 & 614 \ensuremath{\pm} 56 & 11.2 \% & 38.4 \% & 16.6 \% \\
-& plan at 0.80 (\ensuremath{\delta} = 0.050 per level) & 128 & 694 \ensuremath{\pm} 61 & 2.7 \% & 8.6 \% & \\
-& conformal risk control & 100 & 541 & 33.8 \% & 80.0 \% & \\
-& uniform sample & 20 & 614 & --- & --- & 21.9 \% \\
-Synthetic map (\ensuremath{\varepsilon} = 0.20) & per level at 0.80 & 250 & 334 \ensuremath{\pm} 26 & 10.7 \% & 49.6 \% & 8.5 \% \\
-& plan at 0.80 (\ensuremath{\delta} = 0.033 per level) & 60 & 376 \ensuremath{\pm} 29 & 2.8 \% & 16.7 \% & \\
-& conformal risk control & 42 & 301 & 32.5 \% & 92.9 \% & \\
-& uniform sample & 20 & 334 & --- & --- & 10.3 \% \\
+& plan at 0.75 (\ensuremath{\delta} = 0.062 per level) & 250 & 415 \ensuremath{\pm} 82 & 0.1 \% & 0.4 \% & \\
+& conformal risk control & 250 & 260 & 4.9 \% & 19.6 \% & \\
+& uniform sample & 250 & 295 & --- & --- & 0.5 \% \\
+NaCl scan (\ensuremath{\varepsilon} = 0.20) & per level at 0.80 & 250 & 614 \ensuremath{\pm} 56 & 11.2 \% & 38.4 \% & 18.0 \% \\
+& plan at 0.80 (\ensuremath{\delta} = 0.050 per level) & 250 & 694 \ensuremath{\pm} 58 & 2.7 \% & 9.6 \% & \\
+& conformal risk control & 250 & 542 & 34.7 \% & 80.8 \% & \\
+& uniform sample & 250 & 614 & --- & --- & 22.0 \% \\
+Synthetic map (\ensuremath{\varepsilon} = 0.20) & per level at 0.80 & 250 & 334 \ensuremath{\pm} 26 & 10.7 \% & 49.6 \% & 8.4 \% \\
+& plan at 0.80 (\ensuremath{\delta} = 0.033 per level) & 250 & 377 \ensuremath{\pm} 27 & 1.3 \% & 8.0 \% & \\
+& conformal risk control & 250 & 305 & 31.6 \% & 91.6 \% & \\
+& uniform sample & 250 & 334 & --- & --- & 10.6 \% \\
 \end{longtable}
 }
 
-On the synthetic map the plan certified for all levels together exceeded the budget on 10 of 360 level checks, against 5.5 expected under the picked failure probabilities (one-sided probability about 0.05). Repeating the calibration draw 3000 times on each of 20 recorded level populations of four campaigns under the same rule gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels.
+Plans certified for all levels together exceeded the budget on 1, 27 and 20 level checks of 1000, 1000 and 1500, against 30.2, 27.5 and 22.8 expected under the picked failure probabilities. On the synthetic map the first 60 campaigns had shown 10 of 360 against 5.5 expected; repeating the calibration draw 3000 times on each of 20 recorded level populations of four of those campaigns gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels, so the excess was chance. Conformal risk control kept its mean share of a level skipped wrongly at 5.7 \%, 18.8 \% and 18.3 \% against budgets of 10 \%, 20 \% and 20 \%. Uniform samples left 0.5 \ensuremath{\pm} 0.2 \%, 22.0 \ensuremath{\pm} 1.0 \% and 10.6 \ensuremath{\pm} 1.0 \% of certified-level sites outside tolerance; the final maps of the plans certified level by level left 0.4 \ensuremath{\pm} 0.3 \%, 18.0 \ensuremath{\pm} 3.8 \% and 8.4 \ensuremath{\pm} 1.4 \%.
 
 \hypertarget{si-6.-what-the-certified-metric-does-to-a-campaign}{%
 \section*{SI 6. What the certified metric does to a campaign}\label{si-6.-what-the-certified-metric-does-to-a-campaign}}
@@ -781,7 +787,7 @@ On the synthetic map the plan certified for all levels together exceeded the bud
 
 A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
 
-\textbf{Set-up.} - \textbf{Campaigns.} The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (seeds 0--49). - \textbf{What changes.} Only the acceptance metric. - \textbf{Signal sites.} Sites marked by the dataset\textquotesingle s interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
+\textbf{Set-up.} - \textbf{Campaigns.} The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: \(R_E \le 0.10\) at confidence 0.75 for the IR map, \(R_E \le 0.20\) at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (random states 0--49). - \textbf{What changes.} Only the acceptance metric. - \textbf{Signal sites.} Sites marked by the dataset\textquotesingle s interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
 
 \textbf{Metrics.}
 
@@ -1002,22 +1008,29 @@ The metric also decided where wrong skips fall. Metrics with an absolute term pu
 \section*{SI 7. Campaigns guided by Gaussian-process uncertainty}\label{si-7.-campaigns-guided-by-gaussian-process-uncertainty}}
 \addcontentsline{toc}{section}{SI 7. Campaigns guided by Gaussian-process uncertainty}
 
-Fig. 1 sets the certified campaign beside a campaign that skips on the strength of a model\textquotesingle s own uncertainty, the rule most often used in autonomous mapping. Both run on the fully measured NaCl scan with the claim on the width of the (200) line, so every skip of either can be checked afterwards.
+Fig. 1 sets the certified plan beside campaigns that skip on the strength of a model\textquotesingle s own uncertainty. All run on the fully measured NaCl scan with the claim on the width of the (200) line, so every skip of either can be checked afterwards. The uncertified rule is a skip rule on the same fixed design; campaigns driven by an acquisition function choose their sites differently and are not tested here.
 
-\textbf{Rule.} The uncertified campaign shares the hierarchical design and the seed sites of the certified one. After each level from 3 on, two Gaussian processes are fitted to all sites measured so far, one to the logarithm of the width at sites with the line, one to the presence indicator at all sites; each has a squared-exponential kernel with a white-noise term, and the hyperparameters maximise the marginal likelihood \cite{RasmussenWilliams2006}. A site of the next level is skipped as having no line when the predicted presence falls below 0.1, and skipped as predictable when the predicted presence exceeds 0.9 and the interval of \(z\) standard deviations on the width lies within the tolerance of 0.02 nm\ensuremath{^{-1}}. Every other site is measured. The standard deviation is taken either for the latent function or for a new observation, which adds the fitted noise; the rule was run at \(z\) = 1, 1.64, 1.96 and 2.58. The rule involves no random draw, so each setting gives one campaign. Wrong skips are counted as for the certified campaign: a skip for want of a line is wrong where the line is present, a predictable skip is wrong where presence disagrees or the width misses by more than the tolerance.
+\textbf{Rule.} The uncertified campaign shares the hierarchical design and the seed sites of the certified one. After each level from 3 on, two Gaussian processes are fitted to all sites measured so far, one to the logarithm of the width at sites with the line, one to the presence indicator at all sites; each has a squared-exponential kernel with a white-noise term, and the hyperparameters maximise the marginal likelihood \cite{RasmussenWilliams2006}. A site of the next level is skipped as having no line when the predicted presence falls below 0.1, and skipped as predictable when the predicted presence exceeds 0.9 and the interval of \(z\) standard deviations on the width lies within the tolerance of 0.02 nm\ensuremath{^{-1}}. Every other site is measured. The standard deviation is taken either for the latent function or for a new observation, which adds the fitted noise; the rule was run at \(z\) = 1, 1.64, 1.96 and 2.58. The rule involves no random draw, so each setting gives one campaign. Wrong skips are counted as for the certified plan: a skip for want of a line is wrong where the line is present, a predictable skip is wrong where presence disagrees or the width misses by more than the tolerance.
 
-\textbf{Result.} Table S7.1 lists the eight settings. With the latent standard deviation and \(z\) = 1, the campaign measured 658 of 1071 sites and skipped 10 \% of the sites of levels 3 to 6 wrongly, inside the spread of the 250 certified campaigns (mean 614 measured, 12 \% wrong). The rate was uneven over the levels, 18 \% at level 6 and none at levels 4 and 5, and the campaign itself carries no statement of it. Intervals of 90 \% or wider allowed at most 31 predictable skips, and between 29 \% and 32 \% of those were wrong, against the 1 \% to 10 \% the intervals imply. With the predictive standard deviation, no interval of the width fell within the tolerance, and the campaign measured 922 sites.
+\textbf{Stated rate.} The process states, for every skip, its own probability that the skip is wrong. With \(p\) the predicted presence clipped to \([0, 1]\), a skip for want of a line is wrong with probability \(p\). A predictable skip is right when the line is present and the width lies within the tolerance of the predicted width \(\hat w\); with the logarithm of the width normal with mean \(\mu\) and standard deviation \(s\), latent or predictive, its probability of being wrong is
+
+\[
+1 - p \, [\Phi((\log(\hat w + t) - \mu)/s) - \Phi((\log(\hat w - t) - \mu)/s)]
+\]
+
+with \(t\) the tolerance and \(\Phi\) the standard normal distribution function. The stated share of a campaign is the sum of these probabilities over its skips on levels 3 to 6, divided by the number of sites on those levels, the quantity the guarantee bounds.
+
+\textbf{Result.} Table S7.1 lists the eight settings. With the latent standard deviation and \(z\) = 1 the campaign measured 658 of 1071 sites, stated 3.5 \% of the sites of levels 3 to 6 wrong and skipped 10.4 \% wrongly; the shortfall was largest on the last level, 6.4 \% stated against 18 \% realised. At \(z\) of 1.64 to 2.58 it measured 893 to 903 sites, stated 0.4 \% to 0.5 \% and realised 1.0 \% to 1.4 \%. With the predictive standard deviation no interval of the width fell within the tolerance, so every skip was a skip for want of a line; the campaign measured 922 sites, stated 0.4 \% and realised 0.3 \%.
 
 {\renewcommand{\thetable}{S7.1}\small
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}@{}}
-\caption{Uncertified campaigns on the NaCl (200)-width map.}\label{tab:S7.1}\\
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\caption{Uncertified campaigns on the NaCl (200)-width map. Stated and realised shares are of the sites of levels 3 to 6.}\label{tab:S7.1}\\
 
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -1025,35 +1038,33 @@ standard deviation
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \(z\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-implied miss rate
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 measured
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 predictable skips
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-of those wrong
+stated share wrong
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-wrong, levels 3--6
+realised share wrong
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-latent & 1.00 & 0.32 & 658 & 266 & 0.37 & 0.10 \\
-latent & 1.64 & 0.10 & 893 & 31 & 0.32 & 0.014 \\
-latent & 1.96 & 0.05 & 903 & 21 & 0.29 & 0.010 \\
-latent & 2.58 & 0.01 & 903 & 21 & 0.29 & 0.010 \\
-predictive & 1.00--2.58 & 0.32--0.01 & 922 & 0 & --- & 0.003 \\
+latent & 1.00 & 658 & 266 & 3.5 \% & 10.4 \% \\
+latent & 1.64 & 893 & 31 & 0.5 \% & 1.4 \% \\
+latent & 1.96 & 903 & 21 & 0.4 \% & 1.0 \% \\
+latent & 2.58 & 903 & 21 & 0.4 \% & 1.0 \% \\
+predictive & 1.00--2.58 & 922 & 0 & 0.4 \% & 0.3 \% \\
 \end{longtable}
 }
 
-Certification applies to the Gaussian process as it does to natural-neighbour prediction. With the posterior mean as the frozen predictor and the length scale set by maximum likelihood, by the design or by the nonstationary rule (SI 1), 250 certified campaigns each skipped 12.3 \% to 12.5 \% of levels 3 to 6 wrongly on average and exceeded the budget on 111 to 123 of 1000 level runs, against 120 allowed; they measured 745 to 777 sites, against 614 with natural-neighbour prediction, because the posterior mean shrinks toward the average where the width scatters from site to site. The difference between the two kinds of campaign lies in what each knows. At equal cost the realised error is about equal; the certified campaign states its rate before any skip is checked, and the uncertified one learns its rate only from the full scan that a campaign exists to avoid.
+Certification applies to the Gaussian process as it does to natural-neighbour prediction. With the posterior mean as the frozen predictor and the length scale set by maximum likelihood, by the design or by the nonstationary rule (SI 1), 250 certified campaigns each skipped 12.3 \% to 12.5 \% of levels 3 to 6 wrongly on average and exceeded the budget on 111 to 123 of 1000 level runs, against 120 expected; they measured 745 to 777 sites, against 614 with natural-neighbour prediction, because the posterior mean shrinks toward the average where the width scatters from site to site. The certified Gaussian process measured fewer sites than the uncertified one with the predictive standard deviation, 745 to 777 against 922, and its rate was fixed before any skip was checked; the uncertified campaigns learn their realised rate only from the full scan that a campaign exists to avoid.
 
 \hypertarget{s7.2-the-spectrum-gaussian-process-on-all-three-maps}{%
 \subsection*{S7.2 The spectrum Gaussian process on all three maps}\label{s7.2-the-spectrum-gaussian-process-on-all-three-maps}}
 \addcontentsline{toc}{subsection}{S7.2 The spectrum Gaussian process on all three maps}
 
-The rule of Section 5.3 uses the Gaussian process of the certified campaigns (Section 4.3), which predicts the full spectrum or profile at a site from the measured set. After each level is measured, the process is refitted with the length scale set by maximum marginal likelihood, and every unmeasured site of the next level is assessed against both claims. Posterior draws of the spectrum at a site are taken along the leading principal components of the measured spectra, which carry 99 \% of the variance up to at most 20 components, with the component variances scaled by the posterior standard deviation at the site; 64 draws per site, clipped at zero. The stated probability that a claim fails at a site is the share of draws for which it fails: for the interest claim, the share of draws that are of interest; for the interpolation claim, the share of draws that fail the acceptance metric against the posterior mean. A site is skipped under a claim when its stated probability is at most \ensuremath{\alpha}, and a site skipped under both claims is stated to fail with probability \(1 - (1 - p_a)(1 - p_b)\). The stated share of wrong skips of a campaign is the sum of these probabilities over its skipped certified-level sites, divided by the number of certified-level sites.
+The rule of Section 5.2 uses the Gaussian process of the certified campaigns (Section 4.3), which predicts the full spectrum or profile at a site from the measured set. After each level is measured, the process is refitted with the length scale set by maximum marginal likelihood, and every unmeasured site of the next level is assessed against both claims. The process places one length scale on all channels, so a posterior over the claims needs a model of how channels vary together; here posterior draws of the spectrum at a site are taken along the leading principal components of the measured spectra, which carry 99 \% of the variance up to at most 20 components, with the component variances scaled by the posterior standard deviation at the site; 64 draws per site, clipped at zero. This construction is one choice among several, and the stated rates of Table S7.2 belong to it; another posterior over the claims would state other rates. The stated probability that a claim fails at a site is the share of draws for which it fails: for the interest claim, the share of draws that are of interest; for the interpolation claim, the share of draws that fail the acceptance metric against the posterior mean. A site is skipped under a claim when its stated probability is at most \ensuremath{\alpha}, and a site skipped under both claims is stated to fail with probability \(1 - (1 - p_a)(1 - p_b)\). The stated share of wrong skips of a campaign is the sum of these probabilities over its skipped certified-level sites, divided by the number of certified-level sites.
 
 Three standard deviations are used: the latent one, the predictive one, which adds the fitted noise variance, and the predictive one multiplied by a factor fixed on each level from the measured set, the 68 \% quantile of the absolute leave-one-out residuals in units of their predictive standard deviation. A factor below one means the measured sites are predicted better than the process states, and the rescaled campaign then skips more.
 
@@ -1094,7 +1105,7 @@ synthetic (2118 sites) & latent & 0--4.0 \% & 13.8--38.7 \% & 289--550 \\
 \end{longtable}
 }
 
-On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map, sites skipped under the interest claim alone were wrong 0 to 2 times out of 293 to 509; the wrong skips failed the tolerance, 166 to 261 of the 548 to 632 sites skipped under the interpolation claim alone and 59 to 591 of the 572 to 832 skipped under both. On NaCl the noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip.
+On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map, sites skipped under the interest claim alone were wrong 0 to 2 times out of 293 to 509; the wrong skips failed the tolerance, 166 to 261 of the 548 to 632 sites skipped under the interpolation claim alone and 59 to 591 of the 572 to 832 skipped under both. On NaCl the fitted white-noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip; it describes site-to-site scatter that the smooth part of the process does not follow, far above the counting noise of a measurement (SI 2).
 
 \hypertarget{s7.3-certified-campaigns-at-several-budgets}{%
 \subsection*{S7.3 Certified campaigns at several budgets}\label{s7.3-certified-campaigns-at-several-budgets}}
@@ -1186,7 +1197,7 @@ p-value & after & randomised conformal p-value of the residual among the calibra
 \end{longtable}
 }
 
-\textbf{Campaigns.} The record was written for one campaign of average cost per dataset, replayed with its recorded seed: for the NaCl scan the campaign of Fig. 1, for the IR map and the synthetic map the campaign whose number of measurements lies closest to the mean of 250, with ties broken by the number of wrong skips. Each replay reproduced the recorded actions site by site. The failure and interest labels are part of the record of all 250 campaigns per dataset, so the shares in Table S8.2 pool those campaigns; the p-values come from the replayed campaigns. A site measured by choice is needed when every claim would have skipped it wrongly, that is when it is of interest and its prediction fails.
+\textbf{Campaigns.} The record was written for one campaign of average cost per dataset, replayed from its recorded random state: for the NaCl scan the campaign of Fig. 1, for the IR map and the synthetic map the campaign whose number of measurements lies closest to the mean of 250, with ties broken by the number of wrong skips. Each replay reproduced the recorded actions site by site. The failure and interest labels are part of the record of all 250 campaigns per dataset, so the shares in Table S8.2 pool those campaigns; the p-values come from the replayed campaigns. A site measured by choice is needed when every claim would have skipped it wrongly, that is when it is of interest and its prediction fails.
 
 {\renewcommand{\thetable}{S8.2}\small
 \begin{longtable}[]{@{}
@@ -1291,13 +1302,13 @@ outcome
 
 The calibration draw of a level serves a second purpose. Its interpolation labels are the errors, at the sites of the new level, of the map built from all coarser measurements. They therefore measure how well that map predicts at the density of the new level.
 
-Let level \(L + 1\) have \(N\) sites, of which \(K\) lie outside tolerance of the map frozen before its draw. The \(m\) calibration sites are a uniform sample without replacement, so the number \(f\) of failures among them is hypergeometric. The map bound is the Clopper--Pearson upper limit \cite{ClopperPearson1934} at confidence \(1 - \delta_{\mathrm{map}}\),
+Let level \(L + 1\) have \(N\) sites, of which \(K\) lie outside tolerance of the map frozen before its draw. The \(m\) calibration sites are a uniform sample without replacement, so the number \(f\) of failures among them is hypergeometric. The map bound is the exact upper limit for a draw without replacement: the largest share \(K'/N\) for which the observed \(f\) is not rejected at level \(\delta_{\mathrm{map}}\),
 
 \[
-u(f) = \mathrm{Beta}^{-1}(1 - \delta_{\mathrm{map}};\ f + 1,\ m - f)
+u(f) = \max \{ K'/N : P(H_{N, K', m} \le f) > \delta_{\mathrm{map}} \}
 \]
 
-with \(u(m) = 1\). The limit is exact for a binomial count. For a draw without replacement it was checked numerically: at \(m = 40\), for every level size \(N\) from 41 to 1200 and every failing share \(K/N \le 0.6\), the probability that \(u(f) \ge K/N\) was at least 0.754, 0.804 and 0.904 at confidences 0.75, 0.80 and 0.90. At failing shares close to one, the binomial limit can fall short by a few per cent; the hypergeometric limit, found by inverting the hypergeometric tail in \(K\), removes that gap.
+with \(H_{N, K', m}\) hypergeometric, \(N\) sites of which \(K'\) fail and \(m\) draws. It holds with probability at least \(1 - \delta_{\mathrm{map}}\) for every \(K\), by the same inversion of the tail as Proposition A.1. The record also stores the Clopper--Pearson limit \cite{ClopperPearson1934}, \(\mathrm{Beta}^{-1}(1 - \delta_{\mathrm{map}};\ f + 1,\ m - f)\), which is exact for a binomial count, wider at the sizes of this study, and can fall short by a few per cent when the failing share is close to one.
 
 \textbf{Sharing the draw with the decision.} The same draw sets the thresholds of level \(L + 1\). The decision fails with probability at most \(\delta_{L+1}\) and the map bound with probability at most \(\delta_{\mathrm{map}}\), so by the union bound both hold together with probability at least
 
@@ -1311,7 +1322,7 @@ No independence between the two statements is needed.
 
 \textbf{Scope.} The bound concerns the map frozen before the draw, at the sites of the new level. The final map also uses the calibration sites and every site measured because no claim covered it. Those depend on the draw, so the final map carries no finite-sample statement and is checked against the truth (Section 5.4).
 
-\textbf{Record.} The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Over the 250 campaigns of each configuration it held on 100 \% of the certified levels for IR, 88.5 \% for NaCl and 90.4 \% for the synthetic map, against confidences of 0.75, 0.80 and 0.80. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.
+\textbf{Record.} The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Recomputed with the exact limit from the 250 campaigns of each main configuration, it held on 95.8 \% of the certified levels for IR, 84.4 \% for NaCl and 89.5 \% for the synthetic map, against confidences of 0.75, 0.80 and 0.80; the Clopper--Pearson limit held on 100 \%, 88.5 \% and 90.4 \%, at mean upper limits 0.052, 0.593 and 0.279 against 0.042, 0.579 and 0.255 for the exact one. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.
 
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}

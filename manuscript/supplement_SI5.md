@@ -1,6 +1,6 @@
 # SI 5. The run record (draft 1)
 
-Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
+Every configuration of Section 5 was run as 250 independent campaigns, random states 0 to 249; a random state fixes the calibration draws of a campaign and, for random scores, the score stream. 36 configurations give 9000 campaigns; the comparisons of SI 5.3 add 250 campaigns each of three rules on three maps. Each campaign is logged in full: its configuration, every per-level record (thresholds, the allowed number of calibration failures under both the binomial and the exact finite-population tail, the stated guarantees, calibration counts, level and remainder rates, map bound), the decision and reason for every design site, the interest and interpolation labels of every site and the frozen score of each claim. The record also holds the code version, the package versions and the wall time of each campaign. For the maximum-likelihood Gaussian-process configurations, the end-of-level and final-map labels, which need a refit on the full measured set and change no decision, were not computed. The record lives in the repository under results/record (one directory per configuration: a compressed line-per-campaign log and a compressed array file), with a manifest, the summary below and the audit table.
 
 **Table S5.1.** Exceedances of every stated rate over all certified levels of all campaigns. "Allowed failure" is one minus the stated confidence; the interval is a 95 % Clopper–Pearson interval on the exceedance frequency (indicative, since levels of one campaign are not independent draws).
 
@@ -175,16 +175,16 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 | Dataset | Rule | Campaigns | Sites measured | Levels over budget | Campaigns over budget | Final-map share outside |
 | --- | --- | --- | --- | --- | --- | --- |
 | IR map (ε = 0.10) | per level at 0.75 | 250 | 295 ± 53 | 4.9 % | 19.6 % | 0.4 % |
-| | plan at 0.75 (δ = 0.062 per level) | 105 | 408 ± 80 | 0.0 % | 0.0 % | |
-| | conformal risk control | 100 | 260 | 5.0 % | 20.0 % | |
-| | uniform sample | 20 | 295 | — | — | 0.5 % |
-| NaCl scan (ε = 0.20) | per level at 0.80 | 250 | 614 ± 56 | 11.2 % | 38.4 % | 16.6 % |
-| | plan at 0.80 (δ = 0.050 per level) | 128 | 694 ± 61 | 2.7 % | 8.6 % | |
-| | conformal risk control | 100 | 541 | 33.8 % | 80.0 % | |
-| | uniform sample | 20 | 614 | — | — | 21.9 % |
-| Synthetic map (ε = 0.20) | per level at 0.80 | 250 | 334 ± 26 | 10.7 % | 49.6 % | 8.5 % |
-| | plan at 0.80 (δ = 0.033 per level) | 60 | 376 ± 29 | 2.8 % | 16.7 % | |
-| | conformal risk control | 42 | 301 | 32.5 % | 92.9 % | |
-| | uniform sample | 20 | 334 | — | — | 10.3 % |
+| | plan at 0.75 (δ = 0.062 per level) | 250 | 415 ± 82 | 0.1 % | 0.4 % | |
+| | conformal risk control | 250 | 260 | 4.9 % | 19.6 % | |
+| | uniform sample | 250 | 295 | — | — | 0.5 % |
+| NaCl scan (ε = 0.20) | per level at 0.80 | 250 | 614 ± 56 | 11.2 % | 38.4 % | 18.0 % |
+| | plan at 0.80 (δ = 0.050 per level) | 250 | 694 ± 58 | 2.7 % | 9.6 % | |
+| | conformal risk control | 250 | 542 | 34.7 % | 80.8 % | |
+| | uniform sample | 250 | 614 | — | — | 22.0 % |
+| Synthetic map (ε = 0.20) | per level at 0.80 | 250 | 334 ± 26 | 10.7 % | 49.6 % | 8.4 % |
+| | plan at 0.80 (δ = 0.033 per level) | 250 | 377 ± 27 | 1.3 % | 8.0 % | |
+| | conformal risk control | 250 | 305 | 31.6 % | 91.6 % | |
+| | uniform sample | 250 | 334 | — | — | 10.6 % |
 
-On the synthetic map the plan certified for all levels together exceeded the budget on 10 of 360 level checks, against 5.5 expected under the picked failure probabilities (one-sided probability about 0.05). Repeating the calibration draw 3000 times on each of 20 recorded level populations of four campaigns under the same rule gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels.
+Plans certified for all levels together exceeded the budget on 1, 27 and 20 level checks of 1000, 1000 and 1500, against 30.2, 27.5 and 22.8 expected under the picked failure probabilities. On the synthetic map the first 60 campaigns had shown 10 of 360 against 5.5 expected; repeating the calibration draw 3000 times on each of 20 recorded level populations of four of those campaigns gave an attained exceedance probability of 1.01 times the picked one, pooled over the levels, so the excess was chance. Conformal risk control kept its mean share of a level skipped wrongly at 5.7 %, 18.8 % and 18.3 % against budgets of 10 %, 20 % and 20 %. Uniform samples left 0.5 ± 0.2 %, 22.0 ± 1.0 % and 10.6 ± 1.0 % of certified-level sites outside tolerance; the final maps of the plans certified level by level left 0.4 ± 0.3 %, 18.0 ± 3.8 % and 8.4 ± 1.4 %.
