@@ -1,0 +1,481 @@
+{
+ "ir": {
+  "row": "ir_nested_watson",
+  "measured": 295.0,
+  "share_mean": 0.00536117381489842,
+  "share_range": [
+   0.002257336343115124,
+   0.009029345372460496
+  ],
+  "runs": [
+   {
+    "seed": 0,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 1,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 2,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 3,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 4,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 5,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 6,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 7,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 8,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 9,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 10,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 11,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 12,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 13,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 14,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 15,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 16,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 17,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 18,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 19,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   }
+  ]
+ },
+ "nacl": {
+  "row": "nacl_fwhm_nested_watson",
+  "measured": 614.0,
+  "share_mean": 0.2185427135678392,
+  "share_range": [
+   0.20301507537688443,
+   0.24120603015075376
+  ],
+  "runs": [
+   {
+    "seed": 0,
+    "measured": 614,
+    "wrong": 240,
+    "n_cert": 995,
+    "share": 0.24120603015075376
+   },
+   {
+    "seed": 1,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 2,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 3,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 4,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 5,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 6,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 7,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 8,
+    "measured": 614,
+    "wrong": 202,
+    "n_cert": 995,
+    "share": 0.20301507537688443
+   },
+   {
+    "seed": 9,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 10,
+    "measured": 614,
+    "wrong": 230,
+    "n_cert": 995,
+    "share": 0.23115577889447236
+   },
+   {
+    "seed": 11,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 12,
+    "measured": 614,
+    "wrong": 203,
+    "n_cert": 995,
+    "share": 0.20402010050251257
+   },
+   {
+    "seed": 13,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 14,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 15,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 16,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 17,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 18,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 19,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   }
+  ]
+ },
+ "syn": {
+  "row": "syn_peak_2cert_nested_watson",
+  "measured": 334.0,
+  "share_mean": 0.1033910533910534,
+  "share_range": [
+   0.08802308802308802,
+   0.1265031265031265
+  ],
+  "runs": [
+   {
+    "seed": 0,
+    "measured": 334,
+    "wrong": 242,
+    "n_cert": 2079,
+    "share": 0.1164021164021164
+   },
+   {
+    "seed": 1,
+    "measured": 334,
+    "wrong": 190,
+    "n_cert": 2079,
+    "share": 0.0913900913900914
+   },
+   {
+    "seed": 2,
+    "measured": 334,
+    "wrong": 200,
+    "n_cert": 2079,
+    "share": 0.0962000962000962
+   },
+   {
+    "seed": 3,
+    "measured": 334,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 4,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 5,
+    "measured": 334,
+    "wrong": 263,
+    "n_cert": 2079,
+    "share": 0.1265031265031265
+   },
+   {
+    "seed": 6,
+    "measured": 334,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 7,
+    "measured": 334,
+    "wrong": 189,
+    "n_cert": 2079,
+    "share": 0.09090909090909091
+   },
+   {
+    "seed": 8,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 9,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 10,
+    "measured": 334,
+    "wrong": 239,
+    "n_cert": 2079,
+    "share": 0.11495911495911496
+   },
+   {
+    "seed": 11,
+    "measured": 334,
+    "wrong": 234,
+    "n_cert": 2079,
+    "share": 0.11255411255411256
+   },
+   {
+    "seed": 12,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 13,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 14,
+    "measured": 334,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 15,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 16,
+    "measured": 334,
+    "wrong": 229,
+    "n_cert": 2079,
+    "share": 0.11014911014911015
+   },
+   {
+    "seed": 17,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 18,
+    "measured": 334,
+    "wrong": 183,
+    "n_cert": 2079,
+    "share": 0.08802308802308802
+   },
+   {
+    "seed": 19,
+    "measured": 334,
+    "wrong": 202,
+    "n_cert": 2079,
+    "share": 0.09716209716209716
+   }
+  ]
+ },
+ "certified_final": {
+  "ir": {
+   "measured": 312.2,
+   "share_mean": 0.0036117381489841984,
+   "share_range": [
+    0.0,
+    0.007900677200902935
+   ]
+  },
+  "nacl": {
+   "measured": 631.25,
+   "share_mean": 0.16638190954773865,
+   "share_range": [
+    0.06432160804020101,
+    0.24020100502512562
+   ]
+  },
+  "syn": {
+   "measured": 333.7,
+   "share_mean": 0.08482443482443483,
+   "share_range": [
+    0.06637806637806638,
+    0.11014911014911015
+   ]
+  }
+ }
+}
