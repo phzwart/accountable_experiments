@@ -22,7 +22,6 @@ INK, INK2, GRID = "#1f1e1d", "#5c5b58", "#c9c8c4"
 STYLE = {
     "certified, natural neighbour": dict(c="#2a78d6", m="D", ls="-"),
     "certified, Gaussian process": dict(c="#8e6cc8", m="s", ls="-"),
-    "uncertified, latent sd": dict(c="#d4572a", m="o", ls="--"),
     "uncertified, predictive sd": dict(c="#e8a33d", m="^", ls="--"),
     "uncertified, rescaled sd": dict(c="#9b2d1f", m="v", ls=":"),
 }
@@ -38,6 +37,8 @@ def series(key):
         n = c["runs"][0]["n_cert"]
         out.setdefault(CERT[c["predictor"]], []).append((c["eps"], np.mean([r["wrong"] / n for r in c["runs"]])))
     for u in json.loads((RES / f"{key}.json").read_text()):
+        if u["kind"] == "latent":   # leaves out the noise of a single measurement; SI 7 only
+            continue
         out.setdefault(UNC[u["kind"]], []).append((u["stated_rate"], u["wrong_rate"]))
     return out
 
@@ -65,7 +66,7 @@ def main():
             ax.spines[s_].set_visible(False)
     handles = [Line2D([], [], color=st["c"], ls=st["ls"], marker=st["m"], ms=4, mec="white", label=name)
                for name, st in STYLE.items()]
-    fig.legend(handles=handles, loc="lower center", ncol=3, fontsize=6.4, frameon=False, bbox_to_anchor=(0.5, 0.0),
+    fig.legend(handles=handles, loc="lower center", ncol=2, fontsize=6.4, frameon=False, bbox_to_anchor=(0.5, 0.0),
                columnspacing=1.2)
     fig.text(0.08, 0.93, "What an agent states about its wrong skips, and what happens",
              fontsize=9, fontweight="bold", color=INK)
