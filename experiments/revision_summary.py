@@ -54,9 +54,12 @@ def main():
             d["crc"] = dict(n=len(crc), measured=np.mean([r["measured"] for r in crc]),
                             level_exceed=np.mean([e for r in crc for e in r["exceeded"]]),
                             campaign_exceed=np.mean([any(r["exceeded"]) for r in crc]),
-                            wrong_share=np.mean([r["wrong"] / r["n_cert"] for r in crc]))
+                            wrong_share=np.mean([r["wrong"] / r["n_cert"] for r in crc]),
+                            mean_level_rate=np.mean([l["E_rate"] for r in crc for l in r["levels"]]),
+                            k=sorted({l["k"] for r in crc for l in r["levels"]}))
         if key in uni:
-            d["uniform"] = dict(measured=uni[key]["measured"], share=uni[key]["share_mean"], range=uni[key]["share_range"])
+            d["uniform"] = dict(measured=uni[key]["measured"], share=uni[key]["share_mean"],
+                                sd=uni[key].get("share_sd"), range=uni[key]["share_range"], n=uni[key].get("n"))
         if "certified_final" in uni and key in uni["certified_final"]:
             d["certified_final"] = uni["certified_final"][key]
         out[key] = d
