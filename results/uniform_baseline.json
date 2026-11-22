@@ -3524,1764 +3524,1764 @@
   ]
  },
  "syn": {
-  "row": "syn_peak_2cert_nested_watson",
-  "measured": 334.0,
-  "share_mean": 0.1057931697931698,
-  "share_sd": 0.010434932918634822,
+  "row": "syn_env_nested_watson",
+  "measured": 932.0,
+  "share_mean": 0.1041000481000481,
+  "share_sd": 0.006894433848500724,
   "share_range": [
-   0.07888407888407889,
-   0.14814814814814814
+   0.08513708513708514,
+   0.12554112554112554
   ],
   "runs": [
    {
     "seed": 0,
-    "measured": 334,
-    "wrong": 242,
+    "measured": 932,
+    "wrong": 231,
     "n_cert": 2079,
-    "share": 0.1164021164021164
+    "share": 0.1111111111111111
    },
    {
     "seed": 1,
-    "measured": 334,
-    "wrong": 190,
-    "n_cert": 2079,
-    "share": 0.0913900913900914
-   },
-   {
-    "seed": 2,
-    "measured": 334,
-    "wrong": 200,
-    "n_cert": 2079,
-    "share": 0.0962000962000962
-   },
-   {
-    "seed": 3,
-    "measured": 334,
-    "wrong": 212,
-    "n_cert": 2079,
-    "share": 0.10197210197210198
-   },
-   {
-    "seed": 4,
-    "measured": 334,
-    "wrong": 218,
-    "n_cert": 2079,
-    "share": 0.10485810485810486
-   },
-   {
-    "seed": 5,
-    "measured": 334,
-    "wrong": 263,
-    "n_cert": 2079,
-    "share": 0.1265031265031265
-   },
-   {
-    "seed": 6,
-    "measured": 334,
-    "wrong": 203,
-    "n_cert": 2079,
-    "share": 0.09764309764309764
-   },
-   {
-    "seed": 7,
-    "measured": 334,
-    "wrong": 189,
-    "n_cert": 2079,
-    "share": 0.09090909090909091
-   },
-   {
-    "seed": 8,
-    "measured": 334,
-    "wrong": 214,
-    "n_cert": 2079,
-    "share": 0.10293410293410293
-   },
-   {
-    "seed": 9,
-    "measured": 334,
+    "measured": 932,
     "wrong": 209,
     "n_cert": 2079,
     "share": 0.10052910052910052
    },
    {
-    "seed": 10,
-    "measured": 334,
-    "wrong": 239,
-    "n_cert": 2079,
-    "share": 0.11495911495911496
-   },
-   {
-    "seed": 11,
-    "measured": 334,
-    "wrong": 234,
-    "n_cert": 2079,
-    "share": 0.11255411255411256
-   },
-   {
-    "seed": 12,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 13,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 14,
-    "measured": 334,
+    "seed": 2,
+    "measured": 932,
     "wrong": 230,
     "n_cert": 2079,
     "share": 0.11063011063011063
    },
    {
-    "seed": 15,
-    "measured": 334,
-    "wrong": 206,
+    "seed": 3,
+    "measured": 932,
+    "wrong": 207,
     "n_cert": 2079,
-    "share": 0.09908609908609908
+    "share": 0.09956709956709957
    },
    {
-    "seed": 16,
-    "measured": 334,
-    "wrong": 229,
+    "seed": 4,
+    "measured": 932,
+    "wrong": 211,
     "n_cert": 2079,
-    "share": 0.11014911014911015
+    "share": 0.10149110149110149
    },
    {
-    "seed": 17,
-    "measured": 334,
+    "seed": 5,
+    "measured": 932,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 6,
+    "measured": 932,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 7,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 8,
+    "measured": 932,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 9,
+    "measured": 932,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 10,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 11,
+    "measured": 932,
     "wrong": 210,
     "n_cert": 2079,
     "share": 0.10101010101010101
    },
    {
-    "seed": 18,
-    "measured": 334,
-    "wrong": 183,
+    "seed": 12,
+    "measured": 932,
+    "wrong": 207,
     "n_cert": 2079,
-    "share": 0.08802308802308802
+    "share": 0.09956709956709957
    },
    {
-    "seed": 19,
-    "measured": 334,
-    "wrong": 202,
+    "seed": 13,
+    "measured": 932,
+    "wrong": 221,
     "n_cert": 2079,
-    "share": 0.09716209716209716
+    "share": 0.1063011063011063
    },
    {
-    "seed": 20,
-    "measured": 334,
+    "seed": 14,
+    "measured": 932,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 15,
+    "measured": 932,
     "wrong": 230,
     "n_cert": 2079,
     "share": 0.11063011063011063
    },
    {
-    "seed": 21,
-    "measured": 334,
-    "wrong": 204,
+    "seed": 16,
+    "measured": 932,
+    "wrong": 212,
     "n_cert": 2079,
-    "share": 0.09812409812409813
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 17,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 18,
+    "measured": 932,
+    "wrong": 201,
+    "n_cert": 2079,
+    "share": 0.09668109668109669
+   },
+   {
+    "seed": 19,
+    "measured": 932,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 20,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 21,
+    "measured": 932,
+    "wrong": 178,
+    "n_cert": 2079,
+    "share": 0.08561808561808562
    },
    {
     "seed": 22,
-    "measured": 334,
-    "wrong": 219,
+    "measured": 932,
+    "wrong": 222,
     "n_cert": 2079,
-    "share": 0.10533910533910534
+    "share": 0.10678210678210678
    },
    {
     "seed": 23,
-    "measured": 334,
-    "wrong": 251,
+    "measured": 932,
+    "wrong": 248,
     "n_cert": 2079,
-    "share": 0.12073112073112073
+    "share": 0.11928811928811929
    },
    {
     "seed": 24,
-    "measured": 334,
-    "wrong": 197,
+    "measured": 932,
+    "wrong": 222,
     "n_cert": 2079,
-    "share": 0.09475709475709476
+    "share": 0.10678210678210678
    },
    {
     "seed": 25,
-    "measured": 334,
+    "measured": 932,
     "wrong": 206,
     "n_cert": 2079,
     "share": 0.09908609908609908
    },
    {
     "seed": 26,
-    "measured": 334,
-    "wrong": 195,
+    "measured": 932,
+    "wrong": 204,
     "n_cert": 2079,
-    "share": 0.09379509379509379
+    "share": 0.09812409812409813
    },
    {
     "seed": 27,
-    "measured": 334,
-    "wrong": 228,
+    "measured": 932,
+    "wrong": 227,
     "n_cert": 2079,
-    "share": 0.10966810966810966
+    "share": 0.1091871091871092
    },
    {
     "seed": 28,
-    "measured": 334,
-    "wrong": 221,
+    "measured": 932,
+    "wrong": 226,
     "n_cert": 2079,
-    "share": 0.1063011063011063
+    "share": 0.10870610870610871
    },
    {
     "seed": 29,
-    "measured": 334,
-    "wrong": 252,
+    "measured": 932,
+    "wrong": 215,
     "n_cert": 2079,
-    "share": 0.12121212121212122
+    "share": 0.10341510341510342
    },
    {
     "seed": 30,
-    "measured": 334,
-    "wrong": 164,
+    "measured": 932,
+    "wrong": 215,
     "n_cert": 2079,
-    "share": 0.07888407888407889
+    "share": 0.10341510341510342
    },
    {
     "seed": 31,
-    "measured": 334,
-    "wrong": 209,
+    "measured": 932,
+    "wrong": 196,
     "n_cert": 2079,
-    "share": 0.10052910052910052
+    "share": 0.09427609427609428
    },
    {
     "seed": 32,
-    "measured": 334,
-    "wrong": 218,
-    "n_cert": 2079,
-    "share": 0.10485810485810486
-   },
-   {
-    "seed": 33,
-    "measured": 334,
-    "wrong": 220,
-    "n_cert": 2079,
-    "share": 0.10582010582010581
-   },
-   {
-    "seed": 34,
-    "measured": 334,
-    "wrong": 176,
-    "n_cert": 2079,
-    "share": 0.08465608465608465
-   },
-   {
-    "seed": 35,
-    "measured": 334,
-    "wrong": 236,
-    "n_cert": 2079,
-    "share": 0.11351611351611351
-   },
-   {
-    "seed": 36,
-    "measured": 334,
-    "wrong": 224,
-    "n_cert": 2079,
-    "share": 0.10774410774410774
-   },
-   {
-    "seed": 37,
-    "measured": 334,
-    "wrong": 238,
-    "n_cert": 2079,
-    "share": 0.11447811447811448
-   },
-   {
-    "seed": 38,
-    "measured": 334,
-    "wrong": 212,
-    "n_cert": 2079,
-    "share": 0.10197210197210198
-   },
-   {
-    "seed": 39,
-    "measured": 334,
+    "measured": 932,
     "wrong": 225,
     "n_cert": 2079,
     "share": 0.10822510822510822
    },
    {
-    "seed": 40,
-    "measured": 334,
-    "wrong": 219,
+    "seed": 33,
+    "measured": 932,
+    "wrong": 246,
     "n_cert": 2079,
-    "share": 0.10533910533910534
+    "share": 0.11832611832611832
    },
    {
-    "seed": 41,
-    "measured": 334,
-    "wrong": 221,
+    "seed": 34,
+    "measured": 932,
+    "wrong": 207,
     "n_cert": 2079,
-    "share": 0.1063011063011063
+    "share": 0.09956709956709957
    },
    {
-    "seed": 42,
-    "measured": 334,
+    "seed": 35,
+    "measured": 932,
     "wrong": 231,
     "n_cert": 2079,
     "share": 0.1111111111111111
    },
    {
-    "seed": 43,
-    "measured": 334,
-    "wrong": 197,
+    "seed": 36,
+    "measured": 932,
+    "wrong": 246,
     "n_cert": 2079,
-    "share": 0.09475709475709476
+    "share": 0.11832611832611832
+   },
+   {
+    "seed": 37,
+    "measured": 932,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 38,
+    "measured": 932,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 39,
+    "measured": 932,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 40,
+    "measured": 932,
+    "wrong": 236,
+    "n_cert": 2079,
+    "share": 0.11351611351611351
+   },
+   {
+    "seed": 41,
+    "measured": 932,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 42,
+    "measured": 932,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 43,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
    },
    {
     "seed": 44,
-    "measured": 334,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 45,
+    "measured": 932,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 46,
+    "measured": 932,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 47,
+    "measured": 932,
+    "wrong": 192,
+    "n_cert": 2079,
+    "share": 0.09235209235209235
+   },
+   {
+    "seed": 48,
+    "measured": 932,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 49,
+    "measured": 932,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 50,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 51,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 52,
+    "measured": 932,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 53,
+    "measured": 932,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 54,
+    "measured": 932,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 55,
+    "measured": 932,
     "wrong": 201,
     "n_cert": 2079,
     "share": 0.09668109668109669
    },
    {
-    "seed": 45,
-    "measured": 334,
-    "wrong": 219,
-    "n_cert": 2079,
-    "share": 0.10533910533910534
-   },
-   {
-    "seed": 46,
-    "measured": 334,
-    "wrong": 224,
-    "n_cert": 2079,
-    "share": 0.10774410774410774
-   },
-   {
-    "seed": 47,
-    "measured": 334,
-    "wrong": 258,
-    "n_cert": 2079,
-    "share": 0.1240981240981241
-   },
-   {
-    "seed": 48,
-    "measured": 334,
-    "wrong": 203,
-    "n_cert": 2079,
-    "share": 0.09764309764309764
-   },
-   {
-    "seed": 49,
-    "measured": 334,
-    "wrong": 219,
-    "n_cert": 2079,
-    "share": 0.10533910533910534
-   },
-   {
-    "seed": 50,
-    "measured": 334,
-    "wrong": 204,
-    "n_cert": 2079,
-    "share": 0.09812409812409813
-   },
-   {
-    "seed": 51,
-    "measured": 334,
-    "wrong": 238,
-    "n_cert": 2079,
-    "share": 0.11447811447811448
-   },
-   {
-    "seed": 52,
-    "measured": 334,
-    "wrong": 242,
-    "n_cert": 2079,
-    "share": 0.1164021164021164
-   },
-   {
-    "seed": 53,
-    "measured": 334,
-    "wrong": 227,
-    "n_cert": 2079,
-    "share": 0.1091871091871092
-   },
-   {
-    "seed": 54,
-    "measured": 334,
-    "wrong": 248,
-    "n_cert": 2079,
-    "share": 0.11928811928811929
-   },
-   {
-    "seed": 55,
-    "measured": 334,
-    "wrong": 215,
-    "n_cert": 2079,
-    "share": 0.10341510341510342
-   },
-   {
     "seed": 56,
-    "measured": 334,
-    "wrong": 207,
+    "measured": 932,
+    "wrong": 245,
     "n_cert": 2079,
-    "share": 0.09956709956709957
+    "share": 0.11784511784511785
    },
    {
     "seed": 57,
-    "measured": 334,
-    "wrong": 210,
-    "n_cert": 2079,
-    "share": 0.10101010101010101
-   },
-   {
-    "seed": 58,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 59,
-    "measured": 334,
-    "wrong": 207,
-    "n_cert": 2079,
-    "share": 0.09956709956709957
-   },
-   {
-    "seed": 60,
-    "measured": 334,
-    "wrong": 270,
-    "n_cert": 2079,
-    "share": 0.12987012987012986
-   },
-   {
-    "seed": 61,
-    "measured": 334,
-    "wrong": 251,
-    "n_cert": 2079,
-    "share": 0.12073112073112073
-   },
-   {
-    "seed": 62,
-    "measured": 334,
-    "wrong": 191,
-    "n_cert": 2079,
-    "share": 0.09187109187109187
-   },
-   {
-    "seed": 63,
-    "measured": 334,
-    "wrong": 219,
-    "n_cert": 2079,
-    "share": 0.10533910533910534
-   },
-   {
-    "seed": 64,
-    "measured": 334,
-    "wrong": 197,
-    "n_cert": 2079,
-    "share": 0.09475709475709476
-   },
-   {
-    "seed": 65,
-    "measured": 334,
-    "wrong": 211,
-    "n_cert": 2079,
-    "share": 0.10149110149110149
-   },
-   {
-    "seed": 66,
-    "measured": 334,
-    "wrong": 287,
-    "n_cert": 2079,
-    "share": 0.13804713804713806
-   },
-   {
-    "seed": 67,
-    "measured": 334,
-    "wrong": 240,
-    "n_cert": 2079,
-    "share": 0.11544011544011544
-   },
-   {
-    "seed": 68,
-    "measured": 334,
-    "wrong": 246,
-    "n_cert": 2079,
-    "share": 0.11832611832611832
-   },
-   {
-    "seed": 69,
-    "measured": 334,
-    "wrong": 218,
-    "n_cert": 2079,
-    "share": 0.10485810485810486
-   },
-   {
-    "seed": 70,
-    "measured": 334,
-    "wrong": 200,
-    "n_cert": 2079,
-    "share": 0.0962000962000962
-   },
-   {
-    "seed": 71,
-    "measured": 334,
-    "wrong": 195,
-    "n_cert": 2079,
-    "share": 0.09379509379509379
-   },
-   {
-    "seed": 72,
-    "measured": 334,
-    "wrong": 235,
-    "n_cert": 2079,
-    "share": 0.11303511303511303
-   },
-   {
-    "seed": 73,
-    "measured": 334,
-    "wrong": 191,
-    "n_cert": 2079,
-    "share": 0.09187109187109187
-   },
-   {
-    "seed": 74,
-    "measured": 334,
-    "wrong": 243,
-    "n_cert": 2079,
-    "share": 0.11688311688311688
-   },
-   {
-    "seed": 75,
-    "measured": 334,
-    "wrong": 224,
-    "n_cert": 2079,
-    "share": 0.10774410774410774
-   },
-   {
-    "seed": 76,
-    "measured": 334,
-    "wrong": 253,
-    "n_cert": 2079,
-    "share": 0.12169312169312169
-   },
-   {
-    "seed": 77,
-    "measured": 334,
-    "wrong": 235,
-    "n_cert": 2079,
-    "share": 0.11303511303511303
-   },
-   {
-    "seed": 78,
-    "measured": 334,
-    "wrong": 233,
-    "n_cert": 2079,
-    "share": 0.11207311207311207
-   },
-   {
-    "seed": 79,
-    "measured": 334,
-    "wrong": 200,
-    "n_cert": 2079,
-    "share": 0.0962000962000962
-   },
-   {
-    "seed": 80,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 81,
-    "measured": 334,
-    "wrong": 242,
-    "n_cert": 2079,
-    "share": 0.1164021164021164
-   },
-   {
-    "seed": 82,
-    "measured": 334,
-    "wrong": 198,
-    "n_cert": 2079,
-    "share": 0.09523809523809523
-   },
-   {
-    "seed": 83,
-    "measured": 334,
-    "wrong": 218,
-    "n_cert": 2079,
-    "share": 0.10485810485810486
-   },
-   {
-    "seed": 84,
-    "measured": 334,
-    "wrong": 210,
-    "n_cert": 2079,
-    "share": 0.10101010101010101
-   },
-   {
-    "seed": 85,
-    "measured": 334,
-    "wrong": 204,
-    "n_cert": 2079,
-    "share": 0.09812409812409813
-   },
-   {
-    "seed": 86,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 87,
-    "measured": 334,
-    "wrong": 188,
-    "n_cert": 2079,
-    "share": 0.09042809042809043
-   },
-   {
-    "seed": 88,
-    "measured": 334,
-    "wrong": 227,
-    "n_cert": 2079,
-    "share": 0.1091871091871092
-   },
-   {
-    "seed": 89,
-    "measured": 334,
-    "wrong": 211,
-    "n_cert": 2079,
-    "share": 0.10149110149110149
-   },
-   {
-    "seed": 90,
-    "measured": 334,
-    "wrong": 220,
-    "n_cert": 2079,
-    "share": 0.10582010582010581
-   },
-   {
-    "seed": 91,
-    "measured": 334,
-    "wrong": 228,
-    "n_cert": 2079,
-    "share": 0.10966810966810966
-   },
-   {
-    "seed": 92,
-    "measured": 334,
-    "wrong": 199,
-    "n_cert": 2079,
-    "share": 0.09571909571909572
-   },
-   {
-    "seed": 93,
-    "measured": 334,
-    "wrong": 220,
-    "n_cert": 2079,
-    "share": 0.10582010582010581
-   },
-   {
-    "seed": 94,
-    "measured": 334,
-    "wrong": 218,
-    "n_cert": 2079,
-    "share": 0.10485810485810486
-   },
-   {
-    "seed": 95,
-    "measured": 334,
-    "wrong": 195,
-    "n_cert": 2079,
-    "share": 0.09379509379509379
-   },
-   {
-    "seed": 96,
-    "measured": 334,
-    "wrong": 233,
-    "n_cert": 2079,
-    "share": 0.11207311207311207
-   },
-   {
-    "seed": 97,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 98,
-    "measured": 334,
-    "wrong": 184,
-    "n_cert": 2079,
-    "share": 0.0885040885040885
-   },
-   {
-    "seed": 99,
-    "measured": 334,
-    "wrong": 250,
-    "n_cert": 2079,
-    "share": 0.12025012025012025
-   },
-   {
-    "seed": 100,
-    "measured": 334,
-    "wrong": 184,
-    "n_cert": 2079,
-    "share": 0.0885040885040885
-   },
-   {
-    "seed": 101,
-    "measured": 334,
-    "wrong": 246,
-    "n_cert": 2079,
-    "share": 0.11832611832611832
-   },
-   {
-    "seed": 102,
-    "measured": 334,
-    "wrong": 214,
-    "n_cert": 2079,
-    "share": 0.10293410293410293
-   },
-   {
-    "seed": 103,
-    "measured": 334,
-    "wrong": 216,
-    "n_cert": 2079,
-    "share": 0.1038961038961039
-   },
-   {
-    "seed": 104,
-    "measured": 334,
-    "wrong": 199,
-    "n_cert": 2079,
-    "share": 0.09571909571909572
-   },
-   {
-    "seed": 105,
-    "measured": 334,
-    "wrong": 208,
-    "n_cert": 2079,
-    "share": 0.10004810004810005
-   },
-   {
-    "seed": 106,
-    "measured": 334,
-    "wrong": 203,
-    "n_cert": 2079,
-    "share": 0.09764309764309764
-   },
-   {
-    "seed": 107,
-    "measured": 334,
-    "wrong": 224,
-    "n_cert": 2079,
-    "share": 0.10774410774410774
-   },
-   {
-    "seed": 108,
-    "measured": 334,
-    "wrong": 200,
-    "n_cert": 2079,
-    "share": 0.0962000962000962
-   },
-   {
-    "seed": 109,
-    "measured": 334,
+    "measured": 932,
     "wrong": 236,
     "n_cert": 2079,
     "share": 0.11351611351611351
    },
    {
-    "seed": 110,
-    "measured": 334,
-    "wrong": 194,
+    "seed": 58,
+    "measured": 932,
+    "wrong": 220,
     "n_cert": 2079,
-    "share": 0.09331409331409331
+    "share": 0.10582010582010581
    },
    {
-    "seed": 111,
-    "measured": 334,
-    "wrong": 194,
+    "seed": 59,
+    "measured": 932,
+    "wrong": 222,
     "n_cert": 2079,
-    "share": 0.09331409331409331
+    "share": 0.10678210678210678
    },
    {
-    "seed": 112,
-    "measured": 334,
-    "wrong": 214,
+    "seed": 60,
+    "measured": 932,
+    "wrong": 219,
     "n_cert": 2079,
-    "share": 0.10293410293410293
+    "share": 0.10533910533910534
    },
    {
-    "seed": 113,
-    "measured": 334,
-    "wrong": 242,
+    "seed": 61,
+    "measured": 932,
+    "wrong": 226,
     "n_cert": 2079,
-    "share": 0.1164021164021164
+    "share": 0.10870610870610871
    },
    {
-    "seed": 114,
-    "measured": 334,
-    "wrong": 209,
+    "seed": 62,
+    "measured": 932,
+    "wrong": 206,
     "n_cert": 2079,
-    "share": 0.10052910052910052
+    "share": 0.09908609908609908
    },
    {
-    "seed": 115,
-    "measured": 334,
-    "wrong": 221,
-    "n_cert": 2079,
-    "share": 0.1063011063011063
-   },
-   {
-    "seed": 116,
-    "measured": 334,
+    "seed": 63,
+    "measured": 932,
     "wrong": 234,
     "n_cert": 2079,
     "share": 0.11255411255411256
    },
    {
-    "seed": 117,
-    "measured": 334,
-    "wrong": 195,
+    "seed": 64,
+    "measured": 932,
+    "wrong": 194,
     "n_cert": 2079,
-    "share": 0.09379509379509379
+    "share": 0.09331409331409331
    },
    {
-    "seed": 118,
-    "measured": 334,
-    "wrong": 175,
-    "n_cert": 2079,
-    "share": 0.08417508417508418
-   },
-   {
-    "seed": 119,
-    "measured": 334,
-    "wrong": 255,
-    "n_cert": 2079,
-    "share": 0.12265512265512266
-   },
-   {
-    "seed": 120,
-    "measured": 334,
-    "wrong": 214,
-    "n_cert": 2079,
-    "share": 0.10293410293410293
-   },
-   {
-    "seed": 121,
-    "measured": 334,
-    "wrong": 220,
-    "n_cert": 2079,
-    "share": 0.10582010582010581
-   },
-   {
-    "seed": 122,
-    "measured": 334,
-    "wrong": 183,
-    "n_cert": 2079,
-    "share": 0.08802308802308802
-   },
-   {
-    "seed": 123,
-    "measured": 334,
-    "wrong": 215,
-    "n_cert": 2079,
-    "share": 0.10341510341510342
-   },
-   {
-    "seed": 124,
-    "measured": 334,
-    "wrong": 221,
-    "n_cert": 2079,
-    "share": 0.1063011063011063
-   },
-   {
-    "seed": 125,
-    "measured": 334,
-    "wrong": 207,
-    "n_cert": 2079,
-    "share": 0.09956709956709957
-   },
-   {
-    "seed": 126,
-    "measured": 334,
-    "wrong": 231,
-    "n_cert": 2079,
-    "share": 0.1111111111111111
-   },
-   {
-    "seed": 127,
-    "measured": 334,
-    "wrong": 232,
-    "n_cert": 2079,
-    "share": 0.11159211159211159
-   },
-   {
-    "seed": 128,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 129,
-    "measured": 334,
-    "wrong": 232,
-    "n_cert": 2079,
-    "share": 0.11159211159211159
-   },
-   {
-    "seed": 130,
-    "measured": 334,
-    "wrong": 242,
-    "n_cert": 2079,
-    "share": 0.1164021164021164
-   },
-   {
-    "seed": 131,
-    "measured": 334,
-    "wrong": 228,
-    "n_cert": 2079,
-    "share": 0.10966810966810966
-   },
-   {
-    "seed": 132,
-    "measured": 334,
-    "wrong": 249,
-    "n_cert": 2079,
-    "share": 0.11976911976911978
-   },
-   {
-    "seed": 133,
-    "measured": 334,
-    "wrong": 236,
-    "n_cert": 2079,
-    "share": 0.11351611351611351
-   },
-   {
-    "seed": 134,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 135,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 136,
-    "measured": 334,
-    "wrong": 236,
-    "n_cert": 2079,
-    "share": 0.11351611351611351
-   },
-   {
-    "seed": 137,
-    "measured": 334,
-    "wrong": 209,
-    "n_cert": 2079,
-    "share": 0.10052910052910052
-   },
-   {
-    "seed": 138,
-    "measured": 334,
-    "wrong": 217,
-    "n_cert": 2079,
-    "share": 0.10437710437710437
-   },
-   {
-    "seed": 139,
-    "measured": 334,
-    "wrong": 227,
-    "n_cert": 2079,
-    "share": 0.1091871091871092
-   },
-   {
-    "seed": 140,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 141,
-    "measured": 334,
-    "wrong": 256,
-    "n_cert": 2079,
-    "share": 0.12313612313612314
-   },
-   {
-    "seed": 142,
-    "measured": 334,
-    "wrong": 204,
-    "n_cert": 2079,
-    "share": 0.09812409812409813
-   },
-   {
-    "seed": 143,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 144,
-    "measured": 334,
-    "wrong": 287,
-    "n_cert": 2079,
-    "share": 0.13804713804713806
-   },
-   {
-    "seed": 145,
-    "measured": 334,
-    "wrong": 206,
-    "n_cert": 2079,
-    "share": 0.09908609908609908
-   },
-   {
-    "seed": 146,
-    "measured": 334,
-    "wrong": 227,
-    "n_cert": 2079,
-    "share": 0.1091871091871092
-   },
-   {
-    "seed": 147,
-    "measured": 334,
-    "wrong": 210,
-    "n_cert": 2079,
-    "share": 0.10101010101010101
-   },
-   {
-    "seed": 148,
-    "measured": 334,
-    "wrong": 248,
-    "n_cert": 2079,
-    "share": 0.11928811928811929
-   },
-   {
-    "seed": 149,
-    "measured": 334,
-    "wrong": 245,
-    "n_cert": 2079,
-    "share": 0.11784511784511785
-   },
-   {
-    "seed": 150,
-    "measured": 334,
-    "wrong": 212,
-    "n_cert": 2079,
-    "share": 0.10197210197210198
-   },
-   {
-    "seed": 151,
-    "measured": 334,
-    "wrong": 248,
-    "n_cert": 2079,
-    "share": 0.11928811928811929
-   },
-   {
-    "seed": 152,
-    "measured": 334,
-    "wrong": 205,
-    "n_cert": 2079,
-    "share": 0.0986050986050986
-   },
-   {
-    "seed": 153,
-    "measured": 334,
-    "wrong": 167,
-    "n_cert": 2079,
-    "share": 0.08032708032708033
-   },
-   {
-    "seed": 154,
-    "measured": 334,
-    "wrong": 236,
-    "n_cert": 2079,
-    "share": 0.11351611351611351
-   },
-   {
-    "seed": 155,
-    "measured": 334,
-    "wrong": 245,
-    "n_cert": 2079,
-    "share": 0.11784511784511785
-   },
-   {
-    "seed": 156,
-    "measured": 334,
-    "wrong": 225,
-    "n_cert": 2079,
-    "share": 0.10822510822510822
-   },
-   {
-    "seed": 157,
-    "measured": 334,
-    "wrong": 222,
-    "n_cert": 2079,
-    "share": 0.10678210678210678
-   },
-   {
-    "seed": 158,
-    "measured": 334,
-    "wrong": 214,
-    "n_cert": 2079,
-    "share": 0.10293410293410293
-   },
-   {
-    "seed": 159,
-    "measured": 334,
-    "wrong": 212,
-    "n_cert": 2079,
-    "share": 0.10197210197210198
-   },
-   {
-    "seed": 160,
-    "measured": 334,
+    "seed": 65,
+    "measured": 932,
     "wrong": 230,
     "n_cert": 2079,
     "share": 0.11063011063011063
    },
    {
-    "seed": 161,
-    "measured": 334,
-    "wrong": 217,
+    "seed": 66,
+    "measured": 932,
+    "wrong": 218,
     "n_cert": 2079,
-    "share": 0.10437710437710437
+    "share": 0.10485810485810486
    },
    {
-    "seed": 162,
-    "measured": 334,
-    "wrong": 241,
+    "seed": 67,
+    "measured": 932,
+    "wrong": 228,
     "n_cert": 2079,
-    "share": 0.11592111592111592
+    "share": 0.10966810966810966
    },
    {
-    "seed": 163,
-    "measured": 334,
-    "wrong": 237,
+    "seed": 68,
+    "measured": 932,
+    "wrong": 213,
     "n_cert": 2079,
-    "share": 0.113997113997114
+    "share": 0.10245310245310245
    },
    {
-    "seed": 164,
-    "measured": 334,
-    "wrong": 241,
+    "seed": 69,
+    "measured": 932,
+    "wrong": 232,
     "n_cert": 2079,
-    "share": 0.11592111592111592
+    "share": 0.11159211159211159
    },
    {
-    "seed": 165,
-    "measured": 334,
-    "wrong": 205,
+    "seed": 70,
+    "measured": 932,
+    "wrong": 194,
     "n_cert": 2079,
-    "share": 0.0986050986050986
+    "share": 0.09331409331409331
    },
    {
-    "seed": 166,
-    "measured": 334,
-    "wrong": 189,
+    "seed": 71,
+    "measured": 932,
+    "wrong": 224,
     "n_cert": 2079,
-    "share": 0.09090909090909091
+    "share": 0.10774410774410774
    },
    {
-    "seed": 167,
-    "measured": 334,
-    "wrong": 210,
+    "seed": 72,
+    "measured": 932,
+    "wrong": 202,
     "n_cert": 2079,
-    "share": 0.10101010101010101
+    "share": 0.09716209716209716
    },
    {
-    "seed": 168,
-    "measured": 334,
-    "wrong": 216,
-    "n_cert": 2079,
-    "share": 0.1038961038961039
-   },
-   {
-    "seed": 169,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 170,
-    "measured": 334,
+    "seed": 73,
+    "measured": 932,
     "wrong": 227,
     "n_cert": 2079,
     "share": 0.1091871091871092
    },
    {
-    "seed": 171,
-    "measured": 334,
-    "wrong": 191,
+    "seed": 74,
+    "measured": 932,
+    "wrong": 195,
     "n_cert": 2079,
-    "share": 0.09187109187109187
+    "share": 0.09379509379509379
    },
    {
-    "seed": 172,
-    "measured": 334,
+    "seed": 75,
+    "measured": 932,
+    "wrong": 249,
+    "n_cert": 2079,
+    "share": 0.11976911976911978
+   },
+   {
+    "seed": 76,
+    "measured": 932,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 77,
+    "measured": 932,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 78,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 79,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 80,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 81,
+    "measured": 932,
+    "wrong": 177,
+    "n_cert": 2079,
+    "share": 0.08513708513708514
+   },
+   {
+    "seed": 82,
+    "measured": 932,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 83,
+    "measured": 932,
+    "wrong": 237,
+    "n_cert": 2079,
+    "share": 0.113997113997114
+   },
+   {
+    "seed": 84,
+    "measured": 932,
     "wrong": 221,
     "n_cert": 2079,
     "share": 0.1063011063011063
    },
    {
-    "seed": 173,
-    "measured": 334,
-    "wrong": 222,
+    "seed": 85,
+    "measured": 932,
+    "wrong": 212,
     "n_cert": 2079,
-    "share": 0.10678210678210678
+    "share": 0.10197210197210198
    },
    {
-    "seed": 174,
-    "measured": 334,
-    "wrong": 217,
+    "seed": 86,
+    "measured": 932,
+    "wrong": 225,
     "n_cert": 2079,
-    "share": 0.10437710437710437
+    "share": 0.10822510822510822
    },
    {
-    "seed": 175,
-    "measured": 334,
-    "wrong": 206,
+    "seed": 87,
+    "measured": 932,
+    "wrong": 208,
     "n_cert": 2079,
-    "share": 0.09908609908609908
+    "share": 0.10004810004810005
    },
    {
-    "seed": 176,
-    "measured": 334,
-    "wrong": 185,
+    "seed": 88,
+    "measured": 932,
+    "wrong": 224,
     "n_cert": 2079,
-    "share": 0.08898508898508899
+    "share": 0.10774410774410774
    },
    {
-    "seed": 177,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 178,
-    "measured": 334,
-    "wrong": 258,
-    "n_cert": 2079,
-    "share": 0.1240981240981241
-   },
-   {
-    "seed": 179,
-    "measured": 334,
-    "wrong": 189,
-    "n_cert": 2079,
-    "share": 0.09090909090909091
-   },
-   {
-    "seed": 180,
-    "measured": 334,
-    "wrong": 211,
-    "n_cert": 2079,
-    "share": 0.10149110149110149
-   },
-   {
-    "seed": 181,
-    "measured": 334,
-    "wrong": 267,
-    "n_cert": 2079,
-    "share": 0.12842712842712842
-   },
-   {
-    "seed": 182,
-    "measured": 334,
+    "seed": 89,
+    "measured": 932,
     "wrong": 219,
     "n_cert": 2079,
     "share": 0.10533910533910534
    },
    {
-    "seed": 183,
-    "measured": 334,
+    "seed": 90,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 91,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 92,
+    "measured": 932,
+    "wrong": 182,
+    "n_cert": 2079,
+    "share": 0.08754208754208755
+   },
+   {
+    "seed": 93,
+    "measured": 932,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 94,
+    "measured": 932,
+    "wrong": 238,
+    "n_cert": 2079,
+    "share": 0.11447811447811448
+   },
+   {
+    "seed": 95,
+    "measured": 932,
+    "wrong": 261,
+    "n_cert": 2079,
+    "share": 0.12554112554112554
+   },
+   {
+    "seed": 96,
+    "measured": 932,
+    "wrong": 202,
+    "n_cert": 2079,
+    "share": 0.09716209716209716
+   },
+   {
+    "seed": 97,
+    "measured": 932,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 98,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 99,
+    "measured": 932,
+    "wrong": 208,
+    "n_cert": 2079,
+    "share": 0.10004810004810005
+   },
+   {
+    "seed": 100,
+    "measured": 932,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 101,
+    "measured": 932,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 102,
+    "measured": 932,
+    "wrong": 191,
+    "n_cert": 2079,
+    "share": 0.09187109187109187
+   },
+   {
+    "seed": 103,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 104,
+    "measured": 932,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 105,
+    "measured": 932,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 106,
+    "measured": 932,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 107,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 108,
+    "measured": 932,
+    "wrong": 182,
+    "n_cert": 2079,
+    "share": 0.08754208754208755
+   },
+   {
+    "seed": 109,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 110,
+    "measured": 932,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 111,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 112,
+    "measured": 932,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 113,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 114,
+    "measured": 932,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 115,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 116,
+    "measured": 932,
+    "wrong": 194,
+    "n_cert": 2079,
+    "share": 0.09331409331409331
+   },
+   {
+    "seed": 117,
+    "measured": 932,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 118,
+    "measured": 932,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 119,
+    "measured": 932,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 120,
+    "measured": 932,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 121,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 122,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 123,
+    "measured": 932,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 124,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 125,
+    "measured": 932,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 126,
+    "measured": 932,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 127,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 128,
+    "measured": 932,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 129,
+    "measured": 932,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 130,
+    "measured": 932,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 131,
+    "measured": 932,
+    "wrong": 208,
+    "n_cert": 2079,
+    "share": 0.10004810004810005
+   },
+   {
+    "seed": 132,
+    "measured": 932,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 133,
+    "measured": 932,
+    "wrong": 201,
+    "n_cert": 2079,
+    "share": 0.09668109668109669
+   },
+   {
+    "seed": 134,
+    "measured": 932,
+    "wrong": 190,
+    "n_cert": 2079,
+    "share": 0.0913900913900914
+   },
+   {
+    "seed": 135,
+    "measured": 932,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 136,
+    "measured": 932,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 137,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 138,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 139,
+    "measured": 932,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 140,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 141,
+    "measured": 932,
+    "wrong": 189,
+    "n_cert": 2079,
+    "share": 0.09090909090909091
+   },
+   {
+    "seed": 142,
+    "measured": 932,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 143,
+    "measured": 932,
+    "wrong": 196,
+    "n_cert": 2079,
+    "share": 0.09427609427609428
+   },
+   {
+    "seed": 144,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 145,
+    "measured": 932,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 146,
+    "measured": 932,
+    "wrong": 201,
+    "n_cert": 2079,
+    "share": 0.09668109668109669
+   },
+   {
+    "seed": 147,
+    "measured": 932,
     "wrong": 220,
     "n_cert": 2079,
     "share": 0.10582010582010581
    },
    {
+    "seed": 148,
+    "measured": 932,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 149,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 150,
+    "measured": 932,
+    "wrong": 229,
+    "n_cert": 2079,
+    "share": 0.11014911014911015
+   },
+   {
+    "seed": 151,
+    "measured": 932,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 152,
+    "measured": 932,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 153,
+    "measured": 932,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 154,
+    "measured": 932,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 155,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 156,
+    "measured": 932,
+    "wrong": 192,
+    "n_cert": 2079,
+    "share": 0.09235209235209235
+   },
+   {
+    "seed": 157,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 158,
+    "measured": 932,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 159,
+    "measured": 932,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 160,
+    "measured": 932,
+    "wrong": 180,
+    "n_cert": 2079,
+    "share": 0.08658008658008658
+   },
+   {
+    "seed": 161,
+    "measured": 932,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 162,
+    "measured": 932,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 163,
+    "measured": 932,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 164,
+    "measured": 932,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 165,
+    "measured": 932,
+    "wrong": 240,
+    "n_cert": 2079,
+    "share": 0.11544011544011544
+   },
+   {
+    "seed": 166,
+    "measured": 932,
+    "wrong": 251,
+    "n_cert": 2079,
+    "share": 0.12073112073112073
+   },
+   {
+    "seed": 167,
+    "measured": 932,
+    "wrong": 208,
+    "n_cert": 2079,
+    "share": 0.10004810004810005
+   },
+   {
+    "seed": 168,
+    "measured": 932,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 169,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 170,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 171,
+    "measured": 932,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 172,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 173,
+    "measured": 932,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 174,
+    "measured": 932,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 175,
+    "measured": 932,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 176,
+    "measured": 932,
+    "wrong": 238,
+    "n_cert": 2079,
+    "share": 0.11447811447811448
+   },
+   {
+    "seed": 177,
+    "measured": 932,
+    "wrong": 200,
+    "n_cert": 2079,
+    "share": 0.0962000962000962
+   },
+   {
+    "seed": 178,
+    "measured": 932,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 179,
+    "measured": 932,
+    "wrong": 188,
+    "n_cert": 2079,
+    "share": 0.09042809042809043
+   },
+   {
+    "seed": 180,
+    "measured": 932,
+    "wrong": 202,
+    "n_cert": 2079,
+    "share": 0.09716209716209716
+   },
+   {
+    "seed": 181,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 182,
+    "measured": 932,
+    "wrong": 184,
+    "n_cert": 2079,
+    "share": 0.0885040885040885
+   },
+   {
+    "seed": 183,
+    "measured": 932,
+    "wrong": 202,
+    "n_cert": 2079,
+    "share": 0.09716209716209716
+   },
+   {
     "seed": 184,
-    "measured": 334,
+    "measured": 932,
     "wrong": 211,
     "n_cert": 2079,
     "share": 0.10149110149110149
    },
    {
     "seed": 185,
-    "measured": 334,
-    "wrong": 188,
+    "measured": 932,
+    "wrong": 232,
     "n_cert": 2079,
-    "share": 0.09042809042809043
+    "share": 0.11159211159211159
    },
    {
     "seed": 186,
-    "measured": 334,
-    "wrong": 249,
+    "measured": 932,
+    "wrong": 213,
     "n_cert": 2079,
-    "share": 0.11976911976911978
+    "share": 0.10245310245310245
    },
    {
     "seed": 187,
-    "measured": 334,
-    "wrong": 205,
+    "measured": 932,
+    "wrong": 246,
     "n_cert": 2079,
-    "share": 0.0986050986050986
+    "share": 0.11832611832611832
    },
    {
     "seed": 188,
-    "measured": 334,
-    "wrong": 231,
+    "measured": 932,
+    "wrong": 196,
     "n_cert": 2079,
-    "share": 0.1111111111111111
+    "share": 0.09427609427609428
    },
    {
     "seed": 189,
-    "measured": 334,
-    "wrong": 220,
-    "n_cert": 2079,
-    "share": 0.10582010582010581
-   },
-   {
-    "seed": 190,
-    "measured": 334,
-    "wrong": 212,
-    "n_cert": 2079,
-    "share": 0.10197210197210198
-   },
-   {
-    "seed": 191,
-    "measured": 334,
-    "wrong": 232,
-    "n_cert": 2079,
-    "share": 0.11159211159211159
-   },
-   {
-    "seed": 192,
-    "measured": 334,
-    "wrong": 222,
-    "n_cert": 2079,
-    "share": 0.10678210678210678
-   },
-   {
-    "seed": 193,
-    "measured": 334,
-    "wrong": 195,
-    "n_cert": 2079,
-    "share": 0.09379509379509379
-   },
-   {
-    "seed": 194,
-    "measured": 334,
-    "wrong": 219,
-    "n_cert": 2079,
-    "share": 0.10533910533910534
-   },
-   {
-    "seed": 195,
-    "measured": 334,
-    "wrong": 187,
-    "n_cert": 2079,
-    "share": 0.08994708994708994
-   },
-   {
-    "seed": 196,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 197,
-    "measured": 334,
-    "wrong": 209,
-    "n_cert": 2079,
-    "share": 0.10052910052910052
-   },
-   {
-    "seed": 198,
-    "measured": 334,
-    "wrong": 208,
-    "n_cert": 2079,
-    "share": 0.10004810004810005
-   },
-   {
-    "seed": 199,
-    "measured": 334,
-    "wrong": 233,
-    "n_cert": 2079,
-    "share": 0.11207311207311207
-   },
-   {
-    "seed": 200,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 201,
-    "measured": 334,
-    "wrong": 193,
-    "n_cert": 2079,
-    "share": 0.09283309283309284
-   },
-   {
-    "seed": 202,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 203,
-    "measured": 334,
-    "wrong": 238,
-    "n_cert": 2079,
-    "share": 0.11447811447811448
-   },
-   {
-    "seed": 204,
-    "measured": 334,
-    "wrong": 197,
-    "n_cert": 2079,
-    "share": 0.09475709475709476
-   },
-   {
-    "seed": 205,
-    "measured": 334,
-    "wrong": 218,
-    "n_cert": 2079,
-    "share": 0.10485810485810486
-   },
-   {
-    "seed": 206,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 207,
-    "measured": 334,
-    "wrong": 215,
-    "n_cert": 2079,
-    "share": 0.10341510341510342
-   },
-   {
-    "seed": 208,
-    "measured": 334,
-    "wrong": 211,
-    "n_cert": 2079,
-    "share": 0.10149110149110149
-   },
-   {
-    "seed": 209,
-    "measured": 334,
-    "wrong": 231,
-    "n_cert": 2079,
-    "share": 0.1111111111111111
-   },
-   {
-    "seed": 210,
-    "measured": 334,
-    "wrong": 206,
-    "n_cert": 2079,
-    "share": 0.09908609908609908
-   },
-   {
-    "seed": 211,
-    "measured": 334,
-    "wrong": 245,
-    "n_cert": 2079,
-    "share": 0.11784511784511785
-   },
-   {
-    "seed": 212,
-    "measured": 334,
-    "wrong": 221,
-    "n_cert": 2079,
-    "share": 0.1063011063011063
-   },
-   {
-    "seed": 213,
-    "measured": 334,
-    "wrong": 197,
-    "n_cert": 2079,
-    "share": 0.09475709475709476
-   },
-   {
-    "seed": 214,
-    "measured": 334,
-    "wrong": 222,
-    "n_cert": 2079,
-    "share": 0.10678210678210678
-   },
-   {
-    "seed": 215,
-    "measured": 334,
-    "wrong": 232,
-    "n_cert": 2079,
-    "share": 0.11159211159211159
-   },
-   {
-    "seed": 216,
-    "measured": 334,
-    "wrong": 229,
-    "n_cert": 2079,
-    "share": 0.11014911014911015
-   },
-   {
-    "seed": 217,
-    "measured": 334,
-    "wrong": 198,
-    "n_cert": 2079,
-    "share": 0.09523809523809523
-   },
-   {
-    "seed": 218,
-    "measured": 334,
-    "wrong": 226,
-    "n_cert": 2079,
-    "share": 0.10870610870610871
-   },
-   {
-    "seed": 219,
-    "measured": 334,
-    "wrong": 267,
-    "n_cert": 2079,
-    "share": 0.12842712842712842
-   },
-   {
-    "seed": 220,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 221,
-    "measured": 334,
-    "wrong": 191,
-    "n_cert": 2079,
-    "share": 0.09187109187109187
-   },
-   {
-    "seed": 222,
-    "measured": 334,
-    "wrong": 220,
-    "n_cert": 2079,
-    "share": 0.10582010582010581
-   },
-   {
-    "seed": 223,
-    "measured": 334,
-    "wrong": 251,
-    "n_cert": 2079,
-    "share": 0.12073112073112073
-   },
-   {
-    "seed": 224,
-    "measured": 334,
-    "wrong": 232,
-    "n_cert": 2079,
-    "share": 0.11159211159211159
-   },
-   {
-    "seed": 225,
-    "measured": 334,
-    "wrong": 202,
-    "n_cert": 2079,
-    "share": 0.09716209716209716
-   },
-   {
-    "seed": 226,
-    "measured": 334,
-    "wrong": 197,
-    "n_cert": 2079,
-    "share": 0.09475709475709476
-   },
-   {
-    "seed": 227,
-    "measured": 334,
-    "wrong": 209,
-    "n_cert": 2079,
-    "share": 0.10052910052910052
-   },
-   {
-    "seed": 228,
-    "measured": 334,
-    "wrong": 208,
-    "n_cert": 2079,
-    "share": 0.10004810004810005
-   },
-   {
-    "seed": 229,
-    "measured": 334,
-    "wrong": 247,
-    "n_cert": 2079,
-    "share": 0.1188071188071188
-   },
-   {
-    "seed": 230,
-    "measured": 334,
+    "measured": 932,
     "wrong": 210,
     "n_cert": 2079,
     "share": 0.10101010101010101
    },
    {
-    "seed": 231,
-    "measured": 334,
-    "wrong": 231,
+    "seed": 190,
+    "measured": 932,
+    "wrong": 205,
     "n_cert": 2079,
-    "share": 0.1111111111111111
+    "share": 0.0986050986050986
    },
    {
-    "seed": 232,
-    "measured": 334,
-    "wrong": 245,
-    "n_cert": 2079,
-    "share": 0.11784511784511785
-   },
-   {
-    "seed": 233,
-    "measured": 334,
-    "wrong": 269,
-    "n_cert": 2079,
-    "share": 0.1293891293891294
-   },
-   {
-    "seed": 234,
-    "measured": 334,
-    "wrong": 204,
-    "n_cert": 2079,
-    "share": 0.09812409812409813
-   },
-   {
-    "seed": 235,
-    "measured": 334,
-    "wrong": 206,
-    "n_cert": 2079,
-    "share": 0.09908609908609908
-   },
-   {
-    "seed": 236,
-    "measured": 334,
-    "wrong": 234,
-    "n_cert": 2079,
-    "share": 0.11255411255411256
-   },
-   {
-    "seed": 237,
-    "measured": 334,
-    "wrong": 264,
-    "n_cert": 2079,
-    "share": 0.12698412698412698
-   },
-   {
-    "seed": 238,
-    "measured": 334,
-    "wrong": 283,
-    "n_cert": 2079,
-    "share": 0.13612313612313612
-   },
-   {
-    "seed": 239,
-    "measured": 334,
-    "wrong": 214,
-    "n_cert": 2079,
-    "share": 0.10293410293410293
-   },
-   {
-    "seed": 240,
-    "measured": 334,
-    "wrong": 308,
-    "n_cert": 2079,
-    "share": 0.14814814814814814
-   },
-   {
-    "seed": 241,
-    "measured": 334,
-    "wrong": 243,
-    "n_cert": 2079,
-    "share": 0.11688311688311688
-   },
-   {
-    "seed": 242,
-    "measured": 334,
-    "wrong": 167,
-    "n_cert": 2079,
-    "share": 0.08032708032708033
-   },
-   {
-    "seed": 243,
-    "measured": 334,
-    "wrong": 224,
-    "n_cert": 2079,
-    "share": 0.10774410774410774
-   },
-   {
-    "seed": 244,
-    "measured": 334,
-    "wrong": 223,
-    "n_cert": 2079,
-    "share": 0.10726310726310727
-   },
-   {
-    "seed": 245,
-    "measured": 334,
-    "wrong": 213,
-    "n_cert": 2079,
-    "share": 0.10245310245310245
-   },
-   {
-    "seed": 246,
-    "measured": 334,
-    "wrong": 252,
-    "n_cert": 2079,
-    "share": 0.12121212121212122
-   },
-   {
-    "seed": 247,
-    "measured": 334,
+    "seed": 191,
+    "measured": 932,
     "wrong": 217,
     "n_cert": 2079,
     "share": 0.10437710437710437
    },
    {
-    "seed": 248,
-    "measured": 334,
-    "wrong": 204,
+    "seed": 192,
+    "measured": 932,
+    "wrong": 219,
     "n_cert": 2079,
-    "share": 0.09812409812409813
+    "share": 0.10533910533910534
    },
    {
-    "seed": 249,
-    "measured": 334,
+    "seed": 193,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 194,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 195,
+    "measured": 932,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 196,
+    "measured": 932,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 197,
+    "measured": 932,
+    "wrong": 234,
+    "n_cert": 2079,
+    "share": 0.11255411255411256
+   },
+   {
+    "seed": 198,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 199,
+    "measured": 932,
+    "wrong": 238,
+    "n_cert": 2079,
+    "share": 0.11447811447811448
+   },
+   {
+    "seed": 200,
+    "measured": 932,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 201,
+    "measured": 932,
+    "wrong": 244,
+    "n_cert": 2079,
+    "share": 0.11736411736411737
+   },
+   {
+    "seed": 202,
+    "measured": 932,
+    "wrong": 235,
+    "n_cert": 2079,
+    "share": 0.11303511303511303
+   },
+   {
+    "seed": 203,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 204,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 205,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 206,
+    "measured": 932,
+    "wrong": 239,
+    "n_cert": 2079,
+    "share": 0.11495911495911496
+   },
+   {
+    "seed": 207,
+    "measured": 932,
+    "wrong": 254,
+    "n_cert": 2079,
+    "share": 0.12217412217412217
+   },
+   {
+    "seed": 208,
+    "measured": 932,
+    "wrong": 237,
+    "n_cert": 2079,
+    "share": 0.113997113997114
+   },
+   {
+    "seed": 209,
+    "measured": 932,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 210,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 211,
+    "measured": 932,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 212,
+    "measured": 932,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 213,
+    "measured": 932,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 214,
+    "measured": 932,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 215,
+    "measured": 932,
+    "wrong": 239,
+    "n_cert": 2079,
+    "share": 0.11495911495911496
+   },
+   {
+    "seed": 216,
+    "measured": 932,
+    "wrong": 201,
+    "n_cert": 2079,
+    "share": 0.09668109668109669
+   },
+   {
+    "seed": 217,
+    "measured": 932,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 218,
+    "measured": 932,
+    "wrong": 239,
+    "n_cert": 2079,
+    "share": 0.11495911495911496
+   },
+   {
+    "seed": 219,
+    "measured": 932,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 220,
+    "measured": 932,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 221,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 222,
+    "measured": 932,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 223,
+    "measured": 932,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 224,
+    "measured": 932,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 225,
+    "measured": 932,
+    "wrong": 191,
+    "n_cert": 2079,
+    "share": 0.09187109187109187
+   },
+   {
+    "seed": 226,
+    "measured": 932,
+    "wrong": 232,
+    "n_cert": 2079,
+    "share": 0.11159211159211159
+   },
+   {
+    "seed": 227,
+    "measured": 932,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 228,
+    "measured": 932,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 229,
+    "measured": 932,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 230,
+    "measured": 932,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 231,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 232,
+    "measured": 932,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 233,
+    "measured": 932,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 234,
+    "measured": 932,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 235,
+    "measured": 932,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 236,
+    "measured": 932,
+    "wrong": 198,
+    "n_cert": 2079,
+    "share": 0.09523809523809523
+   },
+   {
+    "seed": 237,
+    "measured": 932,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 238,
+    "measured": 932,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 239,
+    "measured": 932,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 240,
+    "measured": 932,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 241,
+    "measured": 932,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 242,
+    "measured": 932,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 243,
+    "measured": 932,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 244,
+    "measured": 932,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 245,
+    "measured": 932,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 246,
+    "measured": 932,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 247,
+    "measured": 932,
     "wrong": 205,
     "n_cert": 2079,
     "share": 0.0986050986050986
+   },
+   {
+    "seed": 248,
+    "measured": 932,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 249,
+    "measured": 932,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
    }
   ]
  },
