@@ -337,6 +337,78 @@ class PriorityPathPolicy(NestedPathPolicy):
         return out
 
 
+def allowed_k_unknown_N(eps: float, m: int, delta: float, N_lo: int, N_hi: int) -> int:
+    """Largest k with max over N in [N_lo, N_hi] of P(Hyp(N, floor(eps N)+1, m) <= k) <= delta; -1 if none.
+
+    Used when the population size is unknown within known limits, as for the sites of interest of a
+    level: given their number m among the calibration sites, those sites are a uniform sample without
+    replacement from the N sites of interest of the level, with N_lo <= N <= N_hi.
+    """
+    m, N_lo, N_hi = int(m), max(int(N_lo), int(m)), int(N_hi)
+    if m < 1 or N_hi < N_lo:
+        return -1
+    Ns = np.arange(N_lo, N_hi + 1)
+    Ks = np.minimum(np.floor(float(eps) * Ns).astype(int) + 1, Ns)
+    allowed = -1
+    for k in range(0, m):
+        if float(np.max(hypergeom.cdf(k, Ns, Ks, m))) <= float(delta) + 1e-15:
+            allowed = k
+        else:
+            break
+    return allowed
+
+
+@register("nested_path_recall")
+class RecallNestedPathPolicy(NestedPathPolicy):
+    """
+    The quantile path with a second, label-conditional statement: the share of the level's sites of
+    interest skipped under the no-interest claim stays within ``recall_budget`` with probability at least
+    ``recall_confidence``. Calibrated on the calibration sites of interest only (a Mondrian category fixed
+    before the draw). The no-interest claim covers only sites whose entry time lies below the (k+1)-th
+    smallest entry time among those sites. Restricting a cover keeps the shared-event bound, which holds
+    for every subset of the cover it certifies.
+    """
+
+    def __init__(self, budget: float, confidence: float, recall_budget: float, recall_confidence: float,
+                 interest: str = "interest", **kw):
+        super().__init__(budget, confidence, **kw)
+        self.recall_budget = float(recall_budget)
+        self.recall_confidence = float(recall_confidence)
+        self.interest = interest
+
+    def describe(self):
+        d = super().describe()
+        d.update(recall_budget=self.recall_budget, recall_confidence=self.recall_confidence)
+        return d
+
+    def decide(self, level: LevelData) -> PolicyDecision:
+        dec = super().decide(level)
+        nm = self.interest
+        if nm not in level.scores:
+            return dec
+        lam = self.entry_times(level)[nm]
+        cal = level.cal
+        pos = np.asarray(level.bad[nm], bool)
+        m_i = int(pos.sum())
+        k_i = allowed_k_unknown_N(self.recall_budget, m_i, 1.0 - self.recall_confidence,
+                                  m_i, level.n_level - (level.m - m_i))
+        ent = np.sort(lam[cal][pos])
+        ent = ent[np.isfinite(ent)]
+        if k_i < 0:
+            limit = -np.inf
+        elif len(ent) > k_i:
+            limit = float(ent[k_i])
+        else:
+            limit = np.inf
+        dec.covers[nm] = dec.covers[nm] & (lam < limit)
+        s = np.asarray(level.scores[nm], float)
+        dec.thresholds[nm] = float(np.max(s[dec.covers[nm]])) if dec.covers[nm].any() else float("-inf")
+        dec.guarantees.append(Guarantee("R_recall", self.recall_budget, self.recall_confidence,
+                                        f"label-conditional, m_interest={m_i}, k={k_i}"))
+        dec.notes["recall"] = f"m_interest={m_i}, k={k_i}, limit={limit}"
+        return dec
+
+
 @register("ltt_conditional")
 class LTTConditionalPolicy(Policy):
     """

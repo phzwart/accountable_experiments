@@ -51,6 +51,7 @@ class CampaignConfig:
     map_confidence: Optional[float] = None
     post_labels: bool = True                # remainder labels from the end-of-level measured set
     final_labels: bool = True               # skipped-site labels from the final measured set
+    cal_from_measurement: bool = False      # calibration labels from the measured spectra (drift studies)
 
     def describe(self) -> dict:
         return dict(
@@ -191,13 +192,14 @@ def run_campaign(ds: Dataset, cfg: CampaignConfig, log: Callable = None) -> Camp
             return slice_desc(desc_all, mask)
         return crit.descriptors(I_known[mask])
 
-    def labels(src_mask, query_idx):
+    def labels(src_mask, query_idx, measured_truth=False):
         query_idx = np.asarray(query_idx, int)
         if len(query_idx) == 0:
             return np.zeros(0), np.zeros(0, bool)
-        I_true = I_known[query_idx] if truth is None else truth[query_idx]
+        if measured_truth or truth is None:
+            return cfg.predictor.label(P[src_mask], I_known[src_mask], P[query_idx], I_known[query_idx])
         return cfg.predictor.label(
-            P[src_mask], I_known[src_mask], P[query_idx], I_true,
+            P[src_mask], I_known[src_mask], P[query_idx], truth[query_idx],
             desc_true=slice_desc(desc_all, query_idx) if desc_all is not None else None,
         )
 
@@ -234,7 +236,8 @@ def run_campaign(ds: Dataset, cfg: CampaignConfig, log: Callable = None) -> Camp
 
         # Calibration sites are measured; their labels come from the frozen predictor.
         I_known[cal_idx] = ds.oracle.measure(cal_idx)
-        s_cal, f_cal = labels(prior, cal_idx)
+        s_cal, f_cal = labels(prior, cal_idx, measured_truth=cfg.cal_from_measurement)
+        f_cal_true = labels(prior, cal_idx)[1] if (cfg.cal_from_measurement and truth is not None) else f_cal
         bad = {}
         if INTERP in names:
             bad[INTERP] = np.asarray(f_cal, bool)
@@ -282,7 +285,7 @@ def run_campaign(ds: Dataset, cfg: CampaignConfig, log: Callable = None) -> Camp
 
         # ---- bookkeeping on the level and on the remainder
         fail_lvl = np.zeros(n_level, bool)
-        fail_lvl[local] = f_cal
+        fail_lvl[local] = f_cal_true
         fail_lvl[rem_local] = f_rem
         int_lvl = interesting[idx]
         bad_lvl = {INTERP: fail_lvl, INTEREST: int_lvl}
