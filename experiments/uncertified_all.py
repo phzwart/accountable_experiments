@@ -29,7 +29,7 @@ import numpy as np
 
 from experiments.record import build
 
-ROWS = {"nacl": "nacl_fwhm_nested_gp_mle", "ir": "ir_nested_gp_mle", "syn": "syn_peak_2cert_nested_gp_mle"}
+ROWS = {"nacl": "nacl_fwhm_nested_gp_mle", "ir": "ir_nested_gp_mle", "syn": "syn_env_nested_gp_mle"}
 ALPHAS = (0.01, 0.05, 0.10, 0.20, 0.32)
 KINDS = ("latent", "predictive", "loo")
 K = 64

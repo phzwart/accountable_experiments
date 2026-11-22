@@ -25,7 +25,7 @@ from experiments.record_picked import worst_case_tail
 # key: (row, budget eps, campaign confidence c, number of certified levels)
 ROWS = {"ir": ("ir_nested_watson", 0.10, 0.75, 4),
         "nacl": ("nacl_fwhm_nested_watson", 0.20, 0.80, 4),
-        "syn": ("syn_peak_2cert_nested_watson", 0.20, 0.80, 6)}
+        "syn": ("syn_env_nested_watson", 0.10, 0.80, 6)}
 N_SEEDS = 250
 OUT = Path("results/campaign_contract")
 

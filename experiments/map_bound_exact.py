@@ -14,7 +14,7 @@ from scipy.stats import hypergeom
 
 from experiments.record import OUT as REC, build
 
-ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_peak_2cert_nested_watson"}
+ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_env_nested_watson"}
 
 
 def upper_hyp(f, m, N, conf):

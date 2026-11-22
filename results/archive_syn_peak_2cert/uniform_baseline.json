@@ -1,0 +1,5320 @@
+{
+ "ir": {
+  "row": "ir_nested_watson",
+  "measured": 295.0,
+  "share_mean": 0.005331828442437924,
+  "share_sd": 0.002463206902399139,
+  "share_range": [
+   0.0,
+   0.012415349887133182
+  ],
+  "runs": [
+   {
+    "seed": 0,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 1,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 2,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 3,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 4,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 5,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 6,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 7,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 8,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 9,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 10,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 11,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 12,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 13,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 14,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 15,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 16,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 17,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 18,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 19,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 20,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 21,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 22,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 23,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 24,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 25,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 26,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 27,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 28,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 29,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 30,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 31,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 32,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 33,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 34,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 35,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 36,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 37,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 38,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 39,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 40,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 41,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 42,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 43,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 44,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 45,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 46,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 47,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 48,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 49,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 50,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 51,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 52,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 53,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 54,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 55,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 56,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 57,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 58,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 59,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 60,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 61,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 62,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 63,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 64,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 65,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 66,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 67,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 68,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 69,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 70,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 71,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 72,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 73,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 74,
+    "measured": 295,
+    "wrong": 10,
+    "n_cert": 886,
+    "share": 0.011286681715575621
+   },
+   {
+    "seed": 75,
+    "measured": 295,
+    "wrong": 0,
+    "n_cert": 886,
+    "share": 0.0
+   },
+   {
+    "seed": 76,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 77,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 78,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 79,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 80,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 81,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 82,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 83,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 84,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 85,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 86,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 87,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 88,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 89,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 90,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 91,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 92,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 93,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 94,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 95,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 96,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 97,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 98,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 99,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 100,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 101,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 102,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 103,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 104,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 105,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 106,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 107,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 108,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 109,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 110,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 111,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 112,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 113,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 114,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 115,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 116,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 117,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 118,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 119,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 120,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 121,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 122,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 123,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 124,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 125,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 126,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 127,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 128,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 129,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 130,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 131,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 132,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 133,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 134,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 135,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 136,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 137,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 138,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 139,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 140,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 141,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 142,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 143,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 144,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 145,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 146,
+    "measured": 295,
+    "wrong": 11,
+    "n_cert": 886,
+    "share": 0.012415349887133182
+   },
+   {
+    "seed": 147,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 148,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 149,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 150,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 151,
+    "measured": 295,
+    "wrong": 0,
+    "n_cert": 886,
+    "share": 0.0
+   },
+   {
+    "seed": 152,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 153,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 154,
+    "measured": 295,
+    "wrong": 0,
+    "n_cert": 886,
+    "share": 0.0
+   },
+   {
+    "seed": 155,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 156,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 157,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 158,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 159,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 160,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 161,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 162,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 163,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 164,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 165,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 166,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 167,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 168,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 169,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 170,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 171,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 172,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 173,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 174,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 175,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 176,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 177,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 178,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 179,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 180,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 181,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 182,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 183,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 184,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 185,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 186,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 187,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 188,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 189,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 190,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 191,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 192,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 193,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 194,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 195,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 196,
+    "measured": 295,
+    "wrong": 8,
+    "n_cert": 886,
+    "share": 0.009029345372460496
+   },
+   {
+    "seed": 197,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 198,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 199,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 200,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 201,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 202,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 203,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 204,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 205,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 206,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 207,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 208,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 209,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 210,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 211,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 212,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 213,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 214,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 215,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 216,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 217,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 218,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 219,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 220,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 221,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 222,
+    "measured": 295,
+    "wrong": 11,
+    "n_cert": 886,
+    "share": 0.012415349887133182
+   },
+   {
+    "seed": 223,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 224,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 225,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 226,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 227,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 228,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 229,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 230,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 231,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 232,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 233,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 234,
+    "measured": 295,
+    "wrong": 10,
+    "n_cert": 886,
+    "share": 0.011286681715575621
+   },
+   {
+    "seed": 235,
+    "measured": 295,
+    "wrong": 1,
+    "n_cert": 886,
+    "share": 0.001128668171557562
+   },
+   {
+    "seed": 236,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 237,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 238,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 239,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 240,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 241,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   },
+   {
+    "seed": 242,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 243,
+    "measured": 295,
+    "wrong": 2,
+    "n_cert": 886,
+    "share": 0.002257336343115124
+   },
+   {
+    "seed": 244,
+    "measured": 295,
+    "wrong": 9,
+    "n_cert": 886,
+    "share": 0.010158013544018058
+   },
+   {
+    "seed": 245,
+    "measured": 295,
+    "wrong": 7,
+    "n_cert": 886,
+    "share": 0.007900677200902935
+   },
+   {
+    "seed": 246,
+    "measured": 295,
+    "wrong": 5,
+    "n_cert": 886,
+    "share": 0.0056433408577878106
+   },
+   {
+    "seed": 247,
+    "measured": 295,
+    "wrong": 4,
+    "n_cert": 886,
+    "share": 0.004514672686230248
+   },
+   {
+    "seed": 248,
+    "measured": 295,
+    "wrong": 6,
+    "n_cert": 886,
+    "share": 0.006772009029345372
+   },
+   {
+    "seed": 249,
+    "measured": 295,
+    "wrong": 3,
+    "n_cert": 886,
+    "share": 0.003386004514672686
+   }
+  ]
+ },
+ "nacl": {
+  "row": "nacl_fwhm_nested_watson",
+  "measured": 614.0,
+  "share_mean": 0.22026130653266332,
+  "share_sd": 0.010217891087301208,
+  "share_range": [
+   0.1899497487437186,
+   0.25025125628140704
+  ],
+  "runs": [
+   {
+    "seed": 0,
+    "measured": 614,
+    "wrong": 240,
+    "n_cert": 995,
+    "share": 0.24120603015075376
+   },
+   {
+    "seed": 1,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 2,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 3,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 4,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 5,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 6,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 7,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 8,
+    "measured": 614,
+    "wrong": 202,
+    "n_cert": 995,
+    "share": 0.20301507537688443
+   },
+   {
+    "seed": 9,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 10,
+    "measured": 614,
+    "wrong": 230,
+    "n_cert": 995,
+    "share": 0.23115577889447236
+   },
+   {
+    "seed": 11,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 12,
+    "measured": 614,
+    "wrong": 203,
+    "n_cert": 995,
+    "share": 0.20402010050251257
+   },
+   {
+    "seed": 13,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 14,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 15,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 16,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 17,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 18,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 19,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 20,
+    "measured": 614,
+    "wrong": 189,
+    "n_cert": 995,
+    "share": 0.1899497487437186
+   },
+   {
+    "seed": 21,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 22,
+    "measured": 614,
+    "wrong": 230,
+    "n_cert": 995,
+    "share": 0.23115577889447236
+   },
+   {
+    "seed": 23,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 24,
+    "measured": 614,
+    "wrong": 205,
+    "n_cert": 995,
+    "share": 0.20603015075376885
+   },
+   {
+    "seed": 25,
+    "measured": 614,
+    "wrong": 232,
+    "n_cert": 995,
+    "share": 0.23316582914572864
+   },
+   {
+    "seed": 26,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 27,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 28,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 29,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 30,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 31,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 32,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 33,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 34,
+    "measured": 614,
+    "wrong": 204,
+    "n_cert": 995,
+    "share": 0.2050251256281407
+   },
+   {
+    "seed": 35,
+    "measured": 614,
+    "wrong": 207,
+    "n_cert": 995,
+    "share": 0.20804020100502513
+   },
+   {
+    "seed": 36,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 37,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 38,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 39,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 40,
+    "measured": 614,
+    "wrong": 208,
+    "n_cert": 995,
+    "share": 0.20904522613065327
+   },
+   {
+    "seed": 41,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 42,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 43,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 44,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 45,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 46,
+    "measured": 614,
+    "wrong": 232,
+    "n_cert": 995,
+    "share": 0.23316582914572864
+   },
+   {
+    "seed": 47,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 48,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 49,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 50,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 51,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 52,
+    "measured": 614,
+    "wrong": 249,
+    "n_cert": 995,
+    "share": 0.25025125628140704
+   },
+   {
+    "seed": 53,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 54,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 55,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 56,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 57,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 58,
+    "measured": 614,
+    "wrong": 233,
+    "n_cert": 995,
+    "share": 0.23417085427135678
+   },
+   {
+    "seed": 59,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 60,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 61,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 62,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 63,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 64,
+    "measured": 614,
+    "wrong": 247,
+    "n_cert": 995,
+    "share": 0.24824120603015076
+   },
+   {
+    "seed": 65,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 66,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 67,
+    "measured": 614,
+    "wrong": 235,
+    "n_cert": 995,
+    "share": 0.23618090452261306
+   },
+   {
+    "seed": 68,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 69,
+    "measured": 614,
+    "wrong": 199,
+    "n_cert": 995,
+    "share": 0.2
+   },
+   {
+    "seed": 70,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 71,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 72,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 73,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 74,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 75,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 76,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 77,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 78,
+    "measured": 614,
+    "wrong": 237,
+    "n_cert": 995,
+    "share": 0.23819095477386934
+   },
+   {
+    "seed": 79,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 80,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 81,
+    "measured": 614,
+    "wrong": 239,
+    "n_cert": 995,
+    "share": 0.24020100502512562
+   },
+   {
+    "seed": 82,
+    "measured": 614,
+    "wrong": 237,
+    "n_cert": 995,
+    "share": 0.23819095477386934
+   },
+   {
+    "seed": 83,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 84,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 85,
+    "measured": 614,
+    "wrong": 201,
+    "n_cert": 995,
+    "share": 0.2020100502512563
+   },
+   {
+    "seed": 86,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 87,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 88,
+    "measured": 614,
+    "wrong": 230,
+    "n_cert": 995,
+    "share": 0.23115577889447236
+   },
+   {
+    "seed": 89,
+    "measured": 614,
+    "wrong": 206,
+    "n_cert": 995,
+    "share": 0.207035175879397
+   },
+   {
+    "seed": 90,
+    "measured": 614,
+    "wrong": 201,
+    "n_cert": 995,
+    "share": 0.2020100502512563
+   },
+   {
+    "seed": 91,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 92,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 93,
+    "measured": 614,
+    "wrong": 245,
+    "n_cert": 995,
+    "share": 0.24623115577889448
+   },
+   {
+    "seed": 94,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 95,
+    "measured": 614,
+    "wrong": 232,
+    "n_cert": 995,
+    "share": 0.23316582914572864
+   },
+   {
+    "seed": 96,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 97,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 98,
+    "measured": 614,
+    "wrong": 208,
+    "n_cert": 995,
+    "share": 0.20904522613065327
+   },
+   {
+    "seed": 99,
+    "measured": 614,
+    "wrong": 201,
+    "n_cert": 995,
+    "share": 0.2020100502512563
+   },
+   {
+    "seed": 100,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 101,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 102,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 103,
+    "measured": 614,
+    "wrong": 205,
+    "n_cert": 995,
+    "share": 0.20603015075376885
+   },
+   {
+    "seed": 104,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 105,
+    "measured": 614,
+    "wrong": 248,
+    "n_cert": 995,
+    "share": 0.2492462311557789
+   },
+   {
+    "seed": 106,
+    "measured": 614,
+    "wrong": 238,
+    "n_cert": 995,
+    "share": 0.23919597989949748
+   },
+   {
+    "seed": 107,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 108,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 109,
+    "measured": 614,
+    "wrong": 222,
+    "n_cert": 995,
+    "share": 0.22311557788944725
+   },
+   {
+    "seed": 110,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 111,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 112,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 113,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 114,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 115,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 116,
+    "measured": 614,
+    "wrong": 222,
+    "n_cert": 995,
+    "share": 0.22311557788944725
+   },
+   {
+    "seed": 117,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 118,
+    "measured": 614,
+    "wrong": 207,
+    "n_cert": 995,
+    "share": 0.20804020100502513
+   },
+   {
+    "seed": 119,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 120,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 121,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 122,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 123,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 124,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 125,
+    "measured": 614,
+    "wrong": 208,
+    "n_cert": 995,
+    "share": 0.20904522613065327
+   },
+   {
+    "seed": 126,
+    "measured": 614,
+    "wrong": 233,
+    "n_cert": 995,
+    "share": 0.23417085427135678
+   },
+   {
+    "seed": 127,
+    "measured": 614,
+    "wrong": 207,
+    "n_cert": 995,
+    "share": 0.20804020100502513
+   },
+   {
+    "seed": 128,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 129,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 130,
+    "measured": 614,
+    "wrong": 207,
+    "n_cert": 995,
+    "share": 0.20804020100502513
+   },
+   {
+    "seed": 131,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 132,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 133,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 134,
+    "measured": 614,
+    "wrong": 222,
+    "n_cert": 995,
+    "share": 0.22311557788944725
+   },
+   {
+    "seed": 135,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 136,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 137,
+    "measured": 614,
+    "wrong": 206,
+    "n_cert": 995,
+    "share": 0.207035175879397
+   },
+   {
+    "seed": 138,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 139,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 140,
+    "measured": 614,
+    "wrong": 231,
+    "n_cert": 995,
+    "share": 0.2321608040201005
+   },
+   {
+    "seed": 141,
+    "measured": 614,
+    "wrong": 236,
+    "n_cert": 995,
+    "share": 0.2371859296482412
+   },
+   {
+    "seed": 142,
+    "measured": 614,
+    "wrong": 202,
+    "n_cert": 995,
+    "share": 0.20301507537688443
+   },
+   {
+    "seed": 143,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 144,
+    "measured": 614,
+    "wrong": 232,
+    "n_cert": 995,
+    "share": 0.23316582914572864
+   },
+   {
+    "seed": 145,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 146,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 147,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 148,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 149,
+    "measured": 614,
+    "wrong": 230,
+    "n_cert": 995,
+    "share": 0.23115577889447236
+   },
+   {
+    "seed": 150,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 151,
+    "measured": 614,
+    "wrong": 222,
+    "n_cert": 995,
+    "share": 0.22311557788944725
+   },
+   {
+    "seed": 152,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 153,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 154,
+    "measured": 614,
+    "wrong": 196,
+    "n_cert": 995,
+    "share": 0.19698492462311556
+   },
+   {
+    "seed": 155,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 156,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 157,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 158,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 159,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 160,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 161,
+    "measured": 614,
+    "wrong": 244,
+    "n_cert": 995,
+    "share": 0.24522613065326634
+   },
+   {
+    "seed": 162,
+    "measured": 614,
+    "wrong": 231,
+    "n_cert": 995,
+    "share": 0.2321608040201005
+   },
+   {
+    "seed": 163,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 164,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 165,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 166,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 167,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 168,
+    "measured": 614,
+    "wrong": 205,
+    "n_cert": 995,
+    "share": 0.20603015075376885
+   },
+   {
+    "seed": 169,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 170,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 171,
+    "measured": 614,
+    "wrong": 222,
+    "n_cert": 995,
+    "share": 0.22311557788944725
+   },
+   {
+    "seed": 172,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 173,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 174,
+    "measured": 614,
+    "wrong": 198,
+    "n_cert": 995,
+    "share": 0.19899497487437187
+   },
+   {
+    "seed": 175,
+    "measured": 614,
+    "wrong": 233,
+    "n_cert": 995,
+    "share": 0.23417085427135678
+   },
+   {
+    "seed": 176,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 177,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 178,
+    "measured": 614,
+    "wrong": 229,
+    "n_cert": 995,
+    "share": 0.23015075376884422
+   },
+   {
+    "seed": 179,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 180,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 181,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 182,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 183,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 184,
+    "measured": 614,
+    "wrong": 231,
+    "n_cert": 995,
+    "share": 0.2321608040201005
+   },
+   {
+    "seed": 185,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 186,
+    "measured": 614,
+    "wrong": 228,
+    "n_cert": 995,
+    "share": 0.22914572864321608
+   },
+   {
+    "seed": 187,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 188,
+    "measured": 614,
+    "wrong": 231,
+    "n_cert": 995,
+    "share": 0.2321608040201005
+   },
+   {
+    "seed": 189,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 190,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 191,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 192,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 193,
+    "measured": 614,
+    "wrong": 240,
+    "n_cert": 995,
+    "share": 0.24120603015075376
+   },
+   {
+    "seed": 194,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 195,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 196,
+    "measured": 614,
+    "wrong": 220,
+    "n_cert": 995,
+    "share": 0.22110552763819097
+   },
+   {
+    "seed": 197,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 198,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 199,
+    "measured": 614,
+    "wrong": 216,
+    "n_cert": 995,
+    "share": 0.21708542713567838
+   },
+   {
+    "seed": 200,
+    "measured": 614,
+    "wrong": 233,
+    "n_cert": 995,
+    "share": 0.23417085427135678
+   },
+   {
+    "seed": 201,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 202,
+    "measured": 614,
+    "wrong": 229,
+    "n_cert": 995,
+    "share": 0.23015075376884422
+   },
+   {
+    "seed": 203,
+    "measured": 614,
+    "wrong": 235,
+    "n_cert": 995,
+    "share": 0.23618090452261306
+   },
+   {
+    "seed": 204,
+    "measured": 614,
+    "wrong": 204,
+    "n_cert": 995,
+    "share": 0.2050251256281407
+   },
+   {
+    "seed": 205,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 206,
+    "measured": 614,
+    "wrong": 209,
+    "n_cert": 995,
+    "share": 0.2100502512562814
+   },
+   {
+    "seed": 207,
+    "measured": 614,
+    "wrong": 201,
+    "n_cert": 995,
+    "share": 0.2020100502512563
+   },
+   {
+    "seed": 208,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 209,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 210,
+    "measured": 614,
+    "wrong": 218,
+    "n_cert": 995,
+    "share": 0.21909547738693466
+   },
+   {
+    "seed": 211,
+    "measured": 614,
+    "wrong": 202,
+    "n_cert": 995,
+    "share": 0.20301507537688443
+   },
+   {
+    "seed": 212,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 213,
+    "measured": 614,
+    "wrong": 212,
+    "n_cert": 995,
+    "share": 0.21306532663316582
+   },
+   {
+    "seed": 214,
+    "measured": 614,
+    "wrong": 208,
+    "n_cert": 995,
+    "share": 0.20904522613065327
+   },
+   {
+    "seed": 215,
+    "measured": 614,
+    "wrong": 229,
+    "n_cert": 995,
+    "share": 0.23015075376884422
+   },
+   {
+    "seed": 216,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 217,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 218,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 219,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 220,
+    "measured": 614,
+    "wrong": 237,
+    "n_cert": 995,
+    "share": 0.23819095477386934
+   },
+   {
+    "seed": 221,
+    "measured": 614,
+    "wrong": 236,
+    "n_cert": 995,
+    "share": 0.2371859296482412
+   },
+   {
+    "seed": 222,
+    "measured": 614,
+    "wrong": 221,
+    "n_cert": 995,
+    "share": 0.2221105527638191
+   },
+   {
+    "seed": 223,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 224,
+    "measured": 614,
+    "wrong": 195,
+    "n_cert": 995,
+    "share": 0.19597989949748743
+   },
+   {
+    "seed": 225,
+    "measured": 614,
+    "wrong": 202,
+    "n_cert": 995,
+    "share": 0.20301507537688443
+   },
+   {
+    "seed": 226,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 227,
+    "measured": 614,
+    "wrong": 214,
+    "n_cert": 995,
+    "share": 0.2150753768844221
+   },
+   {
+    "seed": 228,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 229,
+    "measured": 614,
+    "wrong": 224,
+    "n_cert": 995,
+    "share": 0.22512562814070353
+   },
+   {
+    "seed": 230,
+    "measured": 614,
+    "wrong": 198,
+    "n_cert": 995,
+    "share": 0.19899497487437187
+   },
+   {
+    "seed": 231,
+    "measured": 614,
+    "wrong": 204,
+    "n_cert": 995,
+    "share": 0.2050251256281407
+   },
+   {
+    "seed": 232,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 233,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 234,
+    "measured": 614,
+    "wrong": 210,
+    "n_cert": 995,
+    "share": 0.21105527638190955
+   },
+   {
+    "seed": 235,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 236,
+    "measured": 614,
+    "wrong": 211,
+    "n_cert": 995,
+    "share": 0.21206030150753769
+   },
+   {
+    "seed": 237,
+    "measured": 614,
+    "wrong": 223,
+    "n_cert": 995,
+    "share": 0.2241206030150754
+   },
+   {
+    "seed": 238,
+    "measured": 614,
+    "wrong": 215,
+    "n_cert": 995,
+    "share": 0.21608040201005024
+   },
+   {
+    "seed": 239,
+    "measured": 614,
+    "wrong": 226,
+    "n_cert": 995,
+    "share": 0.2271356783919598
+   },
+   {
+    "seed": 240,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 241,
+    "measured": 614,
+    "wrong": 217,
+    "n_cert": 995,
+    "share": 0.21809045226130652
+   },
+   {
+    "seed": 242,
+    "measured": 614,
+    "wrong": 213,
+    "n_cert": 995,
+    "share": 0.21407035175879396
+   },
+   {
+    "seed": 243,
+    "measured": 614,
+    "wrong": 229,
+    "n_cert": 995,
+    "share": 0.23015075376884422
+   },
+   {
+    "seed": 244,
+    "measured": 614,
+    "wrong": 201,
+    "n_cert": 995,
+    "share": 0.2020100502512563
+   },
+   {
+    "seed": 245,
+    "measured": 614,
+    "wrong": 219,
+    "n_cert": 995,
+    "share": 0.2201005025125628
+   },
+   {
+    "seed": 246,
+    "measured": 614,
+    "wrong": 225,
+    "n_cert": 995,
+    "share": 0.22613065326633167
+   },
+   {
+    "seed": 247,
+    "measured": 614,
+    "wrong": 227,
+    "n_cert": 995,
+    "share": 0.22814070351758794
+   },
+   {
+    "seed": 248,
+    "measured": 614,
+    "wrong": 235,
+    "n_cert": 995,
+    "share": 0.23618090452261306
+   },
+   {
+    "seed": 249,
+    "measured": 614,
+    "wrong": 206,
+    "n_cert": 995,
+    "share": 0.207035175879397
+   }
+  ]
+ },
+ "syn": {
+  "row": "syn_peak_2cert_nested_watson",
+  "measured": 334.0,
+  "share_mean": 0.1057931697931698,
+  "share_sd": 0.010434932918634822,
+  "share_range": [
+   0.07888407888407889,
+   0.14814814814814814
+  ],
+  "runs": [
+   {
+    "seed": 0,
+    "measured": 334,
+    "wrong": 242,
+    "n_cert": 2079,
+    "share": 0.1164021164021164
+   },
+   {
+    "seed": 1,
+    "measured": 334,
+    "wrong": 190,
+    "n_cert": 2079,
+    "share": 0.0913900913900914
+   },
+   {
+    "seed": 2,
+    "measured": 334,
+    "wrong": 200,
+    "n_cert": 2079,
+    "share": 0.0962000962000962
+   },
+   {
+    "seed": 3,
+    "measured": 334,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 4,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 5,
+    "measured": 334,
+    "wrong": 263,
+    "n_cert": 2079,
+    "share": 0.1265031265031265
+   },
+   {
+    "seed": 6,
+    "measured": 334,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 7,
+    "measured": 334,
+    "wrong": 189,
+    "n_cert": 2079,
+    "share": 0.09090909090909091
+   },
+   {
+    "seed": 8,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 9,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 10,
+    "measured": 334,
+    "wrong": 239,
+    "n_cert": 2079,
+    "share": 0.11495911495911496
+   },
+   {
+    "seed": 11,
+    "measured": 334,
+    "wrong": 234,
+    "n_cert": 2079,
+    "share": 0.11255411255411256
+   },
+   {
+    "seed": 12,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 13,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 14,
+    "measured": 334,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 15,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 16,
+    "measured": 334,
+    "wrong": 229,
+    "n_cert": 2079,
+    "share": 0.11014911014911015
+   },
+   {
+    "seed": 17,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 18,
+    "measured": 334,
+    "wrong": 183,
+    "n_cert": 2079,
+    "share": 0.08802308802308802
+   },
+   {
+    "seed": 19,
+    "measured": 334,
+    "wrong": 202,
+    "n_cert": 2079,
+    "share": 0.09716209716209716
+   },
+   {
+    "seed": 20,
+    "measured": 334,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 21,
+    "measured": 334,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 22,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 23,
+    "measured": 334,
+    "wrong": 251,
+    "n_cert": 2079,
+    "share": 0.12073112073112073
+   },
+   {
+    "seed": 24,
+    "measured": 334,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 25,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 26,
+    "measured": 334,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 27,
+    "measured": 334,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 28,
+    "measured": 334,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 29,
+    "measured": 334,
+    "wrong": 252,
+    "n_cert": 2079,
+    "share": 0.12121212121212122
+   },
+   {
+    "seed": 30,
+    "measured": 334,
+    "wrong": 164,
+    "n_cert": 2079,
+    "share": 0.07888407888407889
+   },
+   {
+    "seed": 31,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 32,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 33,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 34,
+    "measured": 334,
+    "wrong": 176,
+    "n_cert": 2079,
+    "share": 0.08465608465608465
+   },
+   {
+    "seed": 35,
+    "measured": 334,
+    "wrong": 236,
+    "n_cert": 2079,
+    "share": 0.11351611351611351
+   },
+   {
+    "seed": 36,
+    "measured": 334,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 37,
+    "measured": 334,
+    "wrong": 238,
+    "n_cert": 2079,
+    "share": 0.11447811447811448
+   },
+   {
+    "seed": 38,
+    "measured": 334,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 39,
+    "measured": 334,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 40,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 41,
+    "measured": 334,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 42,
+    "measured": 334,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 43,
+    "measured": 334,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 44,
+    "measured": 334,
+    "wrong": 201,
+    "n_cert": 2079,
+    "share": 0.09668109668109669
+   },
+   {
+    "seed": 45,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 46,
+    "measured": 334,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 47,
+    "measured": 334,
+    "wrong": 258,
+    "n_cert": 2079,
+    "share": 0.1240981240981241
+   },
+   {
+    "seed": 48,
+    "measured": 334,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 49,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 50,
+    "measured": 334,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 51,
+    "measured": 334,
+    "wrong": 238,
+    "n_cert": 2079,
+    "share": 0.11447811447811448
+   },
+   {
+    "seed": 52,
+    "measured": 334,
+    "wrong": 242,
+    "n_cert": 2079,
+    "share": 0.1164021164021164
+   },
+   {
+    "seed": 53,
+    "measured": 334,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 54,
+    "measured": 334,
+    "wrong": 248,
+    "n_cert": 2079,
+    "share": 0.11928811928811929
+   },
+   {
+    "seed": 55,
+    "measured": 334,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 56,
+    "measured": 334,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 57,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 58,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 59,
+    "measured": 334,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 60,
+    "measured": 334,
+    "wrong": 270,
+    "n_cert": 2079,
+    "share": 0.12987012987012986
+   },
+   {
+    "seed": 61,
+    "measured": 334,
+    "wrong": 251,
+    "n_cert": 2079,
+    "share": 0.12073112073112073
+   },
+   {
+    "seed": 62,
+    "measured": 334,
+    "wrong": 191,
+    "n_cert": 2079,
+    "share": 0.09187109187109187
+   },
+   {
+    "seed": 63,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 64,
+    "measured": 334,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 65,
+    "measured": 334,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 66,
+    "measured": 334,
+    "wrong": 287,
+    "n_cert": 2079,
+    "share": 0.13804713804713806
+   },
+   {
+    "seed": 67,
+    "measured": 334,
+    "wrong": 240,
+    "n_cert": 2079,
+    "share": 0.11544011544011544
+   },
+   {
+    "seed": 68,
+    "measured": 334,
+    "wrong": 246,
+    "n_cert": 2079,
+    "share": 0.11832611832611832
+   },
+   {
+    "seed": 69,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 70,
+    "measured": 334,
+    "wrong": 200,
+    "n_cert": 2079,
+    "share": 0.0962000962000962
+   },
+   {
+    "seed": 71,
+    "measured": 334,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 72,
+    "measured": 334,
+    "wrong": 235,
+    "n_cert": 2079,
+    "share": 0.11303511303511303
+   },
+   {
+    "seed": 73,
+    "measured": 334,
+    "wrong": 191,
+    "n_cert": 2079,
+    "share": 0.09187109187109187
+   },
+   {
+    "seed": 74,
+    "measured": 334,
+    "wrong": 243,
+    "n_cert": 2079,
+    "share": 0.11688311688311688
+   },
+   {
+    "seed": 75,
+    "measured": 334,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 76,
+    "measured": 334,
+    "wrong": 253,
+    "n_cert": 2079,
+    "share": 0.12169312169312169
+   },
+   {
+    "seed": 77,
+    "measured": 334,
+    "wrong": 235,
+    "n_cert": 2079,
+    "share": 0.11303511303511303
+   },
+   {
+    "seed": 78,
+    "measured": 334,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 79,
+    "measured": 334,
+    "wrong": 200,
+    "n_cert": 2079,
+    "share": 0.0962000962000962
+   },
+   {
+    "seed": 80,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 81,
+    "measured": 334,
+    "wrong": 242,
+    "n_cert": 2079,
+    "share": 0.1164021164021164
+   },
+   {
+    "seed": 82,
+    "measured": 334,
+    "wrong": 198,
+    "n_cert": 2079,
+    "share": 0.09523809523809523
+   },
+   {
+    "seed": 83,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 84,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 85,
+    "measured": 334,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 86,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 87,
+    "measured": 334,
+    "wrong": 188,
+    "n_cert": 2079,
+    "share": 0.09042809042809043
+   },
+   {
+    "seed": 88,
+    "measured": 334,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 89,
+    "measured": 334,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 90,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 91,
+    "measured": 334,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 92,
+    "measured": 334,
+    "wrong": 199,
+    "n_cert": 2079,
+    "share": 0.09571909571909572
+   },
+   {
+    "seed": 93,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 94,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 95,
+    "measured": 334,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 96,
+    "measured": 334,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 97,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 98,
+    "measured": 334,
+    "wrong": 184,
+    "n_cert": 2079,
+    "share": 0.0885040885040885
+   },
+   {
+    "seed": 99,
+    "measured": 334,
+    "wrong": 250,
+    "n_cert": 2079,
+    "share": 0.12025012025012025
+   },
+   {
+    "seed": 100,
+    "measured": 334,
+    "wrong": 184,
+    "n_cert": 2079,
+    "share": 0.0885040885040885
+   },
+   {
+    "seed": 101,
+    "measured": 334,
+    "wrong": 246,
+    "n_cert": 2079,
+    "share": 0.11832611832611832
+   },
+   {
+    "seed": 102,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 103,
+    "measured": 334,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 104,
+    "measured": 334,
+    "wrong": 199,
+    "n_cert": 2079,
+    "share": 0.09571909571909572
+   },
+   {
+    "seed": 105,
+    "measured": 334,
+    "wrong": 208,
+    "n_cert": 2079,
+    "share": 0.10004810004810005
+   },
+   {
+    "seed": 106,
+    "measured": 334,
+    "wrong": 203,
+    "n_cert": 2079,
+    "share": 0.09764309764309764
+   },
+   {
+    "seed": 107,
+    "measured": 334,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 108,
+    "measured": 334,
+    "wrong": 200,
+    "n_cert": 2079,
+    "share": 0.0962000962000962
+   },
+   {
+    "seed": 109,
+    "measured": 334,
+    "wrong": 236,
+    "n_cert": 2079,
+    "share": 0.11351611351611351
+   },
+   {
+    "seed": 110,
+    "measured": 334,
+    "wrong": 194,
+    "n_cert": 2079,
+    "share": 0.09331409331409331
+   },
+   {
+    "seed": 111,
+    "measured": 334,
+    "wrong": 194,
+    "n_cert": 2079,
+    "share": 0.09331409331409331
+   },
+   {
+    "seed": 112,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 113,
+    "measured": 334,
+    "wrong": 242,
+    "n_cert": 2079,
+    "share": 0.1164021164021164
+   },
+   {
+    "seed": 114,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 115,
+    "measured": 334,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 116,
+    "measured": 334,
+    "wrong": 234,
+    "n_cert": 2079,
+    "share": 0.11255411255411256
+   },
+   {
+    "seed": 117,
+    "measured": 334,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 118,
+    "measured": 334,
+    "wrong": 175,
+    "n_cert": 2079,
+    "share": 0.08417508417508418
+   },
+   {
+    "seed": 119,
+    "measured": 334,
+    "wrong": 255,
+    "n_cert": 2079,
+    "share": 0.12265512265512266
+   },
+   {
+    "seed": 120,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 121,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 122,
+    "measured": 334,
+    "wrong": 183,
+    "n_cert": 2079,
+    "share": 0.08802308802308802
+   },
+   {
+    "seed": 123,
+    "measured": 334,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 124,
+    "measured": 334,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 125,
+    "measured": 334,
+    "wrong": 207,
+    "n_cert": 2079,
+    "share": 0.09956709956709957
+   },
+   {
+    "seed": 126,
+    "measured": 334,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 127,
+    "measured": 334,
+    "wrong": 232,
+    "n_cert": 2079,
+    "share": 0.11159211159211159
+   },
+   {
+    "seed": 128,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 129,
+    "measured": 334,
+    "wrong": 232,
+    "n_cert": 2079,
+    "share": 0.11159211159211159
+   },
+   {
+    "seed": 130,
+    "measured": 334,
+    "wrong": 242,
+    "n_cert": 2079,
+    "share": 0.1164021164021164
+   },
+   {
+    "seed": 131,
+    "measured": 334,
+    "wrong": 228,
+    "n_cert": 2079,
+    "share": 0.10966810966810966
+   },
+   {
+    "seed": 132,
+    "measured": 334,
+    "wrong": 249,
+    "n_cert": 2079,
+    "share": 0.11976911976911978
+   },
+   {
+    "seed": 133,
+    "measured": 334,
+    "wrong": 236,
+    "n_cert": 2079,
+    "share": 0.11351611351611351
+   },
+   {
+    "seed": 134,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 135,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 136,
+    "measured": 334,
+    "wrong": 236,
+    "n_cert": 2079,
+    "share": 0.11351611351611351
+   },
+   {
+    "seed": 137,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 138,
+    "measured": 334,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 139,
+    "measured": 334,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 140,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 141,
+    "measured": 334,
+    "wrong": 256,
+    "n_cert": 2079,
+    "share": 0.12313612313612314
+   },
+   {
+    "seed": 142,
+    "measured": 334,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 143,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 144,
+    "measured": 334,
+    "wrong": 287,
+    "n_cert": 2079,
+    "share": 0.13804713804713806
+   },
+   {
+    "seed": 145,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 146,
+    "measured": 334,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 147,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 148,
+    "measured": 334,
+    "wrong": 248,
+    "n_cert": 2079,
+    "share": 0.11928811928811929
+   },
+   {
+    "seed": 149,
+    "measured": 334,
+    "wrong": 245,
+    "n_cert": 2079,
+    "share": 0.11784511784511785
+   },
+   {
+    "seed": 150,
+    "measured": 334,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 151,
+    "measured": 334,
+    "wrong": 248,
+    "n_cert": 2079,
+    "share": 0.11928811928811929
+   },
+   {
+    "seed": 152,
+    "measured": 334,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 153,
+    "measured": 334,
+    "wrong": 167,
+    "n_cert": 2079,
+    "share": 0.08032708032708033
+   },
+   {
+    "seed": 154,
+    "measured": 334,
+    "wrong": 236,
+    "n_cert": 2079,
+    "share": 0.11351611351611351
+   },
+   {
+    "seed": 155,
+    "measured": 334,
+    "wrong": 245,
+    "n_cert": 2079,
+    "share": 0.11784511784511785
+   },
+   {
+    "seed": 156,
+    "measured": 334,
+    "wrong": 225,
+    "n_cert": 2079,
+    "share": 0.10822510822510822
+   },
+   {
+    "seed": 157,
+    "measured": 334,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 158,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 159,
+    "measured": 334,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 160,
+    "measured": 334,
+    "wrong": 230,
+    "n_cert": 2079,
+    "share": 0.11063011063011063
+   },
+   {
+    "seed": 161,
+    "measured": 334,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 162,
+    "measured": 334,
+    "wrong": 241,
+    "n_cert": 2079,
+    "share": 0.11592111592111592
+   },
+   {
+    "seed": 163,
+    "measured": 334,
+    "wrong": 237,
+    "n_cert": 2079,
+    "share": 0.113997113997114
+   },
+   {
+    "seed": 164,
+    "measured": 334,
+    "wrong": 241,
+    "n_cert": 2079,
+    "share": 0.11592111592111592
+   },
+   {
+    "seed": 165,
+    "measured": 334,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 166,
+    "measured": 334,
+    "wrong": 189,
+    "n_cert": 2079,
+    "share": 0.09090909090909091
+   },
+   {
+    "seed": 167,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 168,
+    "measured": 334,
+    "wrong": 216,
+    "n_cert": 2079,
+    "share": 0.1038961038961039
+   },
+   {
+    "seed": 169,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 170,
+    "measured": 334,
+    "wrong": 227,
+    "n_cert": 2079,
+    "share": 0.1091871091871092
+   },
+   {
+    "seed": 171,
+    "measured": 334,
+    "wrong": 191,
+    "n_cert": 2079,
+    "share": 0.09187109187109187
+   },
+   {
+    "seed": 172,
+    "measured": 334,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 173,
+    "measured": 334,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 174,
+    "measured": 334,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 175,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 176,
+    "measured": 334,
+    "wrong": 185,
+    "n_cert": 2079,
+    "share": 0.08898508898508899
+   },
+   {
+    "seed": 177,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 178,
+    "measured": 334,
+    "wrong": 258,
+    "n_cert": 2079,
+    "share": 0.1240981240981241
+   },
+   {
+    "seed": 179,
+    "measured": 334,
+    "wrong": 189,
+    "n_cert": 2079,
+    "share": 0.09090909090909091
+   },
+   {
+    "seed": 180,
+    "measured": 334,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 181,
+    "measured": 334,
+    "wrong": 267,
+    "n_cert": 2079,
+    "share": 0.12842712842712842
+   },
+   {
+    "seed": 182,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 183,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 184,
+    "measured": 334,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 185,
+    "measured": 334,
+    "wrong": 188,
+    "n_cert": 2079,
+    "share": 0.09042809042809043
+   },
+   {
+    "seed": 186,
+    "measured": 334,
+    "wrong": 249,
+    "n_cert": 2079,
+    "share": 0.11976911976911978
+   },
+   {
+    "seed": 187,
+    "measured": 334,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   },
+   {
+    "seed": 188,
+    "measured": 334,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 189,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 190,
+    "measured": 334,
+    "wrong": 212,
+    "n_cert": 2079,
+    "share": 0.10197210197210198
+   },
+   {
+    "seed": 191,
+    "measured": 334,
+    "wrong": 232,
+    "n_cert": 2079,
+    "share": 0.11159211159211159
+   },
+   {
+    "seed": 192,
+    "measured": 334,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 193,
+    "measured": 334,
+    "wrong": 195,
+    "n_cert": 2079,
+    "share": 0.09379509379509379
+   },
+   {
+    "seed": 194,
+    "measured": 334,
+    "wrong": 219,
+    "n_cert": 2079,
+    "share": 0.10533910533910534
+   },
+   {
+    "seed": 195,
+    "measured": 334,
+    "wrong": 187,
+    "n_cert": 2079,
+    "share": 0.08994708994708994
+   },
+   {
+    "seed": 196,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 197,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 198,
+    "measured": 334,
+    "wrong": 208,
+    "n_cert": 2079,
+    "share": 0.10004810004810005
+   },
+   {
+    "seed": 199,
+    "measured": 334,
+    "wrong": 233,
+    "n_cert": 2079,
+    "share": 0.11207311207311207
+   },
+   {
+    "seed": 200,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 201,
+    "measured": 334,
+    "wrong": 193,
+    "n_cert": 2079,
+    "share": 0.09283309283309284
+   },
+   {
+    "seed": 202,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 203,
+    "measured": 334,
+    "wrong": 238,
+    "n_cert": 2079,
+    "share": 0.11447811447811448
+   },
+   {
+    "seed": 204,
+    "measured": 334,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 205,
+    "measured": 334,
+    "wrong": 218,
+    "n_cert": 2079,
+    "share": 0.10485810485810486
+   },
+   {
+    "seed": 206,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 207,
+    "measured": 334,
+    "wrong": 215,
+    "n_cert": 2079,
+    "share": 0.10341510341510342
+   },
+   {
+    "seed": 208,
+    "measured": 334,
+    "wrong": 211,
+    "n_cert": 2079,
+    "share": 0.10149110149110149
+   },
+   {
+    "seed": 209,
+    "measured": 334,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 210,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 211,
+    "measured": 334,
+    "wrong": 245,
+    "n_cert": 2079,
+    "share": 0.11784511784511785
+   },
+   {
+    "seed": 212,
+    "measured": 334,
+    "wrong": 221,
+    "n_cert": 2079,
+    "share": 0.1063011063011063
+   },
+   {
+    "seed": 213,
+    "measured": 334,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 214,
+    "measured": 334,
+    "wrong": 222,
+    "n_cert": 2079,
+    "share": 0.10678210678210678
+   },
+   {
+    "seed": 215,
+    "measured": 334,
+    "wrong": 232,
+    "n_cert": 2079,
+    "share": 0.11159211159211159
+   },
+   {
+    "seed": 216,
+    "measured": 334,
+    "wrong": 229,
+    "n_cert": 2079,
+    "share": 0.11014911014911015
+   },
+   {
+    "seed": 217,
+    "measured": 334,
+    "wrong": 198,
+    "n_cert": 2079,
+    "share": 0.09523809523809523
+   },
+   {
+    "seed": 218,
+    "measured": 334,
+    "wrong": 226,
+    "n_cert": 2079,
+    "share": 0.10870610870610871
+   },
+   {
+    "seed": 219,
+    "measured": 334,
+    "wrong": 267,
+    "n_cert": 2079,
+    "share": 0.12842712842712842
+   },
+   {
+    "seed": 220,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 221,
+    "measured": 334,
+    "wrong": 191,
+    "n_cert": 2079,
+    "share": 0.09187109187109187
+   },
+   {
+    "seed": 222,
+    "measured": 334,
+    "wrong": 220,
+    "n_cert": 2079,
+    "share": 0.10582010582010581
+   },
+   {
+    "seed": 223,
+    "measured": 334,
+    "wrong": 251,
+    "n_cert": 2079,
+    "share": 0.12073112073112073
+   },
+   {
+    "seed": 224,
+    "measured": 334,
+    "wrong": 232,
+    "n_cert": 2079,
+    "share": 0.11159211159211159
+   },
+   {
+    "seed": 225,
+    "measured": 334,
+    "wrong": 202,
+    "n_cert": 2079,
+    "share": 0.09716209716209716
+   },
+   {
+    "seed": 226,
+    "measured": 334,
+    "wrong": 197,
+    "n_cert": 2079,
+    "share": 0.09475709475709476
+   },
+   {
+    "seed": 227,
+    "measured": 334,
+    "wrong": 209,
+    "n_cert": 2079,
+    "share": 0.10052910052910052
+   },
+   {
+    "seed": 228,
+    "measured": 334,
+    "wrong": 208,
+    "n_cert": 2079,
+    "share": 0.10004810004810005
+   },
+   {
+    "seed": 229,
+    "measured": 334,
+    "wrong": 247,
+    "n_cert": 2079,
+    "share": 0.1188071188071188
+   },
+   {
+    "seed": 230,
+    "measured": 334,
+    "wrong": 210,
+    "n_cert": 2079,
+    "share": 0.10101010101010101
+   },
+   {
+    "seed": 231,
+    "measured": 334,
+    "wrong": 231,
+    "n_cert": 2079,
+    "share": 0.1111111111111111
+   },
+   {
+    "seed": 232,
+    "measured": 334,
+    "wrong": 245,
+    "n_cert": 2079,
+    "share": 0.11784511784511785
+   },
+   {
+    "seed": 233,
+    "measured": 334,
+    "wrong": 269,
+    "n_cert": 2079,
+    "share": 0.1293891293891294
+   },
+   {
+    "seed": 234,
+    "measured": 334,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 235,
+    "measured": 334,
+    "wrong": 206,
+    "n_cert": 2079,
+    "share": 0.09908609908609908
+   },
+   {
+    "seed": 236,
+    "measured": 334,
+    "wrong": 234,
+    "n_cert": 2079,
+    "share": 0.11255411255411256
+   },
+   {
+    "seed": 237,
+    "measured": 334,
+    "wrong": 264,
+    "n_cert": 2079,
+    "share": 0.12698412698412698
+   },
+   {
+    "seed": 238,
+    "measured": 334,
+    "wrong": 283,
+    "n_cert": 2079,
+    "share": 0.13612313612313612
+   },
+   {
+    "seed": 239,
+    "measured": 334,
+    "wrong": 214,
+    "n_cert": 2079,
+    "share": 0.10293410293410293
+   },
+   {
+    "seed": 240,
+    "measured": 334,
+    "wrong": 308,
+    "n_cert": 2079,
+    "share": 0.14814814814814814
+   },
+   {
+    "seed": 241,
+    "measured": 334,
+    "wrong": 243,
+    "n_cert": 2079,
+    "share": 0.11688311688311688
+   },
+   {
+    "seed": 242,
+    "measured": 334,
+    "wrong": 167,
+    "n_cert": 2079,
+    "share": 0.08032708032708033
+   },
+   {
+    "seed": 243,
+    "measured": 334,
+    "wrong": 224,
+    "n_cert": 2079,
+    "share": 0.10774410774410774
+   },
+   {
+    "seed": 244,
+    "measured": 334,
+    "wrong": 223,
+    "n_cert": 2079,
+    "share": 0.10726310726310727
+   },
+   {
+    "seed": 245,
+    "measured": 334,
+    "wrong": 213,
+    "n_cert": 2079,
+    "share": 0.10245310245310245
+   },
+   {
+    "seed": 246,
+    "measured": 334,
+    "wrong": 252,
+    "n_cert": 2079,
+    "share": 0.12121212121212122
+   },
+   {
+    "seed": 247,
+    "measured": 334,
+    "wrong": 217,
+    "n_cert": 2079,
+    "share": 0.10437710437710437
+   },
+   {
+    "seed": 248,
+    "measured": 334,
+    "wrong": 204,
+    "n_cert": 2079,
+    "share": 0.09812409812409813
+   },
+   {
+    "seed": 249,
+    "measured": 334,
+    "wrong": 205,
+    "n_cert": 2079,
+    "share": 0.0986050986050986
+   }
+  ]
+ },
+ "certified_final": {
+  "ir": {
+   "n": 250,
+   "measured": 295.244,
+   "share_mean": 0.0037697516930022567,
+   "share_sd": 0.002590896547634239,
+   "share_range": [
+    0.0,
+    0.009029345372460496
+   ]
+  },
+  "nacl": {
+   "n": 250,
+   "measured": 613.824,
+   "share_mean": 0.17971859296482412,
+   "share_sd": 0.037603890275913814,
+   "share_range": [
+    0.06432160804020101,
+    0.2994974874371859
+   ]
+  },
+  "syn": {
+   "n": 250,
+   "measured": 334.384,
+   "share_mean": 0.08352861952861955,
+   "share_sd": 0.013729921086373682,
+   "share_range": [
+    0.05146705146705147,
+    0.11447811447811448
+   ]
+  }
+ }
+}

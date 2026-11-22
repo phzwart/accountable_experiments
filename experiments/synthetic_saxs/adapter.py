@@ -73,9 +73,10 @@ def interest_predicate(prominence: float = PROMINENCE):
     return interest
 
 
-def criterion(target: str, q: np.ndarray) -> AccuracyCriterion:
+def criterion(target: str, q: np.ndarray, tol: float | None = None) -> AccuracyCriterion:
     if target == "envelope":
-        return AccuracyCriterion(kind="envelope", rtol=RTOL, atol=ATOL)
+        t = RTOL if tol is None else float(tol)
+        return AccuracyCriterion(kind="envelope", rtol=t, atol=t)
     if target == "peak":
         return AccuracyCriterion(kind="peak", q=q, peak_eps=PEAK_EPS, fwhm_eps=FWHM_EPS,
                                  tol_mode="absolute")
@@ -84,8 +85,9 @@ def criterion(target: str, q: np.ndarray) -> AccuracyCriterion:
 
 def config(ds: Dataset, *, target="envelope", mode="interp", confidence=0.90, seed=0,
            score="logistic", policy="separate", eps=0.10, cal_size=40, seed_level=2,
-           policy_kwargs=None, nn_method="watson", interp_model="sibson", gp_kwargs=None) -> CampaignConfig:
-    crit = criterion(target, ds.axis)
+           policy_kwargs=None, nn_method="watson", interp_model="sibson", gp_kwargs=None,
+           tol=None) -> CampaignConfig:
+    crit = criterion(target, ds.axis, tol)
     interest = interest_predicate()
     s_seed = int(seed) + 10000
     if score == "random":

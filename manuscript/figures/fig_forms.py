@@ -25,7 +25,7 @@ LAB = {"separate": "Per-claim\nbudgets", "nested": "Quantile\npath", "priority":
 DATASETS = [
     ("IR map", "ir_{}", {"separate": "separate_split_watson", "nested": "nested_watson", "priority": "priority_watson"}, 959, 0.10, 0.25),
     ("NaCl scan", "nacl_fwhm_{}", {"separate": "separate_watson", "nested": "nested_watson", "priority": "priority_watson"}, 1071, 0.20, 0.20),
-    ("Synthetic SAXS", "syn_peak_2cert_{}", {"separate": "separate_watson", "nested": "nested_watson", "priority": "priority_watson"}, 2118, 0.20, 0.20),
+    # synthetic map: one claim from round 3, so the three forms coincide; not shown
 ]
 
 

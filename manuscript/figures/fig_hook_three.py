@@ -25,7 +25,7 @@ from fig_hook_compare import COL, BLUE, certified_cloud  # noqa: E402
 from experiments.record import OUT as REC, REASONS, build  # noqa: E402
 from experiments.synthetic_saxs import forward  # noqa: E402
 
-ROW = "syn_peak_2cert_nested_watson"
+ROW = "syn_env_nested_watson"
 ORANGE = "#eb6834"
 NOT_INT = ["not_interesting", "not_interesting+interpolable"]
 
@@ -53,7 +53,7 @@ def main():
                        np.where(np.isin(act, NOT_INT), "no_line", "predictable")).astype(object)
         row = [r for r in json.loads((U / f"{key}.json").read_text()) if r["kind"] == "predictive" and abs(r["alpha"] - a) < 1e-9][0]
         return act, u["wrong"].astype(bool), row
-    g_act, g_wrong, grow = unc("syn", 0.20)
+    g_act, g_wrong, grow = unc("syn", 0.10)
 
     FW, FH = 7.2, 2.55
     fig = plt.figure(figsize=(FW, FH), facecolor="white")
@@ -77,14 +77,14 @@ def main():
         ax.set_xlim(-0.02, 1.02); ax.set_ylim(-0.02, 1.02); ax.set_aspect("equal")
         ax.set_title(title, loc="left", fontsize=7.2, pad=3)
         ax.axis("off")
-    amap(0.005, c_act, c_wrong, f"(a) Certified, 20 % per level\n{int((~S).sum())} measured")
-    amap(0.255, g_act, g_wrong, f"(b) GP, predictive s.d., α = 0.20\n{grow['measured']} measured; no bound")
+    amap(0.005, c_act, c_wrong, f"(a) Certified, 10 % per level\n{int((~S).sum())} measured")
+    amap(0.255, g_act, g_wrong, f"(b) GP, predictive s.d., α = 0.10\n{grow['measured']} measured; no bound")
 
     ax = fig.add_axes([0.665, y0 + 0.04, 0.325, mh - 0.1])
     cm, cr = certified_cloud(ROW, cert)
     cr = 100 * np.asarray(cr)
-    rows = [("certified\n(mean, 250)", 20.0, cr.mean(), np.percentile(cr, [5, 95]), int(round(np.mean(cm))), BLUE)]
-    for a in (0.05, 0.20, 0.32):
+    rows = [("certified\n(mean, 250)", 10.0, cr.mean(), np.percentile(cr, [5, 95]), int(round(np.mean(cm))), BLUE)]
+    for a in (0.05, 0.10, 0.20):
         _, _, r = unc("syn", a)
         rows.append((f"GP, α = {a:.2f}", 100 * r["stated_rate"], 100 * r["wrong_rate"], None, r["measured"], ORANGE))
     nacl = json.loads((ROOT / "results/hook/uncertified.json").read_text())

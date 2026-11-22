@@ -24,7 +24,7 @@ from accountable.tails import TailDecision
 from experiments.record import build
 
 ROWS = {"ir": ("ir_nested_watson", 0.10), "nacl": ("nacl_fwhm_nested_watson", 0.20),
-        "syn": ("syn_peak_2cert_nested_watson", 0.20)}
+        "syn": ("syn_env_nested_watson", 0.10)}
 N_SEEDS = 250
 OUT = Path("results/crc_baseline")
 

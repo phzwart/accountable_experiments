@@ -28,8 +28,8 @@ from experiments.record import OUT as REC, REASONS, build
 from experiments.record_picked import worst_case_tail
 
 OUT = Path("results/revision2")
-ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_peak_2cert_nested_watson"}
-EPS = {"ir": 0.10, "nacl": 0.20, "syn": 0.20}
+ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_env_nested_watson"}
+EPS = {"ir": 0.10, "nacl": 0.20, "syn": 0.10}
 NOT_INT = ("not_interesting", "not_interesting+interpolable")
 
 
@@ -118,10 +118,13 @@ class SwellingOracle(Oracle):
         return self.spectra[np.asarray(idx, int)]
 
 
-def drift(n=50, swell=(0.0, 0.05, 0.10, 0.20), n_check=5):
-    """swell: total change of the q scale over the mean cost of the plan (334 sites)."""
+def drift(n=50, swell=(0.0, 0.05, 0.10, 0.20), n_check=5, cost=None):
+    """swell: total change of the q scale over the mean cost of the plan (`cost` sites, from the record)."""
     OUT.mkdir(parents=True, exist_ok=True)
     row = ROWS["syn"]
+    if cost is None:
+        import gzip
+        cost = float(np.mean([json.loads(l)["summary"]["n_measured"] for l in gzip.open(REC / row / "runs.jsonl.gz", "rt")]))
     for sw in swell:
         f = OUT / f"drift_syn_{sw:.2f}.jsonl"
         done = _resume(f)
@@ -130,12 +133,12 @@ def drift(n=50, swell=(0.0, 0.05, 0.10, 0.20), n_check=5):
                 if s in done:
                     continue
                 ds, cfg, _ = build(row, s, {})
-                orc = SwellingOracle(ds.oracle.spectra, ds.axis, sw / 334.0)
+                orc = SwellingOracle(ds.oracle.spectra, ds.axis, sw / cost)
                 ds.oracle = orc
                 cfg.cal_from_measurement = True
                 t0 = time.time()
                 r = run_campaign(ds, cfg)
-                lv = _levels(r, 0.20)
+                lv = _levels(r, EPS["syn"])
                 # Re-measure n_check seed sites at the end of every level and compare with their first
                 # measurement under the claim's metric.
                 seeds = np.flatnonzero(r.is_seed)
@@ -157,7 +160,7 @@ def drift(n=50, swell=(0.0, 0.05, 0.10, 0.20), n_check=5):
                 R = np.asarray(r.reason).astype(str)
                 A = np.isin(R, NOT_INT); B = np.isin(R, ("interpolable", "not_interesting+interpolable"))
                 W = r.skipped & cert & ((A & r.interesting) | (B & r.fail_prior))
-                rec = dict(seed=s, swell=sw, measured=int(r.measured[ds.candidate].sum()), levels=lv,
+                rec = dict(seed=s, swell=sw, cost=cost, measured=int(r.measured[ds.candidate].sum()), levels=lv,
                            n_cert=int(cert.sum()), measured_off=int(bad.sum()), wrong_skips=int(W.sum()),
                            seconds=time.time() - t0)
                 fh.write(json.dumps(rec) + "\n"); fh.flush()
@@ -250,7 +253,7 @@ def audit(sizes=(50, 100, 200), confs=(0.80, 0.95), reps=200, keys=None):
                         cov.append(K <= u); bnd.append(u / n_cert)
                 out[f"n{n_a}_c{c:.2f}"] = dict(coverage=float(np.mean(cov)), bound_mean=float(np.mean(bnd)),
                                                bound_sd=float(np.std(bnd)))
-        if key == "syn":
+        if key == "syn" and ROWS["syn"].startswith("syn_peak_2cert"):
             # Stratified by the claim of the skip, half the audit in each stratum, Bonferroni over the two.
             # The no-interest stratum also bounds the share of the sites of interest skipped as holding none.
             I = z["interesting"].astype(bool)

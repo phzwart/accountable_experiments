@@ -22,7 +22,7 @@ from experiments.record import OUT as REC, REASONS, build
 
 ROWS = {"nacl_fwhm_nested_watson": "NaCl (200) width",
         "ir_nested_watson": "IR amide I",
-        "syn_peak_2cert_nested_watson": "synthetic SAXS peak"}
+        "syn_env_nested_watson": "synthetic SAXS profile"}
 OUT = Path("results/measurement_record")
 SEED_OVERRIDE = {"nacl_fwhm_nested_watson": 44}  # the campaign of Fig. 1
 

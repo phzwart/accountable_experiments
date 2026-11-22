@@ -31,7 +31,7 @@ DATASETS = [
     ("IR map, original tolerance", "ir_nested_{}", "ir_nested_watson", 959, 0.10, 0.25),
     ("IR map, tight tolerance", "ir_tight_{}", "ir_tight_sibson", 959, 0.10, 0.25),
     ("NaCl scan", "nacl_fwhm_nested_{}", "nacl_fwhm_nested_watson", 1071, 0.20, 0.20),
-    ("Synthetic SAXS", "syn_peak_2cert_nested_{}", "syn_peak_2cert_nested_watson", 2118, 0.20, 0.20),
+    ("Synthetic SAXS", "syn_env_nested_{}", "syn_env_nested_watson", 2118, 0.10, 0.20),
 ]
 
 

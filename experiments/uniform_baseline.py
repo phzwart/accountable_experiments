@@ -17,14 +17,16 @@ import numpy as np
 
 from experiments.record import OUT as REC, build
 
-ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_peak_2cert_nested_watson"}
+ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_env_nested_watson"}
 N_SEEDS = 250
 OUT = Path("results/uniform_baseline.json")
 
 
-def main():
-    res = {}
+def main(keys=None):
+    res = json.loads(OUT.read_text()) if OUT.exists() else {}
     for key, row in ROWS.items():
+        if keys and key not in keys:
+            continue
         M = np.mean([json.loads(l)["summary"]["n_measured"] for l in gzip.open(REC / row / "runs.jsonl.gz", "rt")])
         runs = []
         for s in range(N_SEEDS):
@@ -53,12 +55,14 @@ def main():
 
 
 
-def certified_final(n=250):
+def certified_final(n=250, keys=None):
     """Final-map error of the certified plan, same metric: skipped certified-level sites whose prediction from
     all measured sites fails the claim's metric, as a share of the certified-level sites."""
     from accountable.campaign import run_campaign
-    out = {}
+    out = json.loads(OUT.read_text()).get("certified_final", {}) if OUT.exists() else {}
     for key, row in ROWS.items():
+        if keys and key not in keys:
+            continue
         sh, ms = [], []
         for s in range(n):
             ds, cfg, _ = build(row, s, {})
@@ -75,7 +79,8 @@ def certified_final(n=250):
 
 if __name__ == "__main__":
     import sys
+    keys = [k for k in sys.argv[1:] if k in ROWS] or None
     if "final" in sys.argv:
-        certified_final()
+        certified_final(keys=keys)
     else:
-        main()
+        main(keys)

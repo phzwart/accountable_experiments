@@ -1587,6 +1587,290 @@
     "rng_seed": 0
    }
   },
+  "syn_env_nested_gp_design": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "envelope",
+    "mode": "interp",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_design",
+    "tol": 0.005
+   },
+   "n_runs": 20,
+   "seeds": [
+    0,
+    19
+   ],
+   "seconds_total": 27.7,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "81dff22c9eaab1625dec065958dd49adc2d0017e",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.005, atol=0.005",
+    "predictor": "gp_design_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_design_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_env_nested_gp_mle": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "envelope",
+    "mode": "interp",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_mle",
+    "tol": 0.005
+   },
+   "n_runs": 20,
+   "seeds": [
+    0,
+    19
+   ],
+   "seconds_total": 984.5,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "81dff22c9eaab1625dec065958dd49adc2d0017e",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.005, atol=0.005",
+    "predictor": "gp_mle_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_mle_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_env_nested_gp_nonstationary": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "envelope",
+    "mode": "interp",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "interp_model": "gp_nonstationary",
+    "tol": 0.005
+   },
+   "n_runs": 20,
+   "seeds": [
+    0,
+    19
+   ],
+   "seconds_total": 31.2,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "81dff22c9eaab1625dec065958dd49adc2d0017e",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.005, atol=0.005",
+    "predictor": "gp_nonstationary_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "gp_nonstationary_std",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_env_nested_random": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "envelope",
+    "mode": "interp",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.8,
+    "score": "random",
+    "nn_method": "watson",
+    "tol": 0.005
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 914.9,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "81dff22c9eaab1625dec065958dd49adc2d0017e",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.005, atol=0.005",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "random",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
+  "syn_env_nested_watson": {
+   "spec": {
+    "experiment": "synthetic_saxs",
+    "target": "envelope",
+    "mode": "interp",
+    "policy": "nested_path",
+    "eps": 0.1,
+    "confidence": 0.8,
+    "nn_method": "watson",
+    "tol": 0.005
+   },
+   "n_runs": 250,
+   "seeds": [
+    0,
+    249
+   ],
+   "seconds_total": 2708.1,
+   "env": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "torch": "2.15.0+cu132",
+    "gpytorch": "1.15.2",
+    "botorch": "0.18.1",
+    "git_commit": "81dff22c9eaab1625dec065958dd49adc2d0017e",
+    "git_dirty": true
+   },
+   "config": {
+    "criterion": "envelope: rtol=0.005, atol=0.005",
+    "predictor": "sibson_spectrum",
+    "certificates": [
+     {
+      "name": "interp",
+      "score": "logistic",
+      "cap": null
+     }
+    ],
+    "policy": {
+     "policy": "nested_path",
+     "budget": 0.1,
+     "confidence": 0.8,
+     "weights": {},
+     "tail": "hypergeometric",
+     "placement": "boundary",
+     "randomize": false,
+     "seed": 0
+    },
+    "nn_method": "watson",
+    "seed_level": 2,
+    "final_level": null,
+    "cal_size": 40,
+    "rng_seed": 0
+   }
+  },
   "syn_peak_2cert_nested_gp_design": {
    "spec": {
     "experiment": "synthetic_saxs",
@@ -2135,5 +2419,5 @@
   "interpolable",
   "not_interesting+interpolable"
  ],
- "packed": "2026-11-20 12:44:20 PST"
+ "packed": "2026-11-22 05:55:16 PST"
 }

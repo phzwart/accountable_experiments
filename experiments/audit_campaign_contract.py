@@ -5,7 +5,7 @@ from experiments.record import build
 from experiments.confidence_audit import audit_level
 out=[]
 for s in range(4):
-    ds, cfg, _ = build("syn_peak_2cert_nested_watson", s, {})
+    ds, cfg, _ = build("syn_env_nested_watson", s, {})
     cfg.policy = make_policy("nested_path", budget=0.20, confidence=1 - 0.2/6)
     res = run_campaign(ds, cfg)
     rng = np.random.default_rng(77 + s)

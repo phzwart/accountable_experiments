@@ -65,6 +65,13 @@ ROWS = {
     "syn_peak_2cert_separate_random": ("synthetic_saxs", dict(target="peak", mode="2cert", confidence=0.90, score="random", nn_method="watson")),
     "syn_peak_2cert_nested_random": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="nested_path", eps=0.20, confidence=0.80, score="random", nn_method="watson")),
     "syn_peak_2cert_priority_random": ("synthetic_saxs", dict(target="peak", mode="2cert", policy="priority_path", eps=0.20, confidence=0.80, score="random", nn_method="watson")),
+    # Synthetic SAXS, round 3: every site of interest, so the interpolation claim alone, on the full profile at
+    # rtol = atol = 0.005; budget 0.10 at confidence 0.80. With one claim the forms of guarantee coincide.
+    "syn_env_nested_watson": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", tol=0.005)),
+    "syn_env_nested_random": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, score="random", nn_method="watson", tol=0.005)),
+    "syn_env_nested_gp_mle": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_mle", tol=0.005)),
+    "syn_env_nested_gp_design": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_design", tol=0.005)),
+    "syn_env_nested_gp_nonstationary": ("synthetic_saxs", dict(target="envelope", mode="interp", policy="nested_path", eps=0.10, confidence=0.80, nn_method="watson", interp_model="gp_nonstationary", tol=0.005)),
 }
 
 

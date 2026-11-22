@@ -36,7 +36,7 @@ ORDER = ["not_interesting", "interpolable", "not_interesting+interpolable", "no_
 PANELS = [
     ("ir_nested_watson", "(a) IR map", "um", r"$R_E \leq 0.10$, confidence 0.75"),
     ("nacl_fwhm_nested_watson", "(b) NaCl scan", "mm", r"$R_E \leq 0.20$, confidence 0.80"),
-    ("syn_peak_2cert_nested_watson", "(c) Synthetic map", "comp", r"$R_E \leq 0.20$, confidence 0.80"),
+    ("syn_env_nested_watson", "(c) Synthetic map", "comp", r"$R_E \leq 0.10$, confidence 0.80"),
 ]
 def load(row):
     z = np.load(REC / row / "sites.npz")

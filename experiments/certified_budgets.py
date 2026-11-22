@@ -19,7 +19,7 @@ from experiments.record import build
 
 ROWS = {"nacl": ("nacl_fwhm_nested_watson", "nacl_fwhm_nested_gp_mle", 0.80),
         "ir": ("ir_nested_watson", "ir_nested_gp_mle", 0.75),
-        "syn": ("syn_peak_2cert_nested_watson", "syn_peak_2cert_nested_gp_mle", 0.80)}
+        "syn": ("syn_env_nested_watson", "syn_env_nested_gp_mle", 0.80)}
 EPS = (0.05, 0.10, 0.20, 0.30)
 N_SEEDS = {"sibson": 20, "gp": 8}
 OUT = Path("results/uncertified")
@@ -45,7 +45,7 @@ def main():
         out = []
         for name, row in (("sibson", sib), ("gp", gp)):
             for eps in EPS:
-                runs = [one(row, eps, conf, s) for s in range(N_SEEDS[name])]
+                runs = [one(row, eps, conf, s) for s in range(4 if (key == "syn" and name == "gp") else N_SEEDS[name])]
                 m = np.mean([x["measured"] for x in runs]); w = np.mean([x["wrong"] for x in runs])
                 out.append(dict(dataset=key, predictor=name, eps=eps, confidence=conf, runs=runs,
                                 measured=float(m), wrong=float(w), n_cert=runs[0]["n_cert"], n_total=runs[0]["n_total"]))

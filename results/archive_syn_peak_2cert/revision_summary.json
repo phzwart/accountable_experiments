@@ -1,0 +1,162 @@
+{
+ "ir": {
+  "per_level": {
+   "n": 250,
+   "measured": 295.244,
+   "measured_sd": 52.66961950951524,
+   "level_exceed": 0.049,
+   "campaign_exceed": 0.196,
+   "mean_picked": 0.19023104295634158
+  },
+  "campaign": {
+   "n": 250,
+   "measured": 415.248,
+   "measured_sd": 82.36700669057156,
+   "campaign_exceed": 0.004,
+   "level_exceed": 0.001,
+   "mean_picked": 0.030160212283406398,
+   "sum_picked": 0.12064084913362558,
+   "wrong_share": 0.02276297968397291,
+   "level_confidence": 0.9375,
+   "campaign_confidence": 0.75
+  },
+  "crc": {
+   "n": 250,
+   "measured": 259.836,
+   "level_exceed": 0.049,
+   "campaign_exceed": 0.196,
+   "wrong_share": 0.04088939051918736,
+   "mean_level_rate": 0.0571757292755196,
+   "k": [
+    3
+   ]
+  },
+  "uniform": {
+   "measured": 295.0,
+   "share": 0.005331828442437924,
+   "sd": 0.002463206902399139,
+   "range": [
+    0.0,
+    0.012415349887133182
+   ],
+   "n": null
+  },
+  "certified_final": {
+   "n": 250,
+   "measured": 295.244,
+   "share_mean": 0.0037697516930022567,
+   "share_sd": 0.002590896547634239,
+   "share_range": [
+    0.0,
+    0.009029345372460496
+   ]
+  }
+ },
+ "nacl": {
+  "per_level": {
+   "n": 250,
+   "measured": 613.824,
+   "measured_sd": 56.17929759183223,
+   "level_exceed": 0.112,
+   "campaign_exceed": 0.384,
+   "mean_picked": 0.12011708193198205
+  },
+  "campaign": {
+   "n": 250,
+   "measured": 694.172,
+   "measured_sd": 57.70815662768533,
+   "campaign_exceed": 0.096,
+   "level_exceed": 0.027,
+   "mean_picked": 0.02750628111379237,
+   "sum_picked": 0.11002512445516952,
+   "wrong_share": 0.08395175879396986,
+   "level_confidence": 0.95,
+   "campaign_confidence": 0.8
+  },
+  "crc": {
+   "n": 250,
+   "measured": 542.136,
+   "level_exceed": 0.347,
+   "campaign_exceed": 0.808,
+   "wrong_share": 0.16233969849246233,
+   "mean_level_rate": 0.18765831954890333,
+   "k": [
+    7
+   ]
+  },
+  "uniform": {
+   "measured": 614.0,
+   "share": 0.22026130653266332,
+   "sd": 0.010217891087301208,
+   "range": [
+    0.1899497487437186,
+    0.25025125628140704
+   ],
+   "n": null
+  },
+  "certified_final": {
+   "n": 250,
+   "measured": 613.824,
+   "share_mean": 0.17971859296482412,
+   "share_sd": 0.037603890275913814,
+   "share_range": [
+    0.06432160804020101,
+    0.2994974874371859
+   ]
+  }
+ },
+ "syn": {
+  "per_level": {
+   "n": 250,
+   "measured": 334.384,
+   "measured_sd": 26.288416982958093,
+   "level_exceed": 0.10733333333333334,
+   "campaign_exceed": 0.496,
+   "mean_picked": 0.11322167209400796
+  },
+  "campaign": {
+   "n": 250,
+   "measured": 376.912,
+   "measured_sd": 26.983265973011513,
+   "campaign_exceed": 0.08,
+   "level_exceed": 0.013333333333333334,
+   "mean_picked": 0.015183017049619711,
+   "sum_picked": 0.09109810229771828,
+   "wrong_share": 0.08527946127946129,
+   "level_confidence": 0.9666666666666667,
+   "campaign_confidence": 0.8
+  },
+  "crc": {
+   "n": 250,
+   "measured": 305.38,
+   "level_exceed": 0.316,
+   "campaign_exceed": 0.916,
+   "wrong_share": 0.17274843674843673,
+   "mean_level_rate": 0.1831947666047889,
+   "k": [
+    5,
+    7
+   ]
+  },
+  "uniform": {
+   "measured": 334.0,
+   "share": 0.1057931697931698,
+   "sd": 0.010434932918634822,
+   "range": [
+    0.07888407888407889,
+    0.14814814814814814
+   ],
+   "n": null
+  },
+  "certified_final": {
+   "n": 250,
+   "measured": 334.384,
+   "share_mean": 0.08352861952861955,
+   "share_sd": 0.013729921086373682,
+   "share_range": [
+    0.05146705146705147,
+    0.11447811447811448
+   ]
+  }
+ }
+}

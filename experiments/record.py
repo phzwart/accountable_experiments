@@ -46,13 +46,15 @@ PAPER_ROWS = [
     "ir_nested_gp_mle", "ir_nested_gp_design", "ir_nested_gp_nonstationary",
     "nacl_fwhm_separate_watson", "nacl_fwhm_nested_watson", "nacl_fwhm_priority_watson",
     "nacl_fwhm_nested_gp_mle", "nacl_fwhm_nested_gp_design", "nacl_fwhm_nested_gp_nonstationary",
-    "syn_peak_2cert_separate_watson", "syn_peak_2cert_nested_watson", "syn_peak_2cert_priority_watson",
-    "syn_peak_2cert_nested_gp_mle", "syn_peak_2cert_nested_gp_design", "syn_peak_2cert_nested_gp_nonstationary",
+    # synthetic map from round 3: interpolation claim alone on the full profile; with one claim the three
+    # forms of guarantee coincide, so one row stands for them (old two-claim rows: results/record/syn_peak_2cert_*)
+    "syn_env_nested_watson",
+    "syn_env_nested_gp_mle", "syn_env_nested_gp_design", "syn_env_nested_gp_nonstationary",
 ] + [f"ir_tight{v}_{p}" for v in ("", "_interp") for p in ("sibson", "gp_mle", "gp_design", "gp_nonstationary")]
 
 # Random scores for every certificate: the "stock-picking chicken".
-CHICKEN_ROWS = [f"{d}_{f}_random" for d in ("ir", "nacl_fwhm", "syn_peak_2cert")
-                for f in ("separate", "nested", "priority")] + ["ir_tight_random"]
+CHICKEN_ROWS = [f"{d}_{f}_random" for d in ("ir", "nacl_fwhm")
+                for f in ("separate", "nested", "priority")] + ["syn_env_nested_random", "ir_tight_random"]
 PAPER_ROWS = PAPER_ROWS + CHICKEN_ROWS
 
 

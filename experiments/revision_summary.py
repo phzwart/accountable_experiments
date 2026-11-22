@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 
 REC = Path("results/record")
-ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_peak_2cert_nested_watson"}
+ROWS = {"ir": "ir_nested_watson", "nacl": "nacl_fwhm_nested_watson", "syn": "syn_env_nested_watson"}
 
 
 def jl(f):

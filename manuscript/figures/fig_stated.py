@@ -27,7 +27,7 @@ STYLE = {
 }
 CERT = {"sibson": "certified, natural neighbour", "gp": "certified, Gaussian process"}
 UNC = {"latent": "uncertified, latent sd", "predictive": "uncertified, predictive sd", "loo": "uncertified, rescaled sd"}
-NAMES = {"ir": "(a) IR amide I", "nacl": "(b) NaCl (200) width", "syn": "(c) synthetic SAXS peak"}
+NAMES = {"ir": "(a) IR amide I", "nacl": "(b) NaCl (200) width", "syn": "(c) synthetic SAXS profile"}
 LO = 1e-3
 
 

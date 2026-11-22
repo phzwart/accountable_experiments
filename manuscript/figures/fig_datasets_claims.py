@@ -67,18 +67,18 @@ def main():
     ax.plot([0, 1], [1, 0], color=INK2, lw=0.8)
     ax.set_xlim(0, 1); ax.set_ylim(0, 1)
     ax.set_xlabel("oil fraction x"); ax.set_ylabel("surfactant fraction y")
-    ax.set_title("(g) Synthetic map: dominant peak", loc="left", fontsize=8)
+    ax.set_title("(g) Synthetic map: dominant peak", loc="left", fontsize=8)  # phases; the claim is on the profile
     bar(im, ax, "q* (Å$^{-1}$)")
     FC.saxs_panels(axs[2, 1:])
 
     titles = {(0, 1): "(b) accepted: within\n     the envelope", (0, 2): "(c) rejected: outside\n     the envelope",
               (1, 1): "(e) accepted: width\n     within tolerance", (1, 2): "(f) rejected: width off\n     by twice the tolerance",
-              (2, 1): "(h) accepted: peak\n     within tolerance", (2, 2): "(i) rejected: peak width\n     outside tolerance"}
+              (2, 1): "(h) accepted: within\n     the envelope", (2, 2): "(i) rejected: outside\n     the envelope"}
     for (r, c), t in titles.items():
         axs[r, c].set_title(t, loc="left", fontsize=8)
         axs[r, c].tick_params(labelsize=6.5)
         axs[r, c].xaxis.label.set_size(7); axs[r, c].yaxis.label.set_size(7)
-        if c == 2:
+        if c == 2 or (r, c) == (2, 1):
             axs[r, c].set_ylabel("")
     for r in range(3):
         axs[r, 0].tick_params(labelsize=6.5)

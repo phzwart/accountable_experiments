@@ -132,40 +132,39 @@ def nacl_panels(axs):
         style(ax, f"NaCl, (200) width claim: {lab}\nΔFWHM = {abs(dh['fwhm'][i] - dt['fwhm'][i]):.3f} nm$^{{-1}}$ (tolerance 0.02)")
 
 
+SAXS_TOL = 0.005   # round 3: full-profile claim, rtol = atol = 0.005
+
+
 def saxs_panels(axs):
     ds = SA.load()
-    crit = SA.criterion("peak", ds.axis)
+    crit = SA.criterion("envelope", ds.axis, SAXS_TOL)
     q, meas, It, Ih, W, Y = predict(ds, 6, images=SA.wall_images, candidate=ds.candidate)
     st = crit.stats(It, Ih)
     sc = np.asarray(st["score"], float)
+    out = np.asarray(st["outside_mean"], bool)
     x = ds.axis
-    dt, dh = peak_descriptors(It, x), peak_descriptors(Ih, x)
-    pr = np.asarray(dt["prominence"], float)
-    valid = np.isfinite(sc) & (pr >= 2 * SA.PROMINENCE) & np.isfinite(dh["fwhm"])
-    ok = np.flatnonzero(valid & (sc <= 1))
-    bad = np.flatnonzero(valid & (sc > 1.5) & (sc < 6))
-    pick = [ok[np.argmin(np.abs(sc[ok] - 0.5))], bad[np.argmin(np.abs(sc[bad] - 3))]]
+    ok = np.flatnonzero(np.isfinite(sc) & ~out)
+    # a rejected site whose miss is visible: largest deviation, in tolerance units, where the signal is strong
+    tolm = SAXS_TOL * np.abs(It) + SAXS_TOL
+    strong = It > 0.05 * It.max(1, keepdims=True)
+    dev = np.where(strong, np.abs(Ih - It) / tolm, 0).max(1)
+    bad = np.flatnonzero(np.isfinite(sc) & out & (dev > 3) & (dev < 8))
+    pick = [ok[np.argmin(np.abs(sc[ok] - 0.5))], bad[np.argmax(dev[bad])]]
     for ax, i, lab in zip(axs, pick, ("accepted", "rejected")):
-        c = dt["q_peak"][i]
-        win = (x > c - 0.03) & (x < c + 0.03)
-        neighbours(ax, x, W, i, Y, xsl=win)
-        ax.plot(x[win], It[i][win], color=INK, lw=1.1)
-        ax.plot(x[win], Ih[i][win], color=ORANGE, lw=1.1, ls="--")
-        for I_, d, col in ((It[i], dt, INK), (Ih[i], dh, ORANGE)):
-            yw = I_[win]
-            base = np.min(yw)
-            yhalf = base + 0.5 * (yw.max() - base)
-            cc, f = d["q_peak"][i], d["fwhm"][i]
-            if col == INK:
-                ax.axvspan(cc - SA.PEAK_EPS, cc + SA.PEAK_EPS, color=BLUE, alpha=0.10, lw=0)
-                ax.add_patch(plt.Rectangle((cc - (f + SA.FWHM_EPS) / 2, yhalf - 0.03 * yw.max()), f + SA.FWHM_EPS,
-                                           0.06 * yw.max(), color=BLUE, alpha=0.25, lw=0))
-            ax.plot([cc - f / 2, cc + f / 2], [yhalf, yhalf], color=col, lw=2.2, solid_capstyle="butt")
-        dq = abs(dh["q_peak"][i] - dt["q_peak"][i])
-        dw = abs(dh["fwhm"][i] - dt["fwhm"][i])
+        tol = SAXS_TOL * np.abs(It[i]) + SAXS_TOL
+        ax.axhspan(-1, 1, color=BLUE, alpha=0.25, lw=0, zorder=0)
+        keys, raw = np.asarray(W.keys[i]), np.asarray(W.raw[i], float)
+        for k_, wk in sorted(zip(keys, raw / raw.sum()), key=lambda t: -t[1])[:6]:
+            ax.plot(x, (Y[k_] - It[i]) / tol, color=GRID, lw=0.4 + 2.2 * wk, zorder=1)
+        ax.plot(x, (Ih[i] - It[i]) / tol, color=ORANGE, lw=1.1, ls="--", zorder=2)
+        ax.axhline(0, color=INK, lw=1.0, zorder=2)
+        ax.set_xscale("log"); ax.set_ylim(-6, 6)
         ax.set_xlabel("q (Å$^{-1}$)")
-        ax.set_ylabel("intensity")
-        style(ax, f"Synthetic map, peak claim: {lab}\nΔq* = {dq:.4f}, ΔFWHM = {dw:.4f} Å$^{{-1}}$")
+        ax.set_ylabel("deviation / tolerance")
+        ins = ax.inset_axes([0.62, 0.66, 0.36, 0.32])
+        ins.plot(x, It[i], color=INK, lw=0.8); ins.set_xscale("log"); ins.set_yscale("log")
+        ins.set_xticks([]); ins.set_yticks([])
+        style(ax, f"Synthetic map, profile claim: {lab}\nmean ρ = {sc[i]:.2f} (accepted if ≤ 1)")
 
 
 def main():
