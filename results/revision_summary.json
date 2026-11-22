@@ -9,38 +9,46 @@
    "mean_picked": 0.19023104295634158
   },
   "campaign": {
-   "n": 105,
-   "measured": 407.93333333333334,
-   "measured_sd": 79.85964450529956,
-   "campaign_exceed": 0.0,
-   "level_exceed": 0.0,
+   "n": 250,
+   "measured": 415.248,
+   "measured_sd": 82.36700669057156,
+   "campaign_exceed": 0.004,
+   "level_exceed": 0.001,
    "mean_picked": 0.030160212283406398,
-   "sum_picked": 0.12064084913362556,
-   "wrong_share": 0.02288509083091476,
+   "sum_picked": 0.12064084913362558,
+   "wrong_share": 0.02276297968397291,
    "level_confidence": 0.9375,
    "campaign_confidence": 0.75
   },
   "crc": {
-   "n": 100,
-   "measured": 260.07,
-   "level_exceed": 0.05,
-   "campaign_exceed": 0.2,
-   "wrong_share": 0.039943566591422126
+   "n": 250,
+   "measured": 259.836,
+   "level_exceed": 0.049,
+   "campaign_exceed": 0.196,
+   "wrong_share": 0.04088939051918736,
+   "mean_level_rate": 0.0571757292755196,
+   "k": [
+    3
+   ]
   },
   "uniform": {
    "measured": 295.0,
-   "share": 0.00536117381489842,
+   "share": 0.005331828442437924,
+   "sd": 0.002463206902399139,
    "range": [
-    0.002257336343115124,
-    0.009029345372460496
-   ]
+    0.0,
+    0.012415349887133182
+   ],
+   "n": null
   },
   "certified_final": {
-   "measured": 312.2,
-   "share_mean": 0.0036117381489841984,
+   "n": 250,
+   "measured": 295.244,
+   "share_mean": 0.0037697516930022567,
+   "share_sd": 0.002590896547634239,
    "share_range": [
     0.0,
-    0.007900677200902935
+    0.009029345372460496
    ]
   }
  },
@@ -54,38 +62,46 @@
    "mean_picked": 0.12011708193198205
   },
   "campaign": {
-   "n": 128,
-   "measured": 694.25,
-   "measured_sd": 61.23364316385324,
-   "campaign_exceed": 0.0859375,
-   "level_exceed": 0.02734375,
+   "n": 250,
+   "measured": 694.172,
+   "measured_sd": 57.70815662768533,
+   "campaign_exceed": 0.096,
+   "level_exceed": 0.027,
    "mean_picked": 0.02750628111379237,
-   "sum_picked": 0.11002512445516953,
-   "wrong_share": 0.08448492462311558,
+   "sum_picked": 0.11002512445516952,
+   "wrong_share": 0.08395175879396986,
    "level_confidence": 0.95,
    "campaign_confidence": 0.8
   },
   "crc": {
-   "n": 100,
-   "measured": 541.17,
-   "level_exceed": 0.3375,
-   "campaign_exceed": 0.8,
-   "wrong_share": 0.16240201005025123
+   "n": 250,
+   "measured": 542.136,
+   "level_exceed": 0.347,
+   "campaign_exceed": 0.808,
+   "wrong_share": 0.16233969849246233,
+   "mean_level_rate": 0.18765831954890333,
+   "k": [
+    7
+   ]
   },
   "uniform": {
    "measured": 614.0,
-   "share": 0.2185427135678392,
+   "share": 0.22026130653266332,
+   "sd": 0.010217891087301208,
    "range": [
-    0.20301507537688443,
-    0.24120603015075376
-   ]
+    0.1899497487437186,
+    0.25025125628140704
+   ],
+   "n": null
   },
   "certified_final": {
-   "measured": 631.25,
-   "share_mean": 0.16638190954773865,
+   "n": 250,
+   "measured": 613.824,
+   "share_mean": 0.17971859296482412,
+   "share_sd": 0.037603890275913814,
    "share_range": [
     0.06432160804020101,
-    0.24020100502512562
+    0.2994974874371859
    ]
   }
  },
@@ -99,38 +115,47 @@
    "mean_picked": 0.11322167209400796
   },
   "campaign": {
-   "n": 60,
-   "measured": 376.23333333333335,
-   "measured_sd": 28.91856870281116,
-   "campaign_exceed": 0.16666666666666666,
-   "level_exceed": 0.027777777777777776,
-   "mean_picked": 0.015183017049619715,
-   "sum_picked": 0.0910981022977183,
-   "wrong_share": 0.0852332852332852,
+   "n": 250,
+   "measured": 376.912,
+   "measured_sd": 26.983265973011513,
+   "campaign_exceed": 0.08,
+   "level_exceed": 0.013333333333333334,
+   "mean_picked": 0.015183017049619711,
+   "sum_picked": 0.09109810229771828,
+   "wrong_share": 0.08527946127946129,
    "level_confidence": 0.9666666666666667,
    "campaign_confidence": 0.8
   },
   "crc": {
-   "n": 42,
-   "measured": 300.5952380952381,
-   "level_exceed": 0.3253968253968254,
-   "campaign_exceed": 0.9285714285714286,
-   "wrong_share": 0.17620650953984285
+   "n": 250,
+   "measured": 305.38,
+   "level_exceed": 0.316,
+   "campaign_exceed": 0.916,
+   "wrong_share": 0.17274843674843673,
+   "mean_level_rate": 0.1831947666047889,
+   "k": [
+    5,
+    7
+   ]
   },
   "uniform": {
    "measured": 334.0,
-   "share": 0.1033910533910534,
+   "share": 0.1057931697931698,
+   "sd": 0.010434932918634822,
    "range": [
-    0.08802308802308802,
-    0.1265031265031265
-   ]
+    0.07888407888407889,
+    0.14814814814814814
+   ],
+   "n": null
   },
   "certified_final": {
-   "measured": 333.7,
-   "share_mean": 0.08482443482443483,
+   "n": 250,
+   "measured": 334.384,
+   "share_mean": 0.08352861952861955,
+   "share_sd": 0.013729921086373682,
    "share_range": [
-    0.06637806637806638,
-    0.11014911014911015
+    0.05146705146705147,
+    0.11447811447811448
    ]
   }
  }
