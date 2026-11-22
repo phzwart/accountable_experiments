@@ -62,7 +62,6 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 
 ---
 
-*Reference to add: [Gardner2018] Gardner, Pleiss, Bindel, Weinberger, Wilson (2018). GPyTorch. NeurIPS 31.*
 
 ## SI 1.3 Scores of the natural-neighbour protocol
 

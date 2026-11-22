@@ -126,8 +126,6 @@ The three rules give visibly different reasons for measuring a site (Fig. S1). T
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\emph{Reference to add: \cite{Gardner2018} Gardner, Pleiss, Bindel, Weinberger, Wilson (2018). GPyTorch. NeurIPS 31.}
-
 \hypertarget{si-1.3-scores-of-the-natural-neighbour-protocol}{%
 \subsection*{SI 1.3 Scores of the natural-neighbour protocol}\label{si-1.3-scores-of-the-natural-neighbour-protocol}}
 \addcontentsline{toc}{subsection}{SI 1.3 Scores of the natural-neighbour protocol}
@@ -1299,9 +1297,9 @@ with \(H_{N, K', m}\) hypergeometric, \(N\) sites of which \(K'\) fail and \(m\)
 
 No independence between the two statements is needed.
 
-\textbf{Sites of interest.} Given the number \(m_Z\) of calibration sites of interest, those sites are a uniform sample without replacement from the sites of interest of the level. The same limit, applied to their failures, bounds the failing share among the sites of interest. This is the label-conditional statement of Section 6, at the cost of a smaller sample.
+\textbf{Sites of interest.} Given the number \(m_Z\) of calibration sites of interest, those sites are a uniform sample without replacement from the sites of interest of the level. The same limit, applied to their failures, bounds the failing share among the sites of interest. This is the label-conditional statement of Section 3.4, at the cost of a smaller sample.
 
-\textbf{Scope.} The bound concerns the map frozen before the draw, at the sites of the new level. The final map also uses the calibration sites and every site measured because no claim covered it. Those depend on the draw, so the final map carries no finite-sample statement and is checked against the truth (Section 5.4).
+\textbf{Scope.} The bound concerns the map frozen before the draw, at the sites of the new level. The final map also uses the calibration sites and every site measured because no claim covered it. Those depend on the draw, so the plan gives the final map no finite-sample statement; the audit of Section 3.6 gives it one, and here it is also checked against the truth (Section 5.4).
 
 \textbf{Record.} The map bound states, from the calibration draw of a level, how many of its sites the map built from coarser levels predicts outside tolerance. Recomputed with the exact limit from the 250 campaigns of each main configuration, it held on 95.8 \% of the certified levels for IR, 84.4 \% for NaCl and 87.2 \% for the synthetic map, against confidences of 0.75, 0.80 and 0.80; the Clopper--Pearson limit held on 100 \%, 88.5 \% and 90.9 \%, at mean upper limits 0.052, 0.593 and 0.483 against 0.042, 0.579 and 0.463 for the exact one. On NaCl about half of the last-level sites lie outside that tolerance; the skip guarantee concerns only the sites a claim covers.
 
@@ -1415,7 +1413,7 @@ Campaigns flagged
 u(f) = \max \{ K' : P(H_{N, K', n_a} \le f) > 1 - c \}
 \]
 
-reported as a share \(u(f)/N_c\) of the \(N_c\) sites of the certified levels. Coverage was estimated over the 250 campaigns of the record, with 200 audit draws per campaign on the IR and NaCl maps and 50 on the synthetic map. On the two-claim variant of the synthetic map the audit was also stratified by the claim of the skip, 50 sites under the no-interest claim and 50 under the interpolation claim alone, each stratum bounded at \(1 - (1 - c)/2\) and the bounds summed. Within the no-interest stratum, 100 audit sites bound the number \(K_Z\) of sites of interest skipped there; with \(M_Z\) sites of interest measured on certified levels, the share of the sites of interest lost is at most \(u_Z/(M_Z + u_Z)\), because that share grows with \(K_Z\) and the sites of interest number at least \(M_Z + K_Z\).
+reported as a share \(u(f)/N_c\) of the \(N_c\) sites of the certified levels. Coverage was estimated over the 250 campaigns of the record, with 200 audit draws per campaign on the IR and NaCl maps and 50 on the synthetic map. On the two-claim variant of the synthetic map the audit was also stratified by the claim of the skip, 50 sites under the no-interest claim and 50 under the interpolation claim alone, each stratum bounded at \(1 - (1 - c)/2\) and the bounds summed. Within the no-interest stratum, a separate draw of 100 audit sites, beyond the 50 + 50 of the stratified audit and with its own confidence, bounds the number \(K_Z\) of sites of interest skipped there; with \(M_Z\) sites of interest measured on certified levels, the share of the sites of interest lost is at most \(u_Z/(M_Z + u_Z)\), because that share grows with \(K_Z\) and the sites of interest number at least \(M_Z + K_Z\).
 
 {\renewcommand{\thetable}{S10.3}\small
 \begin{longtable}[]{@{}

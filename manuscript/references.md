@@ -7,18 +7,20 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Angelopoulos2023] **V** Angelopoulos, Bates (2023). Conformal prediction: a gentle introduction. Found. Trends Mach. Learn. 16(4), 494–591. doi:10.1561/2200000101.
 - [Angelopoulos2024] **V** Angelopoulos, Bates, Fisch, Lei, Schuster (2024). Conformal risk control. ICLR 2024.
 - [Angelopoulos2025] **V** Angelopoulos, Bates, Candès, Jordan, Lei (2025). Learn then Test: calibrating predictive algorithms to achieve risk control. Ann. Appl. Stat. doi:10.1214/24-AOAS1998.
+- [AngelopoulosPPI2023] **V** Angelopoulos, A. N., Bates, S., Fannjiang, C., Jordan, M. I., Zrnic, T. (2023). Prediction-powered inference. Science 382(6671), 669–674. doi:10.1126/science.adi6000.
 - [Atkinson2007] **V** Atkinson, Donev, Tobias (2007). Optimum Experimental Designs, with SAS. Oxford Statistical Science Series 34, Oxford University Press.
 - [Balandat2020] **M** Balandat, Karrer, Jiang, Daulton, Letham, Wilson, Bakshy (2020). BoTorch: a framework for efficient Monte-Carlo Bayesian optimization. NeurIPS 33.
+- [Barber2021] **V** Barber, R. F., Candès, E. J., Ramdas, A., Tibshirani, R. J. (2021). Predictive inference with the jackknife+. Ann. Stat. 49(1), 486–507. doi:10.1214/20-AOS1965.
 - [Barber2023] **V** Barber, Candès, Ramdas, Tibshirani (2023). Conformal prediction beyond exchangeability. Ann. Stat. 51(2), 816–845. doi:10.1214/23-AOS2276.
 - [Bassan2010] **M** Bassan, Kohler, Martens, Lee, Byrne, Dumas, Gazi, Brown, Clarke, Gardner (2010). Resonant Mie scattering (RMieS) correction of infrared spectra from highly scattering biological samples. Analyst 135, 268–277. SI only.
 - [Bates2021] **V** Bates, Angelopoulos, Lei, Malik, Jordan (2021). Distribution-free, risk-controlling prediction sets. J. ACM 68(6), 43. doi:10.1145/3478535.
 - [Bridson2007] **M** Bridson (2007). Fast Poisson disk sampling in arbitrary dimensions. ACM SIGGRAPH 2007 Sketches, 22.
-- [Brunger1992] **V** Brünger (1992). Free R value: a novel statistical quantity for assessing the accuracy of crystal structures. Nature 355(6359), 472–475. doi:10.1038/355472a0.
+- [Brunger1992] **V** Brünger, A. T. (1992). Free R value: a novel statistical quantity for assessing the accuracy of crystal structures. Nature 355(6359), 472–475. doi:10.1038/355472a0.
 - [Burger2020] **V** Burger et al. (2020). A mobile robotic chemist. Nature 583, 237–241. doi:10.1038/s41586-020-2442-2.
 - [CerouGuyader2007] **V** Cérou, Guyader (2007). Adaptive multilevel splitting for rare event analysis. Stoch. Anal. Appl. 25(2), 417–443.
 - [ClopperPearson1934] **M** Clopper, Pearson (1934). The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26(4), 404–413.
 - [Cochran1977] **M** Cochran (1977). Sampling Techniques, 3rd ed. Wiley.
-- [Dawid1982] **V** Dawid (1982). The well-calibrated Bayesian. J. Am. Stat. Assoc. 77(379), 605–610.
+- [Dawid1982] **V** Dawid, A. P. (1982). The well-calibrated Bayesian. J. Am. Stat. Assoc. 77(379), 605–610.
 - [DavidNagaraja2003] **V** David, Nagaraja (2003). Order Statistics, 3rd ed. Wiley.
 - [DodgeRomig1959] **M** Dodge, Romig (1959). Sampling Inspection Tables: Single and Double Sampling, 2nd ed. Wiley.
 - [EU2024] **V** Regulation (EU) 2024/1689 (Artificial Intelligence Act), OJ L 2024/1689, 12.7.2024, Article 12.
@@ -33,8 +35,10 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Jin2023] **V** Jin, Candès (2023). Selection by prediction with conformal p-values. JMLR 24(244), 1–41.
 - [Kalinin2021] **V** Kalinin et al. (2021). arXiv:2103.12165.
 - [Kohler2005] **M** Kohler, Kirschner, Oust, Martens (2005). Extended multiplicative signal correction as a tool for separation and characterization of physical and chemical information in Fourier transform infrared microscopy images of cryo-sections of beef loin. Appl. Spectrosc. 59(6), 707–716. SI only.
+- [Kossen2021] **V** Kossen, J., Farquhar, S., Gal, Y., Rainforth, T. (2021). Active testing: sample-efficient model evaluation. Proc. 38th Int. Conf. Mach. Learn., PMLR 139, 5753–5763.
 - [Kusne2020] **V** Kusne et al. (2020). On-the-fly closed-loop materials discovery via Bayesian active learning. Nat. Commun. 11, 5966. doi:10.1038/s41467-020-19597-w.
 - [LauferGoldshtein2023] **V** Laufer-Goldshtein, Fisch, Barzilay, Jaakkola (2023). Efficiently controlling multiple risks with Pareto Testing. ICLR 2023. arXiv:2210.07913.
+- [Leeman2024] **V** Leeman, J., Liu, Y., Stiles, J., Lee, S. B., Bhatt, P., Schoop, L. M., Palgrave, R. G. (2024). Challenges in high-throughput inorganic materials prediction and autonomous synthesis. PRX Energy 3, 011002. doi:10.1103/PRXEnergy.3.011002.
 - [LiangZeger1986] **V** Liang, Zeger (1986). Longitudinal data analysis using generalized linear models. Biometrika 73(1), 13–22. doi:10.1093/biomet/73.1.13.
 - [LindemanStark2012] **M** Lindeman, Stark (2012). A gentle introduction to risk-limiting audits. IEEE Secur. Priv. 10(5), 42–49.
 - [Manoharan2026] **V** Manoharan (2026). Audited selective verification for risk-controlled N-1 thermal contingency screening under deployment shift. arXiv:2607.13221.
@@ -46,6 +50,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Noack2019] **V** Noack, Yager, Fukuto, Doerk, Li, Sethian (2019). A kriging-based approach to autonomous experimentation with applications to X-ray scattering. Sci. Rep. 9, 11809. doi:10.1038/s41598-019-48114-3.
 - [Noack2020] **V** Noack, Doerk, Li, Fukuto, Yager (2020). Advances in kriging-based autonomous X-ray scattering experiments. Sci. Rep. 10, 1325. doi:10.1038/s41598-020-57887-x.
 - [Noack2021] **V** Noack, Zwart, Ushizima, Fukuto, Yager, Elbert, Murray, Stein, Doerk, Tsai, Li, Freychet, Zhernenkov, Holman, Lee, Chen, Rotenberg, Weber, Le Goc, Boehm, Steffens, Mutti, Sethian (2021). Gaussian processes for autonomous data acquisition at large-scale synchrotron and neutron facilities. Nat. Rev. Phys. 3, 685–697. doi:10.1038/s42254-021-00345-y. (Author list from memory; confirm.)
+- [Olofsson2014] **V** Olofsson, P., Foody, G. M., Herold, M., Stehman, S. V., Woodcock, C. E., Wulder, M. A. (2014). Good practices for estimating area and assessing accuracy of land change. Remote Sens. Environ. 148, 42–57. doi:10.1016/j.rse.2014.02.015.
 - [Owen1995] **V** Owen (1995). Randomly permuted (t,m,s)-nets and (t,s)-sequences. In Niederreiter, Shiue (eds), Monte Carlo and Quasi-Monte Carlo Methods in Scientific Computing, Lecture Notes in Statistics 106, Springer, 299–317 (pages given as 299–315 in some citations; confirm).
 - [PaciorekSchervish2004] **M** Paciorek, Schervish (2004). Nonstationary covariance functions for Gaussian process regression. NeurIPS 16.
 - [Radivojevic2020] **V** Radivojević, Costello, Workman, Garcia Martin (2020). A machine learning Automated Recommendation Tool for synthetic biology. Nat. Commun. 11, 4879. doi:10.1038/s41467-020-18008-4.
@@ -60,6 +65,7 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Thompson1987] **M** Thompson, Cox, Hastings (1987). Rietveld refinement of Debye–Scherrer synchrotron X-ray data from Al₂O₃. J. Appl. Cryst. 20, 79–83. SI only.
 - [Tibshirani2019] **V** Tibshirani, Barber, Candès, Ramdas (2019). Conformal prediction under covariate shift. NeurIPS 32.
 - [Tom2024] **V** Tom, Schmid, Baird et al. (2024). Self-driving laboratories for chemistry and materials science. Chem. Rev. 124(16), 9633–9732. doi:10.1021/acs.chemrev.4c00055.
+- [Tong2018] **V** Tong, X., Feng, Y., Li, J. J. (2018). Neyman-Pearson classification algorithms and NP receiver operating characteristics. Sci. Adv. 4(2), eaao1659. doi:10.1126/sciadv.aao1659.
 - [Upreti2026] **V** Upreti, Adhikari, Baral, Wang, Ma, Zhu, Noack, Gu (2026). Autonomous phase diagram mapping of polymer blends through SAXS-guided active learning. ChemRxiv. doi:10.26434/chemrxiv.15012310/v1.
 - [vandeHulst1957] **M** van de Hulst (1957). Light Scattering by Small Particles. Wiley. SI only.
 - [Vovk2005] **M** Vovk, Gammerman, Shafer (2005). Algorithmic Learning in a Random World. Springer.
