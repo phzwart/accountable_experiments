@@ -16,7 +16,7 @@ and the no-interest claim covers only sites whose entry time on the path lies be
 
 On the NaCl scan, where about two thirds of the sites hold the line, the same rule over 250 campaigns lost 8.1 ± 3.0 % of the sites of interest, against 9.2 ± 3.2 % without it, at 630 ± 59 measurements against 614 ± 56; 1.4 % of level checks exceeded the share, against 2.2 % without the statement. Where signal is common, the shared budget already spares it, and the conditional bound changes little and costs little.
 
-**Table S10.1.** Sites of interest lost under the no-interest claim on the synthetic map, per certified level (mean over 250 campaigns).
+**Table S10.1.** Sites of interest lost under the no-interest claim on the two-claim variant of the synthetic map, per certified level (mean over 250 campaigns).
 
 | Level | 3 | 4 | 5 | 6 | 7 | 8 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ $$
 u(f) = \max \{ K' : P(H_{N, K', n_a} \le f) > 1 - c \}
 $$
 
-reported as a share $u(f)/N_c$ of the $N_c$ sites of the certified levels. Coverage was estimated over the 250 campaigns of the record, with 200 audit draws per campaign on the IR and NaCl maps and 50 on the synthetic map. On the synthetic map the audit was also stratified by the claim of the skip, 50 sites under the no-interest claim and 50 under the interpolation claim alone, each stratum bounded at $1 - (1 - c)/2$ and the bounds summed. Within the no-interest stratum, 100 audit sites bound the number $K_Z$ of sites of interest skipped there; with $M_Z$ sites of interest measured on certified levels, the share of the sites of interest lost is at most $u_Z/(M_Z + u_Z)$, because that share grows with $K_Z$ and the sites of interest number at least $M_Z + K_Z$.
+reported as a share $u(f)/N_c$ of the $N_c$ sites of the certified levels. Coverage was estimated over the 250 campaigns of the record, with 200 audit draws per campaign on the IR and NaCl maps and 50 on the synthetic map. On the two-claim variant of the synthetic map the audit was also stratified by the claim of the skip, 50 sites under the no-interest claim and 50 under the interpolation claim alone, each stratum bounded at $1 - (1 - c)/2$ and the bounds summed. Within the no-interest stratum, 100 audit sites bound the number $K_Z$ of sites of interest skipped there; with $M_Z$ sites of interest measured on certified levels, the share of the sites of interest lost is at most $u_Z/(M_Z + u_Z)$, because that share grows with $K_Z$ and the sites of interest number at least $M_Z + K_Z$.
 
 **Table S10.3.** Audit of the final maps of the record: true share of certified-level sites the final map predicts outside tolerance (mean over 250 campaigns), mean audit bound and coverage over the audit draws (250 × 200; synthetic 250 × 50).
 
@@ -60,11 +60,11 @@ reported as a share $u(f)/N_c$ of the $N_c$ sites of the certified levels. Cover
 | NaCl scan | 18.0 % | 50 | 20.9 % | 84.1 % | 23.4 % | 96.4 % |
 |  |  | 100 | 19.8 % | 83.0 % | 21.5 % | 96.1 % |
 |  |  | 200 | 19.0 % | 82.5 % | 20.0 % | 96.0 % |
-| Synthetic map | 8.4 % | 50 | 12.7 % | 86.7 % | 16.5 % | 97.6 % |
-|  |  | 100 | 11.1 % | 85.4 % | 13.6 % | 96.8 % |
-|  |  | 200 | 10.1 % | 84.1 % | 11.7 % | 96.5 % |
+| Synthetic map | 3.6 % | 50 | 6.2 % | 89.2 % | 8.4 % | 98.8 % |
+|  |  | 100 | 5.1 % | 86.2 % | 6.5 % | 97.3 % |
+|  |  | 200 | 4.5 % | 84.6 % | 5.4 % | 96.6 % |
 
-On the synthetic map the stratified audit of 100 sites bounded the share at 14.6 % at 0.80 (coverage 96.1 %) and 17.8 % at 0.95 (coverage 99.5 %). From 100 sites of the no-interest stratum, the share of the sites of interest lost under the no-interest claim, 34.7 % on average, was bounded at 66.6 % at 0.80 (coverage 100.0 %) and 69.9 % at 0.95 (coverage 100.0 %), a statement that needs no change to the campaign but is loose: the measured sites of interest are few, and the label-conditional rule of SI 10.1 bounds the same share at 0.20. Stratification cost more than it gained here, because each stratum carries half the confidence.
+On the two-claim variant of the synthetic map (SI 6.2), the stratified audit of 100 sites bounded the share at 14.6 % at 0.80 (coverage 96.1 %) and 17.8 % at 0.95 (coverage 99.5 %). From 100 sites of the no-interest stratum, the share of the sites of interest lost under the no-interest claim, 34.7 % on average, was bounded at 66.6 % at 0.80 (coverage 100.0 %) and 69.9 % at 0.95 (coverage 100.0 %), a statement that needs no change to the campaign but is loose: the measured sites of interest are few, and the label-conditional rule of SI 10.1 bounds the same share at 0.20. Stratification cost more than it gained here, because each stratum carries half the confidence.
 
 **A Gaussian-process acquisition campaign.** On the NaCl scan a campaign was steered by the process of SI 7: presence and log width each modelled by a Gaussian process with RBF and white-noise kernel, maximum likelihood, from the seed sites on. In batches of 25, it measured the unmeasured sites with the largest posterior probability that skipping them would be wrong, the probability being the presence probability for a predicted absent line and one minus the probability of presence within tolerance otherwise (SI 7), with the predictive standard deviation. At 614, 694 and 800 sites measured, the map predicted every other site, and 100 audit sites drawn uniformly from the unmeasured sites bounded its errors at confidence 0.80; the campaign is deterministic, so coverage is over 2000 audit draws (Table S10.4).
 
