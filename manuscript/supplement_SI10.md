@@ -14,6 +14,8 @@ and the no-interest claim covers only sites whose entry time on the path lies be
 
 **Result.** Over 250 campaigns (Table S10.1), the plan lost 8.5 ± 4.4 % of the sites of interest on certified levels under the no-interest claim, against 34.7 ± 8.5 % without the conditional bound, and measured 359 ± 26 sites against 334 ± 26. Of 1500 level checks, 4.9 % exceeded the share of 0.20 that the conditional bound allows to fail at 20 %; without the conditional bound, 58.7 % did. The shared budget was exceeded on 2 of 1500 level checks, against 11.3 % expected under the picked failure probabilities: the restricted cover leaves the shared rate well below its budget.
 
+On the NaCl scan, where about two thirds of the sites hold the line, the same rule over 250 campaigns lost 8.1 ± 3.0 % of the sites of interest, against 9.2 ± 3.2 % without it, at 630 ± 59 measurements against 614 ± 56; 1.4 % of level checks exceeded the share, against 2.2 % without the statement. Where signal is common, the shared budget already spares it, and the conditional bound changes little and costs little.
+
 **Table S10.1.** Sites of interest lost under the no-interest claim on the synthetic map, per certified level (mean over 250 campaigns).
 
 | Level | 3 | 4 | 5 | 6 | 7 | 8 |
