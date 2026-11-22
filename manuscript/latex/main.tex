@@ -205,7 +205,7 @@ A reader of the record needs to know what each guarantee covers:
 \item
   \textbf{Design sites only.} Nothing is claimed between design sites, and a map drawn afterwards from all measurements carries a statement only through the audit of Section~\ref{sec:3-6}.
 \item
-  \textbf{One measurement as truth.} A label compares the prediction with what a single measurement returns, noise included, so a tolerance close to the measurement scatter makes many predictions fail whatever the model.
+  \textbf{One measurement as truth.} A label compares the prediction with what a single measurement returns, noise included, so a tolerance has to lie above the precision of the measured quantity; a tolerance close to the variation between neighbouring sites makes many predictions fail whatever the model.
 \end{itemize}
 
 Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw (Appendix~\ref{app:C}), and the calibration labels also bound the share of the level that the map from coarser levels predicts outside tolerance (SI 9).
@@ -264,12 +264,12 @@ Interpolation: the prediction from coarser levels meets
 \bottomrule\noalign{}
 \endlastfoot
 Synthetic map & every site (no interest claim) & every point of the profile within 0.5 \% + 0.005, on average over the 240 points \\
-NaCl scan & the (200) line at 22.28 nm\ensuremath{^{-1}}, at least five times the noise above its local baseline & the (200) width within 0.02 nm\ensuremath{^{-1}}, about half a detector bin \\
+NaCl scan & the (200) line at 22.28 nm\ensuremath{^{-1}}, at least five times the noise above its local baseline & the (200) width within 0.02 nm\ensuremath{^{-1}}, the median width difference between neighbouring design sites \\
 IR map & absorbance of 0.1 or more in some channel of the window & every channel within 10 \% + 0.10 absorbance, on average over channels above 0.02 \\
 \end{longtable}
 }
 
-A second setting of the IR map tightens the envelope to 10 \% + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section~\ref{sec:5-5} and SI 6 compare six metrics on the three datasets.
+The NaCl tolerance was set from the widths measured over the full scan, without a model of what makes them vary: ten times above the precision of the width and at the median difference between neighbouring design sites (SI 2). A second setting of the IR map tightens the envelope to 10 \% + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section~\ref{sec:5-5} and SI 6 compare six metrics on the three datasets.
 
 \hypertarget{sec:4-3}{%
 \subsection{Protocols}\label{sec:4-3}}
@@ -398,7 +398,7 @@ An instrument record becomes useful once every site of a map carries its reason.
 
 In the campaigns shown, the wrong skips were 3.8 \% of the sites on certified levels of the IR map, against a budget of 0.10 per level, 11.8 \% on NaCl, against 0.20, and 5.3 \% on the synthetic map, against 0.10. The wrong skips of the synthetic map gather along the phase boundaries and the walls of the composition triangle; the guarantee bounds their rate on each level and leaves their location open (Section~\ref{sec:5-5}; SI 6).
 
-In hindsight, the record shows which measurements every claim would have skipped wrongly (SI 8): 43 \% of the sites measured for want of a claim on the synthetic map, against 40 \% of sites drawn at random, where the tight tolerance fails at most sites, and 47 \% against 35 \% on NaCl, where the width scatters from site to site by about the tolerance.
+In hindsight, the record shows which measurements every claim would have skipped wrongly (SI 8): 43 \% of the sites measured for want of a claim on the synthetic map, against 40 \% of sites drawn at random, where the tight tolerance fails at most sites, and 47 \% against 35 \% on NaCl, where the width varies between neighbouring sites by about the tolerance.
 
 \begin{figure}[tbp]
 \centering
@@ -455,7 +455,7 @@ The bound concerns a decision, and it holds whatever model proposes the skips. A
 \hypertarget{scope-of-the-guarantee}{%
 \subsection{Scope of the guarantee}\label{scope-of-the-guarantee}}
 
-A map built under a guarantee serves its reader to the extent that the reader knows what the bound covers. The bound concerns the share of wrong skips among all design sites of a level, with probability over the calibration draw. Section~\ref{sec:5-5} and SI 6 show the two consequences: wrong skips gather in space, and when signal is rare a budget met on every level can still cost a large share of the sites of interest. A label-conditional statement bounds the share of interesting sites lost (Section~\ref{sec:5-5}); it rests on the calibration sites of interest alone, so a rare signal calls for a larger draw. Labels compare with one measurement (Section~\ref{sec:3-5}). On the NaCl scan the width scatters from site to site by about the tolerance, and about half of all predictions fail whatever the model, while counting noise alone makes a second measurement fail against the first at 1.1 \% of sites (SI 2); the scatter lies in the sample, or in variation the counting noise leaves out, and repeated measurements would set the tolerance. Fully measured data check the rule against a fixed truth, and the 250 campaigns per configuration check its implementation. A live campaign remains untested: simulated drift broke the bound and moved most of the error into the measurements, where repeated seed sites found it (Section~\ref{sec:5-6}), and a drift so found can be modelled from the repeated sites and removed, or the calibration sites weighted by age at a bounded loss of coverage \cite{Barber2023}; a measurement that disturbs its neighbours remains a question for the instrument.
+A map built under a guarantee serves its reader to the extent that the reader knows what the bound covers. The bound concerns the share of wrong skips among all design sites of a level, with probability over the calibration draw. Section~\ref{sec:5-5} and SI 6 show the two consequences: wrong skips gather in space, and when signal is rare a budget met on every level can still cost a large share of the sites of interest. A label-conditional statement bounds the share of interesting sites lost (Section~\ref{sec:5-5}); it rests on the calibration sites of interest alone, so a rare signal calls for a larger draw. Labels compare with one measurement (Section~\ref{sec:3-5}). On the NaCl scan the width of the line varies across the sample at the scale of the tolerance, so about half of all predictions fail whatever the model, while counting noise moves the width far less (SI 2); the variation is structure in the sample, from strain, crystallite size or orientation, and measuring most sites is the correct outcome for a claim at that tolerance. Fully measured data check the rule against a fixed truth, and the 250 campaigns per configuration check its implementation. A live campaign remains untested: simulated drift broke the bound and moved most of the error into the measurements, where repeated seed sites found it (Section~\ref{sec:5-6}), and a drift so found can be modelled from the repeated sites and removed, or the calibration sites weighted by age at a bounded loss of coverage \cite{Barber2023}; a measurement that disturbs its neighbours remains a question for the instrument.
 
 \hypertarget{what-is-certified-shapes-the-campaign}{%
 \subsection{What is certified shapes the campaign}\label{what-is-certified-shapes-the-campaign}}

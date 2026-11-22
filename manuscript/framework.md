@@ -91,7 +91,7 @@ A reader of the record needs to know what each guarantee covers:
 - **Share of the level.** The share counts every site of the level, measured or skipped; the share of skipped sites that are wrong is larger and is reported beside it (Table 4).
 - **Count, not place.** The bound limits how many skips fail and leaves their location open; wrong skips can gather, and when sites of interest are rare a level can meet its budget while losing many of them (Section 5.5).
 - **Design sites only.** Nothing is claimed between design sites, and a map drawn afterwards from all measurements carries a statement only through the audit of Section 3.6.
-- **One measurement as truth.** A label compares the prediction with what a single measurement returns, noise included, so a tolerance close to the measurement scatter makes many predictions fail whatever the model.
+- **One measurement as truth.** A label compares the prediction with what a single measurement returns, noise included, so a tolerance has to lie above the precision of the measured quantity; a tolerance close to the variation between neighbouring sites makes many predictions fail whatever the model.
 
 Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw (Appendix C), and the calibration labels also bound the share of the level that the map from coarser levels predicts outside tolerance (SI 9).
 

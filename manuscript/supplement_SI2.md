@@ -30,17 +30,40 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
 
 **The (200) line.** The (200) reflection of rock salt lies at $q = 4\pi / a$ with $a = 5.6402$ Å, or 22.28 nm⁻¹. Its descriptors are taken in the window 22.28 ± 0.40 nm⁻¹: the position of the tallest local maximum, refined by a parabola through the logarithms of intensity and $q$, its height above a local baseline (the higher of the two flanking minima), and its full width at the level midway between baseline and peak.
 
-**Noise and presence.** The noise in the window is estimated once from all design sites. Each profile is reduced to residuals from a straight baseline across the window. The 30 % of profiles with the smallest largest residual are taken as off the ring, and the noise is 1.4826 times the median absolute deviation of their residuals: $\sigma = 0.117$ in the units of the deposit. A line is present when its height above baseline exceeds $5\sigma$; on that criterion 64 % of the design sites hold the line, and these are the sites of interest. With this noise added twice, independently, to every measured profile, the second copy fails the width claim against the first at 1.1 % ± 0.3 % of the 1071 design sites (20 repetitions); the site-to-site scatter of the width that makes about half of all predictions fail lies above the counting noise.
+**Noise and presence.** The noise in the window is estimated once from all design sites. Each profile is reduced to residuals from a straight baseline across the window. The 30 % of profiles with the smallest largest residual are taken as off the ring, and the noise is 1.4826 times the median absolute deviation of their residuals: $\sigma = 0.117$ in the units of the deposit. A line is present when its height above baseline exceeds $5\sigma$; on that criterion 64 % of the design sites hold the line, and these are the sites of interest. With this noise added twice, independently, to every measured profile, the second copy fails the width claim against the first at 1.1 % ± 0.3 % of the 1071 design sites (20 repetitions).
 
-**Width tolerance.** A prediction fails when it disagrees with the truth on the presence of the line, or when both show the line and their widths differ by more than 0.02 nm⁻¹, about half the bin width of 0.038 nm⁻¹ at the (200) position. Sites without the line in truth and prediction pass. The same presence test is applied to the predicted profile, so a predicted line too weak to clear $5\sigma$ counts as absent.
+**Width tolerance.** A prediction fails when it disagrees with the truth on the presence of the line, or when both show the line and their widths differ by more than 0.02 nm⁻¹. Sites without the line in truth and prediction pass. The same presence test is applied to the predicted profile, so a predicted line too weak to clear $5\sigma$ counts as absent. The tolerance is set from the widths themselves, measured at all 3249 raster sites, without a model of what makes them vary. The width is read where the profile crosses half its height, interpolated between bins, so its precision is not tied to the bin width of 0.038 nm⁻¹. Over 40 copies of every profile with the noise above added, the width moved by a median of 0.0001 nm⁻¹ and by at most 0.002 nm⁻¹ at 90 % of the sites holding the line. Across the sample the width runs from 0.057 to 0.141 nm⁻¹ (5th to 95th percentile, median 0.098 nm⁻¹), and neighbouring raster sites, 0.25 mm apart, differ by a median of 0.018 nm⁻¹, rising to 0.022 nm⁻¹ at the spacing of the finest design level (Table S2.1). The tolerance of 0.02 nm⁻¹ lies ten times above the precision of the width and at the typical difference between neighbours, so a claim met at it says that the width varies little between a site and its surroundings; the variation is structure in the sample, and at this tolerance about half of all predictions from coarser levels fail whatever the model. Looser tolerances buy few measurements (Table S2.2).
+
+**Table S2.1.** Absolute difference in the (200) width between pairs of raster sites holding the line, by distance; a site of the finest design level lies 0.35 mm from its nearest coarser site.
+
+| distance (mm) | pairs | median (nm⁻¹) | 75th percentile (nm⁻¹) | share above 0.02 | share above 0.04 |
+|---|---|---|---|---|---|
+| 0.25 | 3857 | 0.018 | 0.034 | 46 % | 19 % |
+| 0.26–0.50 | 7397 | 0.022 | 0.038 | 53 % | 22 % |
+| 0.50–1.00 | 37 759 | 0.022 | 0.039 | 55 % | 24 % |
+
+**Table S2.2.** Cost of the NaCl contract against tolerance and budget, quantile path with natural-neighbour prediction at confidence 0.80, 50 campaigns each. Shares are of the sites of levels 3 to 6.
+
+| tolerance (nm⁻¹) | budget | measured | mean share skipped wrongly | level checks over budget | campaigns over on some level |
+|---|---|---|---|---|---|
+| 0.02 | 0.10 | 799 ± 67 | 5.7 % | 12.5 % | 38 % |
+| 0.02 | 0.20 | 619 ± 62 | 14.4 % | 10.5 % | 38 % |
+| 0.03 | 0.10 | 764 ± 85 | 6.0 % | 10.0 % | 32 % |
+| 0.03 | 0.20 | 570 ± 56 | 14.5 % | 9.5 % | 30 % |
+| 0.04 | 0.10 | 733 ± 84 | 5.9 % | 13.5 % | 38 % |
+| 0.04 | 0.20 | 516 ± 61 | 15.1 % | 11.5 % | 38 % |
+| 0.05 | 0.10 | 694 ± 94 | 6.1 % | 12.5 % | 38 % |
+| 0.05 | 0.20 | 478 ± 54 | 15.1 % | 10.0 % | 32 % |
+
+The interest claim and the calibration draws set a floor of about 240 measured sites at every tolerance, and loosening the tolerance from 0.02 to 0.05 nm⁻¹ saved 105 to 141 measurements. Level checks over budget stayed near the picked failure probabilities, about 12 % on average.
 
 ## SI 2.3 Synthetic small-angle scattering map
 
 **Forward model.** A composition $(x, y)$, with $x$ the oil and $y$ the surfactant weight fraction and $x + y \le 1$, maps to a noiseless scattering curve on 240 logarithmically spaced points between 0.005 and 0.32 Å⁻¹. Four phases are separated by straight boundaries in composition: a micellar phase (L1), modelled as polydisperse spheres whose radius swells with solubilised oil, with a Percus–Yevick hard-sphere structure factor; an ordered cubic phase (I1) with face-centred cubic Bragg peaks; a hexagonal phase (H1) with Bragg peaks of a two-dimensional hexagonal lattice and a cylinder form factor; and an oil-rich emulsion, in which excess oil adds Porod scattering. Sigmoids of fixed width smooth every transition, so the curves vary continuously with composition while the peak positions and widths change quickly near the boundaries. The model is carried over from an earlier study and is deposited with the data.
 
-**Parameters.** Table S2.1 lists every parameter of the forward model; the curves carry no noise.
+**Parameters.** Table S2.3 lists every parameter of the forward model; the curves carry no noise.
 
-**Table S2.1.** Parameters of the synthetic forward model (compositions in weight fractions, lengths in Å, $q$ in Å⁻¹).
+**Table S2.3.** Parameters of the synthetic forward model (compositions in weight fractions, lengths in Å, $q$ in Å⁻¹).
 
 | Group | Parameter | Value |
 | --- | --- | --- |

@@ -44,7 +44,7 @@ An instrument record becomes useful once every site of a map carries its reason.
 
 In the campaigns shown, the wrong skips were 3.8 % of the sites on certified levels of the IR map, against a budget of 0.10 per level, 11.8 % on NaCl, against 0.20, and 5.3 % on the synthetic map, against 0.10. The wrong skips of the synthetic map gather along the phase boundaries and the walls of the composition triangle; the guarantee bounds their rate on each level and leaves their location open (Section 5.5; SI 6).
 
-In hindsight, the record shows which measurements every claim would have skipped wrongly (SI 8): 43 % of the sites measured for want of a claim on the synthetic map, against 40 % of sites drawn at random, where the tight tolerance fails at most sites, and 47 % against 35 % on NaCl, where the width scatters from site to site by about the tolerance.
+In hindsight, the record shows which measurements every claim would have skipped wrongly (SI 8): 43 % of the sites measured for want of a claim on the synthetic map, against 40 % of sites drawn at random, where the tight tolerance fails at most sites, and 47 % against 35 % on NaCl, where the width varies between neighbouring sites by about the tolerance.
 
 **Figure 5.** Maps with reasons, one campaign of average cost per dataset (quantile path, natural-neighbour interpolation; NaCl: random state 44; the same campaigns as SI 8). Measured sites: seed (black diamonds), calibration (dark grey squares) and sites without a claim (light grey squares). Skipped sites: not of interest (yellow), predictable (green) and both (blue). Crosses: wrong skips against the fully measured truth. IR in micrometres, NaCl in stage millimetres, synthetic map in composition fractions. File: `figures/fig5_maps.png`.
 

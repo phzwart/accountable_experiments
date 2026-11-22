@@ -23,10 +23,10 @@ The IR map and the NaCl scan each carry one interest claim and one interpolation
 | Dataset | Interest: a site holds | Interpolation: the prediction from coarser levels meets |
 | --- | --- | --- |
 | Synthetic map | every site (no interest claim) | every point of the profile within 0.5 % + 0.005, on average over the 240 points |
-| NaCl scan | the (200) line at 22.28 nm⁻¹, at least five times the noise above its local baseline | the (200) width within 0.02 nm⁻¹, about half a detector bin |
+| NaCl scan | the (200) line at 22.28 nm⁻¹, at least five times the noise above its local baseline | the (200) width within 0.02 nm⁻¹, the median width difference between neighbouring design sites |
 | IR map | absorbance of 0.1 or more in some channel of the window | every channel within 10 % + 0.10 absorbance, on average over channels above 0.02 |
 
-A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
+The NaCl tolerance was set from the widths measured over the full scan, without a model of what makes them vary: ten times above the precision of the width and at the median difference between neighbouring design sites (SI 2). A second setting of the IR map tightens the envelope to 10 % + 0.01, with interest at 0.02 and channels counted above 0.005. Under it, interpolation rather than interest decides the cost. The choice of claim shapes the campaign as much as the budget does; Section 5.5 and SI 6 compare six metrics on the three datasets.
 
 
 ## 4.3 Protocols

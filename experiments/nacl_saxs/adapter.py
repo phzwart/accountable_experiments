@@ -81,7 +81,7 @@ def interest_predicate(sigma: float):
     return interest
 
 
-def criterion(target: str, q: np.ndarray, sigma: float, peak_eps: float | None = None):
+def criterion(target: str, q: np.ndarray, sigma: float, peak_eps: float | None = None, tol: float | None = None):
     if target == "envelope":
         return AccuracyCriterion(kind="envelope", rtol=RTOL, atol=ATOL, q_unit="nm^-1")
     if target == "integral":
@@ -92,7 +92,7 @@ def criterion(target: str, q: np.ndarray, sigma: float, peak_eps: float | None =
     if target == "fwhm":
         return AccuracyCriterion(
             kind="peak", q=q, q_center=Q200, q_halfwidth=Q200_HALF,
-            include_position=False, include_width=True, fwhm_eps=FWHM_TOL,
+            include_position=False, include_width=True, fwhm_eps=FWHM_TOL if tol is None else float(tol),
             tol_mode="absolute", presence_sigma=sigma, presence_multiple=PRESENCE_C,
             q_unit="nm^-1",
         )
@@ -101,14 +101,15 @@ def criterion(target: str, q: np.ndarray, sigma: float, peak_eps: float | None =
 
 def config(ds: Dataset, *, target="fwhm", mode="2cert", confidence=0.90, seed=0,
            score="logistic", policy="separate", eps=0.10, peak_eps=None,
-           cal_size=40, policy_kwargs=None, nn_method="watson", interp_model="sibson", gp_kwargs=None) -> CampaignConfig:
+           cal_size=40, policy_kwargs=None, nn_method="watson", interp_model="sibson", gp_kwargs=None,
+           tol=None) -> CampaignConfig:
     """
     The NaCl campaign as specified in BRIEFING.md: seed ≤ L2, 40
     calibration sites per level, joint budget 0.10 per certificate.
     ``mode`` is ``interp`` (interpolation certificate only) or ``2cert``.
     """
     sigma = noise_sigma(ds)
-    crit = criterion(target, ds.axis, sigma, peak_eps)
+    crit = criterion(target, ds.axis, sigma, peak_eps, tol)
     interest = interest_predicate(sigma)
     s_seed = int(seed) + 10000
     if score == "random":
