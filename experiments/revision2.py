@@ -222,13 +222,15 @@ def upper_count(N, n, f, delta):
     return int(K[ok].max()) if ok.any() else int(f)
 
 
-def audit(sizes=(50, 100, 200), confs=(0.80, 0.95), reps=200):
+def audit(sizes=(50, 100, 200), confs=(0.80, 0.95), reps=200, keys=None):
     """The audit is drawn after the last level, uniformly from the skipped sites of the certified levels,
     measured, and used for nothing else. It bounds the number of skipped sites the final map gets wrong,
     hence the share of the certified-level sites, with the stated confidence. Coverage is over campaigns
     and over `reps` audit draws per campaign."""
-    res = {}
+    res = json.loads((OUT / "audit.json").read_text()) if (OUT / "audit.json").exists() else {}
     for key, row in ROWS.items():
+        if keys and key not in keys:
+            continue
         z = np.load(REC / row / "sites.npz")
         W = np.load(OUT / f"finalmap_{key}.npz")["wrong"]
         lv = z["levels"]; cert = lv > 2
@@ -277,9 +279,11 @@ def audit(sizes=(50, 100, 200), confs=(0.80, 0.95), reps=200):
                 out[f"strat_c{c:.2f}"] = dict(coverage=float(np.mean(cov_m)), bound_mean=float(np.mean(bnd_m)))
                 out[f"interest_lost_c{c:.2f}"] = dict(coverage=float(np.mean(cov_r)), bound_mean=float(np.mean(bnd_r)),
                                                       true_mean=float(np.mean(true_r)))
+        out["reps"] = reps
+        out.setdefault("reps", reps)
         res[key] = out
         print(key, json.dumps(out), flush=True)
-    (OUT / "audit.json").write_text(json.dumps(res, indent=1))
+        (OUT / "audit.json").write_text(json.dumps(res, indent=1))
 
 
 # ------------------------------------------------------------------ GP acquisition campaign on NaCl
@@ -343,5 +347,8 @@ def gpacq(batch=25, checkpoints=(614, 694, 800), n_a=100, conf=0.80, reps=2000):
 
 
 if __name__ == "__main__":
-    {"recall": recall, "drift": drift, "costgrid": costgrid, "finalmap": finalmap, "audit": audit,
-     "gpacq": gpacq}[sys.argv[1]]()
+    if sys.argv[1] == "audit" and len(sys.argv) > 2:
+        audit(reps=int(sys.argv[3]) if len(sys.argv) > 3 else 200, keys=sys.argv[2].split(","))
+    else:
+        {"recall": recall, "drift": drift, "costgrid": costgrid, "finalmap": finalmap, "audit": audit,
+         "gpacq": gpacq}[sys.argv[1]]()
