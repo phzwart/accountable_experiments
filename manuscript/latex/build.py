@@ -19,7 +19,7 @@ M = HERE.parent
 TITLE = "Accountable experiments: autonomy under contract"
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C"]
-SI = [f"supplement_SI{i}" for i in range(1, 10)]
+SI = [f"supplement_SI{i}" for i in range(1, 11)]
 FIGS = {1: "fig_hook_three", 2: "fig1_schematic", 3: "fig_datasets_claims", 4: "fig_stated", 5: "fig5_maps", 6: "fig_cost",
         "S1": "figS1_gp_std", "S3": "fig3_forms", "S6": "figS6_sampling", "S7": "figS7_cost", "S8": "figS8_measured"}
 NBSP = "\u00a0"
@@ -275,7 +275,7 @@ def main():
 
 \data{""" + data + r"""}
 
-\suppdata{Supporting information: SI 1 interpolators; SI 2 dataset processing; SI 3 full tables; SI 4 adding a form of guarantee; SI 5 the run record; SI 6 the certified metric; SI 7 campaigns guided by Gaussian-process uncertainty; SI 8 the record of measured sites; SI 9 the map bound.}
+\suppdata{Supporting information: SI 1 interpolators; SI 2 dataset processing; SI 3 full tables; SI 4 adding a form of guarantee; SI 5 the run record; SI 6 the certified metric; SI 7 campaigns guided by Gaussian-process uncertainty; SI 8 the record of measured sites; SI 9 the map bound; SI 10 checks beyond the level.}
 
 \IfFileExists{iopart-num.bst}{\bibliographystyle{iopart-num}}{\bibliographystyle{unsrt}}
 \bibliography{refs}

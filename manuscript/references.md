@@ -13,10 +13,12 @@ Status: **V** verified against the publisher or an index during drafting; **M** 
 - [Bassan2010] **M** Bassan, Kohler, Martens, Lee, Byrne, Dumas, Gazi, Brown, Clarke, Gardner (2010). Resonant Mie scattering (RMieS) correction of infrared spectra from highly scattering biological samples. Analyst 135, 268–277. SI only.
 - [Bates2021] **V** Bates, Angelopoulos, Lei, Malik, Jordan (2021). Distribution-free, risk-controlling prediction sets. J. ACM 68(6), 43. doi:10.1145/3478535.
 - [Bridson2007] **M** Bridson (2007). Fast Poisson disk sampling in arbitrary dimensions. ACM SIGGRAPH 2007 Sketches, 22.
+- [Brunger1992] **V** Brünger (1992). Free R value: a novel statistical quantity for assessing the accuracy of crystal structures. Nature 355(6359), 472–475. doi:10.1038/355472a0.
 - [Burger2020] **V** Burger et al. (2020). A mobile robotic chemist. Nature 583, 237–241. doi:10.1038/s41586-020-2442-2.
 - [CerouGuyader2007] **V** Cérou, Guyader (2007). Adaptive multilevel splitting for rare event analysis. Stoch. Anal. Appl. 25(2), 417–443.
 - [ClopperPearson1934] **M** Clopper, Pearson (1934). The use of confidence or fiducial limits illustrated in the case of the binomial. Biometrika 26(4), 404–413.
 - [Cochran1977] **M** Cochran (1977). Sampling Techniques, 3rd ed. Wiley.
+- [Dawid1982] **V** Dawid (1982). The well-calibrated Bayesian. J. Am. Stat. Assoc. 77(379), 605–610.
 - [DavidNagaraja2003] **V** David, Nagaraja (2003). Order Statistics, 3rd ed. Wiley.
 - [DodgeRomig1959] **M** Dodge, Romig (1959). Sampling Inspection Tables: Single and Double Sampling, 2nd ed. Wiley.
 - [EU2024] **V** Regulation (EU) 2024/1689 (Artificial Intelligence Act), OJ L 2024/1689, 12.7.2024, Article 12.

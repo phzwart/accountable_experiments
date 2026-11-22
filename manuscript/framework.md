@@ -72,7 +72,7 @@ alongside a separate guarantee for each claim. The split leaves each claim a sma
 
 **One budget along a path.** A single budget spends all of $\varepsilon$ and $\delta$ on $R_E$. Two thresholds cannot be read off one draw by an order statistic, and Learn-then-Test supplies the remedy: search a family of thresholds fixed before any label is seen [Angelopoulos2025]. Here the family is a path $\lambda \mapsto (\tau_a(\lambda), \tau_b(\lambda))$, built from the frozen scores alone, along which both thresholds rise. The wrong-skip sets along such a path are nested, $R_E(\lambda)$ grows with $\lambda$, and the rule of Section 3.3 applies with $\lambda$ in place of the threshold (Appendix B). Two paths are used. The quantile path moves both thresholds through matching quantiles of their scores on the level. The priority path admits the claims in a set order: the first claim sweeps its quantiles before the second moves. A preference between the claims thereby enters the decision with the guarantee intact.
 
-**Further forms.** Any rule built from scores frozen before the draw, a uniform calibration draw and a family of thresholds fixed before the labels are known inherits a finite-sample guarantee, including a bound on a conditional rate (Appendix C). Table 1 summarises the forms; SI 4 gives the Monte Carlo acceptance check every form here passes.
+**Further forms.** Any rule built from scores frozen before the draw, a uniform calibration draw and a family of thresholds fixed before the labels are known inherits a finite-sample guarantee, including a bound on a conditional rate (Appendix C). A label-conditional statement protects the sites of interest: given their number, the calibration sites of interest are a uniform draw from those of the level, and the rule of Section 3.3, with the worst case over their unknown total, limits the share skipped under the no-interest claim [Vovk2005; Sadinle2019]; a cover so restricted keeps every bound it carried. Table 1 summarises the forms; SI 4 gives the Monte Carlo acceptance check every form here passes.
 
 **Table 1.** Forms of guarantee on the wrong-skip event of one level. Every form uses the same frozen scores and the same calibration draw.
 
@@ -96,6 +96,10 @@ A reader of the record needs to know what each guarantee covers:
 Two further statements accompany each level. The rate of wrong skips among the sites left after calibration, the remainder, follows from the same draw (Appendix C), and the calibration labels also bound the share of the level that the map from coarser levels predicts outside tolerance (SI 9).
 
 Each site of an action carries its reason. A site was measured because the plan placed it in the seed, the draw placed it in the calibration sample, or no claim covered it under the thresholds frozen for its level, and it was skipped under the claim that covered it. The reasons are exact, fixed at the time of decision and replayable; a measured site that hindsight finds predictable counts as a cost of the guarantee.
+
+## 3.6 An audit of the finished map
+
+A campaign ends with a map, and the map deserves a statement of its own. After the last level, an audit sample drawn uniformly from the skipped sites is measured and kept out of the map, as the free set of reflections is kept out of crystallographic refinement [Brunger1992]. Its failures bound, through the exact hypergeometric limit of SI 9, how many skipped sites the map predicts outside tolerance. The bound covers the whole run at one confidence and sits over any campaign whose map is fixed before the draw; strata fixed in advance, such as the claim of a skip, give one bound each.
 
 ---
 
