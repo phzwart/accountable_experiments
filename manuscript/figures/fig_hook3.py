@@ -61,7 +61,7 @@ def main():
 
     fig = plt.figure(figsize=(7.2, 3.4))
     # (a)
-    axg = fig.add_axes([0.015, 0.24, 0.285, 0.56]); axg.set_facecolor("#f4f3ef")
+    axg = fig.add_axes([0.01, 0.24, 0.255, 0.56]); axg.set_facecolor("#f4f3ef")
     vmin, vmax = np.nanpercentile(img, 5), np.nanpercentile(img, 95)
     imw = axg.imshow(img, origin="lower", cmap="viridis", alpha=0.85, vmin=vmin, vmax=vmax, interpolation="nearest")
     rxy = xy[np.asarray(ds.meta["raster_index"])]
@@ -88,7 +88,7 @@ def main():
     fig.text(0.01, 0.955, "(a) Sample and one design", fontsize=7.8, color=INK)
 
     # (b)
-    axb = fig.add_axes([0.375, 0.24, 0.39, 0.56])
+    axb = fig.add_axes([0.40, 0.24, 0.365, 0.56])
     lo_y, hi_y = -0.16, 0.14
     axb.axhspan(0, hi_y, color=RED, alpha=0.05, lw=0, zorder=0); axb.axhspan(lo_y, 0, color=BLUE, alpha=0.05, lw=0, zorder=0)
     xpos = {("fitted", j): j for j in range(3)}; xpos.update({("nugget", j): 3.6 + j for j in range(3)})
@@ -106,8 +106,8 @@ def main():
                 axb.fill_betweenx(y[high], x0, x0 + side * dd[high], color=col, alpha=0.35, lw=0, zorder=3)
                 wq = float(np.interp(q, y, dd))
                 axb.plot([x0, x0 + side * max(wq, 0.07)], [q, q], color=INK, lw=1.0, zorder=4)
-                axb.text(x0 + side * 0.22, lo_y - 0.048, f"{A[(kernel, cut)]['measured'][j]:.0f}", ha="center", va="top",
-                         fontsize=6.2, color=col, clip_on=False)
+                axb.text(x0 + side * 0.25, lo_y - 0.048, f"{A[(kernel, cut)]['measured'][j]:.0f}", ha="center", va="top",
+                         fontsize=5.8, color=col, clip_on=False)
         mid = np.mean([xpos[(kernel, j)] for j in range(3)])
         axb.text(mid, hi_y - 0.004, f"{KLAB[kernel]} kernel", ha="center", va="top", fontsize=7.0, color=INK,
                  fontweight="bold", zorder=6)
@@ -125,13 +125,13 @@ def main():
     axb.tick_params(axis="y", labelsize=6.2)
     for s_ in ("top", "right"):
         axb.spines[s_].set_visible(False)
-    fig.text(0.30, 0.955, "(b) Delivered against stated, 80 campaigns per round", fontsize=7.8, color=INK)
-    fig.text(0.375, 0.895, "own word (left halves)", fontsize=6.6, color=ORANGE, fontweight="bold")
-    fig.text(0.555, 0.895, "contract (right halves)", fontsize=6.6, color=PURPLE, fontweight="bold")
-    fig.text(0.375, 0.845, "dark: lowest 80 % of campaigns, ending at the tick;\ncalibrated if the tick lies on zero", fontsize=5.7, color=INK2, linespacing=1.1)
+    fig.text(0.315, 0.955, "(b) Delivered against stated, 80 campaigns per round", fontsize=7.8, color=INK)
+    fig.text(0.40, 0.895, "own word (left halves)", fontsize=6.6, color=ORANGE, fontweight="bold")
+    fig.text(0.58, 0.895, "contract (right halves)", fontsize=6.6, color=PURPLE, fontweight="bold")
+    fig.text(0.40, 0.845, "dark: lowest 80 % of campaigns, ending at the tick;\ncalibrated if the tick lies on zero", fontsize=5.7, color=INK2, linespacing=1.1)
 
     # (c)
-    axc = fig.add_axes([0.845, 0.24, 0.14, 0.56])
+    axc = fig.add_axes([0.86, 0.24, 0.125, 0.56])
     axc.axhline(CONF, color=INK, lw=0.9, ls=(0, (4, 3)))
     axc.text(3.48, CONF - 0.008, "promised", fontsize=5.8, color=INK, ha="right", va="top")
     for kernel, mfc_on, dx in (("fitted", True, -0.08), ("nugget", False, 0.08)):
@@ -150,9 +150,9 @@ def main():
     for s_ in ("top", "right"):
         axc.spines[s_].set_visible(False)
     axc.text(0.55, 0.53, "filled: fitted noise\nhollow: fixed nugget", fontsize=5.6, color=INK, va="bottom")
-    fig.text(0.80, 0.955, "(c) Promise kept", fontsize=7.8, color=INK)
+    fig.text(0.805, 0.955, "(c) Promise kept", fontsize=7.8, color=INK)
 
-    for ext in ("png", "pdf"):
+    for ext in ("png", "pdf", "svg"):
         fig.savefig(FIG / f"fig_hook3.{ext}", dpi=300)
     for kk, v in A.items():
         print(kk, "q80", np.quantile(v["d"], CONF, axis=0).round(3), "within", (v["d"] <= 1e-12).mean(0).round(3), "total", round(v["total"]))
