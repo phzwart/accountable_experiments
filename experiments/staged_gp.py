@@ -112,6 +112,42 @@ def own_word_cal(xy, w, p, lv, seed):
     return levels
 
 
+def upper_count(N, m, k, conf=CONF):
+    """Exact upper confidence limit at conf on the population count W from k events among m drawn of N."""
+    W = np.arange(k, N + 1)
+    return int(W[hypergeom.cdf(k, N, W, m) > 1 - conf].max())
+
+
+def contract_leftover(xy, w, p, lv, seed):
+    """Contract with the same target as own_word_cal: wrong skips among the sites left after the calibration draw
+    at most floor(EPS N) with probability at least CONF. Cut: the largest threshold whose exact upper limit on the
+    round's event count, less the events already seen in the (measured) calibration draw, stays within the cap."""
+    rng = np.random.default_rng(5000 + seed)
+    measured = lv <= SEED_MAX; levels = []
+    for L in range(SEED_MAX + 1, int(lv.max()) + 1):
+        idx = np.flatnonzero(lv == L); N = len(idx)
+        q, wrong = level_model(xy, w, p, measured, idx)      # fitted and frozen before the draw
+        cal = rng.choice(N, size=min(M, N), replace=False)
+        cap = int(np.floor(EPS * N)); m = len(cal)
+        t_best, u_best, k_best = -np.inf, None, 0
+        for t in np.concatenate([[-np.inf], np.sort(np.unique(q))]):
+            k = int(((q[cal] <= t) & wrong[cal]).sum())
+            u = upper_count(N, m, k)
+            if u - k <= cap:
+                t_best, u_best, k_best = t, u, k
+            else:
+                break
+        rest = np.setdiff1d(np.arange(N), cal)
+        skip = rest[q[rest] <= t_best]
+        levels.append(dict(L=L, N=N, m=m, k_cal=k_best, u=u_best, stated_bound=(u_best - k_best) / N,
+                           n_skip=int(len(skip)), measured_after=int(measured.sum() + N - len(skip)),
+                           realised=int(wrong[skip].sum()),
+                           skip_idx=idx[skip].tolist(), wrong_idx=idx[skip][wrong[skip]].tolist()))
+        sel = np.ones(N, bool); sel[skip] = False
+        measured[idx[sel]] = True
+    return levels
+
+
 def contract(xy, w, p, lv, seed):
     rng = np.random.default_rng(5000 + seed)
     measured = lv <= SEED_MAX; levels = []

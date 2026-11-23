@@ -13,7 +13,8 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 import os
-from experiments.staged_gp import EPS, SEED_MAX, contract, own_word, own_word_cal
+from experiments.staged_gp import EPS, SEED_MAX, contract, contract_leftover, own_word, own_word_cal
+CON_LEFT = os.environ.get("STAGED_CONTRACT_LEFTOVER") == "1"
 OWN_CAL = os.environ.get("STAGED_OWN_CAL") == "1"
 from experiments.uncertified_gp import site_truth
 
@@ -61,7 +62,7 @@ def main(start, n):
         idx, lv = make_design(1000 + d, xy_all)
         xy, w, p = xy_all[idx], w_all[idx], p_all[idx]
         own = own_word_cal(xy, w, p, lv, d) if OWN_CAL else own_word(xy, w, p, lv)
-        con = contract(xy, w, p, lv, d)
+        con = contract_leftover(xy, w, p, lv, d) if CON_LEFT else contract(xy, w, p, lv, d)
         for o in own:
             o.pop("stated_pmf", None)
         for lvl in own + con:                      # design indices -> raster indices
@@ -70,7 +71,7 @@ def main(start, n):
         with OUT.open("a") as f:
             f.write(json.dumps(row) + "\n")
         print(d, len(idx), "own", own[-1]["measured_after"], [(o["realised"], int(EPS * o["N"])) for o in own],
-              "contract", con[-1]["measured_after"], [(c["W_level"], int(EPS * c["N"])) for c in con], flush=True)
+              "contract", con[-1]["measured_after"], [(c.get("W_level", c["realised"]), int(EPS * c["N"])) for c in con], flush=True)
 
 
 if __name__ == "__main__":
