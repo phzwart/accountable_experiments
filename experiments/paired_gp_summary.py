@@ -5,7 +5,7 @@ from scipy.stats import binomtest
 
 rr = [json.loads(l) for l in open("results/revision2/paired_gp.jsonl")]
 out = {}
-for kernel in ("fitted", "nugget"):
+for kernel in ("fitted", "nugget", "smooth"):
     for driver in ("contract", "uq"):
         sub = [r for r in rr if r["kernel"] == kernel and r["driver"] == driver]
         if not sub:

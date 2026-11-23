@@ -30,7 +30,7 @@ INK, INK2 = "#0b0b0b", "#52514e"
 ORANGE, PURPLE = "#eb6834", "#8e6cc8"
 RED, BLUE = "#b8391f", "#2f5f9e"
 CONF = 0.80
-KLAB = {"fitted": "fitted noise", "nugget": "fixed nugget"}
+KLAB = {"fitted": "fitted noise", "nugget": "fixed nugget", "smooth": "long length scale"}
 
 
 def cp(k, n, a=0.05):

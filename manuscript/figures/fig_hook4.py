@@ -29,7 +29,8 @@ def main():
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 7.5, "axes.edgecolor": INK2,
                          "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK})
     rr = [json.loads(l) for l in open(ROOT / "results/revision2/paired_gp.jsonl")]
-    A = {(k, c): arm(rr, k, c) for k in ("fitted", "nugget") for c in ("uq", "contract")}
+    KERN = ("fitted", "nugget", "smooth")
+    A = {(k, c): arm(rr, k, c) for k in KERN for c in ("uq", "contract")}
 
     from fig_datasets import nacl_fwhm
     from experiments.nacl_saxs.adapter import load as nload
@@ -66,12 +67,12 @@ def main():
 
     # (b) promise kept
     axb = fig.add_axes([0.45, 0.25, 0.53, 0.60])
-    lo, hi = 0.5, 1.09
+    lo, hi = 0.0, 1.13
     axb.axhspan(CONF, hi, color=BLUE, alpha=0.06, lw=0, zorder=0)
     axb.axhspan(lo, CONF, color=RED, alpha=0.06, lw=0, zorder=0)
     axb.axhline(CONF, color=INK, lw=1.0, zorder=2)
-    gx = {"fitted": 0.0, "nugget": 3.8}
-    for kernel in ("fitted", "nugget"):
+    gx = {"fitted": 0.0, "nugget": 3.6, "smooth": 7.2}
+    for kernel in KERN:
         for j in range(3):
             for cut, col, mk, off in (("uq", ORANGE, "o", -0.16), ("contract", PURPLE, "s", 0.16)):
                 d = A[(kernel, cut)]["d"]; n = d.shape[0]
@@ -80,18 +81,19 @@ def main():
                 axb.plot([x, x], [l_, h_], color=col, lw=1.3, zorder=3, solid_capstyle="butt")
                 axb.plot(x, kk / n, mk, ms=6, color=col, mec=INK, mew=0.6, zorder=4)
         mid = gx[kernel] + 1
-        axb.text(mid, hi - 0.003, f"{KLAB[kernel]} kernel", ha="center", va="top", fontsize=7.4, color=INK, fontweight="bold")
-        axb.text(mid, lo - 0.115, f"measured: {A[(kernel, 'uq')]['total']:.0f} own word, "
-                                  f"{A[(kernel, 'contract')]['total']:.0f} contract",
-                 ha="center", va="top", fontsize=6.2, color=INK2, clip_on=False)
-    axb.axvline(2.9, color=INK2, lw=0.6, ls=(0, (2, 2)))
-    axb.text(6.75, 1.035, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
-    axb.text(6.75, 0.52, "promise broken", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
-    axb.text(-0.45, CONF + 0.006, "promised: 80 %", ha="left", va="bottom", fontsize=6.4, color=INK)
-    ticks = [gx[k] + j for k in ("fitted", "nugget") for j in range(3)]
-    axb.set_xticks(ticks, [f"round {j + 1}" for _ in range(2) for j in range(3)], fontsize=6.6)
-    axb.set_xlim(-0.5, 6.8); axb.set_ylim(lo, hi)
-    axb.set_yticks([0.5, 0.6, 0.7, 0.8, 0.9, 1.0], ["50 %", "60 %", "70 %", "80 %", "90 %", "100 %"])
+        axb.text(mid, hi - 0.005, f"{KLAB[kernel]}", ha="center", va="top", fontsize=7.0, color=INK, fontweight="bold")
+        axb.text(mid, lo - 0.19, f"sites measured\n{A[(kernel, 'uq')]['total']:.0f} own · {A[(kernel, 'contract')]['total']:.0f} contract",
+                 ha="center", va="top", fontsize=6.0, color=INK2, clip_on=False, linespacing=1.1)
+    axb.axvline(2.8, color=INK2, lw=0.6, ls=(0, (2, 2))); axb.axvline(6.4, color=INK2, lw=0.6, ls=(0, (2, 2)))
+    axb.text(9.75, 0.985, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
+    axb.text(9.75, 0.03, "promise broken", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
+    axb.annotate("promised: 80 %", xy=(1.0, CONF), xytext=(1.0, 0.55), ha="center", va="center", fontsize=6.6, color=INK,
+                 arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
+    ticks = [gx[k] + j for k in KERN for j in range(3)]
+    axb.set_xticks(ticks, [f"{j + 1}" for _ in KERN for j in range(3)], fontsize=6.6)
+    axb.set_xlabel("round", fontsize=6.8, labelpad=1)
+    axb.set_xlim(-0.5, 9.8); axb.set_ylim(lo, hi)
+    axb.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], ["0 %", "20 %", "40 %", "60 %", "80 %", "100 %"])
     axb.tick_params(axis="y", labelsize=6.6)
     axb.set_ylabel("campaigns within the bound\nstated before the round", fontsize=7, labelpad=2)
     for s_ in ("top", "right"):

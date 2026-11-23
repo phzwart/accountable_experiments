@@ -33,7 +33,8 @@ OUT = Path("results/revision2/paired_gp.jsonl")
 
 def fit(X, y, kernel):
     wk = WhiteKernel(0.1, (1e-4, 10.0)) if kernel == "fitted" else WhiteKernel(1e-4, "fixed")
-    k = C(1.0) * RBF(1.0, (0.05, 20.0)) + wk
+    ls_lo = 1.0 if kernel == "smooth" else 0.05            # 'smooth': length scale held at or above 1 mm, nugget fixed
+    k = C(1.0) * RBF(max(1.0, ls_lo), (ls_lo, 20.0)) + wk
     mu, sd = y.mean(), y.std()
     g = GaussianProcessRegressor(k, alpha=1e-8, n_restarts_optimizer=2, random_state=0).fit(X, (y - mu) / sd)
     return g, mu, sd
