@@ -105,12 +105,12 @@ def main():
         for side, v, col in ((-1, d_own[:, j], ORANGE), (1, d_con[:, j], PURPLE)):
             y = np.linspace(lo_y, hi_y, 600)
             dd = gaussian_kde(v, bw_method=0.35)(y); dd = dd / dd.max() * 0.38; k = dd > 0.0038
-            below = k & (y <= 0); above = k & (y >= 0)
-            axb.fill_betweenx(y[below], j, j + side * dd[below], color=col, alpha=0.22, lw=0)
-            axb.fill_betweenx(y[above], j, j + side * dd[above], color=col, alpha=0.95, lw=0)
-            frac = float((v > 1e-12).mean())
-            axb.text(j + side * 0.25, 0.072, f"{100 * frac:.0f} %", ha="center", va="center", fontsize=7.2,
-                     color=col, fontweight="bold")
+            q = float(np.quantile(v, CONF))
+            low = k & (y <= q); high = k & (y >= q)
+            axb.fill_betweenx(y[low], j, j + side * dd[low], color=col, alpha=0.75, lw=0)
+            axb.fill_betweenx(y[high], j, j + side * dd[high], color=col, alpha=0.18, lw=0)
+            w = float(np.interp(q, y, dd))
+            axb.plot([j, j + side * max(w, 0.06)], [q, q], color=INK, lw=1.0, solid_capstyle="butt", zorder=4)
     axb.text(R - 0.45, hi_y - 0.004, "unwanted looseness:\nmore wrong skips than stated", fontsize=6, color=RED,
              style="italic", ha="right", va="top")
     axb.text(R - 0.45, lo_y + 0.008, "unwanted conservatism:\nstated budget left unused", fontsize=6, color=BLUE,
@@ -130,7 +130,7 @@ def main():
     fig.text(0.49, 0.875, f"{tot_own.mean():.0f} sites measured", fontsize=6.6, color=INK)
     fig.text(0.635, 0.875, "contract", fontsize=6.8, color=PURPLE, fontweight="bold")
     fig.text(0.708, 0.875, f"{tot_con.mean():.0f} sites", fontsize=6.6, color=INK)
-    fig.text(0.405, 0.826, "shape: distribution of the difference over 80 campaigns; dark: above the stated bound\n(promise broken), pale: at or below; numbers: share above, promised at most 20 %", fontsize=5.6, color=INK2, linespacing=1.15)
+    fig.text(0.405, 0.826, "shape: distribution of the difference over 80 campaigns; dark: the lowest 80 % of campaigns,\nending at the black tick. Calibrated: the tick on zero; below: conservative; above: loose", fontsize=5.6, color=INK2, linespacing=1.15)
 
     # (c) stated vs realised chance of going over the request
     axc = fig.add_axes([0.815, 0.25, 0.17, 0.57])
