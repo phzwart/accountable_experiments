@@ -126,9 +126,9 @@ def main():
         axb.spines[s_].set_visible(False)
     fig.text(0.33, 0.95, "(b) Wrong skips: delivered minus stated", fontsize=7.8, color=INK)
     fig.text(0.405, 0.875, "own word", fontsize=6.8, color=ORANGE, fontweight="bold")
-    fig.text(0.468, 0.875, f"{tot_own.mean():.0f} sites measured", fontsize=6.6, color=INK)
-    fig.text(0.61, 0.875, "contract", fontsize=6.8, color=PURPLE, fontweight="bold")
-    fig.text(0.665, 0.875, f"{tot_con.mean():.0f} sites", fontsize=6.6, color=INK)
+    fig.text(0.49, 0.875, f"{tot_own.mean():.0f} sites measured", fontsize=6.6, color=INK)
+    fig.text(0.635, 0.875, "contract", fontsize=6.8, color=PURPLE, fontweight="bold")
+    fig.text(0.708, 0.875, f"{tot_con.mean():.0f} sites", fontsize=6.6, color=INK)
     axb.text(-0.5, hi_y - 0.008, "shape: 80 campaigns\ndot: 80 % at or below\nbar: 95 % interval", fontsize=5.8, color=INK2, va="top")
 
     # (c) stated vs realised chance of going over the request
