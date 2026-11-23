@@ -2,11 +2,11 @@
 Figure 1 (round 9): specified and calibrated in advance. Same runs as fig_hook3.py (experiments/paired_gp.py):
 NaCl (200)-width scan, 80 fresh hierarchical designs, three rounds, budget 0.20 per round at confidence 0.80;
 per round the same frozen Gaussian process and the same held-out calibration draw; the cut on the leftover sites is
-set by the process's own uncertainty or by the calibration draw, each shown in the campaigns it drives; two kernels.
+set by the uncertainty of the model or by conformal thresholds from the calibration draw, each shown in the campaigns it drives; two kernels.
 
 (a) Measured width with the seed and the three rounds of one design.
-(b) Share of campaigns whose wrong skips stayed within the bound stated before the round, against the 80 % promised
-    (Clopper-Pearson 95 %). Above the line: budget left unused; below: promise broken.
+(b) Share of campaigns whose wrong skips stayed within the bound stated before the round, against the 80 % target
+    (Clopper-Pearson 95 %). Above the line: budget left unused; below: rate violation.
 
     python manuscript/figures/fig_hook4.py
 """
@@ -65,7 +65,7 @@ def main():
                handletextpad=0.1, columnspacing=0.8, markerscale=1.8)
     fig.text(0.01, 0.955, "(a) Sample and one design", fontsize=7.8, color=INK)
 
-    # (b) promise kept
+    # (b) target met
     axb = fig.add_axes([0.45, 0.25, 0.53, 0.60])
     lo, hi = 0.0, 1.13
     axb.axhspan(CONF, hi, color=BLUE, alpha=0.06, lw=0, zorder=0)
@@ -82,12 +82,12 @@ def main():
                 axb.plot(x, kk / n, mk, ms=6, color=col, mec=INK, mew=0.6, zorder=4)
         mid = gx[kernel] + 1
         axb.text(mid, hi - 0.005, f"{KLAB[kernel]}", ha="center", va="top", fontsize=7.0, color=INK, fontweight="bold")
-        axb.text(mid, lo - 0.19, f"sites measured\n{A[(kernel, 'uq')]['total']:.0f} own · {A[(kernel, 'contract')]['total']:.0f} contract",
+        axb.text(mid, lo - 0.19, f"sites measured\n{A[(kernel, 'uq')]['total']:.0f} model · {A[(kernel, 'contract')]['total']:.0f} conformal",
                  ha="center", va="top", fontsize=6.0, color=INK2, clip_on=False, linespacing=1.1)
     axb.axvline(2.8, color=INK2, lw=0.6, ls=(0, (2, 2))); axb.axvline(6.4, color=INK2, lw=0.6, ls=(0, (2, 2)))
     axb.text(9.75, 0.985, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
-    axb.text(9.75, 0.03, "promise broken", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
-    axb.annotate("promised: 80 %", xy=(1.0, CONF), xytext=(1.0, 0.55), ha="center", va="center", fontsize=6.6, color=INK,
+    axb.text(9.75, 0.03, "rate violation", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
+    axb.annotate("target: 80 %", xy=(1.0, CONF), xytext=(1.0, 0.55), ha="center", va="center", fontsize=6.6, color=INK,
                  arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
     ticks = [gx[k] + j for k in KERN for j in range(3)]
     axb.set_xticks(ticks, [f"{j + 1}" for _ in KERN for j in range(3)], fontsize=6.6)
@@ -95,12 +95,12 @@ def main():
     axb.set_xlim(-0.5, 9.8); axb.set_ylim(lo, hi)
     axb.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], ["0 %", "20 %", "40 %", "60 %", "80 %", "100 %"])
     axb.tick_params(axis="y", labelsize=6.6)
-    axb.set_ylabel("campaigns within the bound\nstated before the round", fontsize=7, labelpad=2)
+    axb.set_ylabel("campaigns within the rate\nstated before the round", fontsize=7, labelpad=2)
     for s_ in ("top", "right"):
         axb.spines[s_].set_visible(False)
-    fig.text(0.40, 0.955, "(b) Was the stated bound kept? 80 campaigns per round", fontsize=7.8, color=INK)
-    fig.text(0.45, 0.895, "●", fontsize=8, color=ORANGE); fig.text(0.47, 0.895, "process's own word", fontsize=7, color=ORANGE, fontweight="bold")
-    fig.text(0.64, 0.895, "■", fontsize=8, color=PURPLE); fig.text(0.66, 0.895, "contract (calibration draw)", fontsize=7, color=PURPLE, fontweight="bold")
+    fig.text(0.40, 0.955, "(b) Was the stated rate met? Target 80 % of 80 campaigns per round", fontsize=7.8, color=INK)
+    fig.text(0.45, 0.895, "●", fontsize=8, color=ORANGE); fig.text(0.47, 0.895, "Uncertainty of model", fontsize=7, color=ORANGE, fontweight="bold")
+    fig.text(0.665, 0.895, "■", fontsize=8, color=PURPLE); fig.text(0.685, 0.895, "Conformal thresholds", fontsize=7, color=PURPLE, fontweight="bold")
 
     for ext in ("png", "pdf", "svg"):
         fig.savefig(FIG / f"fig_hook4.{ext}", dpi=300)
