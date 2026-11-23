@@ -5,8 +5,8 @@ per round the same frozen Gaussian process and the same held-out calibration dra
 set by the uncertainty of the model or by conformal thresholds from the calibration draw, each shown in the campaigns it drives; two kernels.
 
 (a) Measured width with the seed and the three rounds of one design.
-(b) Share of campaigns whose wrong skips stayed within the bound stated before the round, against the 80 % target
-    (Clopper-Pearson 95 %). Above the line: budget left unused; below: rate violation.
+(b) Share of campaigns whose wrong skips stayed within the bound stated before the round, against the 80 % target;
+    grey band: central 95 % range of that share for a method meeting the target exactly (binomial, 80 campaigns). Above the line: budget left unused; below: rate violation.
 
     python manuscript/figures/fig_hook4.py
 """
@@ -70,15 +70,18 @@ def main():
     lo, hi = 0.0, 1.13
     axb.axhspan(CONF, hi, color=BLUE, alpha=0.06, lw=0, zorder=0)
     axb.axhspan(lo, CONF, color=RED, alpha=0.06, lw=0, zorder=0)
+    from scipy.stats import binom
+    nC = A[(KERN[0], "uq")]["d"].shape[0]
+    b_lo, b_hi = binom.ppf(0.025, nC, CONF) / nC, binom.ppf(0.975, nC, CONF) / nC
+    axb.axhspan(b_lo, b_hi, color="#8a8a8a", alpha=0.22, lw=0, zorder=1)
     axb.axhline(CONF, color=INK, lw=1.0, zorder=2)
     gx = {"fitted": 0.0, "nugget": 3.6, "smooth": 7.2}
     for kernel in KERN:
         for j in range(3):
             for cut, col, mk, off in (("uq", ORANGE, "o", -0.16), ("contract", PURPLE, "s", 0.16)):
                 d = A[(kernel, cut)]["d"]; n = d.shape[0]
-                kk = int((d[:, j] <= 1e-12).sum()); l_, h_ = cp(kk, n)
+                kk = int((d[:, j] <= 1e-12).sum())
                 x = gx[kernel] + j + off
-                axb.plot([x, x], [l_, h_], color=col, lw=1.3, zorder=3, solid_capstyle="butt")
                 axb.plot(x, kk / n, mk, ms=6, color=col, mec=INK, mew=0.6, zorder=4)
         mid = gx[kernel] + 1
         axb.text(mid, hi - 0.005, f"{KLAB[kernel]}", ha="center", va="top", fontsize=7.0, color=INK, fontweight="bold")
@@ -87,7 +90,8 @@ def main():
     axb.axvline(2.8, color=INK2, lw=0.6, ls=(0, (2, 2))); axb.axvline(6.4, color=INK2, lw=0.6, ls=(0, (2, 2)))
     axb.text(9.75, 0.985, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
     axb.text(9.75, 0.03, "rate violation", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
-    axb.annotate("target: 80 %", xy=(1.0, CONF), xytext=(1.0, 0.55), ha="center", va="center", fontsize=6.6, color=INK,
+    axb.annotate(f"target: 80 %\ngrey: 95 % range if met exactly\n({b_lo * 100:.0f}–{b_hi * 100:.0f} % of {nC} campaigns)",
+                 xy=(1.5, b_lo), xytext=(0.05, 0.47), linespacing=1.25, ha="left", va="center", fontsize=6.6, color=INK,
                  arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
     ticks = [gx[k] + j for k in KERN for j in range(3)]
     axb.set_xticks(ticks, [f"{j + 1}" for _ in KERN for j in range(3)], fontsize=6.6)
