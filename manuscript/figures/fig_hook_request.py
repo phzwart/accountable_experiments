@@ -112,24 +112,27 @@ def main():
     maps, nd = site_maps(img.shape, riy, rix)
     cmap = plt.get_cmap("Reds").copy(); cmap.set_bad("#e9e8e4")
     kw = dict(origin="lower", cmap=cmap, vmin=0, vmax=0.8 * S, interpolation="nearest", aspect="equal")
-    axl = fig.add_axes([0.22, 0.02, 0.28, 0.38]); axr = fig.add_axes([0.50, 0.02, 0.28, 0.38])
-    im = axl.imshow(maps["own"], **kw); axr.imshow(maps["contract"][:, ::-1], **kw)
-    for ax, t, c in ((axl, "own word", ORANGE), (axr, "contract (mirrored)", PURPLE)):
+    W, H0, Y0 = 0.25, 0.36, 0.04
+    axw = fig.add_axes([0.085, Y0, W, H0]); axl = fig.add_axes([0.37, Y0, W, H0]); axr = fig.add_axes([0.655, Y0, W, H0])
+    imw = axw.imshow(img, origin="lower", cmap="magma", interpolation="nearest", aspect="equal",
+                     vmin=np.nanpercentile(img, 5), vmax=np.nanpercentile(img, 95))
+    im = axl.imshow(maps["own"], **kw); axr.imshow(maps["contract"], **kw)
+    for ax, t, c in ((axw, "measured (200) width", INK), (axl, "own word", ORANGE), (axr, "contract", PURPLE)):
         ax.set_xticks([]); ax.set_yticks([])
         for sp in ax.spines.values():
             sp.set_visible(False)
         ax.set_title(t, fontsize=7.5, color=c, fontweight="bold")
-    fig.text(0.02, 0.44, "(c) Where sites are skipped wrongly: share of the 80 campaigns, per site", fontsize=8, color=INK)
-    cax = fig.add_axes([0.83, 0.07, 0.018, 0.25])
+    fig.text(0.02, 0.44, "(c) The measured width, and where sites are skipped wrongly (share of the 80 campaigns, per site)",
+             fontsize=8, color=INK)
+    cax = fig.add_axes([0.915, Y0 + 0.04, 0.014, H0 - 0.08])
     cb = fig.colorbar(im, cax=cax, ticks=np.round(np.linspace(0, 0.8 * S, 5), 2))
     cb.outline.set_visible(False); cb.ax.tick_params(labelsize=6.5, length=2)
-    ins = fig.add_axes([0.04, 0.12, 0.14, 0.18])
-    ins.imshow(img, origin="lower", cmap="magma", interpolation="nearest",
-               vmin=np.nanpercentile(img, 5), vmax=np.nanpercentile(img, 95))
-    ins.set_xticks([]); ins.set_yticks([])
-    for sp in ins.spines.values():
-        sp.set_color(INK2); sp.set_linewidth(0.5)
-    ins.set_title("measured (200) width", fontsize=6.5, color=INK)
+    cb.set_label("skipped wrongly", fontsize=6.5)
+    cwx = fig.add_axes([0.065, Y0 + 0.04, 0.010, H0 - 0.08])
+    cw = fig.colorbar(imw, cax=cwx)
+    cw.outline.set_visible(False); cw.ax.tick_params(labelsize=6, length=2)
+    cwx.yaxis.set_ticks_position("left"); cwx.yaxis.set_label_position("left")
+    cw.set_label("nm⁻¹", fontsize=6)
 
     for ext in ("png", "pdf"):
         fig.savefig(FIG / f"fig_hook_request{TAG}.{ext}", dpi=300)
