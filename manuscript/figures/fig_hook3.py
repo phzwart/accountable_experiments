@@ -61,7 +61,7 @@ def main():
 
     fig = plt.figure(figsize=(7.2, 3.4))
     # (a)
-    axg = fig.add_axes([0.085, 0.22, 0.175, 0.58]); axg.set_facecolor("#f4f3ef")
+    axg = fig.add_axes([0.015, 0.24, 0.285, 0.56]); axg.set_facecolor("#f4f3ef")
     vmin, vmax = np.nanpercentile(img, 5), np.nanpercentile(img, 95)
     imw = axg.imshow(img, origin="lower", cmap="viridis", alpha=0.85, vmin=vmin, vmax=vmax, interpolation="nearest")
     rxy = xy[np.asarray(ds.meta["raster_index"])]
@@ -77,12 +77,14 @@ def main():
     axg.set_xticks([]); axg.set_yticks([])
     for sp in axg.spines.values():
         sp.set_visible(False)
-    axg.legend(loc="upper center", bbox_to_anchor=(0.5, 0.0), ncol=2, frameon=False, fontsize=5.6,
-               handletextpad=0.1, columnspacing=0.6, markerscale=1.8)
-    cwx = fig.add_axes([0.06, 0.31, 0.007, 0.40])
-    cw = fig.colorbar(imw, cax=cwx); cw.outline.set_visible(False); cw.solids.set_alpha(0.85)
-    cw.ax.tick_params(labelsize=5.3, length=2); cwx.yaxis.set_ticks_position("left"); cwx.yaxis.set_label_position("left")
-    cw.set_label("(200) width, nm⁻¹", fontsize=5.6, labelpad=1)
+    fig.canvas.draw()
+    bb = axg.get_position()                                   # actual map box after equal aspect
+    cwx = fig.add_axes([bb.x0 + 0.01, 0.175, bb.width - 0.02, 0.018])
+    cw = fig.colorbar(imw, cax=cwx, orientation="horizontal"); cw.outline.set_visible(False); cw.solids.set_alpha(0.85)
+    cw.ax.tick_params(labelsize=5.6, length=2)
+    cw.set_label("(200) width, nm⁻¹", fontsize=6, labelpad=1)
+    axg.legend(loc="upper center", bbox_to_anchor=(0.5, -0.29), ncol=4, frameon=False, fontsize=5.8,
+               handletextpad=0.1, columnspacing=0.7, markerscale=1.8)
     fig.text(0.01, 0.955, "(a) Sample and one design", fontsize=7.8, color=INK)
 
     # (b)
