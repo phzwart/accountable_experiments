@@ -98,30 +98,30 @@ def main():
 
     # (b) delivered minus stated
     axb = fig.add_axes([0.405, 0.25, 0.33, 0.545])
-    lo_y, hi_y = -0.16, 0.10
+    lo_y, hi_y = -0.16, 0.135
     axb.axhspan(0, hi_y, color=RED, alpha=0.05, lw=0); axb.axhspan(lo_y, 0, color=BLUE, alpha=0.05, lw=0)
     axb.axhline(0, color=INK, lw=0.9)
     for j in range(R):
         for side, v, col in ((-1, d_own[:, j], ORANGE), (1, d_con[:, j], PURPLE)):
-            y = np.linspace(lo_y, hi_y, 400)
-            dd = gaussian_kde(v, bw_method=0.35)(y); dd = dd / dd.max() * 0.36; k = dd > 0.0036
-            axb.fill_betweenx(y[k], j, j + side * dd[k], color=col, alpha=0.30, lw=0)
-            qa, (lo, hi) = boot_q(v, CONF)
-            x = j + side * 0.15
-            axb.plot([x, x], [lo, hi], color=INK, lw=0.9, solid_capstyle="butt")
-            axb.plot([x - 0.04, x + 0.04], [lo, lo], color=INK, lw=0.9); axb.plot([x - 0.04, x + 0.04], [hi, hi], color=INK, lw=0.9)
-            axb.plot(x, qa, "o", ms=4.8, color=col, mec=INK, mew=0.7, zorder=4)
-    axb.text(R - 0.45, hi_y - 0.008, "unwanted looseness:\nmore wrong skips than stated", fontsize=6, color=RED,
+            y = np.linspace(lo_y, hi_y, 600)
+            dd = gaussian_kde(v, bw_method=0.35)(y); dd = dd / dd.max() * 0.38; k = dd > 0.0038
+            below = k & (y <= 0); above = k & (y >= 0)
+            axb.fill_betweenx(y[below], j, j + side * dd[below], color=col, alpha=0.22, lw=0)
+            axb.fill_betweenx(y[above], j, j + side * dd[above], color=col, alpha=0.95, lw=0)
+            frac = float((v > 1e-12).mean())
+            axb.text(j + side * 0.25, 0.072, f"{100 * frac:.0f} %", ha="center", va="center", fontsize=7.2,
+                     color=col, fontweight="bold")
+    axb.text(R - 0.45, hi_y - 0.004, "unwanted looseness:\nmore wrong skips than stated", fontsize=6, color=RED,
              style="italic", ha="right", va="top")
     axb.text(R - 0.45, lo_y + 0.008, "unwanted conservatism:\nstated budget left unused", fontsize=6, color=BLUE,
              style="italic", ha="right", va="bottom")
     axb.set_xticks(range(R), [f"round {j + 1}\n{Nmean[j]:.0f} sites" for j in range(R)], fontsize=6.8)
     for j in range(R):
-        axb.text(j - 0.2, lo_y - 0.052, f"{m_own[j]:.0f}", ha="center", va="top", fontsize=6.5, color=ORANGE, clip_on=False)
-        axb.text(j + 0.2, lo_y - 0.052, f"{m_con[j]:.0f}", ha="center", va="top", fontsize=6.5, color=PURPLE, clip_on=False)
-    axb.text(-0.6, lo_y - 0.052, "measured", ha="right", va="top", fontsize=6.3, color=INK, clip_on=False)
+        axb.text(j - 0.2, lo_y - 0.072, f"{m_own[j]:.0f}", ha="center", va="top", fontsize=6.5, color=ORANGE, clip_on=False)
+        axb.text(j + 0.2, lo_y - 0.072, f"{m_con[j]:.0f}", ha="center", va="top", fontsize=6.5, color=PURPLE, clip_on=False)
+    axb.text(-0.6, lo_y - 0.072, "measured", ha="right", va="top", fontsize=6.3, color=INK, clip_on=False)
     axb.set_xlim(-0.55, R - 0.45); axb.set_ylim(lo_y, hi_y)
-    axb.set_ylabel("wrong skips: delivered\nminus stated (share of round)", fontsize=6.8, labelpad=1)
+    axb.set_ylabel("wrong skips: delivered minus\nstated PAC bound (share of round)", fontsize=6.8, labelpad=1)
     axb.tick_params(axis="y", labelsize=6.5)
     for s_ in ("top", "right"):
         axb.spines[s_].set_visible(False)
@@ -130,7 +130,7 @@ def main():
     fig.text(0.49, 0.875, f"{tot_own.mean():.0f} sites measured", fontsize=6.6, color=INK)
     fig.text(0.635, 0.875, "contract", fontsize=6.8, color=PURPLE, fontweight="bold")
     fig.text(0.708, 0.875, f"{tot_con.mean():.0f} sites", fontsize=6.6, color=INK)
-    fig.text(0.405, 0.826, "shape: distribution of the difference over 80 campaigns\ndot: 80 % of campaigns at or below;  bar: 95 % uncertainty of the dot", fontsize=5.6, color=INK2, linespacing=1.15)
+    fig.text(0.405, 0.826, "shape: distribution of the difference over 80 campaigns; dark: above the stated bound\n(promise broken), pale: at or below; numbers: share above, promised at most 20 %", fontsize=5.6, color=INK2, linespacing=1.15)
 
     # (c) stated vs realised chance of going over the request
     axc = fig.add_axes([0.815, 0.25, 0.17, 0.57])
