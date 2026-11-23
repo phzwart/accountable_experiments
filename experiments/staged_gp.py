@@ -73,6 +73,7 @@ def own_word(xy, w, p, lv):
         pmf = poisson_binomial(q[skip])
         levels.append(dict(L=L, N=N, n_skip=int(n_skip), measured_after=int(measured.sum() + N - n_skip),
                            stated_pmf=pmf.tolist(), realised=int(wrong[skip].sum()),
+                           stated_over=float(1.0 - pmf[: int(np.floor(EPS * N)) + 1].sum()),
                            skip_idx=idx[skip].tolist(), wrong_idx=idx[skip][wrong[skip]].tolist()))
         sel = np.ones(N, bool); sel[skip] = False
         measured[idx[sel]] = True

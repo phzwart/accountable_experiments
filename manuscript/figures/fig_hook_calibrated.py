@@ -31,7 +31,7 @@ DIV = LinearSegmentedColormap.from_list("div", ["#2f5f9e", "#9fbbe0", "#f2f1ed",
 
 
 def shares():
-    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs.jsonl")]
+    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_v2.jsonl")]
     own = np.array([[l["realised"] / l["N"] for l in r["own"]] for r in rr])
     con = np.array([[l["W_level"] / l["N"] for l in r["contract"]] for r in rr])
     own_over = np.array([[l["realised"] > np.floor(EPS * l["N"]) for l in r["own"]] for r in rr])
@@ -55,7 +55,7 @@ def half_violin(ax, x, v, side, col, width=0.38):
 
 
 def site_maps(shape, raster_iy, raster_ix):
-    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_sites.jsonl")]
+    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_v2.jsonl")]
     n = len(raster_iy); dec = np.zeros(n); wrong = {k: np.zeros(n) for k in ("own", "contract")}
     for r in rr:
         dec[r["decided"]] += 1
@@ -76,8 +76,9 @@ def main():
                          "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK})
     own, con, own_over, con_over, m_own, m_con = shares()
     tests = json.load(open(ROOT / "results/revision2/staged_gp_designs_trend_tests.json"))
-    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs.jsonl")]
+    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_v2.jsonl")]
     nominal = np.array([[l["delta_picked"] for l in r["contract"]] for r in rr]).mean(0)
+    stated = np.array([[l["stated_over"] for l in r["own"]] for r in rr]).mean(0)
     levels = [3, 4, 5, 6]
 
     fig = plt.figure(figsize=(7.2, 3.5))
@@ -87,13 +88,19 @@ def main():
     for j, L in enumerate(levels):
         half_violin(axa, j, own[:, j], -1, ORANGE)
         half_violin(axa, j, con[:, j], +1, PURPLE)
-        for y, (a, b) in ((0.475, (own_over[:, j].mean(), con_over[:, j].mean())), (0.44, (0.20, nominal[j]))):
+        for side, v, col in ((-1, own[:, j], ORANGE), (1, con[:, j], PURPLE)):     # achieved PAC bound at 0.80
+            qa = np.quantile(v, 0.80)
+            axa.plot([j, j + 0.36 * side], [qa, qa], color=col, lw=2.2, solid_capstyle="butt", zorder=4)
+            axa.plot([j, j + 0.36 * side], [qa, qa], color=INK, lw=0.6, zorder=5)
+        for y, (a, b) in ((0.475, (own_over[:, j].mean(), con_over[:, j].mean())), (0.44, (stated[j], nominal[j]))):
             axa.text(j - 0.2, y, f"{100 * a:.0f} %", ha="center", fontsize=7, color=ORANGE)
             axa.text(j + 0.2, y, f"{100 * b:.0f} %", ha="center", fontsize=7, color=PURPLE)
     axa.text(-0.62, 0.482, "over budget", ha="right", va="center", fontsize=6.5, color=INK, clip_on=False)
-    axa.text(-0.62, 0.447, "promised", ha="right", va="center", fontsize=6.5, color=INK2, clip_on=False)
+    axa.text(-0.62, 0.447, "stated", ha="right", va="center", fontsize=6.5, color=INK2, clip_on=False)
     axa.axhline(EPS, color=INK2, lw=0.8, ls=(0, (4, 3)))
-    axa.text(3.62, EPS + 0.006, "budget", ha="right", va="bottom", fontsize=7, color=INK2)
+    axa.text(3.62, EPS - 0.006, "budget", ha="right", va="top", fontsize=7, color=INK2)
+    axa.annotate("achieved bound: 80 % of\ndesigns at or below", (3.25, np.quantile(con[:, 3], 0.8)), (2.2, 0.35),
+                 fontsize=6.5, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
     axa.set_xticks(range(4), [f"level {L}" for L in levels]); axa.set_xlim(-0.6, 3.65); axa.set_ylim(0, 0.5)
     axa.set_yticks([0, 0.1, 0.2, 0.3, 0.4])
     axa.set_ylabel("share of the level skipped wrongly", labelpad=2)
