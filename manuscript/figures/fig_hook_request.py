@@ -51,7 +51,7 @@ def main():
     fig = plt.figure(figsize=(7.2, 5.0))
 
     # (a) achieved bound
-    axa = fig.add_axes([0.09, 0.56, 0.50, 0.33])
+    axa = fig.add_axes([0.09, 0.60, 0.50, 0.29])
     for j in range(4):
         for side, v, col in ((-1, own[:, j], ORANGE), (1, con[:, j], PURPLE)):
             vv = half_violin.__wrapped__ if hasattr(half_violin, "__wrapped__") else None  # noqa: F841
@@ -65,22 +65,27 @@ def main():
             axa.plot([x, x], [lo, hi], color=col, lw=1.4, solid_capstyle="butt")
             axa.plot(x, qa, "o", ms=5, color=col, mec=INK, mew=0.7, zorder=4)
     axa.axhline(EPS, color=INK, lw=1.0, ls=(0, (4, 3)))
-    axa.text(-0.5, 0.33 * S, f"requested: at most {EPS:.2f} in 80 % of campaigns (dashed)", ha="left", va="center",
+    axa.text(-0.5, 0.325 * S, f"requested per round (dashed): at most {EPS:.2f} of its sites\nskipped wrongly, in at least 80 % of campaigns", ha="left", va="center",
              fontsize=6.8, color=INK)
-    axa.set_xticks(range(4), [f"level {L}" for L in levels]); axa.set_xlim(-0.55, 3.6)
+    Nmean = np.array([[l["N"] for l in r["own"]] for r in rr]).mean(0)
+    axa.set_xticks(range(4), [f"round {j + 1}\n{Nmean[j]:.0f} sites" for j in range(4)])
+    axa.annotate("", xy=(3.45, -0.105 * S), xytext=(-0.35, -0.105 * S), xycoords="data", annotation_clip=False,
+                 arrowprops=dict(arrowstyle="->", color=INK2, lw=0.7))
+    axa.text(1.55, -0.118 * S, "coarse to fine", ha="center", va="top", fontsize=6.5, color=INK2, clip_on=False); axa.set_xlim(-0.55, 3.6)
     axa.set_ylim(0, 0.36 * S); axa.set_yticks(np.round(np.arange(0, 0.31 * S, 0.1 * S), 3))
-    axa.set_ylabel("share of the level\nskipped wrongly", labelpad=2)
+    axa.set_ylabel("share of the round's sites\nskipped wrongly", labelpad=2)
     axa.grid(axis="y", color=GRID, lw=0.4, alpha=0.6)
     for s in ("top", "right"):
         axa.spines[s].set_visible(False)
-    fig.text(0.02, 0.96, "(a) Delivered: the share that 80 % of the 80 campaigns stay at or below", fontsize=8, color=INK)
-    fig.text(0.09, 0.925, "own word (left)", fontsize=7.2, color=ORANGE, fontweight="bold")
-    fig.text(0.215, 0.925, f"{m_own.mean():.0f} ± {m_own.std():.0f} measured", fontsize=7, color=INK)
-    fig.text(0.37, 0.925, "contract (right)", fontsize=7.2, color=PURPLE, fontweight="bold")
-    fig.text(0.49, 0.925, f"{m_con.mean():.0f} ± {m_con.std():.0f} measured", fontsize=7, color=INK)
+    fig.text(0.02, 0.99, "A campaign decides in four rounds, each over a finer set of sites; rounds are the levels of Section 3.", fontsize=7.3, color=INK2, va="top")
+    fig.text(0.02, 0.945, "(a) Delivered: the share that 80 % of the 80 campaigns stay at or below", fontsize=8, color=INK)
+    fig.text(0.09, 0.91, "own word (left)", fontsize=7.2, color=ORANGE, fontweight="bold")
+    fig.text(0.215, 0.91, f"{m_own.mean():.0f} ± {m_own.std():.0f} measured", fontsize=7, color=INK)
+    fig.text(0.37, 0.91, "contract (right)", fontsize=7.2, color=PURPLE, fontweight="bold")
+    fig.text(0.49, 0.91, f"{m_con.mean():.0f} ± {m_con.std():.0f} measured", fontsize=7, color=INK)
 
     # (b) calibration
-    axb = fig.add_axes([0.72, 0.56, 0.25, 0.33])
+    axb = fig.add_axes([0.72, 0.60, 0.25, 0.29])
     lim = 0.32
     axb.plot([0, lim], [0, lim], color=INK2, lw=0.8, ls=(0, (4, 3)))
     for st, X, col, mk in ((stated_own, own_over, ORANGE, "o"), (stated_con, con_over, PURPLE, "s")):
@@ -88,17 +93,17 @@ def main():
             k = int(X[:, j].sum()); lo, hi = cp(k, n)
             axb.plot([st[j], st[j]], [lo, hi], color=col, lw=1.0, alpha=0.8)
             axb.plot(st[j], k / n, mk, ms=4.5, color=col, mec=INK, mew=0.6, zorder=3)
-            axb.text(st[j] + 0.006, k / n, str(levels[j]), fontsize=6, color=col, va="center")
+            axb.text(st[j] + 0.006, k / n, str(j + 1), fontsize=6, color=col, va="center")
     axb.set_xlim(0, lim); axb.set_ylim(0, lim)
     axb.set_xticks([0, 0.1, 0.2, 0.3]); axb.set_yticks([0, 0.1, 0.2, 0.3])
-    axb.set_xlabel("stated chance of exceeding\nthe budget, before deciding")
+    axb.set_xlabel("stated chance of exceeding the\nrequest, before the round is decided")
     axb.set_ylabel("realised over 80 campaigns")
     axb.grid(color=GRID, lw=0.4, alpha=0.5)
     for s in ("top", "right"):
         axb.spines[s].set_visible(False)
-    fig.text(0.66, 0.96, "(b) Stated and realised, by level", fontsize=8, color=INK)
+    fig.text(0.66, 0.945, "(b) Stated and realised, by round", fontsize=8, color=INK)
     to, tc = tests["own"], tests["contract"]
-    axb.text(0.01, 0.31, "level trend\n" + ("own word p < 5·10⁻⁵" if to["p_trend"] < 5e-5 else f"own word p = {to['p_trend']:.3f}")
+    axb.text(0.01, 0.31, "trend over rounds\n" + ("own word p < 5·10⁻⁵" if to["p_trend"] < 5e-5 else f"own word p = {to['p_trend']:.3f}")
              + f"\ncontract p = {tc['p_trend']:.2f}", fontsize=6.3, color=INK, va="top")
 
     # (c) mirrored maps
