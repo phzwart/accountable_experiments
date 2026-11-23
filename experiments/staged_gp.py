@@ -83,6 +83,35 @@ def own_word(xy, w, p, lv):
     return levels
 
 
+def own_word_cal(xy, w, p, lv, seed):
+    """Like-for-like with the contract: the same frozen process and the same uniform calibration draw, measured by
+    default; the process's own statement then decides which of the remaining sites to skip. Calibration labels do
+    not enter the decision; they enter the next round's fit, as in the contract."""
+    rng = np.random.default_rng(5000 + seed)                  # same calibration draws as contract(seed)
+    measured = lv <= SEED_MAX; levels = []
+    for L in range(SEED_MAX + 1, int(lv.max()) + 1):
+        idx = np.flatnonzero(lv == L); N = len(idx)
+        q, wrong = level_model(xy, w, p, measured, idx)      # fitted and frozen before the draw
+        cal = rng.choice(N, size=min(M, N), replace=False)
+        rest = np.setdiff1d(np.arange(N), cal)
+        order = rest[np.argsort(q[rest], kind="stable")]; n_skip = 0; cap = int(np.floor(EPS * N))
+        for n in range(1, len(order) + 1):
+            if poisson_binomial(q[order[:n]])[: cap + 1].sum() >= CONF:
+                n_skip = n
+            else:
+                break
+        skip = order[:n_skip]
+        pmf = poisson_binomial(q[skip])
+        levels.append(dict(L=L, N=N, m=len(cal), n_skip=int(n_skip), measured_after=int(measured.sum() + N - n_skip),
+                           realised=int(wrong[skip].sum()),
+                           stated_over=float(1.0 - pmf[: cap + 1].sum()),
+                           stated_q=int(np.searchsorted(np.cumsum(pmf), CONF)),
+                           skip_idx=idx[skip].tolist(), wrong_idx=idx[skip][wrong[skip]].tolist()))
+        sel = np.ones(N, bool); sel[skip] = False
+        measured[idx[sel]] = True
+    return levels
+
+
 def contract(xy, w, p, lv, seed):
     rng = np.random.default_rng(5000 + seed)
     measured = lv <= SEED_MAX; levels = []

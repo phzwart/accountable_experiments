@@ -12,7 +12,9 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial import cKDTree
 
-from experiments.staged_gp import EPS, SEED_MAX, contract, own_word
+import os
+from experiments.staged_gp import EPS, SEED_MAX, contract, own_word, own_word_cal
+OWN_CAL = os.environ.get("STAGED_OWN_CAL") == "1"
 from experiments.uncertified_gp import site_truth
 
 OUT = Path(sys.argv[3]) if len(sys.argv) > 3 else Path("results/revision2/staged_gp_designs.jsonl")
@@ -58,10 +60,10 @@ def main(start, n):
             continue
         idx, lv = make_design(1000 + d, xy_all)
         xy, w, p = xy_all[idx], w_all[idx], p_all[idx]
-        own = own_word(xy, w, p, lv)
+        own = own_word_cal(xy, w, p, lv, d) if OWN_CAL else own_word(xy, w, p, lv)
         con = contract(xy, w, p, lv, d)
         for o in own:
-            o.pop("stated_pmf")
+            o.pop("stated_pmf", None)
         for lvl in own + con:                      # design indices -> raster indices
             lvl["skip_idx"] = idx[lvl["skip_idx"]].tolist(); lvl["wrong_idx"] = idx[lvl["wrong_idx"]].tolist()
         row = dict(design=d, n=int(len(idx)), decided=idx[lv > SEED_MAX].tolist(), own=own, contract=con)
