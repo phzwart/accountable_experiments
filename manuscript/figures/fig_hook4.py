@@ -2,7 +2,9 @@
 Figure 1 (round 9): specified and calibrated in advance. Same runs as fig_hook3.py (experiments/paired_gp.py):
 NaCl (200)-width scan, 80 fresh hierarchical designs, three rounds, budget 0.20 per round at confidence 0.80;
 per round the same frozen Gaussian process and the same held-out calibration draw; the cut on the leftover sites is
-set by the uncertainty of the model or by conformal thresholds from the calibration draw, each shown in the campaigns it drives; two kernels.
+set by the uncertainty of the model or by conformal thresholds from the calibration draw, each shown in the campaigns it drives; three kernels,
+and a stock-picking chicken (copies a random measured site, ranks at random; experiments/chicken.py) under the
+conformal thresholds only.
 
 (a) Measured width with the seed and the three rounds of one design.
 (b) Share of campaigns whose wrong skips stayed within the bound stated before the round, against the 80 % target;
@@ -31,6 +33,11 @@ def main():
     rr = [json.loads(l) for l in open(ROOT / "results/revision2/paired_gp.jsonl")]
     KERN = ("fitted", "nugget", "smooth")
     A = {(k, c): arm(rr, k, c) for k in KERN for c in ("uq", "contract")}
+    rc = [json.loads(l) for l in open(ROOT / "results/revision2/paired_chicken.jsonl")]
+    A[("chicken", "contract")] = arm(rc, "chicken", "contract")
+    GROUPS = KERN + ("chicken",)
+    GLAB = {"fitted": "fitted noise", "nugget": "fixed nugget", "smooth": "long length\nscale",
+            "chicken": "stock-picking\nchicken"}
 
     from fig_datasets import nacl_fwhm
     from experiments.nacl_saxs.adapter import load as nload
@@ -77,29 +84,38 @@ def main():
     axb.axhspan(c_lo, c_hi, color="#8a8a8a", alpha=0.12, lw=0, zorder=1)
     axb.axhspan(b_lo, b_hi, color="#8a8a8a", alpha=0.20, lw=0, zorder=1)
     axb.axhline(CONF, color=INK, lw=1.0, zorder=2)
-    gx = {"fitted": 0.0, "nugget": 3.6, "smooth": 7.2}
-    for kernel in KERN:
+    gx = {"fitted": 0.0, "nugget": 3.6, "smooth": 7.2, "chicken": 10.8}
+    for kernel in GROUPS:
         for j in range(3):
             for cut, col, mk, off in (("uq", ORANGE, "o", -0.16), ("contract", PURPLE, "s", 0.16)):
+                if (kernel, cut) not in A:
+                    continue
                 d = A[(kernel, cut)]["d"]; n = d.shape[0]
                 kk = int((d[:, j] <= 1e-12).sum())
                 x = gx[kernel] + j + off
                 axb.plot(x, kk / n, mk, ms=6, color=col, mec=INK, mew=0.6, zorder=4)
         mid = gx[kernel] + 1
-        axb.text(mid, hi - 0.005, f"{KLAB[kernel]}", ha="center", va="top", fontsize=7.0, color=INK, fontweight="bold")
-        axb.text(mid, lo - 0.19, f"sites measured\n{A[(kernel, 'uq')]['total']:.0f} model · {A[(kernel, 'contract')]['total']:.0f} conformal",
+        axb.text(mid, hi - 0.005, GLAB[kernel], ha="center", va="top", fontsize=6.8, color=INK, fontweight="bold",
+                 linespacing=1.0)
+        cost = (f"{A[(kernel, 'uq')]['total']:.0f} model\n" if (kernel, "uq") in A else "") + \
+            f"{A[(kernel, 'contract')]['total']:.0f} conformal"
+        axb.text(mid, lo - 0.19, f"sites measured\n{cost}",
                  ha="center", va="top", fontsize=6.0, color=INK2, clip_on=False, linespacing=1.1)
-    axb.axvline(2.8, color=INK2, lw=0.6, ls=(0, (2, 2))); axb.axvline(6.4, color=INK2, lw=0.6, ls=(0, (2, 2)))
-    axb.text(9.75, 0.985, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
-    axb.text(9.75, 0.03, "rate violation", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
+    for xv in (2.8, 6.4, 10.0):
+        axb.axvline(xv, color=INK2, lw=0.6, ls=(0, (2, 2)))
+    axb.text(11.8, 0.45, "no uncertainty\nof its own", ha="center", va="center", fontsize=6.0, color=INK2,
+             style="italic", linespacing=1.1)
+    axb.text(13.35, 0.945, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
+    axb.text(13.35, 0.03, "rate violation", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
     axb.annotate(f"target: 80 %\nrange if met exactly\n({nC} campaigns):\ndark 95 %: {b_lo * 100:.0f}–{b_hi * 100:.0f} %\n"
                  f"light 99 %: {c_lo * 100:.1f}–{c_hi * 100:.0f} %",
-                 xy=(1.2, c_lo), xytext=(0.05, 0.42), linespacing=1.25, ha="left", va="center", fontsize=6.6, color=INK,
+                 xy=(1.2, c_lo), xytext=(0.05, 0.42), linespacing=1.25, ha="left", va="center", fontsize=6.2, color=INK,
+                 bbox=dict(fc="white", ec="none", alpha=0.85, pad=1.5),
                  arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
-    ticks = [gx[k] + j for k in KERN for j in range(3)]
-    axb.set_xticks(ticks, [f"{j + 1}" for _ in KERN for j in range(3)], fontsize=6.6)
+    ticks = [gx[k] + j for k in GROUPS for j in range(3)]
+    axb.set_xticks(ticks, [f"{j + 1}" for _ in GROUPS for j in range(3)], fontsize=6.6)
     axb.set_xlabel("round", fontsize=6.8, labelpad=1)
-    axb.set_xlim(-0.5, 9.8); axb.set_ylim(lo, hi)
+    axb.set_xlim(-0.5, 13.4); axb.set_ylim(lo, hi)
     axb.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], ["0 %", "20 %", "40 %", "60 %", "80 %", "100 %"])
     axb.tick_params(axis="y", labelsize=6.6)
     axb.set_ylabel("campaigns within the rate\nstated before the round", fontsize=7, labelpad=2)
