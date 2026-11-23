@@ -2,9 +2,9 @@
 
 
 
-## SI 4.1 Contract for a form of guarantee
+## SI 4.1 Interface for a form of guarantee
 
-A form of guarantee is a budget policy in the `accountable` package. It implements `decide(LevelData) -> PolicyDecision` and registers a name with `@register("name")`. The forms in the main text are the policies `separate` (per-claim budgets), `nested_path` (quantile path) and `priority_path` (priority path); `ltt_conditional` gives the conditional rate of Appendix C.
+A form of guarantee is a budget policy in the `accountable` package. It implements `decide(LevelData) -> PolicyDecision` and registers a name with `@register("name")`. The forms in the main text are the policies `separate` (per-claim budgets), `nested_path` (matched-quantile rule) and `priority_path` (priority rule); `ltt_conditional` gives the conditional rate of Appendix C.
 
 A policy keeps three conditions.
 
@@ -27,16 +27,16 @@ Before a policy carries a claim, each guarantee it states is checked by Monte Ca
 | Per-claim budgets | $R_{\mathrm{interest}} \le 0.10$ | 0.10 | 0.039 | 0.047 |
 | | $R_{\mathrm{interp}} \le 0.10$ | 0.10 | 0.036 | 0.027 |
 | | $R_E \le 0.20$ | 0.20 | 0.010 | 0.004 |
-| Quantile path | $R_E \le 0.10$ | 0.10 | 0.047 | 0.045 |
-| Priority path, interest first | $R_E \le 0.10$ | 0.10 | 0.039 | 0.047 |
-| Priority path, interpolation first | $R_E \le 0.10$ | 0.10 | 0.036 | 0.027 |
+| Matched-quantile rule | $R_E \le 0.10$ | 0.10 | 0.047 | 0.045 |
+| Priority rule, interest first | $R_E \le 0.10$ | 0.10 | 0.039 | 0.047 |
+| Priority rule, interpolation first | $R_E \le 0.10$ | 0.10 | 0.036 | 0.027 |
 | Plug-in rule (counterexample) | $R_{\mathrm{interp}} \le 0.10$ | 0.10 | 0.554 | 0.515 |
 
 The plug-in rule takes the largest threshold whose empirical calibration rate stays within the budget, with no order-statistic correction, and states a guarantee at confidence 0.90. The check rejects it. Passing the check is evidence for a policy; the finite-sample argument still has to be written down, as in Appendix B.
 
-## SI 4.3 Worked example: the priority path
+## SI 4.3 Worked example: the priority rule
 
-The priority path subclasses the quantile path and replaces only the entry times: claim $i$ in the order sweeps its own score quantiles over $\lambda \in (i, i + 1]$ (Appendix B.2). The order is a setting, so the family is fixed before the draw and Proposition B.2 applies without change. The implementation is about thirty lines. Unit tests check that the priority path with one claim gives the same covers as the single-claim rule, and that both orders pass the acceptance check.
+The priority rule subclasses the matched-quantile rule and replaces only the entry times: claim $i$ in the order sweeps its own score quantiles over $\lambda \in (i, i + 1]$ (Appendix B.2). The order is a setting, so the family is fixed before the draw and Proposition B.2 applies without change. The implementation is about thirty lines. Unit tests check that the priority rule with one claim gives the same covers as the single-claim rule, and that both orders pass the acceptance check.
 
 ## SI 4.4 Software, tests and reproduction
 
@@ -51,7 +51,7 @@ The priority path subclasses the quantile path and replaces only the entry times
 | Name element | Meaning |
 | --- | --- |
 | `ir`, `ir_tight`, `nacl_fwhm`, `syn_env`, `syn_peak_2cert` | IR map at the original and the tight tolerance; NaCl scan, width claim; synthetic map, full-profile claim alone (main text); synthetic map, peak and interest claims (variant of SI 6.2) |
-| `separate`, `nested`, `priority` | per-claim budgets, quantile path, priority path (Section 3.4) |
+| `separate`, `nested`, `priority` | per-claim budgets, matched-quantile rule, priority rule (Section 3.4) |
 | `watson`, `sibson` | natural-neighbour (Sibson) interpolation with the logistic score; `watson` names the construction of the weights |
 | `gp_mle`, `gp_design`, `gp_nonstationary` | Gaussian-process interpolation, length scale by maximum likelihood, by design spacing, by local spacing |
 | `random` | random scores for every claim |
@@ -59,9 +59,9 @@ The priority path subclasses the quantile path and replaces only the entry times
 
 ## SI 4.5 The forms of guarantee
 
-Section 3.4 of the main text defines the shared wrong-skip event $E$ and its rate $R_E$ over a level. The forms below spend the budget on it in different ways; every form uses the same frozen scores and the same calibration draw.
+Section 3.4 of the main text defines the shared skip-error event $E$ and its rate $R_E$ over a level. The forms below spend the budget on it in different ways; every form uses the same frozen scores and the same calibration draw.
 
-**Per-claim budgets.** Each claim is calibrated on its own, with budget $\varepsilon_j$ and failure probability $\delta_j$, on one shared draw. A wrong skip fails at least one claim, so $R_E \le R_a + R_b$, and the Bonferroni inequality gives
+**Per-claim budgets.** Each claim is calibrated on its own, with budget $\varepsilon_j$ and failure probability $\delta_j$, on one shared draw. A skip error fails at least one claim, so $R_E \le R_a + R_b$, and the Bonferroni inequality gives
 
 $$
 P\big(R_E \le \varepsilon_a + \varepsilon_b\big) \ge 1 - \delta_a - \delta_b
@@ -69,15 +69,15 @@ $$
 
 alongside a separate guarantee for each claim. The split leaves each claim a smaller budget at a higher confidence. Once $\varepsilon_j$ falls below $\varepsilon_{\min}$, no threshold exists and the level is measured in full.
 
-**One budget along a path.** A single budget spends all of $\varepsilon$ and $\delta$ on $R_E$. Two thresholds cannot be read off one draw by an order statistic, and Learn-then-Test supplies the remedy: search a family of thresholds fixed before any label is seen [Angelopoulos2025]. Here the family is a path $\lambda \mapsto (\tau_a(\lambda), \tau_b(\lambda))$, built from the frozen scores alone, along which both thresholds rise. The wrong-skip sets along such a path are nested, $R_E(\lambda)$ grows with $\lambda$, and the rule of Section 3.3 of the main text applies with $\lambda$ in place of the threshold (Appendix B). Two paths are used. The quantile path moves both thresholds through matching quantiles of their scores on the level. The priority path admits the claims in a set order: the first claim sweeps its quantiles before the second moves. A preference between the claims thereby enters the decision with the guarantee intact.
+**One budget along a path.** A single budget spends all of $\varepsilon$ and $\delta$ on $R_E$. Two thresholds cannot be read off one draw by an order statistic, and Learn-then-Test supplies the remedy: search a family of thresholds fixed before any label is seen [Angelopoulos2025]. Here the family is a path $\lambda \mapsto (\tau_a(\lambda), \tau_b(\lambda))$, built from the frozen scores alone, along which both thresholds rise. The skip-error sets along such a path are nested, $R_E(\lambda)$ grows with $\lambda$, and the rule of Section 3.3 of the main text applies with $\lambda$ in place of the threshold (Appendix B). Two paths are used. The matched-quantile rule moves both thresholds through matching quantiles of their scores on the level. The priority rule admits the claims in a set order: the first claim sweeps its quantiles before the second moves. A preference between the claims thereby enters the decision with the guarantee intact.
 
 **Further forms.** Any rule built from scores frozen before the draw, a uniform calibration draw and a family of thresholds fixed before the labels are known inherits a finite-sample guarantee, including a bound on a conditional rate (Appendix C). A label-conditional statement protects the sites of interest: given their number, the calibration sites of interest are a uniform draw from those of the level, and the rule of Section 3.3 of the main text, with the worst case over their unknown total, limits the share skipped under the no-interest claim [Vovk2005; Sadinle2019; Tong2018]; a cover so restricted keeps every bound on a rate counted over the level, provided the budget it frees is not spent again on the same draw (Appendix B.3). The statement bounds a share of the sites of interest, not where the lost ones lie, and holds per level; with the shared bound on the same draw, both hold with probability at least $1 - \delta_L - \delta_Z$, where $\delta_Z$ is the failure probability of the conditional statement. Table S4.3 summarises the forms; Section SI 4.2 gives the Monte Carlo acceptance check every form passes.
 
-**Table S4.3.** Forms of guarantee on the wrong-skip event of one level. Every form uses the same frozen scores and the same calibration draw.
+**Table S4.3.** Forms of guarantee on the skip-error event of one level. Every form uses the same frozen scores and the same calibration draw.
 
 | Form | Guarantee, with probability at least the stated confidence | Budget | Given up | Suited to |
 | --- | --- | --- | --- | --- |
 | Per-claim budgets | $R_a \le \varepsilon_a$ and $R_b \le \varepsilon_b$; hence $R_E \le \varepsilon_a + \varepsilon_b$ at $1 - \delta_a - \delta_b$ | Split between the claims | Budget per claim; no threshold once $\varepsilon_j < \varepsilon_{\min}$ | Reporting how often each reason for skipping fails |
-| Quantile path | $R_E \le \varepsilon$ at $1 - \delta$ | Whole budget on $R_E$ | Guarantee per claim; path shape set in advance | Bounding how often any skip fails |
-| Priority path | $R_E \le \varepsilon$ at $1 - \delta$ | Whole budget on $R_E$, spent on the claims in order | Guarantee per claim; a later claim may receive no budget | A set preference between the claims |
-| Conditional rate (Appendix C) | Failure rate among sites skipped by one claim $\le \alpha$ at $1 - \delta$ | One claim | Coverage at small $m$: at $m = 40$ it certifies nothing or more than half a level | Large calibration samples |
+| Matched-quantile rule | $R_E \le \varepsilon$ at $1 - \delta$ | Whole budget on $R_E$ | Guarantee per claim; path shape set in advance | Bounding how often any skip fails |
+| Priority rule | $R_E \le \varepsilon$ at $1 - \delta$ | Whole budget on $R_E$, spent on the claims in order | Guarantee per claim; a later claim may receive no budget | A set preference between the claims |
+| Conditional rate (Appendix C) | Failure rate among sites skipped by one claim $\le \alpha$ at $1 - \delta$ | One claim | Coverage at small $m$: at $m = 40$ it guarantees nothing or more than half a level | Large calibration samples |

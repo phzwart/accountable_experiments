@@ -42,9 +42,9 @@ The scan was recorded at beamline 7.3.3 of the Advanced Light Source and is used
 | 0.26–0.50 | 7397 | 0.022 | 0.038 | 53 % | 22 % |
 | 0.50–1.00 | 37 759 | 0.022 | 0.039 | 55 % | 24 % |
 
-**Table S2.2.** Cost of the NaCl contract against tolerance and budget, quantile path with natural-neighbour prediction at confidence 0.80, 50 campaigns each. Shares are of the sites of levels 3 to 6.
+**Table S2.2.** Cost of the NaCl specification against tolerance and budget, matched-quantile rule with natural-neighbour prediction at confidence 0.80, 50 campaigns each. Shares are of the sites of levels 3 to 6.
 
-| tolerance (nm⁻¹) | budget | measured | mean share skipped wrongly | level checks over budget | campaigns over on some level |
+| tolerance (nm⁻¹) | budget | measured | mean share skipped in error | level checks over budget | campaigns over on some level |
 |---|---|---|---|---|---|
 | 0.02 | 0.10 | 799 ± 67 | 5.7 % | 12.5 % | 38 % |
 | 0.02 | 0.20 | 619 ± 62 | 14.4 % | 10.5 % | 38 % |

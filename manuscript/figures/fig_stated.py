@@ -20,13 +20,13 @@ ROOT = FIG.parents[1]
 RES = ROOT / "results/uncertified"
 INK, INK2, GRID = "#1f1e1d", "#5c5b58", "#c9c8c4"
 STYLE = {
-    "certified, natural neighbour": dict(c="#2a78d6", m="D", ls="-"),
-    "certified, Gaussian process": dict(c="#8e6cc8", m="s", ls="-"),
-    "uncertified, predictive sd": dict(c="#e8a33d", m="^", ls="--"),
-    "uncertified, rescaled sd": dict(c="#9b2d1f", m="v", ls=":"),
+    "guaranteed, natural neighbour": dict(c="#2a78d6", m="D", ls="-"),
+    "guaranteed, Gaussian process": dict(c="#8e6cc8", m="s", ls="-"),
+    "no guarantee, predictive sd": dict(c="#e8a33d", m="^", ls="--"),
+    "no guarantee, rescaled sd": dict(c="#9b2d1f", m="v", ls=":"),
 }
-CERT = {"sibson": "certified, natural neighbour", "gp": "certified, Gaussian process"}
-UNC = {"latent": "uncertified, latent sd", "predictive": "uncertified, predictive sd", "loo": "uncertified, rescaled sd"}
+CERT = {"sibson": "guaranteed, natural neighbour", "gp": "guaranteed, Gaussian process"}
+UNC = {"latent": "no guarantee, latent sd", "predictive": "no guarantee, predictive sd", "loo": "no guarantee, rescaled sd"}
 NAMES = {"ir": "(a) IR amide I", "nacl": "(b) NaCl (200) width", "syn": "(c) synthetic SAXS profile"}
 LO = 1e-3
 
@@ -57,9 +57,9 @@ def main():
             ax.plot(x[o], y[o], color=st["c"], ls=st["ls"], lw=0.9, marker=st["m"], ms=3.5, mec="white", mew=0.4)
         ax.set_xscale("log"); ax.set_yscale("log")
         ax.set_xlim(LO, 0.6); ax.set_ylim(LO, 0.6)
-        ax.set_xlabel("stated share skipped wrongly", fontsize=7)
+        ax.set_xlabel("stated share skipped in error", fontsize=7)
         if key == "ir":
-            ax.set_ylabel("realised share skipped wrongly", fontsize=7)
+            ax.set_ylabel("realised share skipped in error", fontsize=7)
         ax.set_title(NAMES[key], loc="left", fontsize=7.8)
         ax.tick_params(labelsize=6.3)
         for s_ in ("top", "right"):
@@ -68,7 +68,7 @@ def main():
                for name, st in STYLE.items()]
     fig.legend(handles=handles, loc="lower center", ncol=2, fontsize=6.4, frameon=False, bbox_to_anchor=(0.5, 0.0),
                columnspacing=1.2)
-    fig.text(0.08, 0.93, "What an agent states about its wrong skips, and what happens",
+    fig.text(0.08, 0.93, "What an agent states about its skip errors, and what happens",
              fontsize=9, fontweight="bold", color=INK)
     fig.savefig(FIG / "fig_stated.png", dpi=200)
     fig.savefig(FIG / "fig_stated.pdf")

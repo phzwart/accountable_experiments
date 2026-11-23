@@ -81,7 +81,7 @@ def main():
         ax.scatter(xy[wrong, 0], xy[wrong, 1], s=5, marker="x", c=RED, linewidths=0.55)
         ax.set_title(title, loc="left", fontsize=7.2, pad=3)
         ax.set_xticks([]); ax.set_yticks([])
-    amap(0.005, c_act, c_wrong, f"(a) GP, certified\n{int((~S).sum())} measured; 20 % per level")
+    amap(0.005, c_act, c_wrong, f"(a) GP, guaranteed\n{int((~S).sum())} measured; 20 % per level")
     amap(0.24, g_act, g_wrong, f"(b) Same GP, trusting itself\n{grow['measured']} measured (α = 0.20)")
 
     ax = fig.add_axes([0.66, y0 + 0.03, 0.33, mh - 0.08])
@@ -89,8 +89,8 @@ def main():
     cr = 100 * np.asarray(cr)
     nm, nr = certified_cloud(NN_ROW, cert)
     nr = 100 * np.asarray(nr)
-    rows = [("GP, certified\n(mean, 50)", 20.0, cr.mean(), np.percentile(cr, [5, 95]), int(round(np.mean(cm))), PURPLE),
-            ("natural neighbour,\ncertified (mean, 250)", 20.0, nr.mean(), np.percentile(nr, [5, 95]), int(round(np.mean(nm))), BLUE)]
+    rows = [("GP, guaranteed\n(mean, 50)", 20.0, cr.mean(), np.percentile(cr, [5, 95]), int(round(np.mean(cm))), PURPLE),
+            ("natural neighbour,\nguaranteed (mean, 250)", 20.0, nr.mean(), np.percentile(nr, [5, 95]), int(round(np.mean(nm))), BLUE)]
     for a in (0.05, 0.20, 0.32):
         _, _, r = unc(a)
         rows.append((f"GP, trusting itself,\nα = {a:.2f}", 100 * r["stated_rate"], 100 * r["wrong_rate"], None, r["measured"], ORANGE))
@@ -105,7 +105,7 @@ def main():
         ax.text(27.0, yk, f"{mm}", va="center", ha="right", fontsize=6.4, color=INK2)
     ax.set_yticks(list(range(n - 1, -1, -1)), [r[0] for r in rows], fontsize=6.0)
     ax.set_xlim(-0.5, 27.8); ax.set_ylim(-0.6, n - 0.4)
-    ax.set_xlabel("share of sites skipped wrongly (%)", fontsize=6.8)
+    ax.set_xlabel("share of sites skipped in error (%)", fontsize=6.8)
     ax.text(27.0, n - 0.38, "measured", ha="right", va="bottom", fontsize=6.0, color=INK2)
     ax.set_title("(c) Stated (|) and realised (●)", loc="left", fontsize=7.2, pad=10)
     for s_ in ("top", "right"):
@@ -115,11 +115,11 @@ def main():
     handles = [plt.Rectangle((0, 0), 1, 1, color=COL["measured"], label="measured"),
                plt.Rectangle((0, 0), 1, 1, color=COL["no_line"], label="skipped: no line"),
                plt.Rectangle((0, 0), 1, 1, color=COL["predictable"], label="skipped: predictable"),
-               Line2D([], [], ls="", marker="x", color=RED, markersize=4.5, label="wrong skip, found afterwards"),
+               Line2D([], [], ls="", marker="x", color=RED, markersize=4.5, label="skip error, found afterwards"),
                Line2D([], [], color=INK, lw=0.6, label="edge of the line")]
     fig.legend(handles=handles, loc="lower left", ncol=5, fontsize=6.2, frameon=False, bbox_to_anchor=(0.0, 0.0),
                columnspacing=1.0, handletextpad=0.4)
-    fig.text(0.005, 0.94, "One Gaussian process, one scan: calibrated, it skips about 300 sites it cannot skip on its own word",
+    fig.text(0.005, 0.94, "One Gaussian process, one scan: with conformal thresholds and with its own uncertainty",
              fontsize=8.4, fontweight="bold", color=INK)
     fig.savefig(FIG / "fig_hook_three.png", dpi=220)
     fig.savefig(FIG / "fig_hook_three.pdf")

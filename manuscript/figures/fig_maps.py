@@ -78,7 +78,7 @@ def main():
         ax.scatter(P[wrong, 0], P[wrong, 1], s=28, marker="x", c=INK, linewidths=0.9, zorder=3)
         n_meas = int((~skipped).sum())
         n_lev = int((reason != "seed").sum())
-        ax.set_title(f"{title}, {stmt}\n{n_meas} of {len(site)} measured; {100 * wrong.sum() / n_lev:.1f} % of\ncertified-level sites skipped wrongly",
+        ax.set_title(f"{title}, {stmt}\n{n_meas} of {len(site)} measured; {100 * wrong.sum() / n_lev:.1f} % of\nsites on guaranteed levels skipped in error",
                      color=INK, fontsize=7.6, loc="left")
         print(title, n_meas, int(wrong.sum()), round(100 * wrong.sum() / n_lev, 1))
         ax.set_xlabel(xl, color=INK2)
@@ -90,7 +90,7 @@ def main():
     handles = [Line2D([], [], ls="", marker=STYLE[k]["m"], color=STYLE[k]["c"], ms=6, label=STYLE[k]["label"])
                for k in ["seed", "calibration", "no_certificate", "not_interesting", "interpolable",
                          "not_interesting+interpolable"]]
-    handles.append(Line2D([], [], ls="", marker="x", color=INK, ms=6, label="wrong skip, found afterwards"))
+    handles.append(Line2D([], [], ls="", marker="x", color=INK, ms=6, label="skip error, found afterwards"))
     fig.legend(handles=handles, loc="lower center", ncol=4, frameon=False, fontsize=7.5, bbox_to_anchor=(0.5, 0.0))
     fig.subplots_adjust(left=0.05, right=0.98, top=0.83, bottom=0.22, wspace=0.30)
     for ext in ("png", "pdf"):

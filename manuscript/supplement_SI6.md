@@ -1,9 +1,9 @@
-# SI 6. What the certified metric does to a campaign (draft 1)
+# SI 6. What the guaranteed metric does to a campaign (draft 1)
 
-A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where wrong skips fall. The guarantee itself does not depend on the metric (Appendix A).
+A skip claims that a prediction meets an acceptance metric, and the choice of metric is part of the guarantee. This section measures how the metric changes the measurements spent, the attainment of the bound and the place where skip errors fall. The guarantee itself does not depend on the metric (Appendix A).
 
 **Set-up.**
-- **Campaigns.** The interpolation claim alone, with the quantile path and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (random states 0–49).
+- **Campaigns.** The interpolation claim alone, with the matched-quantile rule and natural-neighbour interpolation. Budgets as in Section 5: $R_E \le 0.10$ at confidence 0.75 for the IR map, $R_E \le 0.20$ at confidence 0.80 for the NaCl scan and the synthetic map. 50 campaigns per metric (random states 0–49).
 - **What changes.** Only the acceptance metric.
 - **Signal sites.** Sites marked by the dataset's interest label: absorbance above 0.1 for IR, the (200) line present for NaCl, a dominant peak at least five times its local baseline for the synthetic map. The label distinguishes signal from background here and plays no part in the decisions.
 
@@ -19,12 +19,12 @@ A skip claims that a prediction meets an acceptance metric, and the choice of me
 | Basis, de-duplicated SVD | the same, with near-duplicate seed spectra merged before the decomposition, so that each spectral shape counts once whatever its abundance |
 
 - **How the bases are built.** They use only the seed spectra, which are known before any decision, and stay frozen for the whole campaign. For the two scattering datasets they are built on log-intensity, since a linear basis is dominated by forward scattering.
-- **Two settings of the tolerances.** *Default*: values a practitioner might choose; the IR row marked "record" is the setting of Section 5. *Matched*: each tolerance scaled so that 15 % of the sites on certified levels fail when predicted from all design sites of the coarser levels. That setting uses the truth of the design. It is a control for comparing metrics at equal difficulty, not a recipe for a campaign.
-- **Measures reported.** "Sites failing prediction" is the share of certified-level sites whose prediction at decision time violates the metric. "Exceedances / allowed" compares the number of level checks with $R_E$ above the budget against the sum of the picked failure probabilities. "Clumping" is the share of wrong skips that have another wrong skip among their six nearest design neighbours, divided by the same share for wrong skips placed at random among the skipped sites.
+- **Two settings of the tolerances.** *Default*: values a practitioner might choose; the IR row marked "record" is the setting of Section 5. *Matched*: each tolerance scaled so that 15 % of the sites on guaranteed levels fail when predicted from all design sites of the coarser levels. That setting uses the truth of the design. It is a control for comparing metrics at equal difficulty, not a recipe for a campaign.
+- **Measures reported.** "Sites failing prediction" is the share of sites on guaranteed levels whose prediction at decision time violates the metric. "Exceedances / allowed" compares the number of level checks with $R_E$ above the budget against the sum of the picked failure probabilities. "Clumping" is the share of skip errors that have another skip error among their six nearest design neighbours, divided by the same share for skip errors placed at random among the skipped sites.
 
 **Table S6.1.** Default tolerances.
 
-| Dataset | Metric | Sites failing prediction | Sites measured | Exceedances / allowed | Wrong skips on signal sites (signal share of skipped) | Clumping |
+| Dataset | Metric | Sites failing prediction | Sites measured | Exceedances / allowed | Skip errors on signal sites (signal share of skipped) | Clumping |
 | --- | --- | --- | --- | --- | --- | --- |
 | IR map | window profile, 0.10 + 10 % (record) | 1 % | 233 ± 2 of 959 | 0 / 38.0 | 83 % (37 %) | 22.7 |
 | IR map | window profile, relative 10 % | 73 % | 804 ± 28 of 959 | 36 / 38.0 | 37 % (21 %) | 1.1 |
@@ -45,7 +45,7 @@ A skip claims that a prediction meets an acceptance metric, and the choice of me
 
 **Table S6.2.** Tolerances matched to equal difficulty.
 
-| Dataset | Metric | Sites failing prediction | Sites measured | Exceedances / allowed | Wrong skips on signal sites (signal share of skipped) | Clumping |
+| Dataset | Metric | Sites failing prediction | Sites measured | Exceedances / allowed | Skip errors on signal sites (signal share of skipped) | Clumping |
 | --- | --- | --- | --- | --- | --- | --- |
 | IR map | window profile, absolute + relative | 17 % | 368 ± 38 of 959 | 32 / 38.0 | 72 % (30 %) | 2.2 |
 | IR map | window profile, relative | 16 % | 453 ± 78 of 959 | 34 / 38.0 | 37 % (35 %) | 2.0 |
@@ -67,11 +67,11 @@ A skip claims that a prediction meets an acceptance metric, and the choice of me
 **Findings.**
 1. **Every metric kept its guarantee.** The observed exceedances stayed at or below the allowance within chance. The largest ratio, 1.37 (log-intensity basis, plain SVD, on NaCl at the default tolerance), has a one-sided probability of 0.04 under the picked levels; it is one row in 32. All other ratios are at most 1.08.
 2. **At default tolerances, the metric sets the cost.** The share of sites a prediction fails ranged from 1 % to 85 %, and the measurements from 233 to 821 sites on the same IR map. A relative tolerance of 10 % fails 73 % of the IR sites, while the record setting (0.10 + 10 %) fails 1 %, because absorbances in the window are mostly below 0.1 and the absolute term dominates.
-3. **At equal difficulty, the cost differences shrink.** The spread became 338–453 sites on IR, 287–367 on NaCl and 398–461 on the synthetic map. What remains is where the wrong skips fall:
-   - On IR, metrics with an absolute term, and the bases, put 72–83 % of the wrong skips on signal sites, which are 30 % of the skipped sites. The relative profile spreads them in proportion (37 % against 35 %).
-   - On NaCl, the width claim puts only 6 % of its wrong skips on sites with the (200) line, against 66 % of the skipped sites. Its failures sit where the line is weak or absent. The profile and basis metrics put 83–92 % on the line.
-4. **Wrong skips cluster under every metric.** At equal difficulty the clumping index lies between 1.5 and 3.0. Interpolation errors are spatially correlated, and the rate guarantee does not constrain their location.
-5. **De-duplicating the basis changed little on these data.** At equal difficulty the plain and de-duplicated bases differ by at most 5 % in cost and 3 points in the share of wrong skips on signal. The seed designs are spatially uniform, and the merged sets (12–47 spectra) span nearly the same components as the full ones.
+3. **At equal difficulty, the cost differences shrink.** The spread became 338–453 sites on IR, 287–367 on NaCl and 398–461 on the synthetic map. What remains is where the skip errors fall:
+   - On IR, metrics with an absolute term, and the bases, put 72–83 % of the skip errors on signal sites, which are 30 % of the skipped sites. The relative profile spreads them in proportion (37 % against 35 %).
+   - On NaCl, the width claim puts only 6 % of its skip errors on sites with the (200) line, against 66 % of the skipped sites. Its failures sit where the line is weak or absent. The profile and basis metrics put 83–92 % on the line.
+4. **Skip errors cluster under every metric.** At equal difficulty the clumping index lies between 1.5 and 3.0. Interpolation errors are spatially correlated, and the rate guarantee does not constrain their location.
+5. **De-duplicating the basis changed little on these data.** At equal difficulty the plain and de-duplicated bases differ by at most 5 % in cost and 3 points in the share of skip errors on signal. The seed designs are spatially uniform, and the merged sets (12–47 spectra) span nearly the same components as the full ones.
 
 
 ## SI 6.1 Where each metric sends the measurements
@@ -101,17 +101,17 @@ Scripts and data: SI 4; summary in the run record, under the analysis of the met
 
 This section uses a variant of the synthetic map with two claims: interest, a dominant peak at least five times its local baseline, and interpolation of the dominant-peak position and width (0.005 and 0.001 Å⁻¹), at a budget of 0.20 and confidence 0.80. The main text uses the interpolation claim alone on the full profile; the records of this variant are kept in the run record and the archive of SI 5.
 
-The wrong skips of the synthetic map cluster in composition. The analysis below uses the quantile path with natural-neighbour interpolation at a budget of 0.20 and confidence 0.80; the score variants were run on the first 60 campaigns.
+The skip errors of the synthetic map cluster in composition. The analysis below uses the matched-quantile rule with natural-neighbour interpolation at a budget of 0.20 and confidence 0.80; the score variants were run on the first 60 campaigns.
 
 - **The guarantee held.** The record shows 161 exceedances in 1,500 level checks, against 170 allowed by the picked failure probabilities. The calibration draw is uniform within each level, so spatial correlation of the labels leaves it exchangeable with its level.
-- **The budget sets the count, the score the location.** Three interest scores gave about the same number of wrong skips per campaign (Table S6.3). The quantile path raises its threshold until the calibration draw reaches its allowed failures, so the budget is spent whatever the score; only the sites it is spent on change.
+- **The budget sets the count, the score the location.** Three interest scores gave about the same number of skip errors per campaign (Table S6.3). The matched-quantile rule raises its threshold until the calibration draw reaches its allowed failures, so the budget is spent whatever the score; only the sites it is spent on change.
 - **The recorded score depends on signal shape.** The interest label asks for a dominant peak rising above its local baseline by at least five times that baseline, a relative criterion; call the height above baseline divided by the baseline the peak-to-baseline ratio. The recorded score uses the absolute height above baseline. The broad correlation peak of the micellar phase has a high ratio to its baseline and a small absolute height (median 0.43, against 5.5 for the Bragg peaks of the ordered phases). The score therefore ranks interesting micellar sites low, and 75 % of the wrong interest skips fall in that phase. The interpolated spectrum predicted a peak of at least five times baseline at 91 % of these sites: the prediction was right and the score misread it.
-- **A score matched to the label moves the errors to the margin.** With scores based on the predicted peak-to-baseline ratio, the wrong skips are the least interesting of the interesting sites (median true ratio 8.4). The probability of a wrong skip falls from 0.72 at ratios of 5–8 to 0.05 above 40. Such sites form contiguous bands of composition where the ratio changes slowly near the threshold, so the errors still cluster.
-- **The denominator matters.** The rate is taken over all sites of a level, and a third of the sites are of interest. With the recorded score, 35 % of the interesting sites on certified levels were skipped in error while every level met its budget. A bound on the share of interesting sites lost requires a label-conditional statement (Section 6, Scope of the guarantee).
+- **A score matched to the label moves the errors to the margin.** With scores based on the predicted peak-to-baseline ratio, the skip errors are the least interesting of the interesting sites (median true ratio 8.4). The probability of a skip error falls from 0.72 at ratios of 5–8 to 0.05 above 40. Such sites form contiguous bands of composition where the ratio changes slowly near the threshold, so the errors still cluster.
+- **The denominator matters.** The rate is taken over all sites of a level, and a third of the sites are of interest. With the recorded score, 35 % of the interesting sites on guaranteed levels were skipped in error while every level met its budget. A bound on the share of interesting sites lost requires a label-conditional statement (Section 6, Scope of the guarantee).
 
 **Table S6.3.** Interest scores on the synthetic map (60 campaigns, 360 level checks).
 
-| Interest score | Wrong skips per campaign | Sites measured | Exceedances |
+| Interest score | Skip errors per campaign | Sites measured | Exceedances |
 | --- | --- | --- | --- |
 | Logistic on absolute peak height above baseline (recorded) | 270 | 333 | 37 / 360 |
 | Logistic on peak-to-baseline ratio | 278 | 358 | 45 / 360 |
@@ -123,8 +123,8 @@ The record keeps the original score. It meets its guarantee, and the misranking 
 
 Six acceptance metrics were compared on the three maps with the interpolation claim alone and 50 campaigns per metric: peak or line descriptors with absolute or relative tolerance, two forms of profile envelope, and the error in a basis of the seed spectra, plain or with near-duplicate spectra merged (SI 6). Every metric kept its guarantee. Over 32 combinations of metric, dataset and tolerance, the largest ratio of observed to expected exceedances was 1.37, with a one-sided probability of 0.04 under the picked failure probabilities, the smallest of 32 such probabilities and consistent with chance; all other ratios were at most 1.08.
 
-The metric set the cost. At tolerances a practitioner might pick, the share of certified-level sites that a prediction fails ranged from 1 % to 85 %, and the IR map needed between 233 and 810 measurements. Scaling every tolerance so that 15 % of the sites fail, a control that uses the truth, brought the costs close: 338–453 sites on IR, 287–367 on NaCl and 398–461 on the synthetic map.
+The metric set the cost. At tolerances a practitioner might pick, the share of sites on guaranteed levels that a prediction fails ranged from 1 % to 85 %, and the IR map needed between 233 and 810 measurements. Scaling every tolerance so that 15 % of the sites fail, a control that uses the truth, brought the costs close: 338–453 sites on IR, 287–367 on NaCl and 398–461 on the synthetic map.
 
 At equal difficulty the metric still decided where measurements go (Fig. S6). On the synthetic map the peak claim measured where the peak position and width drift with composition, in the micellar phase and in a band of the emulsion. The profile claim measured along the phase boundaries: 45–46 % of its measurements fell on the 8.8 % of sites next to another phase, against 32 % for the peak claim. The two claims placed 31 % of their measurements on the same sites, and 16 % at the default tolerances.
 
-The metric also decided where wrong skips fall. Metrics with an absolute term put 72–83 % of the IR wrong skips on sites with signal, 30 % of the skipped sites, and the NaCl line-width claim put 6 % of its wrong skips on sites holding the line, 66 % of the skipped sites. Under every metric the wrong skips clustered, with another wrong skip among the six nearest neighbours 1.5 to 3.0 times as often as for wrong skips placed at random among the skipped sites. The rate also counts wrong skips over all sites of a level. On the two-claim variant of the synthetic map, where a third of the sites are of interest, 35 % of the interesting sites on certified levels were skipped in error while every level met its budget (SI 6.2).
+The metric also decided where skip errors fall. Metrics with an absolute term put 72–83 % of the IR skip errors on sites with signal, 30 % of the skipped sites, and the NaCl line-width claim put 6 % of its skip errors on sites holding the line, 66 % of the skipped sites. Under every metric the skip errors clustered, with another skip error among the six nearest neighbours 1.5 to 3.0 times as often as for skip errors placed at random among the skipped sites. The rate also counts skip errors over all sites of a level. On the two-claim variant of the synthetic map, where a third of the sites are of interest, 35 % of the interesting sites on guaranteed levels were skipped in error while every level met its budget (SI 6.2).

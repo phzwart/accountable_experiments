@@ -14,7 +14,7 @@ The weights are nonnegative, sum to one, reproduce linear functions and vary con
 
 **Checks.** On random point sets the weights agree with stolen areas computed by brute-force Monte Carlo integration to Monte Carlo precision; linear functions are reproduced to rounding; predictions on a raster change continuously under small perturbations of the positions; and along a hull edge they are linear. A perturbation of $10^{-9}$ of the NaCl raster positions changes predictions by at most $3 \times 10^{-7}$ and flips no failure label (SI 4).
 
-**An earlier implementation.** The routine used in the original analyses of the IR map and the NaCl scan clipped polygons on the assumption of counter-clockwise orientation. Cells returned clockwise clipped to nothing, and the routine fell back silently to barycentric weights on the enclosing Delaunay triangle. On 200 random sites, 134 of 300 queries took that fallback, and a perturbation of $10^{-9}$ of the NaCl positions flipped 22 of 271 failure labels at level 5 and 33 of 521 at level 6. The switch depended on the build of the triangulation library, which explains why archived numbers drifted from reruns after the first certified levels. A guarantee concerns the predictor actually used, so the archived bounds remain valid for that predictor; every number in this paper uses the exact construction.
+**An earlier implementation.** The routine used in the original analyses of the IR map and the NaCl scan clipped polygons on the assumption of counter-clockwise orientation. Cells returned clockwise clipped to nothing, and the routine fell back silently to barycentric weights on the enclosing Delaunay triangle. On 200 random sites, 134 of 300 queries took that fallback, and a perturbation of $10^{-9}$ of the NaCl positions flipped 22 of 271 failure labels at level 5 and 33 of 521 at level 6. The switch depended on the build of the triangulation library, which explains why archived numbers drifted from reruns after the first guaranteed levels. A guarantee concerns the predictor actually used, so the archived bounds remain valid for that predictor; every number in this paper uses the exact construction.
 
 ## SI 1.2 Gaussian-process interpolation on the design
 
@@ -46,7 +46,7 @@ with $\ell(x)$ the distance from $x$ to its third-nearest measured site, clipped
 
 In every rule, the length scale of a level is fixed from the measured set before the calibration draw, so the score is frozen in the sense of Section 3.1.
 
-**Table S1.1.** Length scales and nuggets over all certified levels and 20 campaigns (quantile path), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 µm). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.
+**Table S1.1.** Length scales and nuggets over all guaranteed levels and 20 campaigns (matched-quantile rule), in design units (the unit square; for the IR map, micrometres divided by 41, so 0.024 corresponds to 1 µm). Median, with the range in parentheses. For the local-spacing rule the entry is the median local length scale over measured sites.
 
 | Dataset | Max. likelihood: $\ell$ | Max. likelihood: $\nu$ | Design spacing: $\ell$ | Local spacing: median $\ell$ |
 | --- | --- | --- | --- | --- |

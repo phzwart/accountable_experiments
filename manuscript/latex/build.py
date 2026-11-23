@@ -16,7 +16,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 M = HERE.parent
-TITLE = "Accountable experiments: autonomy under contract"
+TITLE = "Accountable experiments: autonomous measurement with error bounds set in advance"
 MAIN = ["introduction", "related_work", "framework", "experiments", "results", "discussion", "conclusion"]
 APP = ["appendix_A", "appendix_B", "appendix_C"]
 SI = [f"supplement_SI{i}" for i in range(1, 11)]

@@ -58,7 +58,7 @@ def main(design=0, src="campaign"):
     hs = [Patch(fc=ABSENT, label="no line (stated or measured)"),
           Patch(fc="#f1efe9", ec="#bbbbbb", lw=0.4, label=f"within ±{TOL} nm⁻¹"),
           Patch(fc="#e0a43a", label="width off"), Patch(fc="#b8322a", label="presence wrong"),
-          Line2D([], [], ls="", marker="x", ms=3, mec="black", mew=0.8, label="wrong skip (design site)")]
+          Line2D([], [], ls="", marker="x", ms=3, mec="black", mew=0.8, label="skip error (design site)")]
     lg = fig.legend(handles=hs, loc="upper left", bbox_to_anchor=(0.10 / FW, ypos[1] + 0.55 * H), frameon=False, fontsize=5.8,
                     handlelength=1.2, borderaxespad=0)
 

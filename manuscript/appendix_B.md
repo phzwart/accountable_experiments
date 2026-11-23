@@ -1,8 +1,8 @@
-# Appendix B. Guarantees on the shared wrong-skip event (draft 1)
+# Appendix B. Guarantees on the shared skip-error event (draft 1)
 
 Fix a level with population $D$ of $N$ sites and a set $J$ of claims. Claim $j$ has a frozen score $S_j$ and a bad label $B_j$ ($Z$ for interest, $F$ for interpolation). A calibration sample $C \subset D$ of size $m$ is drawn uniformly without replacement after the scores are frozen; labels are known on $C$ only. Write $k(\varepsilon, \delta)$ for the largest integer with $P(H \le k) \le \delta$, where $H$ is hypergeometric with population $N$, $\lfloor \varepsilon N \rfloor + 1$ marked sites and $m$ draws, as in Appendix A. The binomial tail $P(\mathrm{Bin}(m, \varepsilon) \le k)$ gives a valid but smaller $k$.
 
-The shared wrong-skip event of a site under covers $\{A_j\}$ is
+The shared skip-error event of a site under covers $\{A_j\}$ is
 
 $$
 E(x) = \bigvee_{j \in J} \big(A_j(x) \wedge B_j(x)\big)
@@ -40,7 +40,7 @@ $$
 \lambda_E(x) = \min \{\lambda_j(x) : j \in J,\ B_j(x) = 1\}
 $$
 
-with $\lambda_E(x) = \infty$ when no label is bad. A site is a wrong skip at $\lambda$ exactly when $\lambda_E(x) \le \lambda$, so
+with $\lambda_E(x) = \infty$ when no label is bad. A site is a skip error at $\lambda$ exactly when $\lambda_E(x) \le \lambda$, so
 
 $$
 R_E(\lambda) = N^{-1} \, \lvert \{x \in D : \lambda_E(x) \le \lambda\} \rvert
@@ -60,13 +60,13 @@ $\square$
 
 Testing the hypotheses $R_E(\lambda) > \varepsilon$ in order of increasing $\lambda$ and stopping at the first that cannot be rejected is fixed-sequence testing in Learn-then-Test [Angelopoulos2025]; Proposition B.2 is the one-dimensional, monotone case. With a single claim, $\lambda_E$ and $\lambda_{\mathrm{cov}}$ coincide on bad sites and the rule reduces to Appendix A.
 
-**Quantile path.** With $\hat F_j$ the empirical distribution function of $S_j$ over the level and weights $w_j \in (0, 1]$,
+**Matched-quantile rule.** With $\hat F_j$ the empirical distribution function of $S_j$ over the level and weights $w_j \in (0, 1]$,
 
 $$
 \lambda_j(x) = \hat F_j(S_j(x)) / w_j
 $$
 
-**Priority path.** With $i_j \in \{0, 1, \dots\}$ the position of claim $j$ in a fixed order,
+**Priority rule.** With $i_j \in \{0, 1, \dots\}$ the position of claim $j$ in a fixed order,
 
 $$
 \lambda_j(x) = i_j + \hat F_j(S_j(x))
@@ -76,7 +76,7 @@ so that claim $j$ sweeps its own quantiles over $\lambda \in (i_j, i_j + 1]$ whi
 
 ## B.3 The sequential rule
 
-The rule of the original IR analysis first sets the interest threshold on $C$, then sets the interpolation threshold on the calibration sites the interest claim leaves uncovered, from the budget that remains. The second entry time then depends on calibration labels, $K$ in the proof of Proposition B.2 is no longer fixed before the draw, and the hypergeometric step fails. Section 5.1 reports the consequence on a simulated population with uninformative scores: the bound is exceeded in 0.288 of draws, against a picked failure probability of 0.206 and a nominal 0.25. The priority path keeps the same preference and the fixed-path condition.
+The rule of the original IR analysis first sets the interest threshold on $C$, then sets the interpolation threshold on the calibration sites the interest claim leaves uncovered, from the budget that remains. The second entry time then depends on calibration labels, $K$ in the proof of Proposition B.2 is no longer fixed before the draw, and the hypergeometric step fails. Section 5.1 reports the consequence on a simulated population with uninformative scores: the bound is exceeded in 0.288 of draws, against a picked failure probability of 0.206 and a nominal 0.25. The priority rule keeps the same preference and the fixed-path condition.
 
 ## B.4 Other families
 
@@ -84,4 +84,4 @@ Proposition B.2 needs a family of covers fixed before the labels and nested in o
 
 ## B.5 Attaining the nominal failure probability
 
-On a fixed level population, the exceedance probability of the rule above equals $P(|C \cap K| \le k)$ when the wrong-skip rate crosses $\varepsilon$ at exactly $\lfloor \varepsilon N \rfloor + 1$ sites, and is smaller otherwise. With $k$ from the hypergeometric tail, the bound is therefore attained up to the integer step in $k$: at $m = 40$ and $\varepsilon = 0.10$, $k = 2$ gives at most 0.21 on 399 sites against $\delta = 0.25$. A randomised rule, which uses $k + 1$ with the probability that makes the mixture of the two tails equal to $\delta$, removes the step [Lehmann & Romano 2005, ch. 3]. It makes the decision depend on an extra coin and is not used here.
+On a fixed level population, the exceedance probability of the rule above equals $P(|C \cap K| \le k)$ when the skip-error rate crosses $\varepsilon$ at exactly $\lfloor \varepsilon N \rfloor + 1$ sites, and is smaller otherwise. With $k$ from the hypergeometric tail, the bound is therefore attained up to the integer step in $k$: at $m = 40$ and $\varepsilon = 0.10$, $k = 2$ gives at most 0.21 on 399 sites against $\delta = 0.25$. A randomised rule, which uses $k + 1$ with the probability that makes the mixture of the two tails equal to $\delta$, removes the step [Lehmann & Romano 2005, ch. 3]. It makes the decision depend on an extra coin and is not used here.
