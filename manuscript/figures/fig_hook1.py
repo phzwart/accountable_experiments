@@ -23,7 +23,7 @@ from scipy.stats import gaussian_kde
 
 FIG = Path(__file__).resolve().parent
 sys.path.insert(0, str(FIG))
-from fig_hook_calibrated import EPS, GRID, INK, INK2, ORANGE, PURPLE, RES, ROOT, S, TAG, shares, site_maps  # noqa: E402
+from fig_hook_calibrated import EPS, GRID, INK, INK2, ORANGE, PURPLE, RES, ROOT, S, SEED_MAX, TAG, shares, site_maps  # noqa: E402
 from fig_hook_request import boot_q, cp  # noqa: E402
 
 
@@ -38,8 +38,23 @@ def main():
     con_real = np.array([[l["realised"] / l["N"] for l in r["contract"]] for r in rr])     # actual wrong skips
     meas_own = np.array([[l["N"] - l["n_skip"] for l in r["own"]] for r in rr]).mean(0)
     meas_con = np.array([[l["N"] - l["n_skip"] for l in r["contract"]] for r in rr]).mean(0)
+    from scipy.stats import hypergeom
+
+    def contract_bound(l, conf=0.80):
+        """Exact upper limit at conf on the round's event count from the calibration draw, less the failures
+        already seen in the draw: the bound on actual wrong skips the contract states before the round."""
+        N, m, k = l["N"], l["m"], l["k_cal"]
+        W = np.arange(k, N + 1)
+        u = int(W[hypergeom.cdf(k, N, W, m) > 1 - conf].max())
+        return (u - k) / N
+    st_own = np.array([[l["stated_q"] / l["N"] for l in r["own"]] for r in rr])
+    st_con = np.array([[contract_bound(l) for l in r["contract"]] for r in rr])
+    cov_own = (own <= st_own + 1e-12).mean(0); cov_con = (con_real <= st_con + 1e-12).mean(0)
+    print("stated bound (mean) own", st_own.mean(0).round(3), "contract", st_con.mean(0).round(3))
+    print("delivered q80 own", np.quantile(own, .8, axis=0).round(3), "contract", np.quantile(con_real, .8, axis=0).round(3))
+    print("coverage of own bound: own word", cov_own.round(3), "contract", cov_con.round(3))
     tests = json.load(open(ROOT / RES.replace(".jsonl", "_trend_tests.json")))
-    n = len(rr)
+    n = len(rr); R = own.shape[1]
 
     sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / "src"))
     from fig_datasets import nacl_fwhm
@@ -68,17 +83,17 @@ def main():
     rxy = xy[np.asarray(ds.meta["raster_index"])]
     dix = np.searchsorted(xs, rxy[:, 0].round(4)); diy = np.searchsorted(ys, rxy[:, 1].round(4))
     lv = np.asarray(ds.levels)
-    axg.scatter(dix[lv <= 2], diy[lv <= 2], s=11, c="white", marker="s", lw=0.8, edgecolors="black", zorder=5, label="seed")
-    for r, (L, sz) in enumerate(zip((3, 4, 5, 6), (9, 5, 2.2, 0.7))):
+    axg.scatter(dix[lv <= SEED_MAX], diy[lv <= SEED_MAX], s=11, c="white", marker="s", lw=0.8, edgecolors="black", zorder=5, label="seed")
+    for r, (L, sz) in enumerate(zip(range(SEED_MAX + 1, 7), (9, 5, 2.2, 0.7)[4 - R:] if R < 4 else (9, 5, 2.2, 0.7))):
         m = lv == L
-        if r < 2:
+        if r < R - 2:
             axg.scatter(dix[m], diy[m], s=sz, facecolors="none", edgecolors="black" if r == 0 else "#3a3a3a", lw=0.7,
                         zorder=4, label=f"round {r + 1}")
         else:
             axg.scatter(dix[m], diy[m], s=sz, c="#111111", lw=0, alpha=0.8, zorder=3, label=f"round {r + 1}")
     axg.set_xlim(-0.5, img.shape[1] - 0.5); axg.set_ylim(-0.5, img.shape[0] - 0.5)
     clean(axg)
-    axg.legend(loc="upper center", bbox_to_anchor=(0.5, -0.005), ncol=5, frameon=False, fontsize=5.8,
+    axg.legend(loc="upper center", bbox_to_anchor=(0.5, -0.005), ncol=R + 1, frameon=False, fontsize=5.8,
                handletextpad=0.05, columnspacing=0.45, markerscale=1.5)
     cwx = fig.add_axes([X1 - 0.03, YT + 0.04, 0.010, MH - 0.08])
     cw = fig.colorbar(imw, cax=cwx); cw.outline.set_visible(False); cw.solids.set_alpha(0.85)
@@ -88,7 +103,7 @@ def main():
 
     # (b) delivered per round
     axb = fig.add_axes([0.49, YT + 0.06, 0.48, MH - 0.065])
-    for j in range(4):
+    for j in range(R):
         for side, v, col in ((-1, own[:, j], ORANGE), (1, con_real[:, j], PURPLE)):
             y = np.linspace(0, 0.6 * S, 300)
             d = gaussian_kde(v, bw_method=0.35)(y); d = d / d.max() * 0.34; k = d > 0.0034
@@ -97,17 +112,27 @@ def main():
             x = j + side * 0.17
             axb.plot([x, x], [lo, hi], color=col, lw=1.4, solid_capstyle="butt")
             axb.plot(x, qa, "o", ms=5, color=col, mec=INK, mew=0.7, zorder=4)
-    axb.axhline(EPS, color=INK, lw=1.0, ls=(0, (4, 3)))
-    axb.text(-0.5, 0.33 * S, f"requested per round (dashed): at most {EPS:.2f} of its sites\n"
-                             "skipped wrongly, in at least 80 % of campaigns", fontsize=6.6, color=INK, va="center")
-    axb.set_xticks(range(4), [f"round {j + 1}\n{Nmean[j]:.0f} sites" for j in range(4)])
-    for j in range(4):
+    for j in range(R):
+        for side, v, col in ((-1, st_own[:, j], ORANGE), (1, st_con[:, j], PURPLE)):
+            x0, x1 = (j - 0.36, j - 0.02) if side < 0 else (j + 0.02, j + 0.36)
+            axb.plot([x0, x1], [v.mean(), v.mean()], color=col, lw=2.0, ls=(0, (2.5, 1.5)), zorder=3)
+    axb.text(-0.5, 0.36 * S, "dashed marks: the bound each rule stated before the round,\n"
+                             "at 80 % (mean over campaigns); dots: what was delivered", fontsize=6.6, color=INK, va="center")
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    hk = [Patch(color=INK2, alpha=0.18, label="spread over the 80 campaigns"),
+          Line2D([], [], marker="o", ls="-", color=INK2, mfc="white", mec=INK, ms=4.5, lw=1.2,
+                 label="80 % of campaigns at or below\n(delivered bound, 95 % interval)")]
+    axb.legend(handles=hk, loc="upper right", bbox_to_anchor=(1.0, 0.84), frameon=False, fontsize=6.3,
+               handlelength=1.4, labelspacing=0.5)
+    axb.set_xticks(range(R), [f"round {j + 1}\n{Nmean[j]:.0f} sites" for j in range(R)])
+    for j in range(R):
         axb.text(j - 0.2, -0.115 * S, f"{meas_own[j]:.0f}", ha="center", va="top", fontsize=7, color=ORANGE, clip_on=False)
         axb.text(j + 0.2, -0.115 * S, f"{meas_con[j]:.0f}", ha="center", va="top", fontsize=7, color=PURPLE, clip_on=False)
     axb.text(-0.62, -0.115 * S, "measured", ha="right", va="top", fontsize=6.8, color=INK, clip_on=False)
-    axb.set_xlim(-0.55, 3.6); axb.set_ylim(0, 0.37 * S)
+    axb.set_xlim(-0.55, R - 0.4); axb.set_ylim(0, 0.39 * S)
     axb.set_yticks(np.round(np.arange(0, 0.31 * S, 0.1 * S), 3))
-    axb.set_ylabel("share of the round's sites\nskipped wrongly", labelpad=2)
+    axb.set_ylabel("share of the round's sites\nskipped wrongly, per campaign", labelpad=2)
     axb.grid(axis="y", color=GRID, lw=0.4, alpha=0.6)
     for s_ in ("top", "right"):
         axb.spines[s_].set_visible(False)
@@ -135,7 +160,7 @@ def main():
     lim = 0.32
     axd.plot([0, lim], [0, lim], color=INK2, lw=0.8, ls=(0, (4, 3)))
     for st, X, col, mk in ((stated_own, own_over, ORANGE, "o"), (stated_con, con_over, PURPLE, "s")):
-        for j in range(4):
+        for j in range(R):
             k = int(X[:, j].sum()); lo, hi = cp(k, n)
             axd.plot([st[j], st[j]], [lo, hi], color=col, lw=1.0, alpha=0.8)
             axd.plot(st[j], k / n, mk, ms=4.3, color=col, mec=INK, mew=0.6, zorder=3)

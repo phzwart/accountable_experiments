@@ -24,6 +24,7 @@ from experiments.uncertified_gp import TOL, fit, predict, site_truth
 OUT = Path("results/revision2/staged_gp_nacl.json")
 import os
 EPS, CONF, M = float(os.environ.get("STAGED_EPS", 0.20)), 0.80, 40
+SEED_MAX = int(os.environ.get("STAGED_SEED_MAX", 2))      # levels 0..SEED_MAX are measured in full
 
 
 def poisson_binomial(q):
@@ -59,8 +60,8 @@ def level_model(xy, w, p, measured, idx):
 
 
 def own_word(xy, w, p, lv):
-    measured = lv <= 2; levels = []
-    for L in range(3, int(lv.max()) + 1):
+    measured = lv <= SEED_MAX; levels = []
+    for L in range(SEED_MAX + 1, int(lv.max()) + 1):
         idx = np.flatnonzero(lv == L); N = len(idx)
         q, wrong = level_model(xy, w, p, measured, idx)
         order = np.argsort(q, kind="stable"); n_skip = 0
@@ -75,6 +76,7 @@ def own_word(xy, w, p, lv):
         levels.append(dict(L=L, N=N, n_skip=int(n_skip), measured_after=int(measured.sum() + N - n_skip),
                            stated_pmf=pmf.tolist(), realised=int(wrong[skip].sum()),
                            stated_over=float(1.0 - pmf[: int(np.floor(EPS * N)) + 1].sum()),
+                           stated_q=int(np.searchsorted(np.cumsum(pmf), CONF)),      # its own bound at CONF
                            skip_idx=idx[skip].tolist(), wrong_idx=idx[skip][wrong[skip]].tolist()))
         sel = np.ones(N, bool); sel[skip] = False
         measured[idx[sel]] = True
@@ -83,8 +85,8 @@ def own_word(xy, w, p, lv):
 
 def contract(xy, w, p, lv, seed):
     rng = np.random.default_rng(5000 + seed)
-    measured = lv <= 2; levels = []
-    for L in range(3, int(lv.max()) + 1):
+    measured = lv <= SEED_MAX; levels = []
+    for L in range(SEED_MAX + 1, int(lv.max()) + 1):
         idx = np.flatnonzero(lv == L); N = len(idx)
         q, wrong = level_model(xy, w, p, measured, idx)      # fitted and frozen before the draw
         cal = rng.choice(N, size=min(M, N), replace=False)

@@ -28,9 +28,13 @@ INK, INK2, GRID = "#0b0b0b", "#52514e", "#b9b8b3"
 ORANGE, PURPLE = "#eb6834", "#8e6cc8"
 import os
 EPS = float(os.environ.get("STAGED_EPS", 0.20))
-RES = "results/revision2/staged_gp_designs_v2.jsonl" if EPS == 0.20 else f"results/revision2/staged_gp_designs_eps{int(round(100 * EPS))}.jsonl"
+SEED_MAX = int(os.environ.get("STAGED_SEED_MAX", 2))
+if SEED_MAX == 3:
+    RES = "results/revision2/staged_gp_designs_seed3.jsonl" if EPS == 0.20 else f"results/revision2/staged_gp_designs_seed3_eps{int(round(100 * EPS))}.jsonl"
+else:
+    RES = "results/revision2/staged_gp_designs_v2.jsonl" if EPS == 0.20 else f"results/revision2/staged_gp_designs_eps{int(round(100 * EPS))}.jsonl"
 S = EPS / 0.20
-TAG = "" if EPS == 0.20 else f"_eps{int(round(100 * EPS))}"
+TAG = ("" if EPS == 0.20 else f"_eps{int(round(100 * EPS))}") + ("_seed3" if SEED_MAX == 3 else "")
 DIV = LinearSegmentedColormap.from_list("div", ["#2f5f9e", "#9fbbe0", "#f2f1ed", "#efa58c", "#b8391f"])
 
 
