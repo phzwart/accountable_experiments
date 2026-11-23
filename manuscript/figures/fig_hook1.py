@@ -35,6 +35,9 @@ def main():
     stated_con = np.array([[l["delta_picked"] for l in r["contract"]] for r in rr]).mean(0)
     stated_own = np.array([[l["stated_over"] for l in r["own"]] for r in rr]).mean(0)
     Nmean = np.array([[l["N"] for l in r["own"]] for r in rr]).mean(0)
+    con_real = np.array([[l["realised"] / l["N"] for l in r["contract"]] for r in rr])     # actual wrong skips
+    meas_own = np.array([[l["N"] - l["n_skip"] for l in r["own"]] for r in rr]).mean(0)
+    meas_con = np.array([[l["N"] - l["n_skip"] for l in r["contract"]] for r in rr]).mean(0)
     tests = json.load(open(ROOT / RES.replace(".jsonl", "_trend_tests.json")))
     n = len(rr)
 
@@ -84,9 +87,9 @@ def main():
     fig.text(0.02, 0.965, "(a) The sample and one design", fontsize=8, color=INK)
 
     # (b) delivered per round
-    axb = fig.add_axes([0.49, YT + 0.035, 0.48, MH - 0.04])
+    axb = fig.add_axes([0.49, YT + 0.06, 0.48, MH - 0.065])
     for j in range(4):
-        for side, v, col in ((-1, own[:, j], ORANGE), (1, con[:, j], PURPLE)):
+        for side, v, col in ((-1, own[:, j], ORANGE), (1, con_real[:, j], PURPLE)):
             y = np.linspace(0, 0.6 * S, 300)
             d = gaussian_kde(v, bw_method=0.35)(y); d = d / d.max() * 0.34; k = d > 0.0034
             axb.fill_betweenx(y[k], j, j + side * d[k], color=col, alpha=0.13, lw=0)
@@ -98,13 +101,17 @@ def main():
     axb.text(-0.5, 0.33 * S, f"requested per round (dashed): at most {EPS:.2f} of its sites\n"
                              "skipped wrongly, in at least 80 % of campaigns", fontsize=6.6, color=INK, va="center")
     axb.set_xticks(range(4), [f"round {j + 1}\n{Nmean[j]:.0f} sites" for j in range(4)])
+    for j in range(4):
+        axb.text(j - 0.2, -0.115 * S, f"{meas_own[j]:.0f}", ha="center", va="top", fontsize=7, color=ORANGE, clip_on=False)
+        axb.text(j + 0.2, -0.115 * S, f"{meas_con[j]:.0f}", ha="center", va="top", fontsize=7, color=PURPLE, clip_on=False)
+    axb.text(-0.62, -0.115 * S, "measured", ha="right", va="top", fontsize=6.8, color=INK, clip_on=False)
     axb.set_xlim(-0.55, 3.6); axb.set_ylim(0, 0.37 * S)
     axb.set_yticks(np.round(np.arange(0, 0.31 * S, 0.1 * S), 3))
     axb.set_ylabel("share of the round's sites\nskipped wrongly", labelpad=2)
     axb.grid(axis="y", color=GRID, lw=0.4, alpha=0.6)
     for s_ in ("top", "right"):
         axb.spines[s_].set_visible(False)
-    fig.text(0.40, 0.965, "(b) Delivered: the share that 80 % of 80 campaigns stay at or below", fontsize=8, color=INK)
+    fig.text(0.40, 0.965, "(b) Wrong skips per round: the share 80 % of campaigns stay at or below", fontsize=8, color=INK)
     fig.text(0.49, 0.928, "own word (left)", fontsize=7.2, color=ORANGE, fontweight="bold")
     fig.text(0.612, 0.928, f"{m_own.mean():.0f} ± {m_own.std():.0f} sites", fontsize=7, color=INK)
     fig.text(0.745, 0.928, "contract (right)", fontsize=7.2, color=PURPLE, fontweight="bold")
