@@ -8,7 +8,8 @@ conformal thresholds only.
 
 (a) Measured width with the seed and the three rounds of one design.
 (b) Share of campaigns whose wrong skips stayed within the bound stated before the round, against the 80 % target;
-    grey bands: central 95 % (dark) and 99 % (light) range of that share for a method meeting the target exactly (binomial, 80 campaigns). Above the line: budget left unused; below: rate violation.
+    grey bands: central 95 % (dark) and 99 % (light) range of that share for a method meeting the target exactly (binomial, 80 campaigns). Near 100 %: the stated rate is never exceeded, so more is measured than the policy needs;
+    near 0 %: it is always exceeded, so less is measured than the policy needs.
 
     python manuscript/figures/fig_hook4.py
 """
@@ -74,7 +75,7 @@ def main():
 
     # (b) target met
     axb = fig.add_axes([0.45, 0.25, 0.53, 0.60])
-    lo, hi = 0.0, 1.13
+    lo, hi = 0.0, 1.19
     axb.axhspan(CONF, hi, color=BLUE, alpha=0.06, lw=0, zorder=0)
     axb.axhspan(lo, CONF, color=RED, alpha=0.06, lw=0, zorder=0)
     from scipy.stats import binom
@@ -105,8 +106,10 @@ def main():
         axb.axvline(xv, color=INK2, lw=0.6, ls=(0, (2, 2)))
     axb.text(11.8, 0.45, "no uncertainty\nof its own", ha="center", va="center", fontsize=6.0, color=INK2,
              style="italic", linespacing=1.1)
-    axb.text(13.35, 0.945, "budget left unused", ha="right", va="center", fontsize=6.4, color=BLUE, style="italic")
-    axb.text(13.35, 0.03, "rate violation", ha="right", va="bottom", fontsize=6.4, color=RED, style="italic")
+    axb.text(13.35, 0.918, "100 %: rate never exceeded,\nmore measured than the policy needs", ha="right", va="bottom",
+             fontsize=6.0, color=BLUE, style="italic", linespacing=1.15)
+    axb.text(13.35, 0.03, "0 %: rate always exceeded,\nless measured than the policy needs", ha="right", va="bottom",
+             fontsize=6.0, color=RED, style="italic", linespacing=1.15)
     axb.annotate(f"target: 80 %\nrange if met exactly\n({nC} campaigns):\ndark 95 %: {b_lo * 100:.0f}–{b_hi * 100:.0f} %\n"
                  f"light 99 %: {c_lo * 100:.1f}–{c_hi * 100:.0f} %",
                  xy=(1.2, c_lo), xytext=(0.05, 0.42), linespacing=1.25, ha="left", va="center", fontsize=6.2, color=INK,
