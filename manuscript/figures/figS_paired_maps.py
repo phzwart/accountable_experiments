@@ -19,11 +19,13 @@ DLAB = {"uq": "own statement", "contract": "contract"}
 ABSENT = "#d9d7d0"
 
 
-def main(design=0):
+def main(design=0, src="campaign"):
     from fig_datasets import nacl_fwhm
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 7, "axes.edgecolor": INK2})
     img, pres, (xs, ys), _, _ = nacl_fwhm()
-    R = np.load(ROOT / f"results/revision2/paired_gp_maps_d{design}.npz")
+    best = src != "campaign"
+    R = np.load(ROOT / (f"results/revision2/paired_gp_bestfit_d{design}_{src}.npz" if best
+                        else f"results/revision2/paired_gp_maps_d{design}.npz"))
     sh = tuple(R["shape"]); ix, iy, ridx = R["ix"], R["iy"], R["raster_idx"]
     vmin, vmax = np.nanpercentile(img, 5), np.nanpercentile(img, 95)
     cmap = plt.get_cmap("viridis").copy(); cmap.set_bad(ABSENT)
@@ -63,7 +65,7 @@ def main(design=0):
     for r, k in enumerate(("fitted", "nugget", "smooth")):
         for c, d in enumerate(("uq", "contract")):
             t = f"{k}_{d}"
-            ph, wh = R[f"{t}_ph"], R[f"{t}_wh"]
+            ph, wh = (R[f"{t}_bph"], R[f"{t}_bwh"]) if best else (R[f"{t}_ph"], R[f"{t}_wh"])
             line = ph >= 0.5
             mp = to_img(np.where(line, wh, np.nan))
             gtw, gtp = img[iy, ix], pres[iy, ix]
@@ -91,14 +93,20 @@ def main(design=0):
             if c == 0:
                 fig.text(xpos[0] - 0.06 / FW, ypos[r] + H / 2, KLAB[k], rotation=90, ha="right", va="center",
                          fontsize=7.2, color=INK)
+    if best:
+        ph, wh = R["all_bph"], R["all_bwh"]; line = ph >= 0.5
+        e = np.where(line, (~pres[iy, ix]) | (np.abs(wh - np.nan_to_num(img[iy, ix], nan=1e9)) > TOL), pres[iy, ix])
+        fig.text(0.10 / FW, ypos[2] + 0.5 * H, "Same Matérn (ν = ½) fit on\nevery measured set.\n"
+                 f"All {len(ridx)} design sites measured:\n{e.mean():.0%} of raster off.", fontsize=6.2,
+                 color=INK, va="center", linespacing=1.4)
     for c, d in enumerate(("uq", "contract")):
         fig.text((xpos[2 * c] + xpos[2 * c + 1] + W) / 2, 1 - 0.06 / FH, f"cut by the {DLAB[d]}", ha="center",
                  va="top", fontsize=8, color=INK, weight="bold")
-    out = ROOT / "manuscript/figures/figS_paired_maps"
+    out = ROOT / ("manuscript/figures/figS_paired_maps" + (f"_{src}" if best else ""))
     for ext in ("png", "pdf", "svg"):
         fig.savefig(f"{out}.{ext}", dpi=300 if ext == "png" else None)
     print(out)
 
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]) if len(sys.argv) > 1 else 0)
+    main(int(sys.argv[1]) if len(sys.argv) > 1 else 0, sys.argv[2] if len(sys.argv) > 2 else "campaign")
