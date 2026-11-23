@@ -1,3 +1,4 @@
+# ARCHIVED 23 Nov 2026: the manuscript source is manuscript/tex/. This script writes only to manuscript/latex/.
 """
 Build the MLST LaTeX sources from the markdown manuscript.
 

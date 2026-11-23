@@ -1,3 +1,5 @@
+> **Archived 23 Nov 2026.** The manuscript source is now `manuscript/tex/`. This folder and the markdown sections are kept for history; edits here are not carried into the paper.
+
 # LaTeX sources for MLST
 
 Generated from the markdown manuscript by `build.py` (run from the repository root: `python manuscript/latex/build.py`).
