@@ -116,6 +116,17 @@ def main():
         for side, v, col in ((-1, st_own[:, j], ORANGE), (1, st_con[:, j], PURPLE)):
             x0, x1 = (j - 0.36, j - 0.02) if side < 0 else (j + 0.02, j + 0.36)
             axb.plot([x0, x1], [v.mean(), v.mean()], color=col, lw=2.0, ls=(0, (2.5, 1.5)), zorder=3)
+    # deviation of delivered from stated: arrows
+    for j in range(R):
+        for side, st, v, col in ((-1, st_own[:, j], own[:, j], ORANGE), (1, st_con[:, j], con_real[:, j], PURPLE)):
+            ys, yd = st.mean(), np.quantile(v, 0.80); x = j + side * 0.27
+            if abs(yd - ys) > 0.008 * S:
+                axb.annotate("", xy=(x, yd), xytext=(x, ys),
+                             arrowprops=dict(arrowstyle="-|>", color=INK, lw=0.9, mutation_scale=7, shrinkA=0, shrinkB=1))
+    jlab = int(np.argmax(st_own.mean(0) - np.quantile(own, 0.80, axis=0)))
+    axb.annotate("unwanted conservatism:\nbudget stated but not used", xy=(jlab - 0.27, np.quantile(own[:, jlab], 0.8) - 0.004 * S),
+                 xytext=(jlab - 0.95, 0.045 * S), fontsize=6.4, color=INK, style="italic", ha="center",
+                 arrowprops=dict(arrowstyle="-", color=INK2, lw=0.5))
     axb.text(-0.5, 0.36 * S, "dashed marks: the bound each rule stated before the round,\n"
                              "at 80 % (mean over campaigns); dots: what was delivered", fontsize=6.6, color=INK, va="center")
     from matplotlib.lines import Line2D
@@ -159,6 +170,11 @@ def main():
     axd = fig.add_axes([0.765, YB + 0.03, 0.215, MH - 0.02])
     lim = 0.32
     axd.plot([0, lim], [0, lim], color=INK2, lw=0.8, ls=(0, (4, 3)))
+    axd.fill_between([0, lim], [0, lim], [lim, lim], color="#c0392b", alpha=0.06, lw=0)
+    axd.fill_between([0, lim], [0, 0], [0, lim], color="#2f5f9e", alpha=0.06, lw=0)
+    axd.text(0.03, 0.255, "unwanted looseness:\nover more often than stated", fontsize=5.8, color="#8e2a1e", style="italic", va="top")
+    axd.text(0.315, 0.055, "unwanted conservatism:\nover less often than stated", fontsize=5.8, color="#23477a", style="italic",
+             ha="right", va="bottom")
     for st, X, col, mk in ((stated_own, own_over, ORANGE, "o"), (stated_con, con_over, PURPLE, "s")):
         for j in range(R):
             k = int(X[:, j].sum()); lo, hi = cp(k, n)
@@ -174,7 +190,7 @@ def main():
     for s_ in ("top", "right"):
         axd.spines[s_].set_visible(False)
     to, tc = tests["own"], tests["contract"]
-    axd.text(0.01, 0.315, "trend over rounds\n" + ("own word p < 5·10⁻⁵" if to["p_trend"] < 5e-5 else f"own word p = {to['p_trend']:.3f}")
+    axd.text(0.01, 0.318, "trend over rounds\n" + ("own word p < 5·10⁻⁵" if to["p_trend"] < 5e-5 else f"own word p = {to['p_trend']:.3f}")
              + f"\ncontract p = {tc['p_trend']:.2f}", fontsize=5.9, color=INK, va="top")
     fig.text(0.70, 0.445, "(d) Chance of exceeding the request", fontsize=8, color=INK)
 
