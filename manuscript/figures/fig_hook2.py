@@ -99,22 +99,23 @@ def main():
     # (b) delivered minus stated
     axb = fig.add_axes([0.405, 0.25, 0.33, 0.545])
     lo_y, hi_y = -0.16, 0.135
-    axb.axhspan(0, hi_y, color=RED, alpha=0.05, lw=0); axb.axhspan(lo_y, 0, color=BLUE, alpha=0.05, lw=0)
-    axb.axhline(0, color=INK, lw=0.9)
+    axb.axhspan(0, hi_y, color=RED, alpha=0.05, lw=0, zorder=0); axb.axhspan(lo_y, 0, color=BLUE, alpha=0.05, lw=0, zorder=0)
+    axb.axhline(0, color=INK, lw=0.9, zorder=5)
     for j in range(R):
         for side, v, col in ((-1, d_own[:, j], ORANGE), (1, d_con[:, j], PURPLE)):
             y = np.linspace(lo_y, hi_y, 600)
             dd = gaussian_kde(v, bw_method=0.35)(y); dd = dd / dd.max() * 0.38; k = dd > 0.0038
             q = float(np.quantile(v, CONF))
             low = k & (y <= q); high = k & (y >= q)
-            axb.fill_betweenx(y[low], j, j + side * dd[low], color=col, alpha=0.75, lw=0)
-            axb.fill_betweenx(y[high], j, j + side * dd[high], color=col, alpha=0.18, lw=0)
+            axb.fill_betweenx(y[low], j, j + side * dd[low], color=col, alpha=0.8, lw=0, zorder=3)
+            axb.fill_betweenx(y[high], j, j + side * dd[high], facecolor="white", lw=0, zorder=2)
+            axb.fill_betweenx(y[high], j, j + side * dd[high], color=col, alpha=0.35, lw=0, zorder=3)
             w = float(np.interp(q, y, dd))
             axb.plot([j, j + side * max(w, 0.06)], [q, q], color=INK, lw=1.0, solid_capstyle="butt", zorder=4)
     axb.text(R - 0.45, hi_y - 0.004, "unwanted looseness:\nmore wrong skips than stated", fontsize=6, color=RED,
-             style="italic", ha="right", va="top")
+             style="italic", ha="right", va="top", zorder=1)
     axb.text(R - 0.45, lo_y + 0.008, "unwanted conservatism:\nstated budget left unused", fontsize=6, color=BLUE,
-             style="italic", ha="right", va="bottom")
+             style="italic", ha="right", va="bottom", zorder=1)
     axb.set_xticks(range(R), [f"round {j + 1}\n{Nmean[j]:.0f} sites" for j in range(R)], fontsize=6.8)
     for j in range(R):
         axb.text(j - 0.2, lo_y - 0.072, f"{m_own[j]:.0f}", ha="center", va="top", fontsize=6.5, color=ORANGE, clip_on=False)
