@@ -117,12 +117,25 @@ def main():
     maps, nd = site_maps(img.shape, riy, rix)
     cmap = plt.get_cmap("Reds").copy(); cmap.set_bad("#e9e8e4")
     kw = dict(origin="lower", cmap=cmap, vmin=0, vmax=0.8 * S, interpolation="nearest", aspect="equal")
-    W, H0, Y0 = 0.25, 0.36, 0.04
+    W, H0, Y0 = 0.25, 0.315, 0.075
     axw = fig.add_axes([0.085, Y0, W, H0]); axl = fig.add_axes([0.37, Y0, W, H0]); axr = fig.add_axes([0.655, Y0, W, H0])
-    imw = axw.imshow(img, origin="lower", cmap="magma", interpolation="nearest", aspect="equal",
+    imw = axw.imshow(img, origin="lower", cmap="Greys", interpolation="nearest", aspect="equal", alpha=0.6,
                      vmin=np.nanpercentile(img, 5), vmax=np.nanpercentile(img, 95))
+    # one design (the paper's): seed and the four rounds, coarse to fine
+    ds_, _ = load()
+    rxy = np.asarray(grid["xy_mm"], float)[np.asarray(ds_.meta["raster_index"])]
+    dix = np.searchsorted(xs_, rxy[:, 0].round(4)); diy = np.searchsorted(ys_, rxy[:, 1].round(4))
+    lvd = np.asarray(ds_.levels)
+    ROUND_COL = ["#0b3c5d", "#1a7a96", "#2fb3c3", "#7fd6d2"]
+    axw.scatter(dix[lvd <= 2], diy[lvd <= 2], s=9, c=INK, marker="s", lw=0, label="seed")
+    for r, (L, sz) in enumerate(zip((3, 4, 5, 6), (8, 4.5, 2.2, 0.9))):
+        m = lvd == L
+        axw.scatter(dix[m], diy[m], s=sz, c=ROUND_COL[r], lw=0, label=f"round {r + 1}")
+    axw.legend(loc="upper center", bbox_to_anchor=(0.5, -0.01), ncol=5, frameon=False, fontsize=5.8,
+               handletextpad=0.1, columnspacing=0.6, markerscale=2.2)
+    axw.set_xlim(-0.5, img.shape[1] - 0.5); axw.set_ylim(-0.5, img.shape[0] - 0.5)
     im = axl.imshow(maps["own"], **kw); axr.imshow(maps["contract"], **kw)
-    for ax, t, c in ((axw, "measured (200) width", INK), (axl, "own word", ORANGE), (axr, "contract", PURPLE)):
+    for ax, t, c in ((axw, "measured width and one design", INK), (axl, "own word", ORANGE), (axr, "contract", PURPLE)):
         ax.set_xticks([]); ax.set_yticks([])
         for sp in ax.spines.values():
             sp.set_visible(False)
@@ -137,7 +150,8 @@ def main():
     cw = fig.colorbar(imw, cax=cwx)
     cw.outline.set_visible(False); cw.ax.tick_params(labelsize=6, length=2)
     cwx.yaxis.set_ticks_position("left"); cwx.yaxis.set_label_position("left")
-    cw.set_label("nm⁻¹", fontsize=6)
+    cw.set_label("(200) width, nm⁻¹", fontsize=6)
+    cw.solids.set_alpha(0.6)
 
     for ext in ("png", "pdf"):
         fig.savefig(FIG / f"fig_hook_request{TAG}.{ext}", dpi=300)
