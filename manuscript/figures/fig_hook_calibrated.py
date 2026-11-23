@@ -26,12 +26,16 @@ FIG = Path(__file__).resolve().parent
 ROOT = FIG.parents[1]
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#b9b8b3"
 ORANGE, PURPLE = "#eb6834", "#8e6cc8"
-EPS = 0.20
+import os
+EPS = float(os.environ.get("STAGED_EPS", 0.20))
+RES = "results/revision2/staged_gp_designs_v2.jsonl" if EPS == 0.20 else f"results/revision2/staged_gp_designs_eps{int(round(100 * EPS))}.jsonl"
+S = EPS / 0.20
+TAG = "" if EPS == 0.20 else f"_eps{int(round(100 * EPS))}"
 DIV = LinearSegmentedColormap.from_list("div", ["#2f5f9e", "#9fbbe0", "#f2f1ed", "#efa58c", "#b8391f"])
 
 
 def shares():
-    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_v2.jsonl")]
+    rr = [json.loads(l) for l in open(ROOT / RES)]
     own = np.array([[l["realised"] / l["N"] for l in r["own"]] for r in rr])
     con = np.array([[l["W_level"] / l["N"] for l in r["contract"]] for r in rr])
     own_over = np.array([[l["realised"] > np.floor(EPS * l["N"]) for l in r["own"]] for r in rr])
@@ -42,7 +46,7 @@ def shares():
 
 
 def half_violin(ax, x, v, side, col, width=0.38):
-    y = np.linspace(0, 0.45, 300)
+    y = np.linspace(0, 0.6 * S, 300)
     d = gaussian_kde(v, bw_method=0.35)(y); d = d / d.max() * width
     keep = d > 0.01 * width; y, d = y[keep], d[keep]
     xs = x - d if side < 0 else x + d
@@ -55,7 +59,7 @@ def half_violin(ax, x, v, side, col, width=0.38):
 
 
 def site_maps(shape, raster_iy, raster_ix):
-    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_v2.jsonl")]
+    rr = [json.loads(l) for l in open(ROOT / RES)]
     n = len(raster_iy); dec = np.zeros(n); wrong = {k: np.zeros(n) for k in ("own", "contract")}
     for r in rr:
         dec[r["decided"]] += 1
@@ -75,8 +79,8 @@ def main():
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 7.5, "axes.edgecolor": INK2,
                          "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK})
     own, con, own_over, con_over, m_own, m_con = shares()
-    tests = json.load(open(ROOT / "results/revision2/staged_gp_designs_trend_tests.json"))
-    rr = [json.loads(l) for l in open(ROOT / "results/revision2/staged_gp_designs_v2.jsonl")]
+    tests = json.load(open(ROOT / RES.replace(".jsonl", "_trend_tests.json")))
+    rr = [json.loads(l) for l in open(ROOT / RES)]
     nominal = np.array([[l["delta_picked"] for l in r["contract"]] for r in rr]).mean(0)
     stated = np.array([[l["stated_over"] for l in r["own"]] for r in rr]).mean(0)
     levels = [3, 4, 5, 6]
@@ -92,17 +96,17 @@ def main():
             qa = np.quantile(v, 0.80)
             axa.plot([j, j + 0.36 * side], [qa, qa], color=col, lw=2.2, solid_capstyle="butt", zorder=4)
             axa.plot([j, j + 0.36 * side], [qa, qa], color=INK, lw=0.6, zorder=5)
-        for y, (a, b) in ((0.475, (own_over[:, j].mean(), con_over[:, j].mean())), (0.44, (stated[j], nominal[j]))):
+        for y, (a, b) in (((0.475 if S == 1 else 0.535) * S, (own_over[:, j].mean(), con_over[:, j].mean())), ((0.44 if S == 1 else 0.50) * S, (stated[j], nominal[j]))):
             axa.text(j - 0.2, y, f"{100 * a:.0f} %", ha="center", fontsize=7, color=ORANGE)
             axa.text(j + 0.2, y, f"{100 * b:.0f} %", ha="center", fontsize=7, color=PURPLE)
-    axa.text(-0.62, 0.482, "over budget", ha="right", va="center", fontsize=6.5, color=INK, clip_on=False)
-    axa.text(-0.62, 0.447, "stated", ha="right", va="center", fontsize=6.5, color=INK2, clip_on=False)
+    axa.text(-0.62, (0.482 if S == 1 else 0.542) * S, "over budget", ha="right", va="center", fontsize=6.5, color=INK, clip_on=False)
+    axa.text(-0.62, (0.447 if S == 1 else 0.507) * S, "stated", ha="right", va="center", fontsize=6.5, color=INK2, clip_on=False)
     axa.axhline(EPS, color=INK2, lw=0.8, ls=(0, (4, 3)))
-    axa.text(3.62, EPS - 0.006, "budget", ha="right", va="top", fontsize=7, color=INK2)
-    axa.annotate("achieved bound: 80 % of\ndesigns at or below", (3.25, np.quantile(con[:, 3], 0.8)), (2.2, 0.35),
+    axa.text(3.62, EPS - 0.006 * S, "budget", ha="right", va="top", fontsize=7, color=INK2)
+    axa.annotate("achieved bound: 80 % of\ndesigns at or below", (3.25, np.quantile(con[:, 3], 0.8)), (2.2, 0.35 * S),
                  fontsize=6.5, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6))
-    axa.set_xticks(range(4), [f"level {L}" for L in levels]); axa.set_xlim(-0.6, 3.65); axa.set_ylim(0, 0.5)
-    axa.set_yticks([0, 0.1, 0.2, 0.3, 0.4])
+    axa.set_xticks(range(4), [f"level {L}" for L in levels]); axa.set_xlim(-0.6, 3.65); axa.set_ylim(0, (0.5 if S == 1 else 0.56) * S)
+    axa.set_yticks(np.round(np.arange(0, 0.41 * S, 0.1 * S), 3))
     axa.set_ylabel("share of the level skipped wrongly", labelpad=2)
     axa.grid(axis="y", color=GRID, lw=0.4, alpha=0.6)
     for s in ("top", "right"):
@@ -110,7 +114,7 @@ def main():
     tc = tests["contract"]
     fig.text(0.02, 0.94, "(a) One process, one plan, 80 designs", fontsize=8, color=INK)
     fig.text(0.02, 0.885, "own word", fontsize=7.5, color=ORANGE, fontweight="bold")
-    fig.text(0.105, 0.885, f"measured {m_own.mean():.0f} ± {m_own.std():.0f}, level trend p < 5·10⁻⁵", fontsize=7, color=INK)
+    fig.text(0.105, 0.885, f"measured {m_own.mean():.0f} ± {m_own.std():.0f}, level trend " + (f"p < 5·10⁻⁵" if tests['own']['p_trend'] < 5e-5 else f"p = {tests['own']['p_trend']:.3f}"), fontsize=7, color=INK)
     fig.text(0.02, 0.845, "contract", fontsize=7.5, color=PURPLE, fontweight="bold")
     fig.text(0.105, 0.845, f"measured {m_con.mean():.0f} ± {m_con.std():.0f}, level trend p = {tc['p_trend']:.2f}", fontsize=7, color=INK)
 
@@ -125,7 +129,7 @@ def main():
     maps, nd = site_maps(img.shape, riy, rix)
     cmap = plt.get_cmap("Reds").copy(); cmap.set_bad("#e9e8e4")
     axl = fig.add_axes([0.615, 0.20, 0.18, 0.56]); axr = fig.add_axes([0.795, 0.20, 0.18, 0.56])
-    kw = dict(origin="lower", cmap=cmap, vmin=0, vmax=0.8, interpolation="nearest", aspect="equal")
+    kw = dict(origin="lower", cmap=cmap, vmin=0, vmax=0.8 * S, interpolation="nearest", aspect="equal")
     im = axl.imshow(maps["own"], **kw)
     axr.imshow(maps["contract"][:, ::-1], **kw)                                  # mirrored about the seam
     for ax, t, c in ((axl, "own word", ORANGE), (axr, "contract (mirrored)", PURPLE)):
@@ -135,7 +139,7 @@ def main():
         ax.set_title(t, fontsize=7.5, color=c, fontweight="bold")
     fig.text(0.615, 0.94, "(b) Where sites are skipped wrongly", fontsize=8, color=INK)
     cax = fig.add_axes([0.66, 0.085, 0.27, 0.022])
-    cb = fig.colorbar(im, cax=cax, orientation="horizontal", ticks=[0, 0.2, 0.4, 0.6, 0.8])
+    cb = fig.colorbar(im, cax=cax, orientation="horizontal", ticks=np.round(np.linspace(0, 0.8 * S, 5), 2))
     cb.outline.set_visible(False); cb.ax.tick_params(labelsize=6.5, length=2)
     cax.set_title(f"share of the {nd} designs in which the site was skipped wrongly", fontsize=6.5, pad=2)
     # inset: the measured width
@@ -148,7 +152,7 @@ def main():
     ins.text(-0.08, 0.5, "measured\nwidth", transform=ins.transAxes, ha="right", va="center", fontsize=6.5)
 
     for ext in ("png", "pdf"):
-        fig.savefig(FIG / f"fig_hook_calibrated.{ext}", dpi=300)
+        fig.savefig(FIG / f"fig_hook_calibrated{TAG}.{ext}", dpi=300)
     print("own over by level", own_over.mean(0), "contract", con_over.mean(0), "nominal", nominal.round(3))
 
 

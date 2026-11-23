@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial import cKDTree
 
-from experiments.staged_gp import contract, own_word
+from experiments.staged_gp import EPS, contract, own_word
 from experiments.uncertified_gp import site_truth
 
 OUT = Path(sys.argv[3]) if len(sys.argv) > 3 else Path("results/revision2/staged_gp_designs.jsonl")
@@ -67,8 +67,8 @@ def main(start, n):
         row = dict(design=d, n=int(len(idx)), decided=idx[lv >= 3].tolist(), own=own, contract=con)
         with OUT.open("a") as f:
             f.write(json.dumps(row) + "\n")
-        print(d, len(idx), "own", own[-1]["measured_after"], [(o["realised"], int(0.2 * o["N"])) for o in own],
-              "contract", con[-1]["measured_after"], [(c["W_level"], int(0.2 * c["N"])) for c in con], flush=True)
+        print(d, len(idx), "own", own[-1]["measured_after"], [(o["realised"], int(EPS * o["N"])) for o in own],
+              "contract", con[-1]["measured_after"], [(c["W_level"], int(EPS * c["N"])) for c in con], flush=True)
 
 
 if __name__ == "__main__":

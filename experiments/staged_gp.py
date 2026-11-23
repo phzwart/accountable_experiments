@@ -22,7 +22,8 @@ from scipy.stats import hypergeom, norm
 from experiments.uncertified_gp import TOL, fit, predict, site_truth
 
 OUT = Path("results/revision2/staged_gp_nacl.json")
-EPS, CONF, M = 0.20, 0.80, 40
+import os
+EPS, CONF, M = float(os.environ.get("STAGED_EPS", 0.20)), 0.80, 40
 
 
 def poisson_binomial(q):
