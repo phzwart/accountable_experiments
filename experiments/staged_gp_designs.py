@@ -15,7 +15,7 @@ from scipy.spatial import cKDTree
 from experiments.staged_gp import contract, own_word
 from experiments.uncertified_gp import site_truth
 
-OUT = Path("results/revision2/staged_gp_designs.jsonl")
+OUT = Path(sys.argv[3]) if len(sys.argv) > 3 else Path("results/revision2/staged_gp_designs.jsonl")
 
 
 def make_design(seed, xy_mm):
@@ -62,7 +62,9 @@ def main(start, n):
         con = contract(xy, w, p, lv, d)
         for o in own:
             o.pop("stated_pmf")
-        row = dict(design=d, n=int(len(idx)), own=own, contract=con)
+        for lvl in own + con:                      # design indices -> raster indices
+            lvl["skip_idx"] = idx[lvl["skip_idx"]].tolist(); lvl["wrong_idx"] = idx[lvl["wrong_idx"]].tolist()
+        row = dict(design=d, n=int(len(idx)), decided=idx[lv >= 3].tolist(), own=own, contract=con)
         with OUT.open("a") as f:
             f.write(json.dumps(row) + "\n")
         print(d, len(idx), "own", own[-1]["measured_after"], [(o["realised"], int(0.2 * o["N"])) for o in own],

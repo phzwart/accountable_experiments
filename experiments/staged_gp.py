@@ -72,7 +72,8 @@ def own_word(xy, w, p, lv):
         skip = order[:n_skip]
         pmf = poisson_binomial(q[skip])
         levels.append(dict(L=L, N=N, n_skip=int(n_skip), measured_after=int(measured.sum() + N - n_skip),
-                           stated_pmf=pmf.tolist(), realised=int(wrong[skip].sum())))
+                           stated_pmf=pmf.tolist(), realised=int(wrong[skip].sum()),
+                           skip_idx=idx[skip].tolist(), wrong_idx=idx[skip][wrong[skip]].tolist()))
         sel = np.ones(N, bool); sel[skip] = False
         measured[idx[sel]] = True
     return levels
@@ -98,7 +99,8 @@ def contract(xy, w, p, lv, seed):
         skip = rest[q[rest] <= t_best]
         levels.append(dict(L=L, N=N, m=len(cal), k_allowed=k_ok, delta_picked=d_pick, k_cal=k_cal,
                            n_skip=int(len(skip)), measured_after=int(measured.sum() + N - len(skip)),
-                           realised=int(wrong[skip].sum()), W_level=int(((q <= t_best) & wrong).sum())))
+                           realised=int(wrong[skip].sum()), W_level=int(((q <= t_best) & wrong).sum()),
+                           skip_idx=idx[skip].tolist(), wrong_idx=idx[skip][wrong[skip]].tolist()))
         sel = np.ones(N, bool); sel[skip] = False
         measured[idx[sel]] = True
     return levels
