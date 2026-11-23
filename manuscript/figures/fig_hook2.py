@@ -130,7 +130,7 @@ def main():
     fig.text(0.49, 0.875, f"{tot_own.mean():.0f} sites measured", fontsize=6.6, color=INK)
     fig.text(0.635, 0.875, "contract", fontsize=6.8, color=PURPLE, fontweight="bold")
     fig.text(0.708, 0.875, f"{tot_con.mean():.0f} sites", fontsize=6.6, color=INK)
-    fig.text(0.405, 0.833, "shape: spread over 80 campaigns;  dot: level 80 % stay at or below;  bar: uncertainty of the dot (95 %)", fontsize=5.6, color=INK2)
+    fig.text(0.405, 0.833, "shape: spread of 80 campaigns; dot: level 80 % stay at or below; bar: 95 % uncertainty of the dot", fontsize=5.3, color=INK2)
 
     # (c) stated vs realised chance of going over the request
     axc = fig.add_axes([0.815, 0.25, 0.17, 0.57])
