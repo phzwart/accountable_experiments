@@ -97,7 +97,7 @@ def main():
     fig.text(0.01, 0.95, "(a) Sample and one design", fontsize=7.8, color=INK)
 
     # (b) delivered minus stated
-    axb = fig.add_axes([0.405, 0.25, 0.33, 0.555])
+    axb = fig.add_axes([0.405, 0.25, 0.33, 0.545])
     lo_y, hi_y = -0.16, 0.10
     axb.axhspan(0, hi_y, color=RED, alpha=0.05, lw=0); axb.axhspan(lo_y, 0, color=BLUE, alpha=0.05, lw=0)
     axb.axhline(0, color=INK, lw=0.9)
@@ -130,7 +130,7 @@ def main():
     fig.text(0.49, 0.875, f"{tot_own.mean():.0f} sites measured", fontsize=6.6, color=INK)
     fig.text(0.635, 0.875, "contract", fontsize=6.8, color=PURPLE, fontweight="bold")
     fig.text(0.708, 0.875, f"{tot_con.mean():.0f} sites", fontsize=6.6, color=INK)
-    fig.text(0.405, 0.833, "shape: spread of 80 campaigns; dot: level 80 % stay at or below; bar: 95 % uncertainty of the dot", fontsize=5.3, color=INK2)
+    fig.text(0.405, 0.826, "shape: distribution of the difference over 80 campaigns\ndot: 80 % of campaigns at or below;  bar: 95 % uncertainty of the dot", fontsize=5.6, color=INK2, linespacing=1.15)
 
     # (c) stated vs realised chance of going over the request
     axc = fig.add_axes([0.815, 0.25, 0.17, 0.57])
