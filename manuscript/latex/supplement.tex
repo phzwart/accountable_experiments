@@ -404,7 +404,7 @@ Synthetic map & One claim (all forms) & 932 \ensuremath{\pm} 223 & 1578 \ensurem
 \subsection*{Forms of guarantee and random scores compared}\label{forms-of-guarantee-and-random-scores-compared}}
 \addcontentsline{toc}{subsection}{Forms of guarantee and random scores compared}
 
-Every form of Table 1 kept its guarantee on the two maps with two claims at one nominal statement on the shared event, \(R_E \le 0.10\) at confidence 0.75 for IR and \(R_E \le 0.20\) at 0.80 for NaCl (Fig. S3; Table S3.1); with the one claim of the synthetic map the forms coincide. The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the per-claim form, the quantile path and the priority path on IR, and in 9, 112 and 123 of 1000 on NaCl. No form was the least expensive on all three maps: the per-claim form measured 262 \ensuremath{\pm} 28 of 959 sites on IR against 295 \ensuremath{\pm} 53 for the quantile path, and the quantile path 614 \ensuremath{\pm} 56 of 1071 on NaCl against 678 to 719. The sequential rule of an earlier analysis of the IR map, which sets the interpolation threshold on the calibration sites left uncovered by the interest threshold, exceeded \(R_E = 0.10\) in 28.8 \% of 4000 draws; the priority path, which fixes the same preference in advance, did so in 20.5 \%, at a picked failure probability of 20.6 \%.
+Every form of Table S4.3 kept its guarantee on the two maps with two claims at one nominal statement on the shared event, \(R_E \le 0.10\) at confidence 0.75 for IR and \(R_E \le 0.20\) at 0.80 for NaCl (Fig. S3; Table S3.1); with the one claim of the synthetic map the forms coincide. The shared rate exceeded its budget in 0, 49 and 49 of 1000 level checks for the per-claim form, the quantile path and the priority path on IR, and in 9, 112 and 123 of 1000 on NaCl. No form was the least expensive on all three maps: the per-claim form measured 262 \ensuremath{\pm} 28 of 959 sites on IR against 295 \ensuremath{\pm} 53 for the quantile path, and the quantile path 614 \ensuremath{\pm} 56 of 1071 on NaCl against 678 to 719. The sequential rule of an earlier analysis of the IR map, which sets the interpolation threshold on the calibration sites left uncovered by the interest threshold, exceeded \(R_E = 0.10\) in 28.8 \% of 4000 draws; the priority path, which fixes the same preference in advance, did so in 20.5 \%, at a picked failure probability of 20.6 \%.
 
 With random scores, an independent uniform weight per site and claim, the shared rate exceeded its budget in 168 of 1000 level checks on IR, 194 of 1000 on IR at the tight tolerance, 127 of 1000 on NaCl and 149 of 1500 on the synthetic map, at nominal failure probabilities of 0.25, 0.25, 0.20 and 0.20 (Table S3.3).
 
@@ -516,6 +516,56 @@ Meaning
 \texttt{gp\_\allowbreak{}mle}, \texttt{gp\_\allowbreak{}design}, \texttt{gp\_\allowbreak{}nonstationary} & Gaussian-process interpolation, length scale by maximum likelihood, by design spacing, by local spacing \\
 \texttt{random} & random scores for every claim \\
 \texttt{legacy\_\allowbreak{}sequential} & the sequential rule of the original IR analysis (Appendix B.3) \\
+\end{longtable}
+}
+
+\hypertarget{si-4.5-the-forms-of-guarantee}{%
+\subsection*{SI 4.5 The forms of guarantee}\label{si-4.5-the-forms-of-guarantee}}
+\addcontentsline{toc}{subsection}{SI 4.5 The forms of guarantee}
+
+Section 3.4 of the main text defines the shared wrong-skip event \(E\) and its rate \(R_E\) over a level. The forms below spend the budget on it in different ways; every form uses the same frozen scores and the same calibration draw.
+
+\textbf{Per-claim budgets.} Each claim is calibrated on its own, with budget \(\varepsilon_j\) and failure probability \(\delta_j\), on one shared draw. A wrong skip fails at least one claim, so \(R_E \le R_a + R_b\), and the Bonferroni inequality gives
+
+\[
+P\big(R_E \le \varepsilon_a + \varepsilon_b\big) \ge 1 - \delta_a - \delta_b
+\]
+
+alongside a separate guarantee for each claim. The split leaves each claim a smaller budget at a higher confidence. Once \(\varepsilon_j\) falls below \(\varepsilon_{\min}\), no threshold exists and the level is measured in full.
+
+\textbf{One budget along a path.} A single budget spends all of \(\varepsilon\) and \(\delta\) on \(R_E\). Two thresholds cannot be read off one draw by an order statistic, and Learn-then-Test supplies the remedy: search a family of thresholds fixed before any label is seen \cite{Angelopoulos2025}. Here the family is a path \(\lambda \mapsto (\tau_a(\lambda), \tau_b(\lambda))\), built from the frozen scores alone, along which both thresholds rise. The wrong-skip sets along such a path are nested, \(R_E(\lambda)\) grows with \(\lambda\), and the rule of Section 3.3 of the main text applies with \(\lambda\) in place of the threshold (Appendix B). Two paths are used. The quantile path moves both thresholds through matching quantiles of their scores on the level. The priority path admits the claims in a set order: the first claim sweeps its quantiles before the second moves. A preference between the claims thereby enters the decision with the guarantee intact.
+
+\textbf{Further forms.} Any rule built from scores frozen before the draw, a uniform calibration draw and a family of thresholds fixed before the labels are known inherits a finite-sample guarantee, including a bound on a conditional rate (Appendix C). A label-conditional statement protects the sites of interest: given their number, the calibration sites of interest are a uniform draw from those of the level, and the rule of Section 3.3 of the main text, with the worst case over their unknown total, limits the share skipped under the no-interest claim \cite{Vovk2005,Sadinle2019,Tong2018}; a cover so restricted keeps every bound on a rate counted over the level, provided the budget it frees is not spent again on the same draw (Appendix B.3). The statement bounds a share of the sites of interest, not where the lost ones lie, and holds per level; with the shared bound on the same draw, both hold with probability at least \(1 - \delta_L - \delta_Z\), where \(\delta_Z\) is the failure probability of the conditional statement. Table S4.3 summarises the forms; Section SI 4.2 gives the Monte Carlo acceptance check every form passes.
+
+{\renewcommand{\thetable}{S4.3}\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\caption{Forms of guarantee on the wrong-skip event of one level. Every form uses the same frozen scores and the same calibration draw.}\label{tab:S4.3}\\
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Form
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Guarantee, with probability at least the stated confidence
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Budget
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Given up
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Suited to
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Per-claim budgets & \(R_a \le \varepsilon_a\) and \(R_b \le \varepsilon_b\); hence \(R_E \le \varepsilon_a + \varepsilon_b\) at \(1 - \delta_a - \delta_b\) & Split between the claims & Budget per claim; no threshold once \(\varepsilon_j < \varepsilon_{\min}\) & Reporting how often each reason for skipping fails \\
+Quantile path & \(R_E \le \varepsilon\) at \(1 - \delta\) & Whole budget on \(R_E\) & Guarantee per claim; path shape set in advance & Bounding how often any skip fails \\
+Priority path & \(R_E \le \varepsilon\) at \(1 - \delta\) & Whole budget on \(R_E\), spent on the claims in order & Guarantee per claim; a later claim may receive no budget & A set preference between the claims \\
+Conditional rate (Appendix C) & Failure rate among sites skipped by one claim \(\le \alpha\) at \(1 - \delta\) & One claim & Coverage at small \(m\): at \(m = 40\) it certifies nothing or more than half a level & Large calibration samples \\
 \end{longtable}
 }
 
@@ -777,7 +827,7 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 \subsection*{SI 5.3 Plans certified for all levels together, and two baselines}\label{si-5.3-plans-certified-for-all-levels-together-and-two-baselines}}
 \addcontentsline{toc}{subsection}{SI 5.3 Plans certified for all levels together, and two baselines}
 
-\textbf{Plans certified for all levels together.} The failure probability \(1 - c\) of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence \(1 - (1 - c)/n\) and, by the union bound, every level holds together with probability at least \(c\). Random states, scores, predictor and budget are those of the plans certified level by level of Table 4.
+\textbf{Plans certified for all levels together.} The failure probability \(1 - c\) of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence \(1 - (1 - c)/n\) and, by the union bound, every level holds together with probability at least \(c\). Random states, scores, predictor and budget are those of the plans certified level by level of Table 3.
 
 \textbf{Conformal risk control.} Along the same path and on the same calibration draw, the threshold admits the largest number \(k\) of failing calibration sites with \((k + 1)/(m + 1) \le \varepsilon\) \cite{Angelopoulos2024}. This bounds the expected share of the level skipped wrongly, averaged over draws, and makes no statement about a single level. At \(m = 40\) it allows \(k = 3\) at \(\varepsilon = 0.10\) and \(k = 7\) at \(\varepsilon = 0.20\).
 
@@ -1167,7 +1217,7 @@ synthetic (2118 sites) & latent & 0--0.1~\% & 0~\% & 2109--2118 \\
 
 On IR, 73 sites form the seed, so a campaign at 73 measured sites skipped every certified-level site. On the synthetic map the claim is on the full profile at 0.5~\% + 0.005; the process judged every site too uncertain to skip at every \ensuremath{\alpha}, and only the rescaled process skipped. The two-claim variant of SI 6.2, with its peak claim, gave stated shares of at most 4~\% against realised shares of 11~\% to 41~\%; those runs are kept in the archive of SI 5. On NaCl the fitted white-noise variance, about three quarters of the variance of the width, makes the predictive process unwilling to skip; it describes site-to-site scatter that the smooth part of the process does not follow, far above the counting noise of a measurement (SI 2).
 
-\textbf{The same process, certified.} The frozen interpolation score of a certified plan can be the process\textquotesingle s own posterior probability of a wrong skip, computed as above with the predictive standard deviation before each calibration draw, from the measured set only and with a fixed random stream; ties among the 64-draw probabilities are broken by the mean deviation of the draws. The predictor is the process\textquotesingle s posterior mean, the length scale set by maximum likelihood, the budget that of Table 4. On NaCl, 50 campaigns measured 761 \ensuremath{\pm} 68 of 1071 sites, with 16 of 200 level checks over budget against 24.0 expected under the picked failure probabilities; the uncertified rule with the same process and the same probability measured 1064 to 1070 (Table S7.2). On the synthetic map, 20 campaigns measured 1991 \ensuremath{\pm} 91 of 2118, with 13 of 120 level checks over budget against 11.4 expected, against 2118 uncertified. The ranking saved nothing over the positional standard deviation of Section 4.3 (745 to 777 on NaCl, 1946 to 2027 on the synthetic map). The process mean failed at 74~\% and 77~\% of the calibration sites of the two maps, against 52~\% and 40~\% for natural-neighbour prediction.
+\textbf{The same process, certified.} The frozen interpolation score of a certified plan can be the process\textquotesingle s own posterior probability of a wrong skip, computed as above with the predictive standard deviation before each calibration draw, from the measured set only and with a fixed random stream; ties among the 64-draw probabilities are broken by the mean deviation of the draws. The predictor is the process\textquotesingle s posterior mean, the length scale set by maximum likelihood, the budget that of Table 3. On NaCl, 50 campaigns measured 761 \ensuremath{\pm} 68 of 1071 sites, with 16 of 200 level checks over budget against 24.0 expected under the picked failure probabilities; the uncertified rule with the same process and the same probability measured 1064 to 1070 (Table S7.2). On the synthetic map, 20 campaigns measured 1991 \ensuremath{\pm} 91 of 2118, with 13 of 120 level checks over budget against 11.4 expected, against 2118 uncertified. The ranking saved nothing over the positional standard deviation of Section 4.3 (745 to 777 on NaCl, 1946 to 2027 on the synthetic map). The process mean failed at 74~\% and 77~\% of the calibration sites of the two maps, against 52~\% and 40~\% for natural-neighbour prediction.
 
 \hypertarget{s7.3-certified-campaigns-at-several-budgets}{%
 \subsection*{S7.3 Certified campaigns at several budgets}\label{s7.3-certified-campaigns-at-several-budgets}}
@@ -1228,7 +1278,7 @@ The comparison of Fig. 1 holds design, model, ranking and calibration sample fix
 
 The uncertainty of the model is turned into a statement on the number of wrong skips by 2000 joint draws: presence is drawn site by site with the predicted probability, and log width jointly over the remaining sites from the full predictive covariance. The cut is the longest prefix of the ranking for which at least 80 \% of the draws stay within \(\lfloor 0.2 N \rfloor\) wrong skips, \(N\) the size of the round, and the stated rate is the 80 \% quantile of the draws at that prefix, divided by \(N\). The conformal cut scans thresholds on the same probability in increasing order and keeps the largest for which the exact hypergeometric upper limit at confidence 0.80 on the number of failures in the round, given the calibration failures below the threshold, less those failures, is at most \(\lfloor 0.2 N \rfloor\); the stated rate is that difference divided by \(N\). A cut keeps its rate in a campaign when the realised wrong skips among the sites it skips, divided by \(N\), are at most its stated rate. Presence is regressed on 0 and 1 for speed; a classifier would change the ranking and the model\textquotesingle s statement and leave the conformal guarantee unchanged.
 
-The three kernels differ only in two settings. With the noise level fitted, the white-noise term is optimised between 10\ensuremath{^{-}}\ensuremath{^{4}} and 10 of the standardised variance. With the noise fixed, the term is held at 10\ensuremath{^{-}}\ensuremath{^{4}}. With the long length scale, the term is held at 10\ensuremath{^{-}}\ensuremath{^{4}} and the length scale bounded below by 1 mm; maximum likelihood with the noise fitted gives about 0.23 mm. The stock-picking chicken copies, for each site of a round, the presence and width of a measured site chosen uniformly at random and ranks the sites by independent uniform numbers.
+The three kernels differ only in two settings. With the noise level fitted, the white-noise term is optimised between 10\ensuremath{^{-}}\ensuremath{^{4}} and 10 of the standardised variance. With the noise fixed, the term is held at 10\ensuremath{^{-}}\ensuremath{^{4}}. With the long length scale, the term is held at 10\ensuremath{^{-}}\ensuremath{^{4}} and the length scale bounded below by 1 mm; maximum likelihood with the noise fitted gives about 0.23 mm. The random predictor copies, for each site of a round, the presence and width of a measured site chosen uniformly at random and ranks the sites by independent uniform numbers.
 
 {\renewcommand{\thetable}{S7.4}\small
 \begin{longtable}[]{@{}
@@ -1270,7 +1320,7 @@ length scale \ensuremath{\ge} 1 mm & model & model & 0.0 / 0.0 / 0.0 & 42 of 93 
 & model & thresholds & 87.5 / 77.5 / 83.8 & 19 of 53 / 38 of 108 / 69 of 206 & 317 \\
 & thresholds & model & 0.0 / 0.0 / 0.0 & 42 of 93 / 104 of 222 / 229 of 447 & 723 \\
 & thresholds & thresholds & 87.5 / 81.2 / 77.5 & 19 of 53 / 36 of 103 / 72 of 196 & 723 \\
-stock-picking chicken & thresholds & thresholds & 80.0 / 78.8 / 82.5 & 21 of 31 / 38 of 56 / 67 of 97 & 891 \\
+random predictor & thresholds & thresholds & 80.0 / 78.8 / 82.5 & 21 of 31 / 38 of 56 / 67 of 97 & 891 \\
 \end{longtable}
 }
 
@@ -1486,7 +1536,7 @@ No independence between the two statements is needed.
 \section*{SI 10. Checks beyond the level}\label{si-10.-checks-beyond-the-level}}
 \addcontentsline{toc}{section}{SI 10. Checks beyond the level}
 
-The studies below extend the run record of SI 5 in four directions: a bound on the sites of interest lost, drift during a campaign, an audit of the finished map, and the cost of a contract against its calibration size and confidence. Every study uses the quantile path with natural-neighbour interpolation and the budgets of Table 4 unless stated otherwise.
+The studies below extend the run record of SI 5 in four directions: a bound on the sites of interest lost, drift during a campaign, an audit of the finished map, and the cost of a contract against its calibration size and confidence. Every study uses the quantile path with natural-neighbour interpolation and the budgets of Table 3 unless stated otherwise.
 
 \hypertarget{si-10.1-a-label-conditional-bound-for-the-sites-of-interest}{%
 \subsection*{SI 10.1 A label-conditional bound for the sites of interest}\label{si-10.1-a-label-conditional-bound-for-the-sites-of-interest}}

@@ -3,7 +3,7 @@ Figure 1 (round 9): specified and calibrated in advance. Same runs as fig_hook3.
 NaCl (200)-width scan, 80 fresh hierarchical designs, three rounds, budget 0.20 per round at confidence 0.80;
 per round the same frozen Gaussian process and the same held-out calibration draw; the cut on the leftover sites is
 set by the uncertainty of the model or by conformal thresholds from the calibration draw, each shown in the campaigns it drives; three kernels,
-and a stock-picking chicken (copies a random measured site, ranks at random; experiments/chicken.py) under the
+and a random predictor (copies a random measured site, ranks at random; experiments/chicken.py) under the
 conformal thresholds only.
 
 (a) Measured width with the seed and the three rounds of one design.
@@ -37,7 +37,7 @@ def main():
     A[("chicken", "contract")] = arm(rc, "chicken", "contract")
     GROUPS = KERN + ("chicken",)
     GLAB = {"fitted": "fitted noise", "nugget": "fixed nugget", "smooth": "long length\nscale",
-            "chicken": "stock-picking\nchicken"}
+            "chicken": "random\npredictor"}
 
     from fig_datasets import nacl_fwhm
     from experiments.nacl_saxs.adapter import load as nload

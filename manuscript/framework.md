@@ -54,41 +54,20 @@ holds over the draw, for any score and any predictor [Wilks1941; Bates2021; Ange
 
 ## 3.4 Forms of guarantee
 
-The rate a campaign must control depends on the question: wrong skips per claim, wrong skips overall, or wrong skips with one claim preferred. All forms rest on the shared wrong-skip event. With covers $A_Z$ and $A_F$ for the interest and interpolation claims,
+Two claims can share one budget in several ways, and all rest on the shared wrong-skip event, a skip under a claim that fails at the site. With covers $A_Z$ and $A_F$ for the interest and interpolation claims,
 
 $$
 E(x) = \big(A_Z(x) \wedge Z(x)\big) \vee \big(A_F(x) \wedge F(x)\big)
 $$
 
-and $R_E$ is its rate over the level. A site covered by both claims counts as wrong when either claim fails there.
-
-**Per-claim budgets.** Each claim is calibrated on its own, with budget $\varepsilon_j$ and failure probability $\delta_j$, on one shared draw. A wrong skip fails at least one claim, so $R_E \le R_a + R_b$, and the Bonferroni inequality gives
-
-$$
-P\big(R_E \le \varepsilon_a + \varepsilon_b\big) \ge 1 - \delta_a - \delta_b
-$$
-
-alongside a separate guarantee for each claim. The split leaves each claim a smaller budget at a higher confidence. Once $\varepsilon_j$ falls below $\varepsilon_{\min}$, no threshold exists and the level is measured in full.
-
-**One budget along a path.** A single budget spends all of $\varepsilon$ and $\delta$ on $R_E$. Two thresholds cannot be read off one draw by an order statistic, and Learn-then-Test supplies the remedy: search a family of thresholds fixed before any label is seen [Angelopoulos2025]. Here the family is a path $\lambda \mapsto (\tau_a(\lambda), \tau_b(\lambda))$, built from the frozen scores alone, along which both thresholds rise. The wrong-skip sets along such a path are nested, $R_E(\lambda)$ grows with $\lambda$, and the rule of Section 3.3 applies with $\lambda$ in place of the threshold (Appendix B). Two paths are used. The quantile path moves both thresholds through matching quantiles of their scores on the level. The priority path admits the claims in a set order: the first claim sweeps its quantiles before the second moves. A preference between the claims thereby enters the decision with the guarantee intact.
-
-**Further forms.** Any rule built from scores frozen before the draw, a uniform calibration draw and a family of thresholds fixed before the labels are known inherits a finite-sample guarantee, including a bound on a conditional rate (Appendix C). A label-conditional statement protects the sites of interest: given their number, the calibration sites of interest are a uniform draw from those of the level, and the rule of Section 3.3, with the worst case over their unknown total, limits the share skipped under the no-interest claim [Vovk2005; Sadinle2019; Tong2018]; a cover so restricted keeps every bound on a rate counted over the level, provided the budget it frees is not spent again on the same draw (Appendix B.3). The statement bounds a share of the sites of interest, not where the lost ones lie, and holds per level; with the shared bound on the same draw, both hold with probability at least $1 - \delta_L - \delta_Z$, where $\delta_Z$ is the failure probability of the conditional statement. Table 1 summarises the forms; SI 4 gives the Monte Carlo acceptance check every form here passes.
-
-**Table 1.** Forms of guarantee on the wrong-skip event of one level. Every form uses the same frozen scores and the same calibration draw.
-
-| Form | Guarantee, with probability at least the stated confidence | Budget | Given up | Suited to |
-| --- | --- | --- | --- | --- |
-| Per-claim budgets | $R_a \le \varepsilon_a$ and $R_b \le \varepsilon_b$; hence $R_E \le \varepsilon_a + \varepsilon_b$ at $1 - \delta_a - \delta_b$ | Split between the claims | Budget per claim; no threshold once $\varepsilon_j < \varepsilon_{\min}$ | Reporting how often each reason for skipping fails |
-| Quantile path | $R_E \le \varepsilon$ at $1 - \delta$ | Whole budget on $R_E$ | Guarantee per claim; path shape set in advance | Bounding how often any skip fails |
-| Priority path | $R_E \le \varepsilon$ at $1 - \delta$ | Whole budget on $R_E$, spent on the claims in order | Guarantee per claim; a later claim may receive no budget | A set preference between the claims |
-| Conditional rate (Appendix C) | Failure rate among sites skipped by one claim $\le \alpha$ at $1 - \delta$ | One claim | Coverage at small $m$: at $m = 40$ it certifies nothing or more than half a level | Large calibration samples |
+and $R_E$ is its rate over the level; a site covered by both claims counts as wrong when either claim fails there. The campaigns of Section 5 spend the whole budget on $R_E$ along the quantile path, which raises both thresholds through matching quantiles of their scores on the level. Two thresholds cannot be read off one draw by an order statistic, so the path is built from the frozen scores before any label is seen and searched as in Learn-then-Test [Angelopoulos2025]; the wrong-skip sets along it are nested, and the rule of Section 3.3 applies (Appendix B). Budgets per claim, a set priority between the claims and a bound on a conditional rate follow from the same ingredients (SI 4.5; Appendix C). A label-conditional statement protects the sites of interest: the calibration sites of interest are a uniform draw from those of the level, and the rule of Section 3.3, with the worst case over their unknown total, limits the share of them skipped under the no-interest claim [Vovk2005; Sadinle2019; Tong2018]. It bounds a share, per level, and holds together with the shared bound on the same draw with probability at least $1 - \delta_L - \delta_Z$ (Appendix B.3).
 
 ## 3.5 What is claimed and what is checked
 
 A reader of the record needs to know what each guarantee covers:
 
 - **Per level, and per plan.** Each bound concerns the design sites of one level and holds with probability $1 - \delta_L$ over that level's draw; a plan certified for all levels together keeps the budget on every level with the confidence of the contract.
-- **Share of the level.** The share counts every site of the level, measured or skipped; the share of skipped sites that are wrong is larger and is reported beside it (Table 4).
+- **Share of the level.** The share counts every site of the level, measured or skipped; the share of skipped sites that are wrong is larger and is reported beside it (Table 3).
 - **Count, not place.** The bound limits how many skips fail and leaves their location open; wrong skips can gather, and when sites of interest are rare a level can meet its budget while losing many of them (Section 5.5).
 - **Design sites only.** Nothing is claimed between design sites, and a map drawn afterwards from all measurements carries a statement only through the audit of Section 3.6.
 - **One measurement as truth.** A label compares the prediction with what a single measurement returns, noise included, so a tolerance has to lie above the precision of the measured quantity; a tolerance close to the variation between neighbouring sites makes many predictions fail whatever the model.

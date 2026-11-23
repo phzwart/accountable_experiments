@@ -143,7 +143,7 @@ For the 32 stated rates (configuration and statement) whose budget can be exceed
 
 ## SI 5.3 Plans certified for all levels together, and two baselines
 
-**Plans certified for all levels together.** The failure probability $1 - c$ of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence $1 - (1 - c)/n$ and, by the union bound, every level holds together with probability at least $c$. Random states, scores, predictor and budget are those of the plans certified level by level of Table 4.
+**Plans certified for all levels together.** The failure probability $1 - c$ of the contract is divided equally among the certified levels when the plan is declared, four on the IR and NaCl maps and six on the synthetic map, so each level runs at confidence $1 - (1 - c)/n$ and, by the union bound, every level holds together with probability at least $c$. Random states, scores, predictor and budget are those of the plans certified level by level of Table 3.
 
 **Conformal risk control.** Along the same path and on the same calibration draw, the threshold admits the largest number $k$ of failing calibration sites with $(k + 1)/(m + 1) \le \varepsilon$ [Angelopoulos2024]. This bounds the expected share of the level skipped wrongly, averaged over draws, and makes no statement about a single level. At $m = 40$ it allows $k = 3$ at $\varepsilon = 0.10$ and $k = 7$ at $\varepsilon = 0.20$.
 

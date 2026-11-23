@@ -1,6 +1,6 @@
 # SI 10. Checks beyond the level
 
-The studies below extend the run record of SI 5 in four directions: a bound on the sites of interest lost, drift during a campaign, an audit of the finished map, and the cost of a contract against its calibration size and confidence. Every study uses the quantile path with natural-neighbour interpolation and the budgets of Table 4 unless stated otherwise.
+The studies below extend the run record of SI 5 in four directions: a bound on the sites of interest lost, drift during a campaign, an audit of the finished map, and the cost of a contract against its calibration size and confidence. Every study uses the quantile path with natural-neighbour interpolation and the budgets of Table 3 unless stated otherwise.
 
 ## SI 10.1 A label-conditional bound for the sites of interest
 
