@@ -1,5 +1,5 @@
 """Interpolated maps after round 3 of one paired design (NaCl (200) width): rows are kernels, columns are the
-cut that drove the campaign (process's own statement, contract), each with its error map against the measured raster.
+cut that drove the campaign (uncertainty of the model, conformal thresholds), each with its error map against the measured raster.
 Reads results/revision2/paired_gp_maps_d<D>.npz from experiments/paired_gp_maps.py."""
 import sys
 from pathlib import Path
@@ -15,7 +15,7 @@ sys.path[:0] = [str(ROOT), str(ROOT / "src"), str(Path(__file__).parent)]
 INK, INK2 = "#1f1f1f", "#5a5a5a"
 TOL = 0.02
 KLAB = {"fitted": "fitted noise", "nugget": "fixed nugget", "smooth": "long length scale"}
-DLAB = {"uq": "own statement", "contract": "contract"}
+DLAB = {"uq": "uncertainty of model", "contract": "conformal thresholds"}
 ABSENT = "#d9d7d0"
 
 
@@ -91,7 +91,7 @@ def main(design=0, src="campaign"):
                             f"skips wrong · {share:.0%} of raster off", transform=ax.transAxes, ha="center",
                             va="top", fontsize=5.8, color=INK)
             if c == 0:
-                fig.text(xpos[0] - 0.06 / FW, ypos[r] + H / 2, KLAB[k], rotation=90, ha="right", va="center",
+                fig.text(xpos[0] - 0.06 / FW, ypos[r] + H / 2, "steered with\n" + KLAB[k], rotation=90, ha="right", va="center",
                          fontsize=7.2, color=INK)
     if best:
         ph, wh = R["all_bph"], R["all_bwh"]; line = ph >= 0.5
@@ -100,9 +100,9 @@ def main(design=0, src="campaign"):
                  f"All {len(ridx)} design sites measured:\n{e.mean():.0%} of raster off.", fontsize=6.2,
                  color=INK, va="center", linespacing=1.4)
     for c, d in enumerate(("uq", "contract")):
-        fig.text((xpos[2 * c] + xpos[2 * c + 1] + W) / 2, 1 - 0.06 / FH, f"cut by the {DLAB[d]}", ha="center",
+        fig.text((xpos[2 * c] + xpos[2 * c + 1] + W) / 2, 1 - 0.06 / FH, f"cut by {DLAB[d]}", ha="center",
                  va="top", fontsize=8, color=INK, weight="bold")
-    out = ROOT / ("manuscript/figures/figS_paired_maps" + (f"_{src}" if best else ""))
+    out = ROOT / ("manuscript/figures/figS_paired_maps" + (("_matern" if src == "nu0.5" else f"_{src}") if best else ""))
     for ext in ("png", "pdf", "svg"):
         fig.savefig(f"{out}.{ext}", dpi=300 if ext == "png" else None)
     print(out)

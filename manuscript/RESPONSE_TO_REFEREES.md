@@ -124,3 +124,15 @@ These changes extend the paper beyond the round-2 requests; they answer points t
 ## Still open
 
 - Zenodo DOI at submission; deposited sources will be stripped of revision notes then.
+
+---
+
+# Changes since round 3 (23 Nov 2026)
+
+- **Accountability defined as an upfront contract (cold read; abstract, Section 1).** A bound is attached to each decision before it is taken; an audit or error report after the campaign describes decisions already spent. Precedents: acceptance sampling, alpha spending, registered reports, design-based sampling, the free R set.
+- **Fig. 1 is now a like-for-like test (R3 M2; Sections 1, 4.3, 5.2; SI 7.4).** Same design, same frozen Gaussian process, same ranking and same calibration sample of 40 per round; only the cut on the remaining sites differs, the process's joint predictive distribution or conformal thresholds, both held to at most a fifth of each round skipped wrongly with probability 0.80. Eighty designs per kernel on the NaCl scan, both cuts evaluated on every state. The thresholds kept the rate in 77.5 % to 88.8 % of campaigns per round, inside the binomial 95 % range of 71 % to 89 % for a method meeting 80 % exactly. The process's own statement kept it in 87.5 % to 100 % with the noise fitted (cautious), 68.8 % to 88.8 % with the noise fixed, and 0 % with the length scale held at 1 mm or more. The stopping comparison of the previous Fig. 1 (467 against 761 sites) is no longer used as the hook; its numbers stay in Section 5.6 and SI 10.3.
+- **"The quality of a kernel returns as fewer measurements" (R3).** Now shown with model and ranking fixed: under the thresholds the three kernels measured 580, 619 and 723 sites, and a predictor without information, a measured site copied at random with a random ranking, measured 891, all at the stated rate (Sections 5.2, 5.4; Discussion).
+- **Is the long-length-scale kernel a straw man?** It encodes the common assumption that a map is smooth at the spacing of the design; maximum likelihood would have given about 0.23 mm, a check that tells the user only afterwards which assumption was right. The conformal thresholds absorbed the misspecification by measuring more (723 against 317 sites), and those measurements gave the better map in all 20 designs refitted with one Matérn model (24.0 % against 29.9 % of the raster outside tolerance; random sets of equal size 25.3 % and 30.5 %) (Section 5.2; SI 7.4).
+- **Dawid stated precisely (R1, R3).** "A coherent forecaster assigns prior probability one to its own long-run calibration" in Section 1 and the abstract; cross-validation cites the jackknife+ and feedback covariate shift [Barber2021; Fannjiang2022].
+- **Rounds and levels.** Fig. 1 speaks of rounds; Section 1 defines a round as the decision on one level of the plan.
+- **Presence model (R3).** In the paired comparison presence is regressed on 0 and 1; SI 7.4 says so and notes that a classifier would change the ranking and the statement, not the conformal guarantee. The map-quality refits use a classifier.

@@ -73,3 +73,44 @@ For Fig. 4 the quantile path was run at budgets $\varepsilon$ of 0.05, 0.10, 0.2
 On IR, 233 sites is the floor: 73 seed sites and 160 calibration draws. Above a budget of 0.10 every predicted skip is admitted, and the realised share stays at the rate the predictor makes.
 
 **Figure S7.** The NaCl scan, levels 3 to 6. (a) Sites measured against the share of sites skipped wrongly: 250 certified campaigns with natural-neighbour prediction (grey; diamond: random state 44), 3 × 250 certified campaigns with the Gaussian-process mean as predictor (purple; length scale by maximum likelihood, by design spacing or by local spacing), and the uncertified Gaussian-process rule at intervals of 68 % to 99 % (open symbols). (b) Realised share of each level skipped wrongly in the 250 certified campaigns of natural-neighbour prediction, against the budget of 20 %; numbers give level runs over budget against the number expected under the picked failure probabilities. File: `figures/figS7_cost.png`.
+
+## S7.4 The paired comparison of Fig. 1
+
+The comparison of Fig. 1 holds design, model, ranking and calibration sample fixed and varies only the cut on the sites left after calibration (Section 4.3). Designs are drawn with the hierarchical Poisson-disk sampler at radii 0.2/√2^l mm for levels l = 0 to 6, corners forced, and snapped to the NaCl raster (seeds 1000 to 1079); levels 0 to 3 form the seed. Each round fits two Gaussian processes on all sites measured so far: presence of the (200) line, regressed as 0 or 1 and clipped to [0, 1], and the logarithm of its width at measured sites that hold the line. Both use a squared-exponential kernel with an output scale and a white-noise term, outputs standardised, two restarts of the optimiser. A site is predicted to hold the line when the presence prediction is at least 0.5. Its probability of a wrong skip is one minus the product of the presence prediction and the predictive probability that the width lies within the tolerance when the line is predicted, and the presence prediction otherwise. The calibration sample of 40 sites is drawn with its own random stream, identical in both cuts of a design.
+
+The uncertainty of the model is turned into a statement on the number of wrong skips by 2000 joint draws: presence is drawn site by site with the predicted probability, and log width jointly over the remaining sites from the full predictive covariance. The cut is the longest prefix of the ranking for which at least 80 % of the draws stay within $\lfloor 0.2 N \rfloor$ wrong skips, $N$ the size of the round, and the stated rate is the 80 % quantile of the draws at that prefix, divided by $N$. The conformal cut scans thresholds on the same probability in increasing order and keeps the largest for which the exact hypergeometric upper limit at confidence 0.80 on the number of failures in the round, given the calibration failures below the threshold, less those failures, is at most $\lfloor 0.2 N \rfloor$; the stated rate is that difference divided by $N$. A cut keeps its rate in a campaign when the realised wrong skips among the sites it skips, divided by $N$, are at most its stated rate. Presence is regressed on 0 and 1 for speed; a classifier would change the ranking and the model's statement and leave the conformal guarantee unchanged.
+
+The three kernels differ only in two settings. With the noise level fitted, the white-noise term is optimised between 10⁻⁴ and 10 of the standardised variance. With the noise fixed, the term is held at 10⁻⁴. With the long length scale, the term is held at 10⁻⁴ and the length scale bounded below by 1 mm; maximum likelihood with the noise fitted gives about 0.23 mm. The stock-picking chicken copies, for each site of a round, the presence and width of a measured site chosen uniformly at random and ranks the sites by independent uniform numbers.
+
+**Table S7.4.** The paired comparison, 80 designs per row. Drive: the cut whose skips decide what is measured next; cut: the cut evaluated on the same states. Within rate: share of campaigns (%) whose realised wrong skips stayed within the rate stated before the round, rounds 1 / 2 / 3, against a target of 80 % (a method meeting it exactly gives 71 % to 89 % in 95 of 100 such sets). Wrong skips: mean wrong skips of mean skips per round. Measured: mean sites measured by the driven campaign, seed and calibration included, of about 1075.
+
+| kernel | drive | cut | within rate | wrong skips | measured |
+|---|---|---|---|---|---|
+| noise level fitted | model | model | 87.5 / 98.8 / 100.0 | 21 of 68 / 40 of 150 / 76 of 314 | 543 |
+|  | model | thresholds | 77.5 / 85.0 / 81.2 | 20 of 65 / 38 of 143 / 66 of 287 | 543 |
+|  | thresholds | model | 87.5 / 97.5 / 100.0 | 21 of 68 / 40 of 150 / 77 of 316 | 580 |
+|  | thresholds | thresholds | 77.5 / 83.8 / 82.5 | 20 of 65 / 38 of 144 / 66 of 286 | 580 |
+| noise fixed at 10⁻⁴ | model | model | 73.8 / 68.8 / 88.8 | 24 of 75 / 50 of 165 / 93 of 336 | 500 |
+|  | model | thresholds | 82.5 / 81.2 / 88.8 | 19 of 61 / 37 of 132 / 66 of 269 | 500 |
+|  | thresholds | model | 73.8 / 77.5 / 85.0 | 24 of 75 / 49 of 163 / 94 of 338 | 619 |
+|  | thresholds | thresholds | 82.5 / 88.8 / 88.8 | 19 of 61 / 35 of 129 / 65 of 266 | 619 |
+| length scale ≥ 1 mm | model | model | 0.0 / 0.0 / 0.0 | 42 of 93 / 102 of 222 / 204 of 443 | 317 |
+|  | model | thresholds | 87.5 / 77.5 / 83.8 | 19 of 53 / 38 of 108 / 69 of 206 | 317 |
+|  | thresholds | model | 0.0 / 0.0 / 0.0 | 42 of 93 / 104 of 222 / 229 of 447 | 723 |
+|  | thresholds | thresholds | 87.5 / 81.2 / 77.5 | 19 of 53 / 36 of 103 / 72 of 196 | 723 |
+| stock-picking chicken | thresholds | thresholds | 80.0 / 78.8 / 82.5 | 21 of 31 / 38 of 56 / 67 of 97 | 891 |
+
+Map quality was compared on 20 designs with the noise level fitted and with the long length scale. Each measured set, and a control of the seed plus a uniform random draw of the other design sites of equal size, was refitted with a Gaussian-process classifier for presence and a Gaussian-process regression for the log width with fitted white noise, both with a Matérn kernel of smoothness ½; on the seven sets of design 0, marginal likelihood preferred smoothness 5/2 on every set, which predicted the raster worse by 0.4 to 6 percentage points. The error is the share of the 3249 raster sites at which presence is predicted wrongly or the width is off by more than the tolerance.
+
+**Table S7.5.** Map quality after round 3, mean over 20 designs: share of the raster outside tolerance (%), with presence wrong in brackets.
+
+| kernel | drive | sites measured | measured set | random set of equal size |
+|---|---|---|---|---|
+| noise level fitted | model | 538 | 25.9 (5.3) | 26.9 (6.2) |
+| | thresholds | 562 | 26.0 (5.3) | 27.3 (6.1) |
+| length scale ≥ 1 mm | model | 312 | 29.9 (7.7) | 30.5 (8.2) |
+| | thresholds | 720 | 24.0 (4.7) | 25.3 (5.1) |
+
+**Figure S7c.** Maps after round 3 of one paired design (design 0), refitted with the Matérn model of Table S7.5. Rows: the kernel that steered the campaign; columns: the cut that drove it, with the interpolated width and its error against the raster. Crosses mark the campaign's wrong skips. Measuring every site of this design leaves 19 % of the raster outside tolerance. File: `figures/figS_paired_maps_matern.png`.
+
+Code and records: `experiments/paired_gp.py`, `experiments/chicken.py`, `experiments/paired_gp_fitquality.py`, `experiments/paired_gp_maps.py`, `experiments/paired_gp_bestfit.py`; `results/revision2/paired_gp.jsonl`, `paired_chicken.jsonl`, `paired_gp_fitquality.jsonl`, `paired_gp_summary.json`. Fig. 1 is drawn by `manuscript/figures/fig_hook4.py`.
