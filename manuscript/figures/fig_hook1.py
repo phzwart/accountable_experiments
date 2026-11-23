@@ -105,10 +105,10 @@ def main():
     for s_ in ("top", "right"):
         axb.spines[s_].set_visible(False)
     fig.text(0.40, 0.965, "(b) Delivered: the share that 80 % of 80 campaigns stay at or below", fontsize=8, color=INK)
-    fig.text(0.49, 0.928, "measured: own word (left)", fontsize=7.2, color=ORANGE, fontweight="bold")
-    fig.text(0.628, 0.928, f"{m_own.mean():.0f} ± {m_own.std():.0f} sites", fontsize=7, color=INK)
-    fig.text(0.72, 0.928, "contract (right)", fontsize=7.2, color=PURPLE, fontweight="bold")
-    fig.text(0.852, 0.928, f"{m_con.mean():.0f} ± {m_con.std():.0f} sites", fontsize=7, color=INK)
+    fig.text(0.49, 0.928, "own word (left)", fontsize=7.2, color=ORANGE, fontweight="bold")
+    fig.text(0.612, 0.928, f"{m_own.mean():.0f} ± {m_own.std():.0f} sites", fontsize=7, color=INK)
+    fig.text(0.745, 0.928, "contract (right)", fontsize=7.2, color=PURPLE, fontweight="bold")
+    fig.text(0.874, 0.928, f"{m_con.mean():.0f} ± {m_con.std():.0f} sites", fontsize=7, color=INK)
 
     # (c) wrong-skip maps, same size as (a), the own word directly under (a)
     cmap = plt.get_cmap("Reds").copy(); cmap.set_bad("#e9e8e4")
