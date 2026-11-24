@@ -1,3 +1,6 @@
+# LaTeX build outputs (compiled documents and auxiliary files)
+/main.pdf
+/supplement.pdf
 *.aux
 *.log
 *.blg
@@ -6,3 +9,11 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+*.synctex(busy)
+*.toc
+*.lof
+*.lot
+*.xdv
+*.dvi
+*.run.xml
+*-blx.bib
