@@ -7,6 +7,9 @@ both cuts are computed on the identical state, with the same target (wrong skips
 floor(EPS N) with probability at least CONF):
   uq:       the process's own statement, from joint posterior draws (presence per site as stated, log width drawn
             jointly over the leftover sites);
+  iid:      site by site: skip every site whose probability of a wrong skip is at most alpha, with alpha the largest
+            value for which the Poisson-binomial count of wrong skips (the process's probabilities taken as
+            independent) stays within the target with probability CONF;
   contract: the exact hypergeometric upper limit from the calibration labels, less the failures already seen.
 One of the two cuts drives the trajectory (which sites are measured and enter the next fit); both are recorded.
 
@@ -72,6 +75,22 @@ def joint_wrong(st, sub, rng):
     return np.where(line, (~pres) | (np.abs(np.exp(lw) - st["wh"][sub][None, :]) > TOL), pres)
 
 
+def poisbin_cut(qs, cap):
+    """Longest prefix of the sorted probabilities qs, ending at a change of value (a threshold alpha on q), whose
+    Poisson-binomial count of wrong skips is at most cap with probability >= CONF; returns its length and the
+    CONF-quantile of that count (the rate the process states)."""
+    f = np.zeros(cap + 2); f[0] = 1.0                       # f[k] = P(K = k), last bin = P(K > cap)
+    best, st = 0, 0.0
+    for i, qi in enumerate(qs):
+        g = f * (1.0 - qi); g[1:] += f[:-1] * qi; g[-1] += f[-1] * qi
+        f = g
+        if f[:-1].sum() < CONF:
+            break
+        if i + 1 == len(qs) or qs[i + 1] > qi:
+            best, st = i + 1, float(np.searchsorted(np.cumsum(f), CONF))
+    return best, st
+
+
 def cuts(st, N, cal, rest, rng):
     q, wrong = st["q"], st["wrong"]; cap = int(np.floor(EPS * N)); m = len(cal)
     order = rest[np.argsort(q[rest], kind="stable")]
@@ -81,6 +100,10 @@ def cuts(st, N, cal, rest, rng):
     n_uq = int(np.argmin(okp)) if not okp.all() else len(order)
     sk_uq = order[:n_uq]
     st_uq = float(np.quantile(J[:, n_uq - 1], CONF)) / N if n_uq else 0.0
+    # iid: site-by-site threshold on q, with the threshold set from the process's own probabilities taken as
+    # independent (Poisson-binomial count of wrong skips; Hoeffding 1956)
+    n_iid, st_iid = poisbin_cut(q[order], cap)
+    sk_iid = order[:n_iid]
     # contract: largest threshold within the cap after the calibration failures
     t_best, k_best, u_best = -np.inf, 0, upper_count(N, m, 0)
     for t in np.sort(np.unique(q)):
@@ -91,6 +114,7 @@ def cuts(st, N, cal, rest, rng):
             break
     sk_c = rest[q[rest] <= t_best]
     return dict(uq=dict(n_skip=int(n_uq), realised=int(wrong[sk_uq].sum()), stated=st_uq, skip=sk_uq),
+                iid=dict(n_skip=int(n_iid), realised=int(wrong[sk_iid].sum()), stated=st_iid / N, skip=sk_iid),
                 contract=dict(n_skip=int(len(sk_c)), realised=int(wrong[sk_c].sum()), stated=(u_best - k_best) / N,
                               skip=sk_c))
 
@@ -105,7 +129,7 @@ def campaign(xy, w, p, lv, design, kernel, driver):
         rest = np.setdiff1d(np.arange(N), cal)
         c = cuts(st, N, cal, rest, rng)
         rec = dict(L=L, N=N, cap=int(np.floor(EPS * N)))
-        for k in ("uq", "contract"):
+        for k in ("uq", "iid", "contract"):
             rec[k] = {kk: v for kk, v in c[k].items() if kk != "skip"}
         rounds.append(rec)
         sel = np.ones(N, bool); sel[c[driver]["skip"]] = False
@@ -133,7 +157,7 @@ def main(kernel, driver, start, n):
         rounds, total = campaign(xy_all[idx], w_all[idx], p_all[idx], lv, d, kernel, driver)
         with OUT.open("a") as f:
             f.write(json.dumps(dict(kernel=kernel, driver=driver, design=d, measured=total, rounds=rounds)) + "\n")
-        print(kernel, driver, d, total, [(r["uq"]["realised"], r["contract"]["realised"], r["cap"]) for r in rounds], flush=True)
+        print(kernel, driver, d, total, [(r["iid"]["realised"], r["iid"]["n_skip"], r["uq"]["n_skip"], r["cap"]) for r in rounds], flush=True)
 
 
 if __name__ == "__main__":
